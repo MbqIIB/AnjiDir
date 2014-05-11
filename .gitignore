@@ -11,6 +11,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+##### iib specific
+*.bar
+
+
 ##### eclipse specific  -- https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
 
 *.pydevproject
