@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
 <xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OracleModel="http:///com/ibm/db/models/oracle/oracle.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLExpressions="http:///org/eclipse/datatools/modelbase/sql/expressions.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore" xmlns:SQLStatements="http:///org/eclipse/datatools/modelbase/sql/statements.ecore" xmlns:SQLTables="http:///org/eclipse/datatools/modelbase/sql/tables.ecore">
-  <OracleModel:OracleDatabase xmi:id="_FeIuwdjiEeOPa6MGkMD--w" name="xe" vendor="Oracle" version="11" schemas="_FeVjENjiEeOPa6MGkMD--w">
+  <OracleModel:OracleDatabase xmi:id="_FeIuwdjiEeOPa6MGkMD--w" name="DESK" vendor="Oracle" version="11" schemas="_FeVjENjiEeOPa6MGkMD--w">
     <eAnnotations xmi:id="_FeIuwtjiEeOPa6MGkMD--w" source="ConnectionURI">
       <details xmi:id="_FeJV0NjiEeOPa6MGkMD--w" key="ConnectionKey" value="xe"/>
     </eAnnotations>
+    <eAnnotations xmi:id="_gNnTYdk1EeOin_wIpCtzaA" source="UDP"/>
   </OracleModel:OracleDatabase>
   <SQLSchema:Schema xmi:id="_FeVjENjiEeOPa6MGkMD--w" name="EMI" triggers="_FeXYQNjiEeOPa6MGkMD--w _FeetANjiEeOPa6MGkMD--w _FetWgNjiEeOPa6MGkMD--w _Fe3HgNjiEeOPa6MGkMD--w" indices="_Fede4NjiEeOPa6MGkMD--w _FeqTMNjiEeOPa6MGkMD--w _Fe15YNjiEeOPa6MGkMD--w _Fe6K0NjiEeOPa6MGkMD--w" tables="_FeX_UNjiEeOPa6MGkMD--w _FefUENjiEeOPa6MGkMD--w _FetWg9jiEeOPa6MGkMD--w _Fe3Hg9jiEeOPa6MGkMD--w" sequences="_euJbodj8EeOj2Zyvh83wBg" database="_FeIuwdjiEeOPa6MGkMD--w"/>
   <SQLTables:Trigger xmi:id="_FeXYQNjiEeOPa6MGkMD--w" name="TR_I_EXAT" schema="_FeVjENjiEeOPa6MGkMD--w" subjectTable="_FeX_UNjiEeOPa6MGkMD--w" actionGranularity="ROW" actionTime="BEFORE" insertType="true" oldRow="OLD" newRow="NEW">
