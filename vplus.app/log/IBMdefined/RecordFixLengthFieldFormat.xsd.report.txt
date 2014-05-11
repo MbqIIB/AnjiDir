@@ -1,0 +1,12 @@
+
+
+Importing file: /home/iibadm/.eclipse/ibm.integration.toolkit_9.0.0_1076951321/configuration/org.eclipse.osgi/bundles/363/1/.cp/formats/ibm/RecordFixLengthFieldFormat.xsd
+
+
+Elapsed time processing this message definition file: 0.033 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
