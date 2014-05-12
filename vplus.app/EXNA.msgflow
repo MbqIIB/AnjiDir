@@ -9,7 +9,7 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj30/EXNA.gif"/>
     <composition>
       <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="112,210" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3NAEXT.TXT" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXNAFormat}:EXNA">
-        <translation xmi:type="utility:ConstantString" string="EXNA_FILE_INPUT"/>
+        <translation xmi:type="utility:ConstantString" string="EXNA_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="420,206" mappingExpression="msl://{default}#EXNA">
         <translation xmi:type="utility:ConstantString" string="EXNA_TO_DB"/>
