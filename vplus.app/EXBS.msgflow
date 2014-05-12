@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj16/EXBS.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj30/EXBS.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="403,157" mappingExpression="msl://{default}#EXBS_MAP">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="403,157" mappingExpression="msl://{default}#EXBS">
         <translation xmi:type="utility:ConstantString" string="EXBS_TO_DB"/>
       </nodes>
       <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="112,161" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3BSEXT.TXT" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXBSFormat}:EXBS">

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/EXNA.xsd"/>
-    <output path="db:table(/xe.dbm,xe,EMI,EXNA)" var="EXNA"/>
+    <input path="/EXNA.xsd" var="var"/>
+    <output path="db:table(/xe.dbm,ORCL,EMI,EXNA)" var="EXNA"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
-    <mappingDeclaration name="EXNA_MAP">
-        <input path="mb:msg(EXNA,assembly,DFDL,Properties)"/>
+    <mappingDeclaration name="EXNA">
+        <input namespace="http://www.quantiguous.com/dfdl/vplus/EXNAFormat" path="$var/mb:msg(EXNA,assembly,DFDL,Properties)"/>
         <output path="$EXNA/db:insert(fn:false(),ID,ORG,CUST_NBR,TITLE,CUST_NAME,GENDER,NATIONALIT,MOTH_NAME,MAR_STATUS,SPOUS_NAME,RES_ADD1,RES_ADD2,RES_CITY,RES_STATE,RES_PIN,PER_EMAIL,RES_PH1,MOBILE1,FAX_PH1,PERM_ADD1,PERM_ADD2,PER_ADD3,PERM_PH,EMPLOYER,DESIGNATIO,OFF_ADD1,OFF_ADD2,OFF_CITY,OFF_PIN,EMP_PH2,FAX_PH2,MOBILE2,OFF_EXTN,EMAIL_2,ABN_CUSTNO,C_LOGO,C_ACCOUNT_NUMBER,C_STATEMENT_FLAG,C_LETTER_FLAG,C_REGION_CODE,C_CITY_CODE,C_DRIVING_LICENSE_N,D_DATE_OF_BIRTH,C_MARITAL_STATUS,C_SSAN,C_RECORD_TYPE,CARD_VIP,USER_1,USER_2,USER_3,USER_4,USER_6,USER_7,USER_9,USER_10,USER_11,USER_13,PAN_NUMBER,STATE_PROV,CREATED_AT,UPDATED_AT)" var="dbinsert"/>
         <foreach>
             <input path="EXNA/body"/>
