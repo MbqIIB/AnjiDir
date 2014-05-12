@@ -7,7 +7,7 @@
     </eAnnotations>
     <eAnnotations xmi:id="_gNnTYdk1EeOin_wIpCtzaA" source="UDP"/>
   </OracleModel:OracleDatabase>
-  <SQLSchema:Schema xmi:id="_FeVjENjiEeOPa6MGkMD--w" name="EMI" triggers="_FeXYQNjiEeOPa6MGkMD--w _FeetANjiEeOPa6MGkMD--w _FetWgNjiEeOPa6MGkMD--w _Fe3HgNjiEeOPa6MGkMD--w" indices="_Fede4NjiEeOPa6MGkMD--w _FeqTMNjiEeOPa6MGkMD--w _Fe15YNjiEeOPa6MGkMD--w _Fe6K0NjiEeOPa6MGkMD--w" tables="_FeX_UNjiEeOPa6MGkMD--w _FefUENjiEeOPa6MGkMD--w _FetWg9jiEeOPa6MGkMD--w _Fe3Hg9jiEeOPa6MGkMD--w" sequences="_euJbodj8EeOj2Zyvh83wBg" database="_FeIuwdjiEeOPa6MGkMD--w"/>
+  <SQLSchema:Schema xmi:id="_FeVjENjiEeOPa6MGkMD--w" name="EMI" triggers="_FeXYQNjiEeOPa6MGkMD--w _FeetANjiEeOPa6MGkMD--w _FetWgNjiEeOPa6MGkMD--w _Fe3HgNjiEeOPa6MGkMD--w" indices="_Fede4NjiEeOPa6MGkMD--w _FeqTMNjiEeOPa6MGkMD--w _Fe15YNjiEeOPa6MGkMD--w _Fe6K0NjiEeOPa6MGkMD--w" tables="_FeX_UNjiEeOPa6MGkMD--w _FefUENjiEeOPa6MGkMD--w _FetWg9jiEeOPa6MGkMD--w _Fe3Hg9jiEeOPa6MGkMD--w" sequences="_euJbodj8EeOj2Zyvh83wBg _fCgtYdmREeOcO_Xpw9dXXg _naLi8NmREeOcO_Xpw9dXXg _pofNkNmREeOcO_Xpw9dXXg" database="_FeIuwdjiEeOPa6MGkMD--w"/>
   <SQLTables:Trigger xmi:id="_FeXYQNjiEeOPa6MGkMD--w" name="TR_I_EXAT" schema="_FeVjENjiEeOPa6MGkMD--w" subjectTable="_FeX_UNjiEeOPa6MGkMD--w" actionGranularity="ROW" actionTime="BEFORE" insertType="true" oldRow="OLD" newRow="NEW">
     <dependencies xmi:id="_FeXYQdjiEeOPa6MGkMD--w" targetEnd="_FeX_UNjiEeOPa6MGkMD--w"/>
     <actionStatement xsi:type="SQLStatements:SQLStatementDefault" xmi:id="_FeXYQtjiEeOPa6MGkMD--w" SQL="DECLARE&#xA;   l_id   INTEGER;&#xA;BEGIN&#xA;   IF :new.id is null THEN&#xA;      select exat_seq.nextval INTO l_id from dual;&#xA;      :new.id := l_id;&#xA;   END IF;&#xA;&#xA;&#xA;EXCEPTION&#xA;WHEN others THEN&#xA;  null;&#xA;END;&#xA;"/>
@@ -3152,5 +3152,17 @@
   <SQLSchema:Sequence xmi:id="_euJbodj8EeOj2Zyvh83wBg" name="EXAT_SEQ" schema="_FeVjENjiEeOPa6MGkMD--w">
     <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_euJbotj8EeOj2Zyvh83wBg" name="INT" primitiveType="INTEGER"/>
     <identity xmi:id="_euJbo9j8EeOj2Zyvh83wBg" startValue="1" increment="1"/>
+  </SQLSchema:Sequence>
+  <SQLSchema:Sequence xmi:id="_fCgtYdmREeOcO_Xpw9dXXg" name="EXBS_SEQ" schema="_FeVjENjiEeOPa6MGkMD--w">
+    <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_fCgtYtmREeOcO_Xpw9dXXg" name="INT" primitiveType="INTEGER"/>
+    <identity xmi:id="_fCgtY9mREeOcO_Xpw9dXXg" startValue="1" increment="1"/>
+  </SQLSchema:Sequence>
+  <SQLSchema:Sequence xmi:id="_naLi8NmREeOcO_Xpw9dXXg" name="EXEE_SEQ" schema="_FeVjENjiEeOPa6MGkMD--w">
+    <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_naLi8dmREeOcO_Xpw9dXXg" name="INT" primitiveType="INTEGER"/>
+    <identity xmi:id="_naLi8tmREeOcO_Xpw9dXXg" startValue="1" increment="1"/>
+  </SQLSchema:Sequence>
+  <SQLSchema:Sequence xmi:id="_pofNkNmREeOcO_Xpw9dXXg" name="EXNA_SEQ" schema="_FeVjENjiEeOPa6MGkMD--w">
+    <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_pofNkdmREeOcO_Xpw9dXXg" name="INT" primitiveType="INTEGER"/>
+    <identity xmi:id="_pofNktmREeOcO_Xpw9dXXg" startValue="1" increment="1"/>
   </SQLSchema:Sequence>
 </xmi:XMI>
