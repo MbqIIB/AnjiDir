@@ -21,10 +21,10 @@
                 <xsd:element dfdl:lengthKind="delimited" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
-							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="000" name="ORG" type="xsd:integer"/>
-							<xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ACCOUNT" type="xsd:integer"/>
+							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="000" name="ORG" type="xsd:int"/>
+							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="ACCOUNT" type="xsd:string"/>
 							<xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="11111" name="REC_NO" type="xsd:integer"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="LOGO" type="xsd:integer"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="LOGO" type="xsd:int"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="C" name="TYPE" type="xsd:string"/>
                                                                                     <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="TXN_DATE" type="xsd:date"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="C" name="MT_TYPE" type="xsd:string"/>

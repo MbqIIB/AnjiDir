@@ -3,6 +3,7 @@
     <output path="db:table(/xe.dbm,ORCL,EMI,EXAT)" var="EXAT"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="EXAT">
@@ -15,294 +16,56 @@
                 <input path="$body/."/>
                 <output path="."/>
                 <move>
-                    <input path="TXN_DATE"/>
-                    <output path="TXN_DATE"/>
-                </move>
-                <move>
-                    <input path="ORG"/>
+                    <input path="ORG" var="ORG"/>
                     <output path="ORG"/>
                 </move>
                 <move>
-                    <input path="ACCOUNT"/>
+                    <input path="LOGO" var="LOGO"/>
+                    <output path="LOGO"/>
+                </move>
+                <move>
+                    <input path="ACCOUNT" var="ACCOUNT"/>
                     <output path="ACCOUNT"/>
                 </move>
                 <move>
-                    <input path="REC_NO"/>
-                    <output path="REC_NO"/>
+                    <input path="PLAN"/>
+                    <output path="PLAN_NO"/>
                 </move>
                 <move>
-                    <input path="LOGO"/>
-                    <output path="LOGO"/>
+                    <input path="REF_NBR"/>
+                    <output path="REF_NBR"/>
                 </move>
                 <move>
                     <input path="TYPE"/>
                     <output path="TYPE"/>
                 </move>
                 <move>
-                    <input path="MT_TYPE"/>
-                    <output path="MT_TYPE"/>
+                    <input path="MT_SI_ORG"/>
+                    <output path="MT_SI_ORG"/>
                 </move>
                 <move>
-                    <input path="TXN_CODE"/>
-                    <output path="TXN_CODE"/>
+                    <input path="MT_SI_NBR"/>
+                    <output path="MT_SI_NBR"/>
                 </move>
                 <move>
                     <input path="AMOUNT"/>
                     <output path="AMOUNT"/>
                 </move>
                 <move>
-                    <input path="F1"/>
-                    <output path="F1"/>
-                </move>
-                <move>
-                    <input path="UNIT_PRICE"/>
-                    <output path="UNIT_PRICE"/>
-                </move>
-                <move>
-                    <input path="F2"/>
-                    <output path="F2"/>
-                </move>
-                <move>
-                    <input path="BATCH_DT"/>
-                    <output path="BATCH_DT"/>
-                </move>
-                <move automap="true">
-                    <input path="POST_DATE"/>
-                    <output path="POST_DATE"/>
-                </move>
-                <move automap="true">
-                    <input path="QUANTITY"/>
-                    <output path="QUANTITY"/>
-                </move>
-                <move automap="true">
-                    <input path="AUTHCODE"/>
-                    <output path="AUTHCODE"/>
-                </move>
-                <move automap="true">
-                    <input path="MT_SI_ORG"/>
-                    <output path="MT_SI_ORG"/>
-                </move>
-                <move automap="true">
-                    <input path="MT_SI_NBR"/>
-                    <output path="MT_SI_NBR"/>
-                </move>
-                <move>
-                    <input path="PLAN"/>
-                    <output path="PLAN_NO"/>
-                </move>
-                <move automap="true">
-                    <input path="SALESPERSO"/>
-                    <output path="SALESPERSO"/>
-                </move>
-                <move automap="true">
-                    <input path="TKT_NBR"/>
-                    <output path="TKT_NBR"/>
-                </move>
-                <move automap="true">
-                    <input path="PURCH_NUM"/>
-                    <output path="PURCH_NUM"/>
-                </move>
-                <move automap="true">
-                    <input path="PMT_REF_NO"/>
-                    <output path="PMT_REF_NO"/>
-                </move>
-                <move automap="true">
-                    <input path="ITEM_NBR"/>
-                    <output path="ITEM_NBR"/>
-                </move>
-                <move automap="true">
-                    <input path="REF_NBR"/>
-                    <output path="REF_NBR"/>
-                </move>
-                <move automap="true">
                     <input path="MERCHANT"/>
                     <output path="MERCHANT"/>
                 </move>
-                <move automap="true">
+                <move>
                     <input path="CITY"/>
                     <output path="CITY"/>
                 </move>
-                <move automap="true">
-                    <input path="COUNTRY"/>
-                    <output path="COUNTRY"/>
+                <move>
+                    <input path="TXN_DATE"/>
+                    <output path="TXN_DATE"/>
                 </move>
-                <move automap="true">
-                    <input path="PLAN_OPEN"/>
-                    <output path="PLAN_OPEN"/>
-                </move>
-                <move automap="true">
-                    <input path="INPUT_SRC"/>
-                    <output path="INPUT_SRC"/>
-                </move>
-                <move automap="true">
-                    <input path="MULT_REF"/>
-                    <output path="MULT_REF"/>
-                </move>
-                <move automap="true">
-                    <input path="FSP"/>
-                    <output path="FSP"/>
-                </move>
-                <move automap="true">
-                    <input path="FSP_PRG_NO"/>
-                    <output path="FSP_PRG_NO"/>
-                </move>
-                <move automap="true">
-                    <input path="MERCH_ORG"/>
-                    <output path="MERCH_ORG"/>
-                </move>
-                <move automap="true">
-                    <input path="MERCH_STOR"/>
-                    <output path="MERCH_STOR"/>
-                </move>
-                <move automap="true">
-                    <input path="CAT_CODE"/>
-                    <output path="CAT_CODE"/>
-                </move>
-                <move automap="true">
-                    <input path="PROD_GRP"/>
-                    <output path="PROD_GRP"/>
-                </move>
-                <move automap="true">
-                    <input path="SKU_NBR"/>
-                    <output path="SKU_NBR"/>
-                </move>
-                <move automap="true">
-                    <input path="LOGIC_MOD"/>
-                    <output path="LOGIC_MOD"/>
-                </move>
-                <move automap="true">
+                <move>
                     <input path="RPT_DESC"/>
                     <output path="RPT_DESC"/>
-                </move>
-                <move automap="true">
-                    <input path="GL_SOURCE"/>
-                    <output path="GL_SOURCE"/>
-                </move>
-                <move automap="true">
-                    <input path="DEPT"/>
-                    <output path="DEPT"/>
-                </move>
-                <move automap="true">
-                    <input path="SOURCE"/>
-                    <output path="SOURCE"/>
-                </move>
-                <move automap="true">
-                    <input path="BATCH_NO"/>
-                    <output path="BATCH_NO"/>
-                </move>
-                <move automap="true">
-                    <input path="BATCH_SEQ"/>
-                    <output path="BATCH_SEQ"/>
-                </move>
-                <move automap="true">
-                    <input path="PLAN_SEQ"/>
-                    <output path="PLAN_SEQ"/>
-                </move>
-                <move automap="true">
-                    <input path="SORT_PRIOR"/>
-                    <output path="SORT_PRIOR"/>
-                </move>
-                <move automap="true">
-                    <input path="POST_FLAG"/>
-                    <output path="POST_FLAG"/>
-                </move>
-                <move automap="true">
-                    <input path="VISATRANID"/>
-                    <output path="VISATRANID"/>
-                </move>
-                <move automap="true">
-                    <input path="ICHNG_FEE"/>
-                    <output path="ICHNG_FEE"/>
-                </move>
-                <move>
-                    <input path="QUAL_ID"/>
-                    <output path="QUAL_ID"/>
-                </move>
-                <move>
-                    <input path="CARD_NBR"/>
-                    <output path="CARD_NBR"/>
-                </move>
-                <move>
-                    <input path="CARD_SEQ"/>
-                    <output path="CARD_SEQ"/>
-                </move>
-                <move>
-                    <input path="CARD_BLK"/>
-                    <output path="CARD_BLK"/>
-                </move>
-                <move>
-                    <input path="INS_PROD"/>
-                    <output path="INS_PROD"/>
-                </move>
-                <move>
-                    <input path="ACT_TERM"/>
-                    <output path="ACT_TERM"/>
-                </move>
-                <move>
-                    <input path="FOREX_CD"/>
-                    <output path="FOREX_CD"/>
-                </move>
-                <move>
-                    <input path="RELPMT_AMT"/>
-                    <output path="RELPMT_AMT"/>
-                </move>
-                <move>
-                    <input path="F3"/>
-                    <output path="F3"/>
-                </move>
-                <move>
-                    <input path="ORIG_PYMT"/>
-                    <output path="ORIG_PYMT"/>
-                </move>
-                <move>
-                    <input path="F4"/>
-                    <output path="F4"/>
-                </move>
-                <move>
-                    <input path="STMT_FLAG"/>
-                    <output path="STMT_FLAG"/>
-                </move>
-                <if>
-                    <input path="SOU_TXN_DT" var="SOU_TXN_DT"/>
-                    <output path="SOU_TXN_DT"/>
-                    <test lang="xpath">$SOU_TXN_DT != nil</test>
-                    <move>
-                        <input path="$SOU_TXN_DT/."/>
-                        <output path="."/>
-                    </move>
-                </if>
-                <move>
-                    <input path="C_CITY"/>
-                    <output path="C_CITY"/>
-                </move>
-                <move>
-                    <input path="C_COUNTRY"/>
-                    <output path="C_COUNTRY"/>
-                </move>
-                <if>
-                    <input path="SOU_TXN_AM" var="SOU_TXN_AM"/>
-                    <output path="SOU_TXN_AM"/>
-                    <test lang="xpath">$SOU_TXN_AM != nil</test>
-                    <move>
-                        <input path="$SOU_TXN_AM/."/>
-                        <output path="."/>
-                    </move>
-                </if>
-                <move>
-                    <input path="CURRY_CODE"/>
-                    <output path="CURRY_CODE"/>
-                </move>
-                <move>
-                    <input path="C_ARN"/>
-                    <output path="C_ARN"/>
-                </move>
-                <move>
-                    <input path="A_AQR_BIN"/>
-                    <output path="C_AQR_BIN"/>
-                </move>
-                <move>
-                    <input path="C_RECORD_TYPE"/>
-                    <output path="C_RECORD_TYPE"/>
                 </move>
                 <function ref="fn:current-dateTime">
                     <output path="CREATED_AT"/>
