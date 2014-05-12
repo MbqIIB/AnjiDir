@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recFixLengthFieldsFmt="http://www.ibm.com/dfdl/RecordFixLengthFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordFixLengthFieldFormat" schemaLocation="IBMdefined/RecordFixLengthFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" escapeSchemeRef="recFixLengthFieldsFmt:RecordEscapeScheme" occursCountKind="fixed" ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" separatorSuppressionPolicy="anyEmpty"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="EXEE">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;">
+				<xsd:element dfdl:lengthKind="implicit" name="header">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element default="head_valu1" dfdl:length="3" ibmDfdlExtn:sampleValue="HDR" name="IDENTIFIER" type="xsd:string"/>
+							<xsd:element dfdl:calendarPattern="yyyyMMdd" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="DATE" type="xsd:date"/>
+													</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separator="">
+							<xsd:element default="body_valu1" dfdl:length="3" name="ORG" type="xsd:string"/>
+							<xsd:element default="body_valu2" dfdl:length="19" name="CARD_NO" type="xsd:string"/>
+							<xsd:element dfdl:length="4" dfdl:textNumberPattern="#0" name="CARD_SEQ" type="xsd:integer"/>
+                            <xsd:element default="body_value4" dfdl:length="1" name="CARD_FLAG" type="xsd:string"/>
+                            <xsd:element default="body_value5" dfdl:length="26" name="EMBOSS1" type="xsd:string"/>
+                            <xsd:element default="body_value6" dfdl:length="26" name="EMBOSS2" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="DOB" type="xsd:date"/>
+                            <xsd:element default="body_value8" dfdl:length="2" name="CRD_TYPE" type="xsd:string"/>
+                            <xsd:element default="body_value9" dfdl:length="10" name="PHOTO_REF" type="xsd:string"/>
+                            <xsd:element default="body_value10" dfdl:length="10" name="SIGN_REF" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="LMAINTDT" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="3" name="LMAINTID" type="xsd:string"/>
+                            <xsd:element default="body_value13" dfdl:length="1" name="STATUS" type="xsd:string"/>
+                            <xsd:element default="body_value14" dfdl:length="10" name="STATUS_DE" type="xsd:string"/>
+                            <xsd:element default="body_value15" dfdl:length="3" name="STAT_SECID" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="LST_ISS_DT" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="FST_VER_DT" type="xsd:date"/>
+                            <xsd:element default="body_value18" dfdl:length="1" name="FREQ" type="xsd:string"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="RTL_AMT" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="RTL_NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="ATM_AMT" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="ATM_NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="OCASH_AMT" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="OCASH_NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="ATM_SINGL" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="OCASH_SING" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="RTL_SING" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="19" dfdl:textNumberPattern="#0" name="ACCOUNT" type="xsd:integer"/>
+                            <xsd:element default="body_value29" dfdl:length="1" name="BLOCK" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="BLOCKDT" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="FEEDATE" type="xsd:date"/>
+                            <xsd:element default="body_value32" dfdl:length="1" name="FEEFLAG" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="PHOTODATE" type="xsd:date"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="DLYATMAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="DLYATMNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="CTDATMAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="CTDATMNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="YTDATMAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="YTDATMNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="LTDATMAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="LTDATMNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="DLYOTCAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="DLYOTCNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="CTDOTCAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="CTDOTCNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="YTDOTCAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="YTDOTCNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="LTDOTCAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="LTDOTCNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="DLYSALAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="DLYSALNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="CTDSALAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="CTDSALNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="YTDSALAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="YTDSALNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="LTDSALAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="LTDSALNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_SALE_NUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_SALE_AMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_SARETNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_SARETAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_SADISNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_SADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_SAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_SAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_SADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_SADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_SALE_NUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_SALE_AMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_SARETNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_SARETAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_SADISNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_SADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_SAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_SAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_SADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_SADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_SALE_NUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_SALE_AMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_SARETNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_SARETAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_SADISNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_SADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_SAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_SAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_SADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_SADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_CASHNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_CASHAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_CAREVNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_CAREVAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_CADISNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_CADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_CAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_CAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="C_CADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="C_CADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_CASHNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_CASHAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_CAREVNUM" type="xsd:integer"/>
+                                                    <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_CAREVAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_CADISNUM" type="xsd:integer"/>
+                                                    <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_CADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_CAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_CAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="Y_CADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="Y_CADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_CASHNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_CASHAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_CAREVNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_CAREVAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_CADISNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_CADISAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_CAAPPNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_CAAPPAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPattern="#0" name="L_CADECNUM" type="xsd:integer"/>
+                            <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="L_CADECAMT" type="xsd:string"/>
+                            <xsd:element dfdl:length="3" name="C_LOGO" type="xsd:string"/>
+                            <xsd:element dfdl:length="19" name="C_CUSTOMER_NUMBER" type="xsd:string"/>
+                            <xsd:element dfdl:length="19" name="C_RELATIONSHIP_NUMBER" type="xsd:string"/>
+                            <xsd:element dfdl:length="5" name="D_EXPIRY_DATE" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="D_CURRENT_EXPIRY_DATE" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="D_LAST_EXPIRY_DATE" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="D_DATE_OF_BIRTH" type="xsd:date"/>
+                            <xsd:element dfdl:length="2" name="C_CARD_TYPE" type="xsd:string"/>
+                            <xsd:element dfdl:length="3" name="C_AFFILIATION" type="xsd:string"/>
+                            <xsd:element dfdl:length="20" name="C_USER2" type="xsd:string"/>
+                            <xsd:element dfdl:length="19" name="C_USER3" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="C_USER6" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="C_USER7" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="C_USER8" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" name="C_RECORD_TYPE" type="xsd:string"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="" name="trailer"> 
+					<xsd:complexType>
+						<xsd:sequence dfdl:terminator="%NL;">
+							<xsd:element default="trailer_valu1" dfdl:length="3" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
+							<xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="COUNT" type="xsd:integer"/>
+													</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>

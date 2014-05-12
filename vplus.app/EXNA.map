@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/EXNA.xsd"/>
+    <output path="db:table(/xe.dbm,xe,EMI,EXNA)" var="EXNA"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="EXNA_MAP">
+        <input path="mb:msg(EXNA,assembly,DFDL,Properties)"/>
+        <output path="$EXNA/db:insert(fn:false(),ID,ORG,CUST_NBR,TITLE,CUST_NAME,GENDER,NATIONALIT,MOTH_NAME,MAR_STATUS,SPOUS_NAME,RES_ADD1,RES_ADD2,RES_CITY,RES_STATE,RES_PIN,PER_EMAIL,RES_PH1,MOBILE1,FAX_PH1,PERM_ADD1,PERM_ADD2,PER_ADD3,PERM_PH,EMPLOYER,DESIGNATIO,OFF_ADD1,OFF_ADD2,OFF_CITY,OFF_PIN,EMP_PH2,FAX_PH2,MOBILE2,OFF_EXTN,EMAIL_2,ABN_CUSTNO,C_LOGO,C_ACCOUNT_NUMBER,C_STATEMENT_FLAG,C_LETTER_FLAG,C_REGION_CODE,C_CITY_CODE,C_DRIVING_LICENSE_N,D_DATE_OF_BIRTH,C_MARITAL_STATUS,C_SSAN,C_RECORD_TYPE,CARD_VIP,USER_1,USER_2,USER_3,USER_4,USER_6,USER_7,USER_9,USER_10,USER_11,USER_13,PAN_NUMBER,STATE_PROV,CREATED_AT,UPDATED_AT)" var="dbinsert"/>
+        <foreach>
+            <input path="EXNA/body"/>
+            <output path="$dbinsert/."/>
+            <insert ref="dbinsert">
+                <input path="."/>
+                <output path="."/>
+                <move>
+                    <input path="ORG"/>
+                    <output path="ORG"/>
+                </move>
+                <move automap="true">
+                    <input path="CUST_NBR"/>
+                    <output path="CUST_NBR"/>
+                </move>
+                <move automap="true">
+                    <input path="TITLE"/>
+                    <output path="TITLE"/>
+                </move>
+                <move automap="true">
+                    <input path="CUST_NAME"/>
+                    <output path="CUST_NAME"/>
+                </move>
+                <move automap="true">
+                    <input path="GENDER"/>
+                    <output path="GENDER"/>
+                </move>
+                <move automap="true">
+                    <input path="MOTH_NAME"/>
+                    <output path="MOTH_NAME"/>
+                </move>
+                <move automap="true">
+                    <input path="MAR_STATUS"/>
+                    <output path="MAR_STATUS"/>
+                </move>
+                <move automap="true">
+                    <input path="SPOUS_NAME"/>
+                    <output path="SPOUS_NAME"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_ADD1"/>
+                    <output path="RES_ADD1"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_ADD2"/>
+                    <output path="RES_ADD2"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_CITY"/>
+                    <output path="RES_CITY"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_STATE"/>
+                    <output path="RES_STATE"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_PIN"/>
+                    <output path="RES_PIN"/>
+                </move>
+                <move automap="true">
+                    <input path="RES_PH1"/>
+                    <output path="RES_PH1"/>
+                </move>
+                <move automap="true">
+                    <input path="MOBILE1"/>
+                    <output path="MOBILE1"/>
+                </move>
+                <move automap="true">
+                    <input path="FAX_PH1"/>
+                    <output path="FAX_PH1"/>
+                </move>
+                <move automap="true">
+                    <input path="PERM_PH"/>
+                    <output path="PERM_PH"/>
+                </move>
+                <move automap="true">
+                    <input path="EMPLOYER"/>
+                    <output path="EMPLOYER"/>
+                </move>
+                <move automap="true">
+                    <input path="OFF_ADD1"/>
+                    <output path="OFF_ADD1"/>
+                </move>
+                <move automap="true">
+                    <input path="OFF_ADD2"/>
+                    <output path="OFF_ADD2"/>
+                </move>
+                <move automap="true">
+                    <input path="OFF_CITY"/>
+                    <output path="OFF_CITY"/>
+                </move>
+                <move automap="true">
+                    <input path="OFF_PIN"/>
+                    <output path="OFF_PIN"/>
+                </move>
+                <move automap="true">
+                    <input path="EMP_PH2"/>
+                    <output path="EMP_PH2"/>
+                </move>
+                <move automap="true">
+                    <input path="FAX_PH2"/>
+                    <output path="FAX_PH2"/>
+                </move>
+                <move automap="true">
+                    <input path="MOBILE2"/>
+                    <output path="MOBILE2"/>
+                </move>
+                <move automap="true">
+                    <input path="OFF_EXTN"/>
+                    <output path="OFF_EXTN"/>
+                </move>
+                <move automap="true">
+                    <input path="EMAIL2"/>
+                    <output path="EMAIL_2"/>
+                </move>
+                <move automap="true">
+                    <input path="ABN_CUSTNO"/>
+                    <output path="ABN_CUSTNO"/>
+                </move>
+                <move automap="true">
+                    <input path="C_LOGO"/>
+                    <output path="C_LOGO"/>
+                </move>
+                <move automap="true">
+                    <input path="C_ACCOUNT_NUMBER"/>
+                    <output path="C_ACCOUNT_NUMBER"/>
+                </move>
+                <move automap="true">
+                    <input path="C_STATEMENT_FLAG"/>
+                    <output path="C_STATEMENT_FLAG"/>
+                </move>
+                <move automap="true">
+                    <input path="C_LETTER_FLAG"/>
+                    <output path="C_LETTER_FLAG"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CITY_CODE"/>
+                    <output path="C_CITY_CODE"/>
+                </move>
+                <move automap="true">
+                    <input path="C_DRIVING_LICENSE_N"/>
+                    <output path="C_DRIVING_LICENSE_N"/>
+                </move>
+                <move automap="true">
+                    <input path="D_DATE_OF_BIRTH"/>
+                    <output path="D_DATE_OF_BIRTH"/>
+                </move>
+                <move automap="true">
+                    <input path="C_MARITAL_STATUS"/>
+                    <output path="C_MARITAL_STATUS"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SSAN"/>
+                    <output path="C_SSAN"/>
+                </move>
+                <move automap="true">
+                    <input path="C_RECORD_TYPE"/>
+                    <output path="C_RECORD_TYPE"/>
+                </move>
+                <move automap="true">
+                    <input path="CARD_VIP"/>
+                    <output path="CARD_VIP"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_1"/>
+                    <output path="USER_1"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_2"/>
+                    <output path="USER_2"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_3"/>
+                    <output path="USER_3"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_4"/>
+                    <output path="USER_4"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_6"/>
+                    <output path="USER_6"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_7"/>
+                    <output path="USER_7"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_9"/>
+                    <output path="USER_9"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_10"/>
+                    <output path="USER_10"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_11"/>
+                    <output path="USER_11"/>
+                </move>
+                <move automap="true">
+                    <input path="USER_13"/>
+                    <output path="USER_13"/>
+                </move>
+                <move automap="true">
+                    <input path="PAN_NUMBER"/>
+                    <output path="PAN_NUMBER"/>
+                </move>
+                <move automap="true">
+                    <input path="STATE_PROV"/>
+                    <output path="STATE_PROV"/>
+                </move>
+                <move>
+                    <input path="NATIONALITY"/>
+                    <output path="NATIONALIT"/>
+                </move>
+                <move>
+                    <input path="RES_EMAIL"/>
+                    <output path="PER_EMAIL"/>
+                </move>
+                <move>
+                    <input path="PERM_ADDR1"/>
+                    <output path="PERM_ADD1"/>
+                </move>
+                <move>
+                    <input path="PERM_ADDR2"/>
+                    <output path="PERM_ADD2"/>
+                </move>
+                <move>
+                    <input path="PERM_ADDR3"/>
+                    <output path="PER_ADD3"/>
+                </move>
+                <move>
+                    <input path="DESIGNATION"/>
+                    <output path="DESIGNATIO"/>
+                </move>
+                <move>
+                    <input path="C_REGIN_CODE"/>
+                    <output path="C_REGION_CODE"/>
+                </move>
+                <function ref="fn:current-dateTime">
+                    <output path="CREATED_AT"/>
+                </function>
+                <function ref="fn:current-dateTime">
+                    <output path="UPDATED_AT"/>
+                </function>
+            </insert>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/EXEE.xsd"/>
+    <output path="db:table(/xe.dbm,xe,EMI,EXEE)" var="EXEE"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="EXEE_MAP">
+        <input path="mb:msg(EXEE,assembly,DFDL,Properties)"/>
+        <output path="$EXEE/db:insert(fn:false(),ID,ORG,CARD_NO,CARD_SEQ,CARD_FLAG,EMBOSS1,EMBOSS2,DOB,CRD_TYPE,PHOTO_REF,SIGN_REF,LMAINTDT,LMAINTID,STATUS,STATUS_DE,STAT_SECID,LST_ISS_DT,FST_VER_DT,FREQ,RTL_AMT,RTL_NBR,ATM_AMT,ATM_NBR,OCASH_AMT,OCASH_NBR,ATM_SINGL,OCASH_SING,RTL_SING,ACCOUNT,BLOCK,BLOCKDT,FEEDATE,FEEFLAG,PHOTODATE,DLYATMAMT,DLYATMNUM,CTDATMAMT,CTDATMNUM,YTDATMAMT,YTDATMNUM,LTDATMAMT,LTDATMNUM,DLYOTCAMT,DLYOTCNUM,CTDOTCAMT,CTDOTCNUM,YTDOTCAMT,YTDOTCNUM,LTDOTCAMT,LTDOTCNUM,DLYSALAMT,DLYSALNUM,CTDSALAMT,CTDSALNUM,YTDSALAMT,YTDSALNUM,LTDSALAMT,LTDSALNUM,C_SALE_NUM,C_SALE_AMT,C_SARETNUM,C_SARETAMT,C_SADISNUM,C_SADISAMT,C_SAAPPNUM,C_SAAPPAMT,C_SADECNUM,C_SADECAMT,Y_SALE_NUM,Y_SALE_AMT,Y_SARETNUM,Y_SARETAMT,Y_SADISNUM,Y_SADISAMT,Y_SAAPPNUM,Y_SAAPPAMT,Y_SADECNUM,Y_SADECAMT,L_SALE_NUM,L_SALE_AMT,L_SARETNUM,L_SARETAMT,L_SADISNUM,L_SADISAMT,L_SAAPPNUM,L_SAPPAMT,L_SADECNUM,L_SADECAMT,C_CASHNUM,C_CASHAMT,C_CAREVNUM,C_CAREVAMT,C_CADISNUM,C_CADISAMT,C_CAAPPNUM,C_CAAPPAMT,C_CADECNUM,C_CADECAMT,Y_CASHNUM,Y_CASHAMT,Y_CAREVNUM,Y_CAREVAMT,Y_CADISNUM,Y_CADISAMT,Y_CAAPPNUM,Y_CAAPPAMT,Y_CADECNUM,Y_CADECAMT,L_CASHNUM,L_CASHAMT,L_CAREVNUM,L_CAREVAMT,L_CADISNUM,L_CADISAMT,L_CAAPPNUM,L_CAAPPAMT,L_CADECNUM,L_CADECAMT,C_LOGO,C_CUSTOMER_NUMBER,C_RELATIONSHIP_NUMBER,D_EXPIRY_DATE,D_CURRENT_EXPIRY_DATE,D_LAST_EXPIRY_DATE,D_DATE_OF_BIRTH,C_CARD_TYPE,C_AFFILIATION,C_USER_2,C_USER_3,C_USER_6,C_USER_7,C_USER_8,C_RECORD_TYPE,CREATED_AT,UPDATED_AT)" var="dbinsert"/>
+        <foreach>
+            <input path="EXEE/body"/>
+            <output path="$dbinsert/."/>
+            <insert ref="dbinsert">
+                <input path="."/>
+                <output path="."/>
+                <move automap="true">
+                    <input path="ORG"/>
+                    <output path="ORG"/>
+                </move>
+                <move automap="true">
+                    <input path="CARD_NO"/>
+                    <output path="CARD_NO"/>
+                </move>
+                <move automap="true">
+                    <input path="CARD_SEQ"/>
+                    <output path="CARD_SEQ"/>
+                </move>
+                <move automap="true">
+                    <input path="CARD_FLAG"/>
+                    <output path="CARD_FLAG"/>
+                </move>
+                <move automap="true">
+                    <input path="EMBOSS1"/>
+                    <output path="EMBOSS1"/>
+                </move>
+                <move automap="true">
+                    <input path="EMBOSS2"/>
+                    <output path="EMBOSS2"/>
+                </move>
+                <move automap="true">
+                    <input path="DOB"/>
+                    <output path="DOB"/>
+                </move>
+                <move automap="true">
+                    <input path="CRD_TYPE"/>
+                    <output path="CRD_TYPE"/>
+                </move>
+                <move automap="true">
+                    <input path="PHOTO_REF"/>
+                    <output path="PHOTO_REF"/>
+                </move>
+                <move automap="true">
+                    <input path="SIGN_REF"/>
+                    <output path="SIGN_REF"/>
+                </move>
+                <move automap="true">
+                    <input path="LMAINTDT"/>
+                    <output path="LMAINTDT"/>
+                </move>
+                <move automap="true">
+                    <input path="LMAINTID"/>
+                    <output path="LMAINTID"/>
+                </move>
+                <move automap="true">
+                    <input path="STATUS"/>
+                    <output path="STATUS"/>
+                </move>
+                <move automap="true">
+                    <input path="STATUS_DE"/>
+                    <output path="STATUS_DE"/>
+                </move>
+                <move automap="true">
+                    <input path="STAT_SECID"/>
+                    <output path="STAT_SECID"/>
+                </move>
+                <move automap="true">
+                    <input path="LST_ISS_DT"/>
+                    <output path="LST_ISS_DT"/>
+                </move>
+                <move automap="true">
+                    <input path="FST_VER_DT"/>
+                    <output path="FST_VER_DT"/>
+                </move>
+                <move automap="true">
+                    <input path="FREQ"/>
+                    <output path="FREQ"/>
+                </move>
+                <move automap="true">
+                    <input path="RTL_AMT"/>
+                    <output path="RTL_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="RTL_NBR"/>
+                    <output path="RTL_NBR"/>
+                </move>
+                <move automap="true">
+                    <input path="ATM_AMT"/>
+                    <output path="ATM_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="ATM_NBR"/>
+                    <output path="ATM_NBR"/>
+                </move>
+                <move automap="true">
+                    <input path="OCASH_AMT"/>
+                    <output path="OCASH_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="OCASH_NBR"/>
+                    <output path="OCASH_NBR"/>
+                </move>
+                <move automap="true">
+                    <input path="ATM_SINGL"/>
+                    <output path="ATM_SINGL"/>
+                </move>
+                <move automap="true">
+                    <input path="OCASH_SING"/>
+                    <output path="OCASH_SING"/>
+                </move>
+                <move automap="true">
+                    <input path="RTL_SING"/>
+                    <output path="RTL_SING"/>
+                </move>
+                <move automap="true">
+                    <input path="ACCOUNT"/>
+                    <output path="ACCOUNT"/>
+                </move>
+                <move automap="true">
+                    <input path="BLOCK"/>
+                    <output path="BLOCK"/>
+                </move>
+                <move automap="true">
+                    <input path="BLOCKDT"/>
+                    <output path="BLOCKDT"/>
+                </move>
+                <move automap="true">
+                    <input path="FEEDATE"/>
+                    <output path="FEEDATE"/>
+                </move>
+                <move automap="true">
+                    <input path="FEEFLAG"/>
+                    <output path="FEEFLAG"/>
+                </move>
+                <move automap="true">
+                    <input path="PHOTODATE"/>
+                    <output path="PHOTODATE"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYATMAMT"/>
+                    <output path="DLYATMAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYATMNUM"/>
+                    <output path="DLYATMNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDATMAMT"/>
+                    <output path="CTDATMAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDATMNUM"/>
+                    <output path="CTDATMNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDATMAMT"/>
+                    <output path="YTDATMAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDATMNUM"/>
+                    <output path="YTDATMNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDATMAMT"/>
+                    <output path="LTDATMAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDATMNUM"/>
+                    <output path="LTDATMNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYOTCAMT"/>
+                    <output path="DLYOTCAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYOTCNUM"/>
+                    <output path="DLYOTCNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDOTCAMT"/>
+                    <output path="CTDOTCAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDOTCNUM"/>
+                    <output path="CTDOTCNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDOTCAMT"/>
+                    <output path="YTDOTCAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDOTCNUM"/>
+                    <output path="YTDOTCNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDOTCAMT"/>
+                    <output path="LTDOTCAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDOTCNUM"/>
+                    <output path="LTDOTCNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYSALAMT"/>
+                    <output path="DLYSALAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="DLYSALNUM"/>
+                    <output path="DLYSALNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDSALAMT"/>
+                    <output path="CTDSALAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="CTDSALNUM"/>
+                    <output path="CTDSALNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDSALAMT"/>
+                    <output path="YTDSALAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="YTDSALNUM"/>
+                    <output path="YTDSALNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDSALAMT"/>
+                    <output path="LTDSALAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="LTDSALNUM"/>
+                    <output path="LTDSALNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SALE_NUM"/>
+                    <output path="C_SALE_NUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SALE_AMT"/>
+                    <output path="C_SALE_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SARETNUM"/>
+                    <output path="C_SARETNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SARETAMT"/>
+                    <output path="C_SARETAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SADISNUM"/>
+                    <output path="C_SADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SADISAMT"/>
+                    <output path="C_SADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SADECNUM"/>
+                    <output path="C_SADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_SADECAMT"/>
+                    <output path="C_SADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SALE_NUM"/>
+                    <output path="Y_SALE_NUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SALE_AMT"/>
+                    <output path="Y_SALE_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SARETNUM"/>
+                    <output path="Y_SARETNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SARETAMT"/>
+                    <output path="Y_SARETAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SADISNUM"/>
+                    <output path="Y_SADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SADISAMT"/>
+                    <output path="Y_SADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SADECNUM"/>
+                    <output path="Y_SADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_SADECAMT"/>
+                    <output path="Y_SADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SALE_NUM"/>
+                    <output path="L_SALE_NUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SALE_AMT"/>
+                    <output path="L_SALE_AMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SARETNUM"/>
+                    <output path="L_SARETNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SARETAMT"/>
+                    <output path="L_SARETAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SADISNUM"/>
+                    <output path="L_SADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SADISAMT"/>
+                    <output path="L_SADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SAPPAMT"/>
+                    <output path="L_SAPPAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SADECNUM"/>
+                    <output path="L_SADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_SADECAMT"/>
+                    <output path="L_SADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CASHNUM"/>
+                    <output path="C_CASHNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CASHAMT"/>
+                    <output path="C_CASHAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CAREVNUM"/>
+                    <output path="C_CAREVNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CAREVAMT"/>
+                    <output path="C_CAREVAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CADISNUM"/>
+                    <output path="C_CADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CADISAMT"/>
+                    <output path="C_CADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CADECNUM"/>
+                    <output path="C_CADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CADECAMT"/>
+                    <output path="C_CADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CASHNUM"/>
+                    <output path="Y_CASHNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CASHAMT"/>
+                    <output path="Y_CASHAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CAREVNUM"/>
+                    <output path="Y_CAREVNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CAREVAMT"/>
+                    <output path="Y_CAREVAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CADISNUM"/>
+                    <output path="Y_CADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CADISAMT"/>
+                    <output path="Y_CADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CADECNUM"/>
+                    <output path="Y_CADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="Y_CADECAMT"/>
+                    <output path="Y_CADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CASHNUM"/>
+                    <output path="L_CASHNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CASHAMT"/>
+                    <output path="L_CASHAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CAREVNUM"/>
+                    <output path="L_CAREVNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CAREVAMT"/>
+                    <output path="L_CAREVAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CADISNUM"/>
+                    <output path="L_CADISNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CADISAMT"/>
+                    <output path="L_CADISAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CAAPPNUM"/>
+                    <output path="L_CAAPPNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CAAPPAMT"/>
+                    <output path="L_CAAPPAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CADECNUM"/>
+                    <output path="L_CADECNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="L_CADECAMT"/>
+                    <output path="L_CADECAMT"/>
+                </move>
+                <move automap="true">
+                    <input path="C_LOGO"/>
+                    <output path="C_LOGO"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CUSTOMER_NUMBER"/>
+                    <output path="C_CUSTOMER_NUMBER"/>
+                </move>
+                <move automap="true">
+                    <input path="C_RELATIONSHIP_NUMBER"/>
+                    <output path="C_RELATIONSHIP_NUMBER"/>
+                </move>
+                <move automap="true">
+                    <input path="D_EXPIRY_DATE"/>
+                    <output path="D_EXPIRY_DATE"/>
+                </move>
+                <move automap="true">
+                    <input path="D_CURRENT_EXPIRY_DATE"/>
+                    <output path="D_CURRENT_EXPIRY_DATE"/>
+                </move>
+                <move automap="true">
+                    <input path="D_LAST_EXPIRY_DATE"/>
+                    <output path="D_LAST_EXPIRY_DATE"/>
+                </move>
+                <move automap="true">
+                    <input path="D_DATE_OF_BIRTH"/>
+                    <output path="D_DATE_OF_BIRTH"/>
+                </move>
+                <move automap="true">
+                    <input path="C_CARD_TYPE"/>
+                    <output path="C_CARD_TYPE"/>
+                </move>
+                <move automap="true">
+                    <input path="C_AFFILIATION"/>
+                    <output path="C_AFFILIATION"/>
+                </move>
+                <move automap="true">
+                    <input path="C_USER2"/>
+                    <output path="C_USER_2"/>
+                </move>
+                <move automap="true">
+                    <input path="C_USER3"/>
+                    <output path="C_USER_3"/>
+                </move>
+                <move automap="true">
+                    <input path="C_USER6"/>
+                    <output path="C_USER_6"/>
+                </move>
+                <move automap="true">
+                    <input path="C_USER7"/>
+                    <output path="C_USER_7"/>
+                </move>
+                <move automap="true">
+                    <input path="C_USER8"/>
+                    <output path="C_USER_8"/>
+                </move>
+                <move automap="true">
+                    <input path="C_RECORD_TYPE"/>
+                    <output path="C_RECORD_TYPE"/>
+                </move>
+                <move>
+                    <input path="C_SAPPNUM"/>
+                    <output path="C_SAAPPNUM"/>
+                </move>
+                <move>
+                    <input path="C_SAPPAMT"/>
+                    <output path="C_SAAPPAMT"/>
+                </move>
+            </insert>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>
