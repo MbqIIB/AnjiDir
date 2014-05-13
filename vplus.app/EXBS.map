@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/EXBS.xsd" var="var"/>
-    <output path="db:table(/xe.dbm,ORCL,EMI,EXBS)" var="EXBS"/>
+    <input path="/EXBS.xsd"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,EXBS)" var="EXBS"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,ACCOUNT_PROFILES)" var="ACCOUNTPROFILES"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="EXBS">
-        <input namespace="http://www.quantiguous.com/dfdl/vplus/EXBSFormat" path="$var/mb:msg(EXBS,assembly,DFDL,Properties)"/>
+        <input namespace="http://www.quantiguous.com/dfdl/vplus/EXBSFormat" path="mb:msg(EXBS,assembly,DFDL,Properties)"/>
         <output path="$EXBS/db:insert(fn:false(),ID,ORG,ACCOUNT_NO,CHANNEL,CHAN_PART,CHAN_EXEC,CHAN_SNO,SUPERPROMO,PROMO,CITYCODE,REGNCODE,USER1,BR_NBR,APPROVER,APPREFNO,CRLIMIT,TEMP_LIMIT,CUST_NBR,DT_CRD_FEE,INT_STATUS,CHGOFF_ST,CHGOF_RSN1,CHGOF_RSN2,DYS_T_COFF,REL_NBR,REL_CR_LIM,DT_OPENED,DT_CLOSED,GCRD_EXPDT,RT_MAIL_CT,BILL_CYC,STMT_FLAG,DT_NXT_STM,BC1,DT_BC1,BC2,DT_BC2,ACCT_REST,NBR_UNBLK,VIP_STATUS,CB_CR_SCOR,APPL_CR_SC,MISC_CR_SC,EMP_CODE,WCODE_1,WCODE_2,WCODE_3,WCODE_4,WCODE_5,WCODE_6,WCODE_7,CORP_ID,PCT_LVL,PCT_LVL_ST,PCT_LVL_EX,ACCT_CTL_T,PCT_CTL_ID,PCT_ST_DT,PCT_EXP_DT,WA_LAT_CHG,WA_INT_CHG,WA_LAT_NOT,WA_OVL_NOT,WA_SC_CHG1,WA_SC_CHG2,WA_SC_CHG3,WA_SC_CHG4,WA_SC_CHG5,WA_SC_CHG6,WA_SC_CHG7,WA_SC_CHG8,WA_SC_CHG9,WA_S_CHG10,WA_FEE_CHG,WA_OVLM,WA_CRD_FEE,WA_US_FEE1,WA_US_FEE2,WA_US_FEE3,WA_US_FEE4,WA_US_FEE5,WA_US_FEE6,XFR_ORG,XFR_LOGO,XFR_ACCT,DT_XFR_EFF,DT_LAST_RE,FS_FLAG,PAST_CTR,PAST_DUE,D30_CTR,D30,D60_CTR,D60,D90_CTR,D90,D120_CT,D120,D150_CT,D150,D180_CT,D180,D210_CT,D210,HISTORY,PAY_REM_ME,DC_ACH_RT,DT_ACH_PMT,NOM_ACH_ST,NOM_ACH_PC,CURR_BAL,MEMO_TOTAL,AMT_MEM_DB,AMT_MEM_CR,CASH_BAL,CSH_AV_CR,LOAN_AVAIL,LOAN_BAL,DT_PMT_DUE,PMT_TOT_AM,IMMED_DUE,LAST_CRLIM,DTE_LST_CL,HI_BAL,AMT_LST_PU,DTE_LST_PU,FIRST_PUR,FIRST_PUR2,LST_CSH_AD,LST_CSH_A2,DTE_LST_PM,PMT_LST_AM,DTE_LST_RE,YTD_BILLED,TTL_PS_INI,DTE_INTO_C,PREV_CYC_D,LST_CR_CLA,CR_CLASS,NBR_NSF,MTH_BAL,CARD_USAGE,MTH_PUR,LSI_ORG,LSI_NBR,FS_TOT_CTD,FS_TOT_CT2,FS_TOT_CT3,FS_PGM_BAL,FS_PGM_BA2,FS_PGM_BA3,FS_PGM_BA4,FS_PGM_BA5,FS_PGM_BA6,NBR_YTD_PU,AMT_YTD_PU,NBR_LTD_PU,AMT_LTD_PU,NBR_CTD_PU,AMT_CTD_PU,NBR_YTD_CS,AMT_YTD_CS,NBR_LTD_CS,AMT_LTD_CS,NBR_CTD_CS,AMT_CTD_CS,NBR_YTD_RE,AMT_YTD_RE,NBR_LTD_RE,AMT_LTD_RE,NBR_CTD_RE,AMT_CTD_RE,PMT_DC_ACH,PMT_RECENC,TOTAL_PAST,OLC_REASON,CURR_COLR,PMT_CYCLE,NBR_RTN_PM,PMT_CTD,PMT_CTD_NB,AMT_DB,NBR_DB,NBR_CR,AMT_CR,OL_NBR_CYC,DPD,DTE_LST_DE,DTE_HI_BAL,DTE_CRLIM,DTE_TEMP_C,CRD_LIMIT,CRD_AVAIL,DOLR,USER3,USER4,USER5,USER_DT_10,USER_DT_11,USER_DT_12,USR_AMT_12,USR_AMT_13,DEC_USR_ID,PCT,C_LOGO,C_CUSTOMER_NAME,C_AFFILIATION,D_CHARGEOFF_DATE,C_USER_CODE_6,C_USER_CODE_7,C_USER_CODE_8,C_USER_CODE_9,C_USER_CODE_10,C_USER_CODE_11,C_USER_CODE_12,C_USER_CODE_13,C_USER_CODE_14,D_USER_DATE_1,D_USER_DATE_2,D_USER_DATE_3,D_USER_DATE_4,D_USER_DATE_5,D_USER_DATE_6,D_USER_DATE_7,D_USER_DATE_8,D_USER_DATE_9,D_USER_DATE_13,N_USER_AMOUNT_1,N_USER_AMOUNT_2,N_USER_AMOUNT_3,N_USER_AMOUNT_4,N_USER_AMOUNT_5,N_USER_AMOUNT_6,N_USER_AMOUNT_7,N_USER_AMOUNT_8,N_USER_AMOUNT_9,N_USER_AMOUNT_10,N_USER_AMOUNT_11,N_USER_AMOUNT_14,C_DEC_USER_ID,C_PCT,C_OVERLIMIT_FLAG,C_CIF,N_DAYS_PAST_DUE,D_LAST_STATEMENT,N_LAST_STATEMENT_BALANCE,D_LAST_PAYMENT_RETURN,N_AMOUNT_LTD_PAYMENT,N_LTD_RETURNS,C_APS_SOURCE,C_STATEMENT_FLAG,C_LETTER_FLAG,C_RECORD_TYPE,BLOCK,BKT,RISK,BOM_DUES,BOM_RISK,CREATED_AT,UPDATED_AT)" var="dbinsert"/>
         <foreach>
-            <input path="EXBS/body"/>
-            <output path="$dbinsert/."/>
+            <input path="EXBS/body" var="body"/>
+            <output path="$dbinsert/." var="dbinsert1"/>
+            <output path="$ACCOUNTPROFILES/db:update(fn:false(),fn:true(),db:where('ACCOUNT_NO =  ?  AND CUSTOMER_NO =  ?1 ','?1'=$body/CUST_NBR,'?'=$body/ACCOUNT_NO),ID,ACCOUNT_NO,CUSTOMER_NO,SOL_ID,ACCOUNT_STATUS,DATE_CLOSED,CREDIT_LIMIT,TEMPORARY_LIMIT,BILLING_CYCLE,PD_CYCLE,BLOCK_CODE1,BLOCK_CODE2,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT)" var="dbupdate"/>
             <insert ref="dbinsert">
-                <input path="."/>
-                <output path="."/>
+                <input path="$body/."/>
+                <output path="$dbinsert1/."/>
                 <move automap="true">
                     <input path="ORG"/>
                     <output path="ORG"/>
@@ -95,12 +97,24 @@
                     <output path="DT_OPENED"/>
                 </move>
                 <move automap="true">
-                    <input path="DT_CLOSED"/>
-                    <output path="DT_CLOSED"/>
-                </move>
-                <move automap="true">
                     <input path="BILL_CYC"/>
                     <output path="BILL_CYC"/>
+                </move>
+                <move automap="true">
+                    <input path="BC1"/>
+                    <output path="BC1"/>
+                </move>
+                <move automap="true">
+                    <input path="DT_BC1"/>
+                    <output path="DT_BC1"/>
+                </move>
+                <move automap="true">
+                    <input path="BC2"/>
+                    <output path="BC2"/>
+                </move>
+                <move automap="true">
+                    <input path="DT_BC2"/>
+                    <output path="DT_BC2"/>
                 </move>
                 <move automap="true">
                     <input path="PMT_CYCLE"/>
@@ -113,6 +127,62 @@
                     <output path="UPDATED_AT"/>
                 </function>
             </insert>
+            <update ref="dbupdate">
+                <input path="$body/."/>
+                <output path="$dbupdate/."/>
+                <move>
+                    <input path="ACCOUNT_NO"/>
+                    <output path="ACCOUNT_NO"/>
+                </move>
+                <move>
+                    <input path="CUST_NBR"/>
+                    <output path="CUSTOMER_NO"/>
+                </move>
+                <move>
+                    <input path="CRLIMIT"/>
+                    <output path="CREDIT_LIMIT"/>
+                </move>
+                <move>
+                    <input path="TEMPLIMIT"/>
+                    <output path="TEMPORARY_LIMIT"/>
+                </move>
+                <move>
+                    <input path="BR_NBR"/>
+                    <output path="SOL_ID"/>
+                </move>
+                <move>
+                    <input path="INT_STATUS"/>
+                    <output path="ACCOUNT_STATUS"/>
+                </move>
+                <move>
+                    <input path="BILL_CYC"/>
+                    <output path="BILLING_CYCLE"/>
+                </move>
+                <move>
+                    <input path="PMT_CYCLE"/>
+                    <output path="PD_CYCLE"/>
+                </move>
+                <move>
+                    <input path="BC1"/>
+                    <output path="BLOCK_CODE1"/>
+                </move>
+                <move>
+                    <input path="BC2"/>
+                    <output path="BLOCK_CODE2"/>
+                </move>
+                <assign value="SYSTEM">
+                    <output path="CREATED_BY"/>
+                </assign>
+                <assign value="SYSTEM">
+                    <output path="UPDATED_BY"/>
+                </assign>
+                <function ref="fn:current-dateTime">
+                    <output path="CREATED_AT"/>
+                </function>
+                <function ref="fn:current-dateTime">
+                    <output path="UPDATED_AT"/>
+                </function>
+            </update>
         </foreach>
     </mappingDeclaration>
 </mappingRoot>

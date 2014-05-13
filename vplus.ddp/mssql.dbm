@@ -6,7 +6,7 @@
       <details xmi:id="_jlh3EtoJEeOw85thECwX_w" key="ConnectionKey" value="emi"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg _ugSCQdqqEeOdi4XxPOBkFA" database="_jlh3ENoJEeOw85thECwX_w"/>
+  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg _ugSCQdqqEeOdi4XxPOBkFA _LxlEMdrOEeOfVZ1SxvgyJA" database="_jlh3ENoJEeOw85thECwX_w"/>
   <SQLConstraints:Index xmi:id="_jnCS8doJEeOw85thECwX_w" name="PK__EXBS__3214EC27BB981DEB" Schema="_jnCS8NoJEeOw85thECwX_w" clustered="true" unique="true" table="_jnC6ANoJEeOw85thECwX_w">
     <members xmi:id="_jnCS8toJEeOw85thECwX_w" column="_jnC6AdoJEeOw85thECwX_w"/>
   </SQLConstraints:Index>
@@ -1925,5 +1925,57 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_G9gmINqrEeOdi4XxPOBkFA" name="DATETIME" primitiveType="DATE"/>
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_KkmBkNqrEeOdi4XxPOBkFA" name="CUSTOMER_PROFILES_PK" members="_xkmH0NqqEeOdi4XxPOBkFA"/>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_LxlEMdrOEeOfVZ1SxvgyJA" name="ACCOUNT_PROFILES" schema="_jnCS8NoJEeOw85thECwX_w">
+    <columns xmi:id="_I1aYkNrPEeOfVZ1SxvgyJA" name="ID" nullable="false" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_b8QtoNrPEeOfVZ1SxvgyJA" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_chMmsNrPEeOfVZ1SxvgyJA" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
+    <columns xmi:id="_I4ZbINrPEeOfVZ1SxvgyJA" name="ACCOUNT_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_pZjZMNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_I7ImENrPEeOfVZ1SxvgyJA" name="CUSTOMER_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_pIA9QNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_I-tegNrPEeOfVZ1SxvgyJA" name="SOL_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_o9QewNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JCP6sNrPEeOfVZ1SxvgyJA" name="ACCOUNT_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ox6xcNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JGRfENrPEeOfVZ1SxvgyJA" name="DATE_CLOSED">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_fpFksNrPEeOfVZ1SxvgyJA" name="DATE"/>
+    </columns>
+    <columns xmi:id="_JKc0cNrPEeOfVZ1SxvgyJA" name="CREDIT_LIMIT">
+      <containedType xsi:type="SQLDataTypes:ApproximateNumericDataType" xmi:id="_hHaj4NrPEeOfVZ1SxvgyJA" name="REAL" primitiveType="REAL"/>
+    </columns>
+    <columns xmi:id="_JNzDYNrPEeOfVZ1SxvgyJA" name="TEMPORARY_LIMIT">
+      <containedType xsi:type="SQLDataTypes:ApproximateNumericDataType" xmi:id="_hzlGUNrPEeOfVZ1SxvgyJA" name="REAL" primitiveType="REAL"/>
+    </columns>
+    <columns xmi:id="_JSQFkNrPEeOfVZ1SxvgyJA" name="BILLING_CYCLE">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iKXOoNrPEeOfVZ1SxvgyJA" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_JWcCANrPEeOfVZ1SxvgyJA" name="PD_CYCLE">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_izPzkNrPEeOfVZ1SxvgyJA" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_JbAY8NrPEeOfVZ1SxvgyJA" name="BLOCK_CODE1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_olMkENrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_Jfug4NrPEeOfVZ1SxvgyJA" name="BLOCK_CODE2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oKaskNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JkK8ANrPEeOfVZ1SxvgyJA" name="CREATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_n-yrYNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JogCYNrPEeOfVZ1SxvgyJA" name="UPDATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_nnmTYNrPEeOfVZ1SxvgyJA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_Js4MENrPEeOfVZ1SxvgyJA" name="CREATED_AT">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_kmFqMNrPEeOfVZ1SxvgyJA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_Jx8SQNrPEeOfVZ1SxvgyJA" name="UPDATED_AT">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_lqnCQNrPEeOfVZ1SxvgyJA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_crHXsNrPEeOfVZ1SxvgyJA" name="ACCOUNT_PROFILES_PK" members="_I1aYkNrPEeOfVZ1SxvgyJA"/>
   </SQLTables:PersistentTable>
 </xmi:XMI>
