@@ -23,19 +23,19 @@
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="000" name="ORG" type="xsd:int"/>
 							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="ACCOUNT" type="xsd:string"/>
-							<xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="11111" name="REC_NO" type="xsd:integer"/>
+							<xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="11111" name="REC_NO" type="xsd:int"/>
                             <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="LOGO" type="xsd:int"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="C" name="TYPE" type="xsd:string"/>
                                                                                     <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="TXN_DATE" type="xsd:date"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="C" name="MT_TYPE" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="TXN_CODE" type="xsd:integer"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="TXN_CODE" type="xsd:int"/>
                             <xsd:element dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="AMOUNT" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="A" name="F1" type="xsd:string"/>
                             <xsd:element dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="UNIT_PRICE" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="a" name="F2" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" dfdl:textPadKind="padChar" name="BATCH_DT" type="xsd:date"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="POST_DATE" type="xsd:date"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="QUANTITY" type="xsd:integer"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="QUANTITY" type="xsd:int"/>
                             <xsd:element dfdl:length="6" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="121311" name="AUTHCODE" type="xsd:string"/>
                             <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="AAA" name="MT_SI_ORG" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1112aasd" name="MT_SI_NBR" type="xsd:string"/>
@@ -54,30 +54,30 @@
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="B" name="MULT_REF" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="FSP" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="W" name="FSP_PRG_NO" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="MERCH_ORG" type="xsd:integer"/>
-                            <xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="MERCH_STOR" type="xsd:integer"/>
-                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="CAT_CODE" type="xsd:integer"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="MERCH_ORG" type="xsd:int"/>
+                            <xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="MERCH_STOR" type="xsd:int"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="CAT_CODE" type="xsd:int"/>
                             <xsd:element dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ABCDE" name="PROD_GRP" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="GH87" name="SKU_NBR" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="LOGIC_MOD" type="xsd:integer"/>
+                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="LOGIC_MOD" type="xsd:int"/>
                             <xsd:element dfdl:length="14" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="body_value40" name="RPT_DESC" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="GL_SOURCE" type="xsd:integer"/>
+                            <xsd:element dfdl:length="1" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="GL_SOURCE" type="xsd:int"/>
                             <xsd:element dfdl:length="4" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="BODY" name="DEPT" type="xsd:string"/>
-                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="SOURCE" type="xsd:integer"/>
-                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="BATCH_NO" type="xsd:integer"/>
-                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="BATCH_SEQ" type="xsd:integer"/>
-                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="PLAN_SEQ" type="xsd:integer"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="SORT_PRIOR" type="xsd:integer"/>
-                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="POST_FLAG" type="xsd:integer"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="SOURCE" type="xsd:int"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="BATCH_NO" type="xsd:int"/>
+                            <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="BATCH_SEQ" type="xsd:int"/>
+                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="PLAN_SEQ" type="xsd:int"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="SORT_PRIOR" type="xsd:int"/>
+                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="POST_FLAG" type="xsd:int"/>
                             <xsd:element dfdl:length="13" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="body_value49" name="VISATRANID" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="ICHNG_FEE" type="xsd:decimal"/>
-                            <xsd:element dfdl:length="1" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="QUAL_ID" type="xsd:integer"/>
-                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="CARD_NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:length="1" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="QUAL_ID" type="xsd:int"/>
+                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="CARD_NBR" type="xsd:int"/>
                             <xsd:element dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="34231" name="CARD_SEQ" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="CARD_BLK" type="xsd:string"/>
                             <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="BB" name="INS_PROD" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="ACT_TERM" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="FOREX_CD" type="xsd:integer"/>
+                            <xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="FOREX_CD" type="xsd:int"/>
                             <xsd:element dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="RELPMT_AMT" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="A" name="F3" type="xsd:string"/>
                             <xsd:element dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="ORIG_PYMT" type="xsd:decimal"/>
@@ -98,7 +98,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
-							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:integer"/>
+							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:int"/>
 													</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>

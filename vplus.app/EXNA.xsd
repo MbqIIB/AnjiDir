@@ -23,7 +23,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
 							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:integer"/>
-							<xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="CUST_NBR" type="xsd:integer"/>
+							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CUST_NBR" type="xsd:string"/>
 							<xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Mr." name="TITLE" type="xsd:string"/>
                             <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Jagdish Singh" name="CUST_NAME" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="GENDER" type="xsd:string"/>
@@ -87,7 +87,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
-							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:integer"/>
+							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:int"/>
                             													<xsd:element dfdl:length="998" dfdl:textPadKind="padChar" name="FILLER" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
