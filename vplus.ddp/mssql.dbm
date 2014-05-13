@@ -6,7 +6,7 @@
       <details xmi:id="_jlh3EtoJEeOw85thECwX_w" key="ConnectionKey" value="emi"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w" database="_jlh3ENoJEeOw85thECwX_w"/>
+  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg" database="_jlh3ENoJEeOw85thECwX_w"/>
   <SQLConstraints:Index xmi:id="_jnCS8doJEeOw85thECwX_w" name="PK__EXBS__3214EC27BB981DEB" Schema="_jnCS8NoJEeOw85thECwX_w" clustered="true" unique="true" table="_jnC6ANoJEeOw85thECwX_w">
     <members xmi:id="_jnCS8toJEeOw85thECwX_w" column="_jnC6AdoJEeOw85thECwX_w"/>
   </SQLConstraints:Index>
@@ -1839,5 +1839,36 @@
     <columns xmi:id="_jnJoRNoJEeOw85thECwX_w" name="TXN_STATE">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoRdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_sdpAoNqgEeO7x6AqHbdJhg" name="CREDIT_CARDS" schema="_jnCS8NoJEeOw85thECwX_w">
+    <columns xmi:id="_wIh-ANqgEeO7x6AqHbdJhg" name="ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_32mc8NqgEeO7x6AqHbdJhg" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_4RawsNqgEeO7x6AqHbdJhg" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
+    <columns xmi:id="_wLkq8NqgEeO7x6AqHbdJhg" name="CREDIT_CARD_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Hn_SENqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_wPPqANqgEeO7x6AqHbdJhg" name="ACCOUNT_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_I8EwINqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_wkJjANqgEeO7x6AqHbdJhg" name="CREATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_KSFg0NqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_wmMxcNqgEeO7x6AqHbdJhg" name="UPDATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_LeIdMNqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_wn6BoNqgEeO7x6AqHbdJhg" name="CREATED_AT" nullable="false">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_MuNlANqhEeO7x6AqHbdJhg" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_wpkOgNqgEeO7x6AqHbdJhg" name="UPDATED_AT" nullable="false">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_NTWSYNqhEeO7x6AqHbdJhg" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_-8Ob0NqgEeO7x6AqHbdJhg" name="CARD_EXPIRY_DATE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_N47rsNqhEeO7x6AqHbdJhg" name="DATE"/>
+    </columns>
+    <columns xmi:id="_--9mwNqgEeO7x6AqHbdJhg" name="CARD_FLAG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_OlsrENqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_O9FQUNqhEeO7x6AqHbdJhg" name="CREDIT_CARDS_PK" members="_wIh-ANqgEeO7x6AqHbdJhg"/>
   </SQLTables:PersistentTable>
 </xmi:XMI>

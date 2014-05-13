@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/EXEE.xsd" var="var"/>
-    <output path="db:table(/xe.dbm,ORCL,EMI,EXEE)" var="EXEE"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,EXEE)" var="EXEE"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,CREDIT_CARDS)" var="CREDITCARDS"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="EXEE">
         <input namespace="http://www.quantiguous.com/dfdl/vplus/EXEEFormat" path="$var/mb:msg(EXEE,assembly,DFDL,Properties)"/>
         <output path="$EXEE/db:insert(fn:false(),ID,ORG,CARD_NO,CARD_SEQ,CARD_FLAG,EMBOSS1,EMBOSS2,DOB,CRD_TYPE,PHOTO_REF,SIGN_REF,LMAINTDT,LMAINTID,STATUS,STATUS_DE,STAT_SECID,LST_ISS_DT,FST_VER_DT,FREQ,RTL_AMT,RTL_NBR,ATM_AMT,ATM_NBR,OCASH_AMT,OCASH_NBR,ATM_SINGL,OCASH_SING,RTL_SING,ACCOUNT,BLOCK,BLOCKDT,FEEDATE,FEEFLAG,PHOTODATE,DLYATMAMT,DLYATMNUM,CTDATMAMT,CTDATMNUM,YTDATMAMT,YTDATMNUM,LTDATMAMT,LTDATMNUM,DLYOTCAMT,DLYOTCNUM,CTDOTCAMT,CTDOTCNUM,YTDOTCAMT,YTDOTCNUM,LTDOTCAMT,LTDOTCNUM,DLYSALAMT,DLYSALNUM,CTDSALAMT,CTDSALNUM,YTDSALAMT,YTDSALNUM,LTDSALAMT,LTDSALNUM,C_SALE_NUM,C_SALE_AMT,C_SARETNUM,C_SARETAMT,C_SADISNUM,C_SADISAMT,C_SAAPPNUM,C_SAAPPAMT,C_SADECNUM,C_SADECAMT,Y_SALE_NUM,Y_SALE_AMT,Y_SARETNUM,Y_SARETAMT,Y_SADISNUM,Y_SADISAMT,Y_SAAPPNUM,Y_SAAPPAMT,Y_SADECNUM,Y_SADECAMT,L_SALE_NUM,L_SALE_AMT,L_SARETNUM,L_SARETAMT,L_SADISNUM,L_SADISAMT,L_SAAPPNUM,L_SAPPAMT,L_SADECNUM,L_SADECAMT,C_CASHNUM,C_CASHAMT,C_CAREVNUM,C_CAREVAMT,C_CADISNUM,C_CADISAMT,C_CAAPPNUM,C_CAAPPAMT,C_CADECNUM,C_CADECAMT,Y_CASHNUM,Y_CASHAMT,Y_CAREVNUM,Y_CAREVAMT,Y_CADISNUM,Y_CADISAMT,Y_CAAPPNUM,Y_CAAPPAMT,Y_CADECNUM,Y_CADECAMT,L_CASHNUM,L_CASHAMT,L_CAREVNUM,L_CAREVAMT,L_CADISNUM,L_CADISAMT,L_CAAPPNUM,L_CAAPPAMT,L_CADECNUM,L_CADECAMT,C_LOGO,C_CUSTOMER_NUMBER,C_RELATIONSHIP_NUMBER,D_EXPIRY_DATE,D_CURRENT_EXPIRY_DATE,D_LAST_EXPIRY_DATE,D_DATE_OF_BIRTH,C_CARD_TYPE,C_AFFILIATION,C_USER_2,C_USER_3,C_USER_6,C_USER_7,C_USER_8,C_RECORD_TYPE,CREATED_AT,UPDATED_AT)" var="dbinsert"/>
         <foreach>
-            <input path="EXEE/body"/>
-            <output path="$dbinsert/."/>
+            <input path="EXEE/body" var="body"/>
+            <output path="$dbinsert/." var="dbinsert1"/>
+            <output path="$CREDITCARDS/db:update(fn:false(),fn:true(),db:where('CREDIT_CARD_NO =  ?1  AND ACCOUNT_NO =  ?2','?1'=$body/CARD_NO,'?2'=$body/ACCOUNT),ID,CREDIT_CARD_NO,ACCOUNT_NO,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT,CARD_EXPIRY_DATE,CARD_FLAG)" var="dbupdate"/>
             <insert ref="dbinsert">
-                <input path="."/>
-                <output path="."/>
+                <input path="$body/."/>
+                <output path="$dbinsert1/."/>
                 <move automap="true">
                     <input path="ORG"/>
                     <output path="ORG"/>
@@ -512,6 +517,38 @@
                     <output path="C_SAAPPAMT"/>
                 </move>
             </insert>
+            <update ref="dbupdate">
+                <input path="$body/."/>
+                <output path="$dbupdate/."/>
+                <move>
+                    <input path="CARD_NO"/>
+                    <output path="CREDIT_CARD_NO"/>
+                </move>
+                <move>
+                    <input path="ACCOUNT"/>
+                    <output path="ACCOUNT_NO"/>
+                </move>
+                <function ref="fn:current-dateTime">
+                    <output path="CREATED_AT"/>
+                </function>
+                <function ref="fn:current-dateTime">
+                    <output path="UPDATED_AT"/>
+                </function>
+                <move>
+                    <input path="D_CURRENT_EXPIRY_DATE"/>
+                    <output path="CARD_EXPIRY_DATE"/>
+                </move>
+                <move>
+                    <input path="CARD_FLAG"/>
+                    <output path="CARD_FLAG"/>
+                </move>
+                <assign value="SYSTEM">
+                    <output path="CREATED_BY"/>
+                </assign>
+                <assign value="SYSTEM">
+                    <output path="UPDATED_BY"/>
+                </assign>
+            </update>
         </foreach>
     </mappingDeclaration>
 </mappingRoot>
