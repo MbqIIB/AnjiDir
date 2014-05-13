@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj16/EXEE.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj30/EXEE.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="189,220" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3EDEXT.TXT" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXEEFormat}:EXEE">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="189,220" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3EDEXT.TXT" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXEEFormat}:EXEE" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="EXEE_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="508,217" mappingExpression="msl://{default}#EXEE">

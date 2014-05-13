@@ -21,24 +21,24 @@
 				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
-							<xsd:element default="body_valu1" dfdl:length="3" name="ORG" type="xsd:string"/>
-							<xsd:element default="body_valu2" dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CARD_NO" type="xsd:string"/>
-							<xsd:element dfdl:length="4" dfdl:textNumberPattern="#0" name="CARD_SEQ" type="xsd:int"/>
-                            <xsd:element default="body_value4" dfdl:length="1" name="CARD_FLAG" type="xsd:string"/>
-                            <xsd:element default="body_value5" dfdl:length="26" name="EMBOSS1" type="xsd:string"/>
-                            <xsd:element default="body_value6" dfdl:length="26" name="EMBOSS2" type="xsd:string"/>
+							<xsd:element dfdl:length="3" ibmDfdlExtn:sampleValue="001" name="ORG" type="xsd:string"/>
+							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CARD_NO" type="xsd:string"/>
+							<xsd:element dfdl:length="4" dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="1234" name="CARD_SEQ" type="xsd:int"/>
+                            <xsd:element dfdl:length="1" name="CARD_FLAG" type="xsd:string"/>
+                            <xsd:element dfdl:length="26" ibmDfdlExtn:sampleValue="abcdefghijklmnopgrstuvwxyz" name="EMBOSS1" type="xsd:string"/>
+                            <xsd:element dfdl:length="26" ibmDfdlExtn:sampleValue="abcdefghijklmnopgrstuvwxyz" name="EMBOSS2" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="DOB" type="xsd:date"/>
-                            <xsd:element default="body_value8" dfdl:length="2" name="CRD_TYPE" type="xsd:string"/>
-                            <xsd:element default="body_value9" dfdl:length="10" name="PHOTO_REF" type="xsd:string"/>
-                            <xsd:element default="body_value10" dfdl:length="10" name="SIGN_REF" type="xsd:string"/>
+                            <xsd:element dfdl:length="2" ibmDfdlExtn:sampleValue="11" name="CRD_TYPE" type="xsd:string"/>
+                            <xsd:element dfdl:length="10" ibmDfdlExtn:sampleValue="1234567890" name="PHOTO_REF" type="xsd:string"/>
+                            <xsd:element dfdl:length="10" ibmDfdlExtn:sampleValue="1234567890" name="SIGN_REF" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="LMAINTDT" type="xsd:date"/>
-                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="3" name="LMAINTID" type="xsd:string"/>
-                            <xsd:element default="body_value13" dfdl:length="1" name="STATUS" type="xsd:string"/>
-                            <xsd:element default="body_value14" dfdl:length="10" name="STATUS_DE" type="xsd:string"/>
-                            <xsd:element default="body_value15" dfdl:length="3" name="STAT_SECID" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="3" ibmDfdlExtn:sampleValue="abc" name="LMAINTID" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="STATUS" type="xsd:string"/>
+                            <xsd:element dfdl:length="10" ibmDfdlExtn:sampleValue="1234567890" name="STATUS_DE" type="xsd:string"/>
+                            <xsd:element dfdl:length="3" ibmDfdlExtn:sampleValue="123" name="STAT_SECID" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="LST_ISS_DT" type="xsd:date"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="FST_VER_DT" type="xsd:date"/>
-                            <xsd:element default="body_value18" dfdl:length="1" name="FREQ" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="FREQ" type="xsd:string"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="RTL_AMT" type="xsd:decimal"/>
                             <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="RTL_NBR" type="xsd:int"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="ATM_AMT" type="xsd:decimal"/>
@@ -49,10 +49,10 @@
                             <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="OCASH_SING" type="xsd:decimal"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="RTL_SING" type="xsd:decimal"/>
                             <xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="ACCOUNT" type="xsd:string"/>
-                            <xsd:element default="body_value29" dfdl:length="1" name="BLOCK" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="BLOCK" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="BLOCKDT" type="xsd:date"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="FEEDATE" type="xsd:date"/>
-                            <xsd:element default="body_value32" dfdl:length="1" name="FEEFLAG" type="xsd:string"/>
+                            <xsd:element dfdl:length="1" name="FEEFLAG" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="PHOTODATE" type="xsd:date"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPattern="#0.###" name="DLYATMAMT" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="DLYATMNUM" type="xsd:int"/>
