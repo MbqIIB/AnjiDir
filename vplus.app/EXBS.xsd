@@ -21,8 +21,8 @@
 				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
-							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ORG" type="xsd:integer"/>
-							<xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="97869476134" name="ACCOUNT_NO" type="xsd:string"/>
+							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ORG" type="xsd:int"/>
+							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" ibmDfdlExtn:sampleValue="97869476134" name="ACCOUNT_NO" type="xsd:string"/>
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING1" name="CHANNEL" type="xsd:string"/>
                                                         <xsd:element dfdl:length="4" name="CHAN_PART" type="xsd:string"/>
                             <xsd:element dfdl:length="4" name="CHAN_EXEC" type="xsd:string"/>
@@ -37,16 +37,16 @@
                                                         <xsd:element dfdl:length="19" dfdl:textPadKind="padChar" name="APPREFNO" type="xsd:string"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="50000" name="CRLIMIT" type="xsd:decimal"/>
                             <xsd:element dfdl:length="18" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="50000" name="TEMPLIMIT" type="xsd:decimal"/>
-                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="23847652435" name="CUST_NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" ibmDfdlExtn:sampleValue="23847652435" name="CUST_NBR" type="xsd:string"/>
                             <xsd:element dfdl:length="10" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING3" name="DT_CRD_FEE" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="A" name="INT_STATUS" type="xsd:string"/>
                                                     <xsd:element dfdl:length="43" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING4" name="STRING4" type="xsd:string"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="DT_OPENED" type="xsd:date"/>
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="DT_CLOSED" type="xsd:date"/>
                             <xsd:element dfdl:length="12" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING5" name="STRING5" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="23" name="BILL_CYC" type="xsd:integer"/>
+                            <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="23" name="BILL_CYC" type="xsd:int"/>
                             <xsd:element dfdl:length="1216" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING6" name="STRING6" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="PMT_CYCLE" type="xsd:integer"/>
+                            <xsd:element dfdl:length="1" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="PMT_CYCLE" type="xsd:int"/>
                             <xsd:element dfdl:length="767" dfdl:textPadKind="padChar" dfdl:textStringJustification="center" ibmDfdlExtn:sampleValue="STRING7" name="STRING7" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
@@ -55,7 +55,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:terminator="%NL;">
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
-							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:integer"/>
+							<xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="COUNT" type="xsd:int"/>
 													</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
