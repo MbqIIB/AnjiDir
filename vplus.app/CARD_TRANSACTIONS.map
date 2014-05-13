@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/EXAT.xsd" var="var"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,card_transactions)" var="CARDTRANSACTIONS2"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="CARD_TRANSACTIONS">
+        <input namespace="http://www.quantiguous.com/dfdl/vplus/EXATFormat" path="$var/mb:msg(EXAT,assembly,DFDL,Properties)" var="MessageAssembly"/>
+        <output path="$CARDTRANSACTIONS2/db:update(fn:false(),fn:true(),db:where('account =  ?1','?1'=$MessageAssembly/in:EXAT/body[1]/ACCOUNT),id,org,account,rec_no,logo,txn_type,txn_date,mt_type,txn_code,amount,f1,unit_price,f2,batch_dt,post_date,quantity,authcode,mt_si_org,mt_si_nbr,plan_no,salesperso,tkt_nbr,purch_num,pmt_ref_no,item_nbr,ref_nbr,merchant,city,country,plan_open,input_src,mult_ref,fsp,fsp_prg_no,merch_org,merch_stor,cat_code,prod_grp,sku_nbr,logic_mod,rpt_desc,gl_source,dept,source,batch_no,batch_seq,plan_seq,sort_prior,post_flag,visatranid,ichng_fee,qual_id,card_nbr,card_seq,card_blk,ins_prod,act_term,forex_cd,relpmt_amt,f3,orig_pymt,f4,stmt_flag,sou_txn_dt,c_city,c_country,sou_txn_am,curry_code,c_arn,c_aqr_bin,c_record_type,created_at,updated_at,txn_state)" var="dbupdate"/>
+        <foreach>
+            <input path="$MessageAssembly/EXAT/body"/>
+            <output path="$dbupdate/."/>
+            <update ref="dbupdate">
+                <input path="."/>
+                <output path="."/>
+                <move automap="true">
+                    <input path="ORG"/>
+                    <output path="org"/>
+                </move>
+                <move automap="true">
+                    <input path="ACCOUNT"/>
+                    <output path="account"/>
+                </move>
+                <move automap="true">
+                    <input path="LOGO"/>
+                    <output path="logo"/>
+                </move>
+                <move automap="true">
+                    <input path="TXN_DATE"/>
+                    <output path="txn_date"/>
+                </move>
+                <move automap="true">
+                    <input path="AMOUNT"/>
+                    <output path="amount"/>
+                </move>
+                <move automap="true">
+                    <input path="AUTHCODE"/>
+                    <output path="authcode"/>
+                </move>
+                <move automap="true">
+                    <input path="MT_SI_ORG"/>
+                    <output path="mt_si_org"/>
+                </move>
+                <move automap="true">
+                    <input path="MT_SI_NBR"/>
+                    <output path="mt_si_nbr"/>
+                </move>
+                <move automap="true">
+                    <input path="PLAN"/>
+                    <output path="plan_no"/>
+                </move>
+                <move automap="true">
+                    <input path="MERCHANT"/>
+                    <output path="merchant"/>
+                </move>
+                <move automap="true">
+                    <input path="CITY"/>
+                    <output path="city"/>
+                </move>
+                <move>
+                    <input path="TYPE"/>
+                    <output path="txn_type"/>
+                </move>
+                <function ref="fn:current-dateTime">
+                    <output path="created_at"/>
+                </function>
+                <function ref="fn:current-dateTime">
+                    <output path="updated_at"/>
+                </function>
+            </update>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

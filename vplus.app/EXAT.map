@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/EXAT.xsd" var="var"/>
-    <output path="db:table(/xe.dbm,ORCL,EMI,EXAT)" var="EXAT"/>
+    <output path="db:table(/mssql.dbm,DESK,dbo,EXAT)" var="EXAT"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
         <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
