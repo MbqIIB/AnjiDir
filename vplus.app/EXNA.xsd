@@ -22,7 +22,7 @@
                 <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
-							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:integer"/>
+							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:int"/>
 							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CUST_NBR" type="xsd:string"/>
 							<xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Mr." name="TITLE" type="xsd:string"/>
                             <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Jagdish Singh" name="CUST_NAME" type="xsd:string"/>
@@ -57,14 +57,14 @@
                             <xsd:element dfdl:length="60" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="xyz@gmail.com" name="EMAIL2" type="xsd:string"/>
                             <xsd:element default="" dfdl:length="20" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ABN_CUSTNO" type="xsd:string"/>
                             <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022" name="C_LOGO" type="xsd:string"/>
-                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="C_ACCOUNT_NUMBER" type="xsd:integer"/>
+                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="C_ACCOUNT_NUMBER" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="C_STATEMENT_FLAG" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Y" name="C_LETTER_FLAG" type="xsd:string"/>
                             <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MH" name="C_REGIN_CODE" type="xsd:string"/>
                             <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MM" name="C_CITY_CODE" type="xsd:string"/>
                             <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="DRH12345" name="C_DRIVING_LICENSE_N" type="xsd:string"/>
-                            <xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="12/12/2014" name="D_DATE_OF_BIRTH" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="C_MARITAL_STATUS" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="D_DATE_OF_BIRTH" type="xsd:date"/>
+                                                                                    <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="C_MARITAL_STATUS" type="xsd:string"/>
                             <xsd:element dfdl:length="15" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ADAD" name="C_SSAN" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="C_RECORD_TYPE" type="xsd:string"/>
                             <xsd:element dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="I" name="CARD_VIP" type="xsd:string"/>

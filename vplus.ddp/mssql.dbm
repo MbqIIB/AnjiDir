@@ -6,7 +6,7 @@
       <details xmi:id="_jlh3EtoJEeOw85thECwX_w" key="ConnectionKey" value="emi"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg" database="_jlh3ENoJEeOw85thECwX_w"/>
+  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg _ugSCQdqqEeOdi4XxPOBkFA" database="_jlh3ENoJEeOw85thECwX_w"/>
   <SQLConstraints:Index xmi:id="_jnCS8doJEeOw85thECwX_w" name="PK__EXBS__3214EC27BB981DEB" Schema="_jnCS8NoJEeOw85thECwX_w" clustered="true" unique="true" table="_jnC6ANoJEeOw85thECwX_w">
     <members xmi:id="_jnCS8toJEeOw85thECwX_w" column="_jnC6AdoJEeOw85thECwX_w"/>
   </SQLConstraints:Index>
@@ -1870,5 +1870,60 @@
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_OlsrENqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_O9FQUNqhEeO7x6AqHbdJhg" name="CREDIT_CARDS_PK" members="_wIh-ANqgEeO7x6AqHbdJhg"/>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_ugSCQdqqEeOdi4XxPOBkFA" name="CUSTOMER_PROFILES" schema="_jnCS8NoJEeOw85thECwX_w">
+    <columns xmi:id="_xkmH0NqqEeOdi4XxPOBkFA" name="ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_Dzp5QNqrEeOdi4XxPOBkFA" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_KXs1ENqrEeOdi4XxPOBkFA" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
+    <columns xmi:id="_xmzuUNqqEeOdi4XxPOBkFA" name="CUSTOMER_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Mvyt0NqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xpAtwNqqEeOdi4XxPOBkFA" name="CUST_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_NWNNkNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xrQJcNqqEeOdi4XxPOBkFA" name="EMAIL">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_OIhbUNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xtI_0NqqEeOdi4XxPOBkFA" name="MOBILE_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Orp9kNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xvkowNqqEeOdi4XxPOBkFA" name="PAN_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_U9KX4NqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xxjlwNqqEeOdi4XxPOBkFA" name="ADDRESS1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_VlgxUNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_xz6WMNqqEeOdi4XxPOBkFA" name="ADDRESS2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WMQoQNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_x10asNqqEeOdi4XxPOBkFA" name="CITY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WzEJkNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_x4WKQNqqEeOdi4XxPOBkFA" name="STATE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_XmxecNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_x6QOwNqqEeOdi4XxPOBkFA" name="COUNTRY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Y-Q10NqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_x8dOMNqqEeOdi4XxPOBkFA" name="PIN_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ZtIuANqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_x-hDsNqqEeOdi4XxPOBkFA" name="DATE_OF_BIRTH">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_FV-noNqrEeOdi4XxPOBkFA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_yAy7oNqqEeOdi4XxPOBkFA" name="CREATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_aV8acNqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_yCuOQNqqEeOdi4XxPOBkFA" name="UPDATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_bTEKANqrEeOdi4XxPOBkFA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_yEehwNqqEeOdi4XxPOBkFA" name="CREATED_AT" nullable="false">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_GbEAYNqrEeOdi4XxPOBkFA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_yGmosNqqEeOdi4XxPOBkFA" name="UPDATED_AT" nullable="false">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_G9gmINqrEeOdi4XxPOBkFA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_KkmBkNqrEeOdi4XxPOBkFA" name="CUSTOMER_PROFILES_PK" members="_xkmH0NqqEeOdi4XxPOBkFA"/>
   </SQLTables:PersistentTable>
 </xmi:XMI>
