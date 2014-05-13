@@ -7,12 +7,12 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="CARD_TRANSACTIONS">
         <input namespace="http://www.quantiguous.com/dfdl/vplus/EXATFormat" path="$var/mb:msg(EXAT,assembly,DFDL,Properties)" var="MessageAssembly"/>
-        <output path="$CARDTRANSACTIONS2/db:update(fn:false(),fn:true(),db:where('account =  ?1','?1'=$MessageAssembly/in:EXAT/body[1]/ACCOUNT),id,org,account,rec_no,logo,txn_type,txn_date,mt_type,txn_code,amount,f1,unit_price,f2,batch_dt,post_date,quantity,authcode,mt_si_org,mt_si_nbr,plan_no,salesperso,tkt_nbr,purch_num,pmt_ref_no,item_nbr,ref_nbr,merchant,city,country,plan_open,input_src,mult_ref,fsp,fsp_prg_no,merch_org,merch_stor,cat_code,prod_grp,sku_nbr,logic_mod,rpt_desc,gl_source,dept,source,batch_no,batch_seq,plan_seq,sort_prior,post_flag,visatranid,ichng_fee,qual_id,card_nbr,card_seq,card_blk,ins_prod,act_term,forex_cd,relpmt_amt,f3,orig_pymt,f4,stmt_flag,sou_txn_dt,c_city,c_country,sou_txn_am,curry_code,c_arn,c_aqr_bin,c_record_type,created_at,updated_at,txn_state)" var="dbupdate"/>
+        <output path="$CARDTRANSACTIONS2/db:update(fn:false(),fn:true(),db:where('ACCOUNT = ?1 AND AUTHCODE = ?2 AND TXN_DATE = ?3','?1'=$body/ACCOUNT,'?2'=$body/AUTHCODE,'?3'=$body/TXN_DATE),ID,ORG,ACCOUNT,REC_NO,LOGO,TXN_TYPE,TXN_DATE,MT_TYPE,TXN_CODE,AMOUNT,F1,UNIT_PRICE,F2,BATCH_DT,POST_DATE,QUANTITY,AUTHCODE,MT_SI_ORG,MT_SI_NBR,PLAN_NO,SALESPERSO,TKT_NBR,PURCH_NUM,PMT_REF_NO,ITEM_NBR,REF_NBR,MERCHANT,CITY,COUNTRY,PLAN_OPEN,INPUT_SRC,MULT_REF,FSP,FSP_PRG_NO,MERCH_ORG,MERCH_STOR,CAT_CODE,PROD_GRP,SKU_NBR,LOGIC_MOD,RPT_DESC,GL_SOURCE,DEPT,SOURCE,BATCH_NO,BATCH_SEQ,PLAN_SEQ,SORT_PRIOR,POST_FLAG,VISATRANID,ICHNG_FEE,QUAL_ID,CARD_NBR,CARD_SEQ,CARD_BLK,INS_PROD,ACT_TERM,FOREX_CD,RELPMT_AMT,F3,ORIG_PYMT,F4,STMT_FLAG,SOU_TXN_DT,C_CITY,C_COUNTRY,SOU_TXN_AM,CURRY_CODE,C_ARN,C_AQR_BIN,C_RECORD_TYPE,CREATED_AT,UPDATED_AT,TXN_STATE)" var="dbupdate"/>
         <foreach>
-            <input path="$MessageAssembly/EXAT/body"/>
+            <input path="$MessageAssembly/EXAT/body" var="body"/>
             <output path="$dbupdate/."/>
             <update ref="dbupdate">
-                <input path="."/>
+                <input path="$body/."/>
                 <output path="."/>
                 <move automap="true">
                     <input path="ORG"/>
