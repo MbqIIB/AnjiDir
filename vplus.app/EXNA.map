@@ -248,6 +248,12 @@
                     <input path="NATIONALITY"/>
                     <output path="NATIONALIT"/>
                 </move>
+                <function ref="fn:current-dateTime">
+                    <output path="CREATED_AT"/>
+                </function>
+                <function ref="fn:current-dateTime">
+                    <output path="UPDATED_AT"/>
+                </function>
             </insert>
             <update ref="dbupdate">
                 <input path="$body/."/>
