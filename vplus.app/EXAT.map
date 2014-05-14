@@ -75,6 +75,14 @@
                 <function ref="fn:current-dateTime">
                     <output path="UPDATED_AT"/>
                 </function>
+                <move>
+                    <input path="AUTHCODE"/>
+                    <output path="AUTHCODE"/>
+                </move>
+                <move>
+                    <input path="TXN_CODE"/>
+                    <output path="TXN_CODE"/>
+                </move>
             </insert>
             <update ref="dbupdate">
                 <input path="$body/."/>
@@ -133,6 +141,10 @@
                 <function ref="fn:current-dateTime">
                     <output path="UPDATED_AT"/>
                 </function>
+                <move>
+                    <input path="TXN_CODE"/>
+                    <output path="TXN_CODE"/>
+                </move>
             </update>
         </foreach>
     </mappingDeclaration>
