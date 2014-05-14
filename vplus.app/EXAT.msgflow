@@ -8,10 +8,10 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj16/EXAT.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj30/EXAT.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="105,173" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A1PTEXT.TXT" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXATFormat}:EXAT">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="105,173" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A1PTEXT.TXT" processedFileAction="moveToArchiveWithTimestamp" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXATFormat}:EXAT">
         <translation xmi:type="utility:ConstantString" string="EXAT_INPUT_FILE"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="361,286" mappingExpression="msl://{default}#EXAT">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="391,169" mappingExpression="msl://{default}#EXAT">
         <translation xmi:type="utility:ConstantString" string="EXAT_TO_DB"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
