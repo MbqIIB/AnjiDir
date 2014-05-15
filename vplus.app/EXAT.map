@@ -13,7 +13,7 @@
         <foreach>
             <input path="$MessageAssembly/EXAT/body" var="body"/>
             <output path="$dbinsert/." var="dbinsert1"/>
-            <output path="$CARDTRANSACTIONS/db:update(fn:false(),fn:true(),db:where('ACCOUNT = ?1 AND AUTHCODE = ?2 AND TXN_DATE = ?3 AND AMOUNT  =  ?4','?1'=$body/ACCOUNT,'?2'=$body/AUTHCODE,'?3'=$body/TXN_DATE,'?4'=$body/AMOUNT),ID,ORG,ACCOUNT,REC_NO,LOGO,TXN_TYPE,TXN_DATE,MT_TYPE,TXN_CODE,AMOUNT,F1,UNIT_PRICE,F2,BATCH_DT,POST_DATE,QUANTITY,AUTHCODE,MT_SI_ORG,MT_SI_NBR,PLAN_NO,SALESPERSO,TKT_NBR,PURCH_NUM,PMT_REF_NO,ITEM_NBR,REF_NBR,MERCHANT,CITY,COUNTRY,PLAN_OPEN,INPUT_SRC,MULT_REF,FSP,FSP_PRG_NO,MERCH_ORG,MERCH_STOR,CAT_CODE,PROD_GRP,SKU_NBR,LOGIC_MOD,RPT_DESC,GL_SOURCE,DEPT,SOURCE,BATCH_NO,BATCH_SEQ,PLAN_SEQ,SORT_PRIOR,POST_FLAG,VISATRANID,ICHNG_FEE,QUAL_ID,CARD_NBR,CARD_SEQ,CARD_BLK,INS_PROD,ACT_TERM,FOREX_CD,RELPMT_AMT,F3,ORIG_PYMT,F4,STMT_FLAG,SOU_TXN_DT,C_CITY,C_COUNTRY,SOU_TXN_AM,CURRY_CODE,C_ARN,C_AQR_BIN,C_RECORD_TYPE,CREATED_AT,UPDATED_AT,TXN_STATE)" var="dbupdate"/>
+            <output path="$CARDTRANSACTIONS/db:update(fn:false(),fn:true(),db:where('ACCOUNT = ?1 AND AUTHCODE = ?2 AND TXN_DATE = ?3 AND AMOUNT  =  ?4','?1'=$body/ACCOUNT,'?2'=$body/AUTHCODE,'?3'=$body/TXN_DATE,'?4'=$body/AMOUNT),ID,ORG,ACCOUNT,LOGO,TXN_TYPE,TXN_DATE,TXN_CODE,AMOUNT,AUTHCODE,MT_SI_ORG,MT_SI_NBR,PLAN_NO,REF_NBR,MERCHANT,CITY,RPT_DESC,CARD_NBR,CREATED_AT,UPDATED_AT,LOAN_STATUS)" var="dbupdate"/>
             <insert ref="dbinsert">
                 <input path="$body/."/>
                 <output path="$dbinsert1/."/>
@@ -152,6 +152,14 @@
                 <move>
                     <input path="CARD_NBR"/>
                     <output path="CARD_NBR"/>
+                </move>
+                <move>
+                    <input path="REF_NBR"/>
+                    <output path="REF_NBR"/>
+                </move>
+                <move>
+                    <input path="RPT_DESC"/>
+                    <output path="RPT_DESC"/>
                 </move>
             </update>
         </foreach>
