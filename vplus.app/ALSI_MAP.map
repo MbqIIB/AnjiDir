@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_TRANSACTIONS,CARD_LOANS,EMI_PLANS))" var="DESK"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_LOAN_DETAILS))" var="DESK1"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_LOANS))" var="DESK2"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_LOANS))" var="DESK3"/>
+    <output path="/ALSI.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="ALSI_MAP">
+        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/ID,dbo/CARD_TRANSACTIONS/ORG,dbo/CARD_TRANSACTIONS/ACCOUNT,dbo/CARD_TRANSACTIONS/REC_NO,dbo/CARD_TRANSACTIONS/LOGO,dbo/CARD_TRANSACTIONS/TXN_TYPE,dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/MT_TYPE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT,dbo/CARD_TRANSACTIONS/F1,dbo/CARD_TRANSACTIONS/UNIT_PRICE,dbo/CARD_TRANSACTIONS/F2,dbo/CARD_TRANSACTIONS/BATCH_DT,dbo/CARD_TRANSACTIONS/POST_DATE,dbo/CARD_TRANSACTIONS/QUANTITY,dbo/CARD_TRANSACTIONS/AUTHCODE,dbo/CARD_TRANSACTIONS/MT_SI_ORG,dbo/CARD_TRANSACTIONS/MT_SI_NBR,dbo/CARD_TRANSACTIONS/PLAN_NO,dbo/CARD_TRANSACTIONS/SALESPERSO,dbo/CARD_TRANSACTIONS/TKT_NBR,dbo/CARD_TRANSACTIONS/PURCH_NUM,dbo/CARD_TRANSACTIONS/PMT_REF_NO,dbo/CARD_TRANSACTIONS/ITEM_NBR,dbo/CARD_TRANSACTIONS/REF_NBR,dbo/CARD_TRANSACTIONS/MERCHANT,dbo/CARD_TRANSACTIONS/CITY,dbo/CARD_TRANSACTIONS/COUNTRY,dbo/CARD_TRANSACTIONS/PLAN_OPEN,dbo/CARD_TRANSACTIONS/INPUT_SRC,dbo/CARD_TRANSACTIONS/MULT_REF,dbo/CARD_TRANSACTIONS/FSP,dbo/CARD_TRANSACTIONS/FSP_PRG_NO,dbo/CARD_TRANSACTIONS/MERCH_ORG,dbo/CARD_TRANSACTIONS/MERCH_STOR,dbo/CARD_TRANSACTIONS/CAT_CODE,dbo/CARD_TRANSACTIONS/PROD_GRP,dbo/CARD_TRANSACTIONS/SKU_NBR,dbo/CARD_TRANSACTIONS/LOGIC_MOD,dbo/CARD_TRANSACTIONS/RPT_DESC,dbo/CARD_TRANSACTIONS/GL_SOURCE,dbo/CARD_TRANSACTIONS/DEPT,dbo/CARD_TRANSACTIONS/SOURCE,dbo/CARD_TRANSACTIONS/BATCH_NO,dbo/CARD_TRANSACTIONS/BATCH_SEQ,dbo/CARD_TRANSACTIONS/PLAN_SEQ,dbo/CARD_TRANSACTIONS/SORT_PRIOR,dbo/CARD_TRANSACTIONS/POST_FLAG,dbo/CARD_TRANSACTIONS/VISATRANID,dbo/CARD_TRANSACTIONS/ICHNG_FEE,dbo/CARD_TRANSACTIONS/QUAL_ID,dbo/CARD_TRANSACTIONS/CARD_NBR,dbo/CARD_TRANSACTIONS/CARD_SEQ,dbo/CARD_TRANSACTIONS/CARD_BLK,dbo/CARD_TRANSACTIONS/INS_PROD,dbo/CARD_TRANSACTIONS/ACT_TERM,dbo/CARD_TRANSACTIONS/FOREX_CD,dbo/CARD_TRANSACTIONS/RELPMT_AMT,dbo/CARD_TRANSACTIONS/F3,dbo/CARD_TRANSACTIONS/ORIG_PYMT,dbo/CARD_TRANSACTIONS/F4,dbo/CARD_TRANSACTIONS/STMT_FLAG,dbo/CARD_TRANSACTIONS/SOU_TXN_DT,dbo/CARD_TRANSACTIONS/C_CITY,dbo/CARD_TRANSACTIONS/C_COUNTRY,dbo/CARD_TRANSACTIONS/SOU_TXN_AM,dbo/CARD_TRANSACTIONS/CURRY_CODE,dbo/CARD_TRANSACTIONS/C_ARN,dbo/CARD_TRANSACTIONS/C_AQR_BIN,dbo/CARD_TRANSACTIONS/C_RECORD_TYPE,dbo/CARD_TRANSACTIONS/CREATED_AT,dbo/CARD_TRANSACTIONS/UPDATED_AT,dbo/CARD_TRANSACTIONS/TXN_STATE,dbo/CARD_LOANS/ID,dbo/CARD_LOANS/CREDITCARD_NO,dbo/CARD_LOANS/ACCOUNT_NO,dbo/CARD_LOANS/TRANSACTION_ID,dbo/CARD_LOANS/STATE,dbo/CARD_LOANS/ORG,dbo/CARD_LOANS/LOGO,dbo/CARD_LOANS/PLAN_ID,dbo/CARD_LOANS/TRANSACTION_REF_NO,dbo/CARD_LOANS/TRANSACTION_TYPE,dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE,dbo/CARD_LOANS/LAST_INSTALLMENT_DATE,dbo/CARD_LOANS/TERM,dbo/CARD_LOANS/RATE,dbo/CARD_LOANS/EMI_AMOUNT,dbo/CARD_LOANS/PRINCIPAL_AMOUNT,dbo/CARD_LOANS/INTEREST_AMOUNT,dbo/CARD_LOANS/PROCESSING_FEE,dbo/CARD_LOANS/CREATED_BY,dbo/CARD_LOANS/UPDATED_BY,dbo/CARD_LOANS/CREATED_AT,dbo/CARD_LOANS/UPDATED_AT,dbo/EMI_PLANS/ID,dbo/EMI_PLANS/PLAN_ID,dbo/EMI_PLANS/PLAN_NAME,dbo/EMI_PLANS/TENURE,dbo/EMI_PLANS/INT_RATE,dbo/EMI_PLANS/ANNUAL_MONTHLY_FLAG,dbo/EMI_PLANS/PLAN_START_DATE,dbo/EMI_PLANS/PLAN_EXPIRY,dbo/EMI_PLANS/MIN_AMT,dbo/EMI_PLANS/MAX_AMT,dbo/EMI_PLANS/DELINQUENCY_FLAG,dbo/EMI_PLANS/PROC_FEE_FLG,dbo/EMI_PLANS/PROC_FEE_PCT,dbo/EMI_PLANS/PROC_FEE_AMT,dbo/EMI_PLANS/CREATED_BY,dbo/EMI_PLANS/UPDATED_BY,dbo/EMI_PLANS/CREATED_AT,dbo/EMI_PLANS/UPDATED_AT),db:where('EMI_PLANS.ID = CARD_LOANS.PLAN_ID AND CARD_TRANSACTIONS.ID = dbo.CARD_LOANS.TRANSACTION_ID'))" var="dbselect"/>
+        <input path="$DESK2/db:select(fn:false(),ResultSet(dbo/CARD_LOANS/ID,dbo/CARD_LOANS/CREDITCARD_NO,dbo/CARD_LOANS/ACCOUNT_NO,dbo/CARD_LOANS/TRANSACTION_ID,dbo/CARD_LOANS/STATE,dbo/CARD_LOANS/ORG,dbo/CARD_LOANS/LOGO,dbo/CARD_LOANS/PLAN_ID,dbo/CARD_LOANS/TRANSACTION_REF_NO,dbo/CARD_LOANS/TRANSACTION_TYPE,dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE,dbo/CARD_LOANS/LAST_INSTALLMENT_DATE,dbo/CARD_LOANS/TERM,dbo/CARD_LOANS/RATE,dbo/CARD_LOANS/EMI_AMOUNT,dbo/CARD_LOANS/PRINCIPAL_AMOUNT,dbo/CARD_LOANS/INTEREST_AMOUNT,dbo/CARD_LOANS/PROCESSING_FEE,dbo/CARD_LOANS/CREATED_BY,dbo/CARD_LOANS/UPDATED_BY,dbo/CARD_LOANS/CREATED_AT,dbo/CARD_LOANS/UPDATED_AT),db:where('1=1'))" var="dbselect3"/>
+        <input path="$DESK3/db:select(fn:false(),ResultSet(dbo/CARD_LOANS/ID,dbo/CARD_LOANS/CREDITCARD_NO,dbo/CARD_LOANS/ACCOUNT_NO,dbo/CARD_LOANS/TRANSACTION_ID,dbo/CARD_LOANS/STATE,dbo/CARD_LOANS/ORG,dbo/CARD_LOANS/LOGO,dbo/CARD_LOANS/PLAN_ID,dbo/CARD_LOANS/TRANSACTION_REF_NO,dbo/CARD_LOANS/TRANSACTION_TYPE,dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE,dbo/CARD_LOANS/LAST_INSTALLMENT_DATE,dbo/CARD_LOANS/TERM,dbo/CARD_LOANS/RATE,dbo/CARD_LOANS/EMI_AMOUNT,dbo/CARD_LOANS/PRINCIPAL_AMOUNT,dbo/CARD_LOANS/INTEREST_AMOUNT,dbo/CARD_LOANS/PROCESSING_FEE,dbo/CARD_LOANS/CREATED_BY,dbo/CARD_LOANS/UPDATED_BY,dbo/CARD_LOANS/CREATED_AT,dbo/CARD_LOANS/UPDATED_AT),db:where('1=1'))" var="dbselect4"/>
+        <output path="mb:msg(ALSI,assembly,DFDL,Properties)"/>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet"/>
+            <output path="ALSI/body"/>
+            <foreach>
+                <input path="." var="ResultSet"/>
+                <input path="$DESK1/db:select(fn:false(),ResultSet(dbo/CARD_LOAN_DETAILS/ID,dbo/CARD_LOAN_DETAILS/ACCOUNT_NO,dbo/CARD_LOAN_DETAILS/CARD_LOAN_ID,dbo/CARD_LOAN_DETAILS/INSTALLMENT,dbo/CARD_LOAN_DETAILS/INSTALLMENT_DATE,dbo/CARD_LOAN_DETAILS/RATE,dbo/CARD_LOAN_DETAILS/EMI_AMOUNT,dbo/CARD_LOAN_DETAILS/PRINCIPAL_AMOUNT,dbo/CARD_LOAN_DETAILS/INTEREST_AMOUNT,dbo/CARD_LOAN_DETAILS/PRINCIPAL_BALANCE,dbo/CARD_LOAN_DETAILS/CREATED_BY,dbo/CARD_LOAN_DETAILS/UPDATED_BY,dbo/CARD_LOAN_DETAILS/CREATED_AT,dbo/CARD_LOAN_DETAILS/UPDATED_AT),db:where('CARD_LOAN_DETAILS.ACCOUNT_NO =  ?  AND CARD_LOAN_DETAILS.CARD_LOAN_ID =  ?1 ','?1'=$ResultSet/dbo/CARD_LOANS/ID,'?'=$ResultSet/dbo/CARD_LOANS/ACCOUNT_NO))" var="dbselect2"/>
+                <output path="."/>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/ORG"/>
+                    <output path="ABNLSI-ORG"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/ACCOUNT_NO"/>
+                    <output path="ABNLSI-ACCT-NBR"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/LOGO"/>
+                    <output path="ABNLSI-LOGO"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/EMI_PLANS/PLAN_NAME"/>
+                    <output path="ABNLSI-PLAN-DESC"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/EMI_PLANS/PLAN_ID"/>
+                    <output path="ABNLSI-PLAN"/>
+                </move>
+                <function ref="fn:current-date">
+                    <output path="ABNLSI-PLAN-DATE"/>
+                </function>
+                <function ref="fn:current-date">
+                    <output path="ABNLSI-CEL-AGRMNT-DATE"/>
+                </function>
+                <select ref="dbselect2">
+                    <input path="$dbselect2/ResultSet"/>
+                    <output path="INSTALLMENTS"/>
+                    <foreach>
+                        <input path="." var="ResultSet1"/>
+                        <output path="."/>
+                        <expression>
+                            <input path="$ResultSet1/dbo/CARD_LOAN_DETAILS/RATE" var="RATE1"/>
+                            <output path="ABNLSI-LS-INT-RATE"/>
+                            <test lang="xpath">$RATE * 1000</test>
+                        </expression>
+                        <expression>
+                            <input path="$ResultSet1/dbo/CARD_LOAN_DETAILS/EMI_AMOUNT" var="EMIAMOUNT2"/>
+                            <output path="ABNLSI-LS-PAY-AMT"/>
+                            <test lang="xpath">$EMIAMOUNT2 * 100</test>
+                        </expression>
+                        <expression>
+                            <input path="$ResultSet1/dbo/CARD_LOAN_DETAILS/PRINCIPAL_AMOUNT" var="PRINCIPALAMOUNT1"/>
+                            <output path="ABNLSI-LS-PRIN-AMT"/>
+                            <test lang="xpath">$PRINCIPALAMOUNT1 * 100</test>
+                        </expression>
+                        <expression>
+                            <input path="$ResultSet1/dbo/CARD_LOAN_DETAILS/INTEREST_AMOUNT" var="INTERESTAMOUNT1"/>
+                            <output path="ABNLSI-LS-INT-AMT"/>
+                            <test lang="xpath">$INTERESTAMOUNT1 * 100</test>
+                        </expression>
+                    </foreach>
+                </select>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/TRANSACTION_REF_NO"/>
+                    <output path="ABNLSI-REF-NBR"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/TRANSACTION_TYPE"/>
+                    <output path="ABNLSI-REC-TYPE"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_TRANSACTIONS/MT_SI_ORG"/>
+                    <output path="ABNLSI-SI-ORG"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_TRANSACTIONS/MT_SI_NBR"/>
+                    <output path="ABNLSI-SI-NBR"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE"/>
+                    <output path="ABNLSI-CEL-1ST-PMT-DATE"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/LAST_INSTALLMENT_DATE"/>
+                    <output path="ABNLSI-CEL-FINAL-PMT-DATE"/>
+                </move>
+                <expression>
+                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT" var="EMIAMOUNT"/>
+                    <output path="ABNLSI-CEL-1ST-PMT"/>
+                    <test lang="xpath">$EMIAMOUNT * 100</test>
+                </expression>
+                <expression>
+                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT" var="EMIAMOUNT1"/>
+                    <output path="ABNLSI-CEL-FINAL-PMT"/>
+                    <test lang="xpath">$EMIAMOUNT * 100</test>
+                </expression>
+                <expression>
+                    <input path="$ResultSet/dbo/CARD_LOANS/RATE" var="RATE"/>
+                    <output path="ABNLSI-CEL-INT-APR"/>
+                    <test lang="xpath">$RATE * 1000</test>
+                </expression>
+                <move>
+                    <input path="$ResultSet/dbo/CARD_LOANS/TERM" var="TERM"/>
+                    <output path="ABNLSI-CEL-ORIG-TERM"/>
+                </move>
+                <expression>
+                    <input path="$ResultSet/dbo/CARD_LOANS/PRINCIPAL_AMOUNT" var="PRINCIPALAMOUNT"/>
+                    <output path="ABNLSI-CEL-ORIG-DSCLSD-PRIN"/>
+                    <test lang="xpath">$PRINCIPALAMOUNT * 100</test>
+                </expression>
+                <expression>
+                    <input path="$ResultSet/dbo/CARD_LOANS/INTEREST_AMOUNT" var="INTERESTAMOUNT"/>
+                    <output path="ABNLSI-CEL-ORIG-DSCLSD-INT"/>
+                    <test lang="xpath">$INTERESTAMOUNT * 100</test>
+                </expression>
+            </foreach>
+        </select>
+        <function ref="fn:current-date">
+            <output path="ALSI/header/ABNLSI-H-T-PROC-DATE"/>
+        </function>
+        <function ref="fn:current-date">
+            <output path="ALSI/trailer/ABNLSI-H-T-PROC-DATE"/>
+        </function>
+        <select ref="dbselect3">
+            <input path="$dbselect3/ResultSet"/>
+            <output path="ALSI/header/ABNLSI-H-T-FILE-COUNT"/>
+            <function ref="fn:count">
+                <input path="." var="ResultSet2"/>
+                <output path="."/>
+                <param name="item" value="$ResultSet2"/>
+            </function>
+        </select>
+        <select ref="dbselect4">
+            <input path="$dbselect4/ResultSet"/>
+            <output path="ALSI/trailer/ABNLSI-H-T-FILE-COUNT"/>
+            <function ref="fn:count">
+                <input path="." var="ResultSet3"/>
+                <output path="."/>
+                <param name="item" value="$ResultSet3"/>
+            </function>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>

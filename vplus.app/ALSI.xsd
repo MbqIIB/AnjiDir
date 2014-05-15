@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recFixLengthFieldsFmt="http://www.ibm.com/dfdl/RecordFixLengthFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordFixLengthFieldFormat" schemaLocation="IBMdefined/RecordFixLengthFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" escapeSchemeRef="recFixLengthFieldsFmt:RecordEscapeScheme" occursCountKind="fixed" ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" separatorSuppressionPolicy="anyEmpty"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element dfdl:lengthKind="delimited" ibmSchExtn:docRoot="true" name="ALSI">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="%LF;%WSP*;">
+				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="" name="header">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element default="HDR" dfdl:length="3" dfdl:textNumberPattern="#E0" ibmDfdlExtn:sampleValue="000" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
+							<xsd:element dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="0000002" dfdl:length="7" dfdl:nilValueDelimiterPolicy="none" dfdl:terminator="" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
+                                                    </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element default="1" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="001" name="ABNLSI-ORG" type="xsd:integer"/>
+							<xsd:element default="999" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="600" name="ABNLSI-LOGO" type="xsd:integer"/>
+							<xsd:element default="0000000000000000000" dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0005243736000512553" maxOccurs="1" name="ABNLSI-ACCT-NBR" type="xsd:integer"/>
+                            <xsd:element default="00000" dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="80006" name="ABNLSI-PLAN" type="xsd:integer"/>
+                            <xsd:element default="ABN AMRO CCEFS" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ABN AMRO CCEFS      " name="ABNLSI-SIGNON-NAME" type="xsd:string"/>
+                            <xsd:element default="ABNI" dfdl:length="4" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ABNI" name="ABNLSI-TERMINAL-ID" type="xsd:string"/>
+                            <xsd:element default="9999" dfdl:length="4" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="9999" name="ABNLSI-SOURCE-CODE" type="xsd:integer"/>
+                            <xsd:element default="D" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="EasyPay-09259010040-easy 61             " name="ABNLSI-PLAN-DESC" type="xsd:string"/>
+                            <xsd:element default="D" dfdl:length="23" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="00000000000009259010040" name="ABNLSI-REF-NBR" type="xsd:string"/>
+                            <xsd:element default="D" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="P" name="ABNLSI-REC-TYPE" type="xsd:string"/>
+                            <xsd:element default="999" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="001" name="ABNLSI-SI-ORG" type="xsd:integer"/>
+                            <xsd:element default="999999998" dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="999999998" name="ABNLSI-SI-NBR" type="xsd:integer"/>
+                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" dfdl:textPadKind="padChar" name="ABNLSI-PLAN-DATE" type="xsd:date"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-FIXED-PMT-AMT" type="xsd:decimal"/>
+                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" name="ABNLSI-CEL-AGRMNT-DATE" type="xsd:date"/>
+                            <xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2010-12-31" name="ABNLSI-CEL-1ST-PMT-DATE" type="xsd:date"/>
+                            <xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2010-12-31" name="ABNLSI-CEL-FINAL-PMT-DATE" type="xsd:date"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="882614" name="ABNLSI-CEL-1ST-PMT" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="882614" name="ABNLSI-CEL-FINAL-PMT" type="xsd:decimal"/>
+                            <xsd:element default="0000000" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="20000" name="ABNLSI-CEL-INT-APR" type="xsd:decimal"/>
+                            <xsd:element default="0000000" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000000" name="ABNLSI-CEL-ACTUARIAL-APR" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="00000000000000000" name="ABNLSI-CEL-INT-FLAT-AMT" type="xsd:decimal"/>
+                            <xsd:element default="000" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="006" name="ABNLSI-CEL-ORIG-TERM" type="xsd:integer"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="5000000" name="ABNLSI-CEL-ORIG-DSCLSD-PRIN" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="295684" name="ABNLSI-CEL-ORIG-DSCLSD-INT" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-INS" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER1" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER2" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER3" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER4" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER5" type="xsd:decimal"/>
+                            <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-ORIG-DSCLSD-USER6" type="xsd:decimal"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" dfdl:textStringPadCharacter="%SP;" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-INTEREST-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" dfdl:textStringPadCharacter="%SP;" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-INSURANCE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" dfdl:textStringPadCharacter="%SP;" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER1-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER2-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER3-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER4-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER5-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-USER6-FEE-CAP-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-INTEREST-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-INSURANCE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER1-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER2-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER3-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER4-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER5-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-USER6-FEE-CCI-IND" type="xsd:string"/>
+                            <xsd:element default="0" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-CEL-DEPOSIT-AMT" type="xsd:decimal"/>
+                            <xsd:element default="3" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="3" name="ABNLSI-CEL-DISPERSAL-METHOD" type="xsd:string"/>
+                            <xsd:element dfdl:lengthKind="implicit" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" ibmDfdlExtn:sampleValue="body_value51" maxOccurs="60" minOccurs="60" name="INSTALLMENTS">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-PAY-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-INT-RATE" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-PRIN-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-INT-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-INS-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER1-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER2-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER3-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER4-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER5-AMT" type="xsd:decimal"/>
+                    <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-LS-USER6-AMT" type="xsd:decimal"/>
+                    <xsd:element default="      " dfdl:lengthKind="implicit" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="      " name="FILLER">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="6"/>
+                          <xsd:minLength value="6"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element dfdl:lengthKind="delimited" name="trailer"> 
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element default="TLR" dfdl:length="3" ibmDfdlExtn:sampleValue="999" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
+							<xsd:element dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="0000001" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
+                                                    </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>
