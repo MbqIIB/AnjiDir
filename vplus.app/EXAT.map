@@ -83,6 +83,10 @@
                     <input path="TXN_CODE"/>
                     <output path="TXN_CODE"/>
                 </move>
+                <move>
+                    <input path="CARD_NBR"/>
+                    <output path="CARD_NBR"/>
+                </move>
             </insert>
             <update ref="dbupdate">
                 <input path="$body/."/>
@@ -144,6 +148,10 @@
                 <move>
                     <input path="TXN_CODE"/>
                     <output path="TXN_CODE"/>
+                </move>
+                <move>
+                    <input path="CARD_NBR"/>
+                    <output path="CARD_NBR"/>
                 </move>
             </update>
         </foreach>

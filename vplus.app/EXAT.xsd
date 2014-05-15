@@ -72,7 +72,7 @@
                             <xsd:element dfdl:length="13" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="body_value49" name="VISATRANID" type="xsd:string"/>
                             <xsd:element dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="ICHNG_FEE" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="QUAL_ID" type="xsd:int"/>
-                            <xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CARD_NBR" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="recFixLengthFieldsFmt:RecordEscapeScheme" dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CARD_NBR" type="xsd:string"/>
                             <xsd:element dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="34231" name="CARD_SEQ" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="CARD_BLK" type="xsd:string"/>
                             <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="BB" name="INS_PROD" type="xsd:string"/>
