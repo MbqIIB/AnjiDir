@@ -1626,9 +1626,6 @@
     <columns xmi:id="_jnJnttoJEeOw85thECwX_w" name="ACCOUNT">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnt9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
-    <columns xmi:id="_jnJnuNoJEeOw85thECwX_w" name="REC_NO">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_jnJnudoJEeOw85thECwX_w" name="INT" primitiveType="INTEGER"/>
-    </columns>
     <columns xmi:id="_jnJnutoJEeOw85thECwX_w" name="LOGO">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnu9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
@@ -1638,32 +1635,11 @@
     <columns xmi:id="_jnJnvtoJEeOw85thECwX_w" name="TXN_DATE">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnv9oJEeOw85thECwX_w" name="DATE"/>
     </columns>
-    <columns xmi:id="_jnJnwNoJEeOw85thECwX_w" name="MT_TYPE">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnwdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
     <columns xmi:id="_jnJnwtoJEeOw85thECwX_w" name="TXN_CODE">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJnw9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
     </columns>
     <columns xmi:id="_jnJnxNoJEeOw85thECwX_w" name="AMOUNT">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJnxdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJnxtoJEeOw85thECwX_w" name="F1">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnx9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJnyNoJEeOw85thECwX_w" name="UNIT_PRICE">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJnydoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJnytoJEeOw85thECwX_w" name="F2">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJny9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJnzNoJEeOw85thECwX_w" name="BATCH_DT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnzdoJEeOw85thECwX_w" name="DATE"/>
-    </columns>
-    <columns xmi:id="_jnJnztoJEeOw85thECwX_w" name="POST_DATE">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJnz9oJEeOw85thECwX_w" name="DATE"/>
-    </columns>
-    <columns xmi:id="_jnJn0NoJEeOw85thECwX_w" name="QUANTITY">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJn0doJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
     </columns>
     <columns xmi:id="_jnJn0toJEeOw85thECwX_w" name="AUTHCODE">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn09oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
@@ -1677,21 +1653,6 @@
     <columns xmi:id="_jnJn2NoJEeOw85thECwX_w" name="PLAN_NO">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn2doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
-    <columns xmi:id="_jnJn2toJEeOw85thECwX_w" name="SALESPERSO">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn29oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn3NoJEeOw85thECwX_w" name="TKT_NBR">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn3doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn3toJEeOw85thECwX_w" name="PURCH_NUM">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn39oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn4NoJEeOw85thECwX_w" name="PMT_REF_NO">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn4doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn4toJEeOw85thECwX_w" name="ITEM_NBR">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn49oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
     <columns xmi:id="_jnJn5NoJEeOw85thECwX_w" name="REF_NBR">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn5doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
@@ -1701,134 +1662,11 @@
     <columns xmi:id="_jnJn6NoJEeOw85thECwX_w" name="CITY">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn6doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
-    <columns xmi:id="_jnJn6toJEeOw85thECwX_w" name="COUNTRY">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn69oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn7NoJEeOw85thECwX_w" name="PLAN_OPEN">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn7doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn7toJEeOw85thECwX_w" name="INPUT_SRC">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn79oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn8NoJEeOw85thECwX_w" name="MULT_REF">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn8doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn8toJEeOw85thECwX_w" name="FSP">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJn89oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJn9NoJEeOw85thECwX_w" name="FSP_PRG_NO">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn9doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn9toJEeOw85thECwX_w" name="MERCH_ORG">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJn99oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJn-NoJEeOw85thECwX_w" name="MERCH_STOR">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJn-doJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJn-toJEeOw85thECwX_w" name="CAT_CODE">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJn-9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJn_NoJEeOw85thECwX_w" name="PROD_GRP">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn_doJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJn_toJEeOw85thECwX_w" name="SKU_NBR">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJn_9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoANoJEeOw85thECwX_w" name="LOGIC_MOD">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoAdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoAtoJEeOw85thECwX_w" name="RPT_DESC">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoA9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoBNoJEeOw85thECwX_w" name="GL_SOURCE">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoBdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoBtoJEeOw85thECwX_w" name="DEPT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoB9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoCNoJEeOw85thECwX_w" name="SOURCE">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoCdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoCtoJEeOw85thECwX_w" name="BATCH_NO">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoC9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoDNoJEeOw85thECwX_w" name="BATCH_SEQ">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoDdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoDtoJEeOw85thECwX_w" name="PLAN_SEQ">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoD9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoENoJEeOw85thECwX_w" name="SORT_PRIOR">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoEdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoEtoJEeOw85thECwX_w" name="POST_FLAG">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoE9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoFNoJEeOw85thECwX_w" name="VISATRANID">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoFdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoFtoJEeOw85thECwX_w" name="ICHNG_FEE">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoF9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoGNoJEeOw85thECwX_w" name="QUAL_ID">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoGdoJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
+    <columns xmi:id="_BWZbENwIEeONdLAtWV4kVA" name="RPT_DESC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_EFyZgNwIEeONdLAtWV4kVA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
     <columns xmi:id="_jnJoGtoJEeOw85thECwX_w" name="CARD_NBR">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoG9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoHNoJEeOw85thECwX_w" name="CARD_SEQ">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoHdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoHtoJEeOw85thECwX_w" name="CARD_BLK">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoH9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoINoJEeOw85thECwX_w" name="INS_PROD">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoIdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoItoJEeOw85thECwX_w" name="ACT_TERM">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoI9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoJNoJEeOw85thECwX_w" name="FOREX_CD">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoJdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoJtoJEeOw85thECwX_w" name="RELPMT_AMT">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoJ9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoKNoJEeOw85thECwX_w" name="F3">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoKdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoKtoJEeOw85thECwX_w" name="ORIG_PYMT">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoK9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoLNoJEeOw85thECwX_w" name="F4">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoLdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoLtoJEeOw85thECwX_w" name="STMT_FLAG">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoL9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoMNoJEeOw85thECwX_w" name="SOU_TXN_DT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoMdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoMtoJEeOw85thECwX_w" name="C_CITY">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoM9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoNNoJEeOw85thECwX_w" name="C_COUNTRY">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoNdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoNtoJEeOw85thECwX_w" name="SOU_TXN_AM">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_jnJoN9oJEeOw85thECwX_w" name="DECIMAL" primitiveType="DECIMAL" precision="18"/>
-    </columns>
-    <columns xmi:id="_jnJoONoJEeOw85thECwX_w" name="CURRY_CODE">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoOdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoOtoJEeOw85thECwX_w" name="C_ARN">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoO9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoPNoJEeOw85thECwX_w" name="C_AQR_BIN">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoPdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_jnJoPtoJEeOw85thECwX_w" name="C_RECORD_TYPE">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoP9oJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
     <columns xmi:id="_jnJoQNoJEeOw85thECwX_w" name="CREATED_AT" nullable="false">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_jnJoQdoJEeOw85thECwX_w" name="DATETIME" primitiveType="DATE"/>
@@ -1836,7 +1674,7 @@
     <columns xmi:id="_jnJoQtoJEeOw85thECwX_w" name="UPDATED_AT" nullable="false">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_jnJoQ9oJEeOw85thECwX_w" name="DATETIME" primitiveType="DATE"/>
     </columns>
-    <columns xmi:id="_jnJoRNoJEeOw85thECwX_w" name="TXN_STATE">
+    <columns xmi:id="_jnJoRNoJEeOw85thECwX_w" name="LOAN_STATUS">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jnJoRdoJEeOw85thECwX_w" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
   </SQLTables:PersistentTable>
