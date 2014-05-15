@@ -14,7 +14,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="HDR" dfdl:length="3" dfdl:textNumberPattern="#E0" ibmDfdlExtn:sampleValue="000" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
-							<xsd:element dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="2010-12-31" dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
 							<xsd:element default="0000002" dfdl:length="7" dfdl:nilValueDelimiterPolicy="none" dfdl:terminator="" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
                                                     </xsd:sequence>
 					</xsd:complexType>
@@ -34,9 +34,9 @@
                             <xsd:element default="D" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="P" name="ABNLSI-REC-TYPE" type="xsd:string"/>
                             <xsd:element default="999" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="001" name="ABNLSI-SI-ORG" type="xsd:integer"/>
                             <xsd:element default="999999998" dfdl:length="9" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="999999998" name="ABNLSI-SI-NBR" type="xsd:integer"/>
-                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" dfdl:textPadKind="padChar" name="ABNLSI-PLAN-DATE" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:occursCountKind="implicit" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" dfdl:textPadKind="padChar" minOccurs="0" name="ABNLSI-PLAN-DATE" type="xsd:date"/>
                             <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="ABNLSI-FIXED-PMT-AMT" type="xsd:decimal"/>
-                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" name="ABNLSI-CEL-AGRMNT-DATE" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:occursCountKind="implicit" dfdl:textPadKind="padChar" minOccurs="0" name="ABNLSI-CEL-AGRMNT-DATE" type="xsd:date"/>
                             <xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2010-12-31" name="ABNLSI-CEL-1ST-PMT-DATE" type="xsd:date"/>
                             <xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2010-12-31" name="ABNLSI-CEL-FINAL-PMT-DATE" type="xsd:date"/>
                             <xsd:element default="00000000000000000" dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="882614" name="ABNLSI-CEL-1ST-PMT" type="xsd:decimal"/>
@@ -104,7 +104,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="TLR" dfdl:length="3" ibmDfdlExtn:sampleValue="999" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
-							<xsd:element dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="2010-12-31" dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
 							<xsd:element default="0000001" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
                                                     </xsd:sequence>
 					</xsd:complexType>
