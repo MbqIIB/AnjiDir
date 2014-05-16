@@ -9,7 +9,7 @@
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="ALSI">
-        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/ID,dbo/CARD_TRANSACTIONS/ORG,dbo/CARD_TRANSACTIONS/ACCOUNT,dbo/CARD_TRANSACTIONS/LOGO,dbo/CARD_TRANSACTIONS/TXN_TYPE,dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT,dbo/CARD_TRANSACTIONS/AUTHCODE,dbo/CARD_TRANSACTIONS/MT_SI_ORG,dbo/CARD_TRANSACTIONS/MT_SI_NBR,dbo/CARD_TRANSACTIONS/PLAN_NO,dbo/CARD_TRANSACTIONS/REF_NBR,dbo/CARD_TRANSACTIONS/MERCHANT,dbo/CARD_TRANSACTIONS/CITY,dbo/CARD_TRANSACTIONS/RPT_DESC,dbo/CARD_TRANSACTIONS/CARD_NBR,dbo/CARD_TRANSACTIONS/CREATED_AT,dbo/CARD_TRANSACTIONS/UPDATED_AT,dbo/CARD_TRANSACTIONS/LOAN_STATUS,dbo/CARD_LOANS/ID,dbo/CARD_LOANS/CREDITCARD_NO,dbo/CARD_LOANS/ACCOUNT_NO,dbo/CARD_LOANS/TRANSACTION_ID,dbo/CARD_LOANS/STATE,dbo/CARD_LOANS/TRANSACTION_REF_NO,dbo/CARD_LOANS/TRANSACTION_TYPE,dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE,dbo/CARD_LOANS/LAST_INSTALLMENT_DATE,dbo/CARD_LOANS/TERM,dbo/CARD_LOANS/RATE,dbo/CARD_LOANS/EMI_AMOUNT,dbo/CARD_LOANS/PRINCIPAL_AMOUNT,dbo/CARD_LOANS/INTEREST_AMOUNT,dbo/CARD_LOANS/PROCESSING_FEE,dbo/CARD_LOANS/CREATED_BY,dbo/CARD_LOANS/UPDATED_BY,dbo/CARD_LOANS/CREATED_AT,dbo/CARD_LOANS/UPDATED_AT,dbo/EMI_PLANS/ID,dbo/EMI_PLANS/PLAN_ID,dbo/EMI_PLANS/PLAN_NAME,dbo/EMI_PLANS/TENURE,dbo/EMI_PLANS/INT_RATE,dbo/EMI_PLANS/ANNUAL_MONTHLY_FLAG,dbo/EMI_PLANS/PLAN_START_DATE,dbo/EMI_PLANS/PLAN_EXPIRY,dbo/EMI_PLANS/MIN_AMT,dbo/EMI_PLANS/MAX_AMT,dbo/EMI_PLANS/DELINQUENCY_FLAG,dbo/EMI_PLANS/PROC_FEE_FLG,dbo/EMI_PLANS/PROC_FEE_PCT,dbo/EMI_PLANS/PROC_FEE_AMT,dbo/EMI_PLANS/CREATED_BY,dbo/EMI_PLANS/UPDATED_BY,dbo/EMI_PLANS/CREATED_AT,dbo/EMI_PLANS/UPDATED_AT),db:where('dbo.CARD_TRANSACTIONS.ID = dbo.CARD_LOANS.TRANSACTION_ID AND dbo.EMI_PLANS.ID = dbo.CARD_LOANS.PLAN_ID'))" var="dbselect"/>
+        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/ID,dbo/CARD_TRANSACTIONS/ORG,dbo/CARD_TRANSACTIONS/ACCOUNT,dbo/CARD_TRANSACTIONS/LOGO,dbo/CARD_TRANSACTIONS/TXN_TYPE,dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT,dbo/CARD_TRANSACTIONS/AUTHCODE,dbo/CARD_TRANSACTIONS/MT_SI_ORG,dbo/CARD_TRANSACTIONS/MT_SI_NBR,dbo/CARD_TRANSACTIONS/REF_NBR,dbo/CARD_TRANSACTIONS/CARD_NBR,dbo/CARD_TRANSACTIONS/LOAN_STATUS,dbo/CARD_LOANS/CREDITCARD_NO,dbo/CARD_LOANS/ACCOUNT_NO,dbo/CARD_LOANS/TRANSACTION_ID,dbo/CARD_LOANS/STATE,dbo/CARD_LOANS/TRANSACTION_REF_NO,dbo/CARD_LOANS/TRANSACTION_TYPE,dbo/CARD_LOANS/FIRST_INSTALLMENT_DATE,dbo/CARD_LOANS/LAST_INSTALLMENT_DATE,dbo/CARD_LOANS/TERM,dbo/CARD_LOANS/RATE,dbo/CARD_LOANS/EMI_AMOUNT,dbo/CARD_LOANS/PRINCIPAL_AMOUNT,dbo/CARD_LOANS/INTEREST_AMOUNT,dbo/CARD_LOANS/PROCESSING_FEE,dbo/EMI_PLANS/PLAN_ID,dbo/EMI_PLANS/PLAN_NAME,dbo/EMI_PLANS/TENURE,dbo/EMI_PLANS/INT_RATE,dbo/EMI_PLANS/PROC_FEE_FLG,dbo/EMI_PLANS/PROC_FEE_PCT,dbo/EMI_PLANS/PROC_FEE_AMT),db:where('dbo.CARD_TRANSACTIONS.ID = dbo.CARD_LOANS.TRANSACTION_ID AND dbo.EMI_PLANS.ID = dbo.CARD_LOANS.EMI_PLAN_ID'))" var="dbselect"/>
         <output namespace="http://www.quantiguous.com/dfdl/vplus/ALSIFormat" path="mb:msg(ALSI,assembly,DFDL,Properties)" var="MessageAssembly"/>
         <select ref="dbselect">
             <input path="$dbselect/ResultSet"/>
@@ -26,24 +26,28 @@
                     <input path="$dbselect1/ResultSet" var="ResultSet1"/>
                     <output path="INSTALLMENTS"/>
                     <foreach>
-                        <input path="$ResultSet1/." var="ResultSet3"/>
+                        <input path="$ResultSet1/." var="ResultSet5"/>
                         <output path="."/>
-                        <move>
-                            <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/EMI_AMOUNT" var="EMIAMOUNT"/>
+                        <function ref="fn:number">
+                            <input path="$ResultSet5/dbo/CARD_LOAN_DETAILS/EMI_AMOUNT" var="EMIAMOUNT1"/>
                             <output path="ABNLSI-LS-PAY-AMT"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/PRINCIPAL_AMOUNT"/>
+                            <param name="arg" value="round($EMIAMOUNT1 * 100)"/>
+                        </function>
+                        <function ref="fn:number">
+                            <input path="$ResultSet5/dbo/CARD_LOAN_DETAILS/PRINCIPAL_AMOUNT" var="PRINCIPALAMOUNT"/>
                             <output path="ABNLSI-LS-PRIN-AMT"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/INTEREST_AMOUNT"/>
+                            <param name="arg" value="round($PRINCIPALAMOUNT*100)"/>
+                        </function>
+                        <function ref="fn:number">
+                            <input path="$ResultSet5/dbo/CARD_LOAN_DETAILS/INTEREST_AMOUNT" var="INTERESTAMOUNT"/>
                             <output path="ABNLSI-LS-INT-AMT"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/RATE" var="RATE"/>
+                            <param name="arg" value="round($INTERESTAMOUNT * 100)"/>
+                        </function>
+                        <function ref="fn:number">
+                            <input path="$ResultSet5/dbo/CARD_LOAN_DETAILS/RATE" var="RATE2"/>
                             <output path="ABNLSI-LS-INT-RATE"/>
-                        </move>
+                            <param name="arg" value="round($RATE2 * 1000)"/>
+                        </function>
                     </foreach>
                 </select>
                 <move>
@@ -53,10 +57,6 @@
                 <move>
                     <input path="$ResultSet/dbo/CARD_TRANSACTIONS/MT_SI_NBR"/>
                     <output path="ABNLSI-SI-NBR"/>
-                </move>
-                <move>
-                    <input path="$ResultSet/dbo/EMI_PLANS/PLAN_NAME"/>
-                    <output path="ABNLSI-PLAN-DESC"/>
                 </move>
                 <function ref="fn:current-date">
                     <output path="ABNLSI-PLAN-DATE"/>
@@ -80,30 +80,35 @@
                     <input path="$ResultSet/dbo/CARD_LOANS/LAST_INSTALLMENT_DATE"/>
                     <output path="ABNLSI-CEL-FINAL-PMT-DATE"/>
                 </move>
-                <move>
-                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT"/>
+                <function ref="fn:number">
+                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT" var="EMIAMOUNT"/>
                     <output path="ABNLSI-CEL-1ST-PMT"/>
-                </move>
-                <move>
-                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT"/>
+                    <param name="arg" value="round($EMIAMOUNT * 100)"/>
+                </function>
+                <function ref="fn:number">
+                    <input path="$ResultSet/dbo/CARD_LOANS/EMI_AMOUNT" var="EMIAMOUNT2"/>
                     <output path="ABNLSI-CEL-FINAL-PMT"/>
-                </move>
+                    <param name="arg" value="round($EMIAMOUNT2 * 100)"/>
+                </function>
                 <move>
                     <input path="$ResultSet/dbo/EMI_PLANS/TENURE"/>
                     <output path="ABNLSI-CEL-ORIG-TERM"/>
                 </move>
-                <move>
-                    <input path="$ResultSet/dbo/CARD_LOANS/RATE"/>
+                <function ref="fn:number">
+                    <input path="$ResultSet/dbo/CARD_LOANS/RATE" var="RATE"/>
                     <output path="ABNLSI-CEL-INT-APR"/>
-                </move>
-                <move>
-                    <input path="$ResultSet/dbo/CARD_TRANSACTIONS/AMOUNT"/>
+                    <param name="arg" value="round($RATE * 1000)"/>
+                </function>
+                <function ref="fn:number">
+                    <input path="$ResultSet/dbo/CARD_TRANSACTIONS/AMOUNT" var="AMOUNT"/>
                     <output path="ABNLSI-CEL-ORIG-DSCLSD-PRIN"/>
-                </move>
-                <move>
-                    <input path="$ResultSet/dbo/CARD_LOANS/INTEREST_AMOUNT"/>
+                    <param name="arg" value="round($AMOUNT * 100)"/>
+                </function>
+                <function ref="fn:number">
+                    <input path="$ResultSet/dbo/CARD_LOANS/INTEREST_AMOUNT" var="INTERESTAMOUNT1"/>
                     <output path="ABNLSI-CEL-ORIG-DSCLSD-INT"/>
-                </move>
+                    <param name="arg" value="round($INTERESTAMOUNT1 * 100)"/>
+                </function>
                 <move>
                     <input path="$ResultSet/dbo/CARD_TRANSACTIONS/ORG"/>
                     <output path="ABNLSI-ORG"/>
@@ -111,6 +116,10 @@
                 <move>
                     <input path="$ResultSet/dbo/CARD_TRANSACTIONS/LOGO"/>
                     <output path="ABNLSI-LOGO"/>
+                </move>
+                <move>
+                    <input path="$ResultSet/dbo/EMI_PLANS/PLAN_NAME"/>
+                    <output path="ABNLSI-PLAN-DESC"/>
                 </move>
                 <move>
                     <input path="$ResultSet/dbo/EMI_PLANS/PLAN_ID"/>

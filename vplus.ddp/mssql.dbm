@@ -1895,7 +1895,7 @@
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_Gy2AANvkEeONdLAtWV4kVA" name="DECIMAL" primitiveType="DECIMAL" precision="38" scale="10"/>
     </columns>
     <columns xmi:id="_f74WcNvjEeONdLAtWV4kVA" name="EMI_AMOUNT">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_Ia14kNvkEeONdLAtWV4kVA" name="DECIMAL" primitiveType="DECIMAL" precision="38" scale="10"/>
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_Ia14kNvkEeONdLAtWV4kVA" name="DECIMAL" primitiveType="DECIMAL" precision="38" scale="2"/>
     </columns>
     <columns xmi:id="_f93TcNvjEeONdLAtWV4kVA" name="PRINCIPAL_AMOUNT">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_JCEQoNvkEeONdLAtWV4kVA" name="DECIMAL" primitiveType="DECIMAL" precision="38" scale="10"/>
@@ -1937,13 +1937,7 @@
     <columns xmi:id="_bgXX8NvkEeONdLAtWV4kVA" name="STATE">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_NeZckNvlEeONdLAtWV4kVA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
-    <columns xmi:id="_bibNcNvkEeONdLAtWV4kVA" name="ORG">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_OB4kINvlEeONdLAtWV4kVA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_bk8V8NvkEeONdLAtWV4kVA" name="LOGO">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Obog4NvlEeONdLAtWV4kVA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
-    </columns>
-    <columns xmi:id="_bnTGYNvkEeONdLAtWV4kVA" name="PLAN_ID">
+    <columns xmi:id="_bnTGYNvkEeONdLAtWV4kVA" name="EMI_PLAN_ID">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_QJ0hANvlEeONdLAtWV4kVA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
     <columns xmi:id="_bpp20NvkEeONdLAtWV4kVA" name="TRANSACTION_REF_NO">
