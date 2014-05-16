@@ -1921,6 +1921,9 @@
     <columns xmi:id="_z9Z8cdzSEeOHq5I-prR5Lw" name="EMI_PROC_FEE">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_2QKCMNzSEeOHq5I-prR5Lw" name="DECIMAL" primitiveType="DECIMAL" precision="38" scale="10"/>
     </columns>
+    <columns xmi:id="_fR-mgdzjEeO3raAyZ9FGsA" name="TXN_ID">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_hEqFENzjEeO3raAyZ9FGsA" name="INT" primitiveType="INTEGER"/>
+    </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_s2ADgNvjEeONdLAtWV4kVA" name="CARD_LOAN_DETAILS_PK" members="_fuI1YNvjEeONdLAtWV4kVA"/>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_Vu-oINvkEeONdLAtWV4kVA" name="CARD_LOANS" schema="_jnCS8NoJEeOw85thECwX_w">
