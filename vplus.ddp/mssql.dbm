@@ -6,7 +6,7 @@
       <details xmi:id="_jlh3EtoJEeOw85thECwX_w" key="ConnectionKey" value="emi"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg _ugSCQdqqEeOdi4XxPOBkFA _LxlEMdrOEeOfVZ1SxvgyJA _bTgosdvZEeONdLAtWV4kVA _CAI1ENvbEeONdLAtWV4kVA _Vu-oINvkEeONdLAtWV4kVA" database="_jlh3ENoJEeOw85thECwX_w"/>
+  <SQLSchema:Schema xmi:id="_jnCS8NoJEeOw85thECwX_w" name="dbo" indices="_jnCS8doJEeOw85thECwX_w _jnF9UNoJEeOw85thECwX_w _jnHygNoJEeOw85thECwX_w" tables="_jnC6ANoJEeOw85thECwX_w _jnF9UtoJEeOw85thECwX_w _jnHygtoJEeOw85thECwX_w _jnIZkNoJEeOw85thECwX_w _jnJnsNoJEeOw85thECwX_w _sdpAoNqgEeO7x6AqHbdJhg _ugSCQdqqEeOdi4XxPOBkFA _LxlEMdrOEeOfVZ1SxvgyJA _bTgosdvZEeONdLAtWV4kVA _CAI1ENvbEeONdLAtWV4kVA _Vu-oINvkEeONdLAtWV4kVA _AybJgd60EeOEo7k3-bWjCA" database="_jlh3ENoJEeOw85thECwX_w"/>
   <SQLConstraints:Index xmi:id="_jnCS8doJEeOw85thECwX_w" name="PK__EXBS__3214EC27BB981DEB" Schema="_jnCS8NoJEeOw85thECwX_w" clustered="true" unique="true" table="_jnC6ANoJEeOw85thECwX_w">
     <members xmi:id="_jnCS8toJEeOw85thECwX_w" column="_jnC6AdoJEeOw85thECwX_w"/>
   </SQLConstraints:Index>
@@ -1989,5 +1989,36 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_bwfpMNvlEeONdLAtWV4kVA" name="DATETIME" primitiveType="DATE"/>
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_37iYENvkEeONdLAtWV4kVA" name="CARD_LOANS_PK" members="_bV2KANvkEeONdLAtWV4kVA"/>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_AybJgd60EeOEo7k3-bWjCA" name="TRANSACTION_CODE_DETAILS" schema="_jnCS8NoJEeOw85thECwX_w">
+    <columns xmi:id="_JYrNoN60EeOEo7k3-bWjCA" name="ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_d9v0MN60EeOEo7k3-bWjCA" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_eGA_YN60EeOEo7k3-bWjCA" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
+    <columns xmi:id="_Jat1AN60EeOEo7k3-bWjCA" name="TRANSACTION_CODE">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_dAVwwN60EeOEo7k3-bWjCA" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_JcyRkN60EeOEo7k3-bWjCA" name="TRANSACTION_FLAG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cTUSsN60EeOEo7k3-bWjCA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JfBtQN60EeOEo7k3-bWjCA" name="TRANSACTION_DESCRIPTION">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Y9wsIN60EeOEo7k3-bWjCA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_JhLpYN60EeOEo7k3-bWjCA" name="DISABLED">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iFlzUN60EeOEo7k3-bWjCA" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_JjOQwN60EeOEo7k3-bWjCA" name="CREATED_AT">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_jAIwAN60EeOEo7k3-bWjCA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_JlStUN60EeOEo7k3-bWjCA" name="UPDATED_AT">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_j5zi8N60EeOEo7k3-bWjCA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_JniwEN60EeOEo7k3-bWjCA" name="CREATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_aBCuEN60EeOEo7k3-bWjCA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_JptTQN60EeOEo7k3-bWjCA" name="UPDATED_BY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_as2rMN60EeOEo7k3-bWjCA" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="5"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_eUYLgN60EeOEo7k3-bWjCA" name="TRANSACTION_CODE_DETAILS_PK" members="_JYrNoN60EeOEo7k3-bWjCA"/>
   </SQLTables:PersistentTable>
 </xmi:XMI>
