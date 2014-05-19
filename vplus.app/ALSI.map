@@ -100,10 +100,11 @@
                             <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/INSTALLMENT" var="INSTALLMENT"/>
                             <output path="ABNLSI-LS-USER6-AMT"/>
                             <test lang="xpath">$INSTALLMENT = 1</test>
-                            <move>
-                                <input path="$EMIPROCFEE/."/>
+                            <function ref="fn:number">
+                                <input path="$EMIPROCFEE/." var="EMIPROCFEE1"/>
                                 <output path="."/>
-                            </move>
+                                <param name="arg" value="round($EMIPROCFEE1 * 100)"/>
+                            </function>
                         </if>
                         <function ref="fn:number">
                             <input path="$ResultSet3/dbo/CARD_LOAN_DETAILS/RATE" var="RATE1"/>
