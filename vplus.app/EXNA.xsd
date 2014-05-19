@@ -9,17 +9,17 @@
 
 	<xsd:element dfdl:lengthKind="delimited" ibmSchExtn:docRoot="true" name="EXNA">
 		<xsd:complexType>
-			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;">
-                								<xsd:element dfdl:lengthKind="implicit" name="header">
+			<xsd:sequence dfdl:separator="">
+                								<xsd:element dfdl:initiator="" dfdl:lengthKind="implicit" dfdl:terminator="%NL;" name="header">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+						<xsd:sequence dfdl:terminator="">
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="HDR" name="IDENTIFIER" type="xsd:string"/>
 							<xsd:element dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="21040105" name="DATE" type="xsd:string"/>
                             													<xsd:element dfdl:length="999" name="FILLER" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-                <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+                <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="0" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
 							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:int"/>
