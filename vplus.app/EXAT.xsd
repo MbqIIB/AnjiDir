@@ -18,7 +18,7 @@
             </xsd:sequence>
           </xsd:complexType>
         </xsd:element>
-                <xsd:element dfdl:lengthKind="delimited" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+                <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="000" name="ORG" type="xsd:int"/>
@@ -83,10 +83,10 @@
                             <xsd:element dfdl:length="17" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" name="ORIG_PYMT" type="xsd:decimal"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="D" name="F4" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="STMT_FLAG" type="xsd:string"/>
-                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" dfdl:textPadKind="padChar" dfdl:useNilForDefault="yes" name="SOU_TXN_DT" nillable="true" type="xsd:date"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" dfdl:textPadKind="padChar" dfdl:useNilForDefault="yes" name="SOU_TXN_DT" nillable="true" type="xsd:string"/>
                             <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MUMBAI" name="C_CITY" type="xsd:string"/>
                             <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="IND" name="C_COUNTRY" type="xsd:string"/>
-                            <xsd:element dfdl:length="18" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" dfdl:useNilForDefault="yes" name="SOU_TXN_AM" nillable="true" type="xsd:decimal"/>
+                            <xsd:element dfdl:length="18" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0.###" dfdl:textPadKind="padChar" dfdl:useNilForDefault="yes" name="SOU_TXN_AM" nillable="true" type="xsd:string"/>
                             <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="INR" name="CURRY_CODE" type="xsd:string"/>
                             <xsd:element dfdl:length="23" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="body_value68" name="C_ARN" type="xsd:string"/>
                             <xsd:element dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="JJJJ" name="A_AQR_BIN" type="xsd:string"/>
@@ -94,7 +94,7 @@
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-                				                                <xsd:element dfdl:lengthKind="delimited" dfdl:terminator="%NL;" name="trailer"> 
+                				                                <xsd:element dfdl:lengthKind="implicit" dfdl:terminator="%NL;" name="trailer"> 
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
