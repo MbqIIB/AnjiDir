@@ -23,10 +23,6 @@
                     <output path="ABNLSI-ACCT-NBR"/>
                 </move>
                 <move>
-                    <input path="$ResultSet/dbo/CARD_TRANSACTIONS/MT_SI_ORG"/>
-                    <output path="ABNLSI-SI-ORG"/>
-                </move>
-                <move>
                     <input path="$ResultSet/dbo/CARD_TRANSACTIONS/MT_SI_NBR"/>
                     <output path="ABNLSI-SI-NBR"/>
                 </move>
@@ -135,6 +131,9 @@
                     <input path="$ResultSet/dbo/TRANSACTION_CODE_DETAILS/TRANSACTION_FLAG"/>
                     <output path="ABNLSI-REC-TYPE"/>
                 </move>
+                <assign value="1">
+                    <output path="ABNLSI-SI-ORG"/>
+                </assign>
             </foreach>
         </select>
         <function ref="fn:count">

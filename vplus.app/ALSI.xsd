@@ -10,7 +10,7 @@
 	<xsd:element dfdl:lengthKind="delimited" ibmSchExtn:docRoot="true" name="ALSI">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="%LF;%WSP*;">
-				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="" name="header">
+				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="%CR;" name="header">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="HDR" dfdl:length="3" dfdl:textNumberPattern="#E0" ibmDfdlExtn:sampleValue="000" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
@@ -19,7 +19,7 @@
                                                     </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" dfdl:terminator="%CR;" maxOccurs="unbounded" minOccurs="0" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="1" dfdl:length="3" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" ibmDfdlExtn:sampleValue="001" name="ABNLSI-ORG" type="xsd:string"/>
@@ -100,7 +100,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element dfdl:lengthKind="delimited" name="trailer"> 
+				<xsd:element dfdl:lengthKind="delimited" dfdl:terminator="" name="trailer"> 
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="TLR" dfdl:length="3" ibmDfdlExtn:sampleValue="999" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
