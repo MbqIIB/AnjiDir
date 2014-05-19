@@ -14,7 +14,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="HDR" dfdl:length="3" dfdl:textNumberPattern="#E0" ibmDfdlExtn:sampleValue="000" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
-							<xsd:element default="2010-12-31" dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
 							<xsd:element default="0000002" dfdl:length="7" dfdl:nilValueDelimiterPolicy="none" dfdl:terminator="" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
                                                     </xsd:sequence>
 					</xsd:complexType>
@@ -104,7 +104,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element default="TLR" dfdl:length="3" ibmDfdlExtn:sampleValue="999" name="ABNLSI-H-T-IDENTIFIER" type="xsd:string"/>
-							<xsd:element default="2010-12-31" dfdl:calendarPattern="MMddyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
+							<xsd:element default="2010-12-31" dfdl:calendarPattern="ddMMyyyy" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="ABNLSI-H-T-PROC-DATE" type="xsd:date"/>
 							<xsd:element default="0000001" dfdl:length="7" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0000001" name="ABNLSI-H-T-FILE-COUNT" type="xsd:integer"/>
                                                     </xsd:sequence>
 					</xsd:complexType>
