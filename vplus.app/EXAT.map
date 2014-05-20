@@ -13,7 +13,7 @@
         <foreach>
             <input path="$MessageAssembly/EXAT/body" var="body"/>
             <output path="$dbinsert/." var="dbinsert1"/>
-            <output path="$CARDTRANSACTIONS/db:update(fn:false(),fn:true(),db:where('ACCOUNT = ?1 AND AUTHCODE = ?2 AND TXN_DATE = ?3 AND AMOUNT  =  ?4','?1'=$body/ACCOUNT,'?2'=$body/AUTHCODE,'?3'=$body/TXN_DATE,'?4'=$body/AMOUNT),ID,ORG,ACCOUNT,LOGO,TXN_TYPE,TXN_DATE,TXN_CODE,AMOUNT,AUTHCODE,MT_SI_ORG,MT_SI_NBR,PLAN_NO,REF_NBR,MERCHANT,CITY,RPT_DESC,CARD_NBR,CREATED_AT,UPDATED_AT,LOAN_STATUS)" var="dbupdate"/>
+            <output path="$CARDTRANSACTIONS/db:update(fn:false(),fn:true(),db:where('ACCOUNT = ?1 AND AUTHCODE = ?2 AND TXN_DATE = ?3 AND AMOUNT  =  ?4','?1'=$body/ACCOUNT,'?2'=$body/AUTHCODE,'?3'=$body/TXN_DATE,'?4'=$body/AMOUNT,'?'=$body/TXN_CODE),ID,ORG,ACCOUNT,LOGO,TXN_TYPE,TXN_DATE,TXN_CODE,AMOUNT,AUTHCODE,MT_SI_ORG,MT_SI_NBR,PLAN_NO,REF_NBR,MERCHANT,CITY,RPT_DESC,CARD_NBR,CREATED_AT,UPDATED_AT,LOAN_STATUS)" var="dbupdate"/>
             <insert ref="dbinsert">
                 <input path="$body/."/>
                 <output path="$dbinsert1/."/>
@@ -89,54 +89,54 @@
                 </move>
             </insert>
             <update ref="dbupdate">
-                <input path="$body/."/>
+                <input path="$body/." var="body2"/>
                 <output path="$dbupdate/."/>
                 <move>
-                    <input path="ORG"/>
+                    <input path="$body/ORG"/>
                     <output path="ORG"/>
                 </move>
                 <move>
-                    <input path="ACCOUNT"/>
+                    <input path="$body/ACCOUNT"/>
                     <output path="ACCOUNT"/>
                 </move>
                 <move>
-                    <input path="LOGO"/>
+                    <input path="$body/LOGO"/>
                     <output path="LOGO"/>
                 </move>
                 <move>
-                    <input path="TYPE"/>
+                    <input path="$body/TYPE"/>
                     <output path="TXN_TYPE"/>
                 </move>
                 <move>
-                    <input path="TXN_DATE"/>
+                    <input path="$body/TXN_DATE"/>
                     <output path="TXN_DATE"/>
                 </move>
                 <move>
-                    <input path="AMOUNT"/>
+                    <input path="$body/AMOUNT"/>
                     <output path="AMOUNT"/>
                 </move>
                 <move>
-                    <input path="AUTHCODE"/>
+                    <input path="$body/AUTHCODE"/>
                     <output path="AUTHCODE"/>
                 </move>
                 <move>
-                    <input path="MT_SI_ORG"/>
+                    <input path="$body/MT_SI_ORG"/>
                     <output path="MT_SI_ORG"/>
                 </move>
                 <move>
-                    <input path="MT_SI_NBR"/>
+                    <input path="$body/MT_SI_NBR"/>
                     <output path="MT_SI_NBR"/>
                 </move>
                 <move>
-                    <input path="PLAN"/>
+                    <input path="$body/PLAN"/>
                     <output path="PLAN_NO"/>
                 </move>
                 <move>
-                    <input path="MERCHANT"/>
+                    <input path="$body/MERCHANT"/>
                     <output path="MERCHANT"/>
                 </move>
                 <move>
-                    <input path="CITY"/>
+                    <input path="$body/CITY"/>
                     <output path="CITY"/>
                 </move>
                 <function ref="fn:current-dateTime">
@@ -146,19 +146,19 @@
                     <output path="UPDATED_AT"/>
                 </function>
                 <move>
-                    <input path="TXN_CODE"/>
+                    <input path="$body/TXN_CODE"/>
                     <output path="TXN_CODE"/>
                 </move>
                 <move>
-                    <input path="CARD_NBR"/>
+                    <input path="$body/CARD_NBR"/>
                     <output path="CARD_NBR"/>
                 </move>
                 <move>
-                    <input path="REF_NBR"/>
+                    <input path="$body/REF_NBR"/>
                     <output path="REF_NBR"/>
                 </move>
                 <move>
-                    <input path="RPT_DESC"/>
+                    <input path="$body/RPT_DESC"/>
                     <output path="RPT_DESC"/>
                 </move>
             </update>
