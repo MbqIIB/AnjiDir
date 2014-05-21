@@ -7,20 +7,20 @@
 		</xsd:appinfo>
 	</xsd:annotation>
 
-	<xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="EXEE">
+	<xsd:element dfdl:lengthKind="delimited" ibmSchExtn:docRoot="true" name="EXEE">
 		<xsd:complexType>
-			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;">
-				<xsd:element dfdl:lengthKind="implicit" name="header">
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="%NL;" name="header">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+						<xsd:sequence dfdl:terminator="">
 							<xsd:element default="head_valu1" dfdl:length="3" ibmDfdlExtn:sampleValue="HDR" name="IDENTIFIER" type="xsd:string"/>
 							<xsd:element dfdl:calendarPattern="yyyyMMdd" dfdl:calendarPatternKind="explicit" dfdl:length="8" name="DATE" type="xsd:date"/>
 													</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+				<xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="0" name="body">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separator="">
+						<xsd:sequence dfdl:separator="" dfdl:terminator="">
 							<xsd:element dfdl:length="3" ibmDfdlExtn:sampleValue="001" name="ORG" type="xsd:string"/>
 							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CARD_NO" type="xsd:string"/>
 							<xsd:element dfdl:length="4" dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="1234" name="CARD_SEQ" type="xsd:int"/>
@@ -156,15 +156,15 @@
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="" name="trailer"> 
+				<xsd:element dfdl:lengthKind="implicit" dfdl:outputNewLine="%CR;%LF;" dfdl:terminator="%NL;" name="trailer"> 
 					<xsd:complexType>
-						<xsd:sequence dfdl:terminator="%NL;">
+						<xsd:sequence dfdl:terminator="">
 							<xsd:element default="trailer_valu1" dfdl:length="3" ibmDfdlExtn:sampleValue="TLR" name="IDENTIFIER" type="xsd:string"/>
 							<xsd:element dfdl:length="9" dfdl:textNumberPattern="#0" name="COUNT" type="xsd:int"/>
-													</xsd:sequence>
+                            													                        </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-			</xsd:sequence>
+                			            </xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 

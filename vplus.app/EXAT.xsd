@@ -9,8 +9,8 @@
 
 	<xsd:element dfdl:lengthKind="delimited" dfdl:ref="recFixLengthFieldsFmt:RecordFixLengthFieldsFormat" dfdl:terminator="" ibmSchExtn:docRoot="true" name="EXAT">
 		<xsd:complexType>
-			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;">
-                				<xsd:element dfdl:lengthKind="implicit" name="header">
+			<xsd:sequence dfdl:separator="">
+                				<xsd:element dfdl:lengthKind="implicit" dfdl:terminator="%NL;" name="header">
           <xsd:complexType>
             <xsd:sequence>
               <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="HDR" name="IDENTIFIER" type="xsd:string"/>
@@ -18,7 +18,7 @@
             </xsd:sequence>
           </xsd:complexType>
         </xsd:element>
-                <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+                <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="0" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="000" name="ORG" type="xsd:int"/>
