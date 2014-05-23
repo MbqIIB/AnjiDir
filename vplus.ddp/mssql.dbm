@@ -1985,8 +1985,11 @@
     <columns xmi:id="_ch7ioNvkEeONdLAtWV4kVA" name="CREATED_AT">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_bJ0DsNvlEeONdLAtWV4kVA" name="DATETIME" primitiveType="DATE"/>
     </columns>
-    <columns xmi:id="_cnqXMNvkEeONdLAtWV4kVA" name="UPDATED_AT">
+    <columns xmi:id="_cnqXMNvkEeONdLAtWV4kVA" name="UPDATED_AT" defaultValue="">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_bwfpMNvlEeONdLAtWV4kVA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_da_a0OI1EeOLC741qk1D9g" name="POSTING_DATE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_fkYwQOI1EeOLC741qk1D9g" name="DATE"/>
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_37iYENvkEeONdLAtWV4kVA" name="CARD_LOANS_PK" members="_bV2KANvkEeONdLAtWV4kVA"/>
   </SQLTables:PersistentTable>
