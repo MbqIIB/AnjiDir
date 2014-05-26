@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj16/EXNA.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/vplus.app/icons/full/obj30/EXNA.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="112,210" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3NAEXT.TXT" processedFileAction="moveToArchiveWithTimestamp" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXNAFormat}:EXNA">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="112,210" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3NAEXT.TXT" processedFileAction="moveToArchiveWithTimestamp" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXNAFormat}:EXNA" recordDetection="parsedRecordSequence">
         <translation xmi:type="utility:ConstantString" string="EXNA_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="420,206" mappingExpression="msl://{default}#EXNA">
