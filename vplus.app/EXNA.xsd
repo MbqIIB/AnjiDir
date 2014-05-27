@@ -22,64 +22,64 @@
                 <xsd:element dfdl:lengthKind="implicit" dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="0" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
-							<xsd:element dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:int"/>
-							<xsd:element dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CUST_NBR" type="xsd:string"/>
-							<xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Mr." name="TITLE" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Jagdish Singh" name="CUST_NAME" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="GENDER" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="IND" name="NATIONALITY" type="xsd:string"/>
-                            <xsd:element dfdl:length="15" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="GEETA" name="MOTH_NAME" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="MAR_STATUS" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="JYOTI" name="SPOUS_NAME" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="201-Mahada" name="RES_ADD1" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="New Colony" name="RES_ADD2" type="xsd:string"/>
-                            <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MUMBAI" name="RES_CITY" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MH" name="RES_STATE" type="xsd:string"/>
-                            <xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="400064" name="RES_PIN" type="xsd:string"/>
-                            <xsd:element dfdl:length="60" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="xyz@gmail.com" name="RES_EMAIL" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-917382491" name="RES_PH1" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="9876598765" name="MOBILE1" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-91287364" name="FAX_PH1" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="201-Mahada" name="PERM_ADDR1" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NEW COLONY" name="PERM_ADDR2" type="xsd:string"/>
-                            <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="PHASE 2" name="PERM_ADDR3" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-19328764" name="PERM_PH" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NOBODY" name="EMPLOYER" type="xsd:string"/>
-                            <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MANAGER" name="DESIGNATION" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NOC" name="OFF_ADD1" type="xsd:string"/>
-                            <xsd:element dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MALAD" name="OFF_ADD2" type="xsd:string"/>
-                            <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MUMBAI" name="OFF_CITY" type="xsd:string"/>
-                            <xsd:element dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="4000064" name="OFF_PIN" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-13241234" name="EMP_PH2" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-91873264" name="FAX_PH2" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="91-01398247123" name="MOBILE2" type="xsd:string"/>
-                            <xsd:element dfdl:length="7" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2345" name="OFF_EXTN" type="xsd:string"/>
-                            <xsd:element dfdl:length="60" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="xyz@gmail.com" name="EMAIL2" type="xsd:string"/>
-                            <xsd:element default="" dfdl:length="20" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ABN_CUSTNO" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022" name="C_LOGO" type="xsd:string"/>
-                            <xsd:element dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="C_ACCOUNT_NUMBER" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="C_STATEMENT_FLAG" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Y" name="C_LETTER_FLAG" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MH" name="C_REGIN_CODE" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MM" name="C_CITY_CODE" type="xsd:string"/>
-                            <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="DRH12345" name="C_DRIVING_LICENSE_N" type="xsd:string"/>
-                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="D_DATE_OF_BIRTH" type="xsd:date"/>
-                                                                                    <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="C_MARITAL_STATUS" type="xsd:string"/>
-                            <xsd:element dfdl:length="15" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ADAD" name="C_SSAN" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="C_RECORD_TYPE" type="xsd:string"/>
-                            <xsd:element dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="I" name="CARD_VIP" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_1" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="G" name="USER_2" type="xsd:string"/>
-                            <xsd:element dfdl:length="7" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_3" type="xsd:string"/>
-                            <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_4" type="xsd:string"/>
-                                                        <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="A" name="USER_6" type="xsd:string"/>
-                            <xsd:element dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_7" type="xsd:string"/>
-                                                        <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_9" type="xsd:string"/>
-                            <xsd:element dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="K" name="USER_10" type="xsd:string"/>
-                            <xsd:element dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="USER_11" type="xsd:string"/>
-                                                        <xsd:element dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_13" type="xsd:string"/>
-                                                    <xsd:element dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="AAAPNEPR12" name="PAN_NUMBER" type="xsd:string"/>
-                            <xsd:element dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="KAR" name="STATE_PROV" type="xsd:string"/>
+							<xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:int"/>
+							<xsd:element dfdl:escapeSchemeRef="" dfdl:length="19" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" name="CUST_NBR" type="xsd:string"/>
+							<xsd:element dfdl:escapeSchemeRef="" dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Mr." name="TITLE" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Jagdish Singh" name="CUST_NAME" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="GENDER" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="IND" name="NATIONALITY" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="15" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="GEETA" name="MOTH_NAME" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="MAR_STATUS" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="JYOTI" name="SPOUS_NAME" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="201-Mahada" name="RES_ADD1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="New Colony" name="RES_ADD2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MUMBAI" name="RES_CITY" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MH" name="RES_STATE" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="400064" name="RES_PIN" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="60" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="xyz@gmail.com" name="RES_EMAIL" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-917382491" name="RES_PH1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="9876598765" name="MOBILE1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-91287364" name="FAX_PH1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="201-Mahada" name="PERM_ADDR1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NEW COLONY" name="PERM_ADDR2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="PHASE 2" name="PERM_ADDR3" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-19328764" name="PERM_PH" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NOBODY" name="EMPLOYER" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MANAGER" name="DESIGNATION" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="NOC" name="OFF_ADD1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="40" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MALAD" name="OFF_ADD2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MUMBAI" name="OFF_CITY" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="10" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="4000064" name="OFF_PIN" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-13241234" name="EMP_PH2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022-91873264" name="FAX_PH2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="91-01398247123" name="MOBILE2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="7" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="2345" name="OFF_EXTN" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="60" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="xyz@gmail.com" name="EMAIL2" type="xsd:string"/>
+                            <xsd:element default="" dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ABN_CUSTNO" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="022" name="C_LOGO" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="19" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="C_ACCOUNT_NUMBER" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="N" name="C_STATEMENT_FLAG" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Y" name="C_LETTER_FLAG" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MH" name="C_REGIN_CODE" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="MM" name="C_CITY_CODE" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="DRH12345" name="C_DRIVING_LICENSE_N" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:escapeSchemeRef="" dfdl:length="10" dfdl:textPadKind="padChar" name="D_DATE_OF_BIRTH" type="xsd:date"/>
+                                                                                    <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="M" name="C_MARITAL_STATUS" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="15" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="ADAD" name="C_SSAN" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="C_RECORD_TYPE" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="5" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="I" name="CARD_VIP" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_1" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="G" name="USER_2" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="7" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_3" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_4" type="xsd:string"/>
+                                                        <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="A" name="USER_6" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="2" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_7" type="xsd:string"/>
+                                                        <xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_9" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="K" name="USER_10" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="0" name="USER_11" type="xsd:string"/>
+                                                        <xsd:element dfdl:escapeSchemeRef="" dfdl:length="30" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue=" " name="USER_13" type="xsd:string"/>
+                                                    <xsd:element dfdl:escapeSchemeRef="" dfdl:length="20" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="AAAPNEPR12" name="PAN_NUMBER" type="xsd:string"/>
+                            <xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="KAR" name="STATE_PROV" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
