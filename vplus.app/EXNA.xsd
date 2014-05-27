@@ -14,7 +14,7 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:terminator="">
 														<xsd:element dfdl:length="8" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="21040105" name="DATE" type="xsd:string"/>
-                            													<xsd:element dfdl:length="999" name="FILLER" type="xsd:string"/>
+                            													<xsd:element dfdl:length="999" dfdl:textPadKind="padChar" name="FILLER" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
@@ -26,7 +26,7 @@
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-                                  <xsd:element dfdl:length="1008" dfdl:lengthKind="explicit" dfdl:terminator="" maxOccurs="1" minOccurs="1" name="body">
+                                  <xsd:element dfdl:length="1010" dfdl:lengthKind="explicit" dfdl:terminator="" maxOccurs="1" minOccurs="1" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="">
 							<xsd:element dfdl:escapeSchemeRef="" dfdl:length="3" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="ORG" type="xsd:int"/>
