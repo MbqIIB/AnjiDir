@@ -11,10 +11,11 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="403,157" mappingExpression="msl://{default}#EXBS">
         <translation xmi:type="utility:ConstantString" string="EXBS_TO_DB"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="112,161" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3BSEXT.TXT" processedFileAction="moveToArchiveWithTimestamp" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXBSFormat}:EXBS" recordDetection="parsedRecordSequence" customDelimiter="0D0A">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="112,161" inputDirectory="/home/iibadm/IBM/IntegrationToolkit90/workspace/QSamples/SampleFiles" filenamePattern="A3BSEXT.TXT" processedFileAction="moveToArchiveWithTimestamp" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/vplus/EXBSFormat}:EXBS" recordDetection="delimited" customDelimiter="0D0A">
         <translation xmi:type="utility:ConstantString" string="EXBS_INPUT_FILE"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.EOD" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
