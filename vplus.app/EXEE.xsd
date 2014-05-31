@@ -26,7 +26,7 @@
                     </xsd:complexType>
                 </xsd:element>
       
-        <xsd:element dfdl:length="1483" dfdl:lengthKind="explicit" dfdl:terminator="" name="body">
+        <xsd:element dfdl:length="1483" dfdl:lengthKind="explicit" dfdl:occursCountKind="implicit" dfdl:terminator="" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="" dfdl:terminator="">
 							<xsd:element dfdl:length="3" ibmDfdlExtn:sampleValue="001" name="ORG" type="xsd:string"/>
