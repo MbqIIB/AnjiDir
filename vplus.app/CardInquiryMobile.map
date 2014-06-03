@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/Input.xsd" var="var"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CUSTOMER_PROFILES,ACCOUNT_PROFILES,CREDIT_CARDS))" var="DESK"/>
+    <output path="/CardInquiry.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="CardInquiryMobile">
+        <input path="$var/mb:msg(id,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CUSTOMER_PROFILES/ID,dbo/CUSTOMER_PROFILES/CUSTOMER_NO,dbo/CUSTOMER_PROFILES/CUST_NAME,dbo/CUSTOMER_PROFILES/EMAIL,dbo/CUSTOMER_PROFILES/MOBILE_NO,dbo/CUSTOMER_PROFILES/PAN_NO,dbo/CUSTOMER_PROFILES/ADDRESS1,dbo/CUSTOMER_PROFILES/ADDRESS2,dbo/CUSTOMER_PROFILES/CITY,dbo/CUSTOMER_PROFILES/STATE,dbo/CUSTOMER_PROFILES/COUNTRY,dbo/CUSTOMER_PROFILES/PIN_CODE,dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH,dbo/CUSTOMER_PROFILES/CREATED_BY,dbo/CUSTOMER_PROFILES/UPDATED_BY,dbo/CUSTOMER_PROFILES/CREATED_AT,dbo/CUSTOMER_PROFILES/UPDATED_AT,dbo/ACCOUNT_PROFILES/ID,dbo/ACCOUNT_PROFILES/ACCOUNT_NO,dbo/ACCOUNT_PROFILES/CUSTOMER_NO,dbo/ACCOUNT_PROFILES/SOL_ID,dbo/ACCOUNT_PROFILES/ACCOUNT_STATUS,dbo/ACCOUNT_PROFILES/DATE_CLOSED,dbo/ACCOUNT_PROFILES/CREDIT_LIMIT,dbo/ACCOUNT_PROFILES/TEMPORARY_LIMIT,dbo/ACCOUNT_PROFILES/BILLING_CYCLE,dbo/ACCOUNT_PROFILES/PD_CYCLE,dbo/ACCOUNT_PROFILES/BLOCK_CODE1,dbo/ACCOUNT_PROFILES/BLOCK_CODE2,dbo/ACCOUNT_PROFILES/CREATED_BY,dbo/ACCOUNT_PROFILES/UPDATED_BY,dbo/ACCOUNT_PROFILES/CREATED_AT,dbo/ACCOUNT_PROFILES/UPDATED_AT,dbo/CREDIT_CARDS/ID,dbo/CREDIT_CARDS/CREDIT_CARD_NO,dbo/CREDIT_CARDS/ACCOUNT_NO,dbo/CREDIT_CARDS/CREATED_BY,dbo/CREDIT_CARDS/UPDATED_BY,dbo/CREDIT_CARDS/CREATED_AT,dbo/CREDIT_CARDS/UPDATED_AT,dbo/CREDIT_CARDS/CARD_EXPIRY_DATE,dbo/CREDIT_CARDS/CARD_FLAG),db:where('dbo.CREDIT_CARDS.ACCOUNT_NO = dbo.ACCOUNT_PROFILES.ACCOUNT_NO AND &#10;dbo.ACCOUNT_PROFILES.CUSTOMER_NO = dbo.CUSTOMER_PROFILES.CUSTOMER_NO AND &#10;dbo.CUSTOMER_PROFILES.MOBILE_NO = ? ','?'=$MessageAssembly/id))" var="dbselect"/>
+        <output path="mb:msg(cards,assembly,XMLNSC,Properties)"/>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet"/>
+            <output path="cards"/>
+            <foreach>
+                <input path="." var="ResultSet"/>
+                <output path="."/>
+                <move>
+                    <input path="$ResultSet/dbo/CREDIT_CARDS/CREDIT_CARD_NO" var="CREDITCARDNO"/>
+                    <output path="card/card_number"/>
+                </move>
+            </foreach>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
