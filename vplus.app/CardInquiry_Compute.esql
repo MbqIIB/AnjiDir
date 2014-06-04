@@ -21,14 +21,13 @@ CREATE COMPUTE MODULE CardInquiry_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		
-		IF InputLocalEnvironment.HTTP.Input.QueryString.mobile IS NOT NULL AND LENGTH(InputLocalEnvironment.HTTP.Input.QueryString.mobile) > 0 THEN
-		  SET OutputRoot.XMLNSC.id=InputLocalEnvironment.HTTP.Input.QueryString.mobile;
-		  PROPAGATE TO LABEL 'mobile';
+		IF InputLocalEnvironment.HTTP.Input.QueryString.mobile IS NOT NULL AND LENGTH(InputLocalEnvironment.HTTP.Input.QueryString.mobile) > 0 THEN		
+		  	SET OutputRoot.XMLNSC.id=InputLocalEnvironment.HTTP.Input.QueryString.mobile;
+		  	PROPAGATE TO LABEL 'mobile';
 		ELSE
-		  SET OutputRoot.XMLNSC.id=InputLocalEnvironment.HTTP.Input.QueryString.card;
-		  PROPAGATE TO LABEL 'card';	
+		  SET OutputRoot.XMLNSC.id=InputLocalEnvironment.HTTP.Input.QueryString.card_number;
+		  PROPAGATE TO LABEL 'card_number';	
 		END IF;
-		
 		
 		--SET OutputRoot.XMLNSC.id=InputLocalEnvironment.HTTP.Input.QueryString.id;
 		--PROPAGATE TO LABEL 'mobile';

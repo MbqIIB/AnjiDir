@@ -14,22 +14,22 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="270,299" mappingExpression="msl://{default}#CardInquiryMobile">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
-      <nodes xmi:type="ComIbmHTTPHeader.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="422,196">
+      <nodes xmi:type="ComIbmHTTPHeader.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="435,193">
         <translation xmi:type="utility:ConstantString" string="HTTP Header"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="566,200" validateMaster="none">
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="558,197" validateMaster="none">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="124,192" computeExpression="esql://routine/#CardInquiry_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="140,299" labelName="mobile">
-        <translation xmi:type="utility:ConstantString" string="Label"/>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="134,299" labelName="mobile">
+        <translation xmi:type="utility:ConstantString" string="MOBILE"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="137,86" labelName="card">
-        <translation xmi:type="utility:ConstantString" string="Label1"/>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="137,86" labelName="card_number">
+        <translation xmi:type="utility:ConstantString" string="CARD"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="255,86" mappingExpression="msl://{default}#CardInquiryCardNo">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="280,86" mappingExpression="msl://{default}#CardInquiryCardNo">
         <translation xmi:type="utility:ConstantString" string="Mapping1"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

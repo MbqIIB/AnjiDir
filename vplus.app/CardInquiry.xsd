@@ -45,9 +45,17 @@
         <xsd:element name="next_billing_date" type="xsd:date"/> 
       </xsd:sequence>
   </xsd:complexType>
-   <xsd:complexType name="cardsType">
+  <xsd:complexType name="exceptionType">
+      <xsd:sequence>
+        <xsd:element name="message" type="xsd:string"/>
+        <xsd:element name="state" type="xsd:string"/> 
+        <xsd:element name="error_code" type="xsd:int"/>    
+      </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="cardsType">
       <xsd:sequence>
         <xsd:element name="card" type="cardType" minOccurs="1" maxOccurs="unbounded"/>
+        <xsd:element name="exception" type="exceptionType" minOccurs="0" maxOccurs="unbounded"/>
       </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="cards" type="cardsType"></xsd:element>

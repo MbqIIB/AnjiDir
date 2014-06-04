@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>vplus.ddp</project>
+		<project>vplus.appJava</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

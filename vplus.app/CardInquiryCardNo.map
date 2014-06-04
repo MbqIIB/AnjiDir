@@ -1,23 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/Input.xsd" var="var"/>
     <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CUSTOMER_PROFILES,ACCOUNT_PROFILES,CREDIT_CARDS))" var="DESK"/>
-    <output path="/CardInquiry.xsd"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbexception.xsd" var="var4"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_TRANSACTIONS))" var="DESK1"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_TRANSACTIONS))" var="DESK2"/>
+    <output path="/CardInquiry.xsd" var="var5"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="CardInquiryCardNo">
         <input path="$var/mb:msg(id,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CUSTOMER_PROFILES/ID,dbo/CUSTOMER_PROFILES/CUSTOMER_NO,dbo/CUSTOMER_PROFILES/CUST_NAME,dbo/CUSTOMER_PROFILES/EMAIL,dbo/CUSTOMER_PROFILES/MOBILE_NO,dbo/CUSTOMER_PROFILES/PAN_NO,dbo/CUSTOMER_PROFILES/ADDRESS1,dbo/CUSTOMER_PROFILES/ADDRESS2,dbo/CUSTOMER_PROFILES/CITY,dbo/CUSTOMER_PROFILES/STATE,dbo/CUSTOMER_PROFILES/COUNTRY,dbo/CUSTOMER_PROFILES/PIN_CODE,dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH,dbo/CUSTOMER_PROFILES/CREATED_BY,dbo/CUSTOMER_PROFILES/UPDATED_BY,dbo/CUSTOMER_PROFILES/CREATED_AT,dbo/CUSTOMER_PROFILES/UPDATED_AT,dbo/ACCOUNT_PROFILES/ID,dbo/ACCOUNT_PROFILES/ACCOUNT_NO,dbo/ACCOUNT_PROFILES/CUSTOMER_NO,dbo/ACCOUNT_PROFILES/SOL_ID,dbo/ACCOUNT_PROFILES/ACCOUNT_STATUS,dbo/ACCOUNT_PROFILES/DATE_CLOSED,dbo/ACCOUNT_PROFILES/CREDIT_LIMIT,dbo/ACCOUNT_PROFILES/TEMPORARY_LIMIT,dbo/ACCOUNT_PROFILES/BILLING_CYCLE,dbo/ACCOUNT_PROFILES/PD_CYCLE,dbo/ACCOUNT_PROFILES/BLOCK_CODE1,dbo/ACCOUNT_PROFILES/BLOCK_CODE2,dbo/ACCOUNT_PROFILES/CREATED_BY,dbo/ACCOUNT_PROFILES/UPDATED_BY,dbo/ACCOUNT_PROFILES/CREATED_AT,dbo/ACCOUNT_PROFILES/UPDATED_AT,dbo/CREDIT_CARDS/ID,dbo/CREDIT_CARDS/CREDIT_CARD_NO,dbo/CREDIT_CARDS/ACCOUNT_NO,dbo/CREDIT_CARDS/CREATED_BY,dbo/CREDIT_CARDS/UPDATED_BY,dbo/CREDIT_CARDS/CREATED_AT,dbo/CREDIT_CARDS/UPDATED_AT,dbo/CREDIT_CARDS/CARD_EXPIRY_DATE,dbo/CREDIT_CARDS/CARD_FLAG),db:where('dbo.CREDIT_CARDS.ACCOUNT_NO = dbo.ACCOUNT_PROFILES.ACCOUNT_NO AND &#10;dbo.ACCOUNT_PROFILES.CUSTOMER_NO = dbo.CUSTOMER_PROFILES.CUSTOMER_NO AND &#10;dbo.CREDIT_CARDS.CREDIT_CARD_NO =  ? ','?'=$MessageAssembly/id))" var="dbselect"/>
-        <output path="mb:msg(cards,assembly,XMLNSC,Properties)"/>
-        <select ref="dbselect">
-            <input path="$dbselect/ResultSet"/>
-            <output path="cards"/>
-            <foreach>
-                <input path="."/>
-                <output path="."/>
-                <move>
-                    <input path="dbo/CREDIT_CARDS/CREDIT_CARD_NO"/>
-                    <output path="card/card_number"/>
-                </move>
-            </foreach>
-        </select>
+        <input path="$DESK/db:select(fn:true(),ResultSet(dbo/CUSTOMER_PROFILES/CUSTOMER_NO,dbo/CUSTOMER_PROFILES/CUST_NAME,dbo/CUSTOMER_PROFILES/EMAIL,dbo/CUSTOMER_PROFILES/MOBILE_NO,dbo/CUSTOMER_PROFILES/PAN_NO,dbo/CUSTOMER_PROFILES/ADDRESS1,dbo/CUSTOMER_PROFILES/ADDRESS2,dbo/CUSTOMER_PROFILES/CITY,dbo/CUSTOMER_PROFILES/STATE,dbo/CUSTOMER_PROFILES/COUNTRY,dbo/CUSTOMER_PROFILES/PIN_CODE,dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH,dbo/ACCOUNT_PROFILES/CREDIT_LIMIT,dbo/CREDIT_CARDS/CREDIT_CARD_NO),db:where('dbo.ACCOUNT_PROFILES.ACCOUNT_NO = dbo.CREDIT_CARDS.ACCOUNT_NO  AND &#10;dbo.CUSTOMER_PROFILES.CUSTOMER_NO = dbo.ACCOUNT_PROFILES.CUSTOMER_NO AND &#10;dbo.CREDIT_CARDS.CREDIT_CARD_NO = ?1','?1'=$MessageAssembly/id))" var="dbselect"/>
+        <output path="$var5/mb:msg(cards,assembly,XMLNSC,Properties)" var="MessageAssembly5"/>
+        <transaction>
+            <select ref="dbselect">
+                <input path="$dbselect/ResultSet"/>
+                <output path="$MessageAssembly5/cards"/>
+                <foreach>
+                    <input path="." var="ResultSet4"/>
+                    <input path="$DESK1/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT),db:where('dbo.CARD_TRANSACTIONS.ID = (SELECT MAX (dbo.CARD_TRANSACTIONS.ID) FROM  dbo.CARD_TRANSACTIONS WHERE dbo.CARD_TRANSACTIONS.CARD_NBR =  ?1 )','?1'=$ResultSet4/dbo/CREDIT_CARDS/CREDIT_CARD_NO))" var="dbselect1"/>
+                    <input path="$DESK2/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT),db:where('dbo.CARD_TRANSACTIONS.ID = (SELECT MAX (dbo.CARD_TRANSACTIONS.ID) FROM  dbo.CARD_TRANSACTIONS WHERE dbo.CARD_TRANSACTIONS.CARD_NBR = ?  )','?'=$ResultSet4/dbo/CREDIT_CARDS/CREDIT_CARD_NO))" var="dbselect2"/>
+                    <output path="card"/>
+                    <move>
+                        <input path="$ResultSet4/dbo/CREDIT_CARDS/CREDIT_CARD_NO" var="CREDITCARDNO1"/>
+                        <output path="card_number"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/CUST_NAME"/>
+                        <output path="embossed_name"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH"/>
+                        <output path="customer/date_of_birth"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/ADDRESS1"/>
+                        <output path="customer/address/address1"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/ADDRESS2"/>
+                        <output path="customer/address/address2"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/CITY"/>
+                        <output path="customer/address/city"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/STATE"/>
+                        <output path="customer/address/state"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/COUNTRY"/>
+                        <output path="customer/address/country"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/PIN_CODE"/>
+                        <output path="customer/address/pin_code"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/MOBILE_NO"/>
+                        <output path="customer/mobile1"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet4/dbo/CUSTOMER_PROFILES/MOBILE_NO"/>
+                        <output path="customer/mobile2"/>
+                    </move>
+                    <assign value="false">
+                        <output path="cash_withdrawal_flag"/>
+                    </assign>
+                    <assign>
+                        <output path="current_balance"/>
+                    </assign>
+                    <move>
+                        <input path="$ResultSet4/dbo/ACCOUNT_PROFILES/CREDIT_LIMIT"/>
+                        <output path="credit_limit"/>
+                    </move>
+                    <assign value="2014-06-26">
+                        <output path="next_billing_date"/>
+                    </assign>
+                    <select ref="dbselect1">
+                        <input path="$dbselect1/ResultSet[1]"/>
+                        <output path="last_payment"/>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_DATE"/>
+                            <output path="txn_date"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/AMOUNT"/>
+                            <output path="amount"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_CODE"/>
+                            <output path="txn_code"/>
+                        </move>
+                    </select>
+                    <select ref="dbselect2">
+                        <input path="$dbselect2/ResultSet[1]"/>
+                        <output path="last_transaction"/>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_DATE"/>
+                            <output path="txn_date"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_CODE"/>
+                            <output path="txn_code"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/AMOUNT"/>
+                            <output path="amount"/>
+                        </move>
+                    </select>
+                    <assign value="4343542005328462">
+                        <output path="add_on_cards/card_number"/>
+                    </assign>
+                    <assign value="SHEELA">
+                        <output path="customer/mother_name"/>
+                    </assign>
+                </foreach>
+            </select>
+            <failure>
+                <input path="$var4/DBExceptions"/>
+                <output path="$MessageAssembly5/cards"/>
+                <foreach>
+                    <input path="DBException"/>
+                    <output path="exception"/>
+                    <move>
+                        <input path="Message"/>
+                        <output path="message"/>
+                    </move>
+                    <move>
+                        <input path="SQLState"/>
+                        <output path="state"/>
+                    </move>
+                    <move>
+                        <input path="ErrorCode"/>
+                        <output path="error_code"/>
+                    </move>
+                </foreach>
+            </failure>
+        </transaction>
     </mappingDeclaration>
 </mappingRoot>
