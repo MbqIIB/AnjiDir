@@ -304,51 +304,51 @@
                 <input path="$body/." var="body2"/>
                 <output path="$dbupdate/."/>
                 <move>
-                    <input path="$body/ORG"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/ORG"/>
                     <output path="ORG"/>
                 </move>
                 <move>
-                    <input path="$body/ACCOUNT"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/ACCOUNT"/>
                     <output path="ACCOUNT"/>
                 </move>
                 <move>
-                    <input path="$body/LOGO"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/LOGO"/>
                     <output path="LOGO"/>
                 </move>
                 <move>
-                    <input path="$body/TYPE"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/TYPE"/>
                     <output path="TXN_TYPE"/>
                 </move>
                 <move>
-                    <input path="$body/TXN_DATE"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/TXN_DATE"/>
                     <output path="TXN_DATE"/>
                 </move>
                 <move>
-                    <input path="$body/AMOUNT"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/AMOUNT"/>
                     <output path="AMOUNT"/>
                 </move>
                 <move>
-                    <input path="$body/AUTHCODE"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/AUTHCODE"/>
                     <output path="AUTHCODE"/>
                 </move>
                 <move>
-                    <input path="$body/MT_SI_ORG"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/MT_SI_ORG"/>
                     <output path="MT_SI_ORG"/>
                 </move>
                 <move>
-                    <input path="$body/MT_SI_NBR"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/MT_SI_NBR"/>
                     <output path="MT_SI_NBR"/>
                 </move>
                 <move>
-                    <input path="$body/PLAN"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/PLAN"/>
                     <output path="PLAN_NO"/>
                 </move>
                 <move>
-                    <input path="$body/MERCHANT"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/MERCHANT"/>
                     <output path="MERCHANT"/>
                 </move>
                 <move>
-                    <input path="$body/CITY"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/CITY"/>
                     <output path="CITY"/>
                 </move>
                 <function ref="fn:current-dateTime">
@@ -358,19 +358,19 @@
                     <output path="UPDATED_AT"/>
                 </function>
                 <move>
-                    <input path="$body/TXN_CODE"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/TXN_CODE"/>
                     <output path="TXN_CODE"/>
                 </move>
                 <move>
-                    <input path="$body/CARD_NBR"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/CARD_NBR"/>
                     <output path="CARD_NBR"/>
                 </move>
                 <move>
-                    <input path="$body/REF_NBR"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/REF_NBR"/>
                     <output path="REF_NBR"/>
                 </move>
                 <move>
-                    <input path="$body/RPT_DESC"/>
+                    <input path="$var/Message Assembly/EXAT/body[1]/RPT_DESC"/>
                     <output path="RPT_DESC"/>
                 </move>
             </update>
