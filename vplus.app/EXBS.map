@@ -4,6 +4,7 @@
     <output path="db:table(/mssql.dbm,DESK,dbo,ACCOUNT_PROFILES)" var="ACCOUNTPROFILES"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="EXBS">
@@ -12,7 +13,7 @@
         <foreach>
             <input path="EXBS/body" var="body"/>
             <output path="$dbinsert/." var="dbinsert1"/>
-            <output path="$ACCOUNTPROFILES/db:update(fn:false(),fn:true(),db:where('ACCOUNT_NO =  ?  AND CUSTOMER_NO =  ?1 ','?1'=$body/CUST_NBR,'?'=$body/ACCOUNT_NO),ID,ACCOUNT_NO,CUSTOMER_NO,SOL_ID,ACCOUNT_STATUS,DATE_CLOSED,CREDIT_LIMIT,TEMPORARY_LIMIT,BILLING_CYCLE,PD_CYCLE,BLOCK_CODE1,BLOCK_CODE2,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT)" var="dbupdate"/>
+            <output path="$ACCOUNTPROFILES/db:update(fn:false(),fn:true(),db:where('ACCOUNT_NO =  ?  AND CUSTOMER_NO =  ?1 ','?1'=$body/CUST_NBR,'?'=$body/ACCOUNT_NO),ID,ACCOUNT_NO,CUSTOMER_NO,SOL_ID,ACCOUNT_STATUS,DATE_CLOSED,CREDIT_LIMIT,TEMPORARY_LIMIT,BILLING_CYCLE,PD_CYCLE,BLOCK_CODE1,BLOCK_CODE2,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT,DT_NXT_STM,PMT_TOT_AM,PMT_LST_AM,DTE_LST_PM,D_LAST_STATEMENT,N_LAST_STATEMENT_BALANCE,CURR_BAL,CASH_WITHDRAWAL_FLG)" var="dbupdate"/>
             <insert ref="dbinsert">
                 <input path="$body/."/>
                 <output path="$dbinsert1/."/>
@@ -126,6 +127,46 @@
                 <function ref="fn:current-dateTime">
                     <output path="UPDATED_AT"/>
                 </function>
+                <move automap="true">
+                    <input path="STMT_FLAG"/>
+                    <output path="STMT_FLAG"/>
+                </move>
+                <move automap="true">
+                    <input path="DT_NXT_STM"/>
+                    <output path="DT_NXT_STM"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="PMT_TOT_AM" var="PMT_TOT_AM1"/>
+                    <output path="PMT_TOT_AM"/>
+                    <param name="arg" value="fn:concat(fn:substring($PMT_TOT_AM1,18,1),fn:substring($PMT_TOT_AM1,1,17))"/>
+                </function>
+                <move automap="true">
+                    <input path="DTE_LST_PM"/>
+                    <output path="DTE_LST_PM"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="PMT_LST_AM" var="PMT_LST_AM1"/>
+                    <output path="PMT_LST_AM"/>
+                    <param name="arg" value="fn:concat(fn:substring($PMT_LST_AM1,18,1),fn:substring($PMT_LST_AM1,1,17))"/>
+                </function>
+                <move automap="true">
+                    <input path="NBR_LTD_CS"/>
+                    <output path="NBR_LTD_CS"/>
+                </move>
+                <move automap="true">
+                    <input path="D_LAST_STATEMENT"/>
+                    <output path="D_LAST_STATEMENT"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="N_LAST_STATEMENT_BALANCE" var="N_LAST_STATEMENT_BALANCE1"/>
+                    <output path="N_LAST_STATEMENT_BALANCE"/>
+                    <param name="arg" value="fn:concat(fn:substring($N_LAST_STATEMENT_BALANCE1,18,1),fn:substring($N_LAST_STATEMENT_BALANCE1,1,17))"/>
+                </function>
+                <function ref="fn:number">
+                    <input path="CURR_BAL" var="CURR_BAL"/>
+                    <output path="CURR_BAL"/>
+                    <param name="arg" value="fn:concat(fn:substring($CURR_BAL,18,1),fn:substring($CURR_BAL,1,17))"/>
+                </function>
             </insert>
             <update ref="dbupdate">
                 <input path="$body/."/>
@@ -149,10 +190,6 @@
                 <move>
                     <input path="BR_NBR"/>
                     <output path="SOL_ID"/>
-                </move>
-                <move>
-                    <input path="INT_STATUS"/>
-                    <output path="ACCOUNT_STATUS"/>
                 </move>
                 <move>
                     <input path="BILL_CYC"/>
@@ -182,6 +219,58 @@
                 <function ref="fn:current-dateTime">
                     <output path="UPDATED_AT"/>
                 </function>
+                <function ref="fn:number">
+                    <input path="N_LAST_STATEMENT_BALANCE" var="N_LAST_STATEMENT_BALANCE"/>
+                    <output path="N_LAST_STATEMENT_BALANCE"/>
+                    <param name="arg" value="fn:concat(fn:substring($N_LAST_STATEMENT_BALANCE,18,1),fn:substring($N_LAST_STATEMENT_BALANCE,1,17))"/>
+                </function>
+                <move>
+                    <input path="D_LAST_STATEMENT"/>
+                    <output path="D_LAST_STATEMENT"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="PMT_LST_AM" var="PMT_LST_AM"/>
+                    <output path="PMT_LST_AM"/>
+                    <param name="arg" value="fn:concat(fn:substring($PMT_LST_AM,18,1),fn:substring($PMT_LST_AM,1,17))"/>
+                </function>
+                <move>
+                    <input path="DTE_LST_PM"/>
+                    <output path="DTE_LST_PM"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="PMT_TOT_AM" var="PMT_TOT_AM"/>
+                    <output path="PMT_TOT_AM"/>
+                    <param name="arg" value="fn:concat(fn:substring($PMT_TOT_AM,18,1),fn:substring($PMT_TOT_AM,1,17))"/>
+                </function>
+                <move>
+                    <input path="DT_NXT_STM"/>
+                    <output path="DT_NXT_STM"/>
+                </move>
+                <move>
+                    <input path="INT_STATUS"/>
+                    <output path="ACCOUNT_STATUS"/>
+                </move>
+                <function ref="fn:number">
+                    <input path="CURR_BAL" var="CURR_BAL2"/>
+                    <output path="CURR_BAL"/>
+                    <param name="arg" value="fn:concat(fn:substring($CURR_BAL2,18,1),fn:substring($CURR_BAL2,1,17))"/>
+                </function>
+                <condition>
+                    <if>
+                        <input path="NBR_LTD_CS" var="NBR_LTD_CS"/>
+                        <output path="CASH_WITHDRAWAL_FLG"/>
+                        <test lang="xpath">$NBR_LTD_CS&gt;0</test>
+                        <assign value="Y">
+                            <output path="."/>
+                        </assign>
+                    </if>
+                    <else>
+                        <output path="CASH_WITHDRAWAL_FLG"/>
+                        <assign value="N">
+                            <output path="."/>
+                        </assign>
+                    </else>
+                </condition>
             </update>
         </foreach>
     </mappingDeclaration>

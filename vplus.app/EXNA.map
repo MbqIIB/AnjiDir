@@ -12,7 +12,7 @@
         <foreach>
             <input path="EXNA/body" var="body"/>
             <output path="$dbinsert/." var="dbinsert1"/>
-            <output path="$CUSTOMERPROFILES/db:update(fn:false(),fn:true(),db:where('CUSTOMER_NO =  ? ','?'=$body/CUST_NBR),ID,CUSTOMER_NO,CUST_NAME,EMAIL,MOBILE_NO,PAN_NO,ADDRESS1,ADDRESS2,CITY,STATE,COUNTRY,PIN_CODE,DATE_OF_BIRTH,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT)" var="dbupdate"/>
+            <output path="$CUSTOMERPROFILES/db:update(fn:false(),fn:true(),db:where('CUSTOMER_NO =  ? ','?'=$body/CUST_NBR),ID,CUSTOMER_NO,CUST_NAME,EMAIL,MOBILE_NO,PAN_NO,ADDRESS1,ADDRESS2,CITY,STATE,COUNTRY,PIN_CODE,DATE_OF_BIRTH,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT,MOBILE2,MOTH_NAME,EMAIL_2,EMP_PH2)" var="dbupdate"/>
             <insert ref="dbinsert">
                 <input path="$body/."/>
                 <output path="$dbinsert1/."/>
@@ -317,6 +317,22 @@
                 <function ref="fn:current-dateTime">
                     <output path="UPDATED_AT"/>
                 </function>
+                <move>
+                    <input path="MOBILE2"/>
+                    <output path="MOBILE2"/>
+                </move>
+                <move>
+                    <input path="MOTH_NAME"/>
+                    <output path="MOTH_NAME"/>
+                </move>
+                <move>
+                    <input path="EMP_PH2"/>
+                    <output path="EMP_PH2"/>
+                </move>
+                <move>
+                    <input path="EMAIL2"/>
+                    <output path="EMAIL_2"/>
+                </move>
             </update>
         </foreach>
     </mappingDeclaration>

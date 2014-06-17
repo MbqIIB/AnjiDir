@@ -1707,6 +1707,12 @@
     <columns xmi:id="_--9mwNqgEeO7x6AqHbdJhg" name="CARD_FLAG">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_OlsrENqhEeO7x6AqHbdJhg" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
+    <columns xmi:id="_8M7EsfXCEeOzrtp4kpjSrQ" name="EMBOSS1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AC-JMPXDEeOzrtp4kpjSrQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_8ZL_EPXCEeOzrtp4kpjSrQ" name="EMBOSS2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CrDlwPXDEeOzrtp4kpjSrQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_O9FQUNqhEeO7x6AqHbdJhg" name="CREDIT_CARDS_PK" members="_wIh-ANqgEeO7x6AqHbdJhg"/>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_ugSCQdqqEeOdi4XxPOBkFA" name="CUSTOMER_PROFILES" schema="_jnCS8NoJEeOw85thECwX_w">
@@ -1762,6 +1768,18 @@
     <columns xmi:id="_yGmosNqqEeOdi4XxPOBkFA" name="UPDATED_AT" nullable="false">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_G9gmINqrEeOdi4XxPOBkFA" name="DATETIME" primitiveType="DATE"/>
     </columns>
+    <columns xmi:id="_GjB84PXDEeOzrtp4kpjSrQ" name="MOBILE2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_SDPRQPYyEeOkH7QpFPIedQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_GnT_8PXDEeOzrtp4kpjSrQ" name="MOTH_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Tr9ikPYyEeOkH7QpFPIedQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_GrCCUPXDEeOzrtp4kpjSrQ" name="EMAIL_2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UiqhEPYyEeOkH7QpFPIedQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_GtzCcPXDEeOzrtp4kpjSrQ" name="EMP_PH2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_VjlykPYyEeOkH7QpFPIedQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
+    </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_KkmBkNqrEeOdi4XxPOBkFA" name="CUSTOMER_PROFILES_PK" members="_xkmH0NqqEeOdi4XxPOBkFA"/>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_LxlEMdrOEeOfVZ1SxvgyJA" name="ACCOUNT_PROFILES" schema="_jnCS8NoJEeOw85thECwX_w">
@@ -1785,10 +1803,10 @@
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_fpFksNrPEeOfVZ1SxvgyJA" name="DATE"/>
     </columns>
     <columns xmi:id="_JKc0cNrPEeOfVZ1SxvgyJA" name="CREDIT_LIMIT">
-      <containedType xsi:type="SQLDataTypes:ApproximateNumericDataType" xmi:id="_hHaj4NrPEeOfVZ1SxvgyJA" name="REAL" primitiveType="REAL"/>
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_AOfjEPXLEeOe6Zx7LoayIQ" name="DECIMAL" primitiveType="DECIMAL" precision="18" scale="2"/>
     </columns>
     <columns xmi:id="_JNzDYNrPEeOfVZ1SxvgyJA" name="TEMPORARY_LIMIT">
-      <containedType xsi:type="SQLDataTypes:ApproximateNumericDataType" xmi:id="_hzlGUNrPEeOfVZ1SxvgyJA" name="REAL" primitiveType="REAL"/>
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_CAd3APXLEeOe6Zx7LoayIQ" name="DECIMAL" primitiveType="DECIMAL" precision="18" scale="2"/>
     </columns>
     <columns xmi:id="_JSQFkNrPEeOfVZ1SxvgyJA" name="BILLING_CYCLE">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iKXOoNrPEeOfVZ1SxvgyJA" name="INT" primitiveType="INTEGER"/>
@@ -1813,6 +1831,30 @@
     </columns>
     <columns xmi:id="_Jx8SQNrPEeOfVZ1SxvgyJA" name="UPDATED_AT">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_lqnCQNrPEeOfVZ1SxvgyJA" name="DATETIME" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_WmQv8PXDEeOzrtp4kpjSrQ" name="DT_NXT_STM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_57UU0fXKEeOe6Zx7LoayIQ" name="DATE"/>
+    </columns>
+    <columns xmi:id="_WrDJUPXDEeOzrtp4kpjSrQ" name="PMT_TOT_AM">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_FZfoUPXLEeOe6Zx7LoayIQ" name="DECIMAL" primitiveType="DECIMAL" precision="18" scale="2"/>
+    </columns>
+    <columns xmi:id="_WtqYcPXDEeOzrtp4kpjSrQ" name="PMT_LST_AM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WtqYcfXDEeOzrtp4kpjSrQ" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_WwNWIPXDEeOzrtp4kpjSrQ" name="DTE_LST_PM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_QfNYgPXLEeOe6Zx7LoayIQ" name="DATE"/>
+    </columns>
+    <columns xmi:id="_WyqNMPXDEeOzrtp4kpjSrQ" name="D_LAST_STATEMENT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_PjohEPXLEeOe6Zx7LoayIQ" name="DATE"/>
+    </columns>
+    <columns xmi:id="_W00wYPXDEeOzrtp4kpjSrQ" name="N_LAST_STATEMENT_BALANCE">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_N6FwYPXLEeOe6Zx7LoayIQ" name="DECIMAL" primitiveType="DECIMAL" precision="18" scale="2"/>
+    </columns>
+    <columns xmi:id="_W3IdgPXDEeOzrtp4kpjSrQ" name="CURR_BAL">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_LR60QPXLEeOe6Zx7LoayIQ" name="DECIMAL" primitiveType="DECIMAL" precision="18" scale="2"/>
+    </columns>
+    <columns xmi:id="_W8ISQPXDEeOzrtp4kpjSrQ" name="CASH_WITHDRAWAL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_I1oYAPXLEeOe6Zx7LoayIQ" name="NVARCHAR" primitiveType="NATIONAL_CHARACTER_VARYING" length="255"/>
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_crHXsNrPEeOfVZ1SxvgyJA" name="ACCOUNT_PROFILES_PK" members="_I1aYkNrPEeOfVZ1SxvgyJA"/>
   </SQLTables:PersistentTable>

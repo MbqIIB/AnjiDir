@@ -51,14 +51,27 @@
                             <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" dfdl:textPadKind="padChar" name="DT_CLOSED" type="xsd:date"/>
                             <xsd:element dfdl:length="12" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING5" name="STRING5" type="xsd:string"/>
                             <xsd:element dfdl:length="2" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="23" name="BILL_CYC" type="xsd:int"/>
-                            <xsd:element dfdl:length="11" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" ibmDfdlExtn:sampleValue="STRING6" name="STRING6" type="xsd:string"/>
-                                                        <xsd:element dfdl:length="1" name="BC1" type="xsd:string"/>
+                                                        <xsd:element dfdl:length="1" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="Y" name="STMT_FLAG" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" minOccurs="1" name="DT_NXT_STM" type="xsd:date"/>
+                                                                                                                <xsd:element dfdl:length="1" name="BC1" type="xsd:string"/>
                             <xsd:element dfdl:length="10" name="DT_BC1" type="xsd:string"/>
                             <xsd:element dfdl:length="1" name="BC2" type="xsd:string"/>
                             <xsd:element dfdl:length="10" name="DT_BC2" type="xsd:string"/>
-                            <xsd:element dfdl:length="1183" name="STRING7" type="xsd:string"/>
+                            <xsd:element dfdl:length="423" dfdl:textPadKind="padChar" name="STRING7" type="xsd:string"/>
+                                                        <xsd:element dfdl:length="18" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="%SP;" name="CURR_BAL" type="xsd:string"/>
+                            <xsd:element dfdl:length="136" dfdl:textPadKind="padChar" name="STRING8" type="xsd:string"/>
+                            <xsd:element dfdl:length="18" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" name="PMT_TOT_AM" type="xsd:string"/>
+                            <xsd:element dfdl:length="148" dfdl:textPadKind="padChar" name="STRING9" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="DTE_LST_PM" type="xsd:date"/>
+                            <xsd:element dfdl:length="18" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" dfdl:textStringPadCharacter="%SP;" name="PMT_LST_AM" type="xsd:string"/>
+                                                                                    <xsd:element dfdl:length="256" dfdl:textPadKind="padChar" name="STRING10" type="xsd:string"/>
+                                                        <xsd:element dfdl:length="5" dfdl:textNumberPadCharacter="0" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" name="NBR_LTD_CS" type="xsd:int"/>
+                            <xsd:element dfdl:length="151" dfdl:textPadKind="padChar" name="STRING11" type="xsd:string"/>
                             <xsd:element dfdl:length="1" dfdl:textNumberPattern="#0" dfdl:textPadKind="padChar" ibmDfdlExtn:sampleValue="1" name="PMT_CYCLE" type="xsd:int"/>
-                            <xsd:element dfdl:length="767" dfdl:textPadKind="padChar" dfdl:textStringJustification="center" ibmDfdlExtn:sampleValue="STRING7" name="STRING8" type="xsd:string"/>
+                            <xsd:element dfdl:length="675" dfdl:textPadKind="padChar" dfdl:textStringJustification="center" ibmDfdlExtn:sampleValue="STRING7" name="STRING12" type="xsd:string"/>
+                                                    <xsd:element dfdl:calendarPattern="dd/MM/yyyy" dfdl:calendarPatternKind="explicit" dfdl:length="10" name="D_LAST_STATEMENT" type="xsd:date"/>
+                            <xsd:element dfdl:length="18" dfdl:textPadKind="padChar" dfdl:textStringJustification="right" name="N_LAST_STATEMENT_BALANCE" type="xsd:string"/>
+                            <xsd:element dfdl:length="64" dfdl:textPadKind="padChar" name="STRING13" type="xsd:string"/>
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>

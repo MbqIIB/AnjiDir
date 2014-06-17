@@ -12,7 +12,7 @@
         <foreach>
             <input path="EXEE/body" var="body"/>
             <output path="$dbinsert/." var="dbinsert1"/>
-            <output path="$CREDITCARDS/db:update(fn:false(),fn:true(),db:where('CREDIT_CARD_NO =  ?1  AND ACCOUNT_NO =  ?2','?1'=$body/CARD_NO,'?2'=$body/ACCOUNT),ID,CREDIT_CARD_NO,ACCOUNT_NO,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT,CARD_EXPIRY_DATE,CARD_FLAG)" var="dbupdate"/>
+            <output path="$CREDITCARDS/db:update(fn:false(),fn:true(),db:where('CREDIT_CARD_NO =  ?1  AND ACCOUNT_NO =  ?2','?1'=$body/CARD_NO,'?2'=$body/ACCOUNT),ID,CREDIT_CARD_NO,ACCOUNT_NO,CREATED_BY,UPDATED_BY,CREATED_AT,UPDATED_AT,CARD_EXPIRY_DATE,CARD_FLAG,EMBOSS1,EMBOSS2)" var="dbupdate"/>
             <insert ref="dbinsert">
                 <input path="$body/."/>
                 <output path="$dbinsert1/."/>
@@ -554,6 +554,14 @@
                 <assign value="SYSTEM">
                     <output path="UPDATED_BY"/>
                 </assign>
+                <move>
+                    <input path="EMBOSS1"/>
+                    <output path="EMBOSS1"/>
+                </move>
+                <move>
+                    <input path="EMBOSS2"/>
+                    <output path="EMBOSS2"/>
+                </move>
             </update>
         </foreach>
     </mappingDeclaration>

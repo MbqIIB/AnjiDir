@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/Input.xsd" var="var"/>
-    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CUSTOMER_PROFILES,ACCOUNT_PROFILES,CREDIT_CARDS))" var="DESK"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CREDIT_CARDS))" var="DESK"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbexception.xsd" var="var1"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,CARD_TRANSACTIONS))" var="DESK4"/>
+    <input path="db:database(/mssql.dbm,DESK,db:schema-tables(dbo,TRANSACTION_CODE_DETAILS,CARD_TRANSACTIONS))" var="DESK5"/>
     <output path="/CardInquiry.xsd"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="CardInquiryMobile">
         <input path="$var/mb:msg(id,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CUSTOMER_PROFILES/CUSTOMER_NO,dbo/CUSTOMER_PROFILES/CUST_NAME,dbo/CUSTOMER_PROFILES/EMAIL,dbo/CUSTOMER_PROFILES/MOBILE_NO,dbo/CUSTOMER_PROFILES/PAN_NO,dbo/CUSTOMER_PROFILES/ADDRESS1,dbo/CUSTOMER_PROFILES/ADDRESS2,dbo/CUSTOMER_PROFILES/CITY,dbo/CUSTOMER_PROFILES/STATE,dbo/CUSTOMER_PROFILES/COUNTRY,dbo/CUSTOMER_PROFILES/PIN_CODE,dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH,dbo/ACCOUNT_PROFILES/CREDIT_LIMIT,dbo/CREDIT_CARDS/CREDIT_CARD_NO),db:where('dbo.CREDIT_CARDS.ACCOUNT_NO = dbo.ACCOUNT_PROFILES.ACCOUNT_NO AND &#10;dbo.ACCOUNT_PROFILES.CUSTOMER_NO = dbo.CUSTOMER_PROFILES.CUSTOMER_NO AND &#10;dbo.CUSTOMER_PROFILES.MOBILE_NO = ? ','?'=$MessageAssembly/id))" var="dbselect"/>
+        <input path="$DESK/db:select(fn:false(),ResultSet(dbo/CREDIT_CARDS/CREDIT_CARD_NO,dbo/CREDIT_CARDS/ACCOUNT_NO,dbo/CREDIT_CARDS/EMBOSS1,dbo/CUSTOMER_PROFILES/CUSTOMER_NO,dbo/CUSTOMER_PROFILES/CUST_NAME,dbo/CUSTOMER_PROFILES/EMAIL,dbo/CUSTOMER_PROFILES/MOBILE_NO,dbo/CUSTOMER_PROFILES/PAN_NO,dbo/CUSTOMER_PROFILES/ADDRESS1,dbo/CUSTOMER_PROFILES/ADDRESS2,dbo/CUSTOMER_PROFILES/CITY,dbo/CUSTOMER_PROFILES/STATE,dbo/CUSTOMER_PROFILES/COUNTRY,dbo/CUSTOMER_PROFILES/PIN_CODE,dbo/CUSTOMER_PROFILES/DATE_OF_BIRTH,dbo/CUSTOMER_PROFILES/MOBILE2,dbo/CUSTOMER_PROFILES/MOTH_NAME,dbo/CUSTOMER_PROFILES/EMAIL_2,dbo/CUSTOMER_PROFILES/EMP_PH2,dbo/ACCOUNT_PROFILES/CREDIT_LIMIT,dbo/ACCOUNT_PROFILES/DT_NXT_STM,dbo/ACCOUNT_PROFILES/CURR_BAL,dbo/ACCOUNT_PROFILES/CASH_WITHDRAWAL_FLG),db:where('dbo.CREDIT_CARDS.ACCOUNT_NO = dbo.ACCOUNT_PROFILES.ACCOUNT_NO AND &#10;dbo.ACCOUNT_PROFILES.CUSTOMER_NO = dbo.CUSTOMER_PROFILES.CUSTOMER_NO AND &#10;dbo.CUSTOMER_PROFILES.MOBILE_NO = ? ','?'=$MessageAssembly/id))" var="dbselect"/>
         <output path="mb:msg(cards,assembly,XMLNSC,Properties)"/>
         <transaction>
             <select ref="dbselect">
-                <input path="$dbselect/ResultSet"/>
+                <input path="$dbselect/ResultSet" var="ResultSet1"/>
                 <output path="cards"/>
                 <foreach>
-                    <input path="." var="ResultSet"/>
+                    <input path="$ResultSet1/." var="ResultSet"/>
+                    <input path="$DESK4/db:select(fn:false(),ResultSet(dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT),db:where('dbo.CARD_TRANSACTIONS.ID = (SELECT MAX (dbo.CARD_TRANSACTIONS.ID) FROM  dbo.CARD_TRANSACTIONS WHERE dbo.CARD_TRANSACTIONS.CARD_NBR =   ?   AND dbo.CARD_TRANSACTIONS.TXN_CODE IN (314,315,316,317,319,321,345,346,356,361,385))','?'=$ResultSet/dbo/CREDIT_CARDS/CREDIT_CARD_NO))" var="dbselect2"/>
+                    <input path="$DESK5/db:select(fn:false(),ResultSet(dbo/TRANSACTION_CODE_DETAILS/TRANSACTION_CODE,dbo/CARD_TRANSACTIONS/TXN_DATE,dbo/CARD_TRANSACTIONS/TXN_CODE,dbo/CARD_TRANSACTIONS/AMOUNT),db:where('dbo.CARD_TRANSACTIONS.ID = (SELECT MAX (dbo.CARD_TRANSACTIONS.ID) FROM  dbo.CARD_TRANSACTIONS WHERE dbo.CARD_TRANSACTIONS.CARD_NBR =  ?   AND dbo.CARD_TRANSACTIONS.TXN_CODE IN (SELECT dbo.TRANSACTION_CODE_DETAILS.TRANSACTION_CODE FROM dbo.TRANSACTION_CODE_DETAILS WHERE dbo.TRANSACTION_CODE_DETAILS.DISABLED = 0))','?'=$ResultSet/dbo/CREDIT_CARDS/CREDIT_CARD_NO))" var="dbselect3"/>
                     <output path="card"/>
                     <move>
                         <input path="$ResultSet/dbo/CREDIT_CARDS/CREDIT_CARD_NO" var="CREDITCARDNO"/>
                         <output path="card_number"/>
-                    </move>
-                    <move>
-                        <input path="$ResultSet/dbo/CUSTOMER_PROFILES/CUST_NAME"/>
-                        <output path="embossed_name"/>
                     </move>
                     <move>
                         <input path="$ResultSet/dbo/CUSTOMER_PROFILES/EMAIL"/>
@@ -30,10 +30,6 @@
                     <move>
                         <input path="$ResultSet/dbo/CUSTOMER_PROFILES/MOBILE_NO"/>
                         <output path="customer/mobile1"/>
-                    </move>
-                    <move>
-                        <input path="$ResultSet/dbo/CUSTOMER_PROFILES/MOBILE_NO"/>
-                        <output path="customer/mobile2"/>
                     </move>
                     <move>
                         <input path="$ResultSet/dbo/CUSTOMER_PROFILES/STATE"/>
@@ -67,9 +63,60 @@
                         <input path="$ResultSet/dbo/CUSTOMER_PROFILES/CITY"/>
                         <output path="customer/address/city"/>
                     </move>
-                    <assign>
-                        <output path="add_on_cards/card_number"/>
-                    </assign>
+                    <move>
+                        <input path="$ResultSet/dbo/CREDIT_CARDS/EMBOSS1"/>
+                        <output path="embossed_name"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet/dbo/ACCOUNT_PROFILES/CASH_WITHDRAWAL_FLG"/>
+                        <output path="cash_withdrawal_flag"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet/dbo/ACCOUNT_PROFILES/CURR_BAL"/>
+                        <output path="current_balance"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet/dbo/ACCOUNT_PROFILES/DT_NXT_STM"/>
+                        <output path="next_billing_date"/>
+                    </move>
+                    <move>
+                        <input path="$ResultSet/dbo/CUSTOMER_PROFILES/MOBILE2"/>
+                        <output path="customer/mobile2"/>
+                    </move>
+                    <select ref="dbselect2">
+                        <input path="$dbselect2/ResultSet[1]"/>
+                        <output path="last_payment"/>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_DATE"/>
+                            <output path="txn_date"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_CODE"/>
+                            <output path="txn_code"/>
+                        </move>
+                        <expression>
+                            <input path="dbo/CARD_TRANSACTIONS/AMOUNT" var="AMOUNT"/>
+                            <output path="amount"/>
+                            <code lang="xpath">fn:round-half-to-even($AMOUNT ,2 )</code>
+                        </expression>
+                    </select>
+                    <select ref="dbselect3">
+                        <input path="$dbselect3/ResultSet[1]"/>
+                        <output path="last_transaction"/>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_DATE"/>
+                            <output path="txn_date"/>
+                        </move>
+                        <move>
+                            <input path="dbo/CARD_TRANSACTIONS/TXN_CODE"/>
+                            <output path="txn_code"/>
+                        </move>
+                        <expression>
+                            <input path="dbo/CARD_TRANSACTIONS/AMOUNT" var="AMOUNT1"/>
+                            <output path="amount"/>
+                            <code lang="xpath">fn:round-half-to-even($AMOUNT1 ,2 )</code>
+                        </expression>
+                    </select>
                 </foreach>
             </select>
             <failure>
