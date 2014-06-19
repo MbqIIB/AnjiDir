@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="AcctId.xsd"/>
+<xs:include schemaLocation="ReschedParams.xsd"/>
+<xs:include schemaLocation="PmtPlan.xsd"/>
+<xs:include schemaLocation="../common/Amount.xsd"/>
+
+
+<xs:complexType name="LoanGenDetails">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ the Loan Amount ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="LoanPeriodDays" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ tenor of loan in days. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="LoanPeriodMonths" type="xs:long"   minOccurs="1">
+<xs:annotation>
+                <xs:documentation><![CDATA[ tenor of  loan in months. This field is mapped with field 125 of ISO8583 message. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RePmtMethod"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ method used for repayment of the loan account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="OperAcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Operative Account Identifier.OperAcctId aggregate holds the operative account id of the customer.  The loan recovery process uses this account to place and lift liens. The account can be in a different currency and belong to a service outlet (BranchId).Only AcctId field of this aggregate is used in this business message ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ReschedParams"  type="ReschedParams"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Rescheduled Parameters.ReschedParams aggregate holds the parametsers required to rescheduling the loan account. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PmtPlan"  type="PmtPlan"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Payment Plan.PmtPlan aggregate holds the payment plan details. It consists of holiday period details, interest frequency during holidays, equated installment details and repayment details. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="LoanAmt"  type="Amount"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ the Loan Amount ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

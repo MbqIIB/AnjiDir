@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="DemographicMiscData.xsd"/>
+
+
+<xs:complexType name="DemographicData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ date from which the customer or contact or prospect has resided in the residence country. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AnniversaryDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ marriage anniversary date of the entity. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CurrCodeOfOutstandingMortgage"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency of the outstanding mortgage amount. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustSegment"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ segment to which the entity belongs. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of customer. For example, Corporate, Individual and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustOtherBankId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ code of the other bank where the entity holds a relationship. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustPropertyAssets" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ property assets held by the entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DemographicMiscData"  type="DemographicMiscData"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ miscellaneous demographic details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DemographicType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of demography. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DonotCallFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the customer or contact or prospect must be contacted through telephone. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DonotMailFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate that the customer or contact or prospect must not be contacted through mail. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DonotSendEmailFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate that the customer or contact or prospect must not be contacted through E-mail. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NameOfEmployer"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the employer of this entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EmploymentStatus"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ employment status. For example, Salaried, Self employed, and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailDesc"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ description of the reason for withholding mails. This field must be specified if the holdmail_flag is set to Y. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailEndDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date up to which mails to the customer or contact or prospect must be withheld. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="HoldMailFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if mails to customer or contact or prospect must be held. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailStartDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date from which mails to the customer or contact or prospect must be withheld. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="HomePhoneNumCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the entity's home telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HomePhoneNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the entity's home telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HomePhoneNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the entity's home telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NatureOfIncome"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if customer income is stable or unstable. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MaritalStatus"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ marital status of the entity. Examples of valid values are married, unmarried, and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Nationality"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ nationality of the entity. For example, Indian, Pakistani, and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="OtherLimits" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ other limits, if any. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="OutStandingMortgage" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ outstanding mortgage amount. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PagerNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumAreaCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ area code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PaymentMode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify the mode of payment. Valid values are Autopay, Cash and Cheque. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneCell"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mobile phone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneHome"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ home telephone number of the entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneWork"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ work telephone number of the entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneOther"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ other contact telephone number of the entity. This number includes country, city and local codes. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneOtherArea"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the entity's other telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneOtherCountry"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the entity's other telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneOtherLocal"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the entity's other telephone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefContactTime"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ time at which the customer or contact or prospect prefers to be contacted by the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefDayTimeContactNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ contact telephone number, through which the customer or contact or prospect prefers to be contacted by the bank, during the day. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefDayTimeContNumArea"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the telephone number, through which the customer or contact or prospect prefers to be contacted by the bank, during the day. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefDayTimeContactNumCountry"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the telephone number, through which the customer or contact or prospect prefers to be contacted by the bank, during the day. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefDayTimeContactNumLocal"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the telephone number, through which the customer or contact or prospect prefers to be contacted by the bank, during the day. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ReferenceCurrExp"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency in which all the expenditure fields are entered. This field is not used currently. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ReferenceCurrIncome"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency in which all the expenditure fields are entered. This field is not used currently. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ResidenceCountry"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the country where contact or customer or prospect resides. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ResidenceSince" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date from which the customer or contact or prospect has resided in the residence country. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

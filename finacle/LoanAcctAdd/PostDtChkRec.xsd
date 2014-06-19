@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common/Amount.xsd"/>
+<xs:include schemaLocation="AcctId.xsd"/>
+<xs:include schemaLocation="CustId.xsd"/>
+
+
+<xs:complexType name="PostDtChkRec">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Provider 's Identification information. This is the identifier of the person provides the post dated cheque. This aggregate holds the unique identifier for person as well as person name information.The fields used in this Business Service is CustId. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="ChkStartNo"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Cheque Start Number.Starting number of the set of PDCs(post dated cheques) submitted by the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="8"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NoOfLeaves" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ The count of PDCs(post dated cheques) submitted by the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Amt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Amount specified in the PDCs(post dated cheques) submitted by the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MICRCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Magnetic Ink Character Recognition (MICR) code of the drawee bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DraweeBankCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ bank code of the drawee bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DraweeBranchCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ branch code of the drawee bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NextChkDt" type="xs:dateTime" minOccurs="1">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Next Cheque Date.Date on which the first post dated cheque must be used by the bank. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ChkType"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Cheque Type.Type of post dated cheque accepted for the loan account. Valid values are R - Regular Installment,B - Planned Prepayments,O - Overdue Principal,I - Overdue Interest,F - Deferred Interest,L - Liquidation,S - Shadow,P - Pre-EMI,C - Charges,D - One Time Payment of Overdues ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ChkPmtType"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Cheque Payment Type.Payment type for account's post dated cheque. Valid vaues are C - Crearing, T - Transfer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="XferAcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account Identifier for Amount Transfer.XferAcctId aggregate holds the operative account details from which funds have to be transferred to loan account.Only AcctId,AcctCurr fields of this aggregate are used in this Business Message. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Provider"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Code for the provider of the post dated cheque. Valid values of provider are C - Co-Obligant, G - Guarantor, J - Joint Holder, M - Main Holder. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ProviderCustId"  type="CustId"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Provider 's Identification information. This is the identifier of the person provides the post dated cheque. This aggregate holds the unique identifier for person as well as person name information.The fields used in this Business Service is CustId. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

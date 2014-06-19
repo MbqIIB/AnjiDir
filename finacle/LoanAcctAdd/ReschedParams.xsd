@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="ReschedParams">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Auto Rescheduled Prepayment flag.Indicator to specify if the account had to be rescheduled automatically after every prepayment receipt or not. Valid values are Y-Yes, N-No. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="ReschedAdjTenorAmtFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Rescheduling by Adjusting Tenor or Amount Flag.Holds the flag to indicate whether rescheduling to impact the loan period/tenor or the repayment amount.  In case of tenor being selected,  then there would not be any change in the installment amount paid by the customer and only the balance tenor of the loan will be either increased or decreased.  Similarly, if amount indicator been used,  balance tenor will not be changed and the installment amount will be adjusted. Valid values are P-Tenor/Period, A-Amount. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AutoReschedForEveryDisbFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Auto-Reschedule for Every Disbursed Flag.It indicates if the account had to be rescheduled automatically after every disbursement or not.   Valid values are Y-Yes, N-No ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AutoReschedForIntRateChange"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Auto-Reschedule for Interest Rate Change.It indicates if the account had to be rescheduled automatically after interest rate change. Valid values are : I-Increase,D-Decrease,B-Both,N-None ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ReschedAmtFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Rescheduled Amount Flag.Flag to indicate the amount that must be considered for rescheduling.Valid values are : O - Outstanding, U - Outstanding + Undisbursed Amt. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AutoReschedPrepaymentFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Auto Rescheduled Prepayment flag.Indicator to specify if the account had to be rescheduled automatically after every prepayment receipt or not. Valid values are Y-Yes, N-No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

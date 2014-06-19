@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ns0="http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="loanDisbursementFormat">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separator="~" dfdl:separatorPosition="postfix" dfdl:separatorSuppressionPolicy="trailingEmpty">
+                            														                            						                                                        <xsd:element name="disbursement">
+                <xsd:complexType>
+                  <xsd:sequence dfdl:separator="|">
+                    <xsd:element ibmDfdlExtn:sampleValue="809000257175" name="loanAccountNumber" type="xsd:string"/>
+                    <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="valueDate" type="xsd:date"/>
+                    <xsd:element name="transactionType">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:enumeration value="T"/>
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element dfdl:nilKind="literalValue" dfdl:nilValue="0" dfdl:textNumberPattern="#0.###" dfdl:useNilForDefault="no" minOccurs="0" name="disbursementAmount" nillable="false">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:minExclusive value="0"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="disbursementType">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:enumeration value="G"/>
+                          <xsd:enumeration value="N"/>
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="deductOverdueDemand" type="xsd:boolean"/>
+                    <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="finalDisbursement" type="xsd:boolean"/>
+                    <xsd:element ibmDfdlExtn:sampleValue="100010010005661" name="creditAccountNumber" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element ibmDfdlExtn:sampleOccurs="3" maxOccurs="unbounded" minOccurs="0" name="charges">
+                <xsd:complexType>
+                  <xsd:sequence dfdl:separator="|">
+                    <xsd:element name="recordInitiator" type="xsd:string"/>
+                    <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="selectFlag" type="xsd:boolean"/>
+                    <xsd:element dfdl:textNumberPattern="#0" name="serialNumber">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:int">
+                          <xsd:minInclusive value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="chargeEventType">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:enumeration value="MISC1"/>
+                          <xsd:enumeration value="LNKED"/>
+                          <xsd:enumeration value="MIS14"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element dfdl:textNumberPattern="#0.###" name="chargeAmount">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:minInclusive value="0"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>

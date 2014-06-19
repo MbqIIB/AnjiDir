@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="ContactData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Contact LastName in Alternate Language ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="DateOfBirth" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Contact Date of Birth FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="LastName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact Last Name ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FirstName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact First Name ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Gender"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact Gender ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Salutation"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact title ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ContactsKey"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact CustId ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MiddleName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact Middle Name ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FirstNameNative"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact FirstName in Native specific ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MiddleNameNative"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact MiddleName in Native specific ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LastNameNative"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact LastName in Native specific ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FirstNameAlternate1"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact FirstName in Alternate Language ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MiddleNameAlternate1"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact MiddleName in Alternate Language ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LastNameAlternate1"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Contact LastName in Alternate Language ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="AcctId.xsd"/>
+
+
+<xs:complexType name="LoanAcctAddRs">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Account Identification details.This aggregate is used to uniquely identify a loan account which is created as part of processing the loan account opening request in the Finacle. It holds the details of the account id, account currency ,scheme and bank details under which the Loan Account is opened. Only AcctId field of this aggregate is used in this business message. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AcctOpenDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Account Open Date.Date on which the account was opened. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account Identification details.This aggregate is used to uniquely identify a loan account which is created as part of processing the loan account opening request in the Finacle. It holds the details of the account id, account currency ,scheme and bank details under which the Loan Account is opened. Only AcctId field of this aggregate is used in this business message. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

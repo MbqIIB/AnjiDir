@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common/Amount.xsd"/>
+<xs:include schemaLocation="DDIssueDtl.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+<xs:include schemaLocation="LaFeeChrgAssmntRec.xsd"/>
+<xs:include schemaLocation="DisbChargesLL.xsd"/>
+<xs:include schemaLocation="DisbPartTranLL.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+
+
+<xs:complexType name="AcctDisburseTranLA">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ value date of the transaction. The Beginning of Day (BOD) date is displayed by default and can be modified. The value can be back dated or future dated. Exception handling is enabled for back dated disbursements. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="amtAlreadyDisbursed"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The loan amount disbursed till date. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="amtAvailForDisbursement"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The loan amount available for disbursement. The available amount displayed can be as follows: Approved limit - The amount already disbursed, if there is no disbursement schedule Amount Available for Disbursement as on BOD Date - The amount already disbursed, if there is a disbursement schedule. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="chargeRate"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ exchange rate used in the currency conversion for the charge part transaction of MC transaction. This is the rate corresponding to the rate code chosen for transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chargeRateCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ exchange rate code used in the currency conversion for the charge part transaction of MC transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="crncyCode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency code of the account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ddIssueDtl"  type="DDIssueDtl"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ DD Additional details should not be entered for Non DDA type accounts . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="dealerContribution"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Dealer contribution amount should not exceed Disbursement amount.Dealer Contribution Account should set up in the Loan Scheme.The amount provided by the dealer for disbursement in the loan account. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="deductOvduDmds"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the overdue demands must be deducted from the disbursement amount. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="disburseAmt"  type="Amount"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Disbursed Amount should not exceed total amount to be credited . The amount to be disbursed.The value is default populated by the system but can be modified. Validation is done by the system for excess disbursement and not as per the disbursement schedule. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="finalDisbFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the disbursement is to be the final one for the account. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="firstDisbFlg"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the disbursement is to be the first one for the account. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="glDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ The GL date of the transaction. The Beginning of Day (BOD) date is displayed by default and can be modified. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="grossNetDisbt"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify gross or net disbursement. Valid values are G-Gross Disbursement and N-Net Disbursement. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="isDetailsEntered" type="xs:int"   minOccurs="1">
+<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if details have been specified. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="laAcct"  type="CIAcctId"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Should be valid loan account.Account should be  LAA scheme Type.The LAA account number for which the disbursement is to be done . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="netDisbursalAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Net disbursal amount . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ocapApttLL"  type="LaFeeChrgAssmntRec"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ fee charge details ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ochargesLL"  type="DisbChargesLL"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Deductible charges ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="oPartTranLL"  type="DisbPartTranLL"   maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Part tran details . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="referenceNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ reference number to associate with the part transaction of the OAP account. Assigning a unique reference number is used to retrieve this part transaction by just specifying the reference number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="referralId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Reversal ID of the disbursement. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="solId"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the service outlet for which the report is to be generated. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="tranDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date of the transaction. Generally the date on which the transaction is being created by bank BOD date. This is mapped to the TRAN. DATE field in the front end. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the transaction. This is the system generated ID, every time a transaction is created. This field has the transaction ID for the original transaction and reversal transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="9"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="tranMode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ transaction mode. Valid Values are A-Amount, U-Units. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="tranRate" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ exchange rate used in the currency conversion for the source/target account part transaction of MC transaction. This is the rate corresponding to the rate code chosen for transaction. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranRemarks"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ remarks for part transaction, if any. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="30"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="transferAcctNum"  type="CIAcctId"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ details of the transfer account ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranTreaRate" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ treasury rate used in the currency conversion for the source/target account part transaction of MC transaction. This rate is used to calculate treasury transaction. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranType"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ transaction type. Valid values are Cash and Transfer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="valueDate" type="xs:dateTime" minOccurs="1">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ value date of the transaction. The Beginning of Day (BOD) date is displayed by default and can be modified. The value can be back dated or future dated. Exception handling is enabled for back dated disbursements. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

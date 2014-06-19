@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="CustPhoneEmailInfo">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ work extension ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="Email"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ email address of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EmailPalm"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ palmtop details ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="150"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EndDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ end date of the email / phone details FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PhoneEmailType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of phone or email(Home/Work/Fax, etc). ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ phone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="150"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneNumCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ corresponding city code / Area code of the phone number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="60"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Corresponding Country Code of the phone number ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="60"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Corresponding Local Code of the phone number ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="60"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneOrEmail"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ value which indicates whether the choice is Phone or Email.The values are Phone and Email. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred option phone or Email.This field shows whether this record for phone / email is the preferred one or not ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StartDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ start date of the email / phone details FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="WorkExtNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ work extension ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="30"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

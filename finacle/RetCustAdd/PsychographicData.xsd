@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="PrefCrBureauDtls.xsd"/>
+<xs:include schemaLocation="IntData.xsd"/>
+<xs:include schemaLocation="MembershipsData.xsd"/>
+<xs:include schemaLocation="ProductPrefData.xsd"/>
+<xs:include schemaLocation="PsychographMiscData.xsd"/>
+
+
+<xs:complexType name="PsychographicData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ mode in which the customer or contact or prospect prefers to be addressed by the bank. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="PrefCrBureauDtls"  type="PrefCrBureauDtls"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ credit bureau preference details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CustCurrCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ customer currency. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DespatchMode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mode of despatch for the account statement. Valid values are A-Post & E-mail, B-Spl.Delivery & E-mail, C-Collect Person, D-Courier & E-mail, E-E-mail Only, N-No Dispatch, P-Post, Q-Courier, and S-Spl.Delivery. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IntData"  type="IntData"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ interests details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MembershipsData"  type="MembershipsData"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ memberships details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PrefRepresentative" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ preferred representative. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PreferrentialfExpDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which preferential expires. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PrefExpDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which preferences given by the entity expires. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PriorityId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ priority identifier. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ProductPrefData"  type="ProductPrefData"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ product preference details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PsychographMiscData"  type="PsychographMiscData"   maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ miscellaneous psychographic details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PsychographicType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ psychographic type. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Rmks"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ remarks. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RiskBehaviour"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ risk factors associated with the behavioral profile of the customer or contact or prospect. This field is used in future sales and service situations and is defined by the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SegmentationClass"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ class to which the customer or contact or prospect belongs. For example, Class A, Class B, Gold Customer, etc. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ServicePersonalise"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ various personalization services to be provided to the customer or contact or prospect. For example, alert the customer if there is a change in interest rates, and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StmtFreq"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ frequency at which the account statement must be generated. Valid values are D-Daily, F-Fortnightly, H-HalfYearly, M-Monthly, Q-Quarterly, W-Weekly and Y-Yearly. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StmtType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of the statement. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StmtDtForCombinedStmt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the combined statement is issued. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="StmtDtWeekDay" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ day of the week when statement is sent. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="StmtMonthlyStartDt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ date in month when statement is sent. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="StmtWeekCfMonth"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ week of month when statement is sent. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TDSCustFloorLimit" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ maximum tax deduction at source applicable to the entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TDSStmtType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of Tax Deduction at Source statement. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefAddrMode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mode in which the customer or contact or prospect prefers to be addressed by the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

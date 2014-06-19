@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="AcctDisburseTranLA.xsd"/>
+<xs:include schemaLocation="DisbTranLL.xsd"/>
+<xs:include schemaLocation="TranMesg.xsd"/>
+
+
+<xs:complexType name="LoanDisbursementStruct">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ transaction message details ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="acctDisburseTranLA"  type="AcctDisburseTranLA"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ account details of the disbursement transaction ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="odisbTranLL"  type="DisbTranLL"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ disbursal transaction details ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranMesg"  type="TranMesg"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ transaction message details ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

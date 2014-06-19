@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="MappingInfo">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Channel Identifier. This holds the Id for the channel that is associated with the customer. It is the backend code of the channel that has been mapped to that customer. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="ChannelCustId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Channel Customer Identifier. This specifies the unique customer ID for the channel used by the customer. It holds the backend key value of the channel for the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ChannelId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Channel Identifier. This holds the Id for the channel that is associated with the customer. It is the backend code of the channel that has been mapped to that customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

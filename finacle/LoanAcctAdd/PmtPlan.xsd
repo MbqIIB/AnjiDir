@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="HolidayPeriodDetails.xsd"/>
+<xs:include schemaLocation="EIDetails.xsd"/>
+<xs:include schemaLocation="RepmtRec.xsd"/>
+
+
+<xs:complexType name="PmtPlan">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Repayment Records. It used to specify the loan repayment details. It consists of Installment Id (Flow Id), Installment start date, Installment frequency,number of installment. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="HolidayPeriodDetails"  type="HolidayPeriodDetails"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Details of payment plan for holiday period. It consists of holiday period, auto rescheduling and interest related parameters during holiday period. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="IntRestBasis"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Interest Rest Basis that is applied to the account. Valid values are A-Anniversary, C-Calendar Yr and F-Financial Yr. It is applicable only in case of scheduled loan. It indicates basis on which rest frequency is applied to calculate principal for interest calulation ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IntRestFreq"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Interest Rest Frequency to be applied to the loan account. Valid values are D-Daily, W-Weekly, M-Monthly, F-Fortnightly, Q-Quarterly, H-Half Yearly and Y-Yearly. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EqInstallDetails"  type="EIDetails"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Equated installments details. This aggregate consists of flag which indicates whether payment plan is equated installment, EI type and applicable formula. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RepmtRec"  type="RepmtRec"   maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Repayment Records. It used to specify the loan repayment details. It consists of Installment Id (Flow Id), Installment start date, Installment frequency,number of installment. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

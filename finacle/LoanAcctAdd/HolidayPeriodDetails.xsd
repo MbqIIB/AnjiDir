@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="Freq.xsd"/>
+
+
+<xs:complexType name="HolidayPeriodDetails">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Interest Frequency.Standard frequency aggregate in which the frequency for interest calculation during holiday period will be specified. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="HolidayPeriod" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Holiday period in number of months or instalment.Normal holiday period is considered to be existing only when the period between EI period start date and account open date is equal to or greater than one frequency of repayment. If the duration between account open date and repayment start date is less than two frequencies then the incomplete period is considered as broken period and is handled according to the broken period set up ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AutoReschedPostHolidayPeriod"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Indicator to specify if auto rescheduling must happen after holiday period. Valid values are :F - Only if Final Disbursement has happened,H - Always at the end of Holiday Period,N - No Auto Rescheduling ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IntDuringHolidayPeriod"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Holiday period interest on the payment.Valid values are N-Null,A-Apply,C-Capitalize,S-Single Demand,I-Schedule without Capitalize ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IntFreq"  type="Freq"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Interest Frequency.Standard frequency aggregate in which the frequency for interest calculation during holiday period will be specified. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

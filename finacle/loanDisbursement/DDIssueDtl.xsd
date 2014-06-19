@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common/Amount.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+<xs:include schemaLocation="CIInstrmntDet.xsd"/>
+<xs:include schemaLocation="PTranIdentifier.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+
+
+<xs:complexType name="DDIssueDtl">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ value date of the demand draft. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="bankCode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ code of the payee bank.  ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="8"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="cityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="commAmtActual"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="commAmtCalc"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="commCrRate" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ commission credit rate. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="commDebtAcct"  type="CIAcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ account details of the originator ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="commPostCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency in which the commission is collected. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="commPostCrncyRate"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ rate at which the commission is collected. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ddAcct"  type="CIAcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ account details of the originator ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ddAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ddCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency code of the demand draft. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ddDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date the demand was issued. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ddDupIssCnt" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ number of times a duplicate copy must be printed. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ddNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ number of the demand draft. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="16"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="instrmnt"  type="CIInstrmntDet"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ instrument details ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="payeeBrCode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ payee branch code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="8"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="payeeName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the payee. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="paysysIdrefCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ payment system reference code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="postageAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="postagePTranSrlNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ part transaction serial number for postage. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="4"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="prntCnt" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ number of times the demand draft is printed. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="prntFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if demand draft is printed. Valid values are Y-Yes and N-No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="prntOption"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if demand drafts must be printed immediately after posting or later for DD Mass Issue. Valid values are L-Later, I-Immediate and B-Bulk. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="pTranDtl"  type="PTranIdentifier"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ part transaction ID details ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="purAcct"  type="CIAcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ account details of the originator ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="purAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="purCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ purchase currency code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="purName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the purchaser of the demand draft. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="purPstInd"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ purchase/sale indicator. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="referralId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Referral ID that gets generated during referral generation. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="12"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="rmks"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ remarks about the demand draft. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="routingBrcode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ branch through which the demand draft is routed. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="11"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="totsettlementAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ adhoc limit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranInitUpldDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date when the transaction is uploaded. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranSubType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ transaction sub type.  ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="2"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="valueDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ value date of the demand draft. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

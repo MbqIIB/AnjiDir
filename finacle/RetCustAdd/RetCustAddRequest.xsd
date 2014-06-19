@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="RetCustAddRq.xsd"/>
+<xs:include schemaLocation="../custom/RetCustAddCustom.xsd"/>
+
+<xs:element name="RetCustAddRequest">
+	<xs:complexType>	
+		<xs:sequence>
+			<xs:element name="RetCustAddRq" type="RetCustAddRq"/>
+			<xs:element name="RetCustAdd_CustomData" type="RetCustAdd_Req_CustomData_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+</xs:schema>

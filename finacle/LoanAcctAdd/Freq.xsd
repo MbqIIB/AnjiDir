@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="Freq">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Holiday Status. Day to be picked up if the date for which frequency has setup, is a holiday. Valid values are N - NextDay, P - PreviousDay and S - Skip ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="Cal"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of calendar followed for the frequency. Vaild values: 00-Gregorian Calendar, 01-Hijri Calendar ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="2"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Type"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Type of the frequency.Valid values are D-Daily, F-Fortnightly, H-HalfYearly, M-Monthly, Q-Quarterly, W-Weekly and Y-Yearly. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StartDt" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Start date of the frequency. Valid values are any number between 1 and 31 ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="WeekDay" type="xs:long"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ day of the week on which frequency starts. Valid values are 1-Sunday, 2-Monday, 3-Tuesday, 4-Wednesday, 5-Thursday, 6-Friday, 7-Saturday ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="WeekNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Week number of the frequency. Valid values are 1 - First Week, 2-Second Week, 3-Third Week, 4-Fourth Week, L-Last Week, M-Middle Week ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HolStat"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Holiday Status. Day to be picked up if the date for which frequency has setup, is a holiday. Valid values are N - NextDay, P - PreviousDay and S - Skip ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

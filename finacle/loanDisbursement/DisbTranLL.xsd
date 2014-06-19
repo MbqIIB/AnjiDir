@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="MultiRecKey.xsd"/>
+<xs:include schemaLocation="CIAcctId.xsd"/>
+<xs:include schemaLocation="../common/Amount.xsd"/>
+
+
+<xs:complexType name="DisbTranLL">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ code of the currency in which the disbursement account is maintained. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="crDrInd"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if transaction is credit or debit. Valid values are C - Credit, D - Debit. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="llKeyElement"  type="MultiRecKey"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Serial Number of the LL. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranAcct"  type="CIAcctId"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The ID of the account for which disbursement is to be done. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The disbursement amounts for each transaction. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="tranCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ code of the currency in which the disbursement account is maintained. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

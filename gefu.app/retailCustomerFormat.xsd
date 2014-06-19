@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ns0="http://www.quantiguous.com/dfdl/retailCustomer" xmlns:ns1="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="retailCustomerFormat">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+                            																											                        <xsd:element name="gender">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="M"/>
+                    <xsd:enumeration value="F"/>
+                    <xsd:enumeration value="O"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element name="title">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="MR."/>
+                    <xsd:enumeration value="MS."/>
+                    <xsd:enumeration value="MRS."/>
+                    <xsd:enumeration value="COLONEL"/>
+                    <xsd:enumeration value="CHEIF"/>
+                    <xsd:enumeration value="ADV"/>
+                    <xsd:enumeration value="BRIG"/>
+                    <xsd:enumeration value="CAPT"/>
+                    <xsd:enumeration value="CDR"/>
+                    <xsd:enumeration value="DR"/>
+                    <xsd:enumeration value="MAJOR"/>
+                    <xsd:enumeration value="PROF"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element ibmDfdlExtn:sampleValue="akhilesh" name="firstname" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="kataria" name="lastname" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="akil" name="shortname">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common/Amount.xsd"/>
+
+
+<xs:complexType name="LaFeeChrgAssmntRec">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ The amount that has to be charged as disbursement fees.The system calculated amount is displayed by default and  can be modified. Modification is subject to the set up at the charges definition level. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="chrgCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency code of the disbursement charges. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chrgEventId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Event ID of the disbursement charge. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chrgType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ code of the disbursal charge. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="collectedAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The amount to be collected as disbursement charges. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="modifyFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if modification is allowed. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="newRecFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if disbursement charge records are newly added. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="srlNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ serial number of the linked list. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="sysCalcAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The amount calculated by the system as disbursement charges. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="userEnteredAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The amount that has to be charged as disbursement fees.The system calculated amount is displayed by default and  can be modified. Modification is subject to the set up at the charges definition level. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

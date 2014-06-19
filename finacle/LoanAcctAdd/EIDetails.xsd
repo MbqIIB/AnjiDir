@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="EIDetails">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Equated Installments Formula. This indicates the formula used to calculate the equated installment. Valid values are : F-Flat Rate, M-Equated Monthly Installment Formula, P-PMT Formula, R-Rule Of 78 ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="EqInstallFlg"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Equated Installments Flag. This flag is to indicate whether installment is equated or not. It determine the current schedule given for Loan accout is EI or NonEI.Valid Value: Y-Yes,N-No. I ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EqInstallType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Equated Installments Type. This is the type of equated installment that must be applied to the account.Valid Values are A-Advanced, R-Arrears. It is referred as EI Type in Finacle.For Advance type,on first flow date no interest will be calculated whereas for Arrers type,on first flow date itself Interest will be calculated. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="EqInstallFormula"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Equated Installments Formula. This indicates the formula used to calculate the equated installment. Valid values are : F-Flat Rate, M-Equated Monthly Installment Formula, P-PMT Formula, R-Rule Of 78 ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

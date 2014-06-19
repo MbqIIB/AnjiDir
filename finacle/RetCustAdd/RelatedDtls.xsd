@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="DemographicData.xsd"/>
+<xs:include schemaLocation="EntityDoctData.xsd"/>
+<xs:include schemaLocation="MappingData.xsd"/>
+<xs:include schemaLocation="PsychographicData.xsd"/>
+<xs:include schemaLocation="RelationshipDtls.xsd"/>
+<xs:include schemaLocation="TradeFinData.xsd"/>
+<xs:include schemaLocation="RetailBaselData.xsd"/>
+<xs:include schemaLocation="ContactData.xsd"/>
+
+
+<xs:complexType name="RelatedDtls">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Holds contact Information ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="DemographicData"  type="DemographicData"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ demographic details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="EntityDoctData"  type="EntityDoctData"   maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ entity document details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MappingData"  type="MappingData"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ mapping details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PsychographicData"  type="PsychographicData"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ psychographic details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RelationshipDtls"  type="RelationshipDtls"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ relationship details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TradeFinData"  type="TradeFinData"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ trade finance details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RetailBaselData"  type="RetailBaselData"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Basel details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ContactData"  type="ContactData"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Holds contact Information ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

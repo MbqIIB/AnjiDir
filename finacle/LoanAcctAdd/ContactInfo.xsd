@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="PhoneNum.xsd"/>
+<xs:include schemaLocation="PostAddr.xsd"/>
+
+
+<xs:complexType name="ContactInfo">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Postal Address details. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="PhoneNum"  type="PhoneNum"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Phone Number details. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="EmailAddr"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Email Address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PostAddr"  type="PostAddr"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Postal Address details. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

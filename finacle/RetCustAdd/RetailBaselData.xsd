@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="RetailBaselData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Indicator to identify any default assignment of parameter estimate ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="DebtHELOC" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ existing amount outstanding for the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CurrFICOScore" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ value depicting the creditworthiness score of the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TotalDSR" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Total Debt Service Ratio ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="BusinessTotalScore" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Score generated from liquid credit scoring model during underwriting of a loan ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="HasRelationship"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[  ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CombinedDSR" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Ratio of Combined debt of all the owners of the business to Income . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="BusinessDSR" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ General Business debt to Income ratio of the Borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CashAssetRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is the ratio of cash to asset  of the borrowing entity ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DebtWorthRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is  debt to networth ratio of the borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InterestTaxRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is earning before Interest and tax to Interest ratio of the borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="GeneralQuickRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is the ratio of liquid assets to current liabilities of the Borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ScoredSICCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ This is the SIC code of the Borrowing entity as received from Credit Bureau ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="8"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="OwnerYears" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ No of years the borrower is into the business as a owner of the business ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="NetWorth" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Networth of the Borrowing Entity ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DDABal" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Amount of aggregated checking account balance of the borrowing entity ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CombinedDebtRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Ratio of combined debt ratio calculated with combined debt as numerator and total principal income as denominator ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ProposedLeverage" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is debt to tangible networth ratio of the borrowing entity ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="GLBLCashCoverage" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is the debt service ratio taking combined debt and income of all the owners of the Borrowing entity ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CurrentRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Ratio of Current Assets to Current Liabilities of the Borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="LiquidityRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ The ratio of guarantor personal liquid assets to borrower's request. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MinTangibleWorth" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is the product of tangible networth of the guarantors and request amount of the borrowing entity. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="SBIScoreDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Date of score of Small Business Intelliscore from Experian FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="FICOScore" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Original credit score obtained and used in underwriting of credit ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="FinInqCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of the inquiries made by Finance co's on the rating/report by the credit agencies. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="FinTradeCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total count of Finance Company Trade Lines . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InquiryCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ no. of inquiries on credit report at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MinorDerogatoryCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of minor credit defaults by the borrower. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MajorDerogatoryCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of major credit defaults by the borrower. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="NeverPastDueCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of times the borrower has cleared dues well on time. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="OpenTradeCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ number of open trade lines of the borrower at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="HighestCreditLmt" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ value depicting the maximum credit limit of a retail revolving account. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TradeCntThirty" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of trade line rates above 30 days past the due date at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TradeCntSixty" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of trade line rates above 60 days past the due date at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="TradeCntNinety" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of trade line rates above 90 days past the due date at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RevolveDebtPrcnt" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ ratio  of total open revolving debt  to the total revolving lines of credit . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="SatisfactoryCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ count of satisfactory/timely trade lines. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InstLoanBal" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total amount of all Installment Balances at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InstLoanCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total count of the number of Installment Loan Trade Lines at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MortgageBal" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ summarized total amount of all Mortgage Balances. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MortgageTradeCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total count of the number of Mortgage Loan Trade Lines. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="OtherTradeBal" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total amount of all Other Balances. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="OtherTradeCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total count of the number of Other Loan Trade Lines. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RevolveBal" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total amount of all revolving balances at origination. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RevolveTradeLmt" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ summarized total amount of all Revolving Balance credit limits . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RevolveTradeCnt" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total count of the number of Revolving Trade Lines summarized in credit report. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CCLimit" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ comprehensive cerdit limit of all major crdeit cards of the borrower. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="IsWorst"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Represents the worst rating of any open trade line. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ExpenseIncomeRatio" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ the ratio of ALL of the customers monthly debt to monthly income ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="SgmntPoolID" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ unique identifier of the segment to which the customer belongs.eg. Salaried,privilege banking, wealth management,etc. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PoolPD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ percentage /probability of default associated with a particular segment. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PoolLGD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ credit loss if the retail segment defaults. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PoolEAD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ field depicting an estimation of the extent to which a bank may be exposed to a counterparty in the event of, and at the time of, that counterparty’s default. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ percentage/probability of default pertaining to a retail customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="LGD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ field which would capture the credit loss if the retail customer defaults. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="EAD" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ EAD associated with a particular retail exposure. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ModelName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Name of Analytical Model producing PD, LGD , EAD outputs ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="60"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ModelVersion" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Version of Analytical Model producing PD, LGD , EAD outputs ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ModelResult"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Outcome of Back Testing Result for a particular Model ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsFailed"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Indicator to identify any default assignment of parameter estimate ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

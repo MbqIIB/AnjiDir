@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="CIAcctId.xsd"/>
+<xs:include schemaLocation="../common/Amount.xsd"/>
+<xs:include schemaLocation="MultiRecKey.xsd"/>
+
+
+<xs:complexType name="DisbChargesLL">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ The amount that has to be charged as disbursement fees.This is the actual amount that will be collected or refunded from the customer against this charge till date. The system calculated amount is displayed by default and  can be modified. Modification is subject to the set up at the charges definition level. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="assessmentAllwd"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if assessment is allowed. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chargeAcctId"  type="CIAcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ This is the charge account . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="chargeCrncy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency code of the disbursement charges. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="3"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chargeRate"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ exchange rate used in the currency conversion for the charge part transaction of MC transaction. This is the rate corresponding to the rate code chosen for transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chargeRateCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ exchange rate code used in the currency conversion for the charge part transaction of MC transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="chargeType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ event type of charge collection. This field is the link between CXL and PTT table. Valid Values are DDI for DD issue charges, IWREJ for inward reject charges, OWREJ for outward reject charges, MBCEV for minimum balance charges, GCHRG for general charges. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="collectedAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The amount to be collected as disbursement charges.Charge amount collected so far. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="eventId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Event ID of charge collection. This is defined and maintained through the HPTTM menu option. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="eventSrlNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ charge part transaction serial number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="key"  type="MultiRecKey"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Key of the LL. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="modifyAllwd"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify the record can be modified. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="newRecordFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if disbursement charge records are newly added or not. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="pendFeeAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The pending fee amount. Pending Fees is default populated with the pending fees which is assessed and deductible, if any, for that particular event type or ID. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="selectFlg"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if record is selected. Valid values are Y or N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="systemChargeAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ System calculated charge amount. This field specifies the calculated charge amount which can be different from the actual collected amount . ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="userChargeAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ The amount that has to be charged as disbursement fees.This is the actual amount that will be collected or refunded from the customer against this charge till date. The system calculated amount is displayed by default and  can be modified. Modification is subject to the set up at the charges definition level. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

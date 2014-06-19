@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="CIInstrmntDet">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ type of the instrument which drives the transaction. For example, Cheque, DD and so on. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="instrmntAlpha"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ alphabetic part of the instrument. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="6"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="instrmntDate" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date of the instrument. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="instrmntDesc"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ description of the instrument which drives the transaction. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="instrmntNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ numerical part of the instrument. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="16"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="instrmntType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of the instrument which drives the transaction. For example, Cheque, DD and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="GenLedgerSubHead.xsd"/>
+<xs:include schemaLocation="Freq.xsd"/>
+
+
+<xs:complexType name="AcctGenInfo">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Delivery mode or method by which the bank will send the account statement to the customer. Valid values are A-Post and Email, B-Special Delivery and Email, C-Collect by Person, D-Courier and Email, E-Email Only, N-No Dispatch, P-Post, Q-Courier and S-Special Delivery. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="GenLedgerSubHead"  type="GenLedgerSubHead"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ General Ledger SubHead. This aggregate holds the general ledger subhead details. Accounts are grouped and consolidated for the purpose of reporting to General ledger subhead.Each General Ledger SubHead is associated with a currency and branch Id ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AcctName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Account Name. It is default set as name of the customer, different value can be specified for this field during account opening by the external channel  in the request message. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AcctShortName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Account Short Name. It is default set as short name of the customer, different value can be specified for this field during account opening by the external channel in the request message. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AcctStmtMode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Account Statement Mode. It indicates the mode in which the account statement must be generated.Valid values for this field are B - Both, N - None, P - Pass Book, S - Statement,R - Deposit Receipt (This is relevant only in case of deposit accounts). ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AcctStmtFreq"  type="Freq"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account Statement Frequency.It indicates the frequency at which the account statement has to be generated.This aggregate is relevant only if value for field AcctStmtMode is S -Statement or B - Both ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AcctStmtNxtPrintDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Account Statement Next Print Date. It indicates the date on which the first account statement will be printed. After that statement generation will happen based on the account statement generation frequency specified. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DespatchMode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Delivery mode or method by which the bank will send the account statement to the customer. Valid values are A-Post and Email, B-Special Delivery and Email, C-Collect by Person, D-Courier and Email, E-Email Only, N-No Dispatch, P-Post, Q-Courier and S-Special Delivery. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

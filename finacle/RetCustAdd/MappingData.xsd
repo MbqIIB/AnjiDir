@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="MappingInfo.xsd"/>
+
+
+<xs:complexType name="MappingData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ mapping details to create a CIF retail customer number. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="MappingInfo"  type="MappingInfo"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ mapping details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

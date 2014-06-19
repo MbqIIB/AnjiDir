@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="AddrDtls.xsd"/>
+<xs:include schemaLocation="GroupHouseHoldDtls.xsd"/>
+<xs:include schemaLocation="OperationsReasonCode.xsd"/>
+<xs:include schemaLocation="CustPhoneEmailInfo.xsd"/>
+<xs:include schemaLocation="ProductsData.xsd"/>
+
+
+<xs:complexType name="CustData">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ zakat deduction value. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AccessOwnerBCName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the business centre to which customer belongs. The access privileges for the record are derived based on this field. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="450"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AccessOwnerGroupName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ group of the business centre to which customer belongs. The access privileges for the record are derived based on this field. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="75"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AccessOwnerSegment"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ segment of the business centre to which customer belongs. The access privileges for the record are derived based on this field. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AcctName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AcctType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AddrDtls"  type="AddrDtls"   maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ address details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AnnualRevenue" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ net annual income of the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Assistant"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ assistant. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AvailableCrLimit" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ available credit limit. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="BirthDt" type="xs:int"   minOccurs="1">
+<xs:annotation>
+                <xs:documentation><![CDATA[ date of birth of the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="BirthMonth"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ month of birth of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="BirthYear" type="xs:int"   minOccurs="1">
+<xs:annotation>
+                <xs:documentation><![CDATA[ year of birth of the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="BlacklistNotes"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ notes while blacklisting the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="500"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="BlacklistReason"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ reason to blacklist the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="250"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsBlacklisted"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if customer is blacklisted. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CardHolder"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if customer holds any cards. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Category"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ category of customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ChargeLevelCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ charge level code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the customer information file. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the entity is retail or corporate. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CIN"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CombinedStmtFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if a combined statement exists. Valid values are Yes and No. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Competitor"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the competitor. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CorpRepCount" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ corporate representative count. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CountryOfBirth"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the country in which the customer was born. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CreatedBySystemId"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ backend system which creates customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CurrCrExposure" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ current credit exposure. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Community"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ community of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DateOfBirth" type="xs:dateTime" minOccurs="1">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date of birth of the customer. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="FirstName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ first name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustHealthCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ health code of the customer. For example, satisfactory and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Language"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ language in which the customer prefers to communicate with the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LastName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ last name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MiddleName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ middle name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefEndDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which customer preferences expire. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="IsStaff"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the customer is an employee of the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SwiftCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ SWIFT code of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustClass"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ class of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustCreationMode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mode of customer creation. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsMinor"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the customer is a minor. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsCustNRE"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the customer is a non resident. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustProfitability" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify how profitable a customer is. This is a computed field. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="CustRelationshipNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ customer relationship number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustTrade"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ customer trade. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CustStatusChangeDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the customer status changed. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="NREBecomingDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which contact became NRE. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="DefaultAddrType"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ default address type. Valid value is M-Mailing. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DelinquencyFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the contact is a defaulter. Valid values are Y-Yes and N-No. This flag is set as Y if the customer's payments are delayed or overdue. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DeliquencyPeriod" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ period for which the entity was a delinquent. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Designation"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ designation of the corporate representative. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsDocReceived"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the necessary documents were received. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DSAId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the direct selling agent. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="12"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DualFirstName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ first name of the dual name. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DualLastName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ last name of the dual name. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="DualMiddleName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ middle name of the dual name. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Education"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ educational qualification of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FatherOrHusbandName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the father or husband. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Fax"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ work fax number of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxHome"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ home fax number of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FreezeProductSale"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ freeze product sale flag. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Gender"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ gender of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="GroupHouseHoldDtls"  type="GroupHouseHoldDtls"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ group household details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="HouseHoldName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the household. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Industry"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ industry, the customer is associated with. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="InternalScore"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ score maintained by the bank for this entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StatusOfIntroducer"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ status of the introducer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NameOfIntroducer"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the introducer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SalutationCodeOfIntroducer"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ title of the introducer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StatusCodeOfIntroducer"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ status code of the introducer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsSwiftCodeOfBank"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if the entered SWIFT code is of the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsCorpRepresentative"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to identify if customer is a corporate representative. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsDummy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify dummy record. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsIslamicBankingCust"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ an indicator to specify whether the customer is islamic or not. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LeadSource"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify the source entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LicenseNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ driving license number of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MaidenName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ maiden name of the customer. That is, the name before marriage. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MaidenNameOfMother"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ maiden name of the customer's mother. That is, the name of the customer's mother before her marriage. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Manager"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the manager. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ManagerOpinion"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ opinion of the manager. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="240"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="GuardianName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ guardian name of the minor customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="40"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MinorToMajorDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the minor customer becomes a major. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="MotherName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the customer's mother. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Name"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the entity. This consists of first, middle and last names. This name is required by Finacle Core Banking. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NameSuffix"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ suffix of the name. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NationalIdCardNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ National ID card number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="16"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NativeLanguageCode"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ code of the native language. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NativeLanguage"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the customer in the native language. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NativeLanguageTitle"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ title code in native language. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsNegated"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Identification if the customer is negative ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NegationNotes"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ notes related to negation of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="500"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NegationReason"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ reasons for negating the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="250"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NickName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ nick name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Notes"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ notes. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="524288"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="NREBecomingOrdinaryDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the NRE customer becomes an ordinary customer. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="NumberOfProducts" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ number of products. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Occupation"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ occupation of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="OffLineCumDrLimit" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ offline debit limit. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="OperationsReasonCode"  type="OperationsReasonCode"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ reason code of the operation to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PAN"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ PAN number of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ParentAcct"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ parent account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PassportNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ passport number of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PersonType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ person type of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PhoneEmailDtls"  type="CustPhoneEmailInfo"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ telephone and E-mail details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PlaceOfBirth"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ place of birth of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PotentialCrLine" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ potential credit exposure. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PrefCalendar"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ the preferred calender for the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefEmail"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred E-mail ID. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefEmailType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred E-mail type. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefName"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name by which the customer prefers to be addressed. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefPhone"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ contact telephone number through which the customer or contact or prospect prefers to be contacted. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefPhoneType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred phone type. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PreviousName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ previous name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrimaryServiceCentre"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ primary service centre code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrimarySolId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ primary SOL ID. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="8"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PriorityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ priority code of the customer. For example, Silver, Gold and Diamond. These codes are used to distinguish customers based on profitability and other preferences. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ProductsData"  type="ProductsData"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ products details to create a CIF retail customer number. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ProofOfAgeDoc"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the proof of age document provided by the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ProofOfAgeFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if any proof of age document for the customer is provided. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PassportDet"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ details of the passport. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PassportExpDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the passport expires. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="PassportIssueDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the passport was issued. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Rating"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ rating of the entity. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RatingDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which rating for this customer was given. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Region"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ region or country where customer resides. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RelationshipLevel"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ level of the relationship. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RelationshipType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of the relationship. For example, New and Merger and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RelationshipOpeningDt" type="xs:dateTime" minOccurs="1">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the relationship was opened by this entity with the bank. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RelationshipValue" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ value associated with the entity after holding the relationship with the bank for the duration. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RevenueUnits"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ currency in which all the amount fields are specified by the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RiskProfileExpDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the risk profile expires. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RiskProfileScore" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ risk profile score of the customer. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Salutation"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ title of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SecondaryRMId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the secondary Relationship Manager. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Sector"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ sector ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SegmentationClass"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ class to which the customer or contact or prospect belongs. For example, Class A, Class B, Gold Customer, etc. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SegmentUpdateDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ date on which the segment was updated. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ShortName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ short name of the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SICCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ SIC code. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SpouseId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the customer's spouse. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SSN"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Social Security Number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StaffEmployeeId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Employee ID of the customer if the customer is a staff of the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StaffFlag"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the customer is an employee of the bank. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StartDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ start date. FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="SubSector"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ sub sector. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SubSegment"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ sub segment. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SuspendNotes"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ notes or comments given after suspending the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="500"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SuspendReason"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ reason to suspend the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="250"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsSuspended"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if the customer is suspended. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TaxDeductionTable"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ table for Tax Deduction at Source. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TertiaryRMId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ID of the tertiary Relationship Manager. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TradeFinFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to identify trade finance. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TickerSymbol"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ ticker symbol. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TotalCrExposure" type="xs:double"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ total credit exposure. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="IsWAPBankingEnabled"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if WAP Banking is enabled ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="SMSBankingMobileNumber"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Mobile number for SMS Banking ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsSMSBankingEnabled"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if SMS Banking is enabled ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="preferredChannelID" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ name of the customer's preferred channel. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RelationshipMgrID" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ Relationship Manger ID. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="RelationshipCreatedByID" type="xs:int"   minOccurs="0">
+<xs:annotation>
+                <xs:documentation><![CDATA[ User ID of the person who created the relationship. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="Pref_code"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ the preferred code for the customer. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="15"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="zakat_Deduction"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ zakat deduction value. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

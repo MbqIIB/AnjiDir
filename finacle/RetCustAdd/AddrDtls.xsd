@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="AddrDtls">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Address Verification flag ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AddrLine1"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ first line of the address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AddrLine2"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ second line of the address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AddrLine3"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ third line of the address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AddrCategory"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ category of the address. For example, Home, Mailing, Work, Future, Onsite Address and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="BuildingLevel"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ level or floor of the building. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="BusinessCenter"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ business centre. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CellNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mobile number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CellNumCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the mobile number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CellNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of mobile number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="CellNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of mobile number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="City"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city of the address. This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Country"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Domicile"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ domicile. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNum2"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ second fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumCityCode2"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the second fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumCountryCode2"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the second fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FaxNumLocalCode2"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the second fax number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FreeTextAddr"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ free text for address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="FreeTextLabel"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ free text for label. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailFlag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ flag to indicate if mails to customer or contact or prospect must be held. Valid values are Y and N. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailInitiatedBy"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of person who initiates the withholding of mail. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HoldMailReason"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ reason to withhold mails. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="HouseNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ house number.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="IsAddressProofReceived"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify if address proof is required. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="LocalityName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the locality. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="MailStop"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ mail stop of the address ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Name"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the entity. This consists of first, middle and last names. This name is required by Finacle Core Banking and co-mandatory, 35 characters maximum when the addresscategory is SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="80"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PagerNumLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the entity's pager number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefAddr"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred address. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrefFormat"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ preferred format.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PremiseName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the premise where the building is located. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ResidentialStatus"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ residential status. The valid values are Company Provided, Lease Rental), Own and Parent Owned. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="25"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StartDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ start date of this address.This field is co-mandatory when the addresscategory is other than SWIFT FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="State"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the state as per the address.This field is co-mandatory when the addre
+sscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StreetName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the street.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="StreetNum"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ street number.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Suburb"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the suburb. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Telex"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ telex number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TelexCityCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ city code of the telex number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TelexCountryCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ country code of the telex number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="TelexLocalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ local code of the telex number. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PostalCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ postal code of the address.This field is co-mandatory when the addresscategory is other than SWIFT ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="100"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Town"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the town. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="isAddressVerified"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Address Verification flag ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

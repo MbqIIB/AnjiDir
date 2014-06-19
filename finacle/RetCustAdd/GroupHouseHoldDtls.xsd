@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="GroupHouseHoldDtls">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Primary Group Indicator. Valid vales are Y or N ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="Flag"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Y/N ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="GroupHouseHoldCode"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ group household code created from master table. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="GroupHouseHoldName"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ name of the group household ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="200"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="PrimaryGroupIndicator"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Primary Group Indicator. Valid vales are Y or N ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

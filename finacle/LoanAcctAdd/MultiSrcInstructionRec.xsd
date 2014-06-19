@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="AcctId.xsd"/>
+<xs:include schemaLocation="../common/Amount.xsd"/>
+<xs:include schemaLocation="Percent.xsd"/>
+
+
+<xs:complexType name="MultiSrcInstructionRec">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ End date for multi-repayment instruction.The End date should be greater than the Start date.This field is required only for transfer type of Repayments and for all Installment type except "Other Dues". ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="RecoveryAcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Recovery Account Identifier.RecoveryAcctId aggregate holds recovery account details. Collection will be credited in this account as part of recovery process. Only AcctId and AcctCurr fields of this aggregate are used in this business message. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InstallType"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of loan instalment applicable to the account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="5"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="RePmtMethod"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ method used for repayment of the loan account. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="AmtPercentInd"  minOccurs="1"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ indicator to specify the type of recovery of the loan amount. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="1"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="ValueInAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ the instalment amount for multi-repayment ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="ValueInPercent"  type="Percent"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ the percentage of principal amount being repaid in instalments ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account Identifier.AcctId aggregate is used to uniquely identify an operative account to which demand is debited. AcctId and the AcctCurr filed of this aggregate are used in this business message.This field is required only is RepayMethod is T - Transfer Customer A/c or O - Transfer Office A/c ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InstructionStartDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ Start date for multi-repayment instruction.The Start date should be greater than or equal to Account Open date.This field is required only for transfer type of Repayments and for all Installment type except "Other Dues". FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="InstructionEndDt" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+                <xs:documentation><![CDATA[ End date for multi-repayment instruction.The End date should be greater than the Start date.This field is required only for transfer type of Repayments and for all Installment type except "Other Dues". FI Supports only yyyy-MM-dd'T'hh:mm:ss.SSS  format.]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

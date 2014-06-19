@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+
+
+<xs:complexType name="RetCustAddRs">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ status of the entity. For example, Active and Inactive. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="CustId"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Customer Identification. Unique identifier of the customer by whom the retail customer account creation request is being sent. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Desc"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Description. This field holds the return description of the Business message after the request for adding a retail customer is sent. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="255"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Entity"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ Entity. This specifies the type of entity for whom the request is sent. For example, Customer, Contact, Prospect, Corporate, Individual and so on. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Service"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ service. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="50"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Status"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ status of the entity. For example, Active and Inactive. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="10"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
