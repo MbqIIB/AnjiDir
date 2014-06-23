@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OracleModel="http:///com/ibm/db/models/oracle/oracle.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore">
+  <OracleModel:OracleDatabase xmi:id="_uYGgYfqYEeOX3fIKP4ZLQg" name="Database" vendor="Oracle" version="11" schemas="_uZ7sYPqYEeOX3fIKP4ZLQg"/>
+  <SQLSchema:Schema xmi:id="_uZ7sYPqYEeOX3fIKP4ZLQg" name="CUSTOM" tables="_6_I5YPqYEeOX3fIKP4ZLQg _V2yw8PqcEeOX3fIKP4ZLQg _YiN1YPqcEeOX3fIKP4ZLQg _DCXMIPqdEeOX3fIKP4ZLQg _FCeCsPqdEeOX3fIKP4ZLQg _GGPM0PqdEeOX3fIKP4ZLQg _H79YUPqdEeOX3fIKP4ZLQg" database="_uYGgYfqYEeOX3fIKP4ZLQg"/>
+  <OracleModel:OracleTable xmi:id="_6_I5YPqYEeOX3fIKP4ZLQg" name="IAP_CONTROL_TABLE" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_AH9NUPqZEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_DR-SQPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_AJtg0PqZEeOX3fIKP4ZLQg" name="EXP_REF_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_FizscPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_ALmXMPqZEeOX3fIKP4ZLQg" name="APPLICATION_REFERENCE_NO" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_H8UhgPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_ANX40PqZEeOX3fIKP4ZLQg" name="APPLICATION_SERIAL_NUMBER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_KWBj0PqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xmi:id="_AO_CYPqZEeOX3fIKP4ZLQg" name="SOURCE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_NVRjMPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="8"/>
+    </columns>
+    <columns xmi:id="_AQrEcPqZEeOX3fIKP4ZLQg" name="PROC_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_PTuz8PqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_ASQ_4PqZEeOX3fIKP4ZLQg" name="REC_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Q_4zwPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="2"/>
+    </columns>
+    <columns xmi:id="_AT3iYPqZEeOX3fIKP4ZLQg" name="CDATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_SXb1gPqZEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_SukjIPqZEeOX3fIKP4ZLQg" name="RCRE_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UeJqYPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_SwQlMPqZEeOX3fIKP4ZLQg" name="RCRE_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_WE8CAPqZEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_Sx3uwPqZEeOX3fIKP4ZLQg" name="LCHG_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Sx3uwfqZEeOX3fIKP4ZLQg" name="CHAR" length="15"/>
+    </columns>
+    <columns xmi:id="_Szs6wPqZEeOX3fIKP4ZLQg" name="LCHG_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_ZNGs0PqZEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_S1JsQPqZEeOX3fIKP4ZLQg" name="BOD_DATE" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_S1JsQfqZEeOX3fIKP4ZLQg" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_cMX6UPqZEeOX3fIKP4ZLQg" name="COLLATION_SEQ_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_e7RwkPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_cOJb8PqZEeOX3fIKP4ZLQg" name="FLOW_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cOJb8fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_cPrF8PqZEeOX3fIKP4ZLQg" name="CUST_PROC_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cPrF8fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_cRV54PqZEeOX3fIKP4ZLQg" name="ACCT_PROC_REQD" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cRV54fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_cTGNYPqZEeOX3fIKP4ZLQg" name="CHQBK_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cTGNYfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_loyKYPqZEeOX3fIKP4ZLQg" name="DC_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_loyKYfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_lqT0YPqZEeOX3fIKP4ZLQg" name="EBANKING_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_lqT0YfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_lr2FcPqZEeOX3fIKP4ZLQg" name="DEDUC_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_lr2FcfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_ltcn8PqZEeOX3fIKP4ZLQg" name="SMS_BKG_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ltcn8fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_lu_gEPqZEeOX3fIKP4ZLQg" name="FUNDING_REQD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_lu_gEfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_wmJP0PqZEeOX3fIKP4ZLQg" name="FREE_CODE_1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wmJP0fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_wnxAcPqZEeOX3fIKP4ZLQg" name="FREE_CODE_2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wnxAcfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_wpNK4PqZEeOX3fIKP4ZLQg" name="FREE_CODE_3" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wpNK4fqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_xLpwoPqZEeOX3fIKP4ZLQg" name="FREE_CODE_4">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_xLpwofqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_xNHJMPqZEeOX3fIKP4ZLQg" name="FREE_CODE_5">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_xNHJMfqZEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_U7R10PqaEeOX3fIKP4ZLQg" name="DEL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_U7Sc4PqaEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_hH41QPqdEeOX3fIKP4ZLQg" name="IAP_CONTROL_TABLE_PK" members="_AH9NUPqZEeOX3fIKP4ZLQg"/>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_V2yw8PqcEeOX3fIKP4ZLQg" name="IAP_LAA_DETAILS" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_WI9swPqhEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_jrQ0IPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_WKjBIPqhEeOX3fIKP4ZLQg" name="BRANCHCODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_lKa5wPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="8"/>
+    </columns>
+    <columns xmi:id="_WMN1EPqhEeOX3fIKP4ZLQg" name="GL_SUB_HEAD_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_nCt4IPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_WNwtMPqhEeOX3fIKP4ZLQg" name="CRNYC_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ocGF4PqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="3"/>
+    </columns>
+    <columns xmi:id="_WPXPsPqhEeOX3fIKP4ZLQg" name="SCHM_CODE" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_qBWMcPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_WQ9yMPqhEeOX3fIKP4ZLQg" name="SCHM_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_rsgtwPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_WSL6MPqhEeOX3fIKP4ZLQg" name="ACCT_OPN_DATE" nullable="false">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_tD4wYPqhEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_WTOcAPqhEeOX3fIKP4ZLQg" name="ACCT_MGR_USERID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ud86oPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_WU0XcPqhEeOX3fIKP4ZLQg" name="CIF_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_0HYBQPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_WWa58PqhEeOX3fIKP4ZLQg" name="MODOF_OPER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WWa58fqhEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_WYNCoPqhEeOX3fIKP4ZLQg" name="EMP_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_znBtQPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_WZzlIPqhEeOX3fIKP4ZLQg" name="EMP_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_08iusPqhEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="40"/>
+    </columns>
+    <columns xmi:id="_WbUoEPqhEeOX3fIKP4ZLQg" name="PASSBOOK_ACC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WbUoEfqhEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_WdADEPqhEeOX3fIKP4ZLQg" name="PS_FREQ_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WdADEfqhEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_WessMPqhEeOX3fIKP4ZLQg" name="PS_FREQ_WEEK_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WessMfqhEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_WgNIEPqhEeOX3fIKP4ZLQg" name="PS_FREQ_WEEK_DAY">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7UAAAPqhEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="1"/>
+    </columns>
+    <columns xmi:id="_Wh7mYPqhEeOX3fIKP4ZLQg" name="PS_FREQ_START_DD" nullable="false">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_9uuWAPqhEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="2"/>
+    </columns>
+    <columns xmi:id="_Wjz1sPqhEeOX3fIKP4ZLQg" name="PS_FREQ_HLDY_STAT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Wjz1sfqhEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_WlkwQPqhEeOX3fIKP4ZLQg" name="SANCT_LIM">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_CVvkcPqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_C8LSUPqiEeOX3fIKP4ZLQg" name="LIM_SANCT_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_EYdqIPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_C91fMPqiEeOX3fIKP4ZLQg" name="APPLICABLE_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_FUhpwPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_C_SQsPqiEeOX3fIKP4ZLQg" name="EXPIRY_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_GL0eIPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_DA4MIPqiEeOX3fIKP4ZLQg" name="DP_IND">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_DA4MIfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_DDBhMPqiEeOX3fIKP4ZLQg" name="DP_PCNT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_I59fYPqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_JqI_IPqiEeOX3fIKP4ZLQg" name="DP_AMT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_K8_HEPqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_Jr0aIPqiEeOX3fIKP4ZLQg" name="SANCT_LEVEL_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Oj1R8PqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_Jta8oPqiEeOX3fIKP4ZLQg" name="SANCT_AUTH_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_QJx8EPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_JvCGMPqiEeOX3fIKP4ZLQg" name="SANCT_REF_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_S7cLYPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="25"/>
+    </columns>
+    <columns xmi:id="_JwMj0PqiEeOX3fIKP4ZLQg" name="DOCUMENT_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_UYD6YPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_VGZAAPqiEeOX3fIKP4ZLQg" name="CUST_HLTH_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_W_LtoPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_VIHeUPqiEeOX3fIKP4ZLQg" name="LOAN_AMT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_YPxy0PqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_VJsLoPqiEeOX3fIKP4ZLQg" name="LOAN_PREDMTHS" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cKhxIPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_VLSuIPqiEeOX3fIKP4ZLQg" name="LOAN_PREDDAYS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_caanQPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_dbqo4PqiEeOX3fIKP4ZLQg" name="OPER_ACCT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_enBowPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_ddXSAPqiEeOX3fIKP4ZLQg" name="FLOW_STDATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_g4LzEPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_de8mYPqiEeOX3fIKP4ZLQg" name="NEXT_INTDMD_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_h2GM0PqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_dgfegPqiEeOX3fIKP4ZLQg" name="NEXT_INTRUN_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_i3O5sPqiEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_diBvkPqiEeOX3fIKP4ZLQg" name="STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_diBvkfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_l8xuUPqiEeOX3fIKP4ZLQg" name="DEL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_l8xuUfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_l-XpwPqiEeOX3fIKP4ZLQg" name="FORACID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_o3sAQPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_l_560PqiEeOX3fIKP4ZLQg" name="SECU_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_q_64EPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="8"/>
+    </columns>
+    <columns xmi:id="_mBRz0PqiEeOX3fIKP4ZLQg" name="ENTITYID_FORACID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_t6eksPqiEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_mCulUPqiEeOX3fIKP4ZLQg" name="APPORTINED_AMT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_w7BkkPqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_mEVH0PqiEeOX3fIKP4ZLQg" name="ACCT_PREF_PCNT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_y5O9sPqiEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="9" scale="6"/>
+    </columns>
+    <columns xmi:id="_zfIgEPqiEeOX3fIKP4ZLQg" name="REPRICING_PLAN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zfIgEfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_zg0iIPqiEeOX3fIKP4ZLQg" name="DMD_SATISFY_MTHD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zg0iIfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_ziRToPqiEeOX3fIKP4ZLQg" name="MARKUP_APPL_FLAG" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ziRTofqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_zjzksPqiEeOX3fIKP4ZLQg" name="MARKUP_INT_METHOD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zjzksfqiEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_zlQ9QPqiEeOX3fIKP4ZLQg" name="MARKUP_RATE_PCNT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_A2Mn0PqjEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="9" scale="6"/>
+    </columns>
+    <columns xmi:id="_zmg6cPqiEeOX3fIKP4ZLQg" name="LOANTTOVALUE">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_EavsoPqjEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="3"/>
+    </columns>
+    <columns xmi:id="_FXrO8PqjEeOX3fIKP4ZLQg" name="SECTOR_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HdE1MPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FZvrgPqjEeOX3fIKP4ZLQg" name="SUB_SECTOR_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IvI6APqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FbW1EPqjEeOX3fIKP4ZLQg" name="ACCT_OCCP_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_sMEssPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_Fc6UQPqjEeOX3fIKP4ZLQg" name="BORROWER_CATEGORY_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_schjgPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FeXs0PqjEeOX3fIKP4ZLQg" name="PURPOSE_OF_ADVN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_swmWEPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_Ff1FYPqjEeOX3fIKP4ZLQg" name="MODE_OF_ADVN" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_tAMRQPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FhIF4PqjEeOX3fIKP4ZLQg" name="TYPE_OF_ADVN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_tPiU0PqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FiRVYPqjEeOX3fIKP4ZLQg" name="NATURE_OF_ADVN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_tuaCIPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_FjkV4PqjEeOX3fIKP4ZLQg" name="GUAR_COVER_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UV9zMPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_yGfcsPqjEeOX3fIKP4ZLQg" name="INDUSTRY_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zMKEQPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_zyFb0PqjEeOX3fIKP4ZLQg" name="FREE_CODE_1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="__svP8PqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_zzxd4PqjEeOX3fIKP4ZLQg" name="FREE_CODE_2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="__zfYMPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z1NoUPqjEeOX3fIKP4ZLQg" name="FREE_CODE_3">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="__56wUPqjEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z2qZ0PqjEeOX3fIKP4ZLQg" name="FREE_CODE_4">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AAiVsPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z3zpUPqjEeOX3fIKP4ZLQg" name="FREE_CODE_5">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AG3nMPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z5VTUPqjEeOX3fIKP4ZLQg" name="FREE_CODE_6">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AM6k0PqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z6tzYPqjEeOX3fIKP4ZLQg" name="FREE_CODE_7">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ATGsYPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z8EeQPqjEeOX3fIKP4ZLQg" name="FREE_CODE_8">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AZSM4PqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z9rAwPqjEeOX3fIKP4ZLQg" name="FREE_CODE_9">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AfbRIPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_z_gMwPqjEeOX3fIKP4ZLQg" name="FREE_CODE_10">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AlmKkPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_0BB2wPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_1">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AsOXAPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_0FF3YPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_2">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_BFxfcPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_0ImeYPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_3">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_B6ZaUPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_7wTPkPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_4">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CAgpYPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_7x6ZIPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_5">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CG3wEPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_7zgUkPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_6">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CNNooPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_70zVEPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_7">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CTjhMPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_713sEPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_8">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CZzTIPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_73WSwPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_9">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Cg-SIPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_74zrUPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_10">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CqnWUPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_76Qc0PqjEeOX3fIKP4ZLQg" name="FREE_TEXT_11">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Cw5kgPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_77jdUPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_12">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_C28iIPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_79JYwPqjEeOX3fIKP4ZLQg" name="FREE_TEXT_13">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_C_LREPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_E87XMPqkEeOX3fIKP4ZLQg" name="FREE_TEXT_14">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_FzaTQPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_J7-rIPqkEeOX3fIKP4ZLQg" name="EI_SCHM_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_J7-rIfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_J9g8MPqkEeOX3fIKP4ZLQg" name="HLDY_PREDMTHS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_PX9ysPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_J-udIPqkEeOX3fIKP4ZLQg" name="HLDY_AUTORESHDLPERD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_J-udIfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_J_9MMPqkEeOX3fIKP4ZLQg" name="HLDY_PREDFROM_DISBFLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_J_9MMfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_KBk80PqkEeOX3fIKP4ZLQg" name="HLDY_PREDINTINSTLMTHS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_dcvVAPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_KC810PqkEeOX3fIKP4ZLQg" name="HLDY_PREDINTFLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_kJQQUPqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_KEUHwPqkEeOX3fIKP4ZLQg" name="HLDY_FREQ_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_KEUHwfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_KFnvUPqkEeOX3fIKP4ZLQg" name="HLDY_FREQ_WEEK_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_KFnvUfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_KG_BQPqkEeOX3fIKP4ZLQg" name="HLDY_FREQ_WEEK_DAY">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_otw9UPqkEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="1"/>
+    </columns>
+    <columns xmi:id="_pLCIIPqkEeOX3fIKP4ZLQg" name="HLDY_FREQ_START_DD">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_rTdNMPqkEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="2"/>
+    </columns>
+    <columns xmi:id="_pMpRsPqkEeOX3fIKP4ZLQg" name="HLDY_FREQ_HLDY_STAT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_pMpRsfqkEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_pOBxwPqkEeOX3fIKP4ZLQg" name="ERROR_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wMZ5IPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_pPd8MPqkEeOX3fIKP4ZLQg" name="ERROR_DESC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_xfgfwPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="2000"/>
+    </columns>
+    <columns xmi:id="_ywY40PqkEeOX3fIKP4ZLQg" name="LCHG_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_1HU7APqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_yx2RYPqkEeOX3fIKP4ZLQg" name="LCHG_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_2VZQoPqkEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_yzhsYPqkEeOX3fIKP4ZLQg" name="RCRE_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_4b8GYPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_y1MgUPqkEeOX3fIKP4ZLQg" name="RCRE_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_5KAGQPqkEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_6Ia2UPqkEeOX3fIKP4ZLQg" name="LIMIT_PREFIX">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8D_LIPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="12"/>
+    </columns>
+    <columns xmi:id="_6KQpYPqkEeOX3fIKP4ZLQg" name="LIMIT_SUFFIX">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8o0WgPqkEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_JP7IUPqiEeOX3fIKP4ZLQg" name="IAP_LAA_DETAILS_PK" members="_Wh7mYPqhEeOX3fIKP4ZLQg _WI9swPqhEeOX3fIKP4ZLQg"/>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_YiN1YPqcEeOX3fIKP4ZLQg" name="IAP_UPLD" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_qggKcPqdEeOX3fIKP4ZLQg" name="REF_NUM" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zV1zcPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_qiKXUPqdEeOX3fIKP4ZLQg" name="FILE_NAME" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_0KyecPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_qjmhwPqdEeOX3fIKP4ZLQg" name="SRL_NUM" nullable="false">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_08foMPqdEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="5"/>
+    </columns>
+    <columns xmi:id="_qlTK4PqdEeOX3fIKP4ZLQg" name="UPLD_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_qlTK4fqdEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_qm0N0PqdEeOX3fIKP4ZLQg" name="MODULE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_2UsxQPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_qoTbkPqdEeOX3fIKP4ZLQg" name="RECORD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_3mqIYPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="4000"/>
+    </columns>
+    <columns xmi:id="_uh90wPqdEeOX3fIKP4ZLQg" name="FORMAT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_413tgPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="11"/>
+    </columns>
+    <columns xmi:id="_ujp20PqdEeOX3fIKP4ZLQg" name="DEL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ujp20fqdEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_ulN9EPqdEeOX3fIKP4ZLQg" name="ERROR_DESC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_5_N7MPqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
+    </columns>
+    <columns xmi:id="_umvnEPqdEeOX3fIKP4ZLQg" name="RCRE_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7h518PqdEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="8"/>
+    </columns>
+    <columns xmi:id="_xtG7EPqdEeOX3fIKP4ZLQg" name="RCRE_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_8L7DUPqdEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_PwpAIPqeEeOX3fIKP4ZLQg" name="IAP_UPLD_PK" members="_qiKXUPqdEeOX3fIKP4ZLQg _qjmhwPqdEeOX3fIKP4ZLQg"/>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_DCXMIPqdEeOX3fIKP4ZLQg" name="IAP_REPAY_SCHLD" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_HRIKQPqrEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wVAXUPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_HSli0PqrEeOX3fIKP4ZLQg" name="LOAN_IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_w-Ja8PqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_HUVPQPqrEeOX3fIKP4ZLQg" name="FLOW_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_xjKzkPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_HV8_4PqrEeOX3fIKP4ZLQg" name="FLOW_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_x8nOUPqrEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_HXjiYPqrEeOX3fIKP4ZLQg" name="EI_FREQ_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HXjiYfqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HZPkcPqrEeOX3fIKP4ZLQg" name="EI_FREQ_WEEK_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HZPkcfqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HbEJYPqrEeOX3fIKP4ZLQg" name="EI_FREQ_WEEK_DAY">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_zUC7UPqrEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="1"/>
+    </columns>
+    <columns xmi:id="_HcoPoPqrEeOX3fIKP4ZLQg" name="EI_FREQ_START_DD">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_z0-eIPqrEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="2"/>
+    </columns>
+    <columns xmi:id="_HeScgPqrEeOX3fIKP4ZLQg" name="EI_FREQ_HLDY_STAT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HeScgfqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_Hf4X8PqrEeOX3fIKP4ZLQg" name="EI_PREDMTHS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_2gzLMPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_HhqgoPqrEeOX3fIKP4ZLQg" name="EI_PREDDAYS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_2ur2MPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_HjVUkPqrEeOX3fIKP4ZLQg" name="INT_FREQ_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HjVUkfqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_Hk6B4PqrEeOX3fIKP4ZLQg" name="INT_FREQ_WEEK_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Hk6B4fqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_Hmum0PqrEeOX3fIKP4ZLQg" name="INT_FREQ_WEEK_DAY">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_3-MWQPqrEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="1"/>
+    </columns>
+    <columns xmi:id="_HobP8PqrEeOX3fIKP4ZLQg" name="INT_FREQ_START_DD">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_4YHSIPqrEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="2"/>
+    </columns>
+    <columns xmi:id="_HqBycPqrEeOX3fIKP4ZLQg" name="INT_FREQ_HLDY_STAT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7EicIPqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_Hr2-cPqrEeOX3fIKP4ZLQg" name="INT_PREDMTHS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_5ErdMPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_ZXX98PqrEeOX3fIKP4ZLQg" name="INT_PREDDAYS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7UF7EPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_ZY_HgPqrEeOX3fIKP4ZLQg" name="NO_OF_DMDS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8kCgAPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="5"/>
+    </columns>
+    <columns xmi:id="_ZaimsPqrEeOX3fIKP4ZLQg" name="NEXT_DMD_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_8za_0PqrEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_b9froPqrEeOX3fIKP4ZLQg" name="NEXT_INTDMD_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_88gqYPqrEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_b_GOIPqrEeOX3fIKP4ZLQg" name="FLOW_AMT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_9yoaEPqrEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_cApGQPqrEeOX3fIKP4ZLQg" name="DEL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cApGQfqrEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_cCF3wPqrEeOX3fIKP4ZLQg" name="LCHG_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="__EbZIPqrEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_cEd2UPqrEeOX3fIKP4ZLQg" name="LCHG_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="__2MNQPqrEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_t3GxgPqrEeOX3fIKP4ZLQg" name="RCRE_USER_ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_AIVGIPqsEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_t4obgPqrEeOX3fIKP4ZLQg" name="RCRE_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_AczhUPqsEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_FCeCsPqdEeOX3fIKP4ZLQg" name="IAP_DISBT" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_HB5ccPqgEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Isdg0PqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_HDibMPqgEeOX3fIKP4ZLQg" name="FORACID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_POKTQPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_HFLZ8PqgEeOX3fIKP4ZLQg" name="VALUE_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_QL5G0PqgEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_HGtrAPqgEeOX3fIKP4ZLQg" name="TRAN_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HGtrAfqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HIYe8PqgEeOX3fIKP4ZLQg" name="DISB_AMT">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_SOf3wPqgEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="20" scale="4"/>
+    </columns>
+    <columns xmi:id="_HJ_BcPqgEeOX3fIKP4ZLQg" name="GROSS_NET_DISB">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HJ_BcfqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HLePMPqgEeOX3fIKP4ZLQg" name="DEDUCT_OVERDUE_DMD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HLePMfqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HNVQYPqgEeOX3fIKP4ZLQg" name="FINAL_DISB_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HNV3cPqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HPFj4PqgEeOX3fIKP4ZLQg" name="CREDIT_FORACID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_0pPNoPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
+    </columns>
+    <columns xmi:id="_HQxl8PqgEeOX3fIKP4ZLQg" name="STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HQxl8fqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HSby0PqgEeOX3fIKP4ZLQg" name="DEL_FLG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HSby0fqgEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_HUC8YPqgEeOX3fIKP4ZLQg" name="ERROR_CODE" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_4kOcgPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_HVz28PqgEeOX3fIKP4ZLQg" name="ERROR_DESC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_5hk1kPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="2000"/>
+    </columns>
+    <columns xmi:id="_HXaZcPqgEeOX3fIKP4ZLQg" name="LCHG_USER_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7vuvMPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_HZHCkPqgEeOX3fIKP4ZLQg" name="LCHG_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_84z3IPqgEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_Hax2gPqgEeOX3fIKP4ZLQg" name="RCRE_USER_ID" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_-3OEkPqgEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="15"/>
+    </columns>
+    <columns xmi:id="_HcOoAPqgEeOX3fIKP4ZLQg" name="RCRE_TIME">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="__xIvIPqgEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_3PJf8PqgEeOX3fIKP4ZLQg" name="IAP_DISBT_PK" members="_HUC8YPqgEeOX3fIKP4ZLQg"/>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_GGPM0PqdEeOX3fIKP4ZLQg" name="CUSTOMUPLOAD" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_hFKs4PqnEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ubfNwPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_hGpTkPqnEeOX3fIKP4ZLQg" name="EXP_REF_NUMBER" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_vUUTMPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_hIREMPqnEeOX3fIKP4ZLQg" name="ARN" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_voUNQPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_hJtOoPqnEeOX3fIKP4ZLQg" name="ASN" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_vxR8APqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xmi:id="_hLFHoPqnEeOX3fIKP4ZLQg" name="ROLE" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_xMA0oPqnEeOX3fIKP4ZLQg" name="NVARCHAR2" primitiveType="NATIONAL_CHARACTER_VARYING" length="7"/>
+    </columns>
+    <columns xmi:id="_hMs4QPqnEeOX3fIKP4ZLQg" name="CIFID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_2H44wPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_hOdLwPqnEeOX3fIKP4ZLQg" name="ISEXISTING">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_hOdLwfqnEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_hQEVUPqnEeOX3fIKP4ZLQg" name="UPLOADSTAUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_3_abEPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_hRqQwPqnEeOX3fIKP4ZLQg" name="BASEL_PROFILING_REQUIRED">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_494OcPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="2"/>
+    </columns>
+    <columns xmi:id="_hTWS0PqnEeOX3fIKP4ZLQg" name="GENDER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7F4cwPqnEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_hU3VwPqnEeOX3fIKP4ZLQg" name="TITLE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8J10IPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_hWd4QPqnEeOX3fIKP4ZLQg" name="FIRSTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8RRR0PqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_hYGP8PqnEeOX3fIKP4ZLQg" name="MIDDLENAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8YAL8PqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_hZ7b8PqnEeOX3fIKP4ZLQg" name="LASTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8eMTgPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_hbneAPqnEeOX3fIKP4ZLQg" name="SHORTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8kYbEPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="80"/>
+    </columns>
+    <columns xmi:id="_hdSR8PqnEeOX3fIKP4ZLQg" name="FULLNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8rIjUPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="500"/>
+    </columns>
+    <columns xmi:id="_he-7EPqnEeOX3fIKP4ZLQg" name="CHANNEL_REQUEST_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_8yQfAPqnEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_hifiEPqnEeOX3fIKP4ZLQg" name="DATE_OF_BIRTH">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_9Wso0PqnEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_BAZTYPqoEeOX3fIKP4ZLQg" name="MINOR_INDICATOR">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_BAZTYfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_BCJm4PqoEeOX3fIKP4ZLQg" name="MINOR_TURNED_MAJOR_ON">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_WVdMcPqoEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_BD1o8PqoEeOX3fIKP4ZLQg" name="NON_RESIDENTINDICATOR">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_BD1o8fqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_BFXS8PqoEeOX3fIKP4ZLQg" name="TURNED_NONRESIDENT_ON">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_WklNkPqoEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_BGhJgPqoEeOX3fIKP4ZLQg" name="STAFF_INDICATOR">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_BGhJgfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_BH0KAPqoEeOX3fIKP4ZLQg" name="STAFF_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_YIIrAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_BJWbEPqoEeOX3fIKP4ZLQg" name="MOTHER_MAIDEN_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ZMttcPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BKzzoPqoEeOX3fIKP4ZLQg" name="PRIMARY_SOL_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ZzKCYPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BMLFkPqoEeOX3fIKP4ZLQg" name="ACCT_POA_AS_RMKS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_aXnaUPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING"/>
+    </columns>
+    <columns xmi:id="_BNn3EPqoEeOX3fIKP4ZLQg" name="CUSTOMER_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_bVhNAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BPJhEPqoEeOX3fIKP4ZLQg" name="CUSTOMER_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_bbuisPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BQhaEPqoEeOX3fIKP4ZLQg" name="SEGMENT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cFNkkPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BSAAwPqoEeOX3fIKP4ZLQg" name="SUB_SEGMENT">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ckzqoPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BTcyQPqoEeOX3fIKP4ZLQg" name="CHARGE_LEVEL_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_dkN5MPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BU6K0PqoEeOX3fIKP4ZLQg" name="COMMUNITY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_d8wVAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BWkXsPqoEeOX3fIKP4ZLQg" name="AVAILED_TRADE_SERVICE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_fIcFAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_BbIuoPqoEeOX3fIKP4ZLQg" name="CREDIT_BUREAU_SCORE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_fO22EPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_gh3WEPqoEeOX3fIKP4ZLQg" name="ADD_INSTALLMENT_DETAILS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_4fkFUPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_gjixEPqoEeOX3fIKP4ZLQg" name="CONSTITUTION_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_49McgPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_glEbEPqoEeOX3fIKP4ZLQg" name="TAX_DEDUCTED_AT_SOURCE_TABLE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_5EmFAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_gmORoPqoEeOX3fIKP4ZLQg" name="ASSET_CLASSIFICATION_CONTROL">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_5oFMkPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_gnW6EPqoEeOX3fIKP4ZLQg" name="CUSTOMER_LEVEL_PROVISIONING">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_6Tm10PqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_go4kEPqoEeOX3fIKP4ZLQg" name="PREFERRED_CALENDAR">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7QtXQPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_gqV8oPqoEeOX3fIKP4ZLQg" name="BASE_CCY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7m8tAPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_grvDwPqoEeOX3fIKP4ZLQg" name="PURGE_ALLOWED">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_grvDwfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_gtL1QPqoEeOX3fIKP4ZLQg" name="DELINQUENT_CUSTOMER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_gtL1QfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_gus4MPqoEeOX3fIKP4ZLQg" name="PREFERRED_LOCALE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="__rOawPqoEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_gwKQwPqoEeOX3fIKP4ZLQg" name="ENABLE_E_BANKING">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_gwKQwfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_gxnCQPqoEeOX3fIKP4ZLQg" name="SMS_BANKING">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_gxnCQfqoEeOX3fIKP4ZLQg" name="CHAR"/>
+    </columns>
+    <columns xmi:id="_gzDzwPqoEeOX3fIKP4ZLQg" name="PRIMARYRMID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_JmRHkPqpEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_g0vOwPqoEeOX3fIKP4ZLQg" name="SECONDARYRMID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_KwKu4PqpEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_L7WIkPqpEeOX3fIKP4ZLQg" name="RELATIONSHIP_START_DATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_SNbKoPqpEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+    <columns xmi:id="_L89SIPqpEeOX3fIKP4ZLQg" name="NATIVE_LANGUAGE_CODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Tuzd0PqpEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_L-e8IPqpEeOX3fIKP4ZLQg" name="PREFERRED_NATIVE_LANGUAGE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_EeuJgPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_L_sdEPqpEeOX3fIKP4ZLQg" name="INTRODUCER_CIF_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_EkmvEPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_MBE9IPqpEeOX3fIKP4ZLQg" name="INTRODUCER_BANK_RELATION_TYPE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_EqulMPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_MCiVsPqpEeOX3fIKP4ZLQg" name="INTRODUCER_LAST_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Ewnx0PqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="255"/>
+    </columns>
+    <columns xmi:id="_MD61wPqpEeOX3fIKP4ZLQg" name="INTRODUCER_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_E2vA4PqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_MFe8APqpEeOX3fIKP4ZLQg" name="INTRODUCER_TITLE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_E8nmcPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_MG2N8PqpEeOX3fIKP4ZLQg" name="INTRODUCER_CIF_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_FCioQPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_MITmgPqpEeOX3fIKP4ZLQg" name="INTRODUCER_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_FVD7oPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_MJ0pcPqpEeOX3fIKP4ZLQg" name="GROUP_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UQ6P4PqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="200"/>
+    </columns>
+    <columns xmi:id="_MLSCAPqpEeOX3fIKP4ZLQg" name="GROUP_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UhhewPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_MM06IPqpEeOX3fIKP4ZLQg" name="GROUP_RELATIONSHIP_MANAGERNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UngyAPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+    <columns xmi:id="_MORroPqpEeOX3fIKP4ZLQg" name="GUARDIANRELATIONSHIPWITHENTITY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UtzAMPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_MPzVoPqpEeOX3fIKP4ZLQg" name="GUARDIAN_CIF_ID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_UzsM0PqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_MRZ4IPqpEeOX3fIKP4ZLQg" name="NATIONALITY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_U5jkQPqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xmi:id="_MTHvYPqpEeOX3fIKP4ZLQg" name="MARITAL_STATUS">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_VAqR0PqqEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+  </OracleModel:OracleTable>
+  <OracleModel:OracleTable xmi:id="_H79YUPqdEeOX3fIKP4ZLQg" name="CUSTOMERROR" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <columns xmi:id="_zE-3gPqeEeOX3fIKP4ZLQg" name="IUR_NUMBER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_1jdsIPqeEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zGxnQPqeEeOX3fIKP4ZLQg" name="EXP_REF_NUMBER">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_32b0UPqeEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zIamAPqeEeOX3fIKP4ZLQg" name="ARN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_JUfmoPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zKKScPqeEeOX3fIKP4ZLQg" name="ASN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IzADIPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_zL2UgPqeEeOX3fIKP4ZLQg" name="ROLE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_H774QPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zNhIcPqeEeOX3fIKP4ZLQg" name="EXP_REF_NO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_G4jIoPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="10"/>
+    </columns>
+    <columns xmi:id="_zPHq8PqeEeOX3fIKP4ZLQg" name="ERRORCODE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_GDMN8PqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="200"/>
+    </columns>
+    <columns xmi:id="_zQu0gPqeEeOX3fIKP4ZLQg" name="ERRORDESC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_FXeXcPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
+    </columns>
+    <columns xmi:id="_zSjZcPqeEeOX3fIKP4ZLQg" name="ERRORTABLE">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_EXjykPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zUFDcPqeEeOX3fIKP4ZLQg" name="ERRORFIELD">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_DrmEcPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="200"/>
+    </columns>
+    <columns xmi:id="_zV8rsPqeEeOX3fIKP4ZLQg" name="SOURCE" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_CzpIwPqfEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
+    </columns>
+    <columns xmi:id="_zbcPsPqeEeOX3fIKP4ZLQg" name="UPLOADJOBID">
+      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_BzViUPqfEeOX3fIKP4ZLQg" name="NUMBER" primitiveType="NUMERIC" precision="38"/>
+    </columns>
+    <columns xmi:id="_ze7okPqeEeOX3fIKP4ZLQg" name="TMDATE">
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_BI2a4PqfEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
+    </columns>
+  </OracleModel:OracleTable>
+</xmi:XMI>
