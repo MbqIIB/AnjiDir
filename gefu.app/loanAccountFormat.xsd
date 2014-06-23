@@ -8,8 +8,8 @@
 
 	<xsd:element ibmSchExtn:docRoot="true" name="loanAccountFormat">
 		<xsd:complexType>
-			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;">
-				<xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="body">
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="body">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="%#124;" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId" type="xsd:string"/>
