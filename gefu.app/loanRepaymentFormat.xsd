@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" escapeSchemeRef="recSepFieldsFmt:RecordEscapeScheme" occursCountKind="fixed" ref="recSepFieldsFmt:RecordSeparatedFieldsFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element ibmSchExtn:docRoot="true" name="loanRepaymentFormat">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="" dfdl:terminator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="body">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty" dfdl:terminator="">
+                                          <xsd:annotation>
+                <xsd:appinfo source="http://www.ogf.org/dfdl/">
+                  <dfdl:sequence/>
+                </xsd:appinfo>
+              </xsd:annotation>
+                            <xsd:element name="loan">
+                <xsd:complexType>
+                  <xsd:sequence dfdl:separator="">
+                    <xsd:element ibmDfdlExtn:sampleValue="1932764917" name="loanIURNumber" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element dfdl:terminator="" maxOccurs="1" name="repayments">
+                <xsd:complexType>
+                  <xsd:sequence dfdl:separator="" dfdl:terminator="">
+                      <xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="" maxOccurs="unbounded" name="repayment">
+                      <xsd:complexType>
+                        <xsd:sequence dfdl:separator="|" dfdl:terminator="~">
+                          <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="rec1" name="recordNumber" type="xsd:string"/>
+                          <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="1234" name="flowId" type="xsd:string"/>
+                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="flowStartDate" type="xsd:date"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyType" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyWeekNum" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyWeekDay" type="xsd:string"/>
+                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyStartDate" type="xsd:date"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyHolidayState" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyMonths" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyDays" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="interestFrequencyType" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="interestFrequencyWeekNum" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="interestFrequencyWeekDay" type="xsd:string"/>
+                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="interestFrequencyStartDate" type="xsd:date"/>
+                          <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="N" minOccurs="0" name="interestFrequencyHolidayState" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="12" minOccurs="0" name="interestFrequencyMonths" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="24" minOccurs="0" name="interestFrequencyDays" type="xsd:string"/>
+                          <xsd:element dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="12" minOccurs="0" name="noOfDemands" type="xsd:int"/>
+                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="nextDemandDate" type="xsd:date"/>
+                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="nextInterestDemandDate" type="xsd:date"/>
+                          <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="3000" maxOccurs="1" minOccurs="1" name="flowAmount" type="xsd:decimal"/>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+	</xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
