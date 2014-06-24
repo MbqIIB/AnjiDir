@@ -13,7 +13,7 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="retailCustomerFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-				<xsd:element dfdl:initiator="" dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
+				<xsd:element dfdl:initiator="" dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
 					<xsd:complexType>
 						<xsd:sequence dfdl:initiator="" dfdl:separator="|" dfdl:terminator="">
 							<xsd:element name="GENDER">
@@ -433,7 +433,7 @@
 							</xsd:element>
 
 
-							<xsd:element default="F007" name="IF_SALARIED_TYPE_OF_COMPANY">
+							<xsd:element default="F007" minOccurs="0" name="IF_SALARIED_TYPE_OF_COMPANY">
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:minLength value="1"/>
@@ -717,7 +717,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element default="DOCUMENT2" minOccurs="1" name="DOCUMENT2" type="xsd:string"/>
+							<xsd:element default="DOCUMENT2" minOccurs="0" name="DOCUMENT2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPE2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPEDESC2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTCODE2" type="xsd:string"/>
@@ -731,7 +731,7 @@
 							<xsd:element minOccurs="0" name="ISDOCUMENTVERIFIED2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="ID_ISSUED_ORGANISATION_2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="PREFERREDFLAG2" type="xsd:string"/>
-							<xsd:element default="DOCUMENT3" minOccurs="1" name="DOCUMENT3" type="xsd:string"/>
+							<xsd:element default="DOCUMENT3" minOccurs="0" name="DOCUMENT3" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPE3" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPEDESC3" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTCODE3" type="xsd:string"/>
@@ -753,7 +753,7 @@
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
-                    <xsd:maxLength value="40"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
@@ -780,14 +780,8 @@
 
 							<!-- <xsd:element dfdl:textNumberPattern="##0.##E0" ibmDfdlExtn:sampleValue="203205" 
 								name="POSTAL_CODE_1" type="xsd:int"/> -->
-							<xsd:element dfdl:textNumberPattern="#0" name="POSTAL_CODE_1">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:integer">
-                    <xsd:minInclusive value="1"/>
-                    <xsd:maxInclusive value="6"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
+							<xsd:element dfdl:textNumberPattern="#0" name="POSTAL_CODE_1" type="xsd:string">
+                              </xsd:element>
 
 							<xsd:element default="" ibmDfdlExtn:sampleValue="31-12-2013" name="ADDRESS_VALID_FROM_1" type="xsd:string"/>
 							<xsd:element default="31-12-2099" ibmDfdlExtn:sampleValue="31-12-2013" name="ADDRESS_VALID_TILL_1" type="xsd:string"/>
@@ -804,7 +798,7 @@
 							<xsd:element minOccurs="0" name="HOLD_MAIL_BUSINESS_CENTRE_NAME_1" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="HOLD_MAIL_REASON_1" type="xsd:string"/>
 							<xsd:element default="Y" name="PREFERRED_FLAG_1" type="xsd:string"/>
-							<xsd:element default="ADDRESS2" minOccurs="1" name="ADDRESS2" type="xsd:string"/>
+							<xsd:element default="ADDRESS2" minOccurs="0" name="ADDRESS2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="ADDRESS_FORMAT_2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="ADDRESS_TYPE_2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="ADDRESS_LABEL_2" type="xsd:string"/>
@@ -844,14 +838,14 @@
 							<xsd:element default="" minOccurs="0" name="PHONE_NO_3" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="EXTENSION_NO_3" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="PREFERREDFLAG_3" type="xsd:string"/>
-							<xsd:element default="" minOccurs="1" name="EMAIL_1" type="xsd:string"/>
+							<xsd:element default="" minOccurs="0" name="EMAIL_1" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="TYPE1" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAILID_1" type="xsd:string"/>
-							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG_2" type="xsd:string"/>
+							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG_22" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAIL_2" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="TYPE2" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAIL_ID_2" type="xsd:string"/>
-							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="1" name="PREFERREDFLAG2" type="xsd:string"/>
+							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG3" type="xsd:string"/>
 
 
 
