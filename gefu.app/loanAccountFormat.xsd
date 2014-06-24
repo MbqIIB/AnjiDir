@@ -13,17 +13,17 @@
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="%#124;" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId" type="xsd:string"/>
-							<xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="A" minOccurs="0" name="reprisingPlan" type="xsd:string"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="CASH" minOccurs="0" name="repayMethod" type="xsd:string"/>
+							<xsd:element fixed="F" ibmDfdlExtn:sampleValue="A" minOccurs="1" name="reprisingPlan" type="xsd:string"/>
+                                                 <xsd:element fixed="N" ibmDfdlExtn:sampleValue="CASH" minOccurs="1" name="repayMethod" type="xsd:string"/>
                                                  <xsd:element ibmDfdlExtn:sampleValue="SDGEN" name="schemeCode" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="12" minOccurs="0" name="accountPreferentialInRate" type="xsd:string"/>
                                                  <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="accountOpenDate" type="xsd:date"/>
                                                  <xsd:element ibmDfdlExtn:sampleValue="c0642" name="accountManagerUserId" type="xsd:string"/>
                                                  <xsd:element ibmDfdlExtn:sampleValue="000011" name="cifId" type="xsd:string"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="C" name="modeOfOperation" type="xsd:string"/>
+                                                 <xsd:element fixed="1" ibmDfdlExtn:sampleValue="C" name="modeOfOperation" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="123" minOccurs="0" name="employeeId" type="xsd:string"/>
                                                                              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="Kapil" minOccurs="0" name="employeeName" type="xsd:string"/>
-                            <xsd:element ibmDfdlExtn:sampleValue="12" name="accountStatement" type="xsd:string"/>
+                            <xsd:element fixed="N" ibmDfdlExtn:sampleValue="12" name="accountStatement" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="YEARLY" minOccurs="0" name="statementFrequencyType" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="1" minOccurs="0" name="statementFrequencyWeekNum" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="0" minOccurs="0" name="statementFrequencyWeekDay" type="xsd:string"/>
@@ -32,19 +32,19 @@
                                                  <xsd:element dfdl:textNumberPattern="#0.###" name="sanctionLimit" type="xsd:decimal"/>
                                                  <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="limitSanctionDate" type="xsd:date"/>
                                                  <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="applicableDate" type="xsd:date"/>
-                                                 <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="expiryDate" type="xsd:date"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="T" name="drawingPowerIndicator" type="xsd:string"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="100" minOccurs="0" name="drawingPowerPercentage" type="xsd:string"/>
+                                                 <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" fixed="2099-12-31" ibmDfdlExtn:sampleValue="2099-12-31" name="expiryDate" type="xsd:date"/>
+                                                 <xsd:element fixed="D" ibmDfdlExtn:sampleValue="T" name="drawingPowerIndicator" type="xsd:string"/>
+                                                 <xsd:element fixed="0" ibmDfdlExtn:sampleValue="100" minOccurs="1" name="drawingPowerPercentage" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="100000" minOccurs="0" name="drawingPowerAmount" type="xsd:decimal"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="2" name="sanctionLevelCode" type="xsd:string"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="123" name="sanctionAuthorisationCode" type="xsd:string"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="123124" name="sanctionReferenceNo" type="xsd:string"/>
+                                                 <xsd:element fixed="AGM" ibmDfdlExtn:sampleValue="2" name="sanctionLevelCode" type="xsd:string"/>
+                                                 <xsd:element fixed="AGM" ibmDfdlExtn:sampleValue="123" name="sanctionAuthorisationCode" type="xsd:string"/>
+                                                 <xsd:element fixed="1234" ibmDfdlExtn:sampleValue="123124" name="sanctionReferenceNo" type="xsd:string"/>
                                                  <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="documentDate" type="xsd:date"/>
                                                  <xsd:element ibmDfdlExtn:sampleValue="TYP" name="accountOccupationCode" type="xsd:string"/>
-                                                 <xsd:element ibmDfdlExtn:sampleValue="23" name="customerHealthCode" type="xsd:string"/>
+                                                 <xsd:element fixed="01" ibmDfdlExtn:sampleValue="23" name="customerHealthCode" type="xsd:string"/>
                                                  <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="100000" name="loanAmount" type="xsd:decimal"/>
                                                  <xsd:element dfdl:textNumberPattern="#0" name="loanPeriodMonths" type="xsd:int"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0" minOccurs="0" name="loanPeriodDays" type="xsd:int">
+                                                 <xsd:element dfdl:textNumberPattern="#0" minOccurs="1" name="loanPeriodDays" type="xsd:int">
                 <xsd:annotation>
                   <xsd:documentation>making optional after testing data files</xsd:documentation>
                 </xsd:annotation>
@@ -77,7 +77,7 @@
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode5" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode6" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode7" type="xsd:string"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode8" type="xsd:string"/>
+                                                 <xsd:element fixed="1" ibmDfdlExtn:sampleValue="body_value3" minOccurs="1" name="freeCode8" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode9" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeCode10" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText1" type="xsd:string"/>
@@ -89,13 +89,13 @@
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText7" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText8" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText9" type="xsd:string"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText10" type="xsd:string"/>
+                                                 <xsd:element fixed="OTHR" ibmDfdlExtn:sampleValue="body_value3" minOccurs="1" name="freeText10" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText11" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText12" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText13" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText14" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="08173451451234" minOccurs="0" name="forAcidNo" type="xsd:string"/>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="G" minOccurs="0" name="eiSchemeFlag" type="xsd:string"/>
+                                                 <xsd:element fixed="Y" ibmDfdlExtn:sampleValue="G" minOccurs="1" name="eiSchemeFlag" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="23" minOccurs="0" name="normalHolidayPeriod" type="xsd:string"/>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="23" minOccurs="0" name="autorescheduleafterHolidayPeriod" type="xsd:string"/>
                                                  <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" minOccurs="0" name="holidayPeriodEndDate" type="xsd:date"/>
