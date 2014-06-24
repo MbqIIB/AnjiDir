@@ -29,7 +29,7 @@
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                    <xsd:element dfdl:nilKind="literalValue" dfdl:nilValue="0" dfdl:textNumberPattern="#0.###" dfdl:useNilForDefault="no" minOccurs="0" name="disbursementAmount" nillable="false">
+                    <xsd:element dfdl:nilKind="literalValue" dfdl:nilValue="0" dfdl:textNumberPattern="#0.###" dfdl:useNilForDefault="no" minOccurs="1" name="disbursementAmount" nillable="false">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:minExclusive value="0"/>
