@@ -18,7 +18,13 @@
                             														                            						                                                        <xsd:element name="disbursement">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
-                    <xsd:element ibmDfdlExtn:sampleValue="809000257175" name="loanAccountNumber" type="xsd:string"/>
+                    <xsd:element ibmDfdlExtn:sampleValue="809000257175" name="loanAccountNumber">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="16"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
                     <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="valueDate" type="xsd:date"/>
                     <xsd:element name="transactionType">
                       <xsd:simpleType>
@@ -33,7 +39,8 @@
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:minExclusive value="0"/>
-                        </xsd:restriction>
+                                                                            <xsd:totalDigits value="20"/>
+                                                </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
                     <xsd:element name="disbursementType">
@@ -48,17 +55,30 @@
                     </xsd:element>
                     <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="deductOverdueDemand" type="xsd:boolean"/>
                     <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="finalDisbursement" type="xsd:boolean"/>
-                    <xsd:element ibmDfdlExtn:sampleValue="100010010005661" name="creditAccountNumber" type="xsd:string"/>
+                    <xsd:element ibmDfdlExtn:sampleValue="100010010005661" name="creditAccountNumber">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="16"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
                             <xsd:element ibmDfdlExtn:sampleOccurs="3" maxOccurs="unbounded" minOccurs="0" name="charges">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
-                    <xsd:element name="recordInitiator" type="xsd:string"/>
+                    <xsd:element name="recordInitiator" type="xsd:string">
+                      <xsd:annotation>
+                        <xsd:documentation>Maximum length ??</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
                     <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="selectFlag" type="xsd:boolean"/>
                     <xsd:element dfdl:textNumberPattern="#0" name="serialNumber">
-                      <xsd:simpleType>
+                                                                  <xsd:annotation>
+                        <xsd:documentation>Maximum length ??</xsd:documentation>
+                      </xsd:annotation>
+                                            <xsd:simpleType>
                         <xsd:restriction base="xsd:int">
                           <xsd:minInclusive value="1"/>
                         </xsd:restriction>
@@ -70,14 +90,16 @@
                           <xsd:enumeration value="MISC1"/>
                           <xsd:enumeration value="LNKED"/>
                           <xsd:enumeration value="MIS14"/>
-                        </xsd:restriction>
+                                                                            <xsd:maxLength value="25"/>
+                                                </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
                     <xsd:element dfdl:textNumberPattern="#0.###" name="chargeAmount">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:minInclusive value="0"/>
-                        </xsd:restriction>
+                                                                            <xsd:totalDigits value="20"/>
+                                                </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
                   </xsd:sequence>
