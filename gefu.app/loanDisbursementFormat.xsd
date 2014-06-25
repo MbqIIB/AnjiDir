@@ -26,7 +26,7 @@
                       </xsd:simpleType>
                     </xsd:element>
                     <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="valueDate" type="xsd:date"/>
-                    <xsd:element name="transactionType">
+                    <xsd:element fixed="T" name="transactionType">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                           <xsd:enumeration value="T"/>
@@ -35,11 +35,12 @@
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                    <xsd:element dfdl:nilKind="literalValue" dfdl:nilValue="0" dfdl:textNumberPattern="#0.###" dfdl:useNilForDefault="no" minOccurs="1" name="disbursementAmount" nillable="false">
+                    <xsd:element dfdl:nilKind="literalValue" dfdl:nilValue="0" dfdl:textNumberPattern="#0.###" dfdl:useNilForDefault="no" ibmDfdlExtn:sampleValue="12345678901234.12" minOccurs="1" name="disbursementAmount" nillable="false">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:minExclusive value="0"/>
-                                                                            <xsd:totalDigits value="20"/>
+                                                                            <xsd:totalDigits value="16"/>
+                                                                                                    <xsd:fractionDigits value="2"/>
                                                 </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
@@ -68,29 +69,51 @@
                             <xsd:element ibmDfdlExtn:sampleOccurs="3" maxOccurs="unbounded" minOccurs="0" name="charges">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
-                    <xsd:element name="recordInitiator" type="xsd:string">
+                    <xsd:element ibmDfdlExtn:sampleValue="rec99" name="recordInitiator">
                       <xsd:annotation>
-                        <xsd:documentation>Maximum length ??</xsd:documentation>
+                        
                       </xsd:annotation>
-                    </xsd:element>
+                                                                <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="5"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                                        </xsd:element>
                     <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="selectFlag" type="xsd:boolean"/>
-                    <xsd:element dfdl:textNumberPattern="#0" name="serialNumber">
+                    <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="99" name="serialNumber">
                                                                   <xsd:annotation>
-                        <xsd:documentation>Maximum length ??</xsd:documentation>
+                        
                       </xsd:annotation>
                                             <xsd:simpleType>
                         <xsd:restriction base="xsd:int">
                           <xsd:minInclusive value="1"/>
-                        </xsd:restriction>
+                                                                            <xsd:maxInclusive value="99"/>
+                                                </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
                     <xsd:element name="chargeEventType">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
-                          <xsd:enumeration value="MISC1"/>
-                          <xsd:enumeration value="LNKED"/>
-                          <xsd:enumeration value="MIS14"/>
-                                                                            <xsd:maxLength value="25"/>
+                                                                                                                                                          <xsd:maxLength value="5"/>
+                                                                                                    <xsd:enumeration value="MISC1"/>
+                                                    <xsd:enumeration value="MISC2"/>
+                                                    <xsd:enumeration value="MISC3"/>
+                                                    <xsd:enumeration value="MISC4"/>
+                                                    <xsd:enumeration value="MISC5"/>
+                                                    <xsd:enumeration value="MISC6"/>
+                                                    <xsd:enumeration value="MISC7"/>
+                                                    <xsd:enumeration value="MISC8"/>
+                                                    <xsd:enumeration value="MISC9"/>
+                                                    <xsd:enumeration value="MIS10"/>
+                                                    <xsd:enumeration value="MIS11"/>
+                                                    <xsd:enumeration value="MIS12"/>
+                                                    <xsd:enumeration value="MIS13"/>
+                                                    <xsd:enumeration value="MIS14"/>
+                                                    <xsd:enumeration value="MIS15"/>
+                                                    <xsd:enumeration value="MIS16"/>
+                                                    <xsd:enumeration value="MIS18"/>
+                                                    <xsd:enumeration value="MIS19"/>
+                                                    <xsd:enumeration value="LNKED"/>
                                                 </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
@@ -98,7 +121,8 @@
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:minInclusive value="0"/>
-                                                                            <xsd:totalDigits value="20"/>
+                                                                            <xsd:totalDigits value="16"/>
+                                                                                                    <xsd:fractionDigits value="2"/>
                                                 </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>

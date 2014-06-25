@@ -1182,7 +1182,7 @@
 							<xsd:element default="" minOccurs="0" name="STD_CODE_1" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="PHONE_NO_1" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="EXTENSION_NO_1" type="xsd:string"/>
-							<xsd:element default="" minOccurs="0" name="PREFERREDFLAG_1">
+							<xsd:element minOccurs="0" name="PREFERREDFLAG_1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:enumeration value="Y"/>
@@ -1215,7 +1215,7 @@
               </xsd:element>
 							<xsd:element default="" minOccurs="0" name="TYPE1" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAILID_1" type="xsd:string"/>
-							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG_ONE">
+							<xsd:element minOccurs="0" name="PREFERREDFLAG_ONE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:enumeration value="Y"/>
