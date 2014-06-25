@@ -134,14 +134,8 @@
 							</xsd:element>
 
 
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="STAFF_INDICATOR">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="STAFF_INDICATOR" type="xsd:boolean">
+															</xsd:element>
 
 
 							<xsd:element ibmDfdlExtn:sampleValue="value7" minOccurs="0" name="STAFF_ID">
@@ -625,14 +619,8 @@
               </xsd:element>
 
 
-							<xsd:element default="N" name="FILED_TAX_RETURNS_REGULARLY">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="FILED_TAX_RETURNS_REGULARLY" type="xsd:boolean">
+															</xsd:element>
 
 
 
@@ -703,7 +691,7 @@
 							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" minOccurs="0" name="BUSSEGEFFDATE" type="xsd:date">
 							</xsd:element>
 
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="ATM_CARD" type="xsd:string">
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="ATM_CARD" type="xsd:boolean">
 							</xsd:element>
 
 
@@ -724,23 +712,11 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="DO_NOT_CALL">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="DO_NOT_CALL" type="xsd:boolean">
+															</xsd:element>
 
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="DOORSTEP_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="DOORSTEP_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element name="DSAID" type="xsd:string">
 							</xsd:element>
 
@@ -778,14 +754,8 @@
 
 							<!-- 100 end -->
 
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="INTERNET_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="INTERNET_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element default="31-12-2099" name="KYC_REMEDIATION_DATE" type="xsd:string"/>
 							<xsd:element default="MIN20" ibmDfdlExtn:sampleValue="MIN20" name="MINORITY_COMMUNITY">
 								<xsd:simpleType>
@@ -795,14 +765,8 @@
 									</xsd:restriction>
 								</xsd:simpleType>
 							</xsd:element>
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="MOBILE_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="MOBILE_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element ibmDfdlExtn:sampleValue="" minOccurs="0" name="OTHER_PROMO_CODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -818,22 +782,19 @@
 									</xsd:restriction>
 								</xsd:simpleType>
 							</xsd:element>
-							<xsd:element default="U" ibmDfdlExtn:sampleValue="U" name="PAN_VALIDATION_FIELD">
-								<xsd:simpleType>
+							<xsd:element fixed="U" ibmDfdlExtn:sampleValue="U" name="PAN_VALIDATION_FIELD">
+                                								<xsd:annotation>
+                  <xsd:documentation>Default for all</xsd:documentation>
+                </xsd:annotation>
+                                <xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:minLength value="1"/>
 										<xsd:maxLength value="1"/>
 									</xsd:restriction>
 								</xsd:simpleType>
 							</xsd:element>
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="PHONE_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="PHONE_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element ibmDfdlExtn:sampleValue="" minOccurs="0" name="POTENTIAL_CUSTOMER_SEGMENT">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -854,14 +815,8 @@
 							<xsd:element minOccurs="0" name="SPECIAL_CATEGORY" type="xsd:string"/>
 
 							<xsd:element minOccurs="0" name="SUBK_ID" type="xsd:string"/>
-							<xsd:element default="N" name="TABLET_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="TABLET_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element default="WEAK_SEC 03" ibmDfdlExtn:sampleValue="WEAK_SEC 03" name="WEAKERSECTIONS" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DEPOSITORY_PARTICIPANT">
                 <xsd:simpleType>
@@ -924,14 +879,8 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element default="N" ibmDfdlExtn:sampleValue="N" name="WAP_BANKING">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:minLength value="1"/>
-										<xsd:maxLength value="1"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="WAP_BANKING" type="xsd:boolean">
+															</xsd:element>
 							<xsd:element minOccurs="0" name="FREE_CODE_1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -1097,14 +1046,8 @@
                 </xsd:simpleType>
               </xsd:element>
 
-							<xsd:element default="Y" ibmDfdlExtn:sampleValue="Y" name="PREFERREDFLAG1">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:minLength value="1"/>
-                    <xsd:maxLength value="1"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="PREFERREDFLAG1" type="xsd:boolean">
+                              </xsd:element>
 							<xsd:element fixed="DOCUMENT2" minOccurs="1" name="DOCUMENT2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPE2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="DOCUMENTTYPEDESC2" type="xsd:string"/>
@@ -1209,7 +1152,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element default="Y" name="PREFERRED_FLAG_1" type="xsd:string"/>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="PREFERRED_FLAG_1" type="xsd:boolean"/>
 							<xsd:element fixed="ADDRESS2" minOccurs="1" name="ADDRESS2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="ADDRESS_FORMAT_2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="ADDRESS_TYPE_2" type="xsd:string"/>
@@ -1239,7 +1182,14 @@
 							<xsd:element default="" minOccurs="0" name="STD_CODE_1" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="PHONE_NO_1" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="EXTENSION_NO_1" type="xsd:string"/>
-							<xsd:element default="" minOccurs="0" name="PREFERREDFLAG_1" type="xsd:string"/>
+							<xsd:element default="" minOccurs="0" name="PREFERREDFLAG_1">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="Y"/>
+                    <xsd:enumeration value="N"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
 							<xsd:element default="" minOccurs="0" name="PHONE2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="TYPE_2" type="xsd:string"/>
 							<xsd:element default="" minOccurs="0" name="COUNTRY_CODE_2" type="xsd:string"/>
@@ -1265,7 +1215,14 @@
               </xsd:element>
 							<xsd:element default="" minOccurs="0" name="TYPE1" type="xsd:string"/>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAILID_1" type="xsd:string"/>
-							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG_22" type="xsd:string"/>
+							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="PREFERREDFLAG_ONE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="Y"/>
+                    <xsd:enumeration value="N"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
 							<xsd:element default="" ibmDfdlExtn:sampleValue="" minOccurs="0" name="EMAIL_2" type="xsd:string">
                 <xsd:annotation>
                   <xsd:documentation>Marked as hardcoded 'EMAIL1' mandatory but not present in sample file.</xsd:documentation>
