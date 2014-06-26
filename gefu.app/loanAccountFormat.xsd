@@ -429,12 +429,77 @@
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="12" minOccurs="0" name="sectorCode">
                                                 <xsd:annotation>
-                  <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                  
                 </xsd:annotation>
                                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
-                  </xsd:restriction>
+                                                          <xsd:enumeration value="114"/>
+                                                          <xsd:enumeration value="118"/>
+                                                          <xsd:enumeration value="160"/>
+                                                          <xsd:enumeration value="165"/>
+                                                          <xsd:enumeration value="171"/>
+                                                          <xsd:enumeration value="172"/>
+                                                          <xsd:enumeration value="173"/>
+                                                          <xsd:enumeration value="174"/>
+                                                          <xsd:enumeration value="185"/>
+                                                          <xsd:enumeration value="186"/>
+                                                          <xsd:enumeration value="195"/>
+                                                          <xsd:enumeration value="196"/>
+                                                          <xsd:enumeration value="197"/>
+                                                          <xsd:enumeration value="205"/>
+                                                          <xsd:enumeration value="206"/>
+                                                          <xsd:enumeration value="207"/>
+                                                          <xsd:enumeration value="408"/>
+                                                          <xsd:enumeration value="409"/>
+                                                          <xsd:enumeration value="410"/>
+                                                          <xsd:enumeration value="414"/>
+                                                          <xsd:enumeration value="507"/>
+                                                          <xsd:enumeration value="51"/>
+                                                          <xsd:enumeration value="52"/>
+                                                          <xsd:enumeration value="528"/>
+                                                          <xsd:enumeration value="529"/>
+                                                          <xsd:enumeration value="53"/>
+                                                          <xsd:enumeration value="54"/>
+                                                          <xsd:enumeration value="548"/>
+                                                          <xsd:enumeration value="549"/>
+                                                          <xsd:enumeration value="55"/>
+                                                          <xsd:enumeration value="56"/>
+                                                          <xsd:enumeration value="57"/>
+                                                          <xsd:enumeration value="578"/>
+                                                          <xsd:enumeration value="579"/>
+                                                          <xsd:enumeration value="58"/>
+                                                          <xsd:enumeration value="59"/>
+                                                          <xsd:enumeration value="60"/>
+                                                          <xsd:enumeration value="61"/>
+                                                          <xsd:enumeration value="63"/>
+                                                          <xsd:enumeration value="64"/>
+                                                          <xsd:enumeration value="65"/>
+                                                          <xsd:enumeration value="66"/>
+                                                          <xsd:enumeration value="67"/>
+                                                          <xsd:enumeration value="68"/>
+                                                          <xsd:enumeration value="69"/>
+                                                          <xsd:enumeration value="70"/>
+                                                          <xsd:enumeration value="71"/>
+                                                          <xsd:enumeration value="72"/>
+                                                          <xsd:enumeration value="73"/>
+                                                          <xsd:enumeration value="74"/>
+                                                          <xsd:enumeration value="75"/>
+                                                          <xsd:enumeration value="76"/>
+                                                          <xsd:enumeration value="77"/>
+                                                          <xsd:enumeration value="78"/>
+                                                          <xsd:enumeration value="79"/>
+                                                          <xsd:enumeration value="80"/>
+                                                          <xsd:enumeration value="81"/>
+                                                          <xsd:enumeration value="82"/>
+                                                          <xsd:enumeration value="83"/>
+                                                          <xsd:enumeration value="84"/>
+                                                          <xsd:enumeration value="85"/>
+                                                          <xsd:enumeration value="86"/>
+                                                          <xsd:enumeration value="90"/>
+                                                          <xsd:enumeration value="91"/>
+
+                                    </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="123" minOccurs="0" name="subSectorCode">
@@ -456,25 +521,401 @@
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="123" minOccurs="0" name="borrowerCategory">
                                                 <xsd:annotation>
-                  <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                  
                 </xsd:annotation>
                                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
-                    <xsd:enumeration value="99"/>
-                    <xsd:enumeration value="45"/>
+                    <xsd:enumeration value="1"/>
+                    <xsd:enumeration value="11"/>
+                    <xsd:enumeration value="12"/>
+                    <xsd:enumeration value="19"/>
+                    <xsd:enumeration value="2"/>
+                    <xsd:enumeration value="29"/>
+                    <xsd:enumeration value="3"/>
                     <xsd:enumeration value="31"/>
+                    <xsd:enumeration value="32"/>
+                    <xsd:enumeration value="33"/>
+                    <xsd:enumeration value="39"/>
+                    <xsd:enumeration value="4"/>
+                    <xsd:enumeration value="41"/>
+                    <xsd:enumeration value="42"/>
+                    <xsd:enumeration value="43"/>
+                    <xsd:enumeration value="44"/>
+                    <xsd:enumeration value="44A"/>
+                    <xsd:enumeration value="44B"/>
+                    <xsd:enumeration value="45"/>
+                    <xsd:enumeration value="49"/>
+                    <xsd:enumeration value="5"/>
+                    <xsd:enumeration value="99"/>
+
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="adfadfsdf" minOccurs="0" name="purposeofAdvance">
                                                 <xsd:annotation>
-                  <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                  
                 </xsd:annotation>
                                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
-                  </xsd:restriction>
+<xsd:enumeration value="1"/>
+<xsd:enumeration value="10"/>
+<xsd:enumeration value="10001"/>
+<xsd:enumeration value="1101"/>
+<xsd:enumeration value="1102"/>
+<xsd:enumeration value="1103"/>
+<xsd:enumeration value="1104"/>
+<xsd:enumeration value="1105"/>
+<xsd:enumeration value="1106"/>
+<xsd:enumeration value="1107"/>
+<xsd:enumeration value="1108"/>
+<xsd:enumeration value="1109"/>
+<xsd:enumeration value="11101"/>
+<xsd:enumeration value="1111"/>
+<xsd:enumeration value="1119"/>
+<xsd:enumeration value="11201"/>
+<xsd:enumeration value="1121"/>
+<xsd:enumeration value="1123"/>
+<xsd:enumeration value="1124"/>
+<xsd:enumeration value="1125"/>
+<xsd:enumeration value="1126"/>
+<xsd:enumeration value="1127"/>
+<xsd:enumeration value="1129"/>
+<xsd:enumeration value="1151"/>
+<xsd:enumeration value="1152"/>
+<xsd:enumeration value="1153"/>
+<xsd:enumeration value="1154"/>
+<xsd:enumeration value="1157"/>
+<xsd:enumeration value="1159"/>
+<xsd:enumeration value="1181"/>
+<xsd:enumeration value="1182"/>
+<xsd:enumeration value="12001"/>
+<xsd:enumeration value="1201"/>
+<xsd:enumeration value="1202"/>
+<xsd:enumeration value="1203"/>
+<xsd:enumeration value="1204"/>
+<xsd:enumeration value="1209"/>
+<xsd:enumeration value="13101"/>
+<xsd:enumeration value="13201"/>
+<xsd:enumeration value="1401"/>
+<xsd:enumeration value="1402"/>
+<xsd:enumeration value="1409"/>
+<xsd:enumeration value="14101"/>
+<xsd:enumeration value="15101"/>
+<xsd:enumeration value="15102"/>
+<xsd:enumeration value="15103"/>
+<xsd:enumeration value="15104"/>
+<xsd:enumeration value="15201"/>
+<xsd:enumeration value="15301"/>
+<xsd:enumeration value="15302"/>
+<xsd:enumeration value="15303"/>
+<xsd:enumeration value="15401"/>
+<xsd:enumeration value="15402"/>
+<xsd:enumeration value="15403"/>
+<xsd:enumeration value="15404"/>
+<xsd:enumeration value="15405"/>
+<xsd:enumeration value="15406"/>
+<xsd:enumeration value="15407"/>
+<xsd:enumeration value="15408"/>
+<xsd:enumeration value="15409"/>
+<xsd:enumeration value="15501"/>
+<xsd:enumeration value="15502"/>
+<xsd:enumeration value="16001"/>
+<xsd:enumeration value="16003"/>
+<xsd:enumeration value="17101"/>
+<xsd:enumeration value="17102"/>
+<xsd:enumeration value="17103"/>
+<xsd:enumeration value="17104"/>
+<xsd:enumeration value="17105"/>
+<xsd:enumeration value="17201"/>
+<xsd:enumeration value="17202"/>
+<xsd:enumeration value="17203"/>
+<xsd:enumeration value="17204"/>
+<xsd:enumeration value="17209"/>
+<xsd:enumeration value="18101"/>
+<xsd:enumeration value="18102"/>
+<xsd:enumeration value="18201"/>
+<xsd:enumeration value="19101"/>
+<xsd:enumeration value="19102"/>
+<xsd:enumeration value="19201"/>
+<xsd:enumeration value="19202"/>
+<xsd:enumeration value="2"/>
+<xsd:enumeration value="20"/>
+<xsd:enumeration value="2001"/>
+<xsd:enumeration value="20101"/>
+<xsd:enumeration value="21001"/>
+<xsd:enumeration value="21002"/>
+<xsd:enumeration value="21003"/>
+<xsd:enumeration value="22101"/>
+<xsd:enumeration value="23101"/>
+<xsd:enumeration value="23201"/>
+<xsd:enumeration value="23301"/>
+<xsd:enumeration value="236"/>
+<xsd:enumeration value="24101"/>
+<xsd:enumeration value="24102"/>
+<xsd:enumeration value="24103"/>
+<xsd:enumeration value="24104"/>
+<xsd:enumeration value="24201"/>
+<xsd:enumeration value="24202"/>
+<xsd:enumeration value="24203"/>
+<xsd:enumeration value="24204"/>
+<xsd:enumeration value="24211"/>
+<xsd:enumeration value="24212"/>
+<xsd:enumeration value="24213"/>
+<xsd:enumeration value="24214"/>
+<xsd:enumeration value="24219"/>
+<xsd:enumeration value="24301"/>
+<xsd:enumeration value="25101"/>
+<xsd:enumeration value="25102"/>
+<xsd:enumeration value="25201"/>
+<xsd:enumeration value="25202"/>
+<xsd:enumeration value="26101"/>
+<xsd:enumeration value="26901"/>
+<xsd:enumeration value="26902"/>
+<xsd:enumeration value="26903"/>
+<xsd:enumeration value="26904"/>
+<xsd:enumeration value="26905"/>
+<xsd:enumeration value="27101"/>
+<xsd:enumeration value="27201"/>
+<xsd:enumeration value="27301"/>
+<xsd:enumeration value="27302"/>
+<xsd:enumeration value="28101"/>
+<xsd:enumeration value="282"/>
+<xsd:enumeration value="28901"/>
+<xsd:enumeration value="29101"/>
+<xsd:enumeration value="29109"/>
+<xsd:enumeration value="29201"/>
+<xsd:enumeration value="29202"/>
+<xsd:enumeration value="29203"/>
+<xsd:enumeration value="29204"/>
+<xsd:enumeration value="29205"/>
+<xsd:enumeration value="29206"/>
+<xsd:enumeration value="29207"/>
+<xsd:enumeration value="29208"/>
+<xsd:enumeration value="29209"/>
+<xsd:enumeration value="29301"/>
+<xsd:enumeration value="3"/>
+<xsd:enumeration value="30"/>
+<xsd:enumeration value="30001"/>
+<xsd:enumeration value="30002"/>
+<xsd:enumeration value="31"/>
+<xsd:enumeration value="31101"/>
+<xsd:enumeration value="31201"/>
+<xsd:enumeration value="31301"/>
+<xsd:enumeration value="31401"/>
+<xsd:enumeration value="31501"/>
+<xsd:enumeration value="31901"/>
+<xsd:enumeration value="32"/>
+<xsd:enumeration value="32101"/>
+<xsd:enumeration value="33"/>
+<xsd:enumeration value="33101"/>
+<xsd:enumeration value="33201"/>
+<xsd:enumeration value="33301"/>
+<xsd:enumeration value="34"/>
+<xsd:enumeration value="34101"/>
+<xsd:enumeration value="34201"/>
+<xsd:enumeration value="34301"/>
+<xsd:enumeration value="35"/>
+<xsd:enumeration value="35101"/>
+<xsd:enumeration value="35201"/>
+<xsd:enumeration value="35301"/>
+<xsd:enumeration value="35901"/>
+<xsd:enumeration value="35909"/>
+<xsd:enumeration value="36101"/>
+<xsd:enumeration value="36901"/>
+<xsd:enumeration value="36902"/>
+<xsd:enumeration value="36903"/>
+<xsd:enumeration value="36904"/>
+<xsd:enumeration value="36905"/>
+<xsd:enumeration value="36906"/>
+<xsd:enumeration value="36907"/>
+<xsd:enumeration value="36909"/>
+<xsd:enumeration value="37001"/>
+<xsd:enumeration value="4"/>
+<xsd:enumeration value="40101"/>
+<xsd:enumeration value="40102"/>
+<xsd:enumeration value="40103"/>
+<xsd:enumeration value="40104"/>
+<xsd:enumeration value="40105"/>
+<xsd:enumeration value="40201"/>
+<xsd:enumeration value="40301"/>
+<xsd:enumeration value="41"/>
+<xsd:enumeration value="41001"/>
+<xsd:enumeration value="42"/>
+<xsd:enumeration value="45001"/>
+<xsd:enumeration value="45002"/>
+<xsd:enumeration value="45003"/>
+<xsd:enumeration value="45004"/>
+<xsd:enumeration value="45005"/>
+<xsd:enumeration value="45011"/>
+<xsd:enumeration value="45012"/>
+<xsd:enumeration value="45013"/>
+<xsd:enumeration value="45019"/>
+<xsd:enumeration value="5"/>
+<xsd:enumeration value="50"/>
+<xsd:enumeration value="50001"/>
+<xsd:enumeration value="50002"/>
+<xsd:enumeration value="50003"/>
+<xsd:enumeration value="50005"/>
+<xsd:enumeration value="5001"/>
+<xsd:enumeration value="51101"/>
+<xsd:enumeration value="51201"/>
+<xsd:enumeration value="51202"/>
+<xsd:enumeration value="51203"/>
+<xsd:enumeration value="51204"/>
+<xsd:enumeration value="51205"/>
+<xsd:enumeration value="51301"/>
+<xsd:enumeration value="51302"/>
+<xsd:enumeration value="51303"/>
+<xsd:enumeration value="51401"/>
+<xsd:enumeration value="51402"/>
+<xsd:enumeration value="51403"/>
+<xsd:enumeration value="51404"/>
+<xsd:enumeration value="51405"/>
+<xsd:enumeration value="51406"/>
+<xsd:enumeration value="51409"/>
+<xsd:enumeration value="51501"/>
+<xsd:enumeration value="51502"/>
+<xsd:enumeration value="51901"/>
+<xsd:enumeration value="51902"/>
+<xsd:enumeration value="51909"/>
+<xsd:enumeration value="52101"/>
+<xsd:enumeration value="52102"/>
+<xsd:enumeration value="52201"/>
+<xsd:enumeration value="52301"/>
+<xsd:enumeration value="52302"/>
+<xsd:enumeration value="52303"/>
+<xsd:enumeration value="52311"/>
+<xsd:enumeration value="52312"/>
+<xsd:enumeration value="52313"/>
+<xsd:enumeration value="52319"/>
+<xsd:enumeration value="52401"/>
+<xsd:enumeration value="52501"/>
+<xsd:enumeration value="55101"/>
+<xsd:enumeration value="55201"/>
+<xsd:enumeration value="55301"/>
+<xsd:enumeration value="60101"/>
+<xsd:enumeration value="60201"/>
+<xsd:enumeration value="60202"/>
+<xsd:enumeration value="60203"/>
+<xsd:enumeration value="60204"/>
+<xsd:enumeration value="60301"/>
+<xsd:enumeration value="61"/>
+<xsd:enumeration value="61101"/>
+<xsd:enumeration value="61201"/>
+<xsd:enumeration value="61202"/>
+<xsd:enumeration value="62"/>
+<xsd:enumeration value="62001"/>
+<xsd:enumeration value="62101"/>
+<xsd:enumeration value="63"/>
+<xsd:enumeration value="63001"/>
+<xsd:enumeration value="63011"/>
+<xsd:enumeration value="63012"/>
+<xsd:enumeration value="63013"/>
+<xsd:enumeration value="63019"/>
+<xsd:enumeration value="64"/>
+<xsd:enumeration value="64101"/>
+<xsd:enumeration value="64201"/>
+<xsd:enumeration value="64202"/>
+<xsd:enumeration value="65101"/>
+<xsd:enumeration value="65102"/>
+<xsd:enumeration value="65103"/>
+<xsd:enumeration value="65104"/>
+<xsd:enumeration value="65109"/>
+<xsd:enumeration value="65901"/>
+<xsd:enumeration value="65902"/>
+<xsd:enumeration value="65903"/>
+<xsd:enumeration value="65904"/>
+<xsd:enumeration value="65905"/>
+<xsd:enumeration value="65906"/>
+<xsd:enumeration value="65907"/>
+<xsd:enumeration value="65908"/>
+<xsd:enumeration value="65909"/>
+<xsd:enumeration value="65910"/>
+<xsd:enumeration value="65911"/>
+<xsd:enumeration value="65921"/>
+<xsd:enumeration value="65922"/>
+<xsd:enumeration value="65923"/>
+<xsd:enumeration value="65924"/>
+<xsd:enumeration value="65929"/>
+<xsd:enumeration value="65931"/>
+<xsd:enumeration value="65932"/>
+<xsd:enumeration value="65933"/>
+<xsd:enumeration value="65934"/>
+<xsd:enumeration value="65935"/>
+<xsd:enumeration value="65939"/>
+<xsd:enumeration value="66001"/>
+<xsd:enumeration value="66002"/>
+<xsd:enumeration value="66003"/>
+<xsd:enumeration value="67101"/>
+<xsd:enumeration value="67102"/>
+<xsd:enumeration value="67103"/>
+<xsd:enumeration value="67104"/>
+<xsd:enumeration value="67105"/>
+<xsd:enumeration value="67201"/>
+<xsd:enumeration value="67301"/>
+<xsd:enumeration value="70001"/>
+<xsd:enumeration value="71"/>
+<xsd:enumeration value="71101"/>
+<xsd:enumeration value="71201"/>
+<xsd:enumeration value="71301"/>
+<xsd:enumeration value="72"/>
+<xsd:enumeration value="72101"/>
+<xsd:enumeration value="72201"/>
+<xsd:enumeration value="72209"/>
+<xsd:enumeration value="72301"/>
+<xsd:enumeration value="72901"/>
+<xsd:enumeration value="72909"/>
+<xsd:enumeration value="73001"/>
+<xsd:enumeration value="74101"/>
+<xsd:enumeration value="74201"/>
+<xsd:enumeration value="74301"/>
+<xsd:enumeration value="74401"/>
+<xsd:enumeration value="74901"/>
+<xsd:enumeration value="75001"/>
+<xsd:enumeration value="80"/>
+<xsd:enumeration value="80001"/>
+<xsd:enumeration value="80002"/>
+<xsd:enumeration value="80003"/>
+<xsd:enumeration value="85101"/>
+<xsd:enumeration value="85102"/>
+<xsd:enumeration value="85201"/>
+<xsd:enumeration value="85301"/>
+<xsd:enumeration value="90"/>
+<xsd:enumeration value="90001"/>
+<xsd:enumeration value="91101"/>
+<xsd:enumeration value="91901"/>
+<xsd:enumeration value="92101"/>
+<xsd:enumeration value="92109"/>
+<xsd:enumeration value="92201"/>
+<xsd:enumeration value="92301"/>
+<xsd:enumeration value="92401"/>
+<xsd:enumeration value="93001"/>
+<xsd:enumeration value="93002"/>
+<xsd:enumeration value="93003"/>
+<xsd:enumeration value="93101"/>
+<xsd:enumeration value="93102"/>
+<xsd:enumeration value="93103"/>
+<xsd:enumeration value="93104"/>
+<xsd:enumeration value="93105"/>
+<xsd:enumeration value="93106"/>
+<xsd:enumeration value="93109"/>
+<xsd:enumeration value="95001"/>
+<xsd:enumeration value="95002"/>
+<xsd:enumeration value="95003"/>
+<xsd:enumeration value="95004"/>
+<xsd:enumeration value="95008"/>
+<xsd:enumeration value="95009"/>
+<xsd:enumeration value="95011"/>
+<xsd:enumeration value="95012"/>
+<xsd:enumeration value="95013"/>
+<xsd:enumeration value="95014"/>
+<xsd:enumeration value="95015"/>
+<xsd:enumeration value="95018"/>
+<xsd:enumeration value="95019"/>
+<xsd:enumeration value="99999"/>
+                                    </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="modeOfAdvance">
@@ -487,29 +928,63 @@
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="advanceType">
                 <xsd:annotation>
                   
-                <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                
                 </xsd:annotation>
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
+                    <xsd:enumeration value="10"/>
+                    <xsd:enumeration value="20"/>
+                    <xsd:enumeration value="30"/>
+                    <xsd:enumeration value="31"/>
+                    <xsd:enumeration value="32"/>
+                    <xsd:enumeration value="33"/>
+                    <xsd:enumeration value="34"/>
+                    <xsd:enumeration value="35"/>
                     <xsd:enumeration value="41"/>
                     <xsd:enumeration value="42"/>
+                    <xsd:enumeration value="50"/>
+                    <xsd:enumeration value="61"/>
+                    <xsd:enumeration value="62"/>
+                    <xsd:enumeration value="63"/>
+                    <xsd:enumeration value="64"/>
+                    <xsd:enumeration value="71"/>
+                    <xsd:enumeration value="72"/>
+                    <xsd:enumeration value="80"/>
+                    <xsd:enumeration value="90"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="natureofAdvance">
                 <xsd:annotation>
                   
-                <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                
                 </xsd:annotation>
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
-                    <xsd:enumeration value="1"/>
-                    <xsd:enumeration value="107"/>
-                    <xsd:enumeration value="3"/>
-                    <xsd:enumeration value="109"/>
-                  </xsd:restriction>
+                                                                                                                                          <xsd:enumeration value="1"/>
+                                        <xsd:enumeration value="2"/>
+                                        <xsd:enumeration value="101"/>
+                                        <xsd:enumeration value="102"/>
+                                        <xsd:enumeration value="103"/>
+                                        <xsd:enumeration value="104"/>
+                                        <xsd:enumeration value="105"/>
+                                        <xsd:enumeration value="106"/>
+                                        <xsd:enumeration value="107"/>
+                                        <xsd:enumeration value="108"/>
+                                        <xsd:enumeration value="109"/>
+                                        <xsd:enumeration value="110"/>
+                                        <xsd:enumeration value="111"/>
+                                        <xsd:enumeration value="112"/>
+                                        <xsd:enumeration value="113"/>
+                                        <xsd:enumeration value="115"/>
+                                        <xsd:enumeration value="116"/>
+                                        <xsd:enumeration value="117"/>
+                                        <xsd:enumeration value="118"/>
+                                        <xsd:enumeration value="119"/>
+                                        <xsd:enumeration value="120"/>
+                                    </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="guaranteeCoverCode">
@@ -521,12 +996,64 @@
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="industryType">
                                                 <xsd:annotation>
-                  <xsd:documentation>List of possible codes shared by Rizwan</xsd:documentation>
+                  
                 </xsd:annotation>
                                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="5"/>
-                  </xsd:restriction>
+                                                          <xsd:enumeration value="1"/>
+                                                          <xsd:enumeration value="101"/>
+                                                          <xsd:enumeration value="102"/>
+                                                          <xsd:enumeration value="103"/>
+                                                          <xsd:enumeration value="104"/>
+                                                          <xsd:enumeration value="105"/>
+                                                          <xsd:enumeration value="106"/>
+                                                          <xsd:enumeration value="107"/>
+                                                          <xsd:enumeration value="108"/>
+                                                          <xsd:enumeration value="109"/>
+                                                          <xsd:enumeration value="110"/>
+                                                          <xsd:enumeration value="111"/>
+                                                          <xsd:enumeration value="112"/>
+                                                          <xsd:enumeration value="113"/>
+                                                          <xsd:enumeration value="2"/>
+                                                          <xsd:enumeration value="201"/>
+                                                          <xsd:enumeration value="202"/>
+                                                          <xsd:enumeration value="203"/>
+                                                          <xsd:enumeration value="204"/>
+                                                          <xsd:enumeration value="205"/>
+                                                          <xsd:enumeration value="206"/>
+                                                          <xsd:enumeration value="207"/>
+                                                          <xsd:enumeration value="208"/>
+                                                          <xsd:enumeration value="209"/>
+                                                          <xsd:enumeration value="210"/>
+                                                          <xsd:enumeration value="211"/>
+                                                          <xsd:enumeration value="212"/>
+                                                          <xsd:enumeration value="213"/>
+                                                          <xsd:enumeration value="214"/>
+                                                          <xsd:enumeration value="215"/>
+                                                          <xsd:enumeration value="216"/>
+                                                          <xsd:enumeration value="217"/>
+                                                          <xsd:enumeration value="218"/>
+                                                          <xsd:enumeration value="219"/>
+                                                          <xsd:enumeration value="220"/>
+                                                          <xsd:enumeration value="221"/>
+                                                          <xsd:enumeration value="222"/>
+                                                          <xsd:enumeration value="223"/>
+                                                          <xsd:enumeration value="224"/>
+                                                          <xsd:enumeration value="225"/>
+                                                          <xsd:enumeration value="226"/>
+                                                          <xsd:enumeration value="227"/>
+                                                          <xsd:enumeration value="229"/>
+                                                          <xsd:enumeration value="230"/>
+                                                          <xsd:enumeration value="231"/>
+                                                          <xsd:enumeration value="232"/>
+                                                          <xsd:enumeration value="233"/>
+                                                          <xsd:enumeration value="234"/>
+                                                          <xsd:enumeration value="235"/>
+                                                          <xsd:enumeration value="236"/>
+
+
+                                    </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="" minOccurs="0" name="freeCode1">
@@ -671,14 +1198,142 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                 <xsd:element fixed="" ibmDfdlExtn:sampleValue="body_value3" minOccurs="1" name="freeText10">
+                                                 <xsd:element ibmDfdlExtn:sampleValue="1101" minOccurs="1" name="freeText10">
                                                 <xsd:annotation>
-                  <xsd:documentation>Business Segemnt - List of possible codes shared by Rizwan</xsd:documentation>
+                  
+                <xsd:documentation>Business Segemnt</xsd:documentation>
                 </xsd:annotation>
                                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="80"/>
-                  </xsd:restriction>
+                                                          <xsd:enumeration value="1101"/>
+                                                          <xsd:enumeration value="1201"/>
+                                                          <xsd:enumeration value="1202"/>
+                                                          <xsd:enumeration value="1203"/>
+                                                          <xsd:enumeration value="1204"/>
+                                                          <xsd:enumeration value="1205"/>
+                                                          <xsd:enumeration value="1301"/>
+                                                          <xsd:enumeration value="1302"/>
+                                                          <xsd:enumeration value="1303"/>
+                                                          <xsd:enumeration value="1304"/>
+                                                          <xsd:enumeration value="1305"/>
+                                                          <xsd:enumeration value="1306"/>
+                                                          <xsd:enumeration value="1307"/>
+                                                          <xsd:enumeration value="1308"/>
+                                                          <xsd:enumeration value="1309"/>
+                                                          <xsd:enumeration value="1310"/>
+                                                          <xsd:enumeration value="1311"/>
+                                                          <xsd:enumeration value="1401"/>
+                                                          <xsd:enumeration value="1402"/>
+                                                          <xsd:enumeration value="1403"/>
+                                                          <xsd:enumeration value="1404"/>
+                                                          <xsd:enumeration value="1405"/>
+                                                          <xsd:enumeration value="1406"/>
+                                                          <xsd:enumeration value="1407"/>
+                                                          <xsd:enumeration value="1408"/>
+                                                          <xsd:enumeration value="1501"/>
+                                                          <xsd:enumeration value="1502"/>
+                                                          <xsd:enumeration value="1503"/>
+                                                          <xsd:enumeration value="1504"/>
+                                                          <xsd:enumeration value="1601"/>
+                                                          <xsd:enumeration value="3101"/>
+                                                          <xsd:enumeration value="3102"/>
+                                                          <xsd:enumeration value="3201"/>
+                                                          <xsd:enumeration value="3301"/>
+                                                          <xsd:enumeration value="3302"/>
+                                                          <xsd:enumeration value="3401"/>
+                                                          <xsd:enumeration value="3402"/>
+                                                          <xsd:enumeration value="3403"/>
+                                                          <xsd:enumeration value="3404"/>
+                                                          <xsd:enumeration value="3405"/>
+                                                          <xsd:enumeration value="3406"/>
+                                                          <xsd:enumeration value="3407"/>
+                                                          <xsd:enumeration value="3408"/>
+                                                          <xsd:enumeration value="3409"/>
+                                                          <xsd:enumeration value="3410"/>
+                                                          <xsd:enumeration value="3501"/>
+                                                          <xsd:enumeration value="3502"/>
+                                                          <xsd:enumeration value="3503"/>
+                                                          <xsd:enumeration value="3601"/>
+                                                          <xsd:enumeration value="3602"/>
+                                                          <xsd:enumeration value="3603"/>
+                                                          <xsd:enumeration value="3604"/>
+                                                          <xsd:enumeration value="3605"/>
+                                                          <xsd:enumeration value="3606"/>
+                                                          <xsd:enumeration value="3607"/>
+                                                          <xsd:enumeration value="3608"/>
+                                                          <xsd:enumeration value="3611"/>
+                                                          <xsd:enumeration value="3612"/>
+                                                          <xsd:enumeration value="3613"/>
+                                                          <xsd:enumeration value="3614"/>
+                                                          <xsd:enumeration value="3615"/>
+                                                          <xsd:enumeration value="3616"/>
+                                                          <xsd:enumeration value="3617"/>
+                                                          <xsd:enumeration value="3621"/>
+                                                          <xsd:enumeration value="3622"/>
+                                                          <xsd:enumeration value="3623"/>
+                                                          <xsd:enumeration value="3624"/>
+                                                          <xsd:enumeration value="3625"/>
+                                                          <xsd:enumeration value="3626"/>
+                                                          <xsd:enumeration value="3627"/>
+                                                          <xsd:enumeration value="3631"/>
+                                                          <xsd:enumeration value="3632"/>
+                                                          <xsd:enumeration value="3633"/>
+                                                          <xsd:enumeration value="3634"/>
+                                                          <xsd:enumeration value="3635"/>
+                                                          <xsd:enumeration value="3636"/>
+                                                          <xsd:enumeration value="3637"/>
+                                                          <xsd:enumeration value="3641"/>
+                                                          <xsd:enumeration value="3642"/>
+                                                          <xsd:enumeration value="3643"/>
+                                                          <xsd:enumeration value="3644"/>
+                                                          <xsd:enumeration value="3645"/>
+                                                          <xsd:enumeration value="3646"/>
+                                                          <xsd:enumeration value="3647"/>
+                                                          <xsd:enumeration value="3651"/>
+                                                          <xsd:enumeration value="3652"/>
+                                                          <xsd:enumeration value="3653"/>
+                                                          <xsd:enumeration value="3654"/>
+                                                          <xsd:enumeration value="3655"/>
+                                                          <xsd:enumeration value="3656"/>
+                                                          <xsd:enumeration value="3657"/>
+                                                          <xsd:enumeration value="3701"/>
+                                                          <xsd:enumeration value="3702"/>
+                                                          <xsd:enumeration value="3711"/>
+                                                          <xsd:enumeration value="3712"/>
+                                                          <xsd:enumeration value="3721"/>
+                                                          <xsd:enumeration value="3722"/>
+                                                          <xsd:enumeration value="3731"/>
+                                                          <xsd:enumeration value="3732"/>
+                                                          <xsd:enumeration value="3741"/>
+                                                          <xsd:enumeration value="3742"/>
+                                                          <xsd:enumeration value="3751"/>
+                                                          <xsd:enumeration value="3752"/>
+                                                          <xsd:enumeration value="3801"/>
+                                                          <xsd:enumeration value="3802"/>
+                                                          <xsd:enumeration value="3803"/>
+                                                          <xsd:enumeration value="3804"/>
+                                                          <xsd:enumeration value="3805"/>
+                                                          <xsd:enumeration value="3806"/>
+                                                          <xsd:enumeration value="3901"/>
+                                                          <xsd:enumeration value="3902"/>
+                                                          <xsd:enumeration value="4001"/>
+                                                          <xsd:enumeration value="4002"/>
+                                                          <xsd:enumeration value="4011"/>
+                                                          <xsd:enumeration value="4012"/>
+                                                          <xsd:enumeration value="4021"/>
+                                                          <xsd:enumeration value="4022"/>
+                                                          <xsd:enumeration value="4031"/>
+                                                          <xsd:enumeration value="4032"/>
+                                                          <xsd:enumeration value="4041"/>
+                                                          <xsd:enumeration value="4042"/>
+                                                          <xsd:enumeration value="4051"/>
+                                                          <xsd:enumeration value="4052"/>
+                                                          <xsd:enumeration value="4101"/>
+                                                          <xsd:enumeration value="4201"/>
+                                                          <xsd:enumeration value="MIGR"/>
+                                                          <xsd:enumeration value="R1310"/>
+                                    </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="freeText11">
