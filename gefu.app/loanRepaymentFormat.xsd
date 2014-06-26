@@ -36,10 +36,13 @@
                       <xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="" maxOccurs="unbounded" name="repayment">
                       <xsd:complexType>
                         <xsd:sequence dfdl:separator="|" dfdl:terminator="~">
-                          <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="rec1" name="recordNumber" type="xsd:string">
-                            <xsd:annotation>
-                              <xsd:documentation>Record initiator - Maximum length ?</xsd:documentation>
-                            </xsd:annotation>
+                          <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="Rec_999" name="recordNumber">
+                            <xsd:annotation/>
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="7"/>
+                              </xsd:restriction>
+                            </xsd:simpleType>
                           </xsd:element>
                           <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="1234" name="flowId">
                             <xsd:simpleType>
@@ -49,10 +52,19 @@
                             </xsd:simpleType>
                           </xsd:element>
                           <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="flowStartDate" type="xsd:date"/>
-                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyType">
+                          <xsd:element minOccurs="1" name="eiFrequencyType">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:string">
                                 <xsd:maxLength value="1"/>
+                                <xsd:enumeration value="B"/>
+                                <xsd:enumeration value="D"/>
+                                <xsd:enumeration value="W"/>
+                                <xsd:enumeration value="F"/>
+                                <xsd:enumeration value="T"/>
+                                <xsd:enumeration value="M"/>
+                                <xsd:enumeration value="Q"/>
+                                <xsd:enumeration value="H"/>
+                                <xsd:enumeration value="Y"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
@@ -70,17 +82,19 @@
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
-                          <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0" minOccurs="0" name="eiFrequencyStartDate">
+                          <xsd:element dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0" minOccurs="0" name="eiFrequencyStartDate">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:int">
-                                <xsd:maxInclusive value="99"/>
+                                <xsd:maxInclusive value="31"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
-                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="eiFrequencyHolidayState">
+                          <xsd:element minOccurs="1" name="eiFrequencyHolidayState">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:string">
                                 <xsd:maxLength value="1"/>
+                                <xsd:enumeration value="N"/>
+                                <xsd:enumeration value="P"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
@@ -98,10 +112,19 @@
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
-                          <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="interestFrequencyType">
+                          <xsd:element minOccurs="1" name="interestFrequencyType">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:string">
                                 <xsd:maxLength value="1"/>
+                                <xsd:enumeration value="B"/>
+                                <xsd:enumeration value="D"/>
+                                <xsd:enumeration value="W"/>
+                                <xsd:enumeration value="F"/>
+                                <xsd:enumeration value="T"/>
+                                <xsd:enumeration value="M"/>
+                                <xsd:enumeration value="Q"/>
+                                <xsd:enumeration value="H"/>
+                                <xsd:enumeration value="Y"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
@@ -122,15 +145,17 @@
                           <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" dfdl:occursCountKind="implicit" dfdl:textNumberPattern="#0" minOccurs="0" name="interestFrequencyStartDate">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:int">
-                                <xsd:maxInclusive value="99"/>
+                                <xsd:maxInclusive value="31"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
-                          <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="N" minOccurs="0" name="interestFrequencyHolidayState">
+                          <xsd:element ibmDfdlExtn:sampleValue="N" minOccurs="1" name="interestFrequencyHolidayState">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:string">
                                 <xsd:maxLength value="1"/>
-                              </xsd:restriction>
+                                                                                              <xsd:enumeration value="N"/>
+                                                                <xsd:enumeration value="P"/>
+                                                            </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
                           <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="12" minOccurs="0" name="interestFrequencyMonths">
@@ -159,8 +184,9 @@
                           <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="3000" maxOccurs="1" minOccurs="1" name="flowAmount">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:decimal">
-                                <xsd:totalDigits value="20"/>
-                              </xsd:restriction>
+                                <xsd:totalDigits value="16"/>
+                                                                                              <xsd:fractionDigits value="2"/>
+                                                            </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
                         </xsd:sequence>
