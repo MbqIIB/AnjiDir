@@ -349,20 +349,22 @@
                 </xsd:simpleType>
               </xsd:element>
                                                  <xsd:element dfdl:textNumberPattern="#0" name="loanPeriodMonths">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="3"/>
+                                                              <xsd:simpleType>
+                  <xsd:restriction base="xsd:int">
+                    <xsd:minInclusive value="0"/>
+                    <xsd:maxInclusive value="9999"/>
                   </xsd:restriction>
                 </xsd:simpleType>
-              </xsd:element>
+                            </xsd:element>
                                                  <xsd:element dfdl:textNumberPattern="#0" minOccurs="1" name="loanPeriodDays">
                 <xsd:annotation>
                   
                 
                 </xsd:annotation>
-                                              <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="2"/>
+                                                                                                          <xsd:simpleType>
+                  <xsd:restriction base="xsd:int">
+                    <xsd:minInclusive value="0"/>
+                    <xsd:maxInclusive value="99999"/>
                   </xsd:restriction>
                 </xsd:simpleType>
                             </xsd:element>
