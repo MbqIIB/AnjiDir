@@ -57,7 +57,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element name="firstName">
+              <xsd:element ibmDfdlExtn:sampleValue="RAJU" name="firstName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -65,7 +65,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="middleName">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="SINGH" minOccurs="0" name="middleName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -75,7 +75,7 @@
               </xsd:element>
 
 
-              <xsd:element name="lastName">
+              <xsd:element ibmDfdlExtn:sampleValue="PARMAR" name="lastName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="80"/>
@@ -86,16 +86,7 @@
               </xsd:element>
 
 
-              <xsd:element name="shortName">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="80"/>
-                    <xsd:minLength value="1"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-
-              <xsd:element name="fullName">
+              <xsd:element ibmDfdlExtn:sampleValue="RAJ" name="shortName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="80"/>
@@ -104,8 +95,17 @@
                 </xsd:simpleType>
               </xsd:element>
 
+              <xsd:element ibmDfdlExtn:sampleValue="RAJU SINGH PARMAR" name="fullName">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="80"/>
+                    <xsd:minLength value="1"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
 
-              <xsd:element default="samplechannel" name="channelRequestName">
+
+              <xsd:element ibmDfdlExtn:sampleValue="CHAN" name="channelRequestName">
                                                             <xsd:annotation>
                         <xsd:documentation>Check with Farida</xsd:documentation>
                       </xsd:annotation>
@@ -130,11 +130,11 @@
               
               
 
-              <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" name="staffIndicator" type="xsd:boolean">
+              <xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" ibmDfdlExtn:sampleValue="true" name="staffIndicator" type="xsd:boolean">
                               </xsd:element>
 
 
-              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="value7" minOccurs="0" name="staffId">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="C0655" minOccurs="0" name="staffId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="5"/>
@@ -144,7 +144,7 @@
               </xsd:element>
 
 
-              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="NA" minOccurs="0" name="motherMaidenName">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="SANGEETA" minOccurs="0" name="motherMaidenName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
@@ -169,7 +169,7 @@
               
               
               
-              <xsd:element default="MASSMKT" ibmDfdlExtn:sampleValue="MASSMKT" name="segment">
+              <xsd:element ibmDfdlExtn:sampleValue="MASSMKT" name="segment">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>To be checked with OPS</xsd:documentation>
@@ -185,7 +185,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element default="STRIVERS" ibmDfdlExtn:sampleValue="STRIVERS" name="subSegment">
+              <xsd:element ibmDfdlExtn:sampleValue="STRIVERS" name="subSegment">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>To be checked with OPS</xsd:documentation>
@@ -243,7 +243,7 @@
 
               
 
-              <xsd:element default="C001" ibmDfdlExtn:sampleValue="C001" name="constitutionCode">
+              <xsd:element ibmDfdlExtn:sampleValue="C001" name="constitutionCode">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Kiran will confirm</xsd:documentation>
@@ -270,7 +270,7 @@
               
               
               
-              <xsd:element default="02127" dfdl:escapeSchemeRef="" ibmDfdlExtn:sampleValue="02127" minOccurs="1" name="primaryRMId">
+              <xsd:element dfdl:escapeSchemeRef="" ibmDfdlExtn:sampleValue="02127" minOccurs="1" name="primaryRMId">
                                                             <xsd:annotation>
                         <xsd:documentation>Check with OPS</xsd:documentation>
                       </xsd:annotation>
@@ -285,7 +285,7 @@
 
 
               
-              <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" minOccurs="1" name="relationshipStartDate" type="xsd:date">
+              <xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" ibmDfdlExtn:sampleValue="2013-12-31" minOccurs="1" name="relationshipStartDate" type="xsd:date">
                                                           <xsd:annotation>
                         <xsd:documentation>Format : dd-MM-yyyy</xsd:documentation>
                       </xsd:annotation>
@@ -294,7 +294,7 @@
               
               
                                                                                                                                                                         
-              <xsd:element default="INDIAN" ibmDfdlExtn:sampleValue="INDIAN" name="nationality">
+              <xsd:element ibmDfdlExtn:sampleValue="INDIAN" name="nationality">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Need Query</xsd:documentation>
@@ -309,7 +309,7 @@
 
 
 
-              <xsd:element default="MARR" name="maritalStatus">
+              <xsd:element name="maritalStatus">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -328,7 +328,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element default="GRADUATE" name="qualification">
+              <xsd:element name="qualification">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -343,7 +343,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element default="HOUSEWIFE" name="employmentStatus">
+              <xsd:element name="employmentStatus">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -362,7 +362,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element default="AGRICULTURE" name="sourceOfIncome">
+              <xsd:element name="sourceOfIncome">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -378,7 +378,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element default="12" name="occupation">
+              <xsd:element ibmDfdlExtn:sampleValue="12" name="occupation">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -440,7 +440,7 @@
               
 
               
-              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="value9" minOccurs="0" name="employerName">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="ORACLE" minOccurs="0" name="employerName">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Field to mapped against employer name in RP</xsd:documentation>
@@ -454,7 +454,7 @@
               </xsd:element>
 
 
-              <xsd:element default="F007" dfdl:occursCountKind="implicit" minOccurs="0" name="ifSalariedTypeOfCompany">
+              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="ifSalariedTypeOfCompany">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -568,7 +568,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employerAddressLine1">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="D-102" minOccurs="0" name="employerAddressLine1">
                                                             <xsd:annotation>
                         <xsd:documentation>Office address</xsd:documentation>
                       </xsd:annotation>
@@ -579,7 +579,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employerAddressLine2">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="SONMARG BUILDING" minOccurs="0" name="employerAddressLine2">
                                                             <xsd:annotation>
                         <xsd:documentation>Office address</xsd:documentation>
                       </xsd:annotation>
@@ -590,7 +590,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employerPostalCode">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="400064" minOccurs="0" name="employerPostalCode">
                                                             <xsd:annotation>
                         <xsd:documentation>Office address</xsd:documentation>
                       </xsd:annotation>
@@ -601,7 +601,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employerPhoneNumber">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="9967722444" minOccurs="0" name="employerPhoneNumber">
                                                             <xsd:annotation>
                         <xsd:documentation>Office address</xsd:documentation>
                       </xsd:annotation>
@@ -628,7 +628,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element default="AI01" name="grossIncome">
+              <xsd:element name="grossIncome">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -647,7 +647,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="value9" minOccurs="0" name="totalHouseholdIncome">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="4000000" minOccurs="0" name="totalHouseholdIncome">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Logic: Amount to be taken from CAM-DD</xsd:documentation>
@@ -659,7 +659,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="monthlyDisposableIncome">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="4000000" minOccurs="0" name="monthlyDisposableIncome">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Logic: Amount to be taken from CAM-DD</xsd:documentation>
@@ -678,7 +678,7 @@
 
               
                                                                                     
-              <xsd:element default="42_415" name="bsrTypeOfOrganisation">
+              <xsd:element name="bsrTypeOfOrganisation">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -801,7 +801,7 @@
                             
               <!-- 100 end -->
 
-                                          <xsd:element default="MIN20" ibmDfdlExtn:sampleValue="MIN20" name="minorityCommunity">
+                                          <xsd:element ibmDfdlExtn:sampleValue="MIN20" name="minorityCommunity">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -819,7 +819,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                          <xsd:element default="NA" name="panNumber">
+                                          <xsd:element name="panNumber">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -827,7 +827,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                        <xsd:element default="OTH" name="scSt">
+                                                        <xsd:element name="scSt">
                                                 <xsd:annotation>
                   
                 </xsd:annotation>
@@ -875,14 +875,14 @@
               
 
 
-                                                                                                                                            <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employerId">
+                                                                                                                                            <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="C0643" minOccurs="0" name="employerId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="99"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="employeeId">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="C0644" minOccurs="0" name="employeeId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="99"/>
@@ -945,13 +945,13 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
                 </xsd:element>
-              <xsd:element name="documentCodeDesc1" type="xsd:string">
+              <xsd:element ibmDfdlExtn:sampleValue="ADHAAR CARD" name="documentCodeDesc1" type="xsd:string">
                 <xsd:annotation>
                   
                 <xsd:documentation>RP risk team to revert</xsd:documentation>
                       </xsd:annotation>
               </xsd:element>
-                            <xsd:element name="uniqueId1">
+                            <xsd:element ibmDfdlExtn:sampleValue="12456" name="uniqueId1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="99"/>
@@ -1023,12 +1023,12 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
                 </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="documentCodeDesc2" type="xsd:string">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="ADHAAR CARD" minOccurs="0" name="documentCodeDesc2" type="xsd:string">
                 <xsd:annotation>
                   
                 </xsd:annotation>
               </xsd:element>
-                            <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="uniqueId2">
+                            <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="34123412" minOccurs="0" name="uniqueId2">
                 <xsd:annotation>
                   <xsd:documentation>input field</xsd:documentation>
                 </xsd:annotation>
@@ -1048,7 +1048,7 @@
                   
                 </xsd:annotation>
               </xsd:element>
-        <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="documentCode3">
+        <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="DL" minOccurs="0" name="documentCode3">
                     <xsd:annotation>
                   
                 </xsd:annotation>
@@ -1106,12 +1106,12 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
                 </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="documentCodeDesc3" type="xsd:string">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="DRIVING LICENSE" minOccurs="0" name="documentCodeDesc3" type="xsd:string">
                 <xsd:annotation>
                   
                 </xsd:annotation>
               </xsd:element>
-                            <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="uniqueId3">
+                            <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="DL123" minOccurs="0" name="uniqueId3">
                 <xsd:annotation>
                   <xsd:documentation>input field</xsd:documentation>
                 </xsd:annotation>
@@ -1121,7 +1121,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                                                                                                                                        <xsd:element name="addressLine1_1">
+                                                                                                                                                                        <xsd:element ibmDfdlExtn:sampleValue="D-124" name="addressLine1_1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -1130,7 +1130,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="addressLine2_1">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="HEERA BLDG" minOccurs="0" name="addressLine2_1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -1138,7 +1138,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="addressLine3_1">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="LOKHANDWALA" minOccurs="0" name="addressLine3_1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
@@ -1146,13 +1146,13 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element name="city1" type="xsd:string">
+              <xsd:element ibmDfdlExtn:sampleValue="MUM" name="city1" type="xsd:string">
                 <xsd:annotation>
                   
                 
                 </xsd:annotation>
               </xsd:element>
-              <xsd:element name="state1" type="xsd:string">
+              <xsd:element ibmDfdlExtn:sampleValue="MH" name="state1" type="xsd:string">
                 <xsd:annotation>
                   
                 <xsd:documentation>Validation throug select query</xsd:documentation>
@@ -1161,7 +1161,7 @@
               
               <!-- <xsd:element dfdl:textNumberPattern="##0.##E0" ibmDfdlExtn:sampleValue="203205" 
                 name="POSTAL_CODE_1" type="xsd:int"/> -->
-              <xsd:element dfdl:textNumberPattern="#0" name="postalCode1">
+              <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="400054" name="postalCode1">
                                                               <xsd:annotation>
                   <xsd:documentation>input field</xsd:documentation>
                 </xsd:annotation>
@@ -1172,7 +1172,7 @@
                 </xsd:simpleType>
                             </xsd:element>
 
-                                                                                                                                                          <xsd:element default="Mailing" dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="Mailing" minOccurs="0" name="addressType2">
+                                                                                                                                                          <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="Mailing" minOccurs="0" name="addressType2">
                 <xsd:annotation>
                         <xsd:documentation>Permanent address</xsd:documentation>
                       </xsd:annotation>
@@ -1189,33 +1189,33 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                            <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="addressLine1_2" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="addressLine2_2" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="addressLine3_2" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="city2" type="xsd:string">
+                            <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="D-123" minOccurs="0" name="addressLine1_2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="JAI SOCIETY" minOccurs="0" name="addressLine2_2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="" minOccurs="0" name="addressLine3_2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="MUM" minOccurs="0" name="city2" type="xsd:string">
                 <xsd:annotation>
                   <xsd:documentation>Validation throug select query</xsd:documentation>
                 </xsd:annotation>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="state2" type="xsd:string">
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="MH" minOccurs="0" name="state2" type="xsd:string">
                 <xsd:annotation>
                   <xsd:documentation>Validation throug select query</xsd:documentation>
                 </xsd:annotation>
               </xsd:element>
-                            <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="postalCode2" type="xsd:string"/>
-                                                                                                                                                                        <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="stdCode1" type="xsd:string">
+                            <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="400064" minOccurs="0" name="postalCode2" type="xsd:string"/>
+                                                                                                                                                                        <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="0181" minOccurs="0" name="stdCode1" type="xsd:string">
                 <xsd:annotation/>
               </xsd:element>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="phoneNo1" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="extensionNo1" type="xsd:string"/>
-                                                                      <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="stdCode2" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="phoneNo2" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="extensionNo2" type="xsd:string"/>
-                                                                      <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="stdCode3" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="phoneNo3" type="xsd:string"/>
-              <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="extensionNo3" type="xsd:string"/>
-                                                        <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="emailId1" type="xsd:string"/>
-                                                        <xsd:element dfdl:occursCountKind="implicit" minOccurs="0" name="emailId2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="9967722444" minOccurs="0" name="phoneNo1" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="345" minOccurs="0" name="extensionNo1" type="xsd:string"/>
+                                                                      <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="0181" minOccurs="0" name="stdCode2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="9967722445" minOccurs="0" name="phoneNo2" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="355" minOccurs="0" name="extensionNo2" type="xsd:string"/>
+                                                                      <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="0181" minOccurs="0" name="stdCode3" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="9967722446" minOccurs="0" name="phoneNo3" type="xsd:string"/>
+              <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="346" minOccurs="0" name="extensionNo3" type="xsd:string"/>
+                                                        <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="xyz@gmail.com" minOccurs="0" name="emailId1" type="xsd:string"/>
+                                                        <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="zyx@gmail.com" minOccurs="0" name="emailId2" type="xsd:string"/>
               
 
                   </xsd:sequence>
@@ -1274,7 +1274,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                                                                                                                                                                                                                                                                                                  <xsd:element dfdl:textNumberPattern="#0.###" name="sanctionLimit">
+                                                                                                                                                                                                                                                                                                                                  <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="500000" name="sanctionLimit">
                                                             <xsd:annotation>
                         <xsd:documentation>Loan amount approved</xsd:documentation>
                       </xsd:annotation>
@@ -1332,13 +1332,14 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                 <xsd:element dfdl:textNumberPattern="#0" name="loanPeriodMonths">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="3"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
+                                                 <xsd:element dfdl:textNumberPattern="#0" ibmDfdlExtn:sampleValue="12" name="loanPeriodMonths">
+                                                                                                                                                          <xsd:simpleType>
+                        <xsd:restriction base="xsd:int">
+                          <xsd:minInclusive value="0"/>
+                          <xsd:maxInclusive value="9999"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                                        </xsd:element>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <xsd:element ibmDfdlExtn:sampleValue="123" name="occupationCode">
                                                 <xsd:annotation>
                   <xsd:documentation>Input field</xsd:documentation>
@@ -1349,7 +1350,7 @@
                                       </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="adfadfsdf" minOccurs="0" name="purposeofAdvance">
+                                                                                                  <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="10001" minOccurs="0" name="purposeofAdvance">
                                                 <xsd:annotation>
                   
                 <xsd:documentation>Purpose of loan field in RP</xsd:documentation>
@@ -1716,7 +1717,7 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="modeOfAdvance">
+                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="2" minOccurs="0" name="modeOfAdvance">
                                                             <xsd:annotation>
                         <xsd:documentation>Check with Huzefa</xsd:documentation>
                       </xsd:annotation>
@@ -1726,7 +1727,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="body_value3" minOccurs="0" name="advanceType">
+                                                 <xsd:element dfdl:occursCountKind="implicit" ibmDfdlExtn:sampleValue="30" minOccurs="0" name="advanceType">
                 <xsd:annotation>
                   
                 
@@ -1757,7 +1758,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <xsd:element ibmDfdlExtn:sampleValue="body_value3" minOccurs="1" name="freeCode8">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <xsd:element ibmDfdlExtn:sampleValue="2" minOccurs="1" name="freeCode8">
                 <xsd:annotation>
                   
                 <xsd:documentation>Need to be linked to risk categorisation field</xsd:documentation>
@@ -1777,22 +1778,22 @@
               <xsd:element name="loanRepaymentDetails">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
-                    <xsd:element ibmDfdlExtn:sampleValue="10" name="flowId">
+                    <xsd:element ibmDfdlExtn:sampleValue="EIDEM" name="flowId">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                           <xsd:maxLength value="5"/>
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                                                          <xsd:element name="noOfDemands" type="xsd:string"/>
-                                        <xsd:element name="flowAmount" type="xsd:string"/>
+                                                          <xsd:element ibmDfdlExtn:sampleValue="12" name="noOfDemands" type="xsd:string"/>
+                                        <xsd:element ibmDfdlExtn:sampleValue="3000" name="flowAmount" type="xsd:string"/>
                                     </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
               <xsd:element name="loanDisbursementDetails">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element dfdl:textNumberPattern="#0.###" name="disbursementAmount">
+                    <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="200000" name="disbursementAmount">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:decimal">
                           <xsd:totalDigits value="16"/>
@@ -1800,7 +1801,7 @@
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                                                          <xsd:element name="creditAccountNumber">
+                                                          <xsd:element ibmDfdlExtn:sampleValue="123456789" name="creditAccountNumber">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                           <xsd:maxLength value="16"/>
@@ -1810,14 +1811,14 @@
                                         <xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" minOccurs="0" name="charges">
                       <xsd:complexType>
                         <xsd:sequence>
-                          <xsd:element name="chargeEventTpe">
+                          <xsd:element ibmDfdlExtn:sampleValue="MISC2" name="chargeEventTpe">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:string">
                                 <xsd:maxLength value="5"/>
                               </xsd:restriction>
                             </xsd:simpleType>
                           </xsd:element>
-                          <xsd:element dfdl:textNumberPattern="#0.###" name="chargeAmount">
+                          <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="200" name="chargeAmount">
                             <xsd:simpleType>
                               <xsd:restriction base="xsd:decimal">
                                 <xsd:totalDigits value="16"/>
