@@ -6,7 +6,7 @@
 		</xsd:appinfo>
 	</xsd:annotation>
 
-	<xsd:element ibmSchExtn:docRoot="true" name="rupeePower">
+	<xsd:element ibmSchExtn:docRoot="true" name="rupeePowerFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
                 				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="1" name="record">
