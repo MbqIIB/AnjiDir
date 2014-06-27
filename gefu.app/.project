@@ -3,9 +3,10 @@
 	<name>gefu.app</name>
 	<comment></comment>
 	<projects>
+		<project>gefu.ddp</project>
+		<project>RetCustAdd</project>
 		<project>loanDisbursement</project>
 		<project>LoanAcctAdd</project>
-		<project>RetCustAdd</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
