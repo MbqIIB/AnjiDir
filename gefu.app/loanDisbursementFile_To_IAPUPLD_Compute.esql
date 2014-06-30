@@ -22,6 +22,5 @@ CREATE COMPUTE MODULE loanDisbursementFile_To_IAPUPLD_Compute
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
 		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:loanDisbursementFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
-		SET InputLocalEnvironment.Variables.recordLength = 100;
 	END;
 END MODULE;

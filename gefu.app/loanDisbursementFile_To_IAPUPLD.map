@@ -53,7 +53,7 @@
                         <documentation description="Upload Status">This needs to be set as O, after successful upload, this will change to U</documentation>
                         <output path="UPLD_STATUS"/>
                     </assign>
-                    <assign>
+                    <assign value="DISBT">
                         <documentation description="Type of the file.">CIF : For retail customer upload
 LOAN : For loan acount creation
 REPSH : For loan account schedule upload
