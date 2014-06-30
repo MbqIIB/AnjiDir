@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/loanDisbursementFormat.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <input path="/localEnvironmentVariables.xsd" var="var2"/>
+    <output path="db:table(/finacle.dbm,FINACLE,CUSTOM,IAP_UPLD)" var="IAPUPLD"/>
+    <imports>
+        <import kind="esql" namespace="/SerializeRecord.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="SerializeRecord" uri="/SerializeRecord.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="loanDisbursementFile_To_IAPUPLD">
+        <input namespace="http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd" path="$var/mb:msg(loanDisbursementFormat,assembly,DFDL,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
+        </input>
+        <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
+        <foreach>
+            <input path="loanDisbursementFormat/record" var="record"/>
+            <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
+            <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert ref="dbinsert">
+                    <input path="$record/." var="record1"/>
+                    <input path="$File/." var="File1"/>
+                    <input path="$serializedRecord/." var="serializedRecord1"/>
+                    <output path="."/>
+                    <function ref="fn:substring">
+                        <input path="$File1/TimeStamp" var="TimeStamp"/>
+                        <output path="REF_NUM"/>
+                        <param name="sourceString" value="$TimeStamp"/>
+                        <param name="startLocation" value="1"/>
+                        <param name="length" value="15"/>
+                    </function>
+                    <move>
+                        <documentation description="File Name">The name of the file being processed by the flow. This along with srl_num is a unique key.</documentation>
+                        <input path="$File1/Name"/>
+                        <output path="FILE_NAME"/>
+                    </move>
+                    <move>
+                        <documentation description="Record Number">This is the running serial number of the record in the file, starting from 1.</documentation>
+                        <input path="$File1/Record"/>
+                        <output path="SRL_NUM"/>
+                    </move>
+                    <move>
+                        <documentation description="The file record">The record that needs to be processed.</documentation>
+                        <input path="$serializedRecord1/."/>
+                        <output path="RECORD"/>
+                    </move>
+                    <assign value="O">
+                        <documentation description="Upload Status">This needs to be set as O, after successful upload, this will change to U</documentation>
+                        <output path="UPLD_STATUS"/>
+                    </assign>
+                    <assign>
+                        <documentation description="Type of the file.">CIF : For retail customer upload
+LOAN : For loan acount creation
+REPSH : For loan account schedule upload
+DISBT : For loan account disbursement</documentation>
+                        <output path="MODULE"/>
+                    </assign>
+                    <assign value="I">
+                        <documentation description="Format of the file">This is fixed to the pipe character - I</documentation>
+                        <output path="FORMAT"/>
+                    </assign>
+                    <assign value="N">
+                        <documentation description="A control flag">A value of N means that subsequent processing will happen for the record.
+A value of Y means that the record won't be picked up, This is useful in case of debugging.</documentation>
+                        <output path="DEL_FLG"/>
+                    </assign>
+                    <function ref="fn:current-dateTime">
+                        <output path="RCRE_TIME"/>
+                    </function>
+                    <assign value="ESB">
+                        <documentation description="The user / system that sent the file. ">This is fixed to FINESB at the moment.</documentation>
+                        <output path="RCRE_USER_ID"/>
+                    </assign>
+                </insert>
+                <return>
+                    <input path="$var1/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>
