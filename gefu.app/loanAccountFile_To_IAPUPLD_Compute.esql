@@ -1,7 +1,6 @@
 
 
-
-CREATE COMPUTE MODULE loanDisbursementFile_To_IAPUPLD_Compute
+CREATE COMPUTE MODULE loanAccountFile_To_IAPUPLD_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		CALL CopyMessageHeaders();
@@ -20,8 +19,8 @@ CREATE COMPUTE MODULE loanDisbursementFile_To_IAPUPLD_Compute
 	END;
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd';
+		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/loanAccountFormat.xsd';
 		SET OutputRoot = InputRoot;
-		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:loanDisbursementFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:loanAccountFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 	END;
 END MODULE;

@@ -14,7 +14,7 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="357,130" mappingExpression="msl://{default}#loanDisbursementFile_To_IAPUPLD">
         <translation xmi:type="utility:ConstantString" string="FileToDB"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="231,115" computeExpression="esql://routine/#loanDisbursementFile_To_IAPUPLD_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="210,124" computeExpression="esql://routine/#loanDisbursementFile_To_IAPUPLD_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

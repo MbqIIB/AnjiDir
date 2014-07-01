@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanAccountFormat.xsd" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">

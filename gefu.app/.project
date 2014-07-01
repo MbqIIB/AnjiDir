@@ -4,9 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>gefu.ddp</project>
-		<project>RetCustAdd</project>
-		<project>loanDisbursement</project>
-		<project>LoanAcctAdd</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
