@@ -37,10 +37,6 @@
                         <input path="$File1/Name"/>
                         <output path="FILE_NAME"/>
                     </move>
-                    <move>
-                        <input path="$File1/Record"/>
-                        <output path="SRL_NUM"/>
-                    </move>
                     <assign value="CIF">
                         <output path="MODULE"/>
                     </assign>
@@ -57,9 +53,12 @@
                     <assign value="ESB">
                         <output path="RCRE_USER_ID"/>
                     </assign>
-                    <function ref="fn:current-dateTime">
+                    <function ref="fn:current-date">
                         <output path="RCRE_TIME"/>
                     </function>
+                    <assign value="1">
+                        <output path="SRL_NUM"/>
+                    </assign>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
