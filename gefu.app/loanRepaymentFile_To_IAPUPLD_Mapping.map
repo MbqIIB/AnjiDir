@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/loanRepaymentFormat.xsd" var="var"/>
+    <input path="/localEnvironmentVariables.xsd" var="var1"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var3"/>
+    <output path="db:table(/finacle.dbm,FINACLE,CUSTOM,IAP_UPLD)" var="IAPUPLD"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="loanRepaymentFile_To_IAPUPLD_Mapping">
+        <input namespace="http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd" path="$var/mb:msg(loanRepaymentFormat,assembly,DFDL,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
+        </input>
+        <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
+        <foreach>
+            <input path="loanRepaymentFormat/record" var="record"/>
+            <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
+            <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert>
+                    <input path="$record/." var="record3"/>
+                    <input path="$File/." var="File3"/>
+                    <input path="$serializedRecord/." var="serializedRecord3"/>
+                    <output path="."/>
+                    <move>
+                        <input path="$serializedRecord3/."/>
+                        <output path="RECORD"/>
+                    </move>
+                    <function ref="fn:current-date">
+                        <output path="RCRE_TIME"/>
+                    </function>
+                    <assign value="ESB">
+                        <output path="RCRE_USER_ID"/>
+                    </assign>
+                    <assign value="N">
+                        <output path="DEL_FLG"/>
+                    </assign>
+                    <assign value="|">
+                        <output path="FORMAT"/>
+                    </assign>
+                    <assign value="REPSH">
+                        <output path="MODULE"/>
+                    </assign>
+                    <assign value="O">
+                        <output path="UPLD_STATUS"/>
+                    </assign>
+                    <move>
+                        <input path="$File3/Record"/>
+                        <output path="SRL_NUM"/>
+                    </move>
+                    <move>
+                        <input path="$File3/Name"/>
+                        <output path="FILE_NAME"/>
+                    </move>
+                    <function ref="fn:substring">
+                        <input path="$File3/TimeStamp" var="TimeStamp"/>
+                        <output path="REF_NUM"/>
+                        <param name="sourceString" value="$TimeStamp"/>
+                        <param name="startLocation" value="1"/>
+                        <param name="length" value="15"/>
+                    </function>
+                </insert>
+                <return>
+                    <input path="$var3/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>
