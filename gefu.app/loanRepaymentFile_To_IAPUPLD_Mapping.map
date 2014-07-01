@@ -45,10 +45,11 @@
                     <assign value="O">
                         <output path="UPLD_STATUS"/>
                     </assign>
-                    <move>
-                        <input path="$File3/Record"/>
+                    <function ref="fn:number">
+                        <input path="$File3/Record" var="Record"/>
                         <output path="SRL_NUM"/>
-                    </move>
+                        <param name="arg" value="$Record"/>
+                    </function>
                     <move>
                         <input path="$File3/Name"/>
                         <output path="FILE_NAME"/>

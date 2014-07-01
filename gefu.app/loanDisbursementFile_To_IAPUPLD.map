@@ -39,11 +39,12 @@
                         <input path="$File1/Name"/>
                         <output path="FILE_NAME"/>
                     </move>
-                    <move>
+                    <function ref="fn:number">
                         <documentation description="Record Number">This is the running serial number of the record in the file, starting from 1.</documentation>
-                        <input path="$File1/Record"/>
+                        <input path="$File1/Record" var="Record"/>
                         <output path="SRL_NUM"/>
-                    </move>
+                        <param name="arg" value="$Record"/>
+                    </function>
                     <move>
                         <documentation description="The file record">The record that needs to be processed.</documentation>
                         <input path="$serializedRecord1/."/>

@@ -56,10 +56,11 @@
                     <function ref="fn:current-date">
                         <output path="RCRE_TIME"/>
                     </function>
-                    <move>
-                        <input path="$File1/Record"/>
+                    <function ref="fn:number">
+                        <input path="$File1/Record" var="Record"/>
                         <output path="SRL_NUM"/>
-                    </move>
+                        <param name="arg" value="$Record"/>
+                    </function>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
