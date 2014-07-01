@@ -29,9 +29,9 @@
                     <function ref="fn:substring">
                         <input path="$File1/TimeStamp" var="TimeStamp"/>
                         <output path="REF_NUM"/>
-                        <param name="sourceString" value="$TimeStamp"/>
+                        <param name="sourceString" value="fn:replace($TimeStamp,'_','9')"/>
                         <param name="startLocation" value="1"/>
-                        <param name="length" value="15"/>
+                        <param name="length" value="16"/>
                     </function>
                     <move>
                         <input path="$File1/Name"/>
