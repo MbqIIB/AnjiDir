@@ -30,7 +30,7 @@
                     <function ref="fn:substring">
                         <input path="$File1/TimeStamp" var="TimeStamp"/>
                         <output path="REF_NUM"/>
-                        <param name="sourceString" value="fn:replace($TimeStamp,'_','9')"/>
+                        <param name="sourceString" value="fn:concat(  '02072014',  fn:substring(fn:replace($TimeStamp,'_','9') , 9,8))"/>
                         <param name="startLocation" value="1"/>
                         <param name="length" value="16"/>
                     </function>
