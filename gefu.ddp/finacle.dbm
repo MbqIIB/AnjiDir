@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OracleModel="http:///com/ibm/db/models/oracle/oracle.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore">
   <OracleModel:OracleDatabase xmi:id="_uYGgYfqYEeOX3fIKP4ZLQg" name="FINACLE" vendor="Oracle" version="11" schemas="_uZ7sYPqYEeOX3fIKP4ZLQg"/>
-  <SQLSchema:Schema xmi:id="_uZ7sYPqYEeOX3fIKP4ZLQg" name="CUSTOM" tables="_6_I5YPqYEeOX3fIKP4ZLQg _V2yw8PqcEeOX3fIKP4ZLQg _YiN1YPqcEeOX3fIKP4ZLQg _DCXMIPqdEeOX3fIKP4ZLQg _FCeCsPqdEeOX3fIKP4ZLQg _GGPM0PqdEeOX3fIKP4ZLQg _H79YUPqdEeOX3fIKP4ZLQg" database="_uYGgYfqYEeOX3fIKP4ZLQg"/>
+  <SQLSchema:Schema xmi:id="_uZ7sYPqYEeOX3fIKP4ZLQg" name="CUSTOM" tables="_6_I5YPqYEeOX3fIKP4ZLQg _V2yw8PqcEeOX3fIKP4ZLQg _YiN1YPqcEeOX3fIKP4ZLQg _DCXMIPqdEeOX3fIKP4ZLQg _FCeCsPqdEeOX3fIKP4ZLQg _GGPM0PqdEeOX3fIKP4ZLQg _H79YUPqdEeOX3fIKP4ZLQg" sequences="_SOcuEQHrEeSBOvkcFezMqw" database="_uYGgYfqYEeOX3fIKP4ZLQg"/>
   <OracleModel:OracleTable xmi:id="_6_I5YPqYEeOX3fIKP4ZLQg" name="IAP_CONTROL_TABLE" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
     <columns xmi:id="_AH9NUPqZEeOX3fIKP4ZLQg" name="IUR_NUMBER" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_DR-SQPqZEeOX3fIKP4ZLQg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="16"/>
@@ -819,4 +819,8 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_BI2a4PqfEeOX3fIKP4ZLQg" name="DATE" primitiveType="DATE"/>
     </columns>
   </OracleModel:OracleTable>
+  <SQLSchema:Sequence xmi:id="_SOcuEQHrEeSBOvkcFezMqw" name="IAP_UPLDSEQ" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
+    <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_SOcuEgHrEeSBOvkcFezMqw" name="INT" primitiveType="INTEGER"/>
+    <identity xmi:id="_SOcuEwHrEeSBOvkcFezMqw" startValue="1" increment="1"/>
+  </SQLSchema:Sequence>
 </xmi:XMI>
