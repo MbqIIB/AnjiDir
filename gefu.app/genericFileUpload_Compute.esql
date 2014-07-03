@@ -1,0 +1,30 @@
+
+
+CREATE COMPUTE MODULE genericFileUpload_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+	    DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd';
+		DECLARE rs ROW;
+		SET OutputRoot = InputRoot;
+		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:retailCustomerFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(GEFU_INFILE_SEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
+		
+	END;
+END MODULE;
