@@ -5,6 +5,7 @@
     <output path="db:table(/iib.dbm,IIB,RR,GEFU_INFILE)" var="ESBUPLOADDATA"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="genericFileUpload_Mapping">
@@ -44,16 +45,17 @@
                     <assign value="O">
                         <output path="STATUS"/>
                     </assign>
-                    <function ref="fn:current-dateTime">
+                    <function ref="fn:current-date">
                         <output path="CREATED_AT"/>
                     </function>
                     <assign value="ESB">
                         <output path="CREATED_BY"/>
                     </assign>
-                    <move>
-                        <input path="$File1/Record"/>
+                    <function ref="xs:int">
+                        <input path="$File1/Record" var="Record"/>
                         <output path="RECORD_NUM"/>
-                    </move>
+                        <param name="primitive" value="$Record"/>
+                    </function>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
