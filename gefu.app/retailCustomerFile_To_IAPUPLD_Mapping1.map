@@ -1,69 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/retailCustomerFormat.xsd" var="var"/>
-    <input path="/localEnvironmentVariables.xsd" var="var1"/>
-    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var2"/>
-    <output path="db:table(/finacle.dbm,FINACLE,CUSTOM,IAP_UPLD)" var="IAPUPLD"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <input path="/localEnvironmentVariables.xsd" var="var2"/>
+    <output path="db:table(/finacle.dbm,FINACLE,CUSTOM,ESB_UPLOAD_DATA)" var="ESBUPLOADDATA"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
-    <mappingDeclaration name="retailCustomerFile_To_IAPUPLD_Mapping">
+    <mappingDeclaration name="retailCustomerFile_To_IAPUPLD_Mapping1">
         <input namespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" path="$var/mb:msg(retailCustomerFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
-            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
         </input>
-        <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
+        <output path="$ESBUPLOADDATA/db:insert(fn:false(),ID,CHANNEL,FILE_NAME,RECORD_NUM,SERIALIZED_RECORD,STATUS,STEP1_COMPLETED_AT,STEP1_RESULT,STEP2_COMPLETED_AT,STEP2_RESULT,STEP3_COMPLETED_AT,STEP3_RESULT,STEP4_COMPLETED_AT,STEP4_RESULT,STEP5_COMPLETED_AT,STEP5_RESULT,CREATED_AT,CREATED_BY)" var="dbinsert"/>
         <foreach>
             <input path="retailCustomerFormat/record" var="record"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
             <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
-            <input auxiliary="true" path="LocalEnvironment/Variables/uniqueRefNum[1]" var="uniqueRefNum"/>
             <output path="$dbinsert/."/>
             <transaction>
-                <insert>
+                <insert ref="dbinsert">
                     <input path="$record/." var="record1"/>
                     <input path="$serializedRecord/." var="serializedRecord1"/>
                     <input path="$File/." var="File1"/>
-                    <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
                     <output path="."/>
+                    <function ref="fn:current-dateTime">
+                        <output path="CREATED_AT"/>
+                    </function>
                     <assign value="O">
-                        <output path="UPLD_STATUS"/>
+                        <output path="STATUS"/>
+                    </assign>
+                    <assign value="MACRO">
+                        <output path="CHANNEL"/>
                     </assign>
                     <move>
                         <input path="$File1/Name"/>
                         <output path="FILE_NAME"/>
                     </move>
-                    <assign value="CIF">
-                        <output path="MODULE"/>
-                    </assign>
+                    <move>
+                        <input path="$File1/Record"/>
+                        <output path="RECORD_NUM"/>
+                    </move>
                     <move>
                         <input path="$serializedRecord1/."/>
-                        <output path="RECORD"/>
+                        <output path="SERIALIZED_RECORD"/>
                     </move>
-                    <assign value="|">
-                        <output path="FORMAT"/>
-                    </assign>
-                    <assign value="N">
-                        <output path="DEL_FLG"/>
-                    </assign>
                     <assign value="ESB">
-                        <output path="RCRE_USER_ID"/>
+                        <output path="CREATED_BY"/>
                     </assign>
-                    <function ref="fn:current-date">
-                        <output path="RCRE_TIME"/>
-                    </function>
-                    <function ref="fn:number">
-                        <input path="$File1/Record" var="Record"/>
-                        <output path="SRL_NUM"/>
-                        <param name="arg" value="$Record"/>
-                    </function>
-                    <move>
-                        <input path="$uniqueRefNum1/."/>
-                        <output path="REF_NUM"/>
-                    </move>
                 </insert>
                 <return>
-                    <input path="$var2/DBInsertReturn"/>
+                    <input path="$var1/DBInsertReturn"/>
                 </return>
             </transaction>
         </foreach>

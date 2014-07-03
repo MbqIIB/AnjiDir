@@ -20,7 +20,10 @@ CREATE COMPUTE MODULE loanRepaymentFile_To_IAPUPLD_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd';
+		DECLARE rs ROW;
 		SET OutputRoot = InputRoot;
 		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:loanRepaymentFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
 	END;
 END MODULE;

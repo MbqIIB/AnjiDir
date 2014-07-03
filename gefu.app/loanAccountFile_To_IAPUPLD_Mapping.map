@@ -10,18 +10,21 @@
     <mappingDeclaration name="loanAccountFile_To_IAPUPLD_Mapping">
         <input namespace="http://www.quantiguous.com/dfdl/loanAccountFormat.xsd" path="$var/mb:msg(loanAccountFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
         </input>
         <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
         <foreach>
             <input path="loanAccountFormat/record" var="record"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
             <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
+            <input auxiliary="true" path="LocalEnvironment/Variables/uniqueRefNum[1]" var="uniqueRefNum"/>
             <output path="$dbinsert/."/>
             <transaction>
                 <insert ref="dbinsert">
                     <input path="$record/." var="record1"/>
                     <input path="$serializedRecord/." var="serializedRecord1"/>
                     <input path="$File/." var="File1"/>
+                    <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
                     <output path="."/>
                     <move>
                         <input path="$serializedRecord1/."/>
@@ -34,13 +37,6 @@
                     </function>
                     <function ref="fn:current-date">
                         <output path="RCRE_TIME"/>
-                    </function>
-                    <function ref="fn:substring">
-                        <input path="$File1/TimeStamp" var="TimeStamp"/>
-                        <output path="REF_NUM"/>
-                        <param name="sourceString" value="fn:concat(  '01072014',  fn:substring(fn:replace($TimeStamp,'_','9') , 9,8))"/>
-                        <param name="startLocation" value="1"/>
-                        <param name="length" value="16"/>
                     </function>
                     <move>
                         <input path="$File1/Name"/>
@@ -61,6 +57,10 @@
                     <assign value="ESB">
                         <output path="RCRE_USER_ID"/>
                     </assign>
+                    <move>
+                        <input path="$uniqueRefNum1/."/>
+                        <output path="REF_NUM"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>

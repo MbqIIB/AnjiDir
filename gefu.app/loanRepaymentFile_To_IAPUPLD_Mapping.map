@@ -10,18 +10,21 @@
     <mappingDeclaration name="loanRepaymentFile_To_IAPUPLD_Mapping">
         <input namespace="http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd" path="$var/mb:msg(loanRepaymentFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
         </input>
         <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
         <foreach>
             <input path="loanRepaymentFormat/record" var="record"/>
             <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
+            <input auxiliary="true" path="LocalEnvironment/Variables/uniqueRefNum[1]" var="uniqueRefNum"/>
             <output path="$dbinsert/."/>
             <transaction>
                 <insert>
                     <input path="$record/." var="record3"/>
                     <input path="$File/." var="File3"/>
                     <input path="$serializedRecord/." var="serializedRecord3"/>
+                    <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
                     <output path="."/>
                     <move>
                         <input path="$serializedRecord3/."/>
@@ -54,13 +57,10 @@
                         <input path="$File3/Name"/>
                         <output path="FILE_NAME"/>
                     </move>
-                    <function ref="fn:substring">
-                        <input path="$File3/TimeStamp" var="TimeStamp"/>
+                    <move>
+                        <input path="$uniqueRefNum1/."/>
                         <output path="REF_NUM"/>
-                        <param name="sourceString" value="fn:concat(  '01072014',  fn:substring(fn:replace($TimeStamp,'_','9') , 9,8))"/>
-                        <param name="startLocation" value="1"/>
-                        <param name="length" value="16"/>
-                    </function>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var3/DBInsertReturn"/>
