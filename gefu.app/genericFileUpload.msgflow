@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFileInput.msgnode="ComIbmFileInput.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="genericFileUpload.msgflow"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFileInput.msgnode="ComIbmFileInput.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ComIbmTimeoutNotification.msgnode="ComIbmTimeoutNotification.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="genericFileUpload.msgflow"
     nsPrefix="genericFileUpload.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
@@ -8,23 +8,43 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/genericFileUpload.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/genericFileUpload.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="12,102" inputDirectory="/home/ibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="31,123" inputDirectory="/home/ibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat">
         <translation xmi:type="utility:ConstantString" string="GEFU_INPUT_FILE"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="193,103" computeExpression="esql://routine/#genericFileUpload_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="214,123" computeExpression="esql://routine/#genericFileUpload_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="345,104" mappingExpression="msl://{default}#genericFileUpload_Mapping">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="367,124" mappingExpression="msl://{default}#genericFileUpload_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="160,212" outputDirectory="/home/iibadm/code/test/in" outputFilename="cif*.txt">
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="20,-7" outputDirectory="/home/iibadm/code/test/in" outputFilename="cif*.txt">
         <translation xmi:type="utility:ConstantString" string="GEFU_OUTPUT_FILE"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="69,236" uniqueIdentifier="CIF" timeoutInterval="10">
+        <translation xmi:type="utility:ConstantString" string="CIF"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="212,237" mappingExpression="msl://{default}#genericFileUpload_Mapping1">
+        <translation xmi:type="utility:ConstantString" string="Mapping1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="53,336" uniqueIdentifier="LOANACCT">
+        <translation xmi:type="utility:ConstantString" string="LOANACCT"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="208,336" mappingExpression="msl://{default}#genericFileUpload_Mapping2">
+        <translation xmi:type="utility:ConstantString" string="Mapping2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="310,340" computeExpression="esql://routine/#genericFileUpload_Compute1.Main">
+        <translation xmi:type="utility:ConstantString" string="LOANACCTREFNUM"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="496,341" mappingExpression="msl://{default}#genericFileUpload_Mapping3">
+        <translation xmi:type="utility:ConstantString" string="Mapping3"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.EOD" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.EOD" targetTerminalName="InTerminal.EOD"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

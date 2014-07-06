@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/localEnvironmentVariables.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/finacle.dbm,FINACLE,CUSTOM,IAP_UPLD)" var="IAPUPLD"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="genericFileUpload_Mapping3">
+        <input path="$var/mb:msg(serializedRecord,assembly,XMLNSC,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
+        </input>
+        <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
+        <transaction>
+            <insert ref="dbinsert">
+                <input path="serializedRecord"/>
+                <output path="$dbinsert/."/>
+                <move>
+                    <input path="."/>
+                    <output path="RECORD"/>
+                </move>
+                <assign value="123">
+                    <output path="REF_NUM"/>
+                </assign>
+                <assign value="KJHG">
+                    <output path="FILE_NAME"/>
+                </assign>
+                <assign value="123">
+                    <output path="SRL_NUM"/>
+                </assign>
+                <assign value="O">
+                    <output path="UPLD_STATUS"/>
+                </assign>
+                <assign value="LOAN">
+                    <output path="MODULE"/>
+                </assign>
+                <assign value="|">
+                    <output path="FORMAT"/>
+                </assign>
+                <assign value="N">
+                    <output path="DEL_FLG"/>
+                </assign>
+                <assign value="ESB">
+                    <output path="RCRE_USER_ID"/>
+                </assign>
+                <function ref="fn:current-date">
+                    <output path="RCRE_TIME"/>
+                </function>
+            </insert>
+            <return>
+                <input path="$var1/DBInsertReturn"/>
+            </return>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>
