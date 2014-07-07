@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/genericFileUpload.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/genericFileUpload.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="31,123" inputDirectory="/home/ibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="31,123" inputDirectory="/home/ibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat" recordDetection="delimited">
         <translation xmi:type="utility:ConstantString" string="GEFU_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="214,123" computeExpression="esql://routine/#genericFileUpload_Compute.Main">
@@ -23,7 +23,7 @@
       <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="69,236" uniqueIdentifier="CIF" timeoutInterval="10">
         <translation xmi:type="utility:ConstantString" string="CIF"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="212,237" mappingExpression="msl://{default}#genericFileUpload_Mapping1">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="207,236" mappingExpression="msl://{default}#genericFileUpload_Mapping1">
         <translation xmi:type="utility:ConstantString" string="Mapping1"/>
       </nodes>
       <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="53,336" uniqueIdentifier="LOANACCT">
@@ -32,13 +32,12 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="208,336" mappingExpression="msl://{default}#genericFileUpload_Mapping2">
         <translation xmi:type="utility:ConstantString" string="Mapping2"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="310,340" computeExpression="esql://routine/#genericFileUpload_Compute1.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="327,340" computeExpression="esql://routine/#genericFileUpload_Compute1.Main">
         <translation xmi:type="utility:ConstantString" string="LOANACCTREFNUM"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="496,341" mappingExpression="msl://{default}#genericFileUpload_Mapping3">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="534,340" mappingExpression="msl://{default}#genericFileUpload_Mapping3">
         <translation xmi:type="utility:ConstantString" string="Mapping3"/>
       </nodes>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.EOD" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

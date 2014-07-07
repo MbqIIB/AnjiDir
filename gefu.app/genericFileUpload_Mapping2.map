@@ -4,6 +4,9 @@
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="/localEnvironmentVariables.xsd" var="var2"/>
     <output path="db:table(/iib.dbm,IIB,RR,GEFU_INFILE)" var="GEFUINFILE"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="genericFileUpload_Mapping2">
         <input path="$var/mb:msg(serializedRecord,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
@@ -14,12 +17,14 @@
             <input path="$dbselect/ResultSet"/>
             <output path="$MessageAssembly1/."/>
             <foreach>
-                <input path="."/>
+                <input path="." var="ResultSet"/>
                 <output path="."/>
-                <move>
-                    <input path="RR/GEFU_INFILE/SERIALIZED_RECORD"/>
+                <function ref="fn:substring-after">
+                    <input path="$ResultSet/RR/GEFU_INFILE/SERIALIZED_RECORD" var="SERIALIZEDRECORD2"/>
                     <output path="serializedRecord"/>
-                </move>
+                    <param name="string1" value="fn:substring-before( $SERIALIZEDRECORD2,'1984' )         "/>
+                    <param name="string2" value="'SHALU'"/>
+                </function>
             </foreach>
         </select>
         <foreach>

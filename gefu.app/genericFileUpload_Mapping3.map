@@ -12,45 +12,52 @@
             <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
         </input>
         <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
-        <transaction>
-            <insert ref="dbinsert">
-                <input path="serializedRecord"/>
-                <output path="$dbinsert/."/>
-                <move>
-                    <input path="."/>
-                    <output path="RECORD"/>
-                </move>
-                <assign value="123">
-                    <output path="REF_NUM"/>
-                </assign>
-                <assign value="KJHG">
-                    <output path="FILE_NAME"/>
-                </assign>
-                <assign value="123">
-                    <output path="SRL_NUM"/>
-                </assign>
-                <assign value="O">
-                    <output path="UPLD_STATUS"/>
-                </assign>
-                <assign value="LOAN">
-                    <output path="MODULE"/>
-                </assign>
-                <assign value="|">
-                    <output path="FORMAT"/>
-                </assign>
-                <assign value="N">
-                    <output path="DEL_FLG"/>
-                </assign>
-                <assign value="ESB">
-                    <output path="RCRE_USER_ID"/>
-                </assign>
-                <function ref="fn:current-date">
-                    <output path="RCRE_TIME"/>
-                </function>
-            </insert>
-            <return>
-                <input path="$var1/DBInsertReturn"/>
-            </return>
-        </transaction>
+        <foreach>
+            <input path="LocalEnvironment/Variables/uniqueRefNum" var="uniqueRefNum"/>
+            <input auxiliary="true" path="serializedRecord" var="serializedRecord"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert ref="dbinsert">
+                    <input path="$serializedRecord/." var="serializedRecord1"/>
+                    <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
+                    <output path="."/>
+                    <move>
+                        <input path="$serializedRecord1/."/>
+                        <output path="RECORD"/>
+                    </move>
+                    <assign value="KJHG">
+                        <output path="FILE_NAME"/>
+                    </assign>
+                    <assign value="123">
+                        <output path="SRL_NUM"/>
+                    </assign>
+                    <assign value="O">
+                        <output path="UPLD_STATUS"/>
+                    </assign>
+                    <assign value="LOAN">
+                        <output path="MODULE"/>
+                    </assign>
+                    <assign value="|">
+                        <output path="FORMAT"/>
+                    </assign>
+                    <assign value="N">
+                        <output path="DEL_FLG"/>
+                    </assign>
+                    <assign value="ESB">
+                        <output path="RCRE_USER_ID"/>
+                    </assign>
+                    <function ref="fn:current-date">
+                        <output path="RCRE_TIME"/>
+                    </function>
+                    <move>
+                        <input path="$uniqueRefNum1/."/>
+                        <output path="REF_NUM"/>
+                    </move>
+                </insert>
+                <return>
+                    <input path="$var1/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
     </mappingDeclaration>
 </mappingRoot>
