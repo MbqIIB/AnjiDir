@@ -24,13 +24,14 @@ CREATE COMPUTE MODULE testEsqlCases_Compute
 		DECLARE blobMsg BLOB;
 		DECLARE inCCSID, inEncoding INT;
 		SET OutputRoot = InputRoot;
-		SET resultset.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE');
+		SET resultset.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE 1=2');
 		DECLARE J INTEGER CARDINALITY(resultset.*[]);
 		WHILE I <= J DO
 			SET inCCSID = CAST(InputRoot.Properties.CodedCharSetId AS INT);
 			SET inEncoding = CAST(InputRoot.Properties.Encoding AS INT);
 			SET OutputRoot.Properties.MessageType='{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat';
 			SET blobMsg = CAST(resultset.rows[I].SERIALIZED_RECORD AS BLOB CCSID 1208 ENCODING InputProperties.Encoding);
+			
 			CREATE LASTCHILD OF OutputRoot DOMAIN('DFDL')
 			PARSE(blobMsg ENCODING 0 CCSID 0 SET '' TYPE '{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat' OPTIONS RootBitStream);
 			
