@@ -3,6 +3,7 @@
     <input path="/localEnvironmentVariables.xsd" var="var2"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var3"/>
     <output path="db:table(/iib.dbm,IIB,RR,GEFU_INFILE)" var="GEFUINFILE"/>
+    <output path="/retailCustomerFormat.xsd" var="var1"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
         <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
@@ -10,10 +11,11 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="genericFileUpload_Mapping">
         <input namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="$var/mb:msg(gefuRecordFomat,assembly,DFDL,LocalEnvironment,Properties)">
-            <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord"/>
-            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord" var="any"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum" var="any1"/>
         </input>
         <output path="$GEFUINFILE/db:insert(fn:false(),ID,CHANNEL,FILE_NAME,RECORD_NUM,SERIALIZED_RECORD,STATUS,STEP1_IUR_NUMBER,STEP1_COMPLETED_AT,STEP1_RESULT,STEP2_IUR_NUMBER,STEP2_COMPLETED_AT,STEP2_RESULT,STEP3_IUR_NUMBER,STEP3_COMPLETED_AT,STEP3_RESULT,STEP4_IUR_NUMBER,STEP4_COMPLETED_AT,STEP4_RESULT,STEP5_IUR_NUMBER,STEP5_COMPLETED_AT,STEP5_RESULT,CREATED_AT,CREATED_BY)" var="dbinsert"/>
+        <output namespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" path="$var1/mb:msg(retailCustomerFormat,assembly,DFDL,Properties)" var="MessageAssembly"/>
         <foreach>
             <input path="gefuRecordFomat/record" var="record1"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
@@ -66,5 +68,841 @@
                 </return>
             </transaction>
         </foreach>
+        <local>
+            <input path="gefuRecordFomat/record/cif"/>
+            <output path="$MessageAssembly/retailCustomerFormat/record"/>
+            <move automap="true">
+                <input path="GENDER"/>
+                <output path="GENDER"/>
+            </move>
+            <move automap="true">
+                <input path="TITLE"/>
+                <output path="TITLE"/>
+            </move>
+            <move automap="true">
+                <input path="FIRSTNAME"/>
+                <output path="FIRSTNAME"/>
+            </move>
+            <move automap="true">
+                <input path="MIDDLENAME"/>
+                <output path="MIDDLENAME"/>
+            </move>
+            <move automap="true">
+                <input path="LASTNAME"/>
+                <output path="LASTNAME"/>
+            </move>
+            <move automap="true">
+                <input path="SHORTNAME"/>
+                <output path="SHORTNAME"/>
+            </move>
+            <move automap="true">
+                <input path="FULLNAME"/>
+                <output path="FULLNAME"/>
+            </move>
+            <move automap="true">
+                <input path="CHANNEL_REQUEST_NAME"/>
+                <output path="CHANNEL_REQUEST_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="DATE_OF_BIRTH"/>
+                <output path="DATE_OF_BIRTH"/>
+            </move>
+            <move automap="true">
+                <input path="MINOR_INDICATOR"/>
+                <output path="MINOR_INDICATOR"/>
+            </move>
+            <move automap="true">
+                <input path="MINOR_TURNED_MAJOR_ON"/>
+                <output path="MINOR_TURNED_MAJOR_ON"/>
+            </move>
+            <move automap="true">
+                <input path="NON_RESIDENTINDICATOR"/>
+                <output path="NON_RESIDENTINDICATOR"/>
+            </move>
+            <move automap="true">
+                <input path="TURNED_NONRESIDENT_ON"/>
+                <output path="TURNED_NONRESIDENT_ON"/>
+            </move>
+            <move automap="true">
+                <input path="STAFF_INDICATOR"/>
+                <output path="STAFF_INDICATOR"/>
+            </move>
+            <move automap="true">
+                <input path="STAFF_ID"/>
+                <output path="STAFF_ID"/>
+            </move>
+            <move automap="true">
+                <input path="MOTHER_MAIDEN_NAME"/>
+                <output path="MOTHER_MAIDEN_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="PRIMARY_SOL_ID"/>
+                <output path="PRIMARY_SOL_ID"/>
+            </move>
+            <move automap="true">
+                <input path="ACCT_POA_AS_RMKS"/>
+                <output path="ACCT_POA_AS_RMKS"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOMER_TYPE"/>
+                <output path="CUSTOMER_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOMER_STATUS"/>
+                <output path="CUSTOMER_STATUS"/>
+            </move>
+            <move automap="true">
+                <input path="SEGMENT"/>
+                <output path="SEGMENT"/>
+            </move>
+            <move automap="true">
+                <input path="SUBSEGMENT"/>
+                <output path="SUBSEGMENT"/>
+            </move>
+            <move automap="true">
+                <input path="CHARGE_LEVEL_CODE"/>
+                <output path="CHARGE_LEVEL_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="COMMUNITY"/>
+                <output path="COMMUNITY"/>
+            </move>
+            <move automap="true">
+                <input path="AVAILED_TRADE_SERVICES"/>
+                <output path="AVAILED_TRADE_SERVICES"/>
+            </move>
+            <move automap="true">
+                <input path="CREDIT_BUREAU_SCORE"/>
+                <output path="CREDIT_BUREAU_SCORE"/>
+            </move>
+            <move automap="true">
+                <input path="ADD_INSTALLMENT_DETAILS"/>
+                <output path="ADD_INSTALLMENT_DETAILS"/>
+            </move>
+            <move automap="true">
+                <input path="CONSTITUTION_CODE"/>
+                <output path="CONSTITUTION_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="TAX_DEDUCTED_AT_SOURCE_TABLE"/>
+                <output path="TAX_DEDUCTED_AT_SOURCE_TABLE"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOMER_LEVEL_PROVISIONING"/>
+                <output path="CUSTOMER_LEVEL_PROVISIONING"/>
+            </move>
+            <move automap="true">
+                <input path="PRIMARYRMID"/>
+                <output path="PRIMARYRMID"/>
+            </move>
+            <move automap="true">
+                <input path="SECONDARYRMID"/>
+                <output path="SECONDARYRMID"/>
+            </move>
+            <move automap="true">
+                <input path="RELATIONSHIP_START_DATE"/>
+                <output path="RELATIONSHIP_START_DATE"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_CIF_TYPE"/>
+                <output path="INTRODUCER_CIF_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_BANK_RELATION_TYPE"/>
+                <output path="INTRODUCER_BANK_RELATION_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_LAST_NAME"/>
+                <output path="INTRODUCER_LAST_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_STATUS"/>
+                <output path="INTRODUCER_STATUS"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_TITLE"/>
+                <output path="INTRODUCER_TITLE"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_CIF_ID"/>
+                <output path="INTRODUCER_CIF_ID"/>
+            </move>
+            <move automap="true">
+                <input path="INTRODUCER_NAME"/>
+                <output path="INTRODUCER_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="GROUP_NAME"/>
+                <output path="GROUP_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="GROUP_ID"/>
+                <output path="GROUP_ID"/>
+            </move>
+            <move automap="true">
+                <input path="GROUP_RELATIONSHIP_MANAGERNAME"/>
+                <output path="GROUP_RELATIONSHIP_MANAGERNAME"/>
+            </move>
+            <move automap="true">
+                <input path="GUARDIAN_RELATIONSHIP_WITH_ENTITY"/>
+                <output path="GUARDIAN_RELATIONSHIP_WITH_ENTITY"/>
+            </move>
+            <move automap="true">
+                <input path="GUARDIAN_CIF_ID"/>
+                <output path="GUARDIAN_CIF_ID"/>
+            </move>
+            <move automap="true">
+                <input path="NATIONALITY"/>
+                <output path="NATIONALITY"/>
+            </move>
+            <move automap="true">
+                <input path="MARITAL_STATUS"/>
+                <output path="MARITAL_STATUS"/>
+            </move>
+            <move automap="true">
+                <input path="QUALIFICATION"/>
+                <output path="QUALIFICATION"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYMENT_STATUS"/>
+                <output path="EMPLOYMENT_STATUS"/>
+            </move>
+            <move automap="true">
+                <input path="SOURCE_OF_INCOME"/>
+                <output path="SOURCE_OF_INCOME"/>
+            </move>
+            <move automap="true">
+                <input path="OCCUPATION"/>
+                <output path="OCCUPATION"/>
+            </move>
+            <move automap="true">
+                <input path="INCOMEFREQUENCY"/>
+                <output path="INCOMEFREQUENCY"/>
+            </move>
+            <move automap="true">
+                <input path="BANK_RELATION_TYPE"/>
+                <output path="BANK_RELATION_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_NAME"/>
+                <output path="EMPLOYER_NAME"/>
+            </move>
+            <move automap="true">
+                <input path="IF_SALARIED_TYPE_OF_COMPANY"/>
+                <output path="IF_SALARIED_TYPE_OF_COMPANY"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYEE_DESIGNATION"/>
+                <output path="EMPLOYEE_DESIGNATION"/>
+            </move>
+            <move automap="true">
+                <input path="INDUSTRY_TYPE"/>
+                <output path="INDUSTRY_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_ADDRESS_LINE_1"/>
+                <output path="EMPLOYER_ADDRESS_LINE_1"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_ADDRESS_LINE_2"/>
+                <output path="EMPLOYER_ADDRESS_LINE_2"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_POSTAL_CODE"/>
+                <output path="EMPLOYER_POSTAL_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_PHONE_NUMBER"/>
+                <output path="EMPLOYER_PHONE_NUMBER"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYMENT_TYPE"/>
+                <output path="EMPLOYMENT_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="GROSSINCOME"/>
+                <output path="GROSSINCOME"/>
+            </move>
+            <move automap="true">
+                <input path="TOTAL_HOUSEHOLD_INCOME"/>
+                <output path="TOTAL_HOUSEHOLD_INCOME"/>
+            </move>
+            <move automap="true">
+                <input path="MONTHLY_DISPOSABLE_INCOME"/>
+                <output path="MONTHLY_DISPOSABLE_INCOME"/>
+            </move>
+            <move automap="true">
+                <input path="FILED_TAX_RETURNS_REGULARLY"/>
+                <output path="FILED_TAX_RETURNS_REGULARLY"/>
+            </move>
+            <move automap="true">
+                <input path="TURNOVER_CURRENTYEAR"/>
+                <output path="TURNOVER_CURRENTYEAR"/>
+            </move>
+            <move automap="true">
+                <input path="TURNOVER_PREVIOUS_YEAR"/>
+                <output path="TURNOVER_PREVIOUS_YEAR"/>
+            </move>
+            <move automap="true">
+                <input path="CURRENT_YEAR_NET_PROFIT"/>
+                <output path="CURRENT_YEAR_NET_PROFIT"/>
+            </move>
+            <move automap="true">
+                <input path="PREVIOUS_YEAR_NET_PROFIT"/>
+                <output path="PREVIOUS_YEAR_NET_PROFIT"/>
+            </move>
+            <move automap="true">
+                <input path="DEPRECIATION_FOR_CURRENTYEAR"/>
+                <output path="DEPRECIATION_FOR_CURRENTYEAR"/>
+            </move>
+            <move automap="true">
+                <input path="DEPRECIATION_FOR_PREVIOUSYEAR"/>
+                <output path="DEPRECIATION_FOR_PREVIOUSYEAR"/>
+            </move>
+            <move automap="true">
+                <input path="BSR_OCCUPATION"/>
+                <output path="BSR_OCCUPATION"/>
+            </move>
+            <move automap="true">
+                <input path="BSR_TYPE_OF_ORGANISATION"/>
+                <output path="BSR_TYPE_OF_ORGANISATION"/>
+            </move>
+            <move automap="true">
+                <input path="BUSINESS_SEGMENT"/>
+                <output path="BUSINESS_SEGMENT"/>
+            </move>
+            <move automap="true">
+                <input path="BUSSEGEFFDATE"/>
+                <output path="BUSSEGEFFDATE"/>
+            </move>
+            <move automap="true">
+                <input path="CARD_SUB_TYPE"/>
+                <output path="CARD_SUB_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="CARD_TYPE"/>
+                <output path="CARD_TYPE"/>
+            </move>
+            <move automap="true">
+                <input path="CATEGORY_OF_BORROWER_CODE"/>
+                <output path="CATEGORY_OF_BORROWER_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="DSAID"/>
+                <output path="DSAID"/>
+            </move>
+            <move automap="true">
+                <input path="DSB_INDUSTRY_CODE"/>
+                <output path="DSB_INDUSTRY_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="EXTERNAL_RATING_ASSET"/>
+                <output path="EXTERNAL_RATING_ASSET"/>
+            </move>
+            <move automap="true">
+                <input path="FOURTH_LINE_EMBOSSING"/>
+                <output path="FOURTH_LINE_EMBOSSING"/>
+            </move>
+            <move automap="true">
+                <input path="GROUP_ID_IMACS"/>
+                <output path="GROUP_ID_IMACS"/>
+            </move>
+            <move automap="true">
+                <input path="INTERNAL_RATING_ASSET"/>
+                <output path="INTERNAL_RATING_ASSET"/>
+            </move>
+            <move automap="true">
+                <input path="MINORITY_COMMUNITY"/>
+                <output path="MINORITY_COMMUNITY"/>
+            </move>
+            <move automap="true">
+                <input path="OTHER_PROMO_CODE"/>
+                <output path="OTHER_PROMO_CODE"/>
+            </move>
+            <move automap="true">
+                <input path="PAN_NUMBER"/>
+                <output path="PAN_NUMBER"/>
+            </move>
+            <move automap="true">
+                <input path="POTENTIAL_CUSTOMER_SEGMENT"/>
+                <output path="POTENTIAL_CUSTOMER_SEGMENT"/>
+            </move>
+            <move automap="true">
+                <input path="SC_ST"/>
+                <output path="SC_ST"/>
+            </move>
+            <move automap="true">
+                <input path="SOURCING_ID"/>
+                <output path="SOURCING_ID"/>
+            </move>
+            <move automap="true">
+                <input path="SPECIAL_CATEGORY"/>
+                <output path="SPECIAL_CATEGORY"/>
+            </move>
+            <move automap="true">
+                <input path="SUBK_ID"/>
+                <output path="SUBK_ID"/>
+            </move>
+            <move automap="true">
+                <input path="WEAKERSECTIONS"/>
+                <output path="WEAKERSECTIONS"/>
+            </move>
+            <move automap="true">
+                <input path="DEPOSITORY_PARTICIPANT"/>
+                <output path="DEPOSITORY_PARTICIPANT"/>
+            </move>
+            <move automap="true">
+                <input path="DEPOSITORY_ACCOUNTNUMBER"/>
+                <output path="DEPOSITORY_ACCOUNTNUMBER"/>
+            </move>
+            <move automap="true">
+                <input path="CAPACITY_OF_ENTITY"/>
+                <output path="CAPACITY_OF_ENTITY"/>
+            </move>
+            <move automap="true">
+                <input path="REJECTSTATUS"/>
+                <output path="REJECTSTATUS"/>
+            </move>
+            <move automap="true">
+                <input path="CIFCREATED"/>
+                <output path="CIFCREATED"/>
+            </move>
+            <move automap="true">
+                <input path="RATINGDONEON"/>
+                <output path="RATINGDONEON"/>
+            </move>
+            <move automap="true">
+                <input path="SMS_BANKING_MOBILE_NUMBER"/>
+                <output path="SMS_BANKING_MOBILE_NUMBER"/>
+            </move>
+            <move automap="true">
+                <input path="FREE_CODE_1"/>
+                <output path="FREE_CODE_1"/>
+            </move>
+            <move automap="true">
+                <input path="FREE_CODE_2"/>
+                <output path="FREE_CODE_2"/>
+            </move>
+            <move automap="true">
+                <input path="FREECODE_3"/>
+                <output path="FREECODE_3"/>
+            </move>
+            <move automap="true">
+                <input path="FREECODE_4"/>
+                <output path="FREECODE_4"/>
+            </move>
+            <move automap="true">
+                <input path="FREECODE_5"/>
+                <output path="FREECODE_5"/>
+            </move>
+            <move automap="true">
+                <input path="FREECODE_6"/>
+                <output path="FREECODE_6"/>
+            </move>
+            <move automap="true">
+                <input path="ACCMODID"/>
+                <output path="ACCMODID"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYER_ID"/>
+                <output path="EMPLOYER_ID"/>
+            </move>
+            <move automap="true">
+                <input path="EMPLOYEE_ID"/>
+                <output path="EMPLOYEE_ID"/>
+            </move>
+            <move automap="true">
+                <input path="CREDIT_DISCOUNT_PCNT"/>
+                <output path="CREDIT_DISCOUNT_PCNT"/>
+            </move>
+            <move automap="true">
+                <input path="DEBIT_DISCOUNT_PCNT"/>
+                <output path="DEBIT_DISCOUNT_PCNT"/>
+            </move>
+            <move automap="true">
+                <input path="WITHHOLD_TAX_PCNT"/>
+                <output path="WITHHOLD_TAX_PCNT"/>
+            </move>
+            <move automap="true">
+                <input path="WITHHOLD_TAX_FLOOR_LIMIT"/>
+                <output path="WITHHOLD_TAX_FLOOR_LIMIT"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODE1"/>
+                <output path="DOCUMENTCODE1"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODEDESC1"/>
+                <output path="DOCUMENTCODEDESC1"/>
+            </move>
+            <move automap="true">
+                <input path="REMARKS1"/>
+                <output path="REMARKS1"/>
+            </move>
+            <move automap="true">
+                <input path="UNIQUEID1"/>
+                <output path="UNIQUEID1"/>
+            </move>
+            <move automap="true">
+                <input path="PLACEOFISSUE1"/>
+                <output path="PLACEOFISSUE1"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRYOFISSUE1"/>
+                <output path="COUNTRYOFISSUE1"/>
+            </move>
+            <move automap="true">
+                <input path="ISSUEDATE1"/>
+                <output path="ISSUEDATE1"/>
+            </move>
+            <move automap="true">
+                <input path="EXPIRYDATE1"/>
+                <output path="EXPIRYDATE1"/>
+            </move>
+            <move automap="true">
+                <input path="IDISSUEDORGANISATION1"/>
+                <output path="IDISSUEDORGANISATION1"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERREDFLAG1"/>
+                <output path="PREFERREDFLAG1"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTTYPE2"/>
+                <output path="DOCUMENTTYPE2"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTTYPEDESC2"/>
+                <output path="DOCUMENTTYPEDESC2"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODE2"/>
+                <output path="DOCUMENTCODE2"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODEDESC2"/>
+                <output path="DOCUMENTCODEDESC2"/>
+            </move>
+            <move automap="true">
+                <input path="REMARKS2"/>
+                <output path="REMARKS2"/>
+            </move>
+            <move automap="true">
+                <input path="UNIQUEID2"/>
+                <output path="UNIQUEID2"/>
+            </move>
+            <move automap="true">
+                <input path="PLACEOFISSUE2"/>
+                <output path="PLACEOFISSUE2"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRYOFISSUE2"/>
+                <output path="COUNTRYOFISSUE2"/>
+            </move>
+            <move automap="true">
+                <input path="ISSUEDATE2"/>
+                <output path="ISSUEDATE2"/>
+            </move>
+            <move automap="true">
+                <input path="EXPIRYDATE2"/>
+                <output path="EXPIRYDATE2"/>
+            </move>
+            <move automap="true">
+                <input path="ISDOCUMENTVERIFIED2"/>
+                <output path="ISDOCUMENTVERIFIED2"/>
+            </move>
+            <move automap="true">
+                <input path="ID_ISSUED_ORGANISATION_2"/>
+                <output path="ID_ISSUED_ORGANISATION_2"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERREDFLAG2"/>
+                <output path="PREFERREDFLAG2"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTTYPE3"/>
+                <output path="DOCUMENTTYPE3"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTTYPEDESC3"/>
+                <output path="DOCUMENTTYPEDESC3"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODE3"/>
+                <output path="DOCUMENTCODE3"/>
+            </move>
+            <move automap="true">
+                <input path="DOCUMENTCODEDESC3"/>
+                <output path="DOCUMENTCODEDESC3"/>
+            </move>
+            <move automap="true">
+                <input path="REMARKS3"/>
+                <output path="REMARKS3"/>
+            </move>
+            <move automap="true">
+                <input path="UNIQUEID3"/>
+                <output path="UNIQUEID3"/>
+            </move>
+            <move automap="true">
+                <input path="PLACEOFISSUE3"/>
+                <output path="PLACEOFISSUE3"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRYOFISSUE3"/>
+                <output path="COUNTRYOFISSUE3"/>
+            </move>
+            <move automap="true">
+                <input path="ISSUEDATE3"/>
+                <output path="ISSUEDATE3"/>
+            </move>
+            <move automap="true">
+                <input path="EXPIRYDATE3"/>
+                <output path="EXPIRYDATE3"/>
+            </move>
+            <move automap="true">
+                <input path="IDISSUEDORGANISATION3"/>
+                <output path="IDISSUEDORGANISATION3"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERREDFLAG3"/>
+                <output path="PREFERREDFLAG3"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESSTYPE1"/>
+                <output path="ADDRESSTYPE1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESSLABEL1"/>
+                <output path="ADDRESSLABEL1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESSLINE11"/>
+                <output path="ADDRESSLINE11"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LINE2_1"/>
+                <output path="ADDRESS_LINE2_1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LINE3_1"/>
+                <output path="ADDRESS_LINE3_1"/>
+            </move>
+            <move automap="true">
+                <input path="CITY_1"/>
+                <output path="CITY_1"/>
+            </move>
+            <move automap="true">
+                <input path="STATE_1"/>
+                <output path="STATE_1"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRY_1"/>
+                <output path="COUNTRY_1"/>
+            </move>
+            <move automap="true">
+                <input path="POSTAL_CODE_1"/>
+                <output path="POSTAL_CODE_1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_VALID_FROM_1"/>
+                <output path="ADDRESS_VALID_FROM_1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_VALID_TILL_1"/>
+                <output path="ADDRESS_VALID_TILL_1"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_INITIATED_BY_1"/>
+                <output path="HOLD_MAIL_INITIATED_BY_1"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_BUSINESS_CENTRE_NAME_1"/>
+                <output path="HOLD_MAIL_BUSINESS_CENTRE_NAME_1"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_REASON_1"/>
+                <output path="HOLD_MAIL_REASON_1"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_ADDRESS1"/>
+                <output path="PREFERRED_FLAG_ADDRESS1"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_FORMAT_2"/>
+                <output path="ADDRESS_FORMAT_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESSTYPE2"/>
+                <output path="ADDRESSTYPE2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LABEL_2"/>
+                <output path="ADDRESS_LABEL_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LINE1_2"/>
+                <output path="ADDRESS_LINE1_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LINE2_2"/>
+                <output path="ADDRESS_LINE2_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_LINE3_2"/>
+                <output path="ADDRESS_LINE3_2"/>
+            </move>
+            <move automap="true">
+                <input path="CITY_2"/>
+                <output path="CITY_2"/>
+            </move>
+            <move automap="true">
+                <input path="STATE_2"/>
+                <output path="STATE_2"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRY_2"/>
+                <output path="COUNTRY_2"/>
+            </move>
+            <move automap="true">
+                <input path="POSTAL_CODE_2"/>
+                <output path="POSTAL_CODE_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_VALID_FROM_2"/>
+                <output path="ADDRESS_VALID_FROM_2"/>
+            </move>
+            <move automap="true">
+                <input path="ADDRESS_VALID_TILL_2"/>
+                <output path="ADDRESS_VALID_TILL_2"/>
+            </move>
+            <move automap="true">
+                <input path="LAST_UPDATED_DATE_2"/>
+                <output path="LAST_UPDATED_DATE_2"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_INDICATOR_2"/>
+                <output path="HOLD_MAIL_INDICATOR_2"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_INITIATED_BY_2"/>
+                <output path="HOLD_MAIL_INITIATED_BY_2"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_BUSINESS_CENTRE_NAME_2"/>
+                <output path="HOLD_MAIL_BUSINESS_CENTRE_NAME_2"/>
+            </move>
+            <move automap="true">
+                <input path="HOLD_MAIL_REASON2"/>
+                <output path="HOLD_MAIL_REASON2"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_ADDRESS2"/>
+                <output path="PREFERRED_FLAG_ADDRESS2"/>
+            </move>
+            <function automap="true" ref="concat">
+                <input path="TYPE_1" var="TYPE_12"/>
+                <input path="TYPE1" var="TYPE12"/>
+                <output path="TYPE_1"/>
+            </function>
+            <function automap="true" ref="concat">
+                <input path="TYPE_1" var="TYPE_13"/>
+                <input path="TYPE1" var="TYPE13"/>
+                <output path="TYPE1"/>
+            </function>
+            <move automap="true">
+                <input path="COUNTRY_CODE_1"/>
+                <output path="COUNTRY_CODE_1"/>
+            </move>
+            <move automap="true">
+                <input path="STD_CODE_1"/>
+                <output path="STD_CODE_1"/>
+            </move>
+            <move automap="true">
+                <input path="PHONE_NO_1"/>
+                <output path="PHONE_NO_1"/>
+            </move>
+            <move automap="true">
+                <input path="EXTENSION_NO_1"/>
+                <output path="EXTENSION_NO_1"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_PHONE1"/>
+                <output path="PREFERRED_FLAG_PHONE1"/>
+            </move>
+            <function automap="true" ref="concat">
+                <input path="TYPE_2" var="TYPE_22"/>
+                <input path="TYPE2" var="TYPE22"/>
+                <output path="TYPE2"/>
+            </function>
+            <function automap="true" ref="concat">
+                <input path="TYPE_2" var="TYPE_23"/>
+                <input path="TYPE2" var="TYPE23"/>
+                <output path="TYPE_2"/>
+            </function>
+            <move automap="true">
+                <input path="COUNTRY_CODE_2"/>
+                <output path="COUNTRY_CODE_2"/>
+            </move>
+            <move automap="true">
+                <input path="STD_CODE_2"/>
+                <output path="STD_CODE_2"/>
+            </move>
+            <move automap="true">
+                <input path="PHONE_NO_2"/>
+                <output path="PHONE_NO_2"/>
+            </move>
+            <move automap="true">
+                <input path="EXTENSION_NO_2"/>
+                <output path="EXTENSION_NO_2"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_PHONE2"/>
+                <output path="PREFERRED_FLAG_PHONE2"/>
+            </move>
+            <move automap="true">
+                <input path="TYPE_3"/>
+                <output path="TYPE_3"/>
+            </move>
+            <move automap="true">
+                <input path="COUNTRY_CODE_3"/>
+                <output path="COUNTRY_CODE_3"/>
+            </move>
+            <move automap="true">
+                <input path="STDCODE_3"/>
+                <output path="STDCODE_3"/>
+            </move>
+            <move automap="true">
+                <input path="PHONE_NO_3"/>
+                <output path="PHONE_NO_3"/>
+            </move>
+            <move automap="true">
+                <input path="EXTENSION_NO_3"/>
+                <output path="EXTENSION_NO_3"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_PHONE3"/>
+                <output path="PREFERRED_FLAG_PHONE3"/>
+            </move>
+            <move automap="true">
+                <input path="EMAILID_1"/>
+                <output path="EMAILID_1"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_EMAIL1"/>
+                <output path="PREFERRED_FLAG_EMAIL1"/>
+            </move>
+            <move automap="true">
+                <input path="EMAIL_ID_2"/>
+                <output path="EMAIL_ID_2"/>
+            </move>
+            <move automap="true">
+                <input path="PREFERRED_FLAG_EMAIL2"/>
+                <output path="PREFERRED_FLAG_EMAIL2"/>
+            </move>
+        </local>
+        <move>
+            <input path="Properties"/>
+            <output path="$MessageAssembly/Properties"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>

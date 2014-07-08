@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/loanAccountFile_To_IAPUPLD.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/loanAccountFile_To_IAPUPLD.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="38,293" inputDirectory="/home/iibadm/code/test/in" filenamePattern="acct*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanAccountFormat.xsd}:loanAccountFormat">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="38,293" inputDirectory="/home/iibadm/code/test/in" filenamePattern="acct*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanAccountFormat.xsd}:loanAccountFormat" recordDetection="delimited">
         <translation xmi:type="utility:ConstantString" string="LOAN_ACCT_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="394,291" mappingExpression="msl://{default}#loanAccountFile_To_IAPUPLD_Mapping">

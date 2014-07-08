@@ -22,9 +22,19 @@ CREATE COMPUTE MODULE retailCustomerFile_To_IAPUPLD_Compute
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd';
 		DECLARE rs ROW;
-		SET OutputRoot = InputRoot;
-		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:retailCustomerFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
-		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
+		DECLARE srlRec CHARACTER;
+		DECLARE seqqNum CHARACTER;
+		DECLARE maleFemale CHARACTER;
+		SET maleFemale = InputRoot.DFDL.ns:retailCustomerFormat.record.GENDER;
+		IF (maleFemale = 'M' OR maleFemale='F' OR maleFemale='O') THEN
+			SET OutputRoot = InputRoot;
+			SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:retailCustomerFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+			SET srlRec = InputLocalEnvironment.Variables.serializedRecord;
+			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+			--SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
+			--SET seqqNum = rs.SEQUENCENUMBER[1];
+			PROPAGATE TO TERMINAL 'out1';
+		END IF;
+		--INSERT INTO Database.GEFU_INFILE
 	END;
 END MODULE;

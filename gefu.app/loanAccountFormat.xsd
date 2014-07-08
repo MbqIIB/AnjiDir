@@ -9,7 +9,7 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="loanAccountFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-                							<xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" ref="Q1:record"/>
+                							<xsd:element maxOccurs="1" ref="Q1:record"/>
             </xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
