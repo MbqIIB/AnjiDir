@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanAccountFormat.xsd" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanAccountFormat.xsd" xmlns:Q1="http://www.quantiguous.com/dfdl/loanAccountFormat.xsd" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">
@@ -9,7 +9,12 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="loanAccountFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+                							<xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" ref="Q1:record"/>
+            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+    <xsd:element dfdl:terminator="%NL;" name="record">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
@@ -1501,8 +1506,4 @@
                         </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
 </xsd:schema>

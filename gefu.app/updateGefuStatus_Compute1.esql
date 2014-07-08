@@ -31,9 +31,11 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute1
 				 AND IAP_CONTROL_TABLE.REC_STATUS = 'C'
 				 AND CUSTOMUPLOAD.CIFID IS NOT NULL
 				 AND IAP_CONTROL_TABLE.IUR_NUMBER = iurNumber;
-				 
+		
+		SET OutputRoot.DataObject.gefuId = InputRoot.DataObject.gefuId;
 		SET OutputRoot.DataObject.step1Result = rs.rows[1].CIFID;
 		SET OutputRoot.DataObject.step1IurNumber = iurNumber;
+		SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
 		PROPAGATE;
 		
 		--DECLARE J INTEGER CARDINALITY(rs.*[]);

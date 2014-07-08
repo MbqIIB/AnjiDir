@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/loanDisbursementFile_To_IAPUPLD.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/loanDisbursementFile_To_IAPUPLD.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="-104,256" inputDirectory="/home/iibadm/code/test/in" filenamePattern="disb*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd}:loanDisbursementFormat" recordDetection="delimited">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="-133,184" inputDirectory="/home/iibadm/code/test/in" filenamePattern="disb*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd}:loanDisbursementFormat" recordDetection="delimited">
         <translation xmi:type="utility:ConstantString" string="DISBURSEMENT_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="357,130" mappingExpression="msl://{default}#loanDisbursementFile_To_IAPUPLD">

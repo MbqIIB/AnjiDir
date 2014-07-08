@@ -17,6 +17,8 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 	END;
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		
+		-- THIS BLOCK WILL CHECK CIF STATUS
 		DECLARE I INTEGER 1;
 		DECLARE cifIurNumbers ROW;
 		SET OutputRoot = InputRoot;
@@ -24,9 +26,42 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 		DECLARE J INTEGER CARDINALITY(cifIurNumbers.*[]);
 		WHILE I <= J DO
 			SET OutputRoot = InputRoot;
+			SET OutputRoot.DataObject.gefuId = cifIurNumbers.rows[I].ID;
 			SET OutputRoot.DataObject.step1IurNumber = cifIurNumbers.rows[I].STEP1_IUR_NUMBER;
+			SET OutputRoot.DataObject.gefuRecord = cifIurNumbers.rows[I].SERIALIZED_RECORD;
 			PROPAGATE;
 			SET I = I + 1;
 		END WHILE;
+		
+		-- THIS BLOCK WILL CHECK ACCOUNT STATUS
+		DECLARE K INTEGER 1;
+		DECLARE loanIurNumbers ROW;
+		SET OutputRoot = InputRoot;
+		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.STEP2_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 2 AND GEFU_INFILE.STEP2_RESULT IS NULL');
+		DECLARE L INTEGER CARDINALITY(loanIurNumbers.*[]);
+		WHILE K <= L DO
+			SET OutputRoot = InputRoot;
+			SET OutputRoot.DataObject.gefuId = loanIurNumbers.rows[I].ID;
+			SET OutputRoot.DataObject.step2IurNumber = loanIurNumbers.rows[K].STEP2_IUR_NUMBER;
+			SET OutputRoot.DataObject.gefuRecord = loanIurNumbers.rows[K].SERIALIZED_RECORD;
+			PROPAGATE TO TERMINAL 'Out1';
+			SET I = I + 1;
+		END WHILE;
+		
+		-- THIS BLOCK WILL CHECK DISBURSEMENT STATUS
+		DECLARE M INTEGER 1;
+		DECLARE disbIurNumbers ROW;
+		SET OutputRoot = InputRoot;
+		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.STEP3_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 3 AND GEFU_INFILE.STEP3_RESULT IS NULL');
+		DECLARE N INTEGER CARDINALITY(loanIurNumbers.*[]);
+		WHILE M <= N DO
+			SET OutputRoot = InputRoot;
+			SET OutputRoot.DataObject.gefuId = disbIurNumbers.rows[I].ID;
+			SET OutputRoot.DataObject.step3IurNumber = disbIurNumbers.rows[M].STEP3_IUR_NUMBER;
+			SET OutputRoot.DataObject.gefuRecord = disbIurNumbers.rows[M].SERIALIZED_RECORD;
+			PROPAGATE TO TERMINAL 'Out2';
+			SET I = I + 1;
+		END WHILE;
+		
 	END;
 END MODULE;
