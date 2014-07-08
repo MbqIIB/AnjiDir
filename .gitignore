@@ -14,6 +14,10 @@ hs_err_pid*
 ##### iib specific
 *.bar
 GeneratedBarFiles/
+BARfiles/
+TestClientBarFiles/
+trace.out
+trace.xml
 
 ##### eclipse specific  -- https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
 
