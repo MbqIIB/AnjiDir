@@ -1,0 +1,31 @@
+Timestamps are formatted in local time, 330 minutes past GMT.
+Trace written by version ; formatter version 9000 (build S000-L130620-DE on amd64_linux_2)
+
+2014-07-08 11:14:59.120676      986   UserTrace   BIP4040I: The Execution Group ''Q'' has processed a configuration message successfully. 
+                                       A configuration message has been processed successfully. Any configuration changes have been made and stored persistently. 
+                                       No user action required. 
+2014-07-08 11:14:59.121224      986   UserTrace   BIP2638I: The MQ output node '.outputNode' attempted to write a message to queue ''SYSTEM.BROKER.EXECUTIONGROUP.REPLY'' connected to queue manager ''IB9QMGR''. The MQCC was '0' and the MQRC was '0'. 
+2014-07-08 11:14:59.121236      986   UserTrace   BIP2622I: Message successfully output by output node '.outputNode' to queue ''SYSTEM.BROKER.EXECUTIONGROUP.REPLY'' on queue manager ''IB9QMGR''. 
+2014-07-08 11:14:59.336364     2821   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:14:59.343228     2816   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:00.337653     2821   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:00.344591     2816   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:01.339185     2821   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:01.346494     2816   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:02.340825     2821   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:02.348064     2816   UserTrace   BIP12082I:  Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+                                        Delaying by ''0.5'' seconds to keep the message rate below the maximum message rate of ''1'' 
+2014-07-08 11:15:03.187928      986   UserTrace   BIP2632I: Message received and propagated to 'out' terminal of MQ input node '.InputNode'. 
+2014-07-08 11:15:03.188045      986   UserTrace   BIP6060I: Node '.InputNode' used parser type ''Properties'' to process a portion of the incoming message of length '0' bytes beginning at offset '0'. 
+2014-07-08 11:15:03.188067      986   UserTrace   BIP6061I: Node '.InputNode' used parser type ''MQMD'' to process a portion of the incoming message of length '364' bytes beginning at offset '0'. The parser type was selected based on value ''MQHMD'' from the previous parser. 
+2014-07-08 11:15:03.188127      986   UserTrace   BIP6061I: Node '.InputNode' used parser type ''XMLS'' to process a portion of the incoming message of length '224' bytes beginning at offset '364'. The parser type was selected based on value ''XMLS'' from the previous parser. 
+
+Threads encountered in this trace:
+  2816  2821  986

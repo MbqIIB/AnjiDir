@@ -1,0 +1,36 @@
+
+
+CREATE COMPUTE MODULE updateGefuStatus_Compute5
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		DECLARE forAcid CHARACTER;
+		DECLARE step2IurNumber CHARACTER;
+		DECLARE gefuId CHARACTER;
+		DECLARE loanAcctRec	CHARACTER;
+		DECLARE rs ROW;
+		SET OutputRoot = InputRoot;
+		SET forAcid = InputRoot.DataObject.step2Result;
+		SET gefuId = InputRoot.DataObject.gefuId;
+		SET step2IurNumber = InputRoot.DataObject.step2IurNumber;
+		--SET loanAcctRec = InputRoot.DataObject.gefuRecord;
+		--SET loanAcctRec = SUBSTRING(loanAcctRec AFTER '~~');
+		--SET loanAcctRec = CAST(loanAcctRec AS CHARACTER CCSID 0 ENCODING 0);	
+		UPDATE Database.GEFU_INFILE SET STEP2_RESULT = forAcid WHERE GEFU_INFILE.ID = gefuId;
+	END;
+END MODULE;

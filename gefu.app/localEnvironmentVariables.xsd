@@ -2,4 +2,17 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<xsd:element name="serializedRecord" type="xsd:string"/>
 	<xsd:element name="uniqueRefNum" type="xsd:string"/>
+	<xsd:element name="gefuRecord" type="xsd:string"/>
+	<xsd:element name="gefuId" type="xsd:string"/>
+	<xsd:element name="cifId" type="xsd:string"/>
+	<xsd:element name="step1IurNumber" type="xsd:string"/>
+	<xsd:element name="step1Result" type="xsd:string"/>
+	<xsd:element name="step2IurNumber" type="xsd:string"/>
+	<xsd:element name="step2Result" type="xsd:string"/>
+	<xsd:element name="step3IurNumber" type="xsd:string"/>
+	<xsd:element name="step3Result" type="xsd:string"/>
+	<xsd:element name="step4IurNumber" type="xsd:string"/>
+	<xsd:element name="step4Result" type="xsd:string"/>
+	<xsd:element name="step5IurNumber" type="xsd:string"/>
+	<xsd:element name="step5Result" type="xsd:string"/>
 </xsd:schema>
