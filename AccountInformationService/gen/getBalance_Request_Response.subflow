@@ -11,18 +11,22 @@
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="28,41">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/getBalance_Request_Response" pluginId="AccountInformationService"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="362,42">
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="702,103">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/getBalance_Request_Response" pluginId="AccountInformationService"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="181,48" mappingExpression="msl://{default}#FinacleBalInq">
-        <translation xmi:type="utility:ConstantString" string="Mapping"/>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="181,48" mappingExpression="msl://{default}#FinacleBalInqRequest">
+        <translation xmi:type="utility:ConstantString" string="Create Finacle Request"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="237,294" URLSpecifier="http://localhost">
+      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="298,257" URLSpecifier="http://localhost:7080/mock/balinq" messageDomainProperty="XMLNSC" validateTiming="complete" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="HTTP Request"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="504,291" mappingExpression="msl://{default}#FinacleBalInqResponse">
+        <translation xmi:type="utility:ConstantString" string="Create SOAP Reply"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
