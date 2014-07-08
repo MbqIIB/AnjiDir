@@ -25,24 +25,13 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute2
 		DECLARE loanAcctRec	CHARACTER;
 		DECLARE rs ROW;
 		SET OutputRoot = InputRoot;
+		SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
+		SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
+		SET OutputRoot.DataObject.recordNumber = InputRoot.DataObject.recordNumber;
 		SET cifId = InputRoot.DataObject.step1Result;
 		SET gefuId = InputRoot.DataObject.gefuId;
 		SET step1IurNumber = InputRoot.DataObject.step1IurNumber;
-		SET loanAcctRec = InputRoot.DataObject.gefuRecord;
-		SET loanAcctRec = SUBSTRING(loanAcctRec AFTER '~~');
-		SET loanAcctRec = CAST(loanAcctRec AS CHARACTER CCSID 0 ENCODING 0);	
 		UPDATE Database.GEFU_INFILE SET STEP1_RESULT = cifId WHERE GEFU_INFILE.ID = gefuId;
-		
-		---------------------- CAST WORK ---------------------------
-		DECLARE blobMsg BLOB;
-		DECLARE inCCSID, inEncoding INT;
-		SET inCCSID = CAST(InputRoot.Properties.CodedCharSetId AS INT);
-		SET inEncoding = CAST(InputRoot.Properties.Encoding AS INT);
-		SET OutputRoot.Properties.MessageType='{http://www.quantiguous.com/dfdl/loanAccountFormat.xsd}:loanAccountFormat';
-		SET blobMsg = CAST(loanAcctRec AS BLOB CCSID 0 ENCODING 0);		
-		CREATE LASTCHILD OF OutputRoot DOMAIN('DFDL')
-		PARSE(blobMsg ENCODING inEncoding CCSID inCCSID SET '' TYPE '{http://www.quantiguous.com/dfdl/loanAccountFormat.xsd}:loanAccountFormat' OPTIONS RootBitStream);
-		PROPAGATE TO TERMINAL 'out1';	
-		
+		PROPAGATE TO TERMINAL 'out1';
 	END;
 END MODULE;

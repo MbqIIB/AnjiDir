@@ -8,17 +8,17 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/updateGefuStatus.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/updateGefuStatus.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="103,200" uniqueIdentifier="TIMER" timeoutInterval="30">
+      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="-29,209" uniqueIdentifier="TIMER" timeoutInterval="30">
         <translation xmi:type="utility:ConstantString" string="Timeout Notification"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="275,198" dataSource="IIB" computeExpression="esql://routine/#updateGefuStatus_Compute.Main">
-        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="163,199" dataSource="IIB" computeExpression="esql://routine/#updateGefuStatus_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="SELEC_STATUS"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="399,199" dataSource="FINACLE" computeExpression="esql://routine/#updateGefuStatus_Compute1.Main">
-        <translation xmi:type="utility:ConstantString" string="Compute1"/>
+        <translation xmi:type="utility:ConstantString" string="CHECK_STATUS"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="534,200" dataSource="IIB" computeExpression="esql://routine/#updateGefuStatus_Compute2.Main">
-        <translation xmi:type="utility:ConstantString" string="Compute2"/>
+        <translation xmi:type="utility:ConstantString" string="UPDATE_STATUS"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="395,323" dataSource="FINACLE" computeExpression="esql://routine/#updateGefuStatus_Compute3.Main">
         <translation xmi:type="utility:ConstantString" string="Compute3"/>
@@ -32,6 +32,9 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="537,443" dataSource="IIB" computeExpression="esql://routine/#updateGefuStatus_Compute6.Main">
         <translation xmi:type="utility:ConstantString" string="Compute6"/>
       </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="658,201" dataSource="FINACLE" computeExpression="esql://routine/#updateGefuStatus_Compute7.Main">
+        <translation xmi:type="utility:ConstantString" string="INSERT_IAP_UPLD"/>
+      </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -39,6 +42,7 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

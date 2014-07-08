@@ -22,11 +22,13 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 		DECLARE I INTEGER 1;
 		DECLARE cifIurNumbers ROW;
 		SET OutputRoot = InputRoot;
-		SET cifIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.STEP1_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 1 AND GEFU_INFILE.STEP1_RESULT IS NULL');
+		SET cifIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.FILE_NAME, GEFU_INFILE.RECORD_NUM, GEFU_INFILE.STEP1_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 1 AND GEFU_INFILE.STEP1_RESULT IS NULL');
 		DECLARE J INTEGER CARDINALITY(cifIurNumbers.*[]);
 		WHILE I <= J DO
 			SET OutputRoot = InputRoot;
 			SET OutputRoot.DataObject.gefuId = cifIurNumbers.rows[I].ID;
+			SET OutputRoot.DataObject.recordNumber = cifIurNumbers.rows[I].RECORD_NUM;
+			SET OutputRoot.DataObject.fileName = cifIurNumbers.rows[I].FILE_NAME;
 			SET OutputRoot.DataObject.step1IurNumber = cifIurNumbers.rows[I].STEP1_IUR_NUMBER;
 			SET OutputRoot.DataObject.gefuRecord = cifIurNumbers.rows[I].SERIALIZED_RECORD;
 			PROPAGATE;
@@ -37,11 +39,13 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 		DECLARE K INTEGER 1;
 		DECLARE loanIurNumbers ROW;
 		SET OutputRoot = InputRoot;
-		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.STEP2_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 2 AND GEFU_INFILE.STEP2_RESULT IS NULL');
+		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.FILE_NAME, GEFU_INFILE.RECORD_NUM, GEFU_INFILE.STEP2_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 2 AND GEFU_INFILE.STEP2_RESULT IS NULL');
 		DECLARE L INTEGER CARDINALITY(loanIurNumbers.*[]);
 		WHILE K <= L DO
 			SET OutputRoot = InputRoot;
-			SET OutputRoot.DataObject.gefuId = loanIurNumbers.rows[I].ID;
+			SET OutputRoot.DataObject.gefuId = loanIurNumbers.rows[K].ID;
+			SET OutputRoot.DataObject.recordNumber = cifIurNumbers.rows[K].RECORD_NUM;
+			SET OutputRoot.DataObject.fileName = cifIurNumbers.rows[K].FILE_NAME;
 			SET OutputRoot.DataObject.step2IurNumber = loanIurNumbers.rows[K].STEP2_IUR_NUMBER;
 			SET OutputRoot.DataObject.gefuRecord = loanIurNumbers.rows[K].SERIALIZED_RECORD;
 			PROPAGATE TO TERMINAL 'Out1';
@@ -52,11 +56,13 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 		DECLARE M INTEGER 1;
 		DECLARE disbIurNumbers ROW;
 		SET OutputRoot = InputRoot;
-		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.STEP3_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 3 AND GEFU_INFILE.STEP3_RESULT IS NULL');
+		SET loanIurNumbers.rows[] = PASSTHRU('SELECT GEFU_INFILE.ID, GEFU_INFILE.FILE_NAME, GEFU_INFILE.RECORD_NUM, GEFU_INFILE.STEP3_IUR_NUMBER, GEFU_INFILE.SERIALIZED_RECORD FROM GEFU_INFILE WHERE GEFU_INFILE.STATUS = 3 AND GEFU_INFILE.STEP3_RESULT IS NULL');
 		DECLARE N INTEGER CARDINALITY(loanIurNumbers.*[]);
 		WHILE M <= N DO
 			SET OutputRoot = InputRoot;
-			SET OutputRoot.DataObject.gefuId = disbIurNumbers.rows[I].ID;
+			SET OutputRoot.DataObject.gefuId = disbIurNumbers.rows[M].ID;
+			SET OutputRoot.DataObject.recordNumber = cifIurNumbers.rows[M].RECORD_NUM;
+			SET OutputRoot.DataObject.fileName = cifIurNumbers.rows[M].FILE_NAME;
 			SET OutputRoot.DataObject.step3IurNumber = disbIurNumbers.rows[M].STEP3_IUR_NUMBER;
 			SET OutputRoot.DataObject.gefuRecord = disbIurNumbers.rows[M].SERIALIZED_RECORD;
 			PROPAGATE TO TERMINAL 'Out2';
