@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/BalInq.xsd"/>
+    <output path="/AccountInformationService_InlineSchema1.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FinacleBalInqResponse">
+        <input namespace="http://www.finacle.com/fixml" path="mb:msg(FIXML,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://AccountInformationService" path="mb:msg(getBalanceResponse,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <local>
+            <input path="FIXML/Body/BalInqResponse"/>
+            <output path="getBalanceResponse"/>
+            <foreach>
+                <input path="BalInqRs/AcctBal" var="AcctBal"/>
+                <output path="getBalanceReply"/>
+                <filter lang="xpath">$AcctBal/in:BalType = 'EFFAVL'</filter>
+                <move>
+                    <input path="$AcctBal/BalAmt/amountValue"/>
+                    <output path="effectiveAvailableBalance"/>
+                </move>
+                <move>
+                    <input path="$AcctBal/BalAmt/currencyCode"/>
+                    <output path="currency"/>
+                </move>
+            </foreach>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>
