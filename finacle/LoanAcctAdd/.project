@@ -5,6 +5,7 @@
 	<projects>
 		<project>common</project>
 		<project>custom</project>
+		<project>common1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

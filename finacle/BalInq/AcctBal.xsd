@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common/Amount.xsd"/>
+
+
+<xs:complexType name="AcctBal">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ amount ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="BalType"  minOccurs="0"> 
+	<xs:annotation>
+                <xs:documentation><![CDATA[ type of balance. Valid values are LEDGER-Ledger balance, AVAIL-Available balance, EFFAVL-Effective Available balance, FLOAT-Floating balance, SHADOW-Shadow balance, LEIN-Lein amount and DRWPWR-drawing power. ]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+	    		<xs:maxLength value="20"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="BalAmt"  type="Amount"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ amount ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

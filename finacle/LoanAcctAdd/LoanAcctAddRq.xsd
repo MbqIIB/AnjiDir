@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
 
 <xs:include schemaLocation="CustId.xsd"/>
-<xs:include schemaLocation="AcctId.xsd"/>
+<xs:include schemaLocation="../common1/AcctId.xsd"/>
 <xs:include schemaLocation="AcctGenInfo.xsd"/>
 <xs:include schemaLocation="LoanGenDetails.xsd"/>
 <xs:include schemaLocation="ACHDetails.xsd"/>

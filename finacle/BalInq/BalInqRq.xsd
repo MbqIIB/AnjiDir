@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common1/AcctId.xsd"/>
+
+
+<xs:complexType name="BalInqRq">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ Account Identification details.This aggregate is used to uniquely identify the account for which the balance inquiry is required .It holds the details of the scheme,Currency and the Bank details under which the Account is opened. Only the AcctId and the AcctCurr fields are used in this Business message. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AcctId"  type="AcctId"  > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account Identification details.This aggregate is used to uniquely identify the account for which the balance inquiry is required .It holds the details of the scheme,Currency and the Bank details under which the Account is opened. Only the AcctId and the AcctCurr fields are used in this Business message. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

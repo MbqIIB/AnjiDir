@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+        <xs:include schemaLocation="../common/FIServiceRequestHeader.xsd"/>
+	<xs:include schemaLocation="../common/FIServiceResponseHeader.xsd"/>
+	<xs:include schemaLocation="../common/FIServiceNotificationHeader.xsd"/>
+	<xs:include schemaLocation="BalInqRequest.xsd"/>
+	<xs:include schemaLocation="BalInqResponse.xsd"/>
+	<xs:include schemaLocation="BalInqNotification.xsd"/>
+	<xs:element name="FIXML">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Header"/>
+				<xs:element ref="Body"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="RequestHeader" type="RequestHeaderType"/>
+				<xs:element name="ResponseHeader" type="ResponseHeaderType"/>
+				<xs:element name="NotificationHeader" type="NotificationHeaderType"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="BalInqRequest"/>
+				<xs:element ref="BalInqResponse"/>
+				<xs:element ref="BalInqNotification"/>
+				<xs:element name="Error" type="ErrorType"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

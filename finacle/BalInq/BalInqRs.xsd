@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.finacle.com/fixml" targetNamespace="http://www.finacle.com/fixml" elementFormDefault="qualified">
+
+<xs:include schemaLocation="../common1/AcctId.xsd"/>
+<xs:include schemaLocation="AcctBal.xsd"/>
+
+
+<xs:complexType name="BalInqRs">
+       <xs:annotation>
+              <xs:documentation><![CDATA[ details related to the request incident. ]]></xs:documentation>
+       </xs:annotation>
+<xs:sequence>
+
+<xs:element name="AcctId"  type="AcctId"  minOccurs="0" > 
+<xs:annotation>
+                <xs:documentation><![CDATA[ Account identifier ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+<xs:element name="AcctBal"  type="AcctBal"  minOccurs="0"  maxOccurs="unbounded"> 
+<xs:annotation>
+                <xs:documentation><![CDATA[ different account balances. For this API, this aggregate holds different Account Balances Types. Valid values are: CLRBAL-Clear Balance Amount  SANLIM-Sanction Limit   UTLAMT-Utilized Amount  DRWPWR-Drawing Power ADHOC-Adhoc Limit  SINTRN-Single Tran Limit CLNADH-Clean Adhoc Limit DACC-DACC Limit LIEN-Lien Amount SYSRES-System Reserved Amount OVDFUT-Overdue Future Liability DAFALM- Debit against Future Amount Limit FUTBAL-Future Balance Amount  FLOAT-Float Balance Amount AVAIL-Available Amount FFDAVL- Available Amount in FFD EFFAVL-Effective Available Amount EFUAVL-Effective future Available Amount EMRADV- Emergency advance granted to the account CLNEMR- Running limit of Clean Type granted to the Account. CLNSTR- Single Tran limit of Clean Type. SYSGENLM-System Generated Limit. Amount by which expired TODs are Overdue. UNCLRBAL-Unclear Balance amount  POOLAVL-Pool Available amount ie. Eff. Avail. Amt. for Sweeps HOMAVL-Home Available amount  FUTCR-Future Credit amount UTILFUTBAL-Util Future Balance amount USEDOC- Unregularized active OC TOD amount DAFAWITHDRAWL-DAFA (Debit against Future Amount) Withdrawal Limit. ]]></xs:documentation>
+        </xs:annotation>
+</xs:element>
+
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
