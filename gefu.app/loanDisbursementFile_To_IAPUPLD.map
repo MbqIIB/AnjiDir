@@ -41,11 +41,6 @@
                         <output path="SRL_NUM"/>
                         <param name="arg" value="$Record"/>
                     </function>
-                    <move>
-                        <documentation description="The file record">The record that needs to be processed.</documentation>
-                        <input path="$serializedRecord1/."/>
-                        <output path="RECORD"/>
-                    </move>
                     <assign value="O">
                         <documentation description="Upload Status">This needs to be set as O, after successful upload, this will change to U</documentation>
                         <output path="UPLD_STATUS"/>
@@ -73,10 +68,12 @@ A value of Y means that the record won't be picked up, This is useful in case of
                         <documentation description="The user / system that sent the file. ">This is fixed to FINESB at the moment.</documentation>
                         <output path="RCRE_USER_ID"/>
                     </assign>
-                    <move>
-                        <input path="$uniqueRefNum1/."/>
+                    <assign value="kghfkhgfkhjg">
+                        <output path="RECORD"/>
+                    </assign>
+                    <assign value="124556">
                         <output path="REF_NUM"/>
-                    </move>
+                    </assign>
                 </insert>
                 <return>
                     <input path="$var1/DBInsertReturn"/>
