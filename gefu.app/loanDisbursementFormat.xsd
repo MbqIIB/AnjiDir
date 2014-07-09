@@ -12,7 +12,7 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="loanDisbursementFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+				<xsd:element dfdl:terminator="" maxOccurs="1" name="record">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="~" dfdl:separatorPosition="postfix" dfdl:separatorSuppressionPolicy="trailingEmpty">
                             														                            						                                                        <xsd:element name="disbursement">
