@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/BalInq.xsd"/>
-    <output path="/AccountInformationService_InlineSchema1.xsd"/>
+    <output path="/AccountInformationService_InlineSchema1.xsd" var="var"/>
+    <output path="/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd" var="var1"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="FinacleBalInqResponse">
         <input namespace="http://www.finacle.com/fixml" path="mb:msg(FIXML,assembly,XMLNSC,Properties)"/>
-        <output namespace="http://AccountInformationService" path="mb:msg(getBalanceResponse,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://AccountInformationService" path="$var/mb:msg(getBalanceResponse,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://schemas.xmlsoap.org/soap/envelope/" path="$var1/mb:msg(Fault,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
         <move>
             <input path="Properties"/>
-            <output path="Properties"/>
+            <output path="$MessageAssembly/Properties"/>
         </move>
         <local>
             <input path="FIXML/Body/BalInqResponse"/>
-            <output path="getBalanceResponse"/>
+            <output path="$MessageAssembly/getBalanceResponse"/>
             <foreach>
                 <input path="BalInqRs/AcctBal" var="AcctBal"/>
                 <output path="getBalanceReply"/>
@@ -25,6 +27,35 @@
                     <output path="currency"/>
                 </move>
             </foreach>
+        </local>
+        <move>
+            <input path="Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+        </move>
+        <local>
+            <input path="FIXML/Body/Error"/>
+            <output path="$MessageAssembly1/Fault"/>
+            <local>
+                <input path="FIBusinessException"/>
+                <output path="."/>
+                <foreach>
+                    <input path="ErrorDetail"/>
+                    <output path="detail"/>
+                    <move>
+                        <input path="ErrorDesc"/>
+                        <output path="any"/>
+                    </move>
+                </foreach>
+                <assign value="Server">
+                    <output path="faultcode"/>
+                </assign>
+                <assign value="EN">
+                    <output path="faultstring/@lang"/>
+                </assign>
+                <assign>
+                    <output path="faultstring/text()"/>
+                </assign>
+            </local>
         </local>
     </mappingDeclaration>
 </mappingRoot>

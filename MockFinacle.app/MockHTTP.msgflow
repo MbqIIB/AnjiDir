@@ -14,7 +14,7 @@
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="498,238">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileRead.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="333,241" inputDirectory="/home/iibadm/code/test/mock/" filenamePattern="balinqtrue.xml">
+      <nodes xmi:type="ComIbmFileRead.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="333,241" inputDirectory="/home/iibadm/code/test/mock/" filenamePattern="balinqfalse.xml">
         <translation xmi:type="utility:ConstantString" string="File Read"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
