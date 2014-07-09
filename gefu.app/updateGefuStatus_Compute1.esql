@@ -23,33 +23,52 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute1
 		DECLARE I INTEGER 1;
 		DECLARE rs ROW;
 		DECLARE len INTEGER;
-		SET OutputRoot = InputRoot;
-		SET iurNumber = InputRoot.DataObject.step1IurNumber;
-		SET rs.rows[] = SELECT CUSTOMUPLOAD.CIFID FROM Database.IAP_CONTROL_TABLE , Database.CUSTOMUPLOAD
-				 WHERE CUSTOMUPLOAD.IUR_NUMBER = IAP_CONTROL_TABLE.IUR_NUMBER
-				 AND CUSTOMUPLOAD.UPLOADSTAUS = 'P'
-				 AND IAP_CONTROL_TABLE.REC_STATUS = 'C'
-				 AND CUSTOMUPLOAD.CIFID IS NOT NULL
-				 AND IAP_CONTROL_TABLE.IUR_NUMBER = iurNumber;
+		IF InputRoot.DataObject.module = 'CIF' THEN
+			SET OutputRoot = InputRoot;
+			SET iurNumber = InputRoot.DataObject.step1IurNumber;
+			SET rs.rows[] = SELECT CUSTOMUPLOAD.CIFID FROM Database.IAP_CONTROL_TABLE , Database.CUSTOMUPLOAD
+					 WHERE CUSTOMUPLOAD.IUR_NUMBER = IAP_CONTROL_TABLE.IUR_NUMBER
+					 AND CUSTOMUPLOAD.UPLOADSTAUS = 'P'
+					 AND IAP_CONTROL_TABLE.REC_STATUS = 'C'
+					 AND CUSTOMUPLOAD.CIFID IS NOT NULL
+					 AND IAP_CONTROL_TABLE.IUR_NUMBER = iurNumber;
+			
+			SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
+			SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
+			SET OutputRoot.DataObject.recordNumber = InputRoot.DataObject.recordNumber;
+			SET OutputRoot.DataObject.gefuId = InputRoot.DataObject.gefuId;
+			SET OutputRoot.DataObject.step1Result = rs.rows[1].CIFID;
+			SET OutputRoot.DataObject.step1IurNumber = iurNumber;
+			PROPAGATE;
+		ELSEIF InputRoot.DataObject.module = 'LOAN' THEN
+			SET OutputRoot = InputRoot;
+			SET iurNumber = InputRoot.DataObject.step2IurNumber;
+			SET rs.rows[] = SELECT IAP_LAA_DETAILS.FORACID FROM Database.IAP_CONTROL_TABLE , Database.IAP_LAA_DETAILS
+					 		WHERE IAP_LAA_DETAILS.IUR_NUMBER = IAP_CONTROL_TABLE.IUR_NUMBER
+					 		AND IAP_LAA_DETAILS.STATUS = 'P'
+					 		AND IAP_CONTROL_TABLE.REC_STATUS = 'C'
+					 		AND IAP_LAA_DETAILS.FORACID IS NOT NULL
+					 		AND IAP_CONTROL_TABLE.IUR_NUMBER = iurNumber;
+					 		
+			SET OutputRoot.DataObject.gefuId = InputRoot.DataObject.gefuId;
+			SET OutputRoot.DataObject.step2Result = rs.rows[1].FORACID;
+			SET OutputRoot.DataObject.step3Result = rs.rows[1].FORACID;
+			SET OutputRoot.DataObject.step2IurNumber = iurNumber;
+			SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
+			PROPAGATE;
+		ELSEIF InputRoot.DataObject.module = 'DISB' THEN
+			SET OutputRoot = InputRoot;
+			SET iurNumber = InputRoot.DataObject.step4IurNumber;
+			SET rs.rows[] = SELECT IAP_DISBT.STATUS FROM Database.IAP_DISBT
+					 		WHERE IAP_DISBT.STATUS = 'C'
+					 		AND IAP_DISBT.IUR_NUMBER = iurNumber;
+					 
+			SET OutputRoot.DataObject.gefuId = InputRoot.DataObject.gefuId;
+			SET OutputRoot.DataObject.step4Result = rs.rows[1].STATUS;
+			SET OutputRoot.DataObject.step4IurNumber = iurNumber;
+			SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
+			PROPAGATE;
+		END IF;
 		
-		SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
-		SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
-		SET OutputRoot.DataObject.recordNumber = InputRoot.DataObject.recordNumber;
-		
-		SET OutputRoot.DataObject.gefuId = InputRoot.DataObject.gefuId;
-		SET OutputRoot.DataObject.step1Result = rs.rows[1].CIFID;
-		SET OutputRoot.DataObject.step1IurNumber = iurNumber;
-
-		PROPAGATE;
-		
-		--DECLARE J INTEGER CARDINALITY(rs.*[]);
-		--WHILE I <= J DO
-	    --	SET OutputRoot = InputRoot;
-		--	SET OutputRoot.DataObject.cifId = rs.rows[I].CIFID;
-		--	SET OutputRoot.DataObject.step1IurNumber = iurNumber;
-		--	PROPAGATE;
-		--	SET I = I + 1;
-		--END WHILE;				 
-
 	END;
 END MODULE;

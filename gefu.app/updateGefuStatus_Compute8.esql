@@ -1,6 +1,6 @@
 
 
-CREATE COMPUTE MODULE updateGefuStatus_Compute2
+CREATE COMPUTE MODULE updateGefuStatus_Compute8
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		CALL CopyMessageHeaders();
@@ -32,14 +32,11 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute2
 		DECLARE rs ROW;
 		IF InputRoot.DataObject.module = 'CIF' THEN
 			SET OutputRoot = InputRoot;
-			SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
-			SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
-			SET OutputRoot.DataObject.recordNumber = InputRoot.DataObject.recordNumber;
-			SET step1Result = InputRoot.DataObject.step1Result;
 			SET gefuId = InputRoot.DataObject.gefuId;
-			SET step1IurNumber = InputRoot.DataObject.step1IurNumber;
-			UPDATE Database.GEFU_INFILE SET STEP1_RESULT = step1Result WHERE GEFU_INFILE.ID = gefuId;
-			PROPAGATE TO TERMINAL 'out1';
+			SET step1Result = InputRoot.DataObject.step1Result;
+			SET step2IurNumber = InputRoot.DataObject.step2IurNumber;
+			SET step3IurNumber = InputRoot.DataObject.step3IurNumber;
+			UPDATE Database.GEFU_INFILE SET STEP1_RESULT = step1Result, STEP2_IUR_NUMBER = step2IurNumber,STEP3_IUR_NUMBER = step3IurNumber, STATUS = 2  WHERE GEFU_INFILE.ID = gefuId;
 		ELSEIF InputRoot.DataObject.module = 'LOAN' THEN
 			SET OutputRoot = InputRoot;
 			SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
@@ -49,18 +46,10 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute2
 			SET step3Result = InputRoot.DataObject.step3Result;
 			SET gefuId = InputRoot.DataObject.gefuId;
 			SET step2IurNumber = InputRoot.DataObject.step2IurNumber;
-			UPDATE Database.GEFU_INFILE SET STEP2_RESULT = step2Result, STEP3_RESULT = step3Result WHERE GEFU_INFILE.ID = gefuId;
-			PROPAGATE TO TERMINAL 'out1';
+			UPDATE Database.GEFU_INFILE SET STEP2_RESULT = step2Result, STEP3_RESULT = step3Result, STEP4_IUR_NUMBER = step4IurNumber, STATUS = 3 WHERE GEFU_INFILE.ID = gefuId;
 		ELSEIF InputRoot.DataObject.module = 'DISB' THEN
-			SET OutputRoot = InputRoot;
-			SET OutputRoot.DataObject.fileName = InputRoot.DataObject.fileName;
-			SET OutputRoot.DataObject.gefuRecord = InputRoot.DataObject.gefuRecord;
-			SET OutputRoot.DataObject.recordNumber = InputRoot.DataObject.recordNumber;
 			SET step4Result = InputRoot.DataObject.step4Result;
-			SET gefuId = InputRoot.DataObject.gefuId;
-			SET step4IurNumber = InputRoot.DataObject.step4IurNumber;
-			UPDATE Database.GEFU_INFILE SET STEP4_RESULT = step4Result WHERE GEFU_INFILE.ID = gefuId;
-			PROPAGATE TO TERMINAL 'out1';
+			UPDATE Database.GEFU_INFILE SET STEP4_RESULT = step4Result, STATUS = 4 WHERE GEFU_INFILE.ID = gefuId;
 		END IF;
 	END;
 END MODULE;

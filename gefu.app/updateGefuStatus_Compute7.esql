@@ -20,20 +20,56 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute7
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		DECLARE cifId CHARACTER;
+		DECLARE forAcid CHARACTER;
 		DECLARE step1IurNumber CHARACTER;
 		DECLARE recNum CHARACTER;
 		DECLARE loanAcctRec	CHARACTER;
+		DECLARE loanRepayRec CHARACTER;
+		DECLARE loanDisbRec CHARACTER;
 		DECLARE rs ROW;
-		SET OutputRoot = InputRoot;
-		SET cifId = InputRoot.DataObject.step1Result;
-		SET loanAcctRec = InputRoot.DataObject.gefuRecord;
-		SET loanAcctRec = SUBSTRING(loanAcctRec AFTER '&&&&');
-		SET loanAcctRec = SUBSTRING(loanAcctRec BEFORE '&&&&');	
-		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-		SET recNum = InputRoot.DataObject.recordNumber;
-		IF (recNum > 0 AND recNum IS NOT NULL) THEN 
-			INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
-			VALUES (rs.SEQUENCENUMBER[1],InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','LOAN',loanAcctRec,'|','N',NULL,'ESB',CURRENT_DATE);
+		IF InputRoot.DataObject.module = 'CIF' THEN
+			SET OutputRoot = InputRoot;
+			SET cifId = InputRoot.DataObject.step1Result;
+			SET loanAcctRec = InputRoot.DataObject.gefuRecord;
+			SET loanAcctRec = SUBSTRING(loanAcctRec AFTER '&&&&');
+			SET loanAcctRec = SUBSTRING(loanAcctRec BEFORE '&&&&');	
+			SET loanRepayRec = InputRoot.DataObject.gefuRecord;
+			SET loanRepayRec = SUBSTRING(loanRepayRec AFTER '&&&&');
+			SET loanRepayRec = SUBSTRING(loanRepayRec AFTER '&&&&');
+			SET loanRepayRec = SUBSTRING(loanRepayRec BEFORE '&&&&');
+			-- replace esql has to come here	
+			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+			SET OutputRoot.DataObject.step2IurNumber = rs.SEQUENCENUMBER[1];
+			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+			SET OutputRoot.DataObject.step3IurNumber = rs.SEQUENCENUMBER[1];
+			SET recNum = InputRoot.DataObject.recordNumber;
+			IF (recNum > 0 AND recNum IS NOT NULL) THEN
+				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+				VALUES (OutputRoot.DataObject.step2IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','LOAN',loanAcctRec,'|','N',NULL,'ESB',CURRENT_DATE);
+				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+				VALUES (OutputRoot.DataObject.step3IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','REPSH',loanRepayRec,'|','N',NULL,'ESB',CURRENT_DATE);				
+				PROPAGATE;
+			END IF;
+		ELSEIF InputRoot.DataObject.module = 'LOAN' THEN
+			SET OutputRoot = InputRoot;
+			SET forAcid = InputRoot.DataObject.step2Result;
+			SET loanDisbRec = InputRoot.DataObject.gefuRecord;
+			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
+			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
+			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
+			-- replace esql has to come here	
+			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+			SET OutputRoot.DataObject.step2IurNumber = rs.SEQUENCENUMBER[1];
+			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+			SET OutputRoot.DataObject.step4IurNumber = rs.SEQUENCENUMBER[1];
+			SET recNum = InputRoot.DataObject.recordNumber;
+			IF (recNum > 0 AND recNum IS NOT NULL) THEN
+				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+				VALUES (OutputRoot.DataObject.step4IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','DISB',loanDisbRec,'|','N',NULL,'ESB',CURRENT_DATE);				
+				PROPAGATE;
+			END IF;
+		ELSEIF InputRoot.DataObject.module = 'DISB' THEN
+			SET OutputRoot = InputRoot;
 		END IF;
 	END;
 END MODULE;
