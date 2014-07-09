@@ -371,12 +371,14 @@
 								</xsd:simpleType>
 							</xsd:element>
 
-							<xsd:element fixed="en_IN" ibmDfdlExtn:sampleValue="en_US" name="PREFERREDLOCALE">
+							<xsd:element ibmDfdlExtn:sampleValue="en_US" name="PREFERREDLOCALE">
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:minLength value="5"/>
 										<xsd:maxLength value="5"/>
-									</xsd:restriction>
+                                        									<xsd:enumeration value="en_IN"/>
+                                        <xsd:enumeration value="en_US"/>
+                                    </xsd:restriction>
 								</xsd:simpleType>
 							</xsd:element>
 
@@ -1226,7 +1228,7 @@
 
 							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" fixed="false" name="INTERNET_BANKING" type="xsd:boolean">
 															</xsd:element>
-							<xsd:element fixed="2099-12-31" name="KYC_REMEDIATION_DATE" type="xsd:string"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" fixed="2099-12-31" name="KYC_REMEDIATION_DATE" type="xsd:date"/>
 							<xsd:element default="MIN20" ibmDfdlExtn:sampleValue="MIN20" name="MINORITY_COMMUNITY">
                                 								<xsd:annotation>
                   
@@ -1534,7 +1536,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element fixed="2099-12-31" name="PREFERENTIALEXPIRYDATE" type="xsd:date"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" fixed="2099-12-31" name="PREFERENTIALEXPIRYDATE" type="xsd:date"/>
 							<xsd:element fixed="DOCUMENT1" ibmDfdlExtn:sampleValue="DOCUMENT1" name="DOCUMENT1" type="xsd:string">
                 <xsd:annotation>
                   
@@ -1965,7 +1967,7 @@
                   <xsd:documentation>input field</xsd:documentation>
                 </xsd:annotation>
               </xsd:element>
-							<xsd:element fixed="2099-12-31" name="LAST_UPDATED_DATE_1" type="xsd:date"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" name="LAST_UPDATED_DATE_1" type="xsd:date"/>
 							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" fixed="false" name="HOLD_MAIL_INDICATOR_1" type="xsd:boolean">
                               </xsd:element>
 							<xsd:element minOccurs="0" name="HOLD_MAIL_INITIATED_BY_1">
