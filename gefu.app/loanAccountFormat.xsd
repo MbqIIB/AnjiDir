@@ -14,7 +14,7 @@
 		</xsd:complexType>
 	</xsd:element>
 
-    <xsd:element dfdl:terminator="%NL;" name="record">
+    <xsd:element dfdl:terminator="" name="record">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
