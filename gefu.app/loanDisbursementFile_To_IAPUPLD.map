@@ -68,12 +68,14 @@ A value of Y means that the record won't be picked up, This is useful in case of
                         <documentation description="The user / system that sent the file. ">This is fixed to FINESB at the moment.</documentation>
                         <output path="RCRE_USER_ID"/>
                     </assign>
-                    <assign value="kghfkhgfkhjg">
+                    <move>
+                        <input path="$serializedRecord1/."/>
                         <output path="RECORD"/>
-                    </assign>
-                    <assign value="124556">
+                    </move>
+                    <move>
+                        <input path="$uniqueRefNum1/."/>
                         <output path="REF_NUM"/>
-                    </assign>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var1/DBInsertReturn"/>
