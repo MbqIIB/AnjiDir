@@ -20,8 +20,8 @@
 		</xsd:complexType>
 	</xsd:element>
 
-    <xsd:element name="loanAccount">
-					<xsd:complexType>
+    <xsd:element name="loanAccount" type="Q1:loanAccountType"/>
+					<xsd:complexType name="loanAccountType">
 						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
                 <xsd:simpleType>
@@ -1512,5 +1512,4 @@
                             </xsd:element>
                         </xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>
 </xsd:schema>

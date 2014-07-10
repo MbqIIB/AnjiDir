@@ -25,8 +25,8 @@
 	</xsd:element>
 
 
-    <xsd:element dfdl:initiator="" name="retailCustomer">
-					<xsd:complexType>
+    <xsd:element dfdl:initiator="" name="retailCustomer" type="Q1:retailCustomerType"/>
+					<xsd:complexType name="retailCustomerType">
 						<xsd:sequence dfdl:initiator="" dfdl:separator="|" dfdl:terminator="">
 							<xsd:element name="GENDER">
                                 								<xsd:annotation>
@@ -2173,5 +2173,4 @@
 
 						</xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>
 </xsd:schema>

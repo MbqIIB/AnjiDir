@@ -24,8 +24,8 @@
 	</xsd:element>
 
 
-    <xsd:element name="loanDisbursement">
-					<xsd:complexType>
+    <xsd:element name="loanDisbursement" type="ns0:loanDisbursementType"/>
+					<xsd:complexType name="loanDisbursementType">
 						<xsd:sequence dfdl:separator="~" dfdl:separatorPosition="postfix" dfdl:separatorSuppressionPolicy="trailingEmpty">
                             														                            						                                                        <xsd:element name="disbursement">
                 <xsd:complexType>
@@ -150,5 +150,4 @@
               </xsd:element>
                         </xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>
 </xsd:schema>
