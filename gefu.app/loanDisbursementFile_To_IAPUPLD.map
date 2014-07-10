@@ -52,7 +52,7 @@ REPSH : For loan account schedule upload
 DISBT : For loan account disbursement</documentation>
                         <output path="MODULE"/>
                     </assign>
-                    <assign value="I">
+                    <assign value="|">
                         <documentation description="Format of the file">This is fixed to the pipe character - I</documentation>
                         <output path="FORMAT"/>
                     </assign>
