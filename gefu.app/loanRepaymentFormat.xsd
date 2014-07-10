@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:ref="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">
-			<dfdl:format byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" escapeSchemeRef="recSepFieldsFmt:RecordEscapeScheme" occursCountKind="fixed" ref="recSepFieldsFmt:RecordSeparatedFieldsFormat"/>
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="ref:CSVEscapeScheme" occursCountKind="fixed" ref="ref:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
 		</xsd:appinfo>
 	</xsd:annotation>
 
 	<xsd:element ibmSchExtn:docRoot="true" name="loanRepaymentFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="" dfdl:terminator="">
-				<xsd:element dfdl:terminator="" maxOccurs="1" name="record">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty" dfdl:terminator="">
                                           <xsd:annotation>
