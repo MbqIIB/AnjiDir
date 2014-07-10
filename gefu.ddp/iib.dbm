@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OracleModel="http:///com/ibm/db/models/oracle/oracle.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore" xmlns:datanotation="http:///datanotation.ecore">
   <OracleModel:OracleDatabase xmi:id="_nNBO8AKJEeSzlYwcziqlwg" name="IIB" vendor="Oracle" version="11" schemas="_nQCtwAKJEeSzlYwcziqlwg"/>
-  <SQLSchema:Schema xmi:id="_nQCtwAKJEeSzlYwcziqlwg" name="RR" indices="_1HfVAAKlEeSPHprOhk5l9g" tables="_1ArzIAKJEeSzlYwcziqlwg" sequences="_3GPxcAKJEeSzlYwcziqlwg" database="_nNBO8AKJEeSzlYwcziqlwg">
+  <SQLSchema:Schema xmi:id="_nQCtwAKJEeSzlYwcziqlwg" name="RR" indices="_1HfVAAKlEeSPHprOhk5l9g" tables="_1ArzIAKJEeSzlYwcziqlwg" database="_nNBO8AKJEeSzlYwcziqlwg">
     <eAnnotations xmi:id="_nQEi8AKJEeSzlYwcziqlwg" source="diagram">
       <contents xsi:type="datanotation:DataDiagram" xmi:id="_nQEi8QKJEeSzlYwcziqlwg" type="IE_CrowFoot" name="Diagram1" viewKind="ProjectExplorer" notation="IE_CrowFoot" kind="Physical">
         <styles xsi:type="datanotation:DataAttributeStyle" xmi:id="_nQEi8gKJEeSzlYwcziqlwg"/>
@@ -17,12 +17,12 @@
   </SQLSchema:Schema>
   <OracleModel:OracleTable xmi:id="_1ArzIAKJEeSzlYwcziqlwg" name="GEFU_INFILE" schema="_nQCtwAKJEeSzlYwcziqlwg" index="_1HfVAAKlEeSPHprOhk5l9g">
     <columns xmi:id="_feE0AAKOEeSzlYwcziqlwg" name="ID" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_jgDZsAKkEeSPHprOhk5l9g" name="INT" primitiveType="INTEGER"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7ciLEQgBEeSW-rRJz8VtUw" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
     </columns>
     <columns xmi:id="_fgIpgAKOEeSzlYwcziqlwg" name="CHANNEL" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_F4tG4AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
     </columns>
-    <columns xmi:id="_fiCG8AKOEeSzlYwcziqlwg" name="FILE_NAME" nullable="false">
+    <columns xmi:id="_fiCG8AKOEeSzlYwcziqlwg" name="FILE_NAME" nullable="false" defaultValue="">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_GVzSkAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
     <columns xmi:id="_fkV0EAKOEeSzlYwcziqlwg" name="RECORD_NUM" nullable="false" defaultValue="">
@@ -88,10 +88,6 @@
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_wiKvsAKlEeSPHprOhk5l9g" name="GEFU_INFILE_PK" members="_feE0AAKOEeSzlYwcziqlwg"/>
     <constraints xsi:type="SQLConstraints:UniqueConstraint" xmi:id="_DYZ14AKmEeSPHprOhk5l9g" name="GEFU_INFILE__UN" members="_fiCG8AKOEeSzlYwcziqlwg _fkV0EAKOEeSzlYwcziqlwg"/>
   </OracleModel:OracleTable>
-  <SQLSchema:Sequence xmi:id="_3GPxcAKJEeSzlYwcziqlwg" name="GEFU_INFILE_SEQ" schema="_nQCtwAKJEeSzlYwcziqlwg">
-    <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_3GPxcQKJEeSzlYwcziqlwg" name="INT" primitiveType="INTEGER"/>
-    <identity xmi:id="_3GPxcgKJEeSzlYwcziqlwg" startValue="1" increment="1"/>
-  </SQLSchema:Sequence>
   <OracleModel:OracleIndex xmi:id="_1HfVAAKlEeSPHprOhk5l9g" name="GEFU_INFILE_ID_IDX" Schema="_nQCtwAKJEeSzlYwcziqlwg" table="_1ArzIAKJEeSzlYwcziqlwg">
     <members xmi:id="_1Hy3AAKlEeSPHprOhk5l9g" column="_feE0AAKOEeSzlYwcziqlwg"/>
     <members xmi:id="_3R7zUAKlEeSPHprOhk5l9g" column="_fiCG8AKOEeSzlYwcziqlwg"/>
