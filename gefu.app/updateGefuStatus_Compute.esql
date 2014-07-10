@@ -52,7 +52,7 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 			SET OutputRoot.DataObject.step3IurNumber = loanIurNumbers.rows[K].STEP3_IUR_NUMBER;
 			SET OutputRoot.DataObject.gefuRecord = loanIurNumbers.rows[K].SERIALIZED_RECORD;
 			PROPAGATE;
-			SET I = I + 1;
+			SET K = K + 1;
 		END WHILE;
 		
 		-- THIS BLOCK WILL CHECK DISBURSEMENT STATUS
@@ -70,7 +70,7 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute
 			SET OutputRoot.DataObject.step4IurNumber = disbIurNumbers.rows[M].STEP4_IUR_NUMBER;
 			SET OutputRoot.DataObject.gefuRecord = disbIurNumbers.rows[M].SERIALIZED_RECORD;
 			PROPAGATE;
-			SET I = I + 1;
+			SET M = M + 1;
 		END WHILE;
 		
 	END;
