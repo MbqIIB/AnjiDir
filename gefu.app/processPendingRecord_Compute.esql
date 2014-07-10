@@ -104,7 +104,7 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 			SET poIsComplete = TRUE;
 			SET poIsSuccessFull = FALSE;
 			SET rs.rows[] = SELECT X.ERROR_DESC FROM Database.IAP_LAA_DETAILS AS X WHERE X.IUR_NUMBER = piIURNumber;
-			SET poResult = COALESCE(rs.rows[1].ERRORDESC, 'Unknown Error');
+			SET poResult = COALESCE(rs.rows[1].ERROR_DESC, 'Unknown Error');
 		ELSE
 			SET poIsComplete = FALSE;
 		END IF;
@@ -126,10 +126,10 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 			SET poIsComplete = TRUE;
 			SET poIsSuccessFull = TRUE;
 			SET poResult = 'Complete';
-		ELSEIF rs.rows[1].REC_STATUS = 'E' THEN
+		ELSEIF rs.rows[1].STATUS = 'E' THEN
 			SET poIsComplete = TRUE;
 			SET poIsSuccessFull = FALSE;
-			SET poResult = COALESCE(rs.rows[1].ERRORDESC, 'Unknown Error');
+			SET poResult = COALESCE(rs.rows[1].ERROR_DESC, 'Unknown Error');
 		ELSE
 			SET poIsComplete = FALSE;
 		END IF;					 	
