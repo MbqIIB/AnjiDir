@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/loanRepaymentFile_To_IAPUPLD.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/loanRepaymentFile_To_IAPUPLD.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="35,286" inputDirectory="/home/iibadm/code/test/in" filenamePattern="repayment*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd}:loanRepaymentFormat">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="35,286" inputDirectory="/home/iibadm/code/test/in" filenamePattern="repayment*.txt" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd}:loanRepaymentFormat" validateTiming="complete" failedFileAction="moveToBackoutWithTimestamp" recordDetection="delimited">
         <translation xmi:type="utility:ConstantString" string="REPAYMENT_FILE_INPUT"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="362,287" mappingExpression="msl://{default}#loanRepaymentFile_To_IAPUPLD_Mapping">

@@ -8,13 +8,13 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/genericFileUpload.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/genericFileUpload.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="13,209" inputDirectory="/home/iibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFomat" recordDetection="delimited">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="13,209" inputDirectory="/home/iibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFomat" validateTiming="complete" failedFileAction="moveToBackoutWithTimestamp" recordDetection="delimited" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="GEFU_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="426,256" mappingExpression="msl://{default}#genericFileUpload_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="217,215" computeExpression="esql://routine/#genericFileUpload_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="217,215" dataSource="FINACLE" connectDatasourceBeforeFlowStarts="true" computeExpression="esql://routine/#genericFileUpload_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="581,260" dataSource="FINACLE" computeExpression="esql://routine/#retailCustomerFile_To_IAPUPLD_Compute.Main">
