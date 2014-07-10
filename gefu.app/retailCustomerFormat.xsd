@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" xmlns:Q1="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
 	<xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
@@ -13,7 +13,19 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="retailCustomerFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-				<xsd:element dfdl:initiator="" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+                                							            <xsd:element dfdl:terminator="%NL;" maxOccurs="unbounded" name="records">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element ref="Q1:retailCustomer"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+    <xsd:element dfdl:initiator="" name="retailCustomer">
 					<xsd:complexType>
 						<xsd:sequence dfdl:initiator="" dfdl:separator="|" dfdl:terminator="">
 							<xsd:element name="GENDER">
@@ -2162,9 +2174,4 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-
 </xsd:schema>

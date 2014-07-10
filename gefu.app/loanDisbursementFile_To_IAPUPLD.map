@@ -18,17 +18,17 @@
         </input>
         <output path="$IAPUPLD/db:insert(fn:false(),REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME)" var="dbinsert"/>
         <foreach>
-            <input path="loanDisbursementFormat/record" var="record"/>
+            <input path="loanDisbursementFormat/records" var="records"/>
             <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecord[1]" var="serializedRecord"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/uniqueRefNum[1]" var="uniqueRefNum"/>
             <output path="$dbinsert/."/>
             <transaction>
                 <insert ref="dbinsert">
-                    <input path="$record/." var="record1"/>
                     <input path="$File/." var="File1"/>
                     <input path="$serializedRecord/." var="serializedRecord1"/>
                     <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
+                    <input path="$records/." var="records1"/>
                     <output path="."/>
                     <move>
                         <documentation description="File Name">The name of the file being processed by the flow. This along with srl_num is a unique key.</documentation>

@@ -9,12 +9,18 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="loanAccountFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-                							<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" ref="Q1:record"/>
+                                							            <xsd:element dfdl:terminator="%NL;" maxOccurs="unbounded" name="records">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element ref="Q1:loanAccount"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
             </xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-    <xsd:element name="record">
+    <xsd:element name="loanAccount">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
