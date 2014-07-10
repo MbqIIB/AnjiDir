@@ -1,0 +1,173 @@
+
+
+CREATE COMPUTE MODULE processPendingRecord_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		Call CopyMessageHeaders();
+		CALL processRecord();
+		RETURN TRUE;
+	END;
+	
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;	
+	
+	CREATE PROCEDURE processRecord()
+	BEGIN
+		DECLARE IsComplete BOOLEAN;
+		DECLARE IsSuccessFull BOOLEAN;
+		DECLARE stepResult CHARACTER;
+		DECLARE nextStepIUR CHARACTER;
+		
+		SET OutputRoot = InputRoot;
+	
+		IF InputRoot.BLOB.AT_STEP = 1 THEN
+			CALL getResultOfStep1(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
+			IF IsComplete THEN
+				SET nextStepIUR = generateIUR();
+				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
+				IF IsSuccessFull THEN
+					Call startStep2();
+				END IF;
+			END IF;
+		ELSEIF InputRoot.BLOB.AT_STEP = 2 THEN
+			CALL getResultOfStep2(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
+			IF IsComplete THEN
+				SET nextStepIUR = generateIUR();				
+				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
+				IF IsSuccessFull THEN
+					Call startStep3();
+				END IF;
+			END IF;			
+		ELSEIF InputRoot.BLOB.AT_STEP = 3 THEN
+			CALL getResultOfStep3(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
+			IF IsComplete THEN
+				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
+			END IF;
+		ELSE
+			-- Nothing to do
+		END IF;
+	END;
+	
+
+	-- returns success or failure for step 1
+	CREATE PROCEDURE getResultOfStep1(IN piIURNumber CHARACTER, 
+										OUT poIsComplete BOOLEAN, 
+										OUT poIsSuccessFull BOOLEAN, 
+										OUT poResult CHARACTER)
+	BEGIN
+		DECLARE rs ROW;
+		
+		SET rs.rows[] = SELECT X.REC_STATUS, Y.UPLOADSTATUS, Y.CIFID
+					 FROM Database.IAP_CONTROL_TABLE AS X, 
+					 	  Database.CUSTOMUPLOAD AS Y
+					 WHERE X.IUR_NUMBER = Y.IUR_NUMBER
+					 AND Y.IUR_NUMBER = piIURNumber;		
+
+		IF rs.rows[1].UPLOADSTATUS = 'P' AND rs.rows[1].REC_STATUS = 'C' AND rs.rows[1].CIFID IS NOT NULL THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = TRUE;
+			SET poResult = rs.rows[1].CIFID;
+		ELSEIF rs.rows[1].REC_STATUS = 'E' THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = FALSE;
+			SET rs.rows[] = SELECT X.ERRORDESC FROM Database.CUSTOMERROR AS X WHERE X.IUR_NUMBER = piIURNumber;
+			SET poResult = COALESCE(rs.rows[1].ERRORDESC, 'Unknown Error');
+		ELSE
+			SET poIsComplete = FALSE;
+		END IF;
+	END;
+
+	-- returns success or failure for step 2	
+	CREATE PROCEDURE getResultOfStep2(IN piIURNumber CHARACTER, 
+										OUT poIsComplete BOOLEAN, 
+										OUT poIsSuccessFull BOOLEAN, 
+										OUT poResult CHARACTER)	
+	BEGIN
+		DECLARE rs ROW;
+		SET rs.rows[] = SELECT X.REC_STATUS, Y.STATUS, Y.FORACID 
+						FROM Database.IAP_CONTROL_TABLE AS X , Database.IAP_LAA_DETAILS AS Y
+					 	WHERE X.IUR_NUMBER = Y.IUR_NUMBER
+					 	AND X.IUR_NUMBER = piIURNumber;
+					 	
+		IF rs.rows[1].STATUS = 'P' AND rs.rows[1].REC_STATUS = 'C' AND rs.rows[1].FORACID IS NOT NULL THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = TRUE;
+			SET poResult = rs.rows[1].FORACID;
+		ELSEIF rs.rows[1].REC_STATUS = 'E' THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = FALSE;
+			SET rs.rows[] = SELECT X.ERROR_DESC FROM Database.IAP_LAA_DETAILS AS X WHERE X.IUR_NUMBER = piIURNumber;
+			SET poResult = COALESCE(rs.rows[1].ERRORDESC, 'Unknown Error');
+		ELSE
+			SET poIsComplete = FALSE;
+		END IF;
+	END;
+
+	-- returns success or failure for step 3
+	CREATE PROCEDURE getResultOfStep3(IN piIURNumber CHARACTER, 
+											OUT poIsComplete BOOLEAN, 
+											OUT poIsSuccessFull BOOLEAN, 
+											OUT poResult CHARACTER)	
+	BEGIN
+		DECLARE rs ROW;
+		SET rs.rows[] = SELECT A.STATUS, A.ERROR_DESC
+						FROM Database.IAP_DISBT AS A
+					 	WHERE A.IUR_NUMBER = piIURNumber;
+					 	
+					 	
+		IF rs.rows[1].STATUS = 'C' THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = TRUE;
+			SET poResult = 'Complete';
+		ELSEIF rs.rows[1].REC_STATUS = 'E' THEN
+			SET poIsComplete = TRUE;
+			SET poIsSuccessFull = FALSE;
+			SET poResult = COALESCE(rs.rows[1].ERRORDESC, 'Unknown Error');
+		ELSE
+			SET poIsComplete = FALSE;
+		END IF;					 	
+	END;
+	
+
+	-- does the processing required for step2 ( insert records into iap_upld )
+	-- called when step1 is success
+	CREATE PROCEDURE startStep2()
+	BEGIN
+	END;
+
+	-- does the processing required for step2 ( insert records into iap_upld )
+	-- called when step2 is success	
+	CREATE PROCEDURE startStep3()
+	BEGIN
+	END;
+
+	
+	-- logs the step completion result, both success & failure
+	CREATE PROCEDURE logStepCompletionResult(IN piRowID CHARACTER, IN piStep DECIMAL, IN piIsSuccessFull BOOLEAN, IN piResult CHARACTER, IN piNextStepIUR CHARACTER)
+	BEGIN
+		SET OutputRoot.BLOB.ID = piRowID;
+		SET OutputRoot.BLOB.AT_STEP = piStep;
+		SET OutputRoot.BLOB.IsSuccessFull = piIsSuccessFull;
+		SET OutputRoot.BLOB.RESULT = piResult;
+		SET OutputRoot.BLOB.NextStepIUR = piNextStepIUR;
+		PROPAGATE;
+	END;
+	
+	CREATE FUNCTION generateIUR() RETURNS CHARACTER
+	BEGIN
+		DECLARE rs ROW;
+		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
+		RETURN rs.SEQUENCENUMBER[1];	
+	END;
+	
+	
+	
+	
+END MODULE;

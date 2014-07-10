@@ -31,8 +31,8 @@
     <columns xmi:id="_fmZpkAKOEeSzlYwcziqlwg" name="SERIALIZED_RECORD" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Gk9v8AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="4000"/>
     </columns>
-    <columns xmi:id="_fohwgAKOEeSzlYwcziqlwg" name="STATUS" nullable="false">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_GzcQ0AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="20"/>
+    <columns xmi:id="_fohwgAKOEeSzlYwcziqlwg" name="AT_STEP" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_IP8MUAgnEeSEzLDz2Gflfg" name="INT" primitiveType="INTEGER"/>
     </columns>
     <columns xmi:id="_fqzocAKOEeSzlYwcziqlwg" name="STEP1_IUR_NUMBER" defaultValue="">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HKthUAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>

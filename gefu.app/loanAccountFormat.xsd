@@ -22,7 +22,7 @@
 
     <xsd:element name="loanAccount" type="Q1:loanAccountType"/>
 					<xsd:complexType name="loanAccountType">
-						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="never">
 							<xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">

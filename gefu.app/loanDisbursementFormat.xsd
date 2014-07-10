@@ -83,7 +83,7 @@
               </xsd:element>
                             <xsd:element ibmDfdlExtn:sampleOccurs="3" maxOccurs="unbounded" minOccurs="0" name="charges">
                 <xsd:complexType>
-                  <xsd:sequence dfdl:separator="|">
+                  <xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="never">
                     <xsd:element ibmDfdlExtn:sampleValue="rec99" name="recordInitiator">
                       <xsd:annotation>
                         

@@ -4,7 +4,8 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute7
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		CALL CopyMessageHeaders();
-		CALL CopyEntireMessage();
+		--CALL CopyEntireMessage();
+		SET OutputRoot = InputRoot;
 		RETURN TRUE;
 	END;
 

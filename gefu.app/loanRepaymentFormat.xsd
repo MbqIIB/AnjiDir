@@ -22,7 +22,7 @@
 
     <xsd:element name="loanRepayment" type="Q1:loanRepaymentType"/>
 					<xsd:complexType name="loanRepaymentType">
-						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty" dfdl:terminator="">
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="never" dfdl:terminator="">
                                           <xsd:annotation>
                 <xsd:appinfo source="http://www.ogf.org/dfdl/">
                   <dfdl:sequence/>

@@ -14,7 +14,7 @@
             <cast path="LocalEnvironment/Variables/any" qualifier="serializedRecord" var="any"/>
             <cast path="LocalEnvironment/Variables/any" qualifier="uniqueRefNum" var="any1"/>
         </input>
-        <output path="$GEFUINFILE/db:insert(fn:false(),ID,CHANNEL,FILE_NAME,RECORD_NUM,SERIALIZED_RECORD,STATUS,STEP1_IUR_NUMBER,STEP1_COMPLETED_AT,STEP1_RESULT,STEP2_IUR_NUMBER,STEP2_COMPLETED_AT,STEP2_RESULT,STEP3_IUR_NUMBER,STEP3_COMPLETED_AT,STEP3_RESULT,STEP4_IUR_NUMBER,STEP4_COMPLETED_AT,STEP4_RESULT,STEP5_IUR_NUMBER,STEP5_COMPLETED_AT,STEP5_RESULT,CREATED_AT,CREATED_BY)" var="dbinsert"/>
+        <output path="$GEFUINFILE/db:insert(fn:false(),ID,CHANNEL,FILE_NAME,RECORD_NUM,SERIALIZED_RECORD,AT_STEP,STEP1_IUR_NUMBER,STEP1_COMPLETED_AT,STEP1_RESULT,STEP2_IUR_NUMBER,STEP2_COMPLETED_AT,STEP2_RESULT,STEP3_IUR_NUMBER,STEP3_COMPLETED_AT,STEP3_RESULT,STEP4_IUR_NUMBER,STEP4_COMPLETED_AT,STEP4_RESULT,STEP5_IUR_NUMBER,STEP5_COMPLETED_AT,STEP5_RESULT,CREATED_AT,CREATED_BY)" var="dbinsert"/>
         <output namespace="http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd" path="$var1/mb:msg(retailCustomerFormat,assembly,DFDL,Properties)" var="MessageAssembly"/>
         <foreach>
             <input path="gefuRecordFomat/record" var="record1"/>
@@ -42,7 +42,7 @@
                         <output path="STEP1_IUR_NUMBER"/>
                     </move>
                     <assign value="1">
-                        <output path="STATUS"/>
+                        <output path="AT_STEP"/>
                     </assign>
                     <assign value="MACRO">
                         <output path="CHANNEL"/>

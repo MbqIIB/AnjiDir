@@ -1,0 +1,42 @@
+
+
+CREATE COMPUTE MODULE updateRecordStatus_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL logStepResult();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE logStepResult() BEGIN
+		DECLARE nextStep INTEGER;
+				
+		IF InputRoot.BLOB.IsSuccessFull THEN
+			SET nextStep = InputRoot.BLOB.AT_STEP + 1;
+		ELSE
+			SET nextStep = InputRoot.BLOB.AT_STEP;
+		END IF;
+		
+		IF InputRoot.BLOB.AT_STEP = 1 THEN
+			UPDATE Database.GEFU_INFILE AS A 
+			SET STEP1_RESULT = InputRoot.BLOB.RESULT, 
+			STEP1_COMPLETED_AT = CURRENT_TIME,
+			AT_STEP = nextStep,
+			STEP2_IUR_NUMBER = InputRoot.BLOB.NextStepIUR
+			WHERE A.ID = InputRoot.BLOB.ID;
+		ELSEIF InputRoot.BLOB.AT_STEP = 2 THEN
+			UPDATE Database.GEFU_INFILE AS A 
+			SET STEP2_RESULT = InputRoot.BLOB.RESULT, 
+			STEP2_COMPLETED_AT = CURRENT_TIME,
+			AT_STEP = nextStep,
+			STEP3_IUR_NUMBER = InputRoot.BLOB.NextStepIUR
+			WHERE A.ID = InputRoot.BLOB.ID;
+		ELSEIF InputRoot.BLOB.AT_STEP = 3 THEN
+			UPDATE Database.GEFU_INFILE AS A 
+			SET STEP3_RESULT = InputRoot.BLOB.RESULT, 
+			STEP3_COMPLETED_AT = CURRENT_TIME,
+			AT_STEP = nextStep
+			WHERE A.ID = InputRoot.BLOB.ID;		
+		END IF;
+
+	END;
+END MODULE;
