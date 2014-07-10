@@ -371,7 +371,7 @@
 								</xsd:simpleType>
 							</xsd:element>
 
-							<xsd:element ibmDfdlExtn:sampleValue="en_US" name="PREFERREDLOCALE">
+							<xsd:element default="en_US" ibmDfdlExtn:sampleValue="en_US" name="PREFERREDLOCALE">
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:minLength value="5"/>

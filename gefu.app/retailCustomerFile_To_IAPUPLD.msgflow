@@ -11,7 +11,7 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="355,163" mappingExpression="msl://{default}#retailCustomerFile_To_IAPUPLD_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="202,162" dataSource="FINACLE" computeExpression="esql://routine/#retailCustomerFile_To_IAPUPLD_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="202,162" dataSource="FINACLE" connectDatasourceBeforeFlowStarts="true" computeExpression="esql://routine/#retailCustomerFile_To_IAPUPLD_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="14,162" inputDirectory="/home/iibadm/code/test/in" filenamePattern="cif*.txt" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd}:retailCustomerFormat" validateTiming="complete" failedFileAction="moveToBackoutWithTimestamp" recordDetection="delimited" validateMaster="contentAndValue">
