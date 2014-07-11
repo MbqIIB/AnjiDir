@@ -4,8 +4,7 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute7
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		CALL CopyMessageHeaders();
-		--CALL CopyEntireMessage();
-		SET OutputRoot = InputRoot;
+		CALL startNextStep();
 		RETURN TRUE;
 	END;
 
@@ -19,58 +18,52 @@ CREATE COMPUTE MODULE updateGefuStatus_Compute7
 		END WHILE;
 	END;
 
-	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		DECLARE cifId CHARACTER;
-		DECLARE forAcid CHARACTER;
-		DECLARE step1IurNumber CHARACTER;
-		DECLARE recNum CHARACTER;
-		DECLARE loanAcctRec	CHARACTER;
-		DECLARE loanRepayRec CHARACTER;
-		DECLARE loanDisbRec CHARACTER;
-		DECLARE rs ROW;
-		IF InputRoot.DataObject.module = 'CIF' THEN
-			SET OutputRoot = InputRoot;
-			SET cifId = InputRoot.DataObject.step1Result;
-			SET loanAcctRec = InputRoot.DataObject.gefuRecord;
-			SET loanAcctRec = SUBSTRING(loanAcctRec AFTER '&&&&');
-			SET loanAcctRec = SUBSTRING(loanAcctRec BEFORE '&&&&');	
-			SET loanRepayRec = InputRoot.DataObject.gefuRecord;
-			SET loanRepayRec = SUBSTRING(loanRepayRec AFTER '&&&&');
-			SET loanRepayRec = SUBSTRING(loanRepayRec AFTER '&&&&');
-			SET loanRepayRec = SUBSTRING(loanRepayRec BEFORE '&&&&');
-			-- replace esql has to come here	
-			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-			SET OutputRoot.DataObject.step2IurNumber = rs.SEQUENCENUMBER[1];
-			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-			SET OutputRoot.DataObject.step3IurNumber = rs.SEQUENCENUMBER[1];
-			SET recNum = InputRoot.DataObject.recordNumber;
-			IF (recNum > 0 AND recNum IS NOT NULL) THEN
-				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
-				VALUES (OutputRoot.DataObject.step2IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','LOAN',loanAcctRec,'|','N',NULL,'ESB',CURRENT_DATE);
-				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
-				VALUES (OutputRoot.DataObject.step3IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','REPSH',loanRepayRec,'|','N',NULL,'ESB',CURRENT_DATE);				
-				PROPAGATE;
+	CREATE PROCEDURE startNextStep() BEGIN
+		DECLARE result CHARACTER;
+		DECLARE nextStepIUR CHARACTER;
+		DECLARE repayStepIUR CHARACTER;
+		DECLARE serializedRecord CHARACTER;
+		DECLARE fileName CHARACTER;
+		DECLARE recordNumber INTEGER;
+
+		SET result = InputRoot.BLOB.RESULT;
+		SET nextStepIUR = InputRoot.BLOB.NextStepIUR;
+		SET repayStepIUR = InputRoot.BLOB.RepayStepIUR;
+		SET fileName = InputRoot.BLOB.fileName;
+		SET recordNumber = InputRoot.BLOB.recordNumber;
+
+		IF InputRoot.BLOB.AT_STEP = 1 THEN
+			SET serializedRecord = InputRoot.DataObject.gefuRecord;
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			SET serializedRecord = SUBSTRING(serializedRecord BEFORE '&&&&');
+			SET serializedRecord = REPLACE(serializedRecord,'{CIFID}',result);	
+			-- at this step it needs to propagate the first record this can be a mapping as well as discussed 
+			INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+			VALUES (nextStepIUR,fileName,recordNumber,'O','LOAN',serializedRecord,'|','N',NULL,'ESB',CURRENT_DATE);
+
+			SET serializedRecord = InputRoot.DataObject.gefuRecord;
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			SET serializedRecord = SUBSTRING(serializedRecord BEFORE '&&&&');
+			SET serializedRecord = REPLACE(serializedRecord,'{LOANIURNO}',nextStepIUR);
+
+			-- at this step it needs to propagate the first record this can be a mapping as well as discussed 
+			INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+			VALUES (nextStepIUR,fileName,recordNumber,'O','LOAN',serializedRecord,'|','N',NULL,'ESB',CURRENT_DATE);
+			
+		ELSEIF InputRoot.BLOB.AT_STEP = 2 THEN
+
+			SET serializedRecord = InputRoot.DataObject.gefuRecord;
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			SET serializedRecord = SUBSTRING(serializedRecord AFTER '&&&&');
+			IF CONTAINS(serializedRecord,'{LoanAc}') THEN
+				SET serializedRecord = REPLACE(serializedRecord,'{LoanAc}',result);	
 			END IF;
-		ELSEIF InputRoot.DataObject.module = 'LOAN' THEN
-			SET OutputRoot = InputRoot;
-			SET forAcid = InputRoot.DataObject.step2Result;
-			SET loanDisbRec = InputRoot.DataObject.gefuRecord;
-			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
-			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
-			SET loanDisbRec = SUBSTRING(loanDisbRec AFTER '&&&&');
-			-- replace esql has to come here	
-			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-			SET OutputRoot.DataObject.step2IurNumber = rs.SEQUENCENUMBER[1];
-			SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
-			SET OutputRoot.DataObject.step4IurNumber = rs.SEQUENCENUMBER[1];
-			SET recNum = InputRoot.DataObject.recordNumber;
-			IF (recNum > 0 AND recNum IS NOT NULL) THEN
-				INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
-				VALUES (OutputRoot.DataObject.step4IurNumber,InputRoot.DataObject.fileName,InputRoot.DataObject.recordNumber,'O','DISB',loanDisbRec,'|','N',NULL,'ESB',CURRENT_DATE);				
-				PROPAGATE;
-			END IF;
-		ELSEIF InputRoot.DataObject.module = 'DISB' THEN
-			SET OutputRoot = InputRoot;
+
+			-- at this step it needs to propagate the first record this can be a mapping as well as discussed 
+			INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+			VALUES (nextStepIUR,fileName,recordNumber,'O','LOAN',serializedRecord,'|','N',NULL,'ESB',CURRENT_DATE);
 		END IF;
 	END;
 END MODULE;

@@ -24,6 +24,7 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		DECLARE IsSuccessFull BOOLEAN;
 		DECLARE stepResult CHARACTER;
 		DECLARE nextStepIUR CHARACTER;
+	    DECLARE repayStepIUR CHARACTER;
 		
 		SET OutputRoot = InputRoot;
 	
@@ -33,7 +34,9 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 				SET nextStepIUR = generateIUR();
 				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
 				IF IsSuccessFull THEN
-					Call startStep2();
+					-- iur for repayment record is also required as two inserts happening at the same time
+					SET repayStepIUR = generateIUR();
+					Call startStep2(stepResult, nextStepIUR, repayStepIUR);
 				END IF;
 			END IF;
 		ELSEIF InputRoot.BLOB.AT_STEP = 2 THEN
@@ -42,7 +45,7 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 				SET nextStepIUR = generateIUR();				
 				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
 				IF IsSuccessFull THEN
-					Call startStep3();
+					Call startStep3(stepResult, nextStepIUR);
 				END IF;
 			END IF;			
 		ELSEIF InputRoot.BLOB.AT_STEP = 3 THEN
@@ -138,14 +141,24 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 
 	-- does the processing required for step2 ( insert records into iap_upld )
 	-- called when step1 is success
-	CREATE PROCEDURE startStep2()
+	CREATE PROCEDURE startStep2(IN piResult CHARACTER, 
+								IN piNextStepIUR CHARACTER,
+								IN piRepayStepIUR CHARACTER)
 	BEGIN
+		SET OutputRoot.BLOB.RESULT = piResult;
+		SET OutputRoot.BLOB.NextStepIUR = piNextStepIUR;
+		SET OutputRoot.BLOB.RepayStepIUR = piRepayStepIUR;
+		PROPAGATE TO TERMINAL 'Out1';
 	END;
 
 	-- does the processing required for step2 ( insert records into iap_upld )
 	-- called when step2 is success	
-	CREATE PROCEDURE startStep3()
+	CREATE PROCEDURE startStep3(IN piResult CHARACTER, 
+								IN piNextStepIUR CHARACTER)
 	BEGIN
+		SET OutputRoot.BLOB.RESULT = piResult;
+		SET OutputRoot.BLOB.NextStepIUR = piNextStepIUR;
+		PROPAGATE TO TERMINAL 'Out1';
 	END;
 
 	
