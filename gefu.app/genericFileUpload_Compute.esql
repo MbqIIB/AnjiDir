@@ -22,7 +22,7 @@ CREATE COMPUTE MODULE genericFileUpload_Compute
 		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd';
 		DECLARE rs ROW;
 		SET OutputRoot = InputRoot;
-		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFomat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
 		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
 	END;

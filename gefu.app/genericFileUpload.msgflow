@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/genericFileUpload.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/genericFileUpload.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="13,209" inputDirectory="/home/iibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFomat" validateTiming="complete" failedFileAction="moveToBackoutWithTimestamp" recordDetection="delimited" validateMaster="contentAndValue">
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="13,209" inputDirectory="/home/iibadm/code/test/in" filenamePattern="macro*.txt" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="DFDL" messageTypeProperty="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFormat" validateTiming="complete" failedFileAction="moveToBackoutWithTimestamp" recordDetection="delimited" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="GEFU_INPUT_FILE"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="426,256" mappingExpression="msl://{default}#gefuFile_To_GEFUINFILE">

@@ -10,7 +10,7 @@
 		</xsd:appinfo>
 	</xsd:annotation>
 
-	<xsd:element dfdl:byteOrder="{$dfdl:byteOrder}" ibmSchExtn:docRoot="true" name="gefuRecordFomat">
+	<xsd:element dfdl:byteOrder="{$dfdl:byteOrder}" ibmSchExtn:docRoot="true" name="gefuRecordFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
 				<xsd:element dfdl:emptyValueDelimiterPolicy="none" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
