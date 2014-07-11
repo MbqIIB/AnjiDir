@@ -76,5 +76,9 @@
                 <output path="retailCustomer"/>
             </move>
         </local>
+        <move>
+            <input path="Properties"/>
+            <output path="$MessageAssembly/Properties"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
