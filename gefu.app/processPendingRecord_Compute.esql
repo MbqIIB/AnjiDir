@@ -1,4 +1,6 @@
 
+DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd';
+
 
 CREATE COMPUTE MODULE processPendingRecord_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -24,7 +26,6 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		DECLARE IsSuccessFull BOOLEAN;
 		DECLARE stepResult CHARACTER;
 		DECLARE nextStepIUR CHARACTER;
-	    DECLARE repayStepIUR CHARACTER;
 		
 		SET OutputRoot = InputRoot;
 	
@@ -32,21 +33,19 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 			CALL getResultOfStep1(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
 			IF IsComplete THEN
 				SET nextStepIUR = generateIUR();
-				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
 				IF IsSuccessFull THEN
-					-- iur for repayment record is also required as two inserts happening at the same time
-					SET repayStepIUR = generateIUR();
-					Call startStep2(stepResult, nextStepIUR, repayStepIUR);
+					Call startStep2(stepResult, nextStepIUR);
 				END IF;
+				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
 			END IF;
 		ELSEIF InputRoot.BLOB.AT_STEP = 2 THEN
 			CALL getResultOfStep2(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
 			IF IsComplete THEN
-				SET nextStepIUR = generateIUR();				
-				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
+				SET nextStepIUR = generateIUR();			
 				IF IsSuccessFull THEN
 					Call startStep3(stepResult, nextStepIUR);
-				END IF;
+				END IF;	
+				Call logStepCompletionResult(InputRoot.BLOB.ID, InputRoot.BLOB.AT_STEP, IsSuccessFull, stepResult, nextStepIUR);
 			END IF;			
 		ELSEIF InputRoot.BLOB.AT_STEP = 3 THEN
 			CALL getResultOfStep3(InputRoot.BLOB.IUR_NUMBER, IsComplete, IsSuccessFull, stepResult);
@@ -142,13 +141,22 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 	-- does the processing required for step2 ( insert records into iap_upld )
 	-- called when step1 is success
 	CREATE PROCEDURE startStep2(IN piResult CHARACTER, 
-								IN piNextStepIUR CHARACTER,
-								IN piRepayStepIUR CHARACTER)
+								IN piNextStepIUR CHARACTER)
 	BEGIN
-		SET OutputRoot.BLOB.RESULT = piResult;
-		SET OutputRoot.BLOB.NextStepIUR = piNextStepIUR;
-		SET OutputRoot.BLOB.RepayStepIUR = piRepayStepIUR;
-		PROPAGATE TO TERMINAL 'Out1';
+		DECLARE repayRecordIUR CHARACTER;
+		DECLARE serializedRecord CHARACTER;
+		
+		-- output = input because the propagate is happeneing in the parent method
+		SET OutputRoot = InputRoot;
+		SET repayRecordIUR = generateIUR();
+		
+		-- this will insert the loan record
+		SET serializedRecord = getNextStepSerilizedRecord('LOAN', piResult);
+		CALL insertIntoIAP( piNextStepIUR,serializedRecord, 'LOAN');
+		
+		-- this will insert the repayment record
+        SET serializedRecord = getNextStepSerilizedRecord('REPSH', piNextStepIUR);
+        CALL insertIntoIAP( repayRecordIUR,serializedRecord, 'REPSH');
 	END;
 
 	-- does the processing required for step2 ( insert records into iap_upld )
@@ -156,9 +164,14 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 	CREATE PROCEDURE startStep3(IN piResult CHARACTER, 
 								IN piNextStepIUR CHARACTER)
 	BEGIN
-		SET OutputRoot.BLOB.RESULT = piResult;
-		SET OutputRoot.BLOB.NextStepIUR = piNextStepIUR;
-		PROPAGATE TO TERMINAL 'Out1';
+		DECLARE serializedRecord CHARACTER;
+		
+		-- output = input because the propagate is happeneing in the parent method
+		SET OutputRoot = InputRoot;
+		
+		-- this will insert the disbursement record
+		SET serializedRecord = getNextStepSerilizedRecord('DISB', piResult);
+		CALL insertIntoIAP( piNextStepIUR,serializedRecord, 'DISB');
 	END;
 
 	
@@ -180,7 +193,37 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		RETURN rs.SEQUENCENUMBER[1];	
 	END;
 	
+    CREATE PROCEDURE insertIntoIAP(	IN piIUR CHARACTER, 
+								 	IN piSerializedRecord CHARACTER,
+								 	IN piModule CHARACTER)
+	BEGIN
+			INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+			VALUES (piIUR, InputRoot.BLOB.FILE_NAME, InputRoot.BLOB.RECORD_NUM,'O',piModule,piSerializedRecord,'|','N',NULL,'ESB',CURRENT_DATE);
+	END;
 	
+	CREATE FUNCTION getNextStepSerilizedRecord(IN piModule CHARACTER,
+	                                           IN piResult CHARACTER) RETURNS CHARACTER
+	BEGIN
+		DECLARE ns_loan NAMESPACE 'http://www.quantiguous.com/dfdl/loanAccountFormat.xsd';
+		DECLARE ns_repay NAMESPACE 'http://www.quantiguous.com/dfdl/loanRepaymentFormat.xsd';
+		DECLARE ns_disb NAMESPACE 'http://www.quantiguous.com/dfdl/loanDisbursementFormat.xsd';
+		DECLARE serializedRecord CHARACTER;
+		
+		IF piModule = 'LOAN' THEN
+			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_loan:loanAccount.cifId = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_loan:loanAccount) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		ELSEIF piModule = 'REPSH' THEN
+			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment.loan.loanIURNumber = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		ELSEIF piModule = 'DISB' THEN
+			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement.disbursement.loanAccountNumber = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		ELSE
+			-- no module
+		END IF;
+
+		RETURN serializedRecord;	
+	END;
 	
 	
 END MODULE;

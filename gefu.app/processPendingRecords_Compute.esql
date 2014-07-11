@@ -19,9 +19,12 @@ CREATE COMPUTE MODULE processPendingRecords_Compute
 	CREATE PROCEDURE processPendingRecords() BEGIN		
 		DECLARE I INTEGER 1;
 		DECLARE rs ROW;
+		DECLARE inCCSID INT;
+		DECLARE inEncoding INT;
+		DECLARE blobMsg BLOB;
 
 		SET rs.rows[] = 
-			SELECT A.ID, A.FILE_NAME, A.RECORD_NUM, A.STEP1_IUR_NUMBER, A.STEP2_IUR_NUMBER, A.STEP3_IUR_NUMBER,
+			SELECT A.ID, A.FILE_NAME, A.SERIALIZED_RECORD, A.RECORD_NUM, A.STEP1_IUR_NUMBER, A.STEP2_IUR_NUMBER, A.STEP3_IUR_NUMBER,
 				A.SERIALIZED_RECORD, A.AT_STEP
 				FROM Database.GEFU_INFILE AS A 
 				WHERE A.AT_STEP < 4;
@@ -39,12 +42,18 @@ CREATE COMPUTE MODULE processPendingRecords_Compute
 			ELSE
 				-- unreachble code				
 			END IF;
-				
+
+			SET inCCSID = CAST(InputRoot.Properties.CodedCharSetId AS INT);
+			SET inEncoding = CAST(InputRoot.Properties.Encoding AS INT);
+			SET blobMsg = CAST(rs.rows[I].SERIALIZED_RECORD AS BLOB CCSID inCCSID ENCODING inEncoding);
+			-- creating the gefu model from the serialized record in gefu infile
+			CREATE LASTCHILD OF OutputRoot DOMAIN('DFDL')
+			PARSE(blobMsg ENCODING inEncoding CCSID inCCSID SET '' TYPE '{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFormat' OPTIONS RootBitStream);
+							
 			SET OutputRoot.BLOB.ID = rs.rows[I].ID;			
 			SET OutputRoot.BLOB.RECORD_NUM = rs.rows[I].RECORD_NUM;
 			SET OutputRoot.BLOB.FILE_NAME = rs.rows[I].FILE_NAME;
-			SET OutputRoot.BLOB.AT_STEP = rs.rows[I].AT_STEP;
-			SET OutputRoot.BLOB.SERIALIZED_RECORD = rs.rows[I].SERIALIZED_RECORD;			
+			SET OutputRoot.BLOB.AT_STEP = rs.rows[I].AT_STEP;	
 			PROPAGATE;
 			SET I = I + 1;
 		END WHILE;
