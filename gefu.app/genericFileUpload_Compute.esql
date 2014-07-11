@@ -1,5 +1,4 @@
 
-
 CREATE COMPUTE MODULE genericFileUpload_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
@@ -20,9 +19,11 @@ CREATE COMPUTE MODULE genericFileUpload_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd';
+		DECLARE ns_cif NAMESPACE 'http://www.quantiguous.com/dfdl/retailCustomerFormat.xsd';
 		DECLARE rs ROW;
 		SET OutputRoot = InputRoot;
 		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET InputLocalEnvironment.Variables.serializedRecordCIF = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_cif:retailCustomer) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
 		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
 	END;

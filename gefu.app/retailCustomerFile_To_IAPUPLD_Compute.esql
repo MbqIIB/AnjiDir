@@ -27,5 +27,7 @@ CREATE COMPUTE MODULE retailCustomerFile_To_IAPUPLD_Compute
 		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:retailCustomerFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
 		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];
+		--INSERT INTO Database.IAP_UPLD (REF_NUM,FILE_NAME,SRL_NUM,UPLD_STATUS,MODULE,RECORD,FORMAT,DEL_FLG,ERROR_DESC,RCRE_USER_ID,RCRE_TIME) 
+		--VALUES (rs.SEQUENCENUMBER[1], 'rana1234.txt', 1,'O','CIF',InputLocalEnvironment.Variables.serializedRecord,'|','N',NULL,'ESB',CURRENT_DATE);
 	END;
 END MODULE;

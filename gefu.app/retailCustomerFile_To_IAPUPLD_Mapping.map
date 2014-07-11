@@ -36,11 +36,13 @@
                     <assign value="CIF">
                         <output path="$dbinsert1/MODULE"/>
                     </assign>
-                    <move>
-                        <input path="$serializedRecord1/."/>
+                    <function ref="fn:substring-before">
+                        <input path="$serializedRecord1/." var="serializedRecord2"/>
                         <output path="$dbinsert1/RECORD"/>
-                    </move>
-                    <assign value="|">
+                        <param name="string1" value="fn:concat( $serializedRecord2,'&amp;&amp;&amp;&amp;')"/>
+                        <param name="string2" value="'&amp;&amp;'"/>
+                    </function>
+                    <assign value="A">
                         <output path="$dbinsert1/FORMAT"/>
                     </assign>
                     <assign value="N">
