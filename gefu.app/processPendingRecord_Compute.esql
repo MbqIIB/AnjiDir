@@ -170,8 +170,8 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		SET OutputRoot = InputRoot;
 		
 		-- this will insert the disbursement record
-		SET serializedRecord = getNextStepSerilizedRecord('DISB', piResult);
-		CALL insertIntoIAP( piNextStepIUR,serializedRecord, 'DISB');
+		SET serializedRecord = getNextStepSerilizedRecord('DISBT', piResult);
+		CALL insertIntoIAP( piNextStepIUR,serializedRecord, 'DISBT');
 	END;
 
 	
@@ -218,7 +218,7 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		ELSEIF piModule = 'REPSH' THEN
 			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment.loan.loanIURNumber = piResult;
 			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
-		ELSEIF piModule = 'DISB' THEN
+		ELSEIF piModule = 'DISBT' THEN
 			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement.disbursement.loanAccountNumber = piResult;
 			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		ELSE
