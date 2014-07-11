@@ -1,0 +1,153 @@
+CREATE OR REPLACE PACKAGE pk_iap_controls as
+ PROCEDURE update_step(pi_id varchar2, pi_step varchar2, pi_pass_fail_flg varchar2);
+ PROCEDURE update_test_cases(pi_file_name varchar2, pi_rec_num INTEGER);
+END;
+/
+CREATE OR REPLACE PACKAGE BODY pk_iap_controls as
+
+--PASS THE CIF CASE
+  PROCEDURE cif_pass(pi_iur_no varchar2)
+  AS
+  cif_id  INTEGER := 11111111;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  cif_id := cif_id + 1;
+  insert into custom.iap_control_table(IUR_NUMBER,REC_STATUS) VALUES (i.step1_iur_number,'C');
+  insert into custom.customupload(IUR_NUMBER,cifid,uploadstatus) VALUES (i.step1_iur_number,cif_id,'P');
+  end loop;
+  end;
+
+--FAIL THE CIF CASE
+  PROCEDURE cif_fail(pi_iur_no varchar2)
+  AS
+  cif_id  INTEGER := 11111111;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  cif_id := cif_id + 1;
+  insert into custom.iap_control_table(IUR_NUMBER,REC_STATUS) VALUES (i.step1_iur_number,'E');
+  insert into custom.customupload(IUR_NUMBER,uploadstatus) VALUES (i.step1_iur_number,'E');
+  insert into custom.customerror(IUR_NUMBER,errorDesc) VALUES (i.step1_iur_number,'CIF CREATION HAS FAILED PLEASE CHECK YOUR RECORD');
+  end loop;
+  end;
+
+--PASS LOAN + REPAY CASE
+  PROCEDURE loan_pass(pi_iur_no varchar2)
+  AS
+  foracid  INTEGER := 888888888;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  foracid := foracid + 1;
+  insert into custom.iap_control_table(IUR_NUMBER,REC_STATUS) VALUES (i.step2_iur_number,'C');
+  insert into custom.iap_laa_details(IUR_NUMBER,FORACID,STATUS) VALUES (i.step2_iur_number,foracid,'P');
+  end loop;
+  end;
+
+
+--FAIL LOAN + REPAY CASE
+  PROCEDURE loan_fail(pi_iur_no varchar2)
+  AS
+  foracid  INTEGER := 888888888;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  foracid := foracid + 1;
+  insert into custom.iap_control_table(IUR_NUMBER,REC_STATUS) VALUES (i.step2_iur_number,'E');
+  insert into custom.iap_laa_details(IUR_NUMBER,ERROR_DESC,STATUS) VALUES (i.step2_iur_number,'LOAN ACCOUNT PROCESSING FAILED PLEASE CHECK THE RECORD','E');
+  end loop;
+  end;
+
+
+--PASS DISBURSEMENT CASE CASE
+  PROCEDURE disb_pass(pi_iur_no varchar2)
+  AS
+  foracid  INTEGER := 10000;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  foracid := foracid + 1;
+  insert into custom.iap_disbt(IUR_NUMBER,STATUS) VALUES (i.step3_iur_number,'C');
+  end loop;
+  end;
+
+--FAIL DISBURSEMENT CASE
+
+  PROCEDURE disb_fail(pi_iur_no varchar2)
+  AS
+  foracid  INTEGER := 10000;
+  begin
+  for i in (select * From iib_qa.gefu_infile where id = pi_iur_no) -- please
+  loop
+  foracid := foracid + 1;
+  insert into custom.iap_disbt(IUR_NUMBER,STATUS, ERROR_DESC) VALUES (i.step3_iur_number,'E','DISBURSEMENT FAILED CHECK YOUR RECORD');
+  end loop;
+  end;
+
+ PROCEDURE update_step(pi_id varchar2, pi_step varchar2, pi_pass_fail_flg varchar2)
+ AS
+ BEGIN
+   IF (pi_step = 1 AND pi_pass_fail_flg = 'P') THEN
+      cif_pass(pi_id);
+   ELSIF (pi_step = 1 AND pi_pass_fail_flg = 'F') THEN
+      cif_fail(pi_id);
+   ELSIF (pi_step = 2 AND pi_pass_fail_flg = 'P') THEN
+      loan_pass(pi_id);
+   ELSIF (pi_step = 2 AND pi_pass_fail_flg = 'F') THEN
+      loan_fail(pi_id);
+   ELSIF (pi_step = 3 AND pi_pass_fail_flg = 'P') THEN
+      disb_pass(pi_id);
+   ELSIF (pi_step = 3 AND pi_pass_fail_flg = 'F') THEN
+      disb_fail(pi_id);
+   END IF;
+   COMMIT;
+ END;
+ 
+ PROCEDURE update_test_cases(pi_file_name varchar2, pi_rec_num INTEGER)
+ AS
+  l_id  varchar2(50);
+  l_step INTEGER;
+ BEGIN
+   -- test case 1
+   dbms_output.put_line('entered the proc');
+   dbms_output.put_line(pi_file_name);
+   dbms_output.put_line(pi_Rec_num);
+   IF (pi_file_name = 'macro_test_cases.txt' AND pi_rec_num = 1) THEN
+   dbms_output.put_line('inside rec 1');
+      SELECT id, at_step INTO l_id , l_step FROM iib_qa.GEFU_INFILE WHERE file_name = pi_file_name and record_num =pi_rec_num;
+      IF l_step = 1 THEN
+       cif_pass(l_id);
+      ELSIF l_step = 2 THEN
+       loan_pass(l_id);
+      ELSIF l_step = 3 THEN
+       disb_pass(l_id);
+      END IF;
+   ELSIF (pi_file_name = 'macro_test_cases.txt' AND pi_rec_num = 2) THEN 
+   dbms_output.put_line('inside rec 2');
+      SELECT id, at_step INTO l_id , l_step FROM iib_qa.GEFU_INFILE WHERE file_name = pi_file_name and record_num = pi_rec_num;
+      IF l_step = 1 THEN
+       cif_pass(l_id);
+      ELSIF l_step = 2 THEN
+       loan_pass(l_id);
+      ELSIF l_step = 3 THEN
+       disb_fail(l_id);
+      END IF;
+   ELSIF (pi_file_name = 'macro_test_cases.txt' AND pi_rec_num = 3) THEN 
+   dbms_output.put_line('inside rec 3');
+      SELECT id, at_step INTO l_id , l_step FROM iib_qa.GEFU_INFILE WHERE file_name = pi_file_name and record_num = pi_rec_num;
+      IF l_step = 1 THEN
+       cif_pass(l_id);
+      ELSIF l_step = 2 THEN
+       loan_fail(l_id);
+      END IF;
+   ELSIF (pi_file_name = 'macro_test_cases.txt' AND pi_rec_num = 4) THEN 
+   dbms_output.put_line('inside rec 4');
+      SELECT id, at_step INTO l_id , l_step FROM iib_qa.GEFU_INFILE WHERE file_name = pi_file_name and record_num =pi_rec_num;
+      IF l_step = 1 THEN
+       cif_fail(l_id);
+      END IF;
+   END IF;
+ END;
+END;
+/
