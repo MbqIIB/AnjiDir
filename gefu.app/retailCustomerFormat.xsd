@@ -2130,7 +2130,7 @@
 							<xsd:element minOccurs="0" name="PHONE_NO_3" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="EXTENSION_NO_3" type="xsd:string"/>
 							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" minOccurs="0" name="PREFERRED_FLAG_PHONE3" type="xsd:boolean"/>
-							<xsd:element fixed="EMAIL_1" minOccurs="0" name="EMAIL_1" type="xsd:string">
+							<xsd:element fixed="EMAIL1" minOccurs="0" name="EMAIL_1" type="xsd:string">
                 <xsd:annotation>
                   
                 <xsd:documentation>If present it will be fixed</xsd:documentation>
@@ -2151,7 +2151,7 @@
 							<xsd:element minOccurs="0" name="EMAILID_1" type="xsd:string"/>
 							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" minOccurs="0" name="PREFERRED_FLAG_EMAIL1" type="xsd:boolean">
                               </xsd:element>
-							<xsd:element fixed="EMAIL_2" minOccurs="0" name="EMAIL_2" type="xsd:string">
+							<xsd:element fixed="EMAIL2" minOccurs="0" name="EMAIL_2" type="xsd:string">
                 <xsd:annotation>
                   
                 <xsd:documentation>If present it will be fixed</xsd:documentation>
