@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/rupeePower.xsd"/>
+    <output path="/gefuRecordFomat.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="rupeePower_Mapping">
+        <input path="mb:msg(rupeePower,assembly,DFDL,Properties)"/>
+        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,Properties)"/>
+        <move automap="true">
+            <input path="Properties/MessageSet"/>
+            <output path="Properties/MessageSet"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/MessageType"/>
+            <output path="Properties/MessageType"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/MessageFormat"/>
+            <output path="Properties/MessageFormat"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/Encoding"/>
+            <output path="Properties/Encoding"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/CodedCharSetId"/>
+            <output path="Properties/CodedCharSetId"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/Transactional"/>
+            <output path="Properties/Transactional"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/Persistence"/>
+            <output path="Properties/Persistence"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/CreationTime"/>
+            <output path="Properties/CreationTime"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/ExpirationTime"/>
+            <output path="Properties/ExpirationTime"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/Priority"/>
+            <output path="Properties/Priority"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/ReplyIdentifier"/>
+            <output path="Properties/ReplyIdentifier"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/ReplyProtocol"/>
+            <output path="Properties/ReplyProtocol"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/Topic"/>
+            <output path="Properties/Topic"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/ContentType"/>
+            <output path="Properties/ContentType"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentitySourceType"/>
+            <output path="Properties/IdentitySourceType"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentitySourceToken"/>
+            <output path="Properties/IdentitySourceToken"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentitySourcePassword"/>
+            <output path="Properties/IdentitySourcePassword"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentitySourceIssuedBy"/>
+            <output path="Properties/IdentitySourceIssuedBy"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentityMappedType"/>
+            <output path="Properties/IdentityMappedType"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentityMappedToken"/>
+            <output path="Properties/IdentityMappedToken"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentityMappedPassword"/>
+            <output path="Properties/IdentityMappedPassword"/>
+        </move>
+        <move automap="true">
+            <input path="Properties/IdentityMappedIssuedBy"/>
+            <output path="Properties/IdentityMappedIssuedBy"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/gender"/>
+            <output path="gefuRecordFormat/record/retailCustomer/GENDER"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/title"/>
+            <output path="gefuRecordFormat/record/retailCustomer/TITLE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/firstName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/FIRSTNAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/middleName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/MIDDLENAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/lastName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/LASTNAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/shortName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SHORTNAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/fullName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/FULLNAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/channelRequestName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/CHANNEL_REQUEST_NAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/dateOfBirth"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DATE_OF_BIRTH"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/staffIndicator"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STAFF_INDICATOR"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/staffId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STAFF_ID"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/motherMaidenName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/MOTHER_MAIDEN_NAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/primarySolId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PRIMARY_SOL_ID"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/segment"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SEGMENT"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/subSegment"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SUBSEGMENT"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/community"/>
+            <output path="gefuRecordFormat/record/retailCustomer/COMMUNITY"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/creditBureauScore"/>
+            <output path="gefuRecordFormat/record/retailCustomer/CREDIT_BUREAU_SCORE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/constitutionCode"/>
+            <output path="gefuRecordFormat/record/retailCustomer/CONSTITUTION_CODE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/primaryRMId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PRIMARYRMID"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/relationshipStartDate"/>
+            <output path="gefuRecordFormat/record/retailCustomer/RELATIONSHIP_START_DATE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/nationality"/>
+            <output path="gefuRecordFormat/record/retailCustomer/NATIONALITY"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/maritalStatus"/>
+            <output path="gefuRecordFormat/record/retailCustomer/MARITAL_STATUS"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/qualification"/>
+            <output path="gefuRecordFormat/record/retailCustomer/QUALIFICATION"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employmentStatus"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_STATUS"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/sourceOfIncome"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SOURCE_OF_INCOME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/occupation"/>
+            <output path="gefuRecordFormat/record/retailCustomer/OCCUPATION"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_NAME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/ifSalariedTypeOfCompany"/>
+            <output path="gefuRecordFormat/record/retailCustomer/IF_SALARIED_TYPE_OF_COMPANY"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employeeDesignation"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYEE_DESIGNATION"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/industryType"/>
+            <output path="gefuRecordFormat/record/retailCustomer/INDUSTRY_TYPE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerAddressLine1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerAddressLine2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerPostalCode"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_POSTAL_CODE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerPhoneNumber"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_PHONE_NUMBER"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employmentType"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_TYPE"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/grossIncome"/>
+            <output path="gefuRecordFormat/record/retailCustomer/GROSSINCOME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/totalHouseholdIncome"/>
+            <output path="gefuRecordFormat/record/retailCustomer/TOTAL_HOUSEHOLD_INCOME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/monthlyDisposableIncome"/>
+            <output path="gefuRecordFormat/record/retailCustomer/MONTHLY_DISPOSABLE_INCOME"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/bsrTypeOfOrganisation"/>
+            <output path="gefuRecordFormat/record/retailCustomer/BSR_TYPE_OF_ORGANISATION"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/dsaId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DSAID"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/minorityCommunity"/>
+            <output path="gefuRecordFormat/record/retailCustomer/MINORITY_COMMUNITY"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/panNumber"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PAN_NUMBER"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/scSt"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SC_ST"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/sourcingId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SOURCING_ID"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/specialCategory"/>
+            <output path="gefuRecordFormat/record/retailCustomer/SPECIAL_CATEGORY"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/employerId"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ID"/>
+        </move>
+        <function automap="true" ref="concat">
+            <input path="rupeePower/record/loanAccountDetails/employeeId" var="employeeId"/>
+            <input path="rupeePower/record/retailCIFDetails/employeeId" var="employeeId1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYEE_ID"/>
+        </function>
+        <function automap="true" ref="concat">
+            <input path="rupeePower/record/loanAccountDetails/employeeId" var="employeeId2"/>
+            <input path="rupeePower/record/retailCIFDetails/employeeId" var="employeeId3"/>
+            <output path="gefuRecordFormat/record/loanAccount/employeeId"/>
+        </function>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCode1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCodeDesc1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/uniqueId1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentTypeDesc2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCode2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCodeDesc2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/uniqueId2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentTypeDesc3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCode3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/documentCodeDesc3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/uniqueId3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSLINE11"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine2_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine3_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/city1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/CITY_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/state1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STATE_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/postalCode1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressType2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE1_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine2_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine3_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/city2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/CITY_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/state2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STATE_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/postalCode2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/stdCode1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/extensionNo1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/stdCode2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/extensionNo2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/stdCode3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/STDCODE_3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/extensionNo3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_3"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMAILID_1"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMAIL_ID_2"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/solId"/>
+            <output path="gefuRecordFormat/record/loanAccount/solId"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/schemeCode"/>
+            <output path="gefuRecordFormat/record/loanAccount/schemeCode"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>
+            <output path="gefuRecordFormat/record/loanAccount/accountManagerUserId"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/employeeName"/>
+            <output path="gefuRecordFormat/record/loanAccount/employeeName"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/sanctionLimit"/>
+            <output path="gefuRecordFormat/record/loanAccount/sanctionLimit"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/limitSanctionDate"/>
+            <output path="gefuRecordFormat/record/loanAccount/limitSanctionDate"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/sanctionLevelCode"/>
+            <output path="gefuRecordFormat/record/loanAccount/sanctionLevelCode"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/loanAmount"/>
+            <output path="gefuRecordFormat/record/loanAccount/loanAmount"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/loanPeriodMonths"/>
+            <output path="gefuRecordFormat/record/loanAccount/loanPeriodMonths"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/occupationCode"/>
+            <output path="gefuRecordFormat/record/loanAccount/occupationCode"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/purposeofAdvance"/>
+            <output path="gefuRecordFormat/record/loanAccount/purposeofAdvance"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/modeOfAdvance"/>
+            <output path="gefuRecordFormat/record/loanAccount/modeOfAdvance"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/advanceType"/>
+            <output path="gefuRecordFormat/record/loanAccount/advanceType"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanAccountDetails/freeCode8"/>
+            <output path="gefuRecordFormat/record/loanAccount/freeCode8"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanRepaymentDetails/flowId"/>
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowId"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanRepaymentDetails/noOfDemands"/>
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/noOfDemands"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanRepaymentDetails/flowAmount"/>
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowAmount"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanDisbursementDetails/disbursementAmount"/>
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/disbursementAmount"/>
+        </move>
+        <move automap="true">
+            <input path="rupeePower/record[1]/loanDisbursementDetails/creditAccountNumber"/>
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/creditAccountNumber"/>
+        </move>
+        <foreach>
+            <input path="rupeePower/record/loanDisbursementDetails/charges"/>
+            <output path="gefuRecordFormat/record/loanDisbursement/charges"/>
+            <move>
+                <input path="chargeEventTpe"/>
+                <output path="chargeEventType"/>
+            </move>
+            <move>
+                <input path="chargeAmount"/>
+                <output path="chargeAmount"/>
+            </move>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>
