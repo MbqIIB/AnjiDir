@@ -146,8 +146,6 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		DECLARE repayRecordIUR CHARACTER;
 		DECLARE serializedRecord CHARACTER;
 		
-		-- output = input because the propagate is happeneing in the parent method
-		SET OutputRoot = InputRoot;
 		SET repayRecordIUR = generateIUR();
 		
 		-- this will insert the loan record
@@ -165,9 +163,6 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 								IN piNextStepIUR CHARACTER)
 	BEGIN
 		DECLARE serializedRecord CHARACTER;
-		
-		-- output = input because the propagate is happeneing in the parent method
-		SET OutputRoot = InputRoot;
 		
 		-- this will insert the disbursement record
 		SET serializedRecord = getNextStepSerilizedRecord('DISBT', piResult);
