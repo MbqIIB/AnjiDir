@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/rupeePower.xsd"/>
     <output path="/gefuRecordFomat.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
         <input path="mb:msg(rupeePower,assembly,DFDL,Properties)"/>
@@ -277,16 +280,10 @@
             <input path="rupeePower/record[1]/retailCIFDetails/employerId"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ID"/>
         </move>
-        <function automap="true" ref="concat">
-            <input path="rupeePower/record/loanAccountDetails/employeeId" var="employeeId"/>
-            <input path="rupeePower/record/retailCIFDetails/employeeId" var="employeeId1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYEE_ID"/>
-        </function>
-        <function automap="true" ref="concat">
-            <input path="rupeePower/record/loanAccountDetails/employeeId" var="employeeId2"/>
-            <input path="rupeePower/record/retailCIFDetails/employeeId" var="employeeId3"/>
-            <output path="gefuRecordFormat/record/loanAccount/employeeId"/>
-        </function>
+        <move>
+            <input path="rupeePower/record[1]/loanAccountDetails/employeeId" var="employeeId2"/>
+            <output path="gefuRecordFormat/record[1]/loanAccount/employeeId"/>
+        </move>
         <move automap="true">
             <input path="rupeePower/record[1]/retailCIFDetails/documentCode1"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE1"/>
@@ -444,10 +441,6 @@
             <output path="gefuRecordFormat/record/loanAccount/schemeCode"/>
         </move>
         <move automap="true">
-            <input path="rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>
-            <output path="gefuRecordFormat/record/loanAccount/accountManagerUserId"/>
-        </move>
-        <move automap="true">
             <input path="rupeePower/record[1]/loanAccountDetails/employeeName"/>
             <output path="gefuRecordFormat/record/loanAccount/employeeName"/>
         </move>
@@ -492,18 +485,6 @@
             <output path="gefuRecordFormat/record/loanAccount/freeCode8"/>
         </move>
         <move automap="true">
-            <input path="rupeePower/record[1]/loanRepaymentDetails/flowId"/>
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowId"/>
-        </move>
-        <move automap="true">
-            <input path="rupeePower/record[1]/loanRepaymentDetails/noOfDemands"/>
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/noOfDemands"/>
-        </move>
-        <move automap="true">
-            <input path="rupeePower/record[1]/loanRepaymentDetails/flowAmount"/>
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowAmount"/>
-        </move>
-        <move automap="true">
             <input path="rupeePower/record[1]/loanDisbursementDetails/disbursementAmount"/>
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/disbursementAmount"/>
         </move>
@@ -512,16 +493,148 @@
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/creditAccountNumber"/>
         </move>
         <foreach>
-            <input path="rupeePower/record/loanDisbursementDetails/charges"/>
+            <input path="rupeePower/record/loanDisbursementDetails/charges" var="charges"/>
             <output path="gefuRecordFormat/record/loanDisbursement/charges"/>
             <move>
-                <input path="chargeEventTpe"/>
+                <input path="$charges/chargeEventTpe"/>
                 <output path="chargeEventType"/>
             </move>
             <move>
-                <input path="chargeAmount"/>
+                <input path="$charges/chargeAmount"/>
                 <output path="chargeAmount"/>
             </move>
+            <expression>
+                <output path="serialNumber"/>
+                <code lang="xpath">$charges-index</code>
+            </expression>
+            <assign value="true">
+                <output path="selectFlag"/>
+            </assign>
+            <expression>
+                <output path="recordInitiator"/>
+                <code lang="xpath">'rec' + fn:string($charges-index)</code>
+            </expression>
         </foreach>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/MINOR_INDICATOR"/>
+        </assign>
+        <assign value="{LOANAC}">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/loanAccountNumber"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/valueDate"/>
+        </function>
+        <assign value="T">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/transactionType"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/disbursementType"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/deductOverdueDemand"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/loanDisbursement/disbursement/finalDisbursement"/>
+        </assign>
+        <move>
+            <input path="rupeePower/record[1]/loanRepaymentDetails/flowId"/>
+            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/flowId"/>
+        </move>
+        <move>
+            <input path="rupeePower/record[1]/loanRepaymentDetails/noOfDemands"/>
+            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/noOfDemands"/>
+        </move>
+        <move>
+            <input path="rupeePower/record[1]/loanRepaymentDetails/flowAmount"/>
+            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/flowAmount"/>
+        </move>
+        <assign value="{LOANIURNO}">
+            <output path="gefuRecordFormat/record/loanRepayment/loan/loanIURNumber"/>
+        </assign>
+        <assign value="rec_1">
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/recordNumber"/>
+        </assign>
+        <assign value="M">
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/eiFrequencyType"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/eiFrequencyHolidayState"/>
+        </assign>
+        <assign value="M">
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/interestFrequencyType"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/interestFrequencyHolidayState"/>
+        </assign>
+        <expression>
+            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowStartDate"/>
+            <code lang="xpath">fn:current-date()</code>
+        </expression>
+        <assign value="F">
+            <output path="gefuRecordFormat/record/loanAccount/reprisingPlan"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/loanAccount/repayMethod"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanAccount/accountOpenDate"/>
+        </function>
+        <assign value="02540">
+            <output path="gefuRecordFormat/record/loanAccount/accountManagerUserId"/>
+        </assign>
+        <assign value="{CIFID}">
+            <output path="gefuRecordFormat/record/loanAccount/cifId"/>
+        </assign>
+        <assign value="1">
+            <output path="gefuRecordFormat/record/loanAccount/modeOfOperation"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/loanAccount/accountStatement"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanAccount/applicableDate"/>
+        </function>
+        <assign value="E">
+            <output path="gefuRecordFormat/record/loanAccount/drawingPowerIndicator"/>
+        </assign>
+        <assign value="0.0">
+            <output path="gefuRecordFormat/record/loanAccount/drawingPowerPercentage"/>
+        </assign>
+        <move>
+            <input path="rupeePower/record[1]/loanAccountDetails/sanctionLevelCode"/>
+            <output path="gefuRecordFormat/record[1]/loanAccount/sanctionAuthorisationCode"/>
+        </move>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanAccount/documentDate"/>
+        </function>
+        <assign value="01">
+            <output path="gefuRecordFormat/record/loanAccount/customerHealthCode"/>
+        </assign>
+        <assign value="1">
+            <output path="gefuRecordFormat/record/loanAccount/loanPeriodDays"/>
+        </assign>
+        <if>
+            <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
+            <test/>
+            <function ref="fn:current-date">
+                <output path="." var="flowStartDate"/>
+                <output path="gefuRecordFormat/record/loanAccount/nextDemandDate/nextDemandDate" var="nextDemandDate"/>
+            </function>
+        </if>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
+        </function>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
+        </function>
+        <assign value="1307">
+            <output path="gefuRecordFormat/record/loanAccount/freeText10"/>
+        </assign>
+        <assign value="{LOANAC}">
+            <output path="gefuRecordFormat/record/loanAccount/forAcidNo"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/loanAccount/eiSchemeFlag"/>
+        </assign>
     </mappingDeclaration>
 </mappingRoot>
