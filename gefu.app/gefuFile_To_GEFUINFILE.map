@@ -131,12 +131,12 @@
             <input path="Properties"/>
             <output path="$MessageAssembly/Properties"/>
         </move>
-        <move>
-            <input path="LocalEnvironment/Variables/uniqueRefNum[1]"/>
-            <output path="$MessageAssembly/response/reference_number"/>
-        </move>
         <assign value="Request taken successfully.">
             <output path="$MessageAssembly/response/message"/>
         </assign>
+        <move>
+            <input path="LocalEnvironment/Variables/uniqueRefNum[1]"/>
+            <output path="$MessageAssembly/response/referenceNumber"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
