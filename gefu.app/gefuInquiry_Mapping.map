@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/localEnvironmentVariables.xsd" var="var"/>
+    <input path="db:database(/iib.dbm,IIB,db:schema-tables(RR,GEFU_INFILE))" var="IIB"/>
+    <output path="/gefuInquiryResponse.xsd" var="var1"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="gefuInquiry_Mapping">
+        <input path="$var/mb:msg(referenceNumberRP,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly">
+            <cast path="$MessageAssembly/LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
+        </input>
+        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.REFERENCE_NUMBER_RP =   ? ','?'=$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP))" var="dbselect"/>
+        <output path="$var1/mb:msg(gefuInquiryResponse,assembly,XMLNSC,Properties)"/>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet[1]" var="ResultSet"/>
+            <input path="$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP[1]" var="referenceNumberRP"/>
+            <output path="gefuInquiryResponse"/>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP1_COMPLETED_AT"/>
+                <output path="cifComletedAt"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP2_COMPLETED_AT"/>
+                <output path="loanAccountCompletdAt"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP3_COMPLETED_AT"/>
+                <output path="disbursementCompletdAt"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP1_RESULT"/>
+                <output path="cifId"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP2_RESULT"/>
+                <output path="loanAccount"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP3_RESULT"/>
+                <output path="disbursementStatus"/>
+            </move>
+            <move>
+                <input path="$referenceNumberRP/."/>
+                <output path="gefuReferenceNumber"/>
+            </move>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
