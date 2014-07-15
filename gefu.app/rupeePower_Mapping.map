@@ -799,9 +799,9 @@
         <assign value="Home">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE1"/>
         </assign>
-        <assign value="IN">
+        <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_1"/>
-        </assign>
+        </function>
         <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_FROM_1"/>
         </function>
@@ -826,56 +826,76 @@
         <assign value="IN">
             <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_2"/>
         </assign>
-        <function ref="fn:current-date">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_FROM_2"/>
-        </function>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_TILL_2"/>
-        </assign>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/LAST_UPDATED_DATE_2"/>
-        </assign>
-        <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_2"/>
-        </assign>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_2"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_2"/>
+            <test lang="">fn:exists($addressLine1_2)</test>
+            <function ref="fn:current-date">
+                <output path="."/>
+            </function>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_21"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_TILL_2"/>
+            <test lang="">fn:exists($addressLine1_21)</test>
+            <assign value="2099-12-31">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_22"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/LAST_UPDATED_DATE_2"/>
+            <test lang="">fn:exists($addressLine1_22)</test>
+            <assign value="2099-12-31">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_23"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/HOLD_MAIL_INDICATOR_2"/>
+            <test lang="">fn:exists($addressLine1_23)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
         <assign value="false">
             <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
         </assign>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo1"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE1"/>
             <test lang="xpath">fn:exists($phoneNo1)</test>
             <assign value="PHONE1">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo11"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TYPE_1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo11"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_1"/>
             <test lang="xpath">fn:exists($phoneNo11)</test>
             <assign value="CELLPH">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo12"/>
-            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo12"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_1"/>
             <test lang="xpath">fn:exists($phoneNo12)</test>
             <assign value="91">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo13"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo13"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE1"/>
             <test lang="xpath">fn:exists($phoneNo13)</test>
             <assign value="true">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE2"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo2"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE2"/>
             <test lang="xpath">fn:exists($phoneNo2)</test>
             <assign value="PHONE2">
                 <output path="."/>
@@ -903,8 +923,8 @@
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId12"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_EMAIL1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId12"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL1"/>
             <test lang="xpath">fn:exists($emailId12)</test>
             <assign value="true">
                 <output path="."/>
@@ -927,72 +947,72 @@
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId11"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TYPE1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId11"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE1"/>
             <test lang="xpath">fn:exists($emailId11)</test>
             <assign value="HOMEEML">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMAIL_1"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId1"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_1"/>
             <test lang="xpath">fn:exists($emailId1)</test>
             <assign value="EMAIL1">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo33"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE3"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo33"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE3"/>
             <test lang="xpath">fn:exists($phoneNo33)</test>
             <assign value="false">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo32"/>
-            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_3"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo32"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_3"/>
             <test lang="xpath">fn:exists($phoneNo32)</test>
             <assign value="91">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo31"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TYPE_3"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo31"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_3"/>
             <test lang="xpath">fn:exists($phoneNo31)</test>
             <assign value="WORKPH1">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE3"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo3"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE3"/>
             <test lang="xpath">fn:exists($phoneNo3)</test>
             <assign value="PHONE3">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo21"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE2"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo21"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE2"/>
             <test lang="xpath">fn:exists($phoneNo21)</test>
             <assign value="false">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo22"/>
-            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_2"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo22"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_2"/>
             <test lang="xpath">fn:exists($phoneNo22)</test>
             <assign value="91">
                 <output path="."/>
             </assign>
         </if>
         <if>
-            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo23"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TYPE_2"/>
+            <input path="rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo23"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_2"/>
             <test lang="xpath">fn:exists($phoneNo23)</test>
             <assign value="HOMEPH1">
                 <output path="."/>
