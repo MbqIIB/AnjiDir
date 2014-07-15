@@ -613,14 +613,9 @@
         <assign value="1">
             <output path="gefuRecordFormat/record/loanAccount/loanPeriodDays"/>
         </assign>
-        <if>
+        <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
-            <test/>
-            <function ref="fn:current-date">
-                <output path="." var="flowStartDate"/>
-                <output path="gefuRecordFormat/record/loanAccount/nextDemandDate/nextDemandDate" var="nextDemandDate"/>
-            </function>
-        </if>
+        </function>
         <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
         </function>
@@ -635,6 +630,208 @@
         </assign>
         <assign value="true">
             <output path="gefuRecordFormat/record/loanAccount/eiSchemeFlag"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/NON_RESIDENTINDICATOR"/>
+        </assign>
+        <assign value="T001">
+            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_TYPE"/>
+        </assign>
+        <assign value="ACTVE">
+            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_STATUS"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/AVAILED_TRADE_SERVICES"/>
+        </assign>
+        <assign value="S">
+            <output path="gefuRecordFormat/record/retailCustomer/ASSET_CLASSIFICATION_CONTROL"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_LEVEL_PROVISIONING"/>
+        </assign>
+        <assign value="0">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_CALENDAR"/>
+        </assign>
+        <assign value="INR">
+            <output path="gefuRecordFormat/record/retailCustomer/BASE_CCY"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/retailCustomer/PURGE_ALLOWED"/>
+        </assign>
+        <assign value="N">
+            <output path="gefuRecordFormat/record/retailCustomer/DELINQUENT_CUSTOMER"/>
+        </assign>
+        <assign value="en_US">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDLOCALE"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/ENABLE_E_BANKING"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/SMS_BANKING"/>
+        </assign>
+        <assign value="INFENG">
+            <output path="gefuRecordFormat/record/retailCustomer/NATIVE_LANGUAGE_CODE"/>
+        </assign>
+        <assign value="USA (English)">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_NATIVE_LANGUAGE"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/FILED_TAX_RETURNS_REGULARLY"/>
+        </assign>
+        <assign value="1307">
+            <output path="gefuRecordFormat/record/retailCustomer/BUSINESS_SEGMENT"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/retailCustomer/BUSSEGEFFDATE"/>
+        </function>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/ATM_CARD"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/DO_NOT_CALL"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/DOORSTEP_BANKING"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/INTERNET_BANKING"/>
+        </assign>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/KYC_REMEDIATION_DATE"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/MOBILE_BANKING"/>
+        </assign>
+        <assign value="U">
+            <output path="gefuRecordFormat/record/retailCustomer/PAN_VALIDATION_FIELD"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE_BANKING"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/TABLET_BANKING"/>
+        </assign>
+        <assign value="WEAK_SEC 16">
+            <output path="gefuRecordFormat/record/retailCustomer/WEAKERSECTIONS"/>
+        </assign>
+        <assign value="C001">
+            <output path="gefuRecordFormat/record/retailCustomer/CAPACITY_OF_ENTITY"/>
+        </assign>
+        <assign value="01">
+            <output path="gefuRecordFormat/record/retailCustomer/HEALTH_CODE"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/WAP_BANKING"/>
+        </assign>
+        <move>
+            <input path="rupeePower/record[1]/retailCIFDetails/employeeId"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/EMPLOYEE_ID"/>
+        </move>
+        <assign value="INR">
+            <output path="gefuRecordFormat/record/retailCustomer/CCY"/>
+        </assign>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERENTIALEXPIRYDATE"/>
+        </assign>
+        <assign value="DOCUMENT1">
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT1"/>
+        </assign>
+        <assign value="INDIVIDUAL KYC DOCUMENTS">
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE1"/>
+        </assign>
+        <assign value="INDIVIDUAL KYC DOCUMENTS">
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC1"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/ISDOCUMENTVERIFIED1"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG1"/>
+        </assign>
+        <assign value="DOCUMENT2">
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT2"/>
+        </assign>
+        <assign value="Y">
+            <output path="gefuRecordFormat/record/retailCustomer/ISDOCUMENTVERIFIED2"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG2"/>
+        </assign>
+        <assign value="DOCUMENT3">
+            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT3"/>
+        </assign>
+        <assign value="Y">
+            <output path="gefuRecordFormat/record/retailCustomer/IDISSUEDORGANISATION3"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG3"/>
+        </assign>
+        <assign value="ADDRESS1">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS1"/>
+        </assign>
+        <assign value="FREE_TEXT_FORMAT">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSFORMAT1"/>
+        </assign>
+        <assign value="Home">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE1"/>
+        </assign>
+        <assign value="IN">
+            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_1"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_FROM_1"/>
+        </function>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_TILL_1"/>
+        </assign>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/LAST_UPDATED_DATE_1"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_1"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
+        </assign>
+        <assign value="ADDRESS2">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS2"/>
+        </assign>
+        <assign value="FREE_TEXT_FORMAT">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_FORMAT_2"/>
+        </assign>
+        <assign value="IN">
+            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_2"/>
+        </assign>
+        <function ref="fn:current-date">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_FROM_2"/>
+        </function>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_TILL_2"/>
+        </assign>
+        <assign value="2099-12-31">
+            <output path="gefuRecordFormat/record/retailCustomer/LAST_UPDATED_DATE_2"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_2"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
+        </assign>
+        <assign value="PHONE1">
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE1"/>
+        </assign>
+        <assign value="CELLPH">
+            <output path="gefuRecordFormat/record/retailCustomer/TYPE_1"/>
+        </assign>
+        <assign value="91">
+            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_1"/>
+        </assign>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE1"/>
+        </assign>
+        <assign value="PHONE2">
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE2"/>
         </assign>
     </mappingDeclaration>
 </mappingRoot>
