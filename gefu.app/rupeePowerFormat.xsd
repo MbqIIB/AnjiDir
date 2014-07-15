@@ -9,10 +9,17 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="rupeePowerFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-                				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="1" name="record">
+                                				                <xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" minOccurs="1" name="record">
           <xsd:complexType>
             <xsd:sequence dfdl:separator="|">
-              <xsd:element minOccurs="1" name="retailCIFDetails">
+                                          <xsd:element ibmDfdlExtn:sampleValue="124356789" name="referenceNumberRP">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="25"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element minOccurs="1" name="retailCIFDetails">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
                                                       <xsd:annotation>
@@ -1366,7 +1373,7 @@
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-              <xsd:element name="loanAccountDetails">
+                                                                      <xsd:element name="loanAccountDetails">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
               <xsd:element ibmDfdlExtn:sampleValue="009" name="solId">
@@ -1469,7 +1476,14 @@
                                     </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                                                                                                                                                                                                                                                                                                      <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="100000" name="loanAmount">
+                                                                                                                                                                                                                                                                                                                                              <xsd:element name="sanctionReferenceNo">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="25"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                                        <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="100000" name="loanAmount">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
                     <xsd:totalDigits value="16"/>
@@ -1920,7 +1934,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-              <xsd:element name="loanRepaymentDetails">
+                                                                      <xsd:element name="loanRepaymentDetails">
                 <xsd:complexType>
                   <xsd:sequence dfdl:separator="|">
                     <xsd:element ibmDfdlExtn:sampleValue="EIDEM" name="flowId">
@@ -1948,7 +1962,7 @@
                                     </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-              <xsd:element name="loanDisbursementDetails">
+                                                                      <xsd:element name="loanDisbursementDetails">
                 <xsd:complexType>
                   <xsd:sequence>
                     <xsd:element dfdl:textNumberPattern="#0.###" ibmDfdlExtn:sampleValue="2000.50" name="disbursementAmount">
@@ -1990,10 +2004,10 @@
                                     </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-            </xsd:sequence>
+                                                                </xsd:sequence>
           </xsd:complexType>
         </xsd:element>
-                			                                                                        </xsd:sequence>
+                                			                                                                                    </xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
