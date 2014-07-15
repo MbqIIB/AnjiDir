@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/rupeePower.xsd" var="var"/>
+    <input namespace="http://www.quantiguous.com/dfdl/rupeePower.xsd" path="/rupeePower.xsd" var="var"/>
     <input path="/localEnvironmentVariables.xsd" var="var1"/>
     <output path="/gefuRecordFomat.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/gefuHelper.esql"/>
+    </imports>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="gefuHelper" uri="/gefuHelper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
@@ -569,10 +573,9 @@
         <assign value="N">
             <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/interestFrequencyHolidayState"/>
         </assign>
-        <expression>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowStartDate"/>
-            <code lang="xpath">fn:current-date()</code>
-        </expression>
+        </customFunction>
         <assign value="F">
             <output path="gefuRecordFormat/record/loanAccount/reprisingPlan"/>
         </assign>
@@ -582,9 +585,6 @@
         <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/loanAccount/accountOpenDate"/>
         </function>
-        <assign value="02540">
-            <output path="gefuRecordFormat/record/loanAccount/accountManagerUserId"/>
-        </assign>
         <assign value="{CIFID}">
             <output path="gefuRecordFormat/record/loanAccount/cifId"/>
         </assign>
@@ -616,15 +616,15 @@
         <assign value="1">
             <output path="gefuRecordFormat/record/loanAccount/loanPeriodDays"/>
         </assign>
-        <function ref="fn:current-date">
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
-        </function>
-        <function ref="fn:current-date">
+        </customFunction>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
-        </function>
-        <function ref="fn:current-date">
+        </customFunction>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
-        </function>
+        </customFunction>
         <assign value="1307">
             <output path="gefuRecordFormat/record/loanAccount/freeText10"/>
         </assign>
@@ -755,21 +755,41 @@
         <assign value="DOCUMENT2">
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT2"/>
         </assign>
-        <assign value="Y">
-            <output path="gefuRecordFormat/record/retailCustomer/ISDOCUMENTVERIFIED2"/>
-        </assign>
-        <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG2"/>
-        </assign>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType2" var="documentType2"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED2"/>
+            <test lang="xpath">fn:exists($documentType2)</test>
+            <assign value="Y">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType2" var="documentType21"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG2"/>
+            <test lang="">fn:exists($documentType21)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
         <assign value="DOCUMENT3">
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT3"/>
         </assign>
-        <assign value="Y">
-            <output path="gefuRecordFormat/record/retailCustomer/IDISSUEDORGANISATION3"/>
-        </assign>
-        <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG3"/>
-        </assign>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType3" var="documentType3"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED3"/>
+            <test lang="">fn:exists($documentType3)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/documentType3" var="documentType31"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG3"/>
+            <test lang="xpath">fn:exists($documentType31)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
         <assign value="ADDRESS1">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS1"/>
         </assign>
@@ -821,24 +841,162 @@
         <assign value="false">
             <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
         </assign>
-        <assign value="PHONE1">
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo1"/>
             <output path="gefuRecordFormat/record/retailCustomer/PHONE1"/>
-        </assign>
-        <assign value="CELLPH">
+            <test lang="xpath">fn:exists($phoneNo1)</test>
+            <assign value="PHONE1">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo11"/>
             <output path="gefuRecordFormat/record/retailCustomer/TYPE_1"/>
-        </assign>
-        <assign value="91">
+            <test lang="xpath">fn:exists($phoneNo11)</test>
+            <assign value="CELLPH">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo12"/>
             <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_1"/>
-        </assign>
-        <assign value="true">
+            <test lang="xpath">fn:exists($phoneNo12)</test>
+            <assign value="91">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo1" var="phoneNo13"/>
             <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE1"/>
-        </assign>
-        <assign value="PHONE2">
+            <test lang="xpath">fn:exists($phoneNo13)</test>
+            <assign value="true">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo2"/>
             <output path="gefuRecordFormat/record/retailCustomer/PHONE2"/>
-        </assign>
+            <test lang="xpath">fn:exists($phoneNo2)</test>
+            <assign value="PHONE2">
+                <output path="."/>
+            </assign>
+        </if>
         <move>
             <input path="rupeePower/record/referenceNumberRP"/>
             <output path="LocalEnvironment/Variables/referenceNumberRP"/>
         </move>
+        <move>
+            <input path="rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>
+            <output path="gefuRecordFormat/record[1]/loanAccount/accountManagerUserId"/>
+        </move>
+        <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
+            <input path="rupeePower/record/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths"/>
+            <output path="gefuRecordFormat/record/loanAccount/expiryDate"/>
+            <param name="piMonths" value="$loanPeriodMonths"/>
+        </customFunction>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId2"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL2"/>
+            <test lang="xpath">fn:exists($emailId2)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId12"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_EMAIL1"/>
+            <test lang="xpath">fn:exists($emailId12)</test>
+            <assign value="true">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId21"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE2"/>
+            <test lang="xpath">fn:exists($emailId21)</test>
+            <assign value="WORKEML">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId22"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_2"/>
+            <test lang="xpath">fn:exists($emailId22)</test>
+            <assign value="EMAIL2">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId11"/>
+            <output path="gefuRecordFormat/record/retailCustomer/TYPE1"/>
+            <test lang="xpath">fn:exists($emailId11)</test>
+            <assign value="HOMEEML">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/emailId1" var="emailId1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/EMAIL_1"/>
+            <test lang="xpath">fn:exists($emailId1)</test>
+            <assign value="EMAIL1">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo33"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE3"/>
+            <test lang="xpath">fn:exists($phoneNo33)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo32"/>
+            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_3"/>
+            <test lang="xpath">fn:exists($phoneNo32)</test>
+            <assign value="91">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo31"/>
+            <output path="gefuRecordFormat/record/retailCustomer/TYPE_3"/>
+            <test lang="xpath">fn:exists($phoneNo31)</test>
+            <assign value="WORKPH1">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo3" var="phoneNo3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PHONE3"/>
+            <test lang="xpath">fn:exists($phoneNo3)</test>
+            <assign value="PHONE3">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo21"/>
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_PHONE2"/>
+            <test lang="xpath">fn:exists($phoneNo21)</test>
+            <assign value="false">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo22"/>
+            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_CODE_2"/>
+            <test lang="xpath">fn:exists($phoneNo22)</test>
+            <assign value="91">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record/retailCIFDetails/phoneNo2" var="phoneNo23"/>
+            <output path="gefuRecordFormat/record/retailCustomer/TYPE_2"/>
+            <test lang="xpath">fn:exists($phoneNo23)</test>
+            <assign value="HOMEPH1">
+                <output path="."/>
+            </assign>
+        </if>
     </mappingDeclaration>
 </mappingRoot>
