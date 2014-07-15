@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rupeePowerFormatWSDL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rupeePower.xsd">
+<rupeePower xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rupeePower.xsd">
   <record>
-    <referenceNumber>123123123123</referenceNumber>
+    <referenceNumberRP>123123123123</referenceNumberRP>
     <retailCIFDetails>
       <gender>F</gender>
       <title>MRS.</title>
@@ -28,41 +28,25 @@
       <qualification>GRADUATE</qualification>
       <employmentStatus>HOUSEWIFE</employmentStatus>
       <sourceOfIncome>AGRICULTURE</sourceOfIncome>
-      <occupation>1</occupation>
+      <occupation>12</occupation>
       <employerName></employerName>
-      <ifSalariedTypeOfCompany></ifSalariedTypeOfCompany>
-      <employeeDesignation></employeeDesignation>
-      <industryType></industryType>
+      <industryType>104</industryType>
       <employerAddressLine1></employerAddressLine1>
       <employerAddressLine2></employerAddressLine2>
       <employerPostalCode></employerPostalCode>
       <employerPhoneNumber></employerPhoneNumber>
-      <employmentType></employmentType>
+      <employmentType>HOUSEWIFE</employmentType>
       <grossIncome>AI01</grossIncome>
-      <totalHouseholdIncome></totalHouseholdIncome>
-      <totalDisposableIncome></totalDisposableIncome>
       <bsrTypeOfOrganisation>11_110</bsrTypeOfOrganisation>
       <dsaId>123</dsaId>
       <minorityCommunity>MIN10</minorityCommunity>
       <panNumber>ANEPR4911P</panNumber>
       <scSt>OBC</scSt>
       <sourcingId>123456789</sourcingId>
-      <specialCategory></specialCategory>
-      <employerId></employerId>>
-      <employeeId></employeeId>
+      <specialCategory>SC001</specialCategory>
       <documentCode1>ADCRD</documentCode1>
       <documentCodeDesc1>ADHAAR CARD</documentCodeDesc1>
       <uniqueId1>123456789</uniqueId1>
-      <documentType2></documentType2>>
-      <documentTypeDesc2></documentTypeDesc2>
-      <documentCode2></documentCode2>
-      <documentCodeDesc2></documentCodeDesc2>
-      <uniqueId2></uniqueId2>
-      <documentType3></documentType3>
-      <documentTypeDesc3></documentTypeDesc3>
-      <documentCode3></documentCode3>
-      <documentCodeDesc3></documentCodeDesc3>
-      <uniqueId3></uniqueId3>
       <addressLine1_1>D-102</addressLine1_1>
       <addressLine2_1>SONMARG BLDG</addressLine2_1>
       <addressLine3_1>MALAD WEST</addressLine3_1>
@@ -78,13 +62,13 @@
       <postalCode2>400064</postalCode2>
       <stdCode1>0</stdCode1>
       <phoneNo1>9967722444</phoneNo1>
-      <extesnsionNo1></extesnsionNo1>
+      <extensionNo1>123</extensionNo1>
       <stdCode2>0181</stdCode2>
       <phoneNo2>42221000</phoneNo2>
-      <extesnsionNo2>123</extesnsionNo2>
+      <extensionNo2>123</extensionNo2>
       <stdCode3>0141</stdCode3>
       <phoneNo3>42221444</phoneNo3>
-      <extesnsionNo3>122</extesnsionNo3>   
+      <extensionNo3>122</extensionNo3>   
       <emailId1>VIJAYATA_HOME@GMAIL.COM</emailId1>  
       <emailId2>VIJAYATA_OFFICE@GMAIL.COM</emailId2>  
     </retailCIFDetails>
@@ -95,6 +79,7 @@
       <sanctionLimit>300000</sanctionLimit>
       <limitSanctionDate>2014-07-15</limitSanctionDate>
       <sanctionLevelCode>AGM</sanctionLevelCode>
+      <sanctionReferenceNo>674683267</sanctionReferenceNo>
       <loanAmount>300000</loanAmount>
       <loanPeriodMonths>12</loanPeriodMonths>
       <occupationCode>12345</occupationCode>
@@ -113,4 +98,4 @@
       <creditAccountNumber>1000110010001157</creditAccountNumber>
     </loanDisbursementDetails>
   </record>
-</rupeePowerFormatWSDL>
+</rupeePower>
