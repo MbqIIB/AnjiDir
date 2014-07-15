@@ -3,7 +3,7 @@
     <xsd:complexType name="responseXML">
       <xsd:sequence>
         <xsd:element name="message" type="xsd:string"/>
-        <xsd:element name="reference_number" type ="xsd:string"/>
+        <xsd:element name="referenceNumber" type ="xsd:string"/>
       </xsd:sequence>
  	</xsd:complexType>  
  	<xsd:element name="response" type="responseXML"></xsd:element>
