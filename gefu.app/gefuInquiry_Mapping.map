@@ -7,7 +7,7 @@
         <input path="$var/mb:msg(referenceNumberRP,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly">
             <cast path="$MessageAssembly/LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
         </input>
-        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.REFERENCE_NUMBER_RP =   ? ','?'=$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP))" var="dbselect"/>
+        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/AT_STEP,RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.REFERENCE_NUMBER_RP =   ? ','?'=$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP))" var="dbselect"/>
         <output path="$var1/mb:msg(gefuInquiryResponse,assembly,XMLNSC,Properties)"/>
         <select ref="dbselect">
             <input path="$dbselect/ResultSet[1]" var="ResultSet"/>
@@ -25,18 +25,66 @@
                 <input path="$ResultSet/RR/GEFU_INFILE/STEP3_COMPLETED_AT"/>
                 <output path="disbursementCompletdAt"/>
             </move>
-            <move>
-                <input path="$ResultSet/RR/GEFU_INFILE/STEP1_RESULT"/>
-                <output path="cifId"/>
-            </move>
-            <move>
-                <input path="$ResultSet/RR/GEFU_INFILE/STEP2_RESULT"/>
-                <output path="loanAccount"/>
-            </move>
-            <move>
-                <input path="$ResultSet/RR/GEFU_INFILE/STEP3_RESULT"/>
-                <output path="disbursementStatus"/>
-            </move>
+            <condition>
+                <if>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP1_RESULT" var="STEP1RESULT"/>
+                    <input path="$ResultSet/RR/GEFU_INFILE/AT_STEP" var="ATSTEP"/>
+                    <output path="cifId"/>
+                    <test lang="xpath">fn:exists($STEP1RESULT) and $ATSTEP != 1</test>
+                    <move>
+                        <input path="$STEP1RESULT/."/>
+                        <output path="."/>
+                    </move>
+                </if>
+                <else>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP1_RESULT"/>
+                    <output path="cifError"/>
+                    <move>
+                        <input path="." var="STEP1RESULT1"/>
+                        <output path="."/>
+                    </move>
+                </else>
+            </condition>
+            <condition>
+                <if>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP2_RESULT" var="STEP2RESULT"/>
+                    <input path="$ResultSet/RR/GEFU_INFILE/AT_STEP" var="ATSTEP1"/>
+                    <output path="loanAccount"/>
+                    <test lang="xpath">fn:exists($STEP2RESULT) and $ATSTEP1 != 2</test>
+                    <move>
+                        <input path="$STEP2RESULT/." var="STEP2RESULT"/>
+                        <output path="."/>
+                    </move>
+                </if>
+                <else>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP2_RESULT"/>
+                    <output path="loanAccountError"/>
+                    <move>
+                        <input path="." var="STEP2RESULT1"/>
+                        <output path="."/>
+                    </move>
+                </else>
+            </condition>
+            <condition>
+                <if>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP3_RESULT" var="STEP3RESULT"/>
+                    <input path="$ResultSet/RR/GEFU_INFILE/AT_STEP" var="ATSTEP2"/>
+                    <output path="disbursementStatus"/>
+                    <test lang="xpath">fn:exists($STEP3RESULT) and $ATSTEP2 != 3</test>
+                    <move>
+                        <input path="$STEP3RESULT/." var="STEP3RESULT"/>
+                        <output path="."/>
+                    </move>
+                </if>
+                <else>
+                    <input path="$ResultSet/RR/GEFU_INFILE/STEP3_RESULT"/>
+                    <output path="disbursementError"/>
+                    <move>
+                        <input path="." var="STEP3RESULT1"/>
+                        <output path="."/>
+                    </move>
+                </else>
+            </condition>
             <move>
                 <input path="$referenceNumberRP/."/>
                 <output path="gefuReferenceNumber"/>
