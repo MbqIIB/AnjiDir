@@ -181,15 +181,21 @@
                   
                 <xsd:documentation>To be checked with OPS</xsd:documentation>
                       </xsd:annotation>
-                                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:minLength value="1"/>
-                    <xsd:maxLength value="7"/>
-                                                          <xsd:enumeration value="AFFLUENT"/>
-                                        <xsd:enumeration value="MASSMKT"/>
-                                        <xsd:enumeration value="PREMIUM"/>
-                                    </xsd:restriction>
-                </xsd:simpleType>
+                                                <xsd:simpleType>
+                                                	<xsd:restriction
+                                                		base="xsd:string">
+                                                		<xsd:minLength
+                                                			value="1" />
+                                                		<xsd:maxLength
+                                                			value="8" />
+                                                		<xsd:enumeration
+                                                			value="AFFLUENT" />
+                                                		<xsd:enumeration
+                                                			value="MASSMKT" />
+                                                		<xsd:enumeration
+                                                			value="PREMIUM" />
+                                                	</xsd:restriction>
+                                                </xsd:simpleType>
               </xsd:element>
 
               <xsd:element ibmDfdlExtn:sampleValue="STRIVERS" name="subSegment">
