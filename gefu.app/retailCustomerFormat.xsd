@@ -1920,7 +1920,7 @@
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:minLength value="1"/>
-                    <xsd:maxLength value="100"/>
+                    <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
@@ -2022,9 +2022,27 @@
                 </xsd:simpleType>
               </xsd:element>
 							<xsd:element minOccurs="0" name="ADDRESS_LABEL_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="ADDRESS_LINE1_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="ADDRESS_LINE2_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="ADDRESS_LINE3_2" type="xsd:string"/>
+							<xsd:element minOccurs="0" name="ADDRESS_LINE1_2">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+							<xsd:element minOccurs="0" name="ADDRESS_LINE2_2">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+							<xsd:element minOccurs="0" name="ADDRESS_LINE3_2">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
 							<xsd:element minOccurs="0" name="CITY_2" type="xsd:string">
                 <xsd:annotation>
                   <xsd:documentation>Validation throug select query</xsd:documentation>
@@ -2041,10 +2059,10 @@
                 </xsd:annotation>
               </xsd:element>
 							<xsd:element minOccurs="0" name="POSTAL_CODE_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="ADDRESS_VALID_FROM_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="ADDRESS_VALID_TILL_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="LAST_UPDATED_DATE_2" type="xsd:string"/>
-							<xsd:element minOccurs="0" name="HOLD_MAIL_INDICATOR_2" type="xsd:string"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" minOccurs="0" name="ADDRESS_VALID_FROM_2" type="xsd:date"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" minOccurs="0" name="ADDRESS_VALID_TILL_2" type="xsd:date"/>
+							<xsd:element dfdl:calendarPattern="dd-MM-yyyy" dfdl:calendarPatternKind="explicit" minOccurs="0" name="LAST_UPDATED_DATE_2" type="xsd:date"/>
+							<xsd:element dfdl:textBooleanFalseRep="N" dfdl:textBooleanTrueRep="Y" minOccurs="0" name="HOLD_MAIL_INDICATOR_2" type="xsd:boolean"/>
 							<xsd:element minOccurs="0" name="HOLD_MAIL_INITIATED_BY_2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="HOLD_MAIL_BUSINESS_CENTRE_NAME_2" type="xsd:string"/>
 							<xsd:element minOccurs="0" name="HOLD_MAIL_REASON2" type="xsd:string"/>
