@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/rupeePower.xsd"/>
+    <input path="/rupeePower.xsd" var="var"/>
+    <input path="/localEnvironmentVariables.xsd" var="var1"/>
     <output path="/gefuRecordFomat.xsd"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
-        <input path="mb:msg(rupeePower,assembly,DFDL,Properties)"/>
-        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,Properties)"/>
+        <input path="$var/mb:msg(rupeePower,assembly,DFDL,Properties)"/>
+        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
+        </output>
         <move automap="true">
             <input path="Properties/MessageSet"/>
             <output path="Properties/MessageSet"/>
@@ -833,5 +836,9 @@
         <assign value="PHONE2">
             <output path="gefuRecordFormat/record/retailCustomer/PHONE2"/>
         </assign>
+        <move>
+            <input path="rupeePower/record/referenceNumberRP"/>
+            <output path="LocalEnvironment/Variables/referenceNumberRP"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
