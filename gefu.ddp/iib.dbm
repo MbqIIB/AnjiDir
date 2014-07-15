@@ -19,9 +19,6 @@
     <columns xmi:id="_feE0AAKOEeSzlYwcziqlwg" name="ID" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7ciLEQgBEeSW-rRJz8VtUw" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
     </columns>
-    <columns xmi:id="_srZLgQvyEeSTFuWM3gsi9g" name="REFERENCE_NUMBER_RP">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zWo7gAvyEeSTFuWM3gsi9g" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
     <columns xmi:id="_fgIpgAKOEeSzlYwcziqlwg" name="CHANNEL" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_F4tG4AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
     </columns>
