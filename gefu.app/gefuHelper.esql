@@ -1,11 +1,18 @@
 CREATE FUNCTION getFlowStartDate() RETURNS DATE
 BEGIN
 	DECLARE flowStartDate DATE;
-	--IF (CAST(CURRENT_DATE AS INT FORMAT 'dd')>=1 AND CAST(CURRENT_DATE AS INT FORMAT 'dd')<=20) THEN
+	DECLARE datePart INTEGER;
+	
+	SET datePart = getDatePart(CURRENT_DATE);
+
+	IF (datePart>=1 AND datePart<=20) THEN
 		SET flowStartDate = CURRENT_DATE + CAST(1 AS INTERVAL MONTH); 
-	--ELSE
-		--SET flowStartDate = CURRENT_DATE + CAST(2 AS INTERVAL MONTH); 
-	--END IF;
+		SET flowStartDate = changeDatePart(flowStartDate, '05');
+	ELSE
+		SET flowStartDate = CURRENT_DATE + CAST(2 AS INTERVAL MONTH); 
+		SET flowStartDate = changeDatePart(flowStartDate, '05');
+	END IF;
+	
 	RETURN flowStartDate;
 END;
 
@@ -15,5 +22,29 @@ BEGIN
 	SET lastInstallmentDate = getFlowStartDate();
 	SET lastInstallmentDate = lastInstallmentDate + CAST(piMonths AS INTERVAL MONTH); 
 	RETURN lastInstallmentDate;
+END;
+
+CREATE FUNCTION getDatePart(IN piDate DATE) RETURNS INTEGER
+BEGIN
+	DECLARE lString CHARACTER;
+	DECLARE datePart INTEGER;
+	
+	SET lString = CAST(piDate AS CHARACTER FORMAT 'dd-MM-YYYY');
+	SET lString = SUBSTRING(lString BEFORE '-');
+	SET datePart = CAST(lString AS INTEGER);
+	RETURN datePart;
+END;
+
+CREATE FUNCTION changeDatePart(IN piDate DATE, IN piDatePart CHARACTER) RETURNS DATE
+BEGIN
+	DECLARE lString CHARACTER;
+	DECLARE changedDate DATE;
+	
+	SET lString = CAST(piDate AS CHARACTER FORMAT 'dd-MM-YYYY');
+	SET lString = SUBSTRING(lString AFTER '-');
+	SET lString = piDatePart||'-'||lString;
+	SET changedDate = CAST(lString AS DATE FORMAT 'dd-MM-YYYY');
+	
+	RETURN changedDate;
 END;
 
