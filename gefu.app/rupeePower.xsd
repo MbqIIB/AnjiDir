@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/rupeePower.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:annotation>
 		
 	</xsd:annotation>

@@ -43,18 +43,60 @@
                         <input path="$uniqueRefNum3/."/>
                         <output path="STEP1_IUR_NUMBER"/>
                     </move>
-                    <move>
-                        <input path="$File3/Name"/>
-                        <output path="FILE_NAME"/>
-                    </move>
-                    <assign value="MACRO">
-                        <output path="CHANNEL"/>
-                    </assign>
-                    <function ref="xs:int">
-                        <input path="$File3/Record" var="Record1"/>
-                        <output path="RECORD_NUM"/>
-                        <param name="primitive" value="$Record1"/>
-                    </function>
+                    <condition>
+                        <if>
+                            <input path="$referenceNumberRP1/." var="referenceNumberRP3"/>
+                            <output path="FILE_NAME"/>
+                            <test lang="xpath">fn:exists($referenceNumberRP3)</test>
+                            <move>
+                                <input path="$referenceNumberRP3/."/>
+                                <output path="."/>
+                            </move>
+                        </if>
+                        <else>
+                            <input path="$File3/Name"/>
+                            <output path="FILE_NAME"/>
+                            <move>
+                                <input path="."/>
+                                <output path="."/>
+                            </move>
+                        </else>
+                    </condition>
+                    <condition>
+                        <if>
+                            <input path="$referenceNumberRP1/." var="referenceNumberRP4"/>
+                            <output path="CHANNEL"/>
+                            <test lang="xpath">fn:exists($referenceNumberRP4)</test>
+                            <assign value="RUPEEPOWER">
+                                <output path="."/>
+                            </assign>
+                        </if>
+                        <else>
+                            <output path="CHANNEL"/>
+                            <assign value="MACRO">
+                                <output path="."/>
+                            </assign>
+                        </else>
+                    </condition>
+                    <condition>
+                        <if>
+                            <input path="$referenceNumberRP1/." var="referenceNumberRP5"/>
+                            <output path="RECORD_NUM"/>
+                            <test lang="xpath">fn:exists($referenceNumberRP5)</test>
+                            <assign value="1">
+                                <output path="."/>
+                            </assign>
+                        </if>
+                        <else>
+                            <input path="$File3/Record"/>
+                            <output path="RECORD_NUM"/>
+                            <function ref="xs:int">
+                                <input path="." var="Record"/>
+                                <output path="."/>
+                                <param name="primitive" value="$Record"/>
+                            </function>
+                        </else>
+                    </condition>
                     <assign value="1">
                         <output path="AT_STEP"/>
                     </assign>
@@ -94,6 +136,7 @@
             <input auxiliary="true" path="LocalEnvironment/Variables/serializedRecordCIF[1]" var="serializedRecordCIF"/>
             <input auxiliary="true" path="LocalEnvironment/File" var="File"/>
             <input auxiliary="true" path="LocalEnvironment/Variables/uniqueRefNum[1]" var="uniqueRefNum"/>
+            <input auxiliary="true" path="LocalEnvironment/Variables/referenceNumberRP[1]" var="referenceNumberRP6"/>
             <output path="$dbinsert1/."/>
             <transaction>
                 <insert>
@@ -101,31 +144,19 @@
                     <input path="$serializedRecordCIF/." var="serializedRecordCIF3"/>
                     <input path="$File/." var="File1"/>
                     <input path="$uniqueRefNum/." var="uniqueRefNum1"/>
+                    <input path="$referenceNumberRP6/." var="referenceNumberRP9"/>
                     <output path="."/>
-                    <function ref="fn:substring-before">
+                    <move>
                         <input path="$serializedRecordCIF3/." var="serializedRecordCIF1"/>
                         <output path="RECORD"/>
-                        <param name="string1" value="$serializedRecordCIF1"/>
-                        <param name="string2" value="'&amp;&amp;&amp;&amp;'"/>
-                    </function>
-                    <move>
-                        <input path="$File1/Name"/>
-                        <output path="FILE_NAME"/>
                     </move>
-                    <move>
-                        <input path="$uniqueRefNum1/."/>
-                        <output path="REF_NUM"/>
-                    </move>
-                    <function ref="fn:number">
-                        <input path="$File1/Record" var="Record"/>
-                        <output path="SRL_NUM"/>
-                        <param name="arg" value="$Record"/>
-                    </function>
                     <assign value="O">
                         <output path="UPLD_STATUS"/>
+                        <annotation key="$NON-PERSISTENT" value="2"/>
                     </assign>
                     <assign value="CIF">
                         <output path="MODULE"/>
+                        <annotation key="$NON-PERSISTENT" value="2"/>
                     </assign>
                     <assign value="|">
                         <output path="FORMAT"/>
@@ -139,6 +170,47 @@
                     <function ref="fn:current-dateTime">
                         <output path="RCRE_TIME"/>
                     </function>
+                    <condition>
+                        <if>
+                            <input path="$referenceNumberRP9/." var="referenceNumberRP10"/>
+                            <output path="FILE_NAME"/>
+                            <test lang="xpath">fn:exists($referenceNumberRP10)</test>
+                            <move>
+                                <input path="$referenceNumberRP10/."/>
+                                <output path="."/>
+                            </move>
+                        </if>
+                        <else>
+                            <input path="$File1/Name"/>
+                            <output path="FILE_NAME"/>
+                            <move>
+                                <input path="."/>
+                                <output path="."/>
+                            </move>
+                        </else>
+                    </condition>
+                    <condition>
+                        <if>
+                            <input path="$referenceNumberRP9/." var="referenceNumberRP11"/>
+                            <output path="SRL_NUM"/>
+                            <test lang="xpath">fn:exists($referenceNumberRP11)</test>
+                            <assign value="1">
+                                <output path="."/>
+                            </assign>
+                        </if>
+                        <else>
+                            <input path="$File1/Record"/>
+                            <output path="SRL_NUM"/>
+                            <move>
+                                <input path="."/>
+                                <output path="."/>
+                            </move>
+                        </else>
+                    </condition>
+                    <move>
+                        <input path="$uniqueRefNum1/."/>
+                        <output path="REF_NUM"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var6/DBInsertReturn"/>
@@ -149,10 +221,25 @@
             <input path="Properties"/>
             <output path="$MessageAssembly/Properties"/>
         </move>
-        <move>
-            <input path="LocalEnvironment/Variables/uniqueRefNum[1]"/>
-            <output path="$MessageAssembly/gefuLoanCreationResponse/referenceNumber"/>
-        </move>
+        <condition>
+            <if>
+                <input path="LocalEnvironment/Variables/referenceNumberRP[1]" var="referenceNumberRP7"/>
+                <output path="$MessageAssembly/gefuLoanCreationResponse/referenceNumber"/>
+                <test lang="xpath">fn:exists($referenceNumberRP7)</test>
+                <move>
+                    <input path="$referenceNumberRP7/." var="referenceNumberRP12"/>
+                    <output path="."/>
+                </move>
+            </if>
+            <else>
+                <input path="LocalEnvironment/Variables/uniqueRefNum[1]"/>
+                <output path="$MessageAssembly/gefuLoanCreationResponse/referenceNumber"/>
+                <move>
+                    <input path="." var="uniqueRefNum4"/>
+                    <output path="."/>
+                </move>
+            </else>
+        </condition>
         <assign value="REQUEST SUCCESSFULLY CREATED">
             <output path="$MessageAssembly/gefuLoanCreationResponse/message"/>
         </assign>

@@ -23,6 +23,7 @@ CREATE COMPUTE MODULE genericFileUpload_Compute
 		DECLARE rs ROW;
 		SET OutputRoot = InputRoot;
 		SET InputLocalEnvironment.Variables.serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_cif:retailCustomer.ADDRESS1 = InputRoot.DFDL.ns:gefuRecordFormat.record.ns_cif:retailCustomer.ADDRESS1;
 		SET InputLocalEnvironment.Variables.serializedRecordCIF = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_cif:retailCustomer) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		SET rs = PASSTHRU ('SELECT TO_CHAR(SYSDATE,''DDMMYYYY'')||LPAD(IAP_UPLDSEQ.NEXTVAL,8,''0'') AS SEQUENCENUMBER from DUAL');
 		SET InputLocalEnvironment.Variables.uniqueRefNum = rs.SEQUENCENUMBER[1];

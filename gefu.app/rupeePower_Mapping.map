@@ -11,7 +11,7 @@
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
-        <input path="$var/mb:msg(rupeePower,assembly,DFDL,Properties)"/>
+        <input namespace="http://www.quantiguous.com/dfdl/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)"/>
         <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
         </output>
@@ -105,11 +105,11 @@
         </move>
         <move automap="true">
             <input path="rupeePower/record[1]/retailCIFDetails/gender"/>
-            <output path="gefuRecordFormat/record/retailCustomer/GENDER"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/GENDER"/>
         </move>
         <move automap="true">
             <input path="rupeePower/record[1]/retailCIFDetails/title"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TITLE"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/TITLE"/>
         </move>
         <move automap="true">
             <input path="rupeePower/record[1]/retailCIFDetails/firstName"/>
@@ -519,7 +519,7 @@
             </assign>
             <expression>
                 <output path="recordInitiator"/>
-                <code lang="xpath">'rec' + fn:string($charges-index)</code>
+                <code lang="xpath">fn:concat('rec' , fn:string($charges-index))</code>
             </expression>
         </foreach>
         <assign value="false">
@@ -1018,5 +1018,9 @@
                 <output path="."/>
             </assign>
         </if>
+        <move>
+            <input path="rupeePower/record[1]/loanAccountDetails/sanctionReferenceNo"/>
+            <output path="gefuRecordFormat/record[1]/loanAccount/sanctionReferenceNo"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
