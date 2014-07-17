@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customer-key.xsd" var="var"/>
+    <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,CUSTOMER_ADDRESSES))" var="FINACLE"/>
+    <output path="/customer-address.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="fetchCustomerAddress_From_Finacle">
+        <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/CUSTOMER_ADDRESSES/CIF_ID,CUSTOM/CUSTOMER_ADDRESSES/ADDRESSCATEGORY,CUSTOM/CUSTOMER_ADDRESSES/ADDRESS,CUSTOM/CUSTOMER_ADDRESSES/CITY,CUSTOM/CUSTOMER_ADDRESSES/STATE,CUSTOM/CUSTOMER_ADDRESSES/COUNTRY,CUSTOM/CUSTOMER_ADDRESSES/ZIP),db:where('1=1'))" var="dbselect"/>
+        <output path="mb:msg(customer-addresses,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet"/>
+            <output path="customer-addresses"/>
+            <foreach>
+                <input path="."/>
+                <output path="customer-address"/>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/CIF_ID"/>
+                    <output path="cif-id"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/ADDRESSCATEGORY"/>
+                    <output path="addresscategory"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/ADDRESS"/>
+                    <output path="address"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/CITY"/>
+                    <output path="city"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/STATE"/>
+                    <output path="state"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/COUNTRY"/>
+                    <output path="country"/>
+                </move>
+                <move>
+                    <input path="CUSTOM/CUSTOMER_ADDRESSES/ZIP"/>
+                    <output path="zip"/>
+                </move>
+            </foreach>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
