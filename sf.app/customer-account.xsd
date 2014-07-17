@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="customer-account" type="customer-account-type"></xsd:element>
+
+    <xsd:complexType name="customer-account-type">
+    	<xsd:sequence>
+    		<xsd:element name="account-base-sol" type="xsd:string"></xsd:element>
+    		<xsd:element name="account-close-date" type="xsd:date"></xsd:element>
+    		<xsd:element name="account-number" type="xsd:string"></xsd:element>
+    		<xsd:element name="account-sol-description" type="xsd:string"></xsd:element>
+    		<xsd:element name="account-status" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="true"></xsd:element>
+    		<xsd:element name="acct-close-flag" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="true"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+
+</xsd:schema>

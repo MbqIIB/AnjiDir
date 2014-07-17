@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer-address xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="customer-addresses.xsd">
+  <address>address</address>
+  <addresscategory>addresscategory</addresscategory>
+  <cif-id>cif-id</cif-id>
+  <city>city</city>
+  <country>country</country>
+  <state>state</state>
+  <zip>zip</zip>
+</customer-address>
