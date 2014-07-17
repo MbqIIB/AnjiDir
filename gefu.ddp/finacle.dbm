@@ -251,7 +251,7 @@
     </columns>
   </OracleModel:OracleTable>
   <OracleModel:OracleTable xmi:id="_h0tj0Q3JEeSPFp7Ku1QDag" name="GCT" schema="_uZ7sYPqYEeOX3fIKP4ZLQg">
-    <columns xmi:id="_jwJVwA3JEeSPFp7Ku1QDag" name="DT_CLS_DATE" nullable="false">
+    <columns xmi:id="_jwJVwA3JEeSPFp7Ku1QDag" name="DC_CLS_DATE" nullable="false">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_mCHYYA3JEeSPFp7Ku1QDag" name="DATE" primitiveType="DATE"/>
     </columns>
   </OracleModel:OracleTable>

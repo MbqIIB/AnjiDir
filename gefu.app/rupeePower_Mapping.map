@@ -13,7 +13,7 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
         <input namespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/GCT/DT_CLS_DATE),db:where('1=1'))" var="dbselect"/>
+        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/GCT/DC_CLS_DATE),db:where('1=1'))" var="dbselect"/>
         <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumber"/>
         </output>
@@ -576,21 +576,6 @@
         <assign value="1">
             <output path="gefuRecordFormat/record/loanAccount/loanPeriodDays"/>
         </assign>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
-            <input path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE4"/>
-            <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
-            <param name="piDate" value="$DTCLSDATE4"/>
-        </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
-            <input path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE5"/>
-            <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
-            <param name="piDate" value="$DTCLSDATE5"/>
-        </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
-            <input path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE6"/>
-            <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
-            <param name="piDate" value="$DTCLSDATE6"/>
-        </customFunction>
         <assign value="1307">
             <output path="gefuRecordFormat/record/loanAccount/freeText10"/>
         </assign>
@@ -803,7 +788,7 @@
         </if>
         <if>
             <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_2"/>
-            <input path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE"/>
+            <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DTCLSDATE"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_2"/>
             <test lang="">fn:exists($addressLine1_2)</test>
             <move>
@@ -883,13 +868,6 @@
             <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/accountManagerUserId"/>
         </move>
-        <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
-            <input path="$MessageAssembly/rupeePower/record/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths"/>
-            <input path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE1"/>
-            <output path="gefuRecordFormat/record/loanAccount/expiryDate"/>
-            <param name="piDate" value="$DTCLSDATE1"/>
-            <param name="piMonths" value="$loanPeriodMonths"/>
-        </customFunction>
         <if>
             <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId2"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL2"/>
@@ -1000,7 +978,7 @@
         </move>
         <foreach>
             <input path="$MessageAssembly/rupeePower/record[1]/loanRepaymentDetails/repaymentRecord" var="repaymentRecord"/>
-            <input auxiliary="true" path="$dbselect/ResultSet/CUSTOM/GCT/DT_CLS_DATE" var="DTCLSDATE2"/>
+            <input auxiliary="true" path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DTCLSDATE2"/>
             <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment"/>
             <assign value="M">
                 <output path="eiFrequencyType"/>
@@ -1030,39 +1008,60 @@
                 <output path="recordNumber"/>
                 <code lang="xpath">fn:concat('rec_',fn:string($repaymentRecord-index))</code>
             </expression>
-            <customFunction lang="esql" ref="gefuHelper:getNextInstallmentDate">
-                <input path="$DTCLSDATE2/." var="DTCLSDATE3"/>
+            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+                <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="flowStartDate"/>
-                <param name="piDate" value="$DTCLSDATE3"/>
-                <param name="piMonths" value="$repaymentRecord-index"/>
+                <param name="piDate" value="fn:current-date()"/>
             </customFunction>
         </foreach>
         <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
         </assign>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/BUSSEGEFFDATE"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_1"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/accountOpenDate"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/applicableDate"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/documentDate"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DT_CLS_DATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanDisbursement/disbursement/valueDate"/>
         </move>
+        <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
+            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
+            <output path="gefuRecordFormat/record[1]/loanAccount/expiryDate"/>
+            <param name="piDate" value="fn:current-date()"/>
+            <param name="piMonths" value="$loanPeriodMonths1"/>
+        </customFunction>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE1"/>
+            <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
+            <param name="piDate" value="fn:current-date()"/>
+        </customFunction>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE2"/>
+            <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
+            <param name="piDate" value="fn:current-date()"/>
+        </customFunction>
+        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE3"/>
+            <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
+            <param name="piDate" value="fn:current-date()"/>
+        </customFunction>
     </mappingDeclaration>
 </mappingRoot>
