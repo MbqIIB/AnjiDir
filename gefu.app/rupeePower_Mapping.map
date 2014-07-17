@@ -993,20 +993,8 @@
             <output path="gefuRecordFormat/record[1]/loanAccount/sanctionReferenceNo"/>
         </move>
         <foreach>
-            <input path="rupeePower/record[1]/loanRepaymentDetails/repaymentRecords" var="repaymentRecords"/>
+            <input path="rupeePower/record/loanRepaymentDetails/repaymentRecord" var="repaymentRecord"/>
             <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment"/>
-            <move>
-                <input path="$repaymentRecords/flowId"/>
-                <output path="flowId"/>
-            </move>
-            <move>
-                <input path="$repaymentRecords/noOfDemands"/>
-                <output path="noOfDemands"/>
-            </move>
-            <move>
-                <input path="$repaymentRecords/flowAmount"/>
-                <output path="flowAmount"/>
-            </move>
             <assign value="M">
                 <output path="eiFrequencyType"/>
             </assign>
@@ -1023,6 +1011,22 @@
                 <output path="flowStartDate"/>
                 <param name="piMonths" value="$repaymentRecords-index"/>
             </customFunction>
+            <move>
+                <input path="$repaymentRecord/flowId"/>
+                <output path="flowId"/>
+            </move>
+            <move>
+                <input path="$repaymentRecord/noOfDemands"/>
+                <output path="noOfDemands"/>
+            </move>
+            <move>
+                <input path="$repaymentRecord/flowAmount"/>
+                <output path="flowAmount"/>
+            </move>
+            <expression>
+                <output path="recordNumber"/>
+                <code lang="xpath">fn:concat('rec_',fn:string($repaymentRecord-index))</code>
+            </expression>
         </foreach>
     </mappingDeclaration>
 </mappingRoot>
