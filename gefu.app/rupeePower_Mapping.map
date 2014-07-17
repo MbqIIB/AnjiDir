@@ -1007,10 +1007,6 @@
             <assign value="N">
                 <output path="interestFrequencyHolidayState"/>
             </assign>
-            <customFunction lang="esql" ref="gefuHelper:getNextInstallmentDate">
-                <output path="flowStartDate"/>
-                <param name="piMonths" value="$repaymentRecords-index"/>
-            </customFunction>
             <move>
                 <input path="$repaymentRecord/flowId"/>
                 <output path="flowId"/>
@@ -1027,6 +1023,10 @@
                 <output path="recordNumber"/>
                 <code lang="xpath">fn:concat('rec_',fn:string($repaymentRecord-index))</code>
             </expression>
+            <customFunction lang="esql" ref="gefuHelper:getNextInstallmentDate">
+                <output path="flowStartDate"/>
+                <param name="piMonths" value="$repaymentRecord-index"/>
+            </customFunction>
         </foreach>
     </mappingDeclaration>
 </mappingRoot>
