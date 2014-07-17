@@ -784,18 +784,33 @@
         <assign value="false">
             <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_1"/>
         </assign>
-        <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
-        </assign>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_24"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
+            <test lang="xpath">fn:exists($addressLine1_24)</test>
+            <assign value="true">
+                <output path="."/>
+            </assign>
+        </if>
         <assign value="ADDRESS2">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS2"/>
         </assign>
-        <assign value="FREE_TEXT_FORMAT">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_FORMAT_2"/>
-        </assign>
-        <assign value="IN">
-            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_2"/>
-        </assign>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_25"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_FORMAT_2"/>
+            <test lang="xpath">fn:exists($addressLine1_25)</test>
+            <assign value="FREE_TEXT_FORMAT">
+                <output path="."/>
+            </assign>
+        </if>
+        <if>
+            <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_26"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_2"/>
+            <test lang="xpath">fn:exists($addressLine1_26)</test>
+            <assign value="IN">
+                <output path="."/>
+            </assign>
+        </if>
         <if>
             <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_2"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_2"/>
