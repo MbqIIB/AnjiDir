@@ -766,7 +766,7 @@
         <assign value="FREE_TEXT_FORMAT">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSFORMAT1"/>
         </assign>
-        <assign value="Home">
+        <assign value="Mailing">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE1"/>
         </assign>
         <assign value="IN">
