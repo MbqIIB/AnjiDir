@@ -10,7 +10,7 @@
                                 				                <xsd:element maxOccurs="unbounded" minOccurs="1" name="record">
           <xsd:complexType>
             <xsd:sequence>
-                                          <xsd:element name="referenceNumberRP" minOccurs="0" maxOccurs="1">
+                                          <xsd:element name="referenceNumberRP" minOccurs="1" maxOccurs="1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="25"/>
@@ -1930,35 +1930,41 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-                                                                      <xsd:element name="loanRepaymentDetails">
+              <xsd:element name="loanRepaymentDetails" minOccurs="1" maxOccurs="1">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element name="flowId">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                          <xsd:maxLength value="5"/>
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                                                          <xsd:element name="noOfDemands">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:int">
-                          <xsd:minInclusive value="0"/>
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                                        <xsd:element name="flowAmount">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:decimal">
-                          <xsd:totalDigits value="16"/>
-                          <xsd:fractionDigits value="2"/>
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                                    </xsd:sequence>
-                </xsd:complexType>
+              		<xsd:element name="repaymentRecords" minOccurs="1" maxOccurs="unbounded">
+	                	<xsd:complexType>
+	                  <xsd:sequence>
+	                    <xsd:element name="flowId">
+	                      <xsd:simpleType>
+	                        <xsd:restriction base="xsd:string">
+	                          <xsd:maxLength value="5"/>
+	                        </xsd:restriction>
+	                      </xsd:simpleType>
+	                    </xsd:element>
+	                    <xsd:element name="noOfDemands">
+	                      <xsd:simpleType>
+	                        <xsd:restriction base="xsd:int">
+	                          <xsd:minInclusive value="0"/>
+	                        </xsd:restriction>
+	                      </xsd:simpleType>
+	                    </xsd:element>
+	                    <xsd:element name="flowAmount">
+	                      <xsd:simpleType>
+	                        <xsd:restriction base="xsd:decimal">
+	                          <xsd:totalDigits value="16"/>
+	                          <xsd:fractionDigits value="2"/>
+	                        </xsd:restriction>
+	                      </xsd:simpleType>
+	                    </xsd:element>
+	                  </xsd:sequence>
+	                </xsd:complexType>
+               	</xsd:element>
+	              </xsd:sequence>
+	            </xsd:complexType>
               </xsd:element>
-                                                                      <xsd:element name="loanDisbursementDetails">
+              <xsd:element name="loanDisbursementDetails">
                 <xsd:complexType>
                   <xsd:sequence>
                     <xsd:element name="disbursementAmount">
@@ -1969,14 +1975,14 @@
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                                                          <xsd:element name="creditAccountNumber">
+                    <xsd:element name="creditAccountNumber">
                       <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
                           <xsd:maxLength value="16"/>
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>
-                                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="charges">
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="charges">
                       <xsd:complexType>
                         <xsd:sequence>
                           <xsd:element name="chargeEventTpe">

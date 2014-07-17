@@ -24,6 +24,17 @@ BEGIN
 	RETURN lastInstallmentDate;
 END;
 
+--this method to be used only in the repayments part of the gefu as it is subtracting one from the months supplied
+CREATE FUNCTION getNextInstallmentDate(IN piMonths INTEGER) RETURNS DATE
+BEGIN
+	DECLARE nextInstallmentDate DATE;
+	DECLARE lMonths INTEGER;
+	SET lMonths = piMonths -1;
+	SET nextInstallmentDate = getFlowStartDate();
+	SET nextInstallmentDate = nextInstallmentDate + CAST(piMonths AS INTERVAL MONTH); 
+	RETURN nextInstallmentDate;
+END;
+
 CREATE FUNCTION getDatePart(IN piDate DATE) RETURNS INTEGER
 BEGIN
 	DECLARE lString CHARACTER;

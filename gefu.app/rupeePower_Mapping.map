@@ -543,39 +543,9 @@
         <assign value="true">
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/finalDisbursement"/>
         </assign>
-        <move>
-            <input path="rupeePower/record[1]/loanRepaymentDetails/flowId"/>
-            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/flowId"/>
-        </move>
-        <move>
-            <input path="rupeePower/record[1]/loanRepaymentDetails/noOfDemands"/>
-            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/noOfDemands"/>
-        </move>
-        <move>
-            <input path="rupeePower/record[1]/loanRepaymentDetails/flowAmount"/>
-            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment[1]/flowAmount"/>
-        </move>
         <assign value="{LOANIURNO}">
             <output path="gefuRecordFormat/record/loanRepayment/loan/loanIURNumber"/>
         </assign>
-        <assign value="rec_1">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/recordNumber"/>
-        </assign>
-        <assign value="M">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/eiFrequencyType"/>
-        </assign>
-        <assign value="N">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/eiFrequencyHolidayState"/>
-        </assign>
-        <assign value="M">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/interestFrequencyType"/>
-        </assign>
-        <assign value="N">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/interestFrequencyHolidayState"/>
-        </assign>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
-            <output path="gefuRecordFormat/record/loanRepayment/repayments/repayment/flowStartDate"/>
-        </customFunction>
         <assign value="F">
             <output path="gefuRecordFormat/record/loanAccount/reprisingPlan"/>
         </assign>
@@ -1022,5 +992,37 @@
             <input path="rupeePower/record[1]/loanAccountDetails/sanctionReferenceNo"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/sanctionReferenceNo"/>
         </move>
+        <foreach>
+            <input path="rupeePower/record[1]/loanRepaymentDetails/repaymentRecords" var="repaymentRecords"/>
+            <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment"/>
+            <move>
+                <input path="$repaymentRecords/flowId"/>
+                <output path="flowId"/>
+            </move>
+            <move>
+                <input path="$repaymentRecords/noOfDemands"/>
+                <output path="noOfDemands"/>
+            </move>
+            <move>
+                <input path="$repaymentRecords/flowAmount"/>
+                <output path="flowAmount"/>
+            </move>
+            <assign value="M">
+                <output path="eiFrequencyType"/>
+            </assign>
+            <assign value="N">
+                <output path="eiFrequencyHolidayState"/>
+            </assign>
+            <assign value="M">
+                <output path="interestFrequencyType"/>
+            </assign>
+            <assign value="N">
+                <output path="interestFrequencyHolidayState"/>
+            </assign>
+            <customFunction lang="esql" ref="gefuHelper:getNextInstallmentDate">
+                <output path="flowStartDate"/>
+                <param name="piMonths" value="$repaymentRecords-index"/>
+            </customFunction>
+        </foreach>
     </mappingDeclaration>
 </mappingRoot>
