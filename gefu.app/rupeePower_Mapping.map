@@ -13,7 +13,7 @@
     <mappingDeclaration name="rupeePower_Mapping">
         <input namespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)"/>
         <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
-            <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumber"/>
         </output>
         <move automap="true">
             <input path="Properties/MessageSet"/>
@@ -884,8 +884,8 @@
             </assign>
         </if>
         <move>
-            <input path="rupeePower/record/referenceNumberRP"/>
-            <output path="LocalEnvironment/Variables/referenceNumberRP"/>
+            <input path="rupeePower/record/referenceNumber"/>
+            <output path="LocalEnvironment/Variables/referenceNumber"/>
         </move>
         <move>
             <input path="rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>

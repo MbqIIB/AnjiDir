@@ -10,13 +10,14 @@
                                 				                <xsd:element maxOccurs="unbounded" minOccurs="1" name="record">
           <xsd:complexType>
             <xsd:sequence>
-                                          <xsd:element name="referenceNumberRP" minOccurs="1" maxOccurs="1">
+                                          <xsd:element name="referenceNumber" minOccurs="1" maxOccurs="1">
                 <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="25"/>
-                  </xsd:restriction>
+                	<xsd:restriction base="xsd:string">
+                		<xsd:maxLength value="16" />
+                		<xsd:minLength value="1"></xsd:minLength>
+                	</xsd:restriction>
                 </xsd:simpleType>
-              </xsd:element>
+                                          </xsd:element>
                             <xsd:element minOccurs="1" name="retailCIFDetails">
                 <xsd:complexType>
                   <xsd:sequence>

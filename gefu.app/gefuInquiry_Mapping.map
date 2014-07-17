@@ -4,14 +4,14 @@
     <output path="/gefuInquiryResponse.xsd" var="var1"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="gefuInquiry_Mapping">
-        <input path="$var/mb:msg(referenceNumberRP,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly">
-            <cast path="$MessageAssembly/LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
+        <input path="$var/mb:msg(referenceNumber,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly">
+            <cast path="$MessageAssembly/LocalEnvironment/Variables/any" qualifier="referenceNumber"/>
         </input>
-        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/AT_STEP,RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.ID =  ? ','?'=$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP))" var="dbselect"/>
+        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/AT_STEP,RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.ID =  ? ','?'=$MessageAssembly/LocalEnvironment/Variables/referenceNumber))" var="dbselect"/>
         <output path="$var1/mb:msg(gefuInquiryResponse,assembly,XMLNSC,Properties)"/>
         <select ref="dbselect">
             <input path="$dbselect/ResultSet[1]" var="ResultSet"/>
-            <input path="$MessageAssembly/LocalEnvironment/Variables/referenceNumberRP[1]" var="referenceNumberRP"/>
+            <input path="$MessageAssembly/LocalEnvironment/Variables/referenceNumber[1]" var="referenceNumber"/>
             <output path="gefuInquiryResponse"/>
             <move>
                 <input path="$ResultSet/RR/GEFU_INFILE/STEP1_COMPLETED_AT"/>
@@ -86,7 +86,7 @@
                 </else>
             </condition>
             <move>
-                <input path="$referenceNumberRP/."/>
+                <input path="$referenceNumber/."/>
                 <output path="gefuReferenceNumber"/>
             </move>
         </select>
