@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj16/gefuInquiry.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/gefu.app/icons/full/obj30/gefuInquiry.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="11,243" URLSpecifier="/RP/gefuInqury" parseQueryString="true">
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="11,243" URLSpecifier="/RP/gefuInquiry" parseQueryString="true">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="276,239" mappingExpression="msl://{default}#gefuInquiry_Mapping">
