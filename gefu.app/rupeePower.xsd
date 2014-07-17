@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema version="2" targetNamespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:annotation>
 		
 	</xsd:annotation>
@@ -11,6 +11,9 @@
           <xsd:complexType>
             <xsd:sequence>
                                           <xsd:element name="referenceNumber" minOccurs="1" maxOccurs="1">
+                          <xsd:annotation>
+                		<xsd:documentation>This has to be unique across all the requests made. Maximum 16 characters alphanumeric</xsd:documentation>
+                		</xsd:annotation>
                 <xsd:simpleType>
                 	<xsd:restriction base="xsd:string">
                 		<xsd:maxLength value="16" />
@@ -1935,6 +1938,9 @@
                 <xsd:complexType>
                   <xsd:sequence>
               		<xsd:element name="repaymentRecord" minOccurs="1" maxOccurs="unbounded">
+                      <xsd:annotation>
+                		<xsd:documentation>Making the repayment records unbounded to accomodate other products with multiple records</xsd:documentation>
+                		</xsd:annotation>
 	                	<xsd:complexType>
 	                  <xsd:sequence>
 	                    <xsd:element name="flowId">
