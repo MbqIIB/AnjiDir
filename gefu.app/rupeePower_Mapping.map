@@ -11,7 +11,7 @@
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="rupeePower_Mapping">
-        <input namespace="http://www.quantiguous.com/dfdl/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)"/>
         <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumberRP"/>
         </output>
