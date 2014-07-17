@@ -622,7 +622,7 @@
         <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_LEVEL_PROVISIONING"/>
         </assign>
-        <assign value="0">
+        <assign value="00">
             <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_CALENDAR"/>
         </assign>
         <assign value="INR">
@@ -786,9 +786,9 @@
         </assign>
         <if>
             <input path="rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_24"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
+            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
             <test lang="xpath">fn:exists($addressLine1_24)</test>
-            <assign value="true">
+            <assign value="false">
                 <output path="."/>
             </assign>
         </if>
@@ -843,9 +843,6 @@
                 <output path="."/>
             </assign>
         </if>
-        <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
-        </assign>
         <if>
             <input path="rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo1"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE1"/>
@@ -1043,5 +1040,8 @@
                 <param name="piMonths" value="$repaymentRecord-index"/>
             </customFunction>
         </foreach>
+        <assign value="true">
+            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
+        </assign>
     </mappingDeclaration>
 </mappingRoot>
