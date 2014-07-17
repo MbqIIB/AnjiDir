@@ -769,9 +769,9 @@
         <assign value="Home">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE1"/>
         </assign>
-        <function ref="fn:current-date">
+        <assign value="IN">
             <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_1"/>
-        </function>
+        </assign>
         <function ref="fn:current-date">
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_FROM_1"/>
         </function>
