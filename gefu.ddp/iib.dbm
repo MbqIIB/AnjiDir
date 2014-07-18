@@ -41,7 +41,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_KZDsoAKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
     </columns>
     <columns xmi:id="_fvAzAAKOEeSzlYwcziqlwg" name="STEP1_RESULT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HiRswAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="250"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_HiRswAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
     </columns>
     <columns xmi:id="_f0o54AKOEeSzlYwcziqlwg" name="STEP2_IUR_NUMBER">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_H2GnsAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
@@ -50,7 +50,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_LhJWEAKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
     </columns>
     <columns xmi:id="_f5KNgAKOEeSzlYwcziqlwg" name="STEP2_RESULT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IG9uMAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="250"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IG9uMAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
     </columns>
     <columns xmi:id="_f8lU8AKOEeSzlYwcziqlwg" name="STEP3_IUR_NUMBER">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IWTxwAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
@@ -59,7 +59,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_L9NnAAKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
     </columns>
     <columns xmi:id="_gBPygAKOEeSzlYwcziqlwg" name="STEP3_RESULT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Ik3LIAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="250"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Ik3LIAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
     </columns>
     <columns xmi:id="_gDX5cAKOEeSzlYwcziqlwg" name="STEP4_IUR_NUMBER">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_IyleEAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
@@ -68,7 +68,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_MYNg8AKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
     </columns>
     <columns xmi:id="_gIUq4AKOEeSzlYwcziqlwg" name="STEP4_RESULT">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_JBdnkAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="250"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_JBdnkAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
     </columns>
     <columns xmi:id="_3R4AYAKOEeSzlYwcziqlwg" name="STEP5_IUR_NUMBER">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Jat1EAKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="50"/>
@@ -77,7 +77,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_M2L2YAKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
     </columns>
     <columns xmi:id="_3Vi_cAKOEeSzlYwcziqlwg" name="STEP5_RESULT" defaultValue="">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_J0eY4AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="250"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_J0eY4AKPEeSzlYwcziqlwg" name="VARCHAR2" primitiveType="CHARACTER_VARYING" length="1000"/>
     </columns>
     <columns xmi:id="_XEIREAKPEeSzlYwcziqlwg" name="CREATED_AT" nullable="false">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_ZxAuEAKPEeSzlYwcziqlwg" name="DATE" primitiveType="DATE"/>
