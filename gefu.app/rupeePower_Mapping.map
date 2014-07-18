@@ -1011,7 +1011,7 @@
             <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="flowStartDate"/>
-                <param name="piDate" value="fn:current-date()"/>
+                <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
         </foreach>
         <assign value="true">
@@ -1045,23 +1045,23 @@
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
             <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/expiryDate"/>
-            <param name="piDate" value="fn:current-date()"/>
+            <param name="piDate" value="$DCCLSDATE"/>
             <param name="piMonths" value="$loanPeriodMonths1"/>
         </customFunction>
         <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE1"/>
             <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
-            <param name="piDate" value="fn:current-date()"/>
+            <param name="piDate" value="$DCCLSDATE1"/>
         </customFunction>
         <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE2"/>
             <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
-            <param name="piDate" value="fn:current-date()"/>
+            <param name="piDate" value="$DCCLSDATE2"/>
         </customFunction>
         <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE3"/>
             <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
-            <param name="piDate" value="fn:current-date()"/>
+            <param name="piDate" value="$DCCLSDATE3"/>
         </customFunction>
     </mappingDeclaration>
 </mappingRoot>

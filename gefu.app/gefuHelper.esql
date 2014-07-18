@@ -1,12 +1,15 @@
-CREATE FUNCTION getFlowStartDate(IN piDate DATE) RETURNS DATE
+CREATE FUNCTION getFlowStartDate(IN piDate TIMESTAMP) RETURNS DATE
 BEGIN
 	DECLARE flowStartDate DATE;
 	DECLARE datePart INTEGER;
+	DECLARE lDate DATE;
+	SET lDate = CAST(piDate AS DATE FORMAT 'dd-MM-YYYY');
 	
-	SET datePart = getDatePart(piDate);
+	
+	SET datePart = getDatePart(lDate);
 
 	IF (datePart>=1 AND datePart<=20) THEN
-		SET flowStartDate = piDate + CAST(1 AS INTERVAL MONTH); 
+		SET flowStartDate = lDate + CAST(1 AS INTERVAL MONTH); 
 		SET flowStartDate = changeDatePart(flowStartDate, '05');
 	ELSE
 		SET flowStartDate = piDate + CAST(2 AS INTERVAL MONTH); 
@@ -16,7 +19,7 @@ BEGIN
 	RETURN flowStartDate;
 END;
 
-CREATE FUNCTION getLastInstallmentDate(IN piDate DATE,IN piMonths INTEGER) RETURNS DATE
+CREATE FUNCTION getLastInstallmentDate(IN piDate TIMESTAMP,IN piMonths INTEGER) RETURNS DATE
 BEGIN
 	DECLARE lastInstallmentDate DATE;
 	SET lastInstallmentDate = getFlowStartDate(piDate);
@@ -25,7 +28,7 @@ BEGIN
 END;
 
 --this method to be used only in the repayments part of the gefu as it is subtracting one from the months supplied
-CREATE FUNCTION getNextInstallmentDate(IN piDate DATE,IN piMonths INTEGER) RETURNS DATE
+CREATE FUNCTION getNextInstallmentDate(IN piDate TIMESTAMP,IN piMonths INTEGER) RETURNS DATE
 BEGIN
 	DECLARE nextInstallmentDate DATE;
 	DECLARE lMonths INTEGER;
