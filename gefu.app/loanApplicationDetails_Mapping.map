@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input namespace="http://www.quantiguous.com/dfdl/rupeePower.xsd" path="/rupeePower.xsd" var="var"/>
+    <input namespace="http://www.quantiguous.com/xmlnsc/loanApplicationDetails.xsd" path="/loanApplicationDetails.xsd" var="var"/>
     <input path="/localEnvironmentVariables.xsd" var="var1"/>
     <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,GCT))" var="FINACLE"/>
     <output path="/gefuRecordFomat.xsd"/>
@@ -11,8 +11,8 @@
         <namespace kind="extension" prefix="gefuHelper" uri="/gefuHelper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
-    <mappingDeclaration name="rupeePower_Mapping">
-        <input namespace="http://www.quantiguous.com/xmlnsc/rupeePower.xsd" path="$var/mb:msg(rupeePower,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+    <mappingDeclaration name="loanApplicationDetails_Mapping">
+        <input namespace="http://www.quantiguous.com/xmlnsc/loanApplicationDetails.xsd" path="$var/mb:msg(loanApplicationDetails,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
         <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/GCT/DC_CLS_DATE),db:where('1=1'))" var="dbselect"/>
         <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
             <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumber"/>
@@ -106,403 +106,403 @@
             <output path="Properties/IdentityMappedIssuedBy"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/gender"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/gender"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/GENDER"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/title"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/title"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TITLE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/firstName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/firstName"/>
             <output path="gefuRecordFormat/record/retailCustomer/FIRSTNAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/middleName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/middleName"/>
             <output path="gefuRecordFormat/record/retailCustomer/MIDDLENAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/lastName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/lastName"/>
             <output path="gefuRecordFormat/record/retailCustomer/LASTNAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/shortName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/shortName"/>
             <output path="gefuRecordFormat/record/retailCustomer/SHORTNAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/fullName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/fullName"/>
             <output path="gefuRecordFormat/record/retailCustomer/FULLNAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/channelRequestName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/channelRequestName"/>
             <output path="gefuRecordFormat/record/retailCustomer/CHANNEL_REQUEST_NAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/dateOfBirth"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/dateOfBirth"/>
             <output path="gefuRecordFormat/record/retailCustomer/DATE_OF_BIRTH"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/staffIndicator"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/staffIndicator"/>
             <output path="gefuRecordFormat/record/retailCustomer/STAFF_INDICATOR"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/staffId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/staffId"/>
             <output path="gefuRecordFormat/record/retailCustomer/STAFF_ID"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/motherMaidenName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/motherMaidenName"/>
             <output path="gefuRecordFormat/record/retailCustomer/MOTHER_MAIDEN_NAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/primarySolId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/primarySolId"/>
             <output path="gefuRecordFormat/record/retailCustomer/PRIMARY_SOL_ID"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/segment"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/segment"/>
             <output path="gefuRecordFormat/record/retailCustomer/SEGMENT"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/subSegment"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/subSegment"/>
             <output path="gefuRecordFormat/record/retailCustomer/SUBSEGMENT"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/community"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/community"/>
             <output path="gefuRecordFormat/record/retailCustomer/COMMUNITY"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/creditBureauScore"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/creditBureauScore"/>
             <output path="gefuRecordFormat/record/retailCustomer/CREDIT_BUREAU_SCORE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/constitutionCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/constitutionCode"/>
             <output path="gefuRecordFormat/record/retailCustomer/CONSTITUTION_CODE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/primaryRMId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/primaryRMId"/>
             <output path="gefuRecordFormat/record/retailCustomer/PRIMARYRMID"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/relationshipStartDate"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/relationshipStartDate"/>
             <output path="gefuRecordFormat/record/retailCustomer/RELATIONSHIP_START_DATE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/nationality"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/nationality"/>
             <output path="gefuRecordFormat/record/retailCustomer/NATIONALITY"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/maritalStatus"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/maritalStatus"/>
             <output path="gefuRecordFormat/record/retailCustomer/MARITAL_STATUS"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/qualification"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/qualification"/>
             <output path="gefuRecordFormat/record/retailCustomer/QUALIFICATION"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employmentStatus"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employmentStatus"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_STATUS"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/sourceOfIncome"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/sourceOfIncome"/>
             <output path="gefuRecordFormat/record/retailCustomer/SOURCE_OF_INCOME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/occupation"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/occupation"/>
             <output path="gefuRecordFormat/record/retailCustomer/OCCUPATION"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerName"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_NAME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/ifSalariedTypeOfCompany"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/ifSalariedTypeOfCompany"/>
             <output path="gefuRecordFormat/record/retailCustomer/IF_SALARIED_TYPE_OF_COMPANY"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employeeDesignation"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employeeDesignation"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYEE_DESIGNATION"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/industryType"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/industryType"/>
             <output path="gefuRecordFormat/record/retailCustomer/INDUSTRY_TYPE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerAddressLine1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerAddressLine1"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerAddressLine2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerAddressLine2"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerPostalCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerPostalCode"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_POSTAL_CODE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerPhoneNumber"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerPhoneNumber"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_PHONE_NUMBER"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employmentType"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employmentType"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_TYPE"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/grossIncome"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/grossIncome"/>
             <output path="gefuRecordFormat/record/retailCustomer/GROSSINCOME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/totalHouseholdIncome"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/totalHouseholdIncome"/>
             <output path="gefuRecordFormat/record/retailCustomer/TOTAL_HOUSEHOLD_INCOME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/monthlyDisposableIncome"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/monthlyDisposableIncome"/>
             <output path="gefuRecordFormat/record/retailCustomer/MONTHLY_DISPOSABLE_INCOME"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/bsrTypeOfOrganisation"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/bsrTypeOfOrganisation"/>
             <output path="gefuRecordFormat/record/retailCustomer/BSR_TYPE_OF_ORGANISATION"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/dsaId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/dsaId"/>
             <output path="gefuRecordFormat/record/retailCustomer/DSAID"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/minorityCommunity"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/minorityCommunity"/>
             <output path="gefuRecordFormat/record/retailCustomer/MINORITY_COMMUNITY"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/panNumber"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/panNumber"/>
             <output path="gefuRecordFormat/record/retailCustomer/PAN_NUMBER"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/scSt"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/scSt"/>
             <output path="gefuRecordFormat/record/retailCustomer/SC_ST"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/sourcingId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/sourcingId"/>
             <output path="gefuRecordFormat/record/retailCustomer/SOURCING_ID"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/specialCategory"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/specialCategory"/>
             <output path="gefuRecordFormat/record/retailCustomer/SPECIAL_CATEGORY"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employerId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employerId"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ID"/>
         </move>
         <move>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/employeeId" var="employeeId2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/employeeId" var="employeeId2"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/employeeId"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCode1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCode1"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCodeDesc1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCodeDesc1"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/uniqueId1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/uniqueId1"/>
             <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType2"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentTypeDesc2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentTypeDesc2"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCode2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCode2"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCodeDesc2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCodeDesc2"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/uniqueId2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/uniqueId2"/>
             <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType3"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentTypeDesc3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentTypeDesc3"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCode3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCode3"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentCodeDesc3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentCodeDesc3"/>
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/uniqueId3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/uniqueId3"/>
             <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_1"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSLINE11"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine2_1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine2_1"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine3_1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine3_1"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/city1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/city1"/>
             <output path="gefuRecordFormat/record/retailCustomer/CITY_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/state1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/state1"/>
             <output path="gefuRecordFormat/record/retailCustomer/STATE_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/postalCode1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/postalCode1"/>
             <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressType2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressType2"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE1_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine2_2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine2_2"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine3_2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine3_2"/>
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/city2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/city2"/>
             <output path="gefuRecordFormat/record/retailCustomer/CITY_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/state2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/state2"/>
             <output path="gefuRecordFormat/record/retailCustomer/STATE_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/postalCode2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/postalCode2"/>
             <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/stdCode1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/stdCode1"/>
             <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo1"/>
             <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/extensionNo1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/extensionNo1"/>
             <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/stdCode2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/stdCode2"/>
             <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo2"/>
             <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/extensionNo2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/extensionNo2"/>
             <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/stdCode3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/stdCode3"/>
             <output path="gefuRecordFormat/record/retailCustomer/STDCODE_3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo3"/>
             <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/extensionNo3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/extensionNo3"/>
             <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_3"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId1"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMAILID_1"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId2"/>
             <output path="gefuRecordFormat/record/retailCustomer/EMAIL_ID_2"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/solId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/solId"/>
             <output path="gefuRecordFormat/record/loanAccount/solId"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/schemeCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/schemeCode"/>
             <output path="gefuRecordFormat/record/loanAccount/schemeCode"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/employeeName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/employeeName"/>
             <output path="gefuRecordFormat/record/loanAccount/employeeName"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/sanctionLimit"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/sanctionLimit"/>
             <output path="gefuRecordFormat/record/loanAccount/sanctionLimit"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/limitSanctionDate"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/limitSanctionDate"/>
             <output path="gefuRecordFormat/record/loanAccount/limitSanctionDate"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/sanctionLevelCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/sanctionLevelCode"/>
             <output path="gefuRecordFormat/record/loanAccount/sanctionLevelCode"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/loanAmount"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/loanAmount"/>
             <output path="gefuRecordFormat/record/loanAccount/loanAmount"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/loanPeriodMonths"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/loanPeriodMonths"/>
             <output path="gefuRecordFormat/record/loanAccount/loanPeriodMonths"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/occupationCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/occupationCode"/>
             <output path="gefuRecordFormat/record/loanAccount/occupationCode"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/purposeofAdvance"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/purposeofAdvance"/>
             <output path="gefuRecordFormat/record/loanAccount/purposeofAdvance"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/modeOfAdvance"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/modeOfAdvance"/>
             <output path="gefuRecordFormat/record/loanAccount/modeOfAdvance"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/advanceType"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/advanceType"/>
             <output path="gefuRecordFormat/record/loanAccount/advanceType"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/freeCode8"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/freeCode8"/>
             <output path="gefuRecordFormat/record/loanAccount/freeCode8"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanDisbursementDetails/disbursementAmount"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanDisbursementDetails/disbursementAmount"/>
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/disbursementAmount"/>
         </move>
         <move automap="true">
-            <input path="$MessageAssembly/rupeePower/record[1]/loanDisbursementDetails/creditAccountNumber"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanDisbursementDetails/creditAccountNumber"/>
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/creditAccountNumber"/>
         </move>
         <foreach>
-            <input path="$MessageAssembly/rupeePower/record/loanDisbursementDetails/charges" var="charges"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record/loanDisbursementDetails/charges" var="charges"/>
             <output path="gefuRecordFormat/record/loanDisbursement/charges"/>
             <move>
                 <input path="$charges/chargeEventTpe"/>
@@ -567,7 +567,7 @@
             <output path="gefuRecordFormat/record/loanAccount/drawingPowerPercentage"/>
         </assign>
         <move>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/sanctionLevelCode"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/sanctionLevelCode"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/sanctionAuthorisationCode"/>
         </move>
         <assign value="01">
@@ -673,7 +673,7 @@
             <output path="gefuRecordFormat/record/retailCustomer/WAP_BANKING"/>
         </assign>
         <move>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/employeeId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/employeeId"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/EMPLOYEE_ID"/>
         </move>
         <assign value="INR">
@@ -701,7 +701,7 @@
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT2"/>
         </assign>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType2" var="documentType2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType2" var="documentType2"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED2"/>
             <test lang="xpath">fn:exists($documentType2)</test>
             <assign value="Y">
@@ -709,7 +709,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType2" var="documentType21"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType2" var="documentType21"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG2"/>
             <test lang="">fn:exists($documentType21)</test>
             <assign value="false">
@@ -720,7 +720,7 @@
             <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT3"/>
         </assign>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType3" var="documentType3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType3" var="documentType3"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED3"/>
             <test lang="">fn:exists($documentType3)</test>
             <assign value="false">
@@ -728,7 +728,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/documentType3" var="documentType31"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/documentType3" var="documentType31"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG3"/>
             <test lang="xpath">fn:exists($documentType31)</test>
             <assign value="false">
@@ -757,7 +757,7 @@
             <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_1"/>
         </assign>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_24"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_24"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
             <test lang="xpath">fn:exists($addressLine1_24)</test>
             <assign value="false">
@@ -768,7 +768,7 @@
             <output path="gefuRecordFormat/record/retailCustomer/ADDRESS2"/>
         </assign>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_25"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_25"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_FORMAT_2"/>
             <test lang="xpath">fn:exists($addressLine1_25)</test>
             <assign value="FREE_TEXT_FORMAT">
@@ -776,7 +776,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_26"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_26"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_2"/>
             <test lang="xpath">fn:exists($addressLine1_26)</test>
             <assign value="IN">
@@ -784,7 +784,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_2"/>
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DTCLSDATE"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_2"/>
             <test lang="">fn:exists($addressLine1_2)</test>
@@ -794,7 +794,7 @@
             </move>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_21"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_21"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_TILL_2"/>
             <test lang="">fn:exists($addressLine1_21)</test>
             <assign value="2099-12-31">
@@ -802,7 +802,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_22"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_22"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/LAST_UPDATED_DATE_2"/>
             <test lang="">fn:exists($addressLine1_22)</test>
             <assign value="2099-12-31">
@@ -810,7 +810,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_23"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/addressLine1_2" var="addressLine1_23"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/HOLD_MAIL_INDICATOR_2"/>
             <test lang="">fn:exists($addressLine1_23)</test>
             <assign value="false">
@@ -818,7 +818,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo1" var="phoneNo1"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE1"/>
             <test lang="xpath">fn:exists($phoneNo1)</test>
             <assign value="PHONE1">
@@ -826,7 +826,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo11"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo1" var="phoneNo11"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_1"/>
             <test lang="xpath">fn:exists($phoneNo11)</test>
             <assign value="CELLPH">
@@ -834,7 +834,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo12"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo1" var="phoneNo12"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_1"/>
             <test lang="xpath">fn:exists($phoneNo12)</test>
             <assign value="91">
@@ -842,7 +842,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo1" var="phoneNo13"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo1" var="phoneNo13"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE1"/>
             <test lang="xpath">fn:exists($phoneNo13)</test>
             <assign value="true">
@@ -850,7 +850,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo2" var="phoneNo2"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE2"/>
             <test lang="xpath">fn:exists($phoneNo2)</test>
             <assign value="PHONE2">
@@ -858,15 +858,15 @@
             </assign>
         </if>
         <move>
-            <input path="$MessageAssembly/rupeePower/record/referenceNumber"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record/referenceNumber"/>
             <output path="LocalEnvironment/Variables/referenceNumber"/>
         </move>
         <move>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/accountManagerUserId"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/accountManagerUserId"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/accountManagerUserId"/>
         </move>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId2"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId2" var="emailId2"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL2"/>
             <test lang="xpath">fn:exists($emailId2)</test>
             <assign value="false">
@@ -874,7 +874,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId12"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId1" var="emailId12"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL1"/>
             <test lang="xpath">fn:exists($emailId12)</test>
             <assign value="true">
@@ -882,7 +882,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId21"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId2" var="emailId21"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE2"/>
             <test lang="xpath">fn:exists($emailId21)</test>
             <assign value="WORKEML">
@@ -890,7 +890,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId2" var="emailId22"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId2" var="emailId22"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_2"/>
             <test lang="xpath">fn:exists($emailId22)</test>
             <assign value="EMAIL2">
@@ -898,7 +898,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId11"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId1" var="emailId11"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE1"/>
             <test lang="xpath">fn:exists($emailId11)</test>
             <assign value="HOMEEML">
@@ -906,7 +906,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/emailId1" var="emailId1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/emailId1" var="emailId1"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_1"/>
             <test lang="xpath">fn:exists($emailId1)</test>
             <assign value="EMAIL1">
@@ -914,7 +914,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo33"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo3" var="phoneNo33"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE3"/>
             <test lang="xpath">fn:exists($phoneNo33)</test>
             <assign value="false">
@@ -922,7 +922,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo32"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo3" var="phoneNo32"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_3"/>
             <test lang="xpath">fn:exists($phoneNo32)</test>
             <assign value="91">
@@ -930,7 +930,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo31"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo3" var="phoneNo31"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_3"/>
             <test lang="xpath">fn:exists($phoneNo31)</test>
             <assign value="WORKPH1">
@@ -938,7 +938,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo3" var="phoneNo3"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo3" var="phoneNo3"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE3"/>
             <test lang="xpath">fn:exists($phoneNo3)</test>
             <assign value="PHONE3">
@@ -946,7 +946,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo21"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo2" var="phoneNo21"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE2"/>
             <test lang="xpath">fn:exists($phoneNo21)</test>
             <assign value="false">
@@ -954,7 +954,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo22"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo2" var="phoneNo22"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_2"/>
             <test lang="xpath">fn:exists($phoneNo22)</test>
             <assign value="91">
@@ -962,7 +962,7 @@
             </assign>
         </if>
         <if>
-            <input path="$MessageAssembly/rupeePower/record[1]/retailCIFDetails/phoneNo2" var="phoneNo23"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/retailCIFDetails/phoneNo2" var="phoneNo23"/>
             <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_2"/>
             <test lang="xpath">fn:exists($phoneNo23)</test>
             <assign value="HOMEPH1">
@@ -970,11 +970,11 @@
             </assign>
         </if>
         <move>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/sanctionReferenceNo"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/sanctionReferenceNo"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/sanctionReferenceNo"/>
         </move>
         <foreach>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanRepaymentDetails/repaymentRecord" var="repaymentRecord"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanRepaymentDetails/repaymentRecord" var="repaymentRecord"/>
             <input auxiliary="true" path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DTCLSDATE2"/>
             <output path="gefuRecordFormat/record[1]/loanRepayment/repayments/repayment"/>
             <assign value="M">
@@ -1060,7 +1060,7 @@
         </move>
         <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
-            <input path="$MessageAssembly/rupeePower/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/expiryDate"/>
             <param name="piDate" value="$DCCLSDATE"/>
             <param name="piMonths" value="$loanPeriodMonths1"/>
