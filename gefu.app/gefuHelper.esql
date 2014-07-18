@@ -55,7 +55,7 @@ BEGIN
 	DECLARE datePart INTEGER;
 	DECLARE lDate DATE;
 	
-	SET lDate = CAST(piDate AS DATE FORMAT 'dd-MM-YYYY');
+	SET lDate = getFlowStartDate(piDate);
 	SET lString = CAST(lDate AS CHARACTER FORMAT 'dd-MM-YYYY');
 	SET lString = SUBSTRING(lString BEFORE '-');
 	SET datePart = CAST(lString AS INTEGER);
