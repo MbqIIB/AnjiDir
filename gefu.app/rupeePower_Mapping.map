@@ -579,9 +579,6 @@
         <assign value="1307">
             <output path="gefuRecordFormat/record/loanAccount/freeText10"/>
         </assign>
-        <assign value="{LOANAC}">
-            <output path="gefuRecordFormat/record/loanAccount/forAcidNo"/>
-        </assign>
         <assign value="true">
             <output path="gefuRecordFormat/record/loanAccount/eiSchemeFlag"/>
         </assign>
@@ -1011,6 +1008,26 @@
             <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="flowStartDate"/>
+                <param name="piDate" value="$DTCLSDATE2"/>
+            </customFunction>
+            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+                <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
+                <output path="nextDemandDate"/>
+                <param name="piDate" value="$DTCLSDATE2"/>
+            </customFunction>
+            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+                <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
+                <output path="nextInterestDemandDate"/>
+                <param name="piDate" value="$DTCLSDATE2"/>
+            </customFunction>
+            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+                <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
+                <output path="eiFrequencyStartDate"/>
+                <param name="piDate" value="$DTCLSDATE2"/>
+            </customFunction>
+            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+                <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
+                <output path="interestFrequencyStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
         </foreach>
