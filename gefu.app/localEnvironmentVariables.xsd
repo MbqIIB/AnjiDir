@@ -3,5 +3,5 @@
 	<xsd:element name="serializedRecord" type="xsd:string"/>
 	<xsd:element name="serializedRecordCIF" type="xsd:string"/>
 	<xsd:element name="uniqueRefNum" type="xsd:string"/>
-	<xsd:element name="referenceNumberRP" type="xsd:string"/>
+	<xsd:element name="referenceNumber" type="xsd:string"/>
 </xsd:schema>

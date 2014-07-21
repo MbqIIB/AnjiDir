@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="loanDisbursalToGanaseva">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
+																					<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL_LOANID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL_DISBURSAL_ID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element dfdl:textNumberPattern="#0.###" name="AMOUNT_DISBURSED">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="4"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="DISBURSAL_DATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="INSTALLMENT_START_DATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALSAVINGACCNO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PAYMENTMODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BCPARTNERID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="25"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+																																										<xsd:element dfdl:textNumberPattern="#0.###" name="TARGET_EMI">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="4"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>

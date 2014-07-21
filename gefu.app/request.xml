@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rupeePower xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rupeePower.xsd">
   <record>
-    <referenceNumberRP>123123123123</referenceNumberRP>
+    <referenceNumber>123123123123</referenceNumber>
     <retailCIFDetails>
       <gender>F</gender>
       <title>MRS.</title>

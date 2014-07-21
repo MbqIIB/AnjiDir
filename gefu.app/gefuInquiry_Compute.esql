@@ -20,6 +20,6 @@ CREATE COMPUTE MODULE gefuInquiry_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
-		SET InputLocalEnvironment.Variables.referenceNumberRP = InputLocalEnvironment.HTTP.Input.QueryString.referenceNumberRP;
+		SET InputLocalEnvironment.Variables.referenceNumber = InputLocalEnvironment.HTTP.Input.QueryString.referenceNumber;
 	END;
 END MODULE;
