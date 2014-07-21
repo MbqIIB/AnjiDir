@@ -11,8 +11,10 @@
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:element>
-				<xsd:element name="account-number" type="xsd:string"/>
-				<xsd:element name="cif-id" type="xsd:string"/>
+				<xsd:choice>
+					<xsd:element name="account-number" type="xsd:string"/>
+					<xsd:element name="cif-id" type="xsd:string"/>
+				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

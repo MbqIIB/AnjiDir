@@ -29,7 +29,7 @@ CREATE COMPUTE MODULE findAccount_Compute
 		SET OutputRoot.XMLNSC."customer-key"."account-type" = LOWER(LEFT(pathInURI, P-1));
 		SET OutputRoot.XMLNSC."customer-key"."account-number" = SUBSTRING(pathInURI FROM P + 1);
 		
-		SET OutputLocalEnvironment.Destination.RouterList.DestinationData = OutputRoot.XMLNSC."customer-key"."account-type";
+		SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelName = OutputRoot.XMLNSC."customer-key"."account-type";
 	END;
 	
 	

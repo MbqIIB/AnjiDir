@@ -36,7 +36,7 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="546,302" mappingExpression="msl://{default}#fetchAccountDetails_From_Finacle">
         <translation xmi:type="utility:ConstantString" string="find in finacle"/>
       </nodes>
-      <nodes xmi:type="ComIbmValidate.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="316,203" domain="XMLNSC">
+      <nodes xmi:type="ComIbmValidate.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="316,203" domain="XMLNSC" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="Validate Request"/>
       </nodes>
       <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="454,207">
