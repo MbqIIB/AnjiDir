@@ -15,7 +15,7 @@
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="767,340">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="539,434" mappingExpression="msl://{default}#fetchAccountAddress_From_Finacle">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="539,434" mappingExpression="msl://{default}#fetchAccountDetails_From_Ganaseva">
         <translation xmi:type="utility:ConstantString" string="find in ganaseva"/>
       </nodes>
       <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="170,86">

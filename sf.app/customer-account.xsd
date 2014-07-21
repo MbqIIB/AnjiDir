@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <xsd:element name="customer-account" type="customer-account-type"></xsd:element>
 
    <xsd:complexType name="customer-account-type">

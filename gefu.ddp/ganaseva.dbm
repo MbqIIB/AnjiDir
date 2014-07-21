@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
 <xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore" xmlns:SQLTables="http:///org/eclipse/datatools/modelbase/sql/tables.ecore">
-  <SQLSchema:Database xmi:id="_79USsBCuEeS6BqAOuK3k2g" name="ganaseva" vendor="SQL Server" version="2008" schemas="_7_W6EBCuEeS6BqAOuK3k2g">
+  <SQLSchema:Database xmi:id="_79USsBCuEeS6BqAOuK3k2g" name="GANASEVA" vendor="SQL Server" version="2008" schemas="_7_W6EBCuEeS6BqAOuK3k2g">
     <eAnnotations xmi:id="_79USsRCuEeS6BqAOuK3k2g" source="ConnectionURI">
       <details xmi:id="_79USshCuEeS6BqAOuK3k2g" key="ConnectionKey" value="ganaseva_uat"/>
     </eAnnotations>

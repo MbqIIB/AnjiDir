@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customer-key.xsd" var="var"/>
+    <input path="db:database(/ganaseva.dbm,GANASEVA,db:schema-tables(dbo,CUSTOMER_ACCOUNTS))" var="ganaseva"/>
+    <output path="/customer-account.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="fetchAccountDetails_From_Ganaseva">
+        <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$ganaseva/db:select(fn:false(),ResultSet(dbo/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER,dbo/CUSTOMER_ACCOUNTS/NAME,dbo/CUSTOMER_ACCOUNTS/CIF_ID,dbo/CUSTOMER_ACCOUNTS/EMAIL_ID,dbo/CUSTOMER_ACCOUNTS/MOBILE_NO,dbo/CUSTOMER_ACCOUNTS/SEGMENT,dbo/CUSTOMER_ACCOUNTS/RM_ID,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,dbo/CUSTOMER_ACCOUNTS/ADDRESS,dbo/CUSTOMER_ACCOUNTS/CITY,dbo/CUSTOMER_ACCOUNTS/STATE,dbo/CUSTOMER_ACCOUNTS/COUNTRY,dbo/CUSTOMER_ACCOUNTS/PIN,dbo/CUSTOMER_ACCOUNTS/SCHM_CODE,dbo/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION),db:where('dbo.CUSTOMER_ACCOUNTS.ACCOUNT_NUMBER =  ?','?'=$MessageAssembly/customer-key/account-number))" var="dbselect"/>
+        <output path="mb:msg(customer-account,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet[1]"/>
+            <output path="customer-account"/>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER"/>
+                <output path="account-number"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/NAME"/>
+                <output path="name"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/CIF_ID"/>
+                <output path="cif-id"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/EMAIL_ID"/>
+                <output path="email-id"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/MOBILE_NO"/>
+                <output path="mobile-no"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/SEGMENT"/>
+                <output path="segment"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/RM_ID"/>
+                <output path="rm-id"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL"/>
+                <output path="account-base-sol"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION"/>
+                <output path="account-sol-description"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/ADDRESS"/>
+                <output path="address"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/CITY"/>
+                <output path="city"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/STATE"/>
+                <output path="state"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/COUNTRY"/>
+                <output path="country"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/PIN"/>
+                <output path="pin"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/SCHM_CODE"/>
+                <output path="schm-code"/>
+            </move>
+            <move automap="true">
+                <input path="dbo/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION"/>
+                <output path="scheme-description"/>
+            </move>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
