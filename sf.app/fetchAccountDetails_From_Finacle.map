@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customer-key.xsd" var="var"/>
+    <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,CUSTOMER_ACCOUNTS))" var="FINACLE"/>
+    <output path="/customer-account.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="fetchAccountDetails_From_Finacle">
+        <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$FINACLE/db:select(fn:true(),ResultSet(CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER,CUSTOM/CUSTOMER_ACCOUNTS/NAME,CUSTOM/CUSTOMER_ACCOUNTS/CIF_ID,CUSTOM/CUSTOMER_ACCOUNTS/EMAIL_ID,CUSTOM/CUSTOMER_ACCOUNTS/MOBILE_NO,CUSTOM/CUSTOMER_ACCOUNTS/SEGMENT,CUSTOM/CUSTOMER_ACCOUNTS/SUB_SEGMENT,CUSTOM/CUSTOMER_ACCOUNTS/RM_ID,CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL,CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,CUSTOM/CUSTOMER_ACCOUNTS/PAN,CUSTOM/CUSTOMER_ACCOUNTS/ADDRESS,CUSTOM/CUSTOMER_ACCOUNTS/CITY_CODE,CUSTOM/CUSTOMER_ACCOUNTS/CITY,CUSTOM/CUSTOMER_ACCOUNTS/STATE_CODE,CUSTOM/CUSTOMER_ACCOUNTS/STATE,CUSTOM/CUSTOMER_ACCOUNTS/COUNTRY_CODE,CUSTOM/CUSTOMER_ACCOUNTS/COUNTRY,CUSTOM/CUSTOMER_ACCOUNTS/PIN,CUSTOM/CUSTOMER_ACCOUNTS/ACCT_STATUS,CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_STATUS,CUSTOM/CUSTOMER_ACCOUNTS/FREZ_CODE,CUSTOM/CUSTOMER_ACCOUNTS/FREEZ_STATUS,CUSTOM/CUSTOMER_ACCOUNTS/ACCT_CLOSE_FLAG,CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_CLOSE_DATE,CUSTOM/CUSTOMER_ACCOUNTS/MODE_OF_OPER_CODE,CUSTOM/CUSTOMER_ACCOUNTS/MODE_OF_OPERATION,CUSTOM/CUSTOMER_ACCOUNTS/DSB_REGISTRATION_FLAG,CUSTOM/CUSTOMER_ACCOUNTS/SCHM_CODE,CUSTOM/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION,CUSTOM/CUSTOMER_ACCOUNTS/MIN_CASH_PKUP_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_PKUP_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MIN_CASH_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_STP_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MIN_DD_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MAX_DD_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/MAX_DD_STP_DEL_AMT,CUSTOM/CUSTOMER_ACCOUNTS/SEGMENT_PRIORITY,CUSTOM/CUSTOMER_ACCOUNTS/SCHEME_PRIORITY),db:where('CUSTOM.CUSTOMER_ACCOUNTS.ACCOUNT_NUMBER = ?','?'=$MessageAssembly/customer-key/account-number))" var="dbselect"/>
+        <output path="mb:msg(customer-account,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet[1]"/>
+            <output path="customer-account"/>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER" var="ACCOUNTNUMBER"/>
+                <output path="account-number"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/NAME"/>
+                <output path="name"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/CIF_ID"/>
+                <output path="cif-id"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/EMAIL_ID"/>
+                <output path="email-id"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MOBILE_NO"/>
+                <output path="mobile-no"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SEGMENT"/>
+                <output path="segment"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SUB_SEGMENT"/>
+                <output path="sub-segment"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/RM_ID"/>
+                <output path="rm-id"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL"/>
+                <output path="account-base-sol"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION"/>
+                <output path="account-sol-description"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/PAN"/>
+                <output path="pan"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ADDRESS"/>
+                <output path="address"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/CITY_CODE"/>
+                <output path="city-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/CITY"/>
+                <output path="city"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/STATE_CODE"/>
+                <output path="state-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/STATE"/>
+                <output path="state"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/COUNTRY_CODE"/>
+                <output path="country-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/COUNTRY"/>
+                <output path="country"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/PIN"/>
+                <output path="pin"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCT_STATUS"/>
+                <output path="acct-status"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_STATUS"/>
+                <output path="account-status"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/FREZ_CODE"/>
+                <output path="frez-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/FREEZ_STATUS"/>
+                <output path="freez-status"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCT_CLOSE_FLAG"/>
+                <output path="acct-close-flag"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/ACCOUNT_CLOSE_DATE"/>
+                <output path="account-close-date"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MODE_OF_OPER_CODE"/>
+                <output path="mode-of-oper-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MODE_OF_OPERATION"/>
+                <output path="mode-of-operation"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/DSB_REGISTRATION_FLAG"/>
+                <output path="dsb-registration-flag"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SCHM_CODE"/>
+                <output path="schm-code"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION"/>
+                <output path="scheme-description"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MIN_CASH_PKUP_AMT"/>
+                <output path="min-cash-pkup-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_PKUP_AMT"/>
+                <output path="max-cash-pkup-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MIN_CASH_DEL_AMT"/>
+                <output path="min-cash-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_DEL_AMT"/>
+                <output path="max-cash-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MAX_CASH_STP_DEL_AMT"/>
+                <output path="max-cash-stp-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MIN_DD_DEL_AMT"/>
+                <output path="min-dd-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MAX_DD_DEL_AMT"/>
+                <output path="max-dd-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/MAX_DD_STP_DEL_AMT"/>
+                <output path="max-dd-stp-del-amt"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SEGMENT_PRIORITY"/>
+                <output path="segment-priority"/>
+            </move>
+            <move automap="true">
+                <input path="CUSTOM/CUSTOMER_ACCOUNTS/SCHEME_PRIORITY"/>
+                <output path="scheme-priority"/>
+            </move>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>

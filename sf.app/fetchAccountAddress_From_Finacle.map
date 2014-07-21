@@ -3,9 +3,9 @@
     <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,CUSTOMER_ADDRESSES))" var="FINACLE"/>
     <output path="/customer-address.xsd"/>
     <generation engine="xquery"/>
-    <mappingDeclaration name="fetchCustomerAddress_From_Finacle">
+    <mappingDeclaration name="fetchAccountAddress_From_Finacle">
         <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/CUSTOMER_ADDRESSES/CIF_ID,CUSTOM/CUSTOMER_ADDRESSES/ADDRESSCATEGORY,CUSTOM/CUSTOMER_ADDRESSES/ADDRESS,CUSTOM/CUSTOMER_ADDRESSES/CITY,CUSTOM/CUSTOMER_ADDRESSES/STATE,CUSTOM/CUSTOMER_ADDRESSES/COUNTRY,CUSTOM/CUSTOMER_ADDRESSES/ZIP),db:where('1=1'))" var="dbselect"/>
+        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/CUSTOMER_ADDRESSES/CIF_ID,CUSTOM/CUSTOMER_ADDRESSES/ADDRESSCATEGORY,CUSTOM/CUSTOMER_ADDRESSES/ADDRESS,CUSTOM/CUSTOMER_ADDRESSES/CITY,CUSTOM/CUSTOMER_ADDRESSES/STATE,CUSTOM/CUSTOMER_ADDRESSES/COUNTRY,CUSTOM/CUSTOMER_ADDRESSES/ZIP),db:where('CUSTOM.CUSTOMER_ADDRESSES.CIF_ID = ?','?'=$MessageAssembly/customer-key/cif-id))" var="dbselect"/>
         <output path="mb:msg(customer-addresses,assembly,XMLNSC,Properties)"/>
         <move>
             <input path="$MessageAssembly/Properties"/>

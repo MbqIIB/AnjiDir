@@ -3,8 +3,18 @@
 	<xsd:element name='customer-key'>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="cif-id" type="xsd:string"/>
-				<xsd:element name="cif-type" type="xsd:string"/>
+				<xsd:element name="account-type">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="finacle"></xsd:enumeration>
+							<xsd:enumeration value="ganaseva"></xsd:enumeration>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:choice>
+					<xsd:element name="account-number" type="xsd:string"/>
+					<xsd:element name="cif-id" type="xsd:string"/>
+				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
