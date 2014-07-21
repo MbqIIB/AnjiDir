@@ -26,8 +26,10 @@ CREATE COMPUTE MODULE findAccount_Compute
 		SET pathInURI = SUBSTRING(SUBSTRING(InputLocalEnvironment.HTTP.Input.RequestLine.RequestURI AFTER '/find_account/') BEFORE '.xml');
 		SET P = POSITION('/' IN pathInURI);
 		
-		SET OutputRoot.XMLNSC."customer-key"."account-type" = LEFT(pathInURI, P-1);
+		SET OutputRoot.XMLNSC."customer-key"."account-type" = LOWER(LEFT(pathInURI, P-1));
 		SET OutputRoot.XMLNSC."customer-key"."account-number" = SUBSTRING(pathInURI FROM P + 1);
+		
+		SET OutputLocalEnvironment.Destination.RouterList.DestinationData = OutputRoot.XMLNSC."customer-key"."account-type";
 	END;
 	
 	
