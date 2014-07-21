@@ -1,74 +1,260 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">
 			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
 		</xsd:appinfo>
 	</xsd:annotation>
-
-
-	<xsd:element ibmSchExtn:docRoot="true" name="loanAccountToGanaseva">
+	<xsd:element ibmSchExtn:docRoot="true" name="customerHandOffToGanaseva">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
 				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALLOANNO">
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">													
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="TITLE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CUSTOMERNAME">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALCUSTOMERID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PARTNER-ENROLLMENT-NO">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL_GROUPID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL-CUSTOMER-ID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PRODUCT_CODE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ADDRESS1">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="500"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ADDRESS2">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="500"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ADDRESS3">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="500"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CUSTDOB">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element dfdl:textNumberPattern="#0" name="CUSTAGE" type="xsd:int"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MOBILE_NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PHONE_NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EMAILID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CASTE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="GENDER">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MARITALSTATUS">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="NATIONALITY">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="RELIGION">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FATHERNAME">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="SPOUSE_NAME">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="SPOUSE_DOB">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="20"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="AGENTID">
+							<xsd:element dfdl:textNumberPattern="#0" name="SPOUSE_AGE" type="xsd:int"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MOTHER_TONGUE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="25"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0.###" name="LOANAMOUNT">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="STATE">
                 <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXPECTEDDISBURSALDATE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CITY">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BRANCH-CODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="OPERATING-REGION-CODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PINCODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="20"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="LOANSTARTDATE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BANKNAME">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BANK-AC-NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BANK-BRANCH-NAME">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="HOUSEHOLD_CARDNO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PENSION_CARDNO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="RATION_CARD_NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="VOTER_ID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PAN_NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FAX_NO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="COMMENTS">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="500"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
@@ -93,91 +279,150 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="LOANPURPOSE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="500"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0" name="PAYMENTMODE" type="xsd:int"/>
-							<xsd:element dfdl:textNumberPattern="#0" name="NOOFINSTALLMENTS" type="xsd:int"/>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FREQUENCY">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="30"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FIRSTEMIDATE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="DAYOFPERIOD">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="30"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0.###" name="NETINCOME">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="SAVINGSACCOUNTNO">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="NRI">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="HIGHMARKRATING">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PATNER_RECOMMENDATION">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="LOAN_CYCLE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0.###" name="RECOMMENDED_LOAN">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="JUSTIFICATION_COMMENTS">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="500"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BCPARTNERID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="SHG_CARD_NO">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CUSTOMER_TYPE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="HEALTH">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="OCCUPATION">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FAMILY_TYPE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BLOOD_GROUP">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EDU-QUALIFICATION">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CATEGORY">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="LANGUAGE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="VILLAGE_TC">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="KYC_TYPE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="KYCID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="URBAN-RURAL">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="LAND-HOLDING-IN-ACRES">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ANNUAL-HOUSEHOLDING">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL-AGENTID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CARDISSUANCEFLAG">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CUSTOMER-CREATION-DATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BC-BRANCH-CODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BC-PARTNER-ID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
@@ -397,6 +642,4 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-
-
 </xsd:schema>
