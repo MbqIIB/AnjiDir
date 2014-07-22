@@ -1183,6 +1183,9 @@
                         <xsd:complexType>
                            <xsd:sequence>
                               <xsd:element name="solId">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Branch ID for the loan account</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
                                        <xsd:maxLength value="8" />
@@ -1243,7 +1246,7 @@
                               </xsd:element>
                               <xsd:element name="sanctionLevelCode">
                                  <xsd:annotation>
-                                    <xsd:documentation>RP sanction level to be mapped with Finacle sanction level</xsd:documentation>
+                                    <xsd:documentation>This field tells the sanction done by a person with a given position in the bank</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -1273,6 +1276,9 @@
                                  </xsd:simpleType>
                               </xsd:element>
                               <xsd:element name="sanctionReferenceNo">
+                                 <xsd:annotation>
+                                    <xsd:documentation>This will be application reference number for the loan</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
                                        <xsd:maxLength value="25" />
@@ -1736,6 +1742,9 @@
                                  <xsd:complexType>
                                     <xsd:sequence>
                                        <xsd:element name="flowId">
+		                                  <xsd:annotation>
+		                                     <xsd:documentation>This will be a fixed value pending confirmation from Kiran</xsd:documentation>
+		                                  </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="xsd:string">
                                                 <xsd:maxLength value="5" />
