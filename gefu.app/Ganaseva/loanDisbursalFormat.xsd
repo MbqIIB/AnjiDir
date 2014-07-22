@@ -9,7 +9,7 @@
 	</xsd:annotation>
 
 
-	<xsd:element ibmSchExtn:docRoot="true" name="loanDisbursalToGanaseva">
+	<xsd:element ibmSchExtn:docRoot="true" name="loanDisbursalFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
 				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">

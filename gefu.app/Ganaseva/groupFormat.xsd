@@ -9,7 +9,7 @@
 	</xsd:annotation>
 
 
-	<xsd:element ibmSchExtn:docRoot="true" name="groupToGanseva">
+	<xsd:element ibmSchExtn:docRoot="true" name="groupFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
 				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
@@ -95,7 +95,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="VILLAGECENSUSCODE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="VILLAGECENSUSCODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
@@ -130,217 +130,217 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BCPARTNERID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="BCPARTNERID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF1">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF1">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF2">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF2">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF3">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF3">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF4">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF4">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF5">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF5">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF6">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF6">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF7">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF7">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF8">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF8">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF9">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF9">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF10">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF10">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF11">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF11">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF12">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF12">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF13">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF13">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF14">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF14">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF15">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF15">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF16">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF16">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF17">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF17">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF18">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF18">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF19">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF19">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF20">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF20">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF21">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF21">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF22">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF22">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF23">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF23">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF24">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF24">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF25">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF25">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF26">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF26">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF27">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF27">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF28">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF28">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF29">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF29">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="UDF30">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="UDF30">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
