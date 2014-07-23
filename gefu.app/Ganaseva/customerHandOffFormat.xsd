@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" xmlns:Q1="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">
@@ -12,7 +12,14 @@
           <xsd:complexType>
             <xsd:sequence dfdl:separator="">
 
-                <xsd:element dfdl:terminator="" maxOccurs="1" name="customerHandOff">
+                                            			                    <xsd:element maxOccurs="1" ref="Q1:customerHandOff"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>	
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+    <xsd:element dfdl:terminator="" name="customerHandOff">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|">													
 							<xsd:element ibmDfdlExtn:sampleValue="value3" name="TITLE">
@@ -642,11 +649,5 @@
               </xsd:element>
 						</xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>			
-                    </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>	
-                			            </xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+				</xsd:element>
 </xsd:schema>

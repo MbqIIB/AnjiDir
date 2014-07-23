@@ -22,7 +22,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNAL_DISBURSAL_ID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="EXTERNAL_DISBURSAL_ID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
@@ -58,21 +58,21 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PAYMENTMODE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="PAYMENTMODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="20"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BCPARTNERID">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="BCPARTNERID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="25"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-																																										<xsd:element dfdl:textNumberPattern="#0.###" name="TARGET_EMI">
+																																										<xsd:element dfdl:textNumberPattern="#0.###" minOccurs="0" name="TARGET_EMI">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
                     <xsd:totalDigits value="16"/>
