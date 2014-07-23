@@ -8,9 +8,13 @@
 	<xsd:element ibmSchExtn:docRoot="true" name="customerHandOffFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
-				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="record">
+                				<xsd:element dfdl:terminator="%NL;" maxOccurs="unbounded" name="records">
+          <xsd:complexType>
+            <xsd:sequence dfdl:separator="">
+
+                <xsd:element dfdl:terminator="" maxOccurs="1" name="customerHandOff">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty">													
+						<xsd:sequence dfdl:separator="|">													
 							<xsd:element ibmDfdlExtn:sampleValue="value3" name="TITLE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -638,8 +642,11 @@
               </xsd:element>
 						</xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>				
-			</xsd:sequence>
+				</xsd:element>			
+                    </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>	
+                			            </xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 </xsd:schema>

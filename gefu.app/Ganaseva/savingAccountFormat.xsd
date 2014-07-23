@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/groupFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
     <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
@@ -9,135 +9,290 @@
 	</xsd:annotation>
 
 
-	<xsd:element ibmSchExtn:docRoot="true" name="groupFormat">
+	<xsd:element ibmSchExtn:docRoot="true" name="savingAccountFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="">
                 				<xsd:element dfdl:terminator="%NL;" maxOccurs="unbounded" name="records">
           <xsd:complexType>
-            <xsd:sequence dfdl:separator="">
+            <xsd:sequence dfdl:separator="" dfdl:separatorSuppressionPolicy="trailingEmpty">
 
-                <xsd:element dfdl:terminator="" maxOccurs="1" name="group">
+                                            				                  <xsd:element maxOccurs="1" ref="savingAccount"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+    <xsd:element dfdl:terminator="" name="savingAccount">
 					<xsd:complexType>
 						<xsd:sequence dfdl:separator="|">
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALGROUPNO">
+																					
+														<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALACCOUNTNO">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="40"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="GROUPNAME">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALCUSTOMERID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="128"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="GROUPTYPE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ACCOUNTTYPE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0" name="MINNUMBER" type="xsd:int"/>
-							<xsd:element dfdl:textNumberPattern="#0" name="MAXNUMBERS" type="xsd:int"/>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="FORMATIONDATE">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PRODUCTCODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="DAYOFPERIOD">
+							<xsd:element dfdl:textNumberPattern="#0.###" name="INITIALDEPOSIT">
                 <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="2"/>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="4"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MEETINGTIME">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="PAYMENTMODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="COMMENTS">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ORIGINATOR">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="APPROVER">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="COLLECTOR">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="ACCOUNTOPENINGDATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEETITLE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEENAME">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEADDRESS1">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEADDRESS2">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEADDRESS3">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="RELATION">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEDOB">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEAGE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="25"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEGENDER">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEESTATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEECITY">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEPINCODE">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="10"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MEETINGFREQUENCY">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="EXTERNALCENTERID">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="40"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="CENTERNAME">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element dfdl:textNumberPattern="#0" name="MAXCENTERLIMIT" type="xsd:int"/>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="DISTANCEFROMBRANCH">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="BRANCHCODE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="VILLAGECENSUSCODE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="OPERATINGREGIONCODE">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="DESCRIPTION">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="NOMINEEPANNO">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="COMMENTS">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="MINOR">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element ibmDfdlExtn:sampleValue="value3" name="STATUS">
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANTITLE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANNAME">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANDOB">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANGENDER">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANADDR1">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANADDR2">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANADDR3">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANSTATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANCITY">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANRELATION">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANPHNO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="GUARDIANPINCODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
 							<xsd:element ibmDfdlExtn:sampleValue="value3" minOccurs="0" name="BCPARTNERID">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
+                    <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
@@ -353,13 +508,5 @@
               </xsd:element>
 						</xsd:sequence>
 					</xsd:complexType>
-				</xsd:element>				
-            </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>
-                			            </xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-
+				</xsd:element>
 </xsd:schema>
