@@ -1801,7 +1801,7 @@
                                     <xsd:sequence>
                                        <xsd:element name="chargeEventTpe">
 		                                  <xsd:annotation>
-		                                     <xsd:documentation>While disbursement some charges/fees etc. are applied on the loan account. This element tells the type of charge that needs to be applied for eg. MISC1, MISC2. For Rupee Power only three events MIS14(Insurabce Fee), MISC1(Processing Fee) & LNKED(Service Tax) are applicable </xsd:documentation>
+		                                     <xsd:documentation>While disbursement some charges/fees etc. are applied on the loan account. This element tells the type of charge that needs to be applied for eg. MISC1, MISC2. For Rupee Power only three events MIS14(Insurabce Fee), MISC1(Processing Fee) and LNKED(Service Tax) are applicable </xsd:documentation>
 		                                  </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="xsd:string">
