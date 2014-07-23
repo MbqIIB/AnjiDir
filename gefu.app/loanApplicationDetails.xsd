@@ -1784,6 +1784,9 @@
                                  </xsd:simpleType>
                               </xsd:element>
                               <xsd:element name="creditAccountNumber">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Casa account number where the money needs to be credited during disbursement</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
                                        <xsd:maxLength value="16" />
@@ -1791,9 +1794,15 @@
                                  </xsd:simpleType>
                               </xsd:element>
                               <xsd:element maxOccurs="unbounded" minOccurs="0" name="charges">
+                                 <xsd:annotation>
+                                    <xsd:documentation>This is an optional repeating sequence of below two elements in the xsd schema</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:complexType>
                                     <xsd:sequence>
                                        <xsd:element name="chargeEventTpe">
+		                                  <xsd:annotation>
+		                                     <xsd:documentation>While disbursement some charges/fees etc. are applied on the loan account. This element tells the type of charge that needs to be applied for eg. MISC1, MISC2</xsd:documentation>
+		                                  </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="xsd:string">
                                                 <xsd:maxLength value="5" />
@@ -1801,6 +1810,9 @@
                                           </xsd:simpleType>
                                        </xsd:element>
                                        <xsd:element name="chargeAmount">
+		                                  <xsd:annotation>
+		                                     <xsd:documentation>This is nothing but the amount for the charge type</xsd:documentation>
+		                                  </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="xsd:decimal">
                                                 <xsd:totalDigits value="16" />
