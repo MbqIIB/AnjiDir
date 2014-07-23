@@ -1811,7 +1811,7 @@
                                        </xsd:element>
                                        <xsd:element name="chargeAmount">
 		                                  <xsd:annotation>
-		                                     <xsd:documentation>This is nothing but the amount for the charge type</xsd:documentation>
+		                                     <xsd:documentation>This is nothing but the amount for the charge type. This need to be calculated at RP, there will be no revalidation of the figure at Finacle side.</xsd:documentation>
 		                                  </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="xsd:decimal">
