@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/dfdl/savingAccountFormat.xsd" xmlns:Q1="http://www.quantiguous.com/dfdl/loanAcctFormat.xsd" xmlns:Q2="http://www.quantiguous.com/dfdl/savingAccountFormat.xsd" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
     <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
@@ -16,7 +16,7 @@
           <xsd:complexType>
             <xsd:sequence dfdl:separator="" dfdl:separatorSuppressionPolicy="trailingEmpty">
 
-                                            				                  <xsd:element maxOccurs="1" ref="savingAccount"/>
+                                                                        				                                          <xsd:element ref="Q2:savingAccount"/>
                         </xsd:sequence>
           </xsd:complexType>
         </xsd:element>

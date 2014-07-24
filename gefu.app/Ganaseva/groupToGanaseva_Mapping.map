@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Ganaseva" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="Ganaseva">
+    <input path="/Ganaseva/groupFormat.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="groupToGanaseva_Mapping">
+        <input namespace="http://www.quantiguous.com/dfdl/groupFormat.xsd" path="$var/mb:msg(groupFormat,assembly,DFDL,Properties)"/>
+        <output path="$HOGROUPSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
+        <foreach>
+            <input path="groupFormat/records"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert ref="dbinsert">
+                    <input path="group"/>
+                    <output path="."/>
+                    <move automap="true">
+                        <input path="EXTERNALGROUPNO"/>
+                        <output path="msl:db-name('[EXTERNALGROUPNO]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="GROUPNAME"/>
+                        <output path="msl:db-name('[GROUPNAME]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="GROUPTYPE"/>
+                        <output path="msl:db-name('[GROUPTYPE]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="MINNUMBER"/>
+                        <output path="msl:db-name('[MINNUMBER]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="MAXNUMBERS"/>
+                        <output path="msl:db-name('[MAXNUMBERS]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="FORMATIONDATE"/>
+                        <output path="msl:db-name('[FORMATIONDATE]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DAYOFPERIOD"/>
+                        <output path="msl:db-name('[DAYOFPERIOD]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="MEETINGTIME"/>
+                        <output path="msl:db-name('[MEETINGTIME]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="MEETINGFREQUENCY"/>
+                        <output path="msl:db-name('[MEETINGFREQUENCY]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="EXTERNALCENTERID"/>
+                        <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CENTERNAME"/>
+                        <output path="msl:db-name('[CENTERNAME]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="MAXCENTERLIMIT"/>
+                        <output path="msl:db-name('[MAXCENTERLIMIT]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DISTANCEFROMBRANCH"/>
+                        <output path="msl:db-name('[DISTANCEFROMBRANCH]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="BRANCHCODE"/>
+                        <output path="msl:db-name('[BRANCHCODE]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="VILLAGECENSUSCODE"/>
+                        <output path="msl:db-name('[VILLAGECENSUSCODE]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="OPERATINGREGIONCODE"/>
+                        <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DESCRIPTION"/>
+                        <output path="msl:db-name('[DESCRIPTION]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="COMMENTS"/>
+                        <output path="msl:db-name('[COMMENTS]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="STATUS"/>
+                        <output path="msl:db-name('[STATUS]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="BCPARTNERID"/>
+                        <output path="msl:db-name('[BCPARTNERID]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF1"/>
+                        <output path="msl:db-name('[UDF1]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF2"/>
+                        <output path="msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF3"/>
+                        <output path="msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF4"/>
+                        <output path="msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF5"/>
+                        <output path="msl:db-name('[UDF5]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF6"/>
+                        <output path="msl:db-name('[UDF6]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF7"/>
+                        <output path="msl:db-name('[UDF7]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF8"/>
+                        <output path="msl:db-name('[UDF8]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF9"/>
+                        <output path="msl:db-name('[UDF9]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF10"/>
+                        <output path="msl:db-name('[UDF10]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF11"/>
+                        <output path="msl:db-name('[UDF11]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF12"/>
+                        <output path="msl:db-name('[UDF12]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF13"/>
+                        <output path="msl:db-name('[UDF13]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF14"/>
+                        <output path="msl:db-name('[UDF14]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF15"/>
+                        <output path="msl:db-name('[UDF15]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF16"/>
+                        <output path="msl:db-name('[UDF16]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF17"/>
+                        <output path="msl:db-name('[UDF17]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF18"/>
+                        <output path="msl:db-name('[UDF18]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF19"/>
+                        <output path="msl:db-name('[UDF19]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF20"/>
+                        <output path="msl:db-name('[UDF20]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF21"/>
+                        <output path="msl:db-name('[UDF21]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF22"/>
+                        <output path="msl:db-name('[UDF22]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF23"/>
+                        <output path="msl:db-name('[UDF23]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF24"/>
+                        <output path="msl:db-name('[UDF24]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF25"/>
+                        <output path="msl:db-name('[UDF25]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF26"/>
+                        <output path="msl:db-name('[UDF26]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF27"/>
+                        <output path="msl:db-name('[UDF27]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF28"/>
+                        <output path="msl:db-name('[UDF28]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF29"/>
+                        <output path="msl:db-name('[UDF29]')"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UDF30"/>
+                        <output path="msl:db-name('[UDF30]')"/>
+                    </move>
+                    <assign value="123">
+                        <output path="msl:db-name('[BATCHID]')"/>
+                    </assign>
+                    <function ref="fn:current-dateTime">
+                        <output path="msl:db-name('[SYSTEM-DATE]')"/>
+                    </function>
+                </insert>
+                <return>
+                    <input path="$var1/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>
