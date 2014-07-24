@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.quantiguous.com/dfdl/centerFormat.xsd" xmlns:ref1="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" xmlns:ref2="http://www.quantiguous.com/dfdl/groupFormat.xsd" xmlns:ref3="http://www.quantiguous.com/dfdl/loanAcctFormat.xsd" xmlns:ref4="http://www.quantiguous.com/dfdl/loanDisbursalFormat.xsd" xmlns:ref5="http://www.quantiguous.com/dfdl/savingAccountFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+        <xsd:import namespace="http://www.quantiguous.com/dfdl/savingAccountFormat.xsd" schemaLocation="savingAccountFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/dfdl/loanDisbursalFormat.xsd" schemaLocation="loanDisbursalFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/dfdl/loanAcctFormat.xsd" schemaLocation="loanAcctFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/dfdl/groupFormat.xsd" schemaLocation="groupFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" schemaLocation="customerHandOffFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/dfdl/centerFormat.xsd" schemaLocation="centerFormat.xsd"/>
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="ganasevaGefuRecordFormat">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:terminator="%NL;" maxOccurs="1" name="record">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+                            																											<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref:center"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref1:customerHandOff"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref2:group"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref3:loanAcct"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref4:loanDisbursal"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref5:savingAccount"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>
