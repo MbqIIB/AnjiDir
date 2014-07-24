@@ -137,6 +137,14 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
+              <xsd:element dfdl:textNumberPattern="#0.###" minOccurs="0" name="TARGET_EMI">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="4"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
 							<xsd:element dfdl:textNumberPattern="#0.###" name="NETINCOME">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">

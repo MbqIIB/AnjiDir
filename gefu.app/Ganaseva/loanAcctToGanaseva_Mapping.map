@@ -242,6 +242,10 @@
                     <function ref="fn:current-dateTime">
                         <output path="msl:db-name('[SYSTEM-DATE]')"/>
                     </function>
+                    <move automap="true">
+                        <input path="TARGET_EMI"/>
+                        <output path="msl:db-name('[TARGET_EMI]')"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var1/DBInsertReturn"/>
