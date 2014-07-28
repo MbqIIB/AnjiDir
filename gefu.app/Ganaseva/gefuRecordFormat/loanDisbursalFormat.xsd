@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:Q1="http://www.quantiguous.com/xmlnsc/loanDisbursalFormat.xsd"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/xmlnsc/loanDisbursalFormat.xsd">
+
+    <xsd:annotation>
+		
+	</xsd:annotation>
+
+
+	<xsd:element name="loanDisbursalFormat">
+		<xsd:complexType>
+			<xsd:sequence>
+                				<xsd:element maxOccurs="unbounded" name="records">
+          <xsd:complexType>
+            <xsd:sequence>
+
+                                            			            <xsd:element maxOccurs="1" ref="Q1:loanDisbursal"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        	
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+    <xsd:element name="loanDisbursal">
+					<xsd:complexType>
+						<xsd:sequence>
+																					<xsd:element name="EXTERNAL_LOANID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element minOccurs="0" name="EXTERNAL_DISBURSAL_ID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="256"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element name="AMOUNT_DISBURSED">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="4"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element name="DISBURSAL_DATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element name="INSTALLMENT_START_DATE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element minOccurs="0" name="EXTERNALSAVINGACCNO">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element minOccurs="0" name="PAYMENTMODE">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element minOccurs="0" name="BCPARTNERID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="25"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+																																																</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+</xsd:schema>

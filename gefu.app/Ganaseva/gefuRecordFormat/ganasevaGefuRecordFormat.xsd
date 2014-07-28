@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xsd:schema  xmlns:ref="http://www.quantiguous.com/xmlnsc/centerFormat.xsd" xmlns:ref1="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" xmlns:ref2="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" xmlns:ref3="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" xmlns:ref4="http://www.quantiguous.com/xmlnsc/loanDisbursalFormat.xsd" xmlns:ref5="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" schemaLocation="savingAccountFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/loanDisbursalFormat.xsd" schemaLocation="loanDisbursalFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" schemaLocation="loanAcctFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" schemaLocation="groupFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" schemaLocation="customerHandOffFormat.xsd"/>
+    <xsd:import namespace="http://www.quantiguous.com/xmlnsc/centerFormat.xsd" schemaLocation="centerFormat.xsd"/>
+    <xsd:annotation>
+		
+	</xsd:annotation>
+
+
+	<xsd:element name="ganasevaGefuRecord">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" name="record">
+					<xsd:complexType>
+						<xsd:sequence>
+                            																											<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref:center"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref1:customerHandOff"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref2:group"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref3:loanAcct"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref4:loanDisbursal"/>
+                            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ref5:savingAccount"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>
