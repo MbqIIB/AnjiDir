@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" targetNamespace="http://www.quantiguous.com/xmlnsc/bpmCenterCreationFormat.xsd">
+   <xsd:annotation />
+   <xsd:element name="bpmToCenterDetails">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="record">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="EXTERNALCENTERID" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.center_code</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="100" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="CENTERNAME" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.center_name</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="DESCRIPTION" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.description</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="BRANCHCODE" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details._branch</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="100" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="OPERATINGREGIONCODE" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details._operating_region</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="MAXNOOFIND" minOccurs="1" maxOccurs="1" type="xsd:int">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.max_num_individuals</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element name="SERVICINGAGENT" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details._servicing_agent</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="100" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="FORMATIONDATE" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.formation_date</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="50" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="MEETINGTIME" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.meeting_time</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="50" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="CENTERLEADER" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.center_leader</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="ADDRESS1" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.meeting_address_1</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="500" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="ADDRESS2" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.meeting_address_2</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="500" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="ADDRESS3" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.meeting_address_3</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="500" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="STATE" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>State of the branch code passed above</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="100" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="CITY" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>City of the branch code passed above</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="100" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="PINCODE" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>SmartChip to provide</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="10" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="PRIMARYCONTACT" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>SmartChip to give detail of any
+                     			customer mapped to this center</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="PRIMARYPHONENO" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>center_creation_details.phone_num</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="25" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="SECONDARYCONTACT" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>SmartChip to give detail of any other
+                     			customer mapped to this center</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="256" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                     <xsd:element name="SECONDARYPHONENO" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                           <xsd:documentation>SmartChip to give detail of any other
+                     			customer mapped to this center</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                           <xsd:restriction base="xsd:string">
+                              <xsd:minLength value="1" />
+                              <xsd:maxLength value="25" />
+                           </xsd:restriction>
+                        </xsd:simpleType>
+                     </xsd:element>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>
