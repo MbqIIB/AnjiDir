@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service:services xmlns:service="http://com.ibm.etools.mft.service">
+  <service:service implementation="gen/AccountOpeningService.msgflow" name="AccountOpeningService" portType="AccountOpeningService" wsdlFileName="AccountOpeningService.wsdl">
+    <service:operations>
+      <service:operation name="openGroupLoanAccount" type="request-response">
+        <service:flows>
+          <service:flow location="gen/openGroupLoanAccount_Request_Response.subflow" type="Request_Response"/>
+        </service:flows>
+      </service:operation>
+      <service:operation name="getJobStatus" type="request-response">
+        <service:flows/>
+      </service:operation>
+    </service:operations>
+    <service:errors>
+      <service:flows>
+        <service:flow location="gen/AccountOpeningServiceInputHTTPTimeoutHandler.subflow" type="Timeout"/>
+        <service:flow location="gen/AccountOpeningServiceInputFailureHandler.subflow" type="Failure"/>
+        <service:flow location="gen/AccountOpeningServiceInputCatchHandler.subflow" type="Catch"/>
+      </service:flows>
+    </service:errors>
+  </service:service>
+</service:services>
