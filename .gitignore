@@ -54,3 +54,7 @@ local.properties
 
 # Ubuntu text editor temp files
 *.*~
+
+
+# mac specific
+.DS_Store
