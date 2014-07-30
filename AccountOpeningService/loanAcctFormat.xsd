@@ -7,26 +7,14 @@
    <xsd:element name="loanAcct">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalLoanNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="externalCustomerId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="externalGroupId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
+            <xsd:element name="externalNo" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+                     The external number for the account that'll be opened.
+                     This needs to be unique (ensured by the calling system) and can be used in 
+                     subsequent inquiry.
+                  </xsd:documentation>
+               </xsd:annotation>
             </xsd:element>
             <xsd:element name="productCode">
                <xsd:simpleType>
@@ -43,10 +31,56 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="loanStartDate">
+            <xsd:element name="loanStartDate" type="xsd:date">
+            	<xsd:annotation>
+            		<xsd:documentation>
+            			This is the date on which the loan account will be opened, and also the disbursement will be done (disbursement date). 
+            			This cannot be a future date, a back date is allowed for upto a month.
+            			This validation is currently not enforced in the schema.
+            		</xsd:documentation>
+            	</xsd:annotation>
+            </xsd:element>
+			<xsd:element name="paymentMode" type="xsd:string" fixed="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						The disbursement mode of the loan. Currently fixed to 1 (cash)
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+            
+            <xsd:element name="noOfInstallments">
+            	<xsd:simpleType>
+            		<xsd:restriction base="xsd:integer">
+            			<xsd:minExclusive value="0"/>
+            		</xsd:restriction>
+            	</xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="repaymentFrequency">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="20" />
+                     <xsd:maxLength value="30" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="repaymentStartDate" type="xsd:date">
+            	<xsd:annotation>
+            		<xsd:documentation>
+            			This is the date on which the (EMI) repayment  will start.
+            			This has to be greater than the disbusrement date, and upto 2 months maxium.
+            			This validation is currently not enforced in the schema.
+            		</xsd:documentation>
+            	</xsd:annotation>
+			</xsd:element>
+
+
+            <xsd:element minOccurs="0" name="loanCycle">
+               <xsd:annotation>
+               		<xsd:documentation>The first, second or third loan for the customer</xsd:documentation>
+               </xsd:annotation>
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:integer">
+                     <xsd:minInclusive value="1" />
+                     <xsd:maxInclusive value="3"/>
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
@@ -57,94 +91,57 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="paymentmode" type="xsd:int" />
-            <xsd:element name="noOfInstallments" type="xsd:int" />
-            <xsd:element name="frequency">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="30" />
-                  </xsd:restriction>
-               </xsd:simpleType>
+            
+            <xsd:element name="udfs">
+            	<xsd:complexType>
+            		<xsd:sequence>
+			            <xsd:element name="governmentSchemeAdvances">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="purposeOfLoan">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="advanceType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="industryClassification">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="bsrOraganisationCode">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="insuranceFlag">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>      		
+            		</xsd:sequence>
+            	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="firstEmiDate">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="targetEmi">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                     <xsd:totalDigits value="16" />
-                     <xsd:fractionDigits value="4" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="savingAccountNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="loanCycle">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="10" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="recommendedLoan">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                     <xsd:totalDigits value="16" />
-                     <xsd:fractionDigits value="4" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="governmentSchemeAdvances">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="purposeOfLoan">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="advancetype">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="industryClassification">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="bsrOraganisationCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="insuranceFlag">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>           
+            
+  
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>
