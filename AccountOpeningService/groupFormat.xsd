@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd">
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" 
+	xmlns:customer="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd"
+	targetNamespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd">
+
+	<xsd:import schemaLocation="customerHandOffFormat.xsd"
+		namespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" />
+
    <xsd:element name="group">
       <xsd:complexType>
          <xsd:sequence>
@@ -9,45 +17,7 @@
                      <xsd:maxLength value="40" />
                   </xsd:restriction>
                </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="groupName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="128" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="groupType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="minNumber" type="xsd:int" />
-            <xsd:element name="maxNumber" type="xsd:int" />
-            <xsd:element name="formationdate">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="dayOfPeriod">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="2" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="meetingTime" type="xsd:time" />
-            <xsd:element name="meetingFrequency">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+            </xsd:element>            
             <xsd:element name="externalCenterId">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -62,7 +32,42 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="maximumCenterLimit" type="xsd:int" />
+            <xsd:element name="maximumCenterLimit" type="xsd:int" />         
+            <xsd:element name="groupName">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="128" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="groupType">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:integer">
+                     <xsd:minInclusive value="1" />
+                     <xsd:maxInclusive value="2" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="minNumber" type="xsd:int" />
+            <xsd:element name="maxNumber" type="xsd:int" />
+            <xsd:element name="formationDate" type="xsd:date"/>
+            <xsd:element name="dayOfPeriod">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:integer">
+                     <xsd:minInclusive value="1" />
+                     <xsd:maxInclusive value="7" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="meetingTime" type="xsd:time" />
+            <xsd:element name="meetingFrequency">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:enumeration value="weekly"/>
+                     <xsd:enumeration value="Monthly"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
             <xsd:element name="distanceFromBranch">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -98,6 +103,13 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
+            <xsd:element name="customers">
+            	<xsd:complexType>
+            		<xsd:sequence minOccurs="4" maxOccurs="6">
+ 						<xsd:element ref="customer:customer" />
+         			</xsd:sequence>
+         		</xsd:complexType>
+         	</xsd:element>
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

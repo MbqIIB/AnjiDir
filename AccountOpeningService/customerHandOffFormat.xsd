@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd">
-   <xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" 
+	xmlns:savingAccount="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" 
+	xmlns:loanAccount="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"
+	targetNamespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd">
+   
+	<xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+	<xsd:import schemaLocation="savingAccountFormat.xsd" namespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd"/>   
+	<xsd:import schemaLocation="loanAcctFormat.xsd" namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"></xsd:import>
+
+
    <xsd:element name="customer">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="title">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="10" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="customerName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
             <xsd:element name="externalCustomerid">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -25,294 +21,344 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="address" type="dt:addressType" />
-            <xsd:element name="dateOfBirth">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="mobileNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="30" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="phoneNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="emailId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="caste">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="gender">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="10" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="maritalStatus">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="10" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="nationality">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="religion">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="fatherName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="spouseName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="spouseDateOfBirth">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="20" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="motherTongue">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="branchCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="operatingRegionCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="householdCardNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="pensionCardNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="rationCardNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="voterId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="panNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="faxNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="barcodeNo">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="500" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="aadharSeedingConsent">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="customerType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="health">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="occupation">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="familyType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="bloodGroup">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="educationalQualification">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="category">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="language">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="kycType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="kycId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="urbanRural">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="cardIssuanceFlag">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="10" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="1" name="bcBranchCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="debitCardIssuanceType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="minorityCommunity">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="disabilityHandicapped">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="weakerSection">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="borrowerType">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+			<xsd:choice>
+				<xsd:element name="existingCustomer">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAcct" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="newCustomer">
+					<xsd:complexType>
+						<xsd:sequence>
+	
+			            <xsd:element name="title">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+								<xsd:enumeration value="11" />
+								<xsd:enumeration value="12" />
+								<xsd:enumeration value="13" />
+								<xsd:enumeration value="14" />
+								<xsd:enumeration value="15" />
+								<xsd:enumeration value="16" />
+								<xsd:enumeration value="17" />
+								<xsd:enumeration value="18" />
+								<xsd:enumeration value="21" />
+								<xsd:enumeration value="99" />			                  
+							  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="customerName">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="address" type="dt:addressType" />
+			            <xsd:element name="dateOfBirth" type="xsd:date"/>
+			            
+			            <xsd:element name="contact">
+			            	<xsd:complexType>
+			            		<xsd:sequence>
+						            <xsd:element minOccurs="0" name="mobileNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="30" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="phoneNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="50" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="emailId">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="faxNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>		            
+						       </xsd:sequence>
+						    </xsd:complexType>
+						</xsd:element>
+						<xsd:element name="identification">
+							<xsd:complexType>
+								<xsd:sequence>
+						            <xsd:element minOccurs="0" name="householdCardNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="pensionCardNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="rationCardNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="voterId">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>
+						            <xsd:element minOccurs="0" name="panNo">
+						               <xsd:simpleType>
+						                  <xsd:restriction base="xsd:string">
+						                     <xsd:maxLength value="100" />
+						                  </xsd:restriction>
+						               </xsd:simpleType>
+						            </xsd:element>				
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+			            <xsd:element minOccurs="0" name="caste">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="50" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="gender">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="10" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="maritalStatus">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="10" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="nationality">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="religion">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="fatherName">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="spouseName">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="spouseDateOfBirth">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="20" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="motherTongue">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="branchCode">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="operatingRegionCode">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="barcodeNo">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="500" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="aadharSeedingConsent">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="customerType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="health">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="occupation">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="familyType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="bloodGroup">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="educationalQualification">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="category">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="language">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="kycType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="kycId">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="urbanRural">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="cardIssuanceFlag">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="10" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="1" name="bcBranchCode">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="100" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element minOccurs="0" name="debitCardIssuanceType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="minorityCommunity">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="disabilityHandicapped">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="weakerSection">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+			            <xsd:element name="borrowerType">
+			               <xsd:simpleType>
+			                  <xsd:restriction base="xsd:string">
+			                     <xsd:maxLength value="4000" />
+			                  </xsd:restriction>
+			               </xsd:simpleType>
+			            </xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1"
+							ref="savingAccount:savingAccount" />
+					
+					</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

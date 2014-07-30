@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd">
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd">
+
+	
    <xsd:element name="loanAcct">
       <xsd:complexType>
          <xsd:sequence>
@@ -140,7 +144,7 @@
                      <xsd:maxLength value="4000" />
                   </xsd:restriction>
                </xsd:simpleType>
-            </xsd:element>
+            </xsd:element>           
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

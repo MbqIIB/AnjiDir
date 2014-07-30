@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd">
-   <xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" 
+	xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd"
+	xmlns:loanAccount="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"
+	targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd">
+	
+   	<xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+	<xsd:import schemaLocation="loanAcctFormat.xsd" namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"></xsd:import>
+   
    <xsd:complexType name="relatedPartyType">
       <xsd:sequence>
          <xsd:element name="title" type="xsd:string" />
@@ -78,6 +86,8 @@
                   </xsd:complexContent>
                </xsd:complexType>
             </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAcct" />
+            
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>
