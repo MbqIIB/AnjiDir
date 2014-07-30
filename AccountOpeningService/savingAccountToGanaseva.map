@@ -11,14 +11,6 @@
                 <input path="savingAccount"/>
                 <output path="$dbinsert/."/>
                 <move>
-                    <input path="externalSavingAccountNo"/>
-                    <output path="msl:db-name('[EXTERNALACCOUNTNO]')"/>
-                </move>
-                <move>
-                    <input path="externalCustomerId"/>
-                    <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
-                </move>
-                <move>
                     <input path="accountType"/>
                     <output path="msl:db-name('[ACCOUNTTYPE]')"/>
                 </move>
