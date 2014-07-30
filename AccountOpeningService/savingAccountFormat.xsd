@@ -1,126 +1,84 @@
-<?xml version="1.0"?>
-<xsd:schema 
-	xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" 
-	xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd">
-
- <xsd:import schemaLocation="dataTypes.xsd"
-		namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />  
-	
-	<xsd:complexType name="relatedPartyType">
-		<xsd:sequence>
-			<xsd:element name="title" type="xsd:string"/>
-			<xsd:element name="name" type="xsd:string"/>
-			<xsd:element name="relation" type="xsd:string"/>
-			<xsd:element name="dateOfBirth" type="xsd:date"/>
-			<xsd:element name="gender" type="xsd:string"/>
-			<xsd:element name='address' type='dt:addressType'/>
-		</xsd:sequence>
-	</xsd:complexType>
-	
-    <xsd:element name="savingAccount">
-		<xsd:complexType>
-			<xsd:sequence>
-																					
-				<xsd:element name="externalSavingAccountNo">
-                	<xsd:simpleType>
-                  		<xsd:restriction base="xsd:string">
-                    		<xsd:maxLength value="100"/>
-                  		</xsd:restriction>
-                	</xsd:simpleType>                
-              </xsd:element>
-			<xsd:element name="externalCustomerId">
-                <xsd:simpleType>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd">
+   <xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+   <xsd:complexType name="relatedPartyType">
+      <xsd:sequence>
+         <xsd:element name="title" type="xsd:string" />
+         <xsd:element name="name" type="xsd:string" />
+         <xsd:element name="relation" type="xsd:string" />
+         <xsd:element name="dateOfBirth" type="xsd:date" />
+         <xsd:element name="gender" type="xsd:string" />
+         <xsd:element name="address" type="dt:addressType" />
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="savingAccount">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="externalSavingAccountNo">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="accountType">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="externalCustomerId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="productCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="accountType">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="initialDeposit">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="paymentMode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="productCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="comments">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="accountOpeningDate">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-		
-							<xsd:element name="accountOpeningDate">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="nominee">
+               <xsd:complexType>
+                  <xsd:complexContent>
+                     <xsd:extension base="tns:relatedPartyType">
+                        <xsd:sequence>
+                           <xsd:element name="pan" type="dt:panType" />
+                        </xsd:sequence>
+                     </xsd:extension>
+                  </xsd:complexContent>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="guardian">
+               <xsd:complexType>
+                  <xsd:complexContent>
+                     <xsd:extension base="tns:relatedPartyType">
+                        <xsd:sequence>
+                           <xsd:element name="phoneNo" type="dt:phoneNoType" />
+                        </xsd:sequence>
+                     </xsd:extension>
+                  </xsd:complexContent>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="minor">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="256" />
                   </xsd:restriction>
-                </xsd:simpleType>
-                </xsd:element>
-                
-                <xsd:element name='nominee'>
-                	<xsd:complexType>
-                		<xsd:complexContent>
-                			<xsd:extension base="tns:relatedPartyType">
-                				<xsd:sequence>
-                					<xsd:element name="pan" type="dt:panType"/>
-                				</xsd:sequence>
-                			</xsd:extension>
-                		</xsd:complexContent>
-                	</xsd:complexType>
-                </xsd:element>
-                
-                <xsd:element name='guardian'>
-                	<xsd:complexType>
-                		<xsd:complexContent>
-                			<xsd:extension base="tns:relatedPartyType">
-                				<xsd:sequence>
-                					<xsd:element name="phoneNo" type="dt:phoneNoType"/>
-                				</xsd:sequence>
-                			</xsd:extension>
-                		</xsd:complexContent>
-                	</xsd:complexType>
-                </xsd:element>
-                
-      	  
-			
-							<xsd:element minOccurs="0" name="minor">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-              
-              
-							
-							
-			
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+               </xsd:simpleType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
 </xsd:schema>

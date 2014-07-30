@@ -1,113 +1,76 @@
-<?xml version="1.0"?>
-<xsd:schema xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/centerFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/xmlnsc/centerFormat.xsd">
-
-  <xsd:import schemaLocation="dataTypes.xsd"
-		namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />  
-  
-  <xsd:element name="center">
-					<xsd:complexType>
-						<xsd:sequence>
-																					<xsd:element name="externalCenterId">
-                <xsd:simpleType>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/centerFormat.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/centerFormat.xsd">
+   <xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
+   <xsd:element name="center">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="externalCenterId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="centerName">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="centerName">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
+                     <xsd:maxLength value="256" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="description">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="branchCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="comments">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="operationgRegionCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
+                     <xsd:maxLength value="256" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="branchCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="maximumIndividuals">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:int">
+                     <xsd:minExclusive value="1" />
+                     <xsd:maxExclusive value="40" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="servicingAgent">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="operationgRegionCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="formationDate">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="maximumIndividuals" type="xsd:int"/>
-							<xsd:element name="servicingAgent">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="meetingTime" type="xsd:time" />
+            <xsd:element name="meetingAddress" type="dt:addressType" />
+            <xsd:element name="externalAgentId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="formationDate">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="bcPartnerId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="meetingTime">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="centerLeader">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-              
-              <xsd:element name="address" type="dt:addressType"/>
-              
-              
-              <xsd:element name="primaryContact" type="dt:contactType"/>
-              <xsd:element name="secondaryContact" type="dt:contactType"/>
-              			<xsd:element name="FAXNO">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="externalAgentId">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="bcPartnerId">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							
-																																									
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+               </xsd:simpleType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
 </xsd:schema>

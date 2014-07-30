@@ -1,200 +1,147 @@
-<?xml version="1.0"?>
-<xsd:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  targetNamespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd">
-
-    <xsd:element name="loanAcct">
-					<xsd:complexType>
-						<xsd:sequence>
-							<xsd:element name="externalLoanNo">
-                <xsd:simpleType>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd">
+   <xsd:element name="loanAcct">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="externalLoanNo">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="externalCustomerId">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="externalCustomerId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="externalGroupId">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="externalGroupId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="100" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="productCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="productCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
+                     <xsd:maxLength value="20" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="agentId">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="25"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="loanAmount">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="loanAmount">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
+                     <xsd:totalDigits value="16" />
+                     <xsd:fractionDigits value="4" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="expectedDisbursalDate">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="loanStartDate">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
+                     <xsd:maxLength value="20" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="loanStartDate">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="loanPurpose">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
+                     <xsd:maxLength value="500" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="loanPurpose">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="paymentmode" type="xsd:int" />
+            <xsd:element name="noOfInstallments" type="xsd:int" />
+            <xsd:element name="frequency">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="500"/>
+                     <xsd:maxLength value="30" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="paymentmode" type="xsd:int"/>
-							<xsd:element name="noOfInstallments" type="xsd:int"/>
-							<xsd:element name="frequency">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="firstEmiDate">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="30"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="firstEmiDate">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="dayOfPeriod">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="30"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-              <xsd:element minOccurs="0" name="targetEmi">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="targetEmi">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
+                     <xsd:totalDigits value="16" />
+                     <xsd:fractionDigits value="4" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="netIncome">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="savingAccountNo">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="100" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="loanCycle">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="10" />
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="recommendedLoan">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
+                     <xsd:totalDigits value="16" />
+                     <xsd:fractionDigits value="4" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="savingAccountNo">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="governmentSchemeAdvances">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="100"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="highMarkRating">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="purposeOfLoan">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="20"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="partnerRecommendation">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="advancetype">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="loanCycle">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="industryClassification">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="recommendedLoan">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:decimal">
-                    <xsd:totalDigits value="16"/>
-                    <xsd:fractionDigits value="4"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="justificationComments">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="bsrOraganisationCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="500"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							
-							<xsd:element name="governmentSchemeAdvances">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="insuranceFlag">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
+                     <xsd:maxLength value="4000" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="purposeOfLoan">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="advancetype">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="industryClassification">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="bsrOraganisationCode">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="insuranceFlag">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+               </xsd:simpleType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
 </xsd:schema>

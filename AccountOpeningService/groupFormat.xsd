@@ -1,135 +1,104 @@
-<?xml version="1.0"?>
-<xsd:schema xmlns:tns="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd">
-             
-
-    <xsd:element name="group">
-					<xsd:complexType>
-						<xsd:sequence>
-							<xsd:element name="externalGroupNo">
-                <xsd:simpleType>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" targetNamespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd">
+   <xsd:element name="group">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="externalGroupNo">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="40"/>
+                     <xsd:maxLength value="40" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="groupName">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="groupName">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="128"/>
+                     <xsd:maxLength value="128" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="groupType">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="groupType">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4"/>
+                     <xsd:maxLength value="4" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="minNumber" type="xsd:int"/>
-							<xsd:element name="maxNumber" type="xsd:int"/>
-							<xsd:element name="formationdate">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="minNumber" type="xsd:int" />
+            <xsd:element name="maxNumber" type="xsd:int" />
+            <xsd:element name="formationdate">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="dayOfPeriod">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="dayOfPeriod">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="2"/>
+                     <xsd:maxLength value="2" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="meetingTime">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="meetingTime" type="xsd:time" />
+            <xsd:element name="meetingFrequency">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="meetingFrequency">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="externalCenterId">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="40" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="externalCenterId">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="centerName">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="40"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="centerName">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="maximumCenterLimit" type="xsd:int" />
+            <xsd:element name="distanceFromBranch">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="10" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="maximumCenterLimit" type="xsd:int"/>
-							<xsd:element name="distanceFromBranch">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="branchCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="10"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="branchCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="villageCensusCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="villageCensusCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="operatingRegionCode">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="50" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="operatingRegionCode">
-                <xsd:simpleType>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="status">
+               <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="50"/>
+                     <xsd:maxLength value="256" />
                   </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="description">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="comments">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element name="status">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="256"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-							<xsd:element minOccurs="0" name="bcPartnerId">
-                <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                    <xsd:maxLength value="4000"/>
-                  </xsd:restriction>
-                </xsd:simpleType>
-              </xsd:element>
-
-	
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+               </xsd:simpleType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
 </xsd:schema>
