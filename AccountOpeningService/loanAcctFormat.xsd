@@ -17,9 +17,23 @@
                </xsd:annotation>
             </xsd:element>
             <xsd:element name="productCode">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  3030-JLG  Micro Enterprises,3131-JLG  Crop Loan,3132-JLG  Crop Loan Vegetable3133- Land Development,3134-JLG Agri Allied Loans
+                  </xsd:documentation>
+               </xsd:annotation>
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                      <xsd:maxLength value="20" />
+<xsd:enumeration value="3030" />
+<xsd:enumeration value="3131" />
+<xsd:enumeration value="3132" />
+<xsd:enumeration value="3133" />
+<xsd:enumeration value="3134" />
+<xsd:enumeration value="3135" />
+<xsd:enumeration value="3136" />
+<xsd:enumeration value="3137" />
+<xsd:enumeration value="3138" />
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
@@ -56,13 +70,27 @@
             	</xsd:simpleType>
             </xsd:element>
             <xsd:element name="repaymentFrequency">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  1-Daily,2-Weekly,3-Fortnightly,4-Monthly,5-Quarterly,6-Semiannual,7-Annualy,9-Biweekly
+                  </xsd:documentation>
+               </xsd:annotation>
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                      <xsd:maxLength value="30" />
+<xsd:enumeration value="1" />
+<xsd:enumeration value="2" />
+<xsd:enumeration value="3" />
+<xsd:enumeration value="4" />
+<xsd:enumeration value="5" />
+<xsd:enumeration value="6" />
+<xsd:enumeration value="7" />
+<xsd:enumeration value="9" />
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
             <xsd:element name="repaymentStartDate" type="xsd:date">
+           
             	<xsd:annotation>
             		<xsd:documentation>
             			This is the date on which the (EMI) repayment  will start.
@@ -73,14 +101,16 @@
 			</xsd:element>
 
 
-            <xsd:element minOccurs="0" name="loanCycle">
+            <xsd:element minOccurs="0" name="loanCycle">   
                <xsd:annotation>
-               		<xsd:documentation>The first, second or third loan for the customer</xsd:documentation>
+               		<xsd:documentation>1-Cycle 1,2-Cycle 2- The first, second or third loan for the customer</xsd:documentation>
                </xsd:annotation>
                <xsd:simpleType>
                   <xsd:restriction base="xsd:integer">
                      <xsd:minInclusive value="1" />
                      <xsd:maxInclusive value="3"/>
+<xsd:enumeration value="1" />
+<xsd:enumeration value="2" />
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
@@ -96,44 +126,97 @@
             	<xsd:complexType>
             		<xsd:sequence>
 			            <xsd:element name="governmentSchemeAdvances">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  Swabhiman-GSA1, SGSY-GSA2, Swavalamban-GSA3, Others-GSA4
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="GSA1" />
+<xsd:enumeration value="GSA2" />
+<xsd:enumeration value="GSA3" />
+<xsd:enumeration value="GSA4" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>
 			            <xsd:element name="purposeOfLoan">
+                <xsd:annotation>
+                  <xsd:documentation>
+Agriculture- POl1, Education-POL2, Others-POL3, Farming-POL-4
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="POl1" />
+<xsd:enumeration value="POL2" />
+<xsd:enumeration value="POL3" />
+<xsd:enumeration value="POL-4" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>
 			            <xsd:element name="advanceType">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  Demand Loan-AT1, Term Loan-AT2, Overdraft- AT3, Cash Credit-AT4, Others-AT5
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="AT1" />
+<xsd:enumeration value="AT2" />
+<xsd:enumeration value="AT3" />
+<xsd:enumeration value="AT4" />
+<xsd:enumeration value="AT5" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>
 			            <xsd:element name="industryClassification">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  Primary-IC1,Secondary-IC2,  Tertiary-IC3, Others-IC4
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="IC1" />
+<xsd:enumeration value="IC2" />
+<xsd:enumeration value="IC3" />
+<xsd:enumeration value="IC4" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>
 			            <xsd:element name="bsrOraganisationCode">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  Type A-BSR1, Type B-BSR2, Type C-BSR3, Others-BSR4
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="BSR1" />
+<xsd:enumeration value="BSR2" />
+<xsd:enumeration value="BSR3" />
+<xsd:enumeration value="BSR4" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>
 			            <xsd:element name="insuranceFlag">
+                <xsd:annotation>
+                  <xsd:documentation>
+                  Single-IF1, Double-IF2
+                  </xsd:documentation>
+               </xsd:annotation>
 			               <xsd:simpleType>
 			                  <xsd:restriction base="xsd:string">
 			                     <xsd:maxLength value="4000" />
+<xsd:enumeration value="IF1" />
+<xsd:enumeration value="IF2" />
 			                  </xsd:restriction>
 			               </xsd:simpleType>
 			            </xsd:element>      		
