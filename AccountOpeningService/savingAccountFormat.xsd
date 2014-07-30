@@ -23,35 +23,35 @@
 		<xsd:complexType>
 			<xsd:sequence>
 																					
-				<xsd:element name="EXTERNALACCOUNTNO">
+				<xsd:element name="externalSavingAccountNo">
                 	<xsd:simpleType>
                   		<xsd:restriction base="xsd:string">
                     		<xsd:maxLength value="100"/>
                   		</xsd:restriction>
                 	</xsd:simpleType>                
               </xsd:element>
-			<xsd:element name="EXTERNALCUSTOMERID">
+			<xsd:element name="externalCustomerId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="ACCOUNTTYPE">
+							<xsd:element name="accountType">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="PRODUCTCODE">
+							<xsd:element name="productCode">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="INITIALDEPOSIT">
+							<xsd:element name="initialDeposit">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
                     <xsd:totalDigits value="16"/>
@@ -59,14 +59,14 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="PAYMENTMODE">
+							<xsd:element name="paymentMode">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element minOccurs="0" name="COMMENTS">
+							<xsd:element minOccurs="0" name="comments">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
@@ -74,7 +74,7 @@
                 </xsd:simpleType>
               </xsd:element>
 		
-							<xsd:element name="ACCOUNTOPENINGDATE">
+							<xsd:element name="accountOpeningDate">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
@@ -108,7 +108,7 @@
                 
       	  
 			
-							<xsd:element minOccurs="0" name="MINOR">
+							<xsd:element minOccurs="0" name="minor">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>

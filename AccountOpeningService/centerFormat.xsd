@@ -7,71 +7,71 @@
   <xsd:element name="center">
 					<xsd:complexType>
 						<xsd:sequence>
-																					<xsd:element name="EXTERNALCENTERID">
+																					<xsd:element name="externalCenterId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="CENTERNAME">
+							<xsd:element name="centerName">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="DESCRIPTION">
+							<xsd:element name="description">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="COMMENTS">
+							<xsd:element name="comments">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="BRANCHCODE">
+							<xsd:element name="branchCode">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="OPERATINGREGIONCODE">
+							<xsd:element name="operationgRegionCode">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="MAXNOOFIND" type="xsd:int"/>
-							<xsd:element name="SERVICINGAGENT">
+							<xsd:element name="maximumIndividuals" type="xsd:int"/>
+							<xsd:element name="servicingAgent">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="FORMATIONDATE">
+							<xsd:element name="formationDate">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="MEETINGTIME">
+							<xsd:element name="meetingTime">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="CENTERLEADER">
+							<xsd:element name="centerLeader">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="256"/>
@@ -91,14 +91,14 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element name="EXTERNALAGENTID">
+							<xsd:element name="externalAgentId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="4000"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-							<xsd:element minOccurs="0" name="BCPARTNERID">
+							<xsd:element minOccurs="0" name="bcPartnerId">
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="100"/>
