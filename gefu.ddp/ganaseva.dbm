@@ -327,7 +327,7 @@
     <columns xmi:id="_7_YvkhCuEeS6BqAOuK3k2g" name="[APPROVER]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvkxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
-    <columns xmi:id="_7_YvlBCuEeS6BqAOuK3k2g" name="[COLLECTOR">
+    <columns xmi:id="_7_YvlBCuEeS6BqAOuK3k2g" name="[COLLECTOR]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvlRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
     <columns xmi:id="_7_YvlhCuEeS6BqAOuK3k2g" name="[NRI]">
@@ -354,7 +354,7 @@
     <columns xmi:id="_7_YvpBCuEeS6BqAOuK3k2g" name="[EDU-QUALIFICATION]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvpRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
-    <columns xmi:id="_7_YvphCuEeS6BqAOuK3k2g" name="[CATEGORY">
+    <columns xmi:id="_7_YvphCuEeS6BqAOuK3k2g" name="[CATEGORY]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvpxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
     <columns xmi:id="_7_YvqBCuEeS6BqAOuK3k2g" name="[LANGUAGE]">

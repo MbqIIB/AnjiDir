@@ -3,6 +3,7 @@
 	<name>AccountOpeningService</name>
 	<comment></comment>
 	<projects>
+		<project>gefu.ddp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

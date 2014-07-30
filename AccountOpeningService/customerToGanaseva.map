@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customerHandOffFormat.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CUSTOMERHANDOFF-STAGING]'))" var="HOCUSTOMERHANDOFFSTAGING"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="customerToGanaseva">
+        <input namespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" path="$var/mb:msg(customer,assembly,XMLNSC,Properties)"/>
+        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID,[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS,[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
+        <transaction>
+            <insert ref="dbinsert">
+                <input path="customer"/>
+                <output path="$dbinsert/."/>
+                <move automap="true">
+                    <input path="title"/>
+                    <output path="msl:db-name('[TITLE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="customerName"/>
+                    <output path="msl:db-name('[CUSTOMERNAME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="externalCustomerid"/>
+                    <output path="msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="address/city"/>
+                    <output path="msl:db-name('[CITY]')"/>
+                </move>
+                <move automap="true">
+                    <input path="address/state"/>
+                    <output path="msl:db-name('[STATE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="mobileNo"/>
+                    <output path="msl:db-name('[MOBILE NO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="phoneNo"/>
+                    <output path="msl:db-name('[PHONE NO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="emailId"/>
+                    <output path="msl:db-name('[EMAILID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="caste"/>
+                    <output path="msl:db-name('[CASTE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="gender"/>
+                    <output path="msl:db-name('[GENDER]')"/>
+                </move>
+                <move automap="true">
+                    <input path="maritalStatus"/>
+                    <output path="msl:db-name('[MARITALSTATUS')"/>
+                </move>
+                <move automap="true">
+                    <input path="nationality"/>
+                    <output path="msl:db-name('[NATIONALITY]')"/>
+                </move>
+                <move automap="true">
+                    <input path="religion"/>
+                    <output path="msl:db-name('[RELIGION]')"/>
+                </move>
+                <move automap="true">
+                    <input path="fatherName"/>
+                    <output path="msl:db-name('[FATHERNAME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="spouseName"/>
+                    <output path="msl:db-name('[SPOUSE NAME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="motherTongue"/>
+                    <output path="msl:db-name('[MOTHER TONGUE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="branchCode"/>
+                    <output path="msl:db-name('[BRANCH-CODE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="operatingRegionCode"/>
+                    <output path="msl:db-name('[OPERATING-REGION-CODE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="householdCardNo"/>
+                    <output path="msl:db-name('[HOUSEHOLD CARDNO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="pensionCardNo"/>
+                    <output path="msl:db-name('[PENSION CARDNO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="rationCardNo"/>
+                    <output path="msl:db-name('[RATION CARD NO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="voterId"/>
+                    <output path="msl:db-name('[VOTER ID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="panNo"/>
+                    <output path="msl:db-name('[PAN NO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="faxNo"/>
+                    <output path="msl:db-name('[FAX NO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="customerType"/>
+                    <output path="msl:db-name('[CUSTOMER TYPE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="health"/>
+                    <output path="msl:db-name('[HEALTH]')"/>
+                </move>
+                <move automap="true">
+                    <input path="occupation"/>
+                    <output path="msl:db-name('[OCCUPATION]')"/>
+                </move>
+                <move automap="true">
+                    <input path="familyType"/>
+                    <output path="msl:db-name('[FAMILY TYPE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="bloodGroup"/>
+                    <output path="msl:db-name('[BLOOD GROUP]')"/>
+                </move>
+                <move automap="true">
+                    <input path="language"/>
+                    <output path="msl:db-name('[LANGUAGE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="kycType"/>
+                    <output path="msl:db-name('[KYC TYPE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="kycId"/>
+                    <output path="msl:db-name('[KYCID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="urbanRural"/>
+                    <output path="msl:db-name('[URBAN-RURAL]')"/>
+                </move>
+                <move automap="true">
+                    <input path="cardIssuanceFlag"/>
+                    <output path="msl:db-name('[CARDISSUANCEFLAG]')"/>
+                </move>
+                <move automap="true">
+                    <input path="bcBranchCode"/>
+                    <output path="msl:db-name('[BC-BRANCH-CODE]')"/>
+                </move>
+                <move>
+                    <input path="address/line1"/>
+                    <output path="msl:db-name('[ADDRESS1]')"/>
+                </move>
+                <move>
+                    <input path="address/line2"/>
+                    <output path="msl:db-name('[ADDRESS2]')"/>
+                </move>
+                <move>
+                    <input path="address/line3"/>
+                    <output path="msl:db-name('[ADDRESS3]')"/>
+                </move>
+                <move>
+                    <input path="address/pin"/>
+                    <output path="msl:db-name('[PINCODE]')"/>
+                </move>
+                <move>
+                    <input path="dateOfBirth"/>
+                    <output path="msl:db-name('[CUSTDOB]')"/>
+                </move>
+                <move>
+                    <input path="spouseDateOfBirth"/>
+                    <output path="msl:db-name('[SPOUSE DOB]')"/>
+                </move>
+                <move>
+                    <input path="debitCardIssuanceType"/>
+                    <output path="msl:db-name('[UDF1]')"/>
+                </move>
+                <move>
+                    <input path="minorityCommunity"/>
+                    <output path="msl:db-name('[UDF2]')"/>
+                </move>
+                <move>
+                    <input path="disabilityHandicapped"/>
+                    <output path="msl:db-name('[UDF3]')"/>
+                </move>
+                <move>
+                    <input path="weakerSection"/>
+                    <output path="msl:db-name('[UDF4]')"/>
+                </move>
+                <move>
+                    <input path="borrowerType"/>
+                    <output path="msl:db-name('[UDF5]')"/>
+                </move>
+                <move>
+                    <input path="category"/>
+                    <output path="msl:db-name('[CATEGORY]')"/>
+                </move>
+                <move>
+                    <input path="educationalQualification"/>
+                    <output path="msl:db-name('[EDU-QUALIFICATION]')"/>
+                </move>
+            </insert>
+            <return>
+                <input path="$var1/DBInsertReturn"/>
+            </return>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>

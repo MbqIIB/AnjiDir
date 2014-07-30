@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/groupFormat.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="groupToGanaseva">
+        <input namespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" path="$var/mb:msg(group,assembly,XMLNSC,Properties)"/>
+        <output path="$HOGROUPSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
+        <transaction>
+            <insert ref="dbinsert">
+                <input path="group"/>
+                <output path="$dbinsert/."/>
+                <move automap="true">
+                    <input path="externalGroupNo"/>
+                    <output path="msl:db-name('[EXTERNALGROUPNO]')"/>
+                </move>
+                <move automap="true">
+                    <input path="groupName"/>
+                    <output path="msl:db-name('[GROUPNAME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="groupType"/>
+                    <output path="msl:db-name('[GROUPTYPE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="minNumber"/>
+                    <output path="msl:db-name('[MINNUMBER]')"/>
+                </move>
+                <move automap="true">
+                    <input path="formationdate"/>
+                    <output path="msl:db-name('[FORMATIONDATE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="dayOfPeriod"/>
+                    <output path="msl:db-name('[DAYOFPERIOD]')"/>
+                </move>
+                <move automap="true">
+                    <input path="meetingTime"/>
+                    <output path="msl:db-name('[MEETINGTIME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="meetingFrequency"/>
+                    <output path="msl:db-name('[MEETINGFREQUENCY]')"/>
+                </move>
+                <move automap="true">
+                    <input path="externalCenterId"/>
+                    <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="centerName"/>
+                    <output path="msl:db-name('[CENTERNAME]')"/>
+                </move>
+                <move automap="true">
+                    <input path="distanceFromBranch"/>
+                    <output path="msl:db-name('[DISTANCEFROMBRANCH]')"/>
+                </move>
+                <move automap="true">
+                    <input path="branchCode"/>
+                    <output path="msl:db-name('[BRANCHCODE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="villageCensusCode"/>
+                    <output path="msl:db-name('[VILLAGECENSUSCODE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="operatingRegionCode"/>
+                    <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
+                </move>
+                <move automap="true">
+                    <input path="status"/>
+                    <output path="msl:db-name('[STATUS]')"/>
+                </move>
+                <assign value="40">
+                    <output path="msl:db-name('[MAXCENTERLIMIT]')"/>
+                </assign>
+                <move>
+                    <input path="maxNumber"/>
+                    <output path="msl:db-name('[MAXNUMBERS]')"/>
+                </move>
+            </insert>
+            <return>
+                <input path="$var1/DBInsertReturn"/>
+            </return>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>

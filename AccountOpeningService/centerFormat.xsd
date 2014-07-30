@@ -63,13 +63,6 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element minOccurs="0" name="bcPartnerId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

@@ -55,6 +55,13 @@
                      <xsd:extension base="tns:relatedPartyType">
                         <xsd:sequence>
                            <xsd:element name="pan" type="dt:panType" />
+            				<xsd:element minOccurs="0" name="minor">
+				               <xsd:simpleType>
+				                  <xsd:restriction base="xsd:string">
+				                     <xsd:maxLength value="256" />
+				                  </xsd:restriction>
+				               </xsd:simpleType>
+				            </xsd:element>
                         </xsd:sequence>
                      </xsd:extension>
                   </xsd:complexContent>
@@ -70,13 +77,6 @@
                      </xsd:extension>
                   </xsd:complexContent>
                </xsd:complexType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="minor">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="256" />
-                  </xsd:restriction>
-               </xsd:simpleType>
             </xsd:element>
          </xsd:sequence>
       </xsd:complexType>

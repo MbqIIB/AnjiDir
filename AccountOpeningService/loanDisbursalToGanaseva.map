@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/loanDisbursalFormat.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-DISBURSAL-STAGING]'))" var="HODISBURSALSTAGING"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="loanDisbursalToGanaseva">
+        <input namespace="http://www.quantiguous.com/xmlnsc/loanDisbursalFormat.xsd" path="$var/mb:msg(loanDisbursal,assembly,XMLNSC,Properties)"/>
+        <output path="$HODISBURSALSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNAL LOANID],[EXTERNAL DISBURSAL ID],[AMOUNT DISBURSED],[DISBURSAL DATE],[INSTALLMENT START DATE],[EXTERNALSAVINGACCNO],[PAYMENTMODE],[BCPARTNERID],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert"/>
+        <transaction>
+            <insert ref="dbinsert">
+                <input path="loanDisbursal"/>
+                <output path="$dbinsert/."/>
+                <move automap="true">
+                    <input path="externalLoanId"/>
+                    <output path="msl:db-name('[EXTERNAL LOANID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="externalDisbursalId"/>
+                    <output path="msl:db-name('[EXTERNAL DISBURSAL ID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="paymentMode"/>
+                    <output path="msl:db-name('[PAYMENTMODE]')"/>
+                </move>
+                <move>
+                    <input path="disbursalAmount"/>
+                    <output path="msl:db-name('[AMOUNT DISBURSED]')"/>
+                </move>
+                <move>
+                    <input path="externalSavingAccountNo"/>
+                    <output path="msl:db-name('[EXTERNALSAVINGACCNO]')"/>
+                </move>
+            </insert>
+            <return>
+                <input path="$var1/DBInsertReturn"/>
+            </return>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>
