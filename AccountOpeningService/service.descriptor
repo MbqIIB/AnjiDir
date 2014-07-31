@@ -10,6 +10,9 @@
       <service:operation name="getJobStatus" type="request-response">
         <service:flows/>
       </service:operation>
+      <service:operation name="addCenter" type="request-response">
+        <service:flows/>
+      </service:operation>
     </service:operations>
     <service:errors>
       <service:flows>

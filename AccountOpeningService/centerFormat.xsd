@@ -11,6 +11,7 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
+            <xsd:element name="externalAgentId" type="xsd:string"/>
             <xsd:element name="centerName">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -18,51 +19,13 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="branchCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="operationgRegionCode">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="256" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="maximumIndividuals">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:int">
-                     <xsd:minExclusive value="1" />
-                     <xsd:maxExclusive value="40" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="servicingAgent">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="formationDate">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+            <xsd:element name="formationDate" type="xsd:date"/>
+            <xsd:element name="servicingAgent" type="xsd:string"/>
+            <xsd:element name="maximumIndividuals" type="xsd:int" fixed="40"/>
             <xsd:element name="meetingTime" type="xsd:time" />
             <xsd:element name="meetingAddress" type="dt:addressType" />
-            <xsd:element name="externalAgentId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="4000" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+            <xsd:element name="operationgRegionCode" type="xsd:string"/>
+            <xsd:element name="branchCode" type="xsd:string"/>
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

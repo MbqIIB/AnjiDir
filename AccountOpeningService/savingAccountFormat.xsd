@@ -1,22 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" 
-	xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd"
-	xmlns:loanAccount="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"
-	targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:loanAccount="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
-   	<xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" />
-	<xsd:import schemaLocation="loanAcctFormat.xsd" namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd"></xsd:import>
+   	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" schemaLocation="loanAcctFormat.xsd"/>
    
    <xsd:complexType name="relatedPartyType">
       <xsd:sequence>
-         <xsd:element name="title" type="xsd:string" />
-         <xsd:element name="name" type="xsd:string" />
-         <xsd:element name="relation" type="xsd:string" />
-         <xsd:element name="dateOfBirth" type="xsd:date" />
-         <xsd:element name="gender" type="xsd:string" />
-         <xsd:element name="address" type="dt:addressType" />
+         <xsd:element name="title" type="xsd:string"/>
+         <xsd:element name="name" type="xsd:string"/>
+         <xsd:element name="relation" type="xsd:string"/>
+         <xsd:element name="dateOfBirth" type="xsd:date"/>
+         <xsd:element name="gender" type="xsd:string"/>
+         <xsd:element name="address" type="dt:addressType"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:element name="savingAccount">
@@ -31,7 +25,7 @@
                   </xsd:documentation>
                </xsd:annotation>
             </xsd:element>
-            <xsd:element name="accountType" type="xsd:string" fixed="1">
+            <xsd:element fixed="1" name="accountType" type="xsd:string">
                <xsd:annotation>
                   <xsd:documentation>
                      The type	 of the account, currently fixed to 1 (savings)
@@ -41,21 +35,21 @@
             <xsd:element name="productCode">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50" />
+                     <xsd:maxLength value="50"/>
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
             <xsd:element name="accountOpeningDate" type="xsd:date"/>
-            <xsd:element name="nominee" minOccurs="0">
+            <xsd:element minOccurs="0" name="nominee">
                <xsd:complexType>
                   <xsd:complexContent>
                      <xsd:extension base="tns:relatedPartyType">
                         <xsd:sequence>
-                           <xsd:element name="pan" type="dt:panType" />
+                           <xsd:element name="pan" type="dt:panType"/>
             				<xsd:element minOccurs="0" name="minor">
 				               <xsd:simpleType>
 				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="256" />
+				                     <xsd:maxLength value="256"/>
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
@@ -64,18 +58,18 @@
                   </xsd:complexContent>
                </xsd:complexType>
             </xsd:element>
-            <xsd:element name="guardian" minOccurs="0">
+            <xsd:element minOccurs="0" name="guardian">
                <xsd:complexType>
                   <xsd:complexContent>
                      <xsd:extension base="tns:relatedPartyType">
                         <xsd:sequence>
-                           <xsd:element name="phoneNo" type="dt:phoneNoType" />
+                           <xsd:element name="phoneNo" type="dt:phoneNoType"/>
                         </xsd:sequence>
                      </xsd:extension>
                   </xsd:complexContent>
                </xsd:complexType>
             </xsd:element>
-            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAcct" />
+            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAcct"/>
             
          </xsd:sequence>
       </xsd:complexType>
