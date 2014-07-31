@@ -1,129 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/savingAccount.xsd" var="var"/>
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="savingAccountToGanaseva">
-        <input namespace="http://www.quantiguous.com/FI/savingAccount.xsd" path="$var/mb:msg(savingAccount,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://AccountOpeningService" path="$var/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)"/>
         <output path="$HOSAVINGSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">
-                <input path="savingAccount"/>
+                <input path="openGroupLoanAccount/openGroupLoanAccountRequest"/>
                 <output path="$dbinsert/."/>
                 <move>
-                    <input path="accountType"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/externalNo"/>
+                    <output path="msl:db-name('[EXTERNALACCOUNTNO]')"/>
+                </move>
+                <move>
+                    <input path="group/customers/customer/newCustomer/savingAccount/accountType"/>
                     <output path="msl:db-name('[ACCOUNTTYPE]')"/>
                 </move>
                 <move>
-                    <input path="productCode"/>
-                    <output path="msl:db-name('[PRODUCTCODE]')"/>
+                    <input path="group/customers/customer/externalCustomerid"/>
+                    <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
                 </move>
                 <move>
-                    <input path="accountOpeningDate"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/productCode"/>
+                    <output path="msl:db-name('[PRODUCTCODE]')"/>
+                </move>
+                <assign value="0">
+                    <output path="msl:db-name('[INITIALDEPOSIT]')"/>
+                </assign>
+                <move>
+                    <input path="group/customers/customer/newCustomer/savingAccount/accountOpeningDate"/>
                     <output path="msl:db-name('[ACCOUNTOPENINGDATE]')"/>
                 </move>
-                <assign>
+                <assign value="CREATE SAVING ACCOUNT">
+                    <output path="msl:db-name('[COMMENTS]')"/>
+                </assign>
+                <assign value="1">
                     <output path="msl:db-name('[PAYMENTMODE]')"/>
                 </assign>
                 <move>
-                    <input path="nominee/title"/>
+                    <input path="originator"/>
+                    <output path="msl:db-name('[ORIGINATOR]')"/>
+                </move>
+                <move>
+                    <input path="originator"/>
+                    <output path="msl:db-name('[COLLECTOR]')"/>
+                </move>
+                <move>
+                    <input path="approver"/>
+                    <output path="msl:db-name('[APPROVER]')"/>
+                </move>
+                <move>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/title"/>
                     <output path="msl:db-name('[NOMINEETITLE]')"/>
                 </move>
                 <move>
-                    <input path="nominee/name"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/name"/>
                     <output path="msl:db-name('[NOMINEENAME]')"/>
                 </move>
                 <move>
-                    <input path="nominee/dateOfBirth"/>
-                    <output path="msl:db-name('[NOMINEEDOB]')"/>
-                </move>
-                <move>
-                    <input path="nominee/relation"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/relation"/>
                     <output path="msl:db-name('[RELATION]')"/>
                 </move>
                 <move>
-                    <input path="nominee/gender"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/dateOfBirth"/>
+                    <output path="msl:db-name('[NOMINEEDOB]')"/>
+                </move>
+                <assign value="CALCULATE FROM DOB">
+                    <output path="msl:db-name('[NOMINEEAGE]')"/>
+                </assign>
+                <move>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/gender"/>
                     <output path="msl:db-name('[NOMINEEGENDER]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/line1"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/line1"/>
                     <output path="msl:db-name('[NOMINEEADDRESS1]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/line2"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/line2"/>
                     <output path="msl:db-name('[NOMINEEADDRESS2]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/line3"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/line3"/>
                     <output path="msl:db-name('[NOMINEEADDRESS3]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/city"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/city"/>
                     <output path="msl:db-name('[NOMINEECITY]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/state"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/state"/>
                     <output path="msl:db-name('[NOMINEESTATE]')"/>
                 </move>
                 <move>
-                    <input path="nominee/address/pin"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/address/pin"/>
                     <output path="msl:db-name('[NOMINEEPINCODE]')"/>
                 </move>
                 <move>
-                    <input path="nominee/pan"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/pan"/>
                     <output path="msl:db-name('[NOMINEEPANNO]')"/>
                 </move>
                 <move>
-                    <input path="nominee/minor"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/nominee/minor"/>
                     <output path="msl:db-name('[MINOR]')"/>
                 </move>
                 <move>
-                    <input path="guardian/title"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/title"/>
                     <output path="msl:db-name('[GUARDIANTITLE]')"/>
                 </move>
                 <move>
-                    <input path="guardian/name"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/name"/>
                     <output path="msl:db-name('[GUARDIANNAME]')"/>
                 </move>
                 <move>
-                    <input path="guardian/relation"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/relation"/>
                     <output path="msl:db-name('[GUARDIANRELATION]')"/>
                 </move>
                 <move>
-                    <input path="guardian/dateOfBirth"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/dateOfBirth"/>
                     <output path="msl:db-name('[GUARDIANDOB]')"/>
                 </move>
                 <move>
-                    <input path="guardian/gender"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/gender"/>
                     <output path="msl:db-name('[GUARDIANGENDER]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/line1"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/phoneNo"/>
+                    <output path="msl:db-name('[GUARDIANPHNO]')"/>
+                </move>
+                <move>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/line1"/>
                     <output path="msl:db-name('[GUARDIANADDR1]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/line2"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/line2"/>
                     <output path="msl:db-name('[GUARDIANADDR2]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/line3"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/line3"/>
                     <output path="msl:db-name('[GUARDIANADDR3]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/city"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/city"/>
                     <output path="msl:db-name('[GUARDIANCITY]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/state"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/state"/>
                     <output path="msl:db-name('[GUARDIANSTATE]')"/>
                 </move>
                 <move>
-                    <input path="guardian/address/pin"/>
+                    <input path="group/customers/customer/newCustomer/savingAccount/guardian/address/pin"/>
                     <output path="msl:db-name('[GUARDIANPINCODE]')"/>
-                </move>
-                <move>
-                    <input path="guardian/phoneNo"/>
-                    <output path="msl:db-name('[GUARDIANPHNO]')"/>
                 </move>
             </insert>
             <return>
