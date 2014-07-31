@@ -126,7 +126,7 @@
     <columns xmi:id="_7_XhbhCuEeS6BqAOuK3k2g" name="[UDF11]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_XhbxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
     </columns>
-    <columns xmi:id="_7_XhcBCuEeS6BqAOuK3k2g" name="UDF12">
+    <columns xmi:id="_7_XhcBCuEeS6BqAOuK3k2g" name="[UDF12]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_XhcRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
     </columns>
     <columns xmi:id="_7_XhchCuEeS6BqAOuK3k2g" name="[UDF13]">
