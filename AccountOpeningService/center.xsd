@@ -13,7 +13,7 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="externalAgentId" type="xsd:string"/>
+
             <xsd:element name="centerName">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -28,6 +28,9 @@
             <xsd:element name="meetingAddress" type="dt:addressType" />
             <xsd:element name="operationgRegionCode" type="xsd:string"/>
             <xsd:element name="branchCode" type="xsd:string"/>
+            <xsd:element name="description" type="xsd:string"/>
+            <xsd:element name="phoneNo" type="xsd:string"/>
+            <xsd:element name="centerLeader" type="xsd:string"/>
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>

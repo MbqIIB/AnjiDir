@@ -428,6 +428,7 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
+				            <xsd:element minOccurs="0" name="documentExpiryDate" type="xsd:date"/>
 				            <xsd:element minOccurs="0" name="urbanRural">
 				                        <xsd:annotation>
 				                           <xsd:documentation>1-URBAN,2-RURA</xsd:documentation>
