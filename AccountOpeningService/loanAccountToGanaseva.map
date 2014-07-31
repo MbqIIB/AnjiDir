@@ -122,7 +122,7 @@
                         <output path="msl:db-name('[SAVINGSACCOUNTNO]')"/>
                         <code lang="xpath">THIS NEEDS TO BE TAKEN FROM THE SAVINGS ACCOUNT TABLE</code>
                     </expression>
-                    <assign value="APROVE LOAN">
+                    <assign value="APROVE THE LOAN">
                         <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
                 </insert>
