@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_AccountInformationServiceInputCatchHandler.subflow="gen/AccountInformationServiceInputCatchHandler.subflow" xmlns:gen_AccountInformationServiceInputFailureHandler.subflow="gen/AccountInformationServiceInputFailureHandler.subflow"
-    xmlns:gen_AccountInformationServiceInputHTTPTimeoutHandler.subflow="gen/AccountInformationServiceInputHTTPTimeoutHandler.subflow" xmlns:gen_getBalance_Request_Response.subflow="gen/getBalance_Request_Response.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountInformationService.msgflow"
-    nsPrefix="gen_AccountInformationService.msgflow">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_AccountInformationServiceInputCatchHandler.subflow="gen/AccountInformationServiceInputCatchHandler.subflow" xmlns:gen_AccountInformationServiceInputFailureHandler.subflow="gen/AccountInformationServiceInputFailureHandler.subflow" xmlns:gen_AccountInformationServiceInputHTTPTimeoutHandler.subflow="gen/AccountInformationServiceInputHTTPTimeoutHandler.subflow" xmlns:gen_getBalance_Request_Response.subflow="gen/getBalance_Request_Response.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountInformationService.msgflow" nsPrefix="gen_AccountInformationService.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <translation xmi:type="utility:TranslatableString" key="AccountInformationService" bundleName="gen/AccountInformationService" pluginId="AccountInformationService"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountInformationService/icons/full/obj16/AccountInformationService.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountInformationService/icons/full/obj30/AccountInformationService.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="20,20" wsdlFileName="AccountInformationService.wsdl" selectedPortType="AccountInformationService" selectedBinding="AccountInformationServiceHttpBinding" selectedPort="AccountInformationServiceHttpPort" targetNamespace="http://AccountInformationService" useHTTPTransport="true" urlSelector="/AccountInformationService/AccountInformationService" allowQueryWSDL="true" extractSOAPBody="true" parserXmlnscBuildTreeUsingXMLSchema="false"
-          validateMaster="none">
-        <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
-      </nodes>
       <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="220,150">
         <translation xmi:type="utility:ConstantString" string="Route To Label"/>
-      </nodes>
-      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="830,140">
-        <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
       </nodes>
       <nodes xmi:type="gen_AccountInformationServiceInputFailureHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="635,8">
         <translation xmi:type="utility:ConstantString" string="AccountInformationServiceInputFailureHandler"/>
@@ -34,6 +24,13 @@
       <nodes xmi:type="gen_getBalance_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="370,230">
         <translation xmi:type="utility:ConstantString" string="getBalance_Request_Response"/>
       </nodes>
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="20,20" wsdlFileName="AccountInformationService.wsdl" selectedPortType="AccountInformationService" selectedBinding="AccountInformationServiceHttpBinding" selectedPort="AccountInformationServiceHttpPort" targetNamespace="http://AccountInformationService" useHTTPTransport="true" urlSelector="/AccountInformationService/AccountInformationService" allowQueryWSDL="true" extractSOAPBody="true">
+        <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="830,140">
+        <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
@@ -41,8 +38,7 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
