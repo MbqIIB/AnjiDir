@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/center.xsd" var="var"/>
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="centerToGanaseva">
-        <input namespace="http://www.quantiguous.com/Fi/center.xsd" path="$var/mb:msg(center,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://AccountOpeningService" path="$var/mb:msg(addCenter,assembly,XMLNSC,Properties)"/>
         <output path="$HOCENTERSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],UDF12,[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">
-                <input path="center"/>
+                <input path="addCenter/addCenterRequest/center"/>
                 <output path="$dbinsert/."/>
-                <move>
+                <move automap="true">
                     <input path="externalCenterId"/>
                     <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+                </move>
+                <move automap="true">
+                    <input path="externalAgentId"/>
+                    <output path="msl:db-name('[EXTERNALAGENTID]')"/>
                 </move>
                 <move automap="true">
                     <input path="centerName"/>
                     <output path="msl:db-name('[CENTERNAME]')"/>
                 </move>
                 <move automap="true">
-                    <input path="branchCode"/>
-                    <output path="msl:db-name('[BRANCHCODE]')"/>
+                    <input path="formationDate"/>
+                    <output path="msl:db-name('[FORMATIONDATE]')"/>
                 </move>
                 <move automap="true">
                     <input path="servicingAgent"/>
                     <output path="msl:db-name('[SERVICINGAGENT]')"/>
-                </move>
-                <move automap="true">
-                    <input path="formationDate"/>
-                    <output path="msl:db-name('[FORMATIONDATE]')"/>
                 </move>
                 <move automap="true">
                     <input path="meetingTime"/>
@@ -43,17 +43,25 @@
                     <output path="msl:db-name('[STATE]')"/>
                 </move>
                 <move automap="true">
-                    <input path="externalAgentId"/>
-                    <output path="msl:db-name('[EXTERNALAGENTID]')"/>
+                    <input path="branchCode"/>
+                    <output path="msl:db-name('[BRANCHCODE]')"/>
                 </move>
-                <move>
-                    <input path="maximumIndividuals"/>
+                <assign value="ADD CENTER">
+                    <output path="msl:db-name('[DESCRIPTION]')"/>
+                </assign>
+                <assign value="ADD CENTER">
+                    <output path="msl:db-name('[COMMENTS]')"/>
+                </assign>
+                <assign value="40">
                     <output path="msl:db-name('[MAXNOOFIND]')"/>
-                </move>
+                </assign>
                 <move>
                     <input path="operationgRegionCode"/>
                     <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
                 </move>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[CENTERLEADER]')"/>
+                </assign>
                 <move>
                     <input path="meetingAddress/line1"/>
                     <output path="msl:db-name('[ADDRESS1]')"/>
@@ -66,6 +74,31 @@
                     <input path="meetingAddress/line3"/>
                     <output path="msl:db-name('[ADDRESS3]')"/>
                 </move>
+                <move>
+                    <input path="meetingAddress/pin"/>
+                    <output path="msl:db-name('[PINCODE]')"/>
+                </move>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[PRIMARYCONTACT]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[PRIMARYPHONENO]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[PRIMARYCONTACTMAILID]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[SECONDARYCONTACT]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[SECONDARYPHONENO]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[SECONDARYCONTACTMAILID]')"/>
+                </assign>
+                <assign value="DUMMY FIXED">
+                    <output path="msl:db-name('[FAXNO]')"/>
+                </assign>
             </insert>
             <return>
                 <input path="$var1/DBInsertReturn"/>
