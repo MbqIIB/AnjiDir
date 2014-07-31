@@ -14,31 +14,12 @@
             <output path="$dbinsert/."/>
             <transaction>
                 <insert ref="dbinsert">
-                    <input path="$customer/." var="customer1"/>
                     <input path="$originator/." var="originator1"/>
                     <input path="$approver/." var="approver1"/>
                     <input path="$externalGroupNo/." var="externalGroupNo1"/>
+                    <input path="$customer/externalCustomerid" var="externalCustomerid"/>
+                    <input path="$customer/existingCustomer" var="existingCustomer"/>
                     <output path="."/>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/externalNo"/>
-                        <output path="msl:db-name('[EXTERNALLOANNO]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/productCode"/>
-                        <output path="msl:db-name('[PRODUCT CODE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanAmount"/>
-                        <output path="msl:db-name('[LOANAMOUNT]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanStartDate"/>
-                        <output path="msl:db-name('[LOANSTARTDATE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanStartDate"/>
-                        <output path="msl:db-name('[EXPECTEDDISBURSALDATE]')"/>
-                    </move>
                     <move>
                         <input path="$originator1/."/>
                         <output path="msl:db-name('[ORIGINATOR]')"/>
@@ -52,62 +33,6 @@
                         <output path="msl:db-name('[COLLECTOR]')"/>
                     </move>
                     <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanPurpose"/>
-                        <output path="msl:db-name('[LOANPURPOSE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/governmentSchemeAdvances"/>
-                        <output path="msl:db-name('[UDF1]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/purposeOfLoan"/>
-                        <output path="msl:db-name('[UDF2]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/advanceType"/>
-                        <output path="msl:db-name('[UDF3]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/industryClassification"/>
-                        <output path="msl:db-name('[UDF4]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/bsrOraganisationCode"/>
-                        <output path="msl:db-name('[UDF5]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/udfs/insuranceFlag"/>
-                        <output path="msl:db-name('[UDF6]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanCycle"/>
-                        <output path="msl:db-name('[LOAN CYCLE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/paymentMode"/>
-                        <output path="msl:db-name('[PAYMENTMODE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/noOfInstallments"/>
-                        <output path="msl:db-name('[NOOFINSTALLMENTS]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/repaymentFrequency"/>
-                        <output path="msl:db-name('[FREQUENCY]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/repaymentStartDate"/>
-                        <output path="msl:db-name('[FIRSTEMIDATE]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/existingCustomer/loanAcct/loanAmount"/>
-                        <output path="msl:db-name('[RECOMMENDED LOAN]')"/>
-                    </move>
-                    <move>
-                        <input path="$customer1/externalCustomerid"/>
-                        <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
-                    </move>
-                    <move>
                         <input path="$externalGroupNo1/."/>
                         <output path="msl:db-name('[EXTERNAL GROUPID]')"/>
                     </move>
@@ -117,14 +42,85 @@
                     <assign value="OPTIONAL">
                         <output path="msl:db-name('[NETINCOME]')"/>
                     </assign>
-                    <expression>
-                        <input path="$customer1/newCustomer/savingAccount/externalNo" var="externalNo"/>
-                        <output path="msl:db-name('[SAVINGSACCOUNTNO]')"/>
-                        <code lang="xpath">THIS NEEDS TO BE TAKEN FROM THE SAVINGS ACCOUNT TABLE</code>
-                    </expression>
                     <assign value="APROVE THE LOAN">
                         <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/governmentSchemeAdvances"/>
+                        <output path="msl:db-name('[UDF1]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/purposeOfLoan"/>
+                        <output path="msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/advanceType"/>
+                        <output path="msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/industryClassification"/>
+                        <output path="msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/bsrOraganisationCode"/>
+                        <output path="msl:db-name('[UDF5]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/udfs/insuranceFlag"/>
+                        <output path="msl:db-name('[UDF6]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/externalNo"/>
+                        <output path="msl:db-name('[EXTERNALLOANNO]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/productCode"/>
+                        <output path="msl:db-name('[PRODUCT CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanAmount"/>
+                        <output path="msl:db-name('[LOANAMOUNT]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanAmount"/>
+                        <output path="msl:db-name('[RECOMMENDED LOAN]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanCycle"/>
+                        <output path="msl:db-name('[LOAN CYCLE]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanPurpose"/>
+                        <output path="msl:db-name('[LOANPURPOSE]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanStartDate"/>
+                        <output path="msl:db-name('[LOANSTARTDATE]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/loanStartDate"/>
+                        <output path="msl:db-name('[EXPECTEDDISBURSALDATE]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/noOfInstallments"/>
+                        <output path="msl:db-name('[NOOFINSTALLMENTS]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/paymentMode"/>
+                        <output path="msl:db-name('[PAYMENTMODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$externalCustomerid/."/>
+                        <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/repaymentFrequency"/>
+                        <output path="msl:db-name('[FREQUENCY]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAcct/repaymentStartDate"/>
+                        <output path="msl:db-name('[FIRSTEMIDATE]')"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var/DBInsertReturn"/>
