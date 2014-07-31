@@ -1,11 +1,11 @@
 BROKER SCHEMA gen
 
 
-CREATE COMPUTE MODULE openGroupLoanAccount_Request_Response_Compute
+CREATE COMPUTE MODULE Passthru_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		-- CALL CopyMessageHeaders();
-		-- CALL CopyEntireMessage();
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
 		RETURN TRUE;
 	END;
 

@@ -5,8 +5,8 @@
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <translation xmi:type="utility:TranslatableString" key="openGroupLoanAccount_Request_Response" bundleName="gen/openGroupLoanAccount_Request_Response" pluginId="AccountOpeningService"/>
-    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/openGroupLoanAccount_Request_Response"/>
-    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/openGroupLoanAccount_Request_Response"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/openGroupLoanAccount_Request_Response.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/openGroupLoanAccount_Request_Response.gif"/>
     <composition>
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/openGroupLoanAccount_Request_Response" pluginId="AccountOpeningService"/>
@@ -14,12 +14,13 @@
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="320,20">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/openGroupLoanAccount_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="166,39" computeExpression="esql://routine/gen#openGroupLoanAccount_Request_Response_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="166,39" computeExpression="esql://routine/gen#Passthru_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
+    <stickyBoard/>
   </eClassifiers>
 </ecore:EPackage>

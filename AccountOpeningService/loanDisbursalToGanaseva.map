@@ -15,10 +15,6 @@
                     <output path="msl:db-name('[EXTERNAL LOANID]')"/>
                 </move>
                 <move automap="true">
-                    <input path="externalDisbursalId"/>
-                    <output path="msl:db-name('[EXTERNAL DISBURSAL ID]')"/>
-                </move>
-                <move automap="true">
                     <input path="paymentMode"/>
                     <output path="msl:db-name('[PAYMENTMODE]')"/>
                 </move>

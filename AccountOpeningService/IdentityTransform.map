@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var1"/>
+    <output path="/AccountOpeningService_InlineSchema1.xsd" var="var5"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING1"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="IdentityTransform">
+        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(addCenter,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://AccountOpeningService" path="$var5/mb:msg(addCenterResponse,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],UDF12,[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
+        <move>
+            <input path="Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+        </move>
+        <insert ref="dbinsert1">
+            <input path="addCenter/addCenterRequest/center"/>
+            <output path="$dbinsert1/."/>
+            <move>
+                <input path="externalCenterId"/>
+                <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+            </move>
+            <move>
+                <input path="centerName"/>
+                <output path="msl:db-name('[CENTERNAME]')"/>
+            </move>
+        </insert>
+        <assign value="1">
+            <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>
