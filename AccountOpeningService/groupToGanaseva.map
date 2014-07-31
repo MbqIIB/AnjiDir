@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/groupFormat.xsd" var="var"/>
+    <input path="/group.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="groupToGanaseva">
-        <input namespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" path="$var/mb:msg(group,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/FI/group.xsd" path="$var/mb:msg(group,assembly,XMLNSC,Properties)"/>
         <output path="$HOGROUPSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">
@@ -26,10 +26,9 @@
                     <input path="minNumber"/>
                     <output path="msl:db-name('[MINNUMBER]')"/>
                 </move>
-                <move automap="true">
-                    <input path="formationdate"/>
+                <task type="todo">
                     <output path="msl:db-name('[FORMATIONDATE]')"/>
-                </move>
+                </task>
                 <move automap="true">
                     <input path="dayOfPeriod"/>
                     <output path="msl:db-name('[DAYOFPERIOD]')"/>

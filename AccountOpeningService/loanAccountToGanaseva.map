@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/loanAcctFormat.xsd" var="var"/>
+    <input path="/loanAccount.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-LOAN-STAGING]'))" var="HOLOANSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="loanAccountToGanaseva">
-        <input namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" path="$var/mb:msg(loanAcct,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/FI/loanAccount.xsd" path="$var/mb:msg(loanAcct,assembly,XMLNSC,Properties)"/>
         <output path="$HOLOANSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" xmlns:customer="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/groupFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/group.xsd" xmlns:customer="http://www.quantiguous.com/FI/customer.xsd" xmlns:tns="http://www.quantiguous.com/FI/group.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" schemaLocation="customer.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/customer.xsd" schemaLocation="customer.xsd"/>
 
    <xsd:element name="group">
       <xsd:complexType>

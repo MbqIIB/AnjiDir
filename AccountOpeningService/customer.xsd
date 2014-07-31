@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/customerHandOffFormat.xsd" xmlns:dt="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:loanAccount="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" xmlns:savingAccount="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/customer.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    	
-   	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
-	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" schemaLocation="savingAccount.xsd"/>   
- 	<xsd:import namespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" schemaLocation="loanAccount.xsd"/>
+   	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/savingAccount.xsd" schemaLocation="savingAccount.xsd"/>   
+ 	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
     
    <xsd:element name="customer">
       <xsd:complexType>

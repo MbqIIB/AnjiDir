@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/xmlnsc/dataTypes.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:tns="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <xsd:simpleType name="userNameType">
   	<xsd:restriction base="xsd:string">

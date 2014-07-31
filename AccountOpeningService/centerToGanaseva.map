@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/centerFormat.xsd" var="var"/>
+    <input path="/center.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="centerToGanaseva">
-        <input namespace="http://www.quantiguous.com/xmlnsc/centerFormat.xsd" path="$var/mb:msg(center,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/Fi/center.xsd" path="$var/mb:msg(center,assembly,XMLNSC,Properties)"/>
         <output path="$HOCENTERSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],UDF12,[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/xmlnsc/loanAcctFormat.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	
    <xsd:element name="loanAcct">

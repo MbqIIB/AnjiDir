@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/savingAccountFormat.xsd" var="var"/>
+    <input path="/savingAccount.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="savingAccountToGanaseva">
-        <input namespace="http://www.quantiguous.com/xmlnsc/savingAccountFormat.xsd" path="$var/mb:msg(savingAccount,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/FI/savingAccount.xsd" path="$var/mb:msg(savingAccount,assembly,XMLNSC,Properties)"/>
         <output path="$HOSAVINGSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
         <transaction>
             <insert ref="dbinsert">
