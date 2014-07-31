@@ -199,6 +199,13 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
+				            <xsd:element name="branchName">
+				               <xsd:simpleType>
+				                  <xsd:restriction base="xsd:string">
+				                     <xsd:maxLength value="100"/>
+				                  </xsd:restriction>
+				               </xsd:simpleType>
+				            </xsd:element>
 				            <xsd:element name="operatingRegionCode">
 				               <xsd:simpleType>
 				                  <xsd:restriction base="xsd:string">

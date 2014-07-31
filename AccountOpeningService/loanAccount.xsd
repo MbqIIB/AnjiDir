@@ -34,6 +34,13 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
+            <xsd:element name="productName">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="50"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
             <xsd:element name="loanAmount">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
