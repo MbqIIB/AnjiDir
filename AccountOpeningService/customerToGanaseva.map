@@ -233,6 +233,14 @@
                     <function ref="fn:current-dateTime">
                         <output path="msl:db-name('[CUSTOMER-CREATION-DATE]')"/>
                     </function>
+                    <move>
+                        <input path="$newCustomer/barcodeNo"/>
+                        <output path="msl:db-name('[COMMENTS]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/aadharSeedingConsent"/>
+                        <output path="msl:db-name('[NRI]')"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var1/DBInsertReturn"/>
