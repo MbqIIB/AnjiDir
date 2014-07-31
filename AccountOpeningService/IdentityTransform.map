@@ -9,7 +9,7 @@
         <output namespace="http://AccountOpeningService" path="$var5/mb:msg(addCenterResponse,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly1">
             <cast path="$MessageAssembly1/LocalEnvironment/any" qualifier="operation" var="any"/>
         </output>
-        <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],UDF12,[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
+        <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
         <move>
             <input path="Properties"/>
             <output path="$MessageAssembly1/Properties"/>
@@ -24,6 +24,69 @@
             <move>
                 <input path="centerName"/>
                 <output path="msl:db-name('[CENTERNAME]')"/>
+            </move>
+            <move>
+                <input path="formationDate"/>
+                <output path="msl:db-name('[FORMATIONDATE]')"/>
+            </move>
+            <move>
+                <input path="branchCode"/>
+                <output path="msl:db-name('[BRANCHCODE]')"/>
+            </move>
+            <move>
+                <input path="operationgRegionCode"/>
+                <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
+            </move>
+            <move>
+                <input path="meetingTime"/>
+                <output path="msl:db-name('[MEETINGTIME]')"/>
+            </move>
+            <move>
+                <input path="servicingAgent"/>
+                <output path="msl:db-name('[SERVICINGAGENT]')"/>
+            </move>
+            <move>
+                <input path="maximumIndividuals"/>
+                <output path="msl:db-name('[MAXNOOFIND]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/line1"/>
+                <output path="msl:db-name('[ADDRESS1]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/line2"/>
+                <output path="msl:db-name('[ADDRESS2]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/line3"/>
+                <output path="msl:db-name('[ADDRESS3]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/city"/>
+                <output path="msl:db-name('[CITY]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/state"/>
+                <output path="msl:db-name('[STATE]')"/>
+            </move>
+            <move>
+                <input path="meetingAddress/pin"/>
+                <output path="msl:db-name('[PINCODE]')"/>
+            </move>
+            <assign value="DEFAULT">
+                <output path="msl:db-name('[EXTERNALAGENTID]')"/>
+            </assign>
+            <move>
+                <input path="description"/>
+                <output path="msl:db-name('[DESCRIPTION]')"/>
+            </move>
+            <move>
+                <input path="phoneNo"/>
+                <output path="msl:db-name('[PRIMARYPHONENO]')"/>
+            </move>
+            <move>
+                <input path="centerLeader"/>
+                <output path="msl:db-name('[CENTERLEADER]')"/>
             </move>
         </insert>
         <assign value="1">
