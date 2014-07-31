@@ -1,207 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/customer.xsd" var="var"/>
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CUSTOMERHANDOFF-STAGING]'))" var="HOCUSTOMERHANDOFFSTAGING"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="customerToGanaseva">
-        <input namespace="http://www.quantiguous.com/FI/customer.xsd" path="$var/mb:msg(customer,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://AccountOpeningService" path="$var/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)"/>
         <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID,[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS,[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
-        <transaction>
-            <insert ref="dbinsert">
-                <input path="customer/newCustomer" var="newCustomer"/>
-                <input path="customer/externalCustomerid" var="externalCustomerid"/>
-                <output path="$dbinsert/."/>
-                <move>
-                    <input path="$newCustomer/customerName"/>
-                    <output path="msl:db-name('[CUSTOMERNAME]')"/>
-                </move>
-                <move>
-                    <input path="$externalCustomerid/."/>
-                    <output path="msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/address/city" var="city"/>
-                    <output path="msl:db-name('[CITY]')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/address/state" var="state"/>
-                    <output path="msl:db-name('[STATE]')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/mobileNo" var="mobileNo"/>
-                    <output path="msl:db-name('[MOBILE NO]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/phoneNo"/>
-                    <output path="msl:db-name('[PHONE NO]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/emailId" var="emailId"/>
-                    <output path="msl:db-name('[EMAILID]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/caste"/>
-                    <output path="msl:db-name('[CASTE]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/gender" var="gender"/>
-                    <output path="msl:db-name('[GENDER]')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/maritalStatus" var="maritalStatus"/>
-                    <output path="msl:db-name('[MARITALSTATUS')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/nationality" var="nationality"/>
-                    <output path="msl:db-name('[NATIONALITY]')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/religion" var="religion"/>
-                    <output path="msl:db-name('[RELIGION]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/fatherName"/>
-                    <output path="msl:db-name('[FATHERNAME]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/spouseName" var="spouseName"/>
-                    <output path="msl:db-name('[SPOUSE NAME]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/motherTongue"/>
-                    <output path="msl:db-name('[MOTHER TONGUE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/branchCode"/>
-                    <output path="msl:db-name('[BRANCH-CODE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/operatingRegionCode"/>
-                    <output path="msl:db-name('[OPERATING-REGION-CODE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/householdCardNo"/>
-                    <output path="msl:db-name('[HOUSEHOLD CARDNO]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/pensionCardNo"/>
-                    <output path="msl:db-name('[PENSION CARDNO]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/rationCardNo"/>
-                    <output path="msl:db-name('[RATION CARD NO]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/voterId" var="voterId"/>
-                    <output path="msl:db-name('[VOTER ID]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/panNo"/>
-                    <output path="msl:db-name('[PAN NO]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/faxNo"/>
-                    <output path="msl:db-name('[FAX NO]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/customerType"/>
-                    <output path="msl:db-name('[CUSTOMER TYPE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/health"/>
-                    <output path="msl:db-name('[HEALTH]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/occupation"/>
-                    <output path="msl:db-name('[OCCUPATION]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/familyType"/>
-                    <output path="msl:db-name('[FAMILY TYPE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/bloodGroup"/>
-                    <output path="msl:db-name('[BLOOD GROUP]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/language"/>
-                    <output path="msl:db-name('[LANGUAGE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/kycType"/>
-                    <output path="msl:db-name('[KYC TYPE]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/kycId"/>
-                    <output path="msl:db-name('[KYCID]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/urbanRural"/>
-                    <output path="msl:db-name('[URBAN-RURAL]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/cardIssuanceFlag"/>
-                    <output path="msl:db-name('[CARDISSUANCEFLAG]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/bcBranchCode"/>
-                    <output path="msl:db-name('[BC-BRANCH-CODE]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/address/line1" var="line1"/>
-                    <output path="msl:db-name('[ADDRESS1]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/address/line2"/>
-                    <output path="msl:db-name('[ADDRESS2]')"/>
-                </move>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/address/line3" var="line3"/>
-                    <output path="msl:db-name('[ADDRESS3]')"/>
-                </assign>
-                <assign>
-                    <input auxiliary="true" path="$newCustomer/address/pin" var="pin"/>
-                    <output path="msl:db-name('[PINCODE]')"/>
-                </assign>
-                <move>
-                    <input path="$newCustomer/dateOfBirth"/>
-                    <output path="msl:db-name('[CUSTDOB]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/spouseDateOfBirth"/>
-                    <output path="msl:db-name('[SPOUSE DOB]')"/>
-                </move>
-                <task type="todo">
-                    <output path="msl:db-name('[UDF1]')"/>
-                </task>
-                <task type="todo">
-                    <output path="msl:db-name('[UDF2]')"/>
-                </task>
-                <task type="todo">
-                    <output path="msl:db-name('[UDF3]')"/>
-                </task>
-                <task type="todo">
-                    <output path="msl:db-name('[UDF4]')"/>
-                </task>
-                <task type="todo">
-                    <output path="msl:db-name('[UDF5]')"/>
-                </task>
-                <move>
-                    <input path="$newCustomer/category"/>
-                    <output path="msl:db-name('[CATEGORY]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/educationalQualification"/>
-                    <output path="msl:db-name('[EDU-QUALIFICATION]')"/>
-                </move>
-                <move>
-                    <input path="$newCustomer/title"/>
-                    <output path="msl:db-name('[TITLE]')"/>
-                </move>
-            </insert>
-            <return>
-                <input path="$var1/DBInsertReturn"/>
-            </return>
-        </transaction>
+        <foreach>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/group/customers/customer" var="customer"/>
+            <input auxiliary="true" path="openGroupLoanAccount/openGroupLoanAccountRequest/originator" var="originator"/>
+            <input auxiliary="true" path="openGroupLoanAccount/openGroupLoanAccountRequest/approver" var="approver"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert ref="dbinsert">
+                    <input path="$customer/." var="customer1"/>
+                    <input path="$originator/." var="originator1"/>
+                    <input path="$approver/." var="approver1"/>
+                    <output path="."/>
+                    <move>
+                        <input path="$customer1/newCustomer/title"/>
+                        <output path="msl:db-name('[TITLE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/customerName"/>
+                        <output path="msl:db-name('[CUSTOMERNAME]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/externalCustomerid"/>
+                        <output path="msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/line1"/>
+                        <output path="msl:db-name('[ADDRESS1]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/line2"/>
+                        <output path="msl:db-name('[ADDRESS2]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/line3"/>
+                        <output path="msl:db-name('[ADDRESS3]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/city"/>
+                        <output path="msl:db-name('[CITY]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/state"/>
+                        <output path="msl:db-name('[STATE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/address/pin"/>
+                        <output path="msl:db-name('[PINCODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/dateOfBirth"/>
+                        <output path="msl:db-name('[CUSTDOB]')"/>
+                    </move>
+                    <assign>
+                        <output path="msl:db-name('[CUSTAGE]')"/>
+                    </assign>
+                    <move>
+                        <input path="$customer1/newCustomer/mobileNo"/>
+                        <output path="msl:db-name('[MOBILE NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/phoneNo"/>
+                        <output path="msl:db-name('[PHONE NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/emailId"/>
+                        <output path="msl:db-name('[EMAILID]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/caste"/>
+                        <output path="msl:db-name('[CASTE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/gender"/>
+                        <output path="msl:db-name('[GENDER]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/maritalStatus"/>
+                        <output path="msl:db-name('[MARITALSTATUS')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/nationality"/>
+                        <output path="msl:db-name('[NATIONALITY]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/religion"/>
+                        <output path="msl:db-name('[RELIGION]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/fatherName"/>
+                        <output path="msl:db-name('[FATHERNAME]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/spouseName"/>
+                        <output path="msl:db-name('[SPOUSE NAME]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/spouseDateOfBirth"/>
+                        <output path="msl:db-name('[SPOUSE DOB]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/motherTongue"/>
+                        <output path="msl:db-name('[MOTHER TONGUE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/branchCode"/>
+                        <output path="msl:db-name('[BRANCH-CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/operatingRegionCode"/>
+                        <output path="msl:db-name('[OPERATING-REGION-CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/householdCardNo"/>
+                        <output path="msl:db-name('[HOUSEHOLD CARDNO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/pensionCardNo"/>
+                        <output path="msl:db-name('[PENSION CARDNO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/rationCardNo"/>
+                        <output path="msl:db-name('[RATION CARD NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/voterId"/>
+                        <output path="msl:db-name('[VOTER ID]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/panNo"/>
+                        <output path="msl:db-name('[PAN NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/faxNo"/>
+                        <output path="msl:db-name('[FAX NO]')"/>
+                    </move>
+                    <assign value="CREATE CUSTOMER">
+                        <output path="msl:db-name('[COMMENTS]')"/>
+                    </assign>
+                    <move>
+                        <input path="$originator1/."/>
+                        <output path="msl:db-name('[ORIGINATOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator1/."/>
+                        <output path="msl:db-name('[COLLECTOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$approver1/."/>
+                        <output path="msl:db-name('[APPROVER]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/customerType"/>
+                        <output path="msl:db-name('[CUSTOMER TYPE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/health"/>
+                        <output path="msl:db-name('[HEALTH]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/occupation"/>
+                        <output path="msl:db-name('[OCCUPATION]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/familyType"/>
+                        <output path="msl:db-name('[FAMILY TYPE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/bloodGroup"/>
+                        <output path="msl:db-name('[BLOOD GROUP]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/educationalQualification"/>
+                        <output path="msl:db-name('[EDU-QUALIFICATION]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/category"/>
+                        <output path="msl:db-name('[CATEGORY]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/language"/>
+                        <output path="msl:db-name('[LANGUAGE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/kycType"/>
+                        <output path="msl:db-name('[KYC TYPE]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/kycId"/>
+                        <output path="msl:db-name('[KYCID]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/urbanRural"/>
+                        <output path="msl:db-name('[URBAN-RURAL]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/cardIssuanceFlag"/>
+                        <output path="msl:db-name('[CARDISSUANCEFLAG]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/bcBranchCode"/>
+                        <output path="msl:db-name('[BC-BRANCH-CODE]')"/>
+                    </move>
+                    <function ref="fn:current-dateTime">
+                        <output path="msl:db-name('[CUSTOMER-CREATION-DATE]')"/>
+                    </function>
+                    <assign value="YES if CARD ISSUANCE FLAG IS TRUE AND AADHAR IS PRESENT else FALSE">
+                        <output path="msl:db-name('[UDF1]')"/>
+                    </assign>
+                    <move>
+                        <input path="$customer1/newCustomer/minorityCommunity"/>
+                        <output path="msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/disabilityHandicapped"/>
+                        <output path="msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/weakerSection"/>
+                        <output path="msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move>
+                        <input path="$customer1/newCustomer/borrowerType"/>
+                        <output path="msl:db-name('[UDF5]')"/>
+                    </move>
+                </insert>
+                <return>
+                    <input path="$var1/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
     </mappingDeclaration>
 </mappingRoot>
