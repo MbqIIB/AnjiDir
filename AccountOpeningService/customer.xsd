@@ -226,45 +226,6 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
-				            <xsd:element minOccurs="0" name="customerType">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-Individual,02-Institution,03-Joint Customer,04-Company,05-Partnership firm,06-Internal Customer,07-Trust,08-Group,09-Nostro/Vostro,10-Non Nostro,11-Education Society,12-Semi Govt,13-Quasi Govt,14-NGO,15-Public Sector,16-Urban Co-op Bank,17-Small Scale Industry,18-Other Banks,19-Insurance Company,20-Religious Institution,21-Hindu Undivided Family,22-Trader,24-Self Employed,25-Small Businessman,26-Student,27-Firm,28-Club,29-School</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="01"/>
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-										<xsd:enumeration value="05"/>
-										<xsd:enumeration value="06"/>
-										<xsd:enumeration value="07"/>
-										<xsd:enumeration value="08"/>
-										<xsd:enumeration value="09"/>
-										<xsd:enumeration value="10"/>
-										<xsd:enumeration value="11"/>
-										<xsd:enumeration value="12"/>
-										<xsd:enumeration value="13"/>
-										<xsd:enumeration value="14"/>
-										<xsd:enumeration value="15"/>
-										<xsd:enumeration value="16"/>
-										<xsd:enumeration value="17"/>
-										<xsd:enumeration value="18"/>
-										<xsd:enumeration value="19"/>
-										<xsd:enumeration value="20"/>
-										<xsd:enumeration value="21"/>
-										<xsd:enumeration value="22"/>
-										<xsd:enumeration value="23"/>
-										<xsd:enumeration value="24"/>
-										<xsd:enumeration value="25"/>
-										<xsd:enumeration value="26"/>
-										<xsd:enumeration value="27"/>
-										<xsd:enumeration value="28"/>
-										<xsd:enumeration value="29"/>
-				                  </xsd:restriction>
-				
-				               </xsd:simpleType>
-				            </xsd:element>
 				            <xsd:element minOccurs="0" name="health">
 				                        <xsd:annotation>
 				                           <xsd:documentation>02-Partial sa,03-Physically Challenged,04-Mentally Challenged,05-gir,06-Blind,07-One</xsd:documentation>
