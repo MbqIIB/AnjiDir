@@ -11,18 +11,18 @@
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/addCenter_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="584,145">
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="792,122">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/addCenter_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="352,215" dataSource="ganaseva_uat" connectDatasourceBeforeFlowStarts="true" computeExpression="esql://routine/gen#InitiateJob_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="603,328" dataSource="ganaseva_uat" connectDatasourceBeforeFlowStarts="true" computeExpression="esql://routine/gen#InitiateJob_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Initiate Job"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="196,80" mappingExpression="msl://{default}#IdentityTransform">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="137,80" mappingExpression="msl://{default}#IdentityTransform">
         <translation xmi:type="utility:ConstantString" string="Create Job"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
