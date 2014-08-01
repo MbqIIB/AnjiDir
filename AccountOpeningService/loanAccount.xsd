@@ -58,7 +58,7 @@
             		</xsd:documentation>
             	</xsd:annotation>
             </xsd:element>
-			<xsd:element fixed="1" name="paymentMode" type="xsd:string">
+			<xsd:element fixed="1" name="disbursementMode" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation>
 						The disbursement mode of the loan. Currently fixed to 1 (cash)
@@ -115,13 +115,6 @@
                      <xsd:maxInclusive value="3"/>
 <xsd:enumeration value="1"/>
 <xsd:enumeration value="2"/>
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="loanPurpose">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="500"/>
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
