@@ -68,20 +68,6 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
-				            <xsd:element minOccurs="0" name="phoneNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="50"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="emailId">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
 				            <xsd:element minOccurs="0" name="caste">
 				                        <xsd:annotation>
 				                           <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
@@ -152,27 +138,6 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
-				            <xsd:element minOccurs="0" name="fatherName">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="spouseName">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="spouseDateOfBirth">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="20"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
 				            <xsd:element minOccurs="0" name="motherTongue">
 				                        <xsd:annotation>
 				                           <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
@@ -213,13 +178,6 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
-				            <xsd:element minOccurs="0" name="householdCardNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
 				            <xsd:element minOccurs="0" name="pensionCardNo">
 				               <xsd:simpleType>
 				                  <xsd:restriction base="xsd:string">
@@ -242,13 +200,6 @@
 				               </xsd:simpleType>
 				            </xsd:element>
 				            <xsd:element minOccurs="0" name="panNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="faxNo">
 				               <xsd:simpleType>
 				                  <xsd:restriction base="xsd:string">
 				                     <xsd:maxLength value="100"/>
@@ -340,30 +291,6 @@
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
-				            <xsd:element minOccurs="0" name="familyType">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-BLENDED FAMILIES,02-JOINT FAMILIES,03-OTHERS,04-No documents</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="01"/>
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="bloodGroup">
-				                        <xsd:annotation>
-				                           <xsd:documentation>1-A+,2-A-,3-B+,4-B-,5-O+,6-O-,7-AB+,8-AB-</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-				                     <xsd:minInclusive value="1"/>
-				                     <xsd:maxInclusive value="8"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
 				            <xsd:element minOccurs="0" name="educationalQualification">
 				                        <xsd:annotation>
 				                           <xsd:documentation>03-Post Grauduate,04-Graduate,05-Under Graduate,07-Doctorate,08-Professionally Qualified,09-Others,10-9th Pass,11-agricultural mgt,12-No Schooling,13-10th Fail,14-10th Pass,15-Diploma Holder</xsd:documentation>
@@ -432,18 +359,6 @@
 				               <xsd:simpleType>
 				                  <xsd:restriction base="xsd:string">
 				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="documentExpiryDate" type="xsd:date"/>
-				            <xsd:element minOccurs="0" name="urbanRural">
-				                        <xsd:annotation>
-				                           <xsd:documentation>1-URBAN,2-RURA</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-				                     <xsd:minInclusive value="1"/>
-										<xsd:maxInclusive value="2"/>
 				                  </xsd:restriction>
 				               </xsd:simpleType>
 				            </xsd:element>
