@@ -8,7 +8,7 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="customerHandOffToGanaseva_Mapping">
         <input namespace="http://www.quantiguous.com/dfdl/customerHandOffFormat.xsd" path="$var/mb:msg(customerHandOffFormat,assembly,DFDL,Properties)"/>
-        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID,[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS,[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR,[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY,[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
+        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID,[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS,[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
         <foreach>
             <input path="customerHandOffFormat/records"/>
             <output path="$dbinsert/."/>
@@ -169,10 +169,6 @@
                         <output path="msl:db-name('[APPROVER]')"/>
                     </move>
                     <move automap="true">
-                        <input path="COLLECTOR"/>
-                        <output path="msl:db-name('[COLLECTOR')"/>
-                    </move>
-                    <move automap="true">
                         <input path="CUSTOMER_TYPE"/>
                         <output path="msl:db-name('[CUSTOMER TYPE]')"/>
                     </move>
@@ -195,10 +191,6 @@
                     <move automap="true">
                         <input path="EDU-QUALIFICATION"/>
                         <output path="msl:db-name('[EDU-QUALIFICATION]')"/>
-                    </move>
-                    <move automap="true">
-                        <input path="CATEGORY"/>
-                        <output path="msl:db-name('[CATEGORY')"/>
                     </move>
                     <move automap="true">
                         <input path="LANGUAGE"/>
@@ -374,6 +366,14 @@
                     <function ref="fn:current-dateTime">
                         <output path="msl:db-name('[SYSTEM-DATE]')"/>
                     </function>
+                    <move>
+                        <input path="CATEGORY"/>
+                        <output path="msl:db-name('[CATEGORY]')"/>
+                    </move>
+                    <move>
+                        <input path="COLLECTOR"/>
+                        <output path="msl:db-name('[COLLECTOR]')"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var1/DBInsertReturn"/>
