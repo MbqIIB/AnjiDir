@@ -1,8 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" 
+	xmlns:tns="http://www.quantiguous.com/FI/loanAccount.xsd" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	
-   <xsd:element name="loanAcct">
-      <xsd:complexType>
+   <xsd:element name="loanAccount">
+   	<xsd:complexType>
+   		<xsd:complexContent>
+   			<xsd:extension base="tns:loanApplicationType">
+   				<xsd:sequence>
+		            <xsd:element name="loanStartDate" type="xsd:date">
+		            	<xsd:annotation>
+		            		<xsd:documentation>
+		            			This is the date on which the loan account will be opened, and also the disbursement will be done (disbursement date). 
+		            			This cannot be a future date, a back date is allowed for upto a month.
+		            			This validation is currently not enforced in the schema.
+		            		</xsd:documentation>
+		            	</xsd:annotation>
+		            </xsd:element>
+	   			
+		            <xsd:element name="repaymentStartDate" type="xsd:date">
+		           
+		            	<xsd:annotation>
+		            		<xsd:documentation>
+		            			This is the date on which the (EMI) repayment  will start.
+		            			This has to be greater than the disbusrement date, and upto 2 months maxium.
+		            			This validation is currently not enforced in the schema.
+		            		</xsd:documentation>
+		            	</xsd:annotation>
+					</xsd:element>
+   				</xsd:sequence>
+   			</xsd:extension>
+   		</xsd:complexContent>
+   	</xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="loanApplication" type="tns:loanApplicationType"/>
+   
+      <xsd:complexType name="loanApplicationType">
          <xsd:sequence>
             <xsd:element name="externalNo" type="xsd:string">
                 <xsd:annotation>
@@ -48,15 +84,6 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="loanStartDate" type="xsd:date">
-            	<xsd:annotation>
-            		<xsd:documentation>
-            			This is the date on which the loan account will be opened, and also the disbursement will be done (disbursement date). 
-            			This cannot be a future date, a back date is allowed for upto a month.
-            			This validation is currently not enforced in the schema.
-            		</xsd:documentation>
-            	</xsd:annotation>
-            </xsd:element>
 			<xsd:element fixed="1" name="disbursementMode" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation>
@@ -91,16 +118,6 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="repaymentStartDate" type="xsd:date">
-           
-            	<xsd:annotation>
-            		<xsd:documentation>
-            			This is the date on which the (EMI) repayment  will start.
-            			This has to be greater than the disbusrement date, and upto 2 months maxium.
-            			This validation is currently not enforced in the schema.
-            		</xsd:documentation>
-            	</xsd:annotation>
-			</xsd:element>
 
 
             <xsd:element minOccurs="0" name="loanCycle">   
@@ -221,5 +238,4 @@ Agriculture- POl1, Education-POL2, Others-POL3, Farming-POL-4
   
          </xsd:sequence>
       </xsd:complexType>
-   </xsd:element>
 </xsd:schema>

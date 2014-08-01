@@ -76,7 +76,7 @@
                   </xsd:complexContent>
                </xsd:complexType>
             </xsd:element>
-            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAcct"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
             
          </xsd:sequence>
       </xsd:complexType>
