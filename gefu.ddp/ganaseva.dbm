@@ -6,7 +6,7 @@
       <details xmi:id="_79USshCuEeS6BqAOuK3k2g" key="ConnectionKey" value="ganaseva_uat"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _SmAfYRDGEeSqWPIQ1piodQ _bBmVoBocEeSuhbqUdtWxWg" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
+  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _SmAfYRDGEeSqWPIQ1piodQ _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
   <SQLTables:PersistentTable xmi:id="_7_XhIBCuEeS6BqAOuK3k2g" name="[HO-CENTER-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_7_XhIRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_XhIhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
@@ -1481,7 +1481,7 @@
     <parameters xmi:id="_39VpABoYEeSuhbqUdtWxWg" name="@processid">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_i5x6MBoZEeSuhbqUdtWxWg" name="INT" primitiveType="INTEGER"/>
     </parameters>
-    <source xmi:id="_DxVbgBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE [INITIATE_BATCH_PROCESS] @batchid INT, @partnerid INT, @filename VARCHAR(100), @processid INT&#xA;AS&#xA;IF @processid = 1 -- center creation&#xA;EXEC [HO-PROCESS-02] @batchid, @partnerid, @filename&#xA;ELSE IF @processid = 2 -- group creation&#xA;EXEC [HO-PROCESS-04] @batchid, @partnerid, @filename&#xA;ELSE IF @processid = 3 -- customer creation&#xA;EXEC [HO-PROCESS-CU] @batchid, @partnerid, @filename&#xA;ELSE IF @processid = 4 -- saving account creation&#xA;EXEC [HO-PROCESS-A0] @batchid, @partnerid, @filename&#xA;ELSE IF @processid = 5 -- loan creation&#xA;EXEC [HO-PROCESS-01] @batchid, @partnerid, @filename"/>
+    <source xmi:id="_DxVbgBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE [INITIATE_BATCH_PROCESS] @batchid INT, @partnerid INT, @filename VARCHAR(100), @processid INT&#xA;AS&#xA;IF @processid = 1 -- center creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-02] @batchid, @partnerid, @filename&#xA;UPDATE [RCDSSYSPARAMS] SET [VALUE] = @batchid WHERE [MNEMONIC] = 'HO_02_BATCHID'&#xA;END&#xA;ELSE IF @processid = 2 -- group creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-04] @batchid, @partnerid, @filename&#xA;UPDATE [RCDSSYSPARAMS] SET [VALUE] = @batchid WHERE [MNEMONIC] = 'HO_02_BATCHID'&#xA;END&#xA;ELSE IF @processid = 3 -- customer creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-CU] @batchid, @partnerid, @filename&#xA;UPDATE [RCDSSYSPARAMS] SET [VALUE] = @batchid WHERE [MNEMONIC] = 'HO_02_BATCHID'&#xA;END&#xA;ELSE IF @processid = 4 -- saving account creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-A0] @batchid, @partnerid, @filename&#xA;UPDATE [RCDSSYSPARAMS] SET [VALUE] = @batchid WHERE [MNEMONIC] = 'HO_02_BATCHID'&#xA;END&#xA;ELSE IF @processid = 5 -- loan creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-01] @batchid, @partnerid, @filename&#xA;UPDATE [RCDSSYSPARAMS] SET [VALUE] = @batchid WHERE [MNEMONIC] = 'HO_02_BATCHID'&#xA;END"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_NIzhMBoZEeSuhbqUdtWxWg" name="[HO-PROCESS-CU]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_UlTH8BoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1562,15 +1562,27 @@
   <zSeries:ZSeriesCharacterSet xmi:id="_NeUowBoaEeSuhbqUdtWxWg" CharacterStringDataType="_MhhpUBoaEeSuhbqUdtWxWg"/>
   <zSeries:ZSeriesCharacterSet xmi:id="_NeUowRoaEeSuhbqUdtWxWg" CharacterStringDataType="_M9RKIBoaEeSuhbqUdtWxWg"/>
   <zSeries:ZSeriesCharacterSet xmi:id="_NeUowhoaEeSuhbqUdtWxWg" CharacterStringDataType="_NdUjMBoaEeSuhbqUdtWxWg"/>
-  <SQLTables:PersistentTable xmi:id="_bBmVoBocEeSuhbqUdtWxWg" name="[RCDSSYSPARAMS]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_oEEtcBocEeSuhbqUdtWxWg" name="[MNEMONIC]" nullable="false">
+  <SQLTables:PersistentTable xmi:id="_bBmVoBocEeSuhbqUdtWxWg" name="RCDSSYSPARAMS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_oEEtcBocEeSuhbqUdtWxWg" name="MNEMONIC" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_aDGQkBodEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
-    <columns xmi:id="_oGBOMBocEeSuhbqUdtWxWg" name="[MODULE]" nullable="false">
+    <columns xmi:id="_oGBOMBocEeSuhbqUdtWxWg" name="MODULE" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_ZQPQQBodEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
-    <columns xmi:id="_WSfFsBodEeSuhbqUdtWxWg" name="[VALUE]" nullable="false">
+    <columns xmi:id="_WSfFsBodEeSuhbqUdtWxWg" name="VALUE" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_YcVHEBodEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_l-6HsRuQEeSzxZ3WQagvDw" name="HO_STAGING" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_tQb0kBuQEeSzxZ3WQagvDw" name="ID" nullable="false" defaultValue="">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_LNp2QBuREeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_Qgfo4BuREeSzxZ3WQagvDw" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
+    <columns xmi:id="_tTOp4BuQEeSzxZ3WQagvDw" name="OPERATION" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_1LzIoBuQEeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_taV-gBuQEeSzxZ3WQagvDw" name="BATCH_ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_2PgBUBuQEeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
     </columns>
   </SQLTables:PersistentTable>
 </xmi:XMI>
