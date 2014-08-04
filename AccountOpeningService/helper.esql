@@ -1,0 +1,23 @@
+CREATE FUNCTION formatTime(IN piHour INT, IN piMinute INT) RETURNS CHARACTER
+BEGIN
+	DECLARE lTime CHARACTER;
+	DECLARE lHour INTEGER;
+	DECLARE lAMPM CHARACTER;
+	DECLARE datePart INTEGER;
+	DECLARE lDate DATE;
+
+	IF (piHour > 12) THEN
+		SET lHour = piHour -12;
+		SET lAMPM = 'PM';
+	ELSEIF (piHour = 12) THEN
+		SET lHour = piHour;
+		SET lAMPM = 'PM';
+	ELSE
+		SET lHour = piHour;
+		SET lAMPM = 'AM';
+	END IF;
+	
+	SET lTime = CAST(lHour AS CHARACTER)||':'||CAST(piMinute AS CHARACTER)||lAMPM;
+	
+	RETURN lTime;
+END;
