@@ -1,99 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/AccountOpeningService_InlineSchema1.xsd" var="var1"/>
     <input path="/localEnvironmentVariables.xsd" var="var"/>
+    <input path="db:database(/ganaseva.dbm,GANASEVA,db:schema-tables(dbo,RCDSSYSPARAMS))" var="GANASEVA1"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var4"/>
     <output path="/AccountOpeningService_InlineSchema1.xsd" var="var5"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING1"/>
+    <output path="/localEnvironmentVariables.xsd" var="var2"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,RCDSSYSPARAMS)" var="RCDSSYSPARAMS1"/>
+    <namespaces>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="IdentityTransform">
-        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(addCenter,assembly,XMLNSC,LocalEnvironment,Properties)"/>
+        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(addCenter,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly"/>
+        <input path="$GANASEVA1/db:select(fn:false(),ResultSet(dbo/RCDSSYSPARAMS/VALUE),db:where(fn:concat('dbo.&quot;RCDSSYSPARAMS&quot;.&quot;MNEMONIC&quot; = ',&quot;'&quot;,'HO_02_BATCHID',&quot;'&quot;)))" var="dbselect1"/>
         <output namespace="http://AccountOpeningService" path="$var5/mb:msg(addCenterResponse,assembly,XMLNSC,LocalEnvironment,Properties)" var="MessageAssembly1">
-            <cast path="$MessageAssembly1/LocalEnvironment/any" qualifier="operation" var="any"/>
+            <cast path="$MessageAssembly1/LocalEnvironment/Variables/any" qualifier="batchID" var="any1"/>
+            <cast path="$MessageAssembly1/LocalEnvironment/Variables/any" qualifier="operation" var="any2"/>
         </output>
         <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
+        <output path="$RCDSSYSPARAMS1/db:update(fn:false(),fn:true(),db:where(fn:concat('dbo.&quot;RCDSSYSPARAMS&quot;.&quot;MNEMONIC&quot; = ',&quot;'&quot;,'HO_02_BATCHID',&quot;'&quot;)),MNEMONIC,MODULE,VALUE)" var="dbupdate1"/>
         <move>
-            <input path="Properties"/>
+            <input path="$MessageAssembly/Properties"/>
             <output path="$MessageAssembly1/Properties"/>
         </move>
         <insert ref="dbinsert1">
-            <input path="addCenter/addCenterRequest/center"/>
-            <output path="$dbinsert1/."/>
+            <input path="$MessageAssembly/addCenter/addCenterRequest/center" var="center"/>
+            <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE" var="VALUE1"/>
+            <output path="$dbinsert1/." var="dbinsert"/>
             <move>
-                <input path="externalCenterId"/>
-                <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+                <input path="$center/externalCenterId"/>
+                <output path="$dbinsert/msl:db-name('[EXTERNALCENTERID]')"/>
             </move>
             <move>
-                <input path="centerName"/>
-                <output path="msl:db-name('[CENTERNAME]')"/>
+                <input path="$center/centerName"/>
+                <output path="$dbinsert/msl:db-name('[CENTERNAME]')"/>
             </move>
             <move>
-                <input path="formationDate"/>
-                <output path="msl:db-name('[FORMATIONDATE]')"/>
+                <input path="$center/formationDate"/>
+                <output path="$dbinsert/msl:db-name('[FORMATIONDATE]')"/>
             </move>
             <move>
-                <input path="branchCode"/>
-                <output path="msl:db-name('[BRANCHCODE]')"/>
+                <input path="$center/branchCode"/>
+                <output path="$dbinsert/msl:db-name('[BRANCHCODE]')"/>
             </move>
             <move>
-                <input path="operationgRegionCode"/>
-                <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
+                <input path="$center/operationgRegionCode"/>
+                <output path="$dbinsert/msl:db-name('[OPERATINGREGIONCODE]')"/>
             </move>
             <move>
-                <input path="meetingTime"/>
-                <output path="msl:db-name('[MEETINGTIME]')"/>
+                <input path="$center/meetingTime"/>
+                <output path="$dbinsert/msl:db-name('[MEETINGTIME]')"/>
             </move>
             <move>
-                <input path="servicingAgent"/>
-                <output path="msl:db-name('[SERVICINGAGENT]')"/>
+                <input path="$center/servicingAgent"/>
+                <output path="$dbinsert/msl:db-name('[SERVICINGAGENT]')"/>
             </move>
             <move>
-                <input path="maximumIndividuals"/>
-                <output path="msl:db-name('[MAXNOOFIND]')"/>
+                <input path="$center/maximumIndividuals"/>
+                <output path="$dbinsert/msl:db-name('[MAXNOOFIND]')"/>
             </move>
             <move>
-                <input path="meetingAddress/line1"/>
-                <output path="msl:db-name('[ADDRESS1]')"/>
+                <input path="$center/meetingAddress/line1"/>
+                <output path="$dbinsert/msl:db-name('[ADDRESS1]')"/>
             </move>
             <move>
-                <input path="meetingAddress/line2"/>
-                <output path="msl:db-name('[ADDRESS2]')"/>
+                <input path="$center/meetingAddress/line2"/>
+                <output path="$dbinsert/msl:db-name('[ADDRESS2]')"/>
             </move>
             <move>
-                <input path="meetingAddress/line3"/>
-                <output path="msl:db-name('[ADDRESS3]')"/>
+                <input path="$center/meetingAddress/line3"/>
+                <output path="$dbinsert/msl:db-name('[ADDRESS3]')"/>
             </move>
             <move>
-                <input path="meetingAddress/city"/>
-                <output path="msl:db-name('[CITY]')"/>
+                <input path="$center/meetingAddress/city"/>
+                <output path="$dbinsert/msl:db-name('[CITY]')"/>
             </move>
             <move>
-                <input path="meetingAddress/state"/>
-                <output path="msl:db-name('[STATE]')"/>
+                <input path="$center/meetingAddress/state"/>
+                <output path="$dbinsert/msl:db-name('[STATE]')"/>
             </move>
             <move>
-                <input path="meetingAddress/pin"/>
-                <output path="msl:db-name('[PINCODE]')"/>
+                <input path="$center/meetingAddress/pin"/>
+                <output path="$dbinsert/msl:db-name('[PINCODE]')"/>
             </move>
             <assign value="DEFAULT">
-                <output path="msl:db-name('[EXTERNALAGENTID]')"/>
+                <output path="$dbinsert/msl:db-name('[EXTERNALAGENTID]')"/>
             </assign>
             <move>
-                <input path="description"/>
-                <output path="msl:db-name('[DESCRIPTION]')"/>
+                <input path="$center/description"/>
+                <output path="$dbinsert/msl:db-name('[DESCRIPTION]')"/>
             </move>
             <move>
-                <input path="phoneNo"/>
-                <output path="msl:db-name('[PRIMARYPHONENO]')"/>
+                <input path="$center/phoneNo"/>
+                <output path="$dbinsert/msl:db-name('[PRIMARYPHONENO]')"/>
             </move>
             <move>
-                <input path="centerLeader"/>
-                <output path="msl:db-name('[CENTERLEADER]')"/>
+                <input path="$center/centerLeader"/>
+                <output path="$dbinsert/msl:db-name('[CENTERLEADER]')"/>
             </move>
+            <function ref="xs:int">
+                <input path="$VALUE1/." var="VALUE2"/>
+                <output path="$dbinsert/msl:db-name('[BATCHID]')"/>
+                <param name="primitive" value="$VALUE2"/>
+            </function>
         </insert>
         <assign value="1">
             <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
         </assign>
         <assign value="1">
-            <output path="$MessageAssembly1/LocalEnvironment/operation"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Variables/operation"/>
         </assign>
+        <move>
+            <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Variables/batchID"/>
+        </move>
+        <transaction>
+            <update ref="dbupdate1">
+                <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
+                <output path="$dbupdate1/."/>
+                <expression>
+                    <input path="." var="VALUE3"/>
+                    <output path="VALUE"/>
+                    <code lang="xpath">fn:number( $VALUE3) + 1</code>
+                </expression>
+            </update>
+            <return>
+                <input path="$var4/DBUpdateReturn"/>
+            </return>
+        </transaction>
     </mappingDeclaration>
 </mappingRoot>
