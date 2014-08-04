@@ -29,7 +29,7 @@ CREATE COMPUTE MODULE InitiateJob_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
-		CALL initiateBatchProcess(InputLocalEnvironment.Variables.batchID,22,'hello',InputLocalEnvironment.Variables.operation);
+		--CALL initiateBatchProcess(InputLocalEnvironment.Variables.batchID,22,'hello',InputLocalEnvironment.Variables.operation);
 	END;
 
 END MODULE;
