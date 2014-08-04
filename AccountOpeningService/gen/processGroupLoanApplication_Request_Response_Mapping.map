@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="gen">
+    <input path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <output path="/OnlineInquiry-1.0.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="processGroupLoanApplication_Request_Response_Mapping">
+        <input namespace="http://AccountOpeningService" path="mb:msg(processGroupLoanApplication,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://services.equifax.com/eport/ws/schemas/1.0" path="mb:msg(InquiryRequest,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

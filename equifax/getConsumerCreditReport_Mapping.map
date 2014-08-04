@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/OnlineInquiry-1.0.xsd" var="var"/>
+    <input path="/getConsumerCreditReport.xsd" var="var1"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/SOAPDomainMsg.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getConsumerCreditReport_Mapping">
+        <input namespace="http://www.quantiguous.com/equiax/0E.xsd" path="$var1/mb:msg(creditReportRequest,assembly,XMLNSC,Properties)"/>
+        <output path="mb:msg(SOAP_Domain_Msg,assembly,SOAP,Properties)">
+            <cast path="SOAP_Domain_Msg/Body/any" qualifier="{http://services.equifax.com/eport/ws/schemas/1.0}InquiryRequest"/>
+        </output>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/CustomerId"/>
+            <code lang="xpath">mb:getUserDefinedProperty('CustomerId')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/UserId"/>
+            <code lang="xpath">mb:getUserDefinedProperty('UserId')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/Password"/>
+            <code lang="xpath">mb:getUserDefinedProperty('Password')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/MemberNumber"/>
+            <code lang="xpath">mb:getUserDefinedProperty('MemberNumber')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/SecurityCode"/>
+            <code lang="xpath">mb:getUserDefinedProperty('SecurityCode')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ProductCode"/>
+            <code lang="xpath">mb:getUserDefinedProperty('ProductCode')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ProductVersion"/>
+            <code lang="xpath">mb:getUserDefinedProperty('ProductVersion')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ReportFormat"/>
+            <code lang="xpath">mb:getUserDefinedProperty('ReportFormat')</code>
+        </expression>
+        <expression>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/InquiryPurpose"/>
+            <code lang="xpath">mb:getUserDefinedProperty('InquiryPurpose')</code>
+        </expression>
+        <move>
+            <input path="creditReportRequest/customerName" var="customerName"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/FullName"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/loanAmount"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/TransactionAmount"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/voterId"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/VoterId"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/aadharNo"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/NationalIdCard"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/dateOfBirth"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/DOB"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/gender"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/Gender"/>
+        </move>
+        <function ref="concat">
+            <input path="creditReportRequest/branchCode" var="branchCode2"/>
+            <input path="creditReportRequest/branchName" var="branchName2"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestAccountDetails/BranchIDMFI"/>
+            <param name="input" value="($branchCode2,$branchName2)"/>
+            <property key="defaultDelimiter" value=" "/>
+        </function>
+        <join>
+            <input path="creditReportRequest/address" var="address"/>
+            <input path="creditReportRequest/operatingRegionCode" var="operatingRegionCode"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/AddrLine1"/>
+            <function ref="concat">
+                <input path="$address/line1" var="line1"/>
+                <input path="$address/line2" var="line2"/>
+                <input auxiliary="true" path="$address/line3" var="line3"/>
+                <input auxiliary="true" path="$operatingRegionCode/." var="operatingRegionCode1"/>
+                <input auxiliary="true" path="$address/city" var="city"/>
+                <input auxiliary="true" path="$address/state" var="state"/>
+                <input auxiliary="true" path="$address/pin" var="pin"/>
+                <output path="."/>
+                <param name="input" value="($line1,$line2,$line3,$operatingRegionCode1,$city,$state,$pin)"/>
+                <property key="defaultDelimiter" value=" "/>
+            </function>
+        </join>
+        <function ref="concat">
+            <input path="creditReportRequest/CustRefField/barcodeNo" var="barcodeNo"/>
+            <input path="creditReportRequest/CustRefField/externalId" var="externalId"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/CustRefField"/>
+            <param name="input" value="($barcodeNo,$externalId)"/>
+            <property key="defaultDelimiter" value=" "/>
+        </function>
+    </mappingDeclaration>
+</mappingRoot>

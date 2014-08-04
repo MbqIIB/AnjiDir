@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="WSDCreditReportWSInquiry" targetNamespace="http://services.equifax.com/eport/servicedefs/1.0" xmlns:ns="http://services.equifax.com/eport/ws/schemas/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.equifax.com/eport/servicedefs/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="CreditReportWSInquiryBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://services.equifax.com/eport/servicedefs/1.0">
+<xsd:import namespace="http://services.equifax.com/eport/ws/schemas/1.0" schemaLocation="OnlineInquiry-1.0.xsd"/>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreditReportRequest">
+    <wsdl:part element="ns:InquiryRequest" name="Input">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditReportResponse">
+    <wsdl:part element="ns:InquiryResponse" name="Output">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CreditReportWSInquiryPortType">
+    <wsdl:operation name="getConsumerCreditReport">
+      <wsdl:input message="tns:CreditReportRequest" name="request">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditReportResponse" name="response">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreditReportWSInquiryBinding" type="tns:CreditReportWSInquiryPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getConsumerCreditReport">
+      <soap:operation soapAction="http://services.equifax.com/CreditReportWS/CreditReportWSInquiry/1.0"/>
+      <wsdl:input name="request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="v1.0">
+    <wsdl:port binding="tns:CreditReportWSInquiryBinding" name="CreditReportWSInquiryPort">
+      <soap:address location="https://eportuat.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

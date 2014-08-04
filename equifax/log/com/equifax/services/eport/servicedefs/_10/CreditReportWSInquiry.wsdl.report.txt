@@ -1,0 +1,32 @@
+
+
+Importing file: /home/iibadm/code/iib/equifax/CreditReportWSInquiry.wsdl
+
+Copying source WSDL CreditReportWSInquiry.wsdl to CreditReportWSInquiry.wsdl.
+
+The following is a list of WS-I warning messages found when importing:
+WS-I BP 1.1: (BP2019) The "namespace" attribute is not allowed in the context of a document-literal binding., Line: 29, Column: 9
+WS-I BP 1.1: (BP2019) The "namespace" attribute is not allowed in the context of a document-literal binding., Line: 32, Column: 9
+
+
+The WSDL import will proceed with bindings CreditReportWSInquiryBinding.
+Creating wsdl schema document for file:///home/iibadm/code/iib/equifax/CreditReportWSInquiry.wsdl.
+Parsing wsdl binding {http://services.equifax.com/eport/servicedefs/1.0}CreditReportWSInquiryBinding.
+Parsing wsdl binding input getConsumerCreditReport.
+Parsing wsdl binding output getConsumerCreditReport.
+Processing doc style for operation getConsumerCreditReport.
+Populating WSDL schema CreditReportWSInquiry.xsd.
+Creating file CreditReportWSInquiry.xsd in the workspace.
+Creating file CreditReportWSInquiry_InlineSchema1.xsd in the workspace.
+Creating file /equifax/equifax/OnlineInquiry-1.0.xsd in the workspace.
+Creating file /equifax/verifyId.xsd in the workspace.
+Creating file CanonicalTypes-1.0.xsd in the workspace.
+Creating file /equifax/Enumerations-1.0.xsd in the workspace.
+
+Elapsed time processing this message definition file: 0.237 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

@@ -6,7 +6,7 @@
    <xsd:element name="center">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalCenterId">
+            <xsd:element name="externalId">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                      <xsd:maxLength value="100" />

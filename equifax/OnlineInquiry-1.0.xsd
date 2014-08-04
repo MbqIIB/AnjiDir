@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://services.equifax.com/eport/ws/schemas/1.0" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ns="http://services.equifax.com/eport/ws/schemas/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:include schemaLocation="verifyId.xsd"/>
+   <xsd:include schemaLocation="CanonicalTypes-1.0.xsd"/>
+   
+   <xsd:element ibmSchExtn:docRoot="true" name="InquiryRequest" type="ns:InquiryRequestType">
+      <xsd:annotation>
+         <xsd:documentation>
+            The WS Inquiry service request message root element declaration
+         </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+
+   <xsd:element ibmSchExtn:docRoot="true" name="InquiryResponse" type="ns:InquiryResponseType">
+      <xsd:annotation>
+         <xsd:documentation>
+            The WS Inquiry service response message root element declaration
+         </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+
+   <xsd:complexType name="InquiryRequestType">
+      <xsd:sequence>
+         <!-- The inquiry request header section -->
+         <xsd:element maxOccurs="1" minOccurs="1" name="RequestHeader" type="ns:RequestHeaderType"/>
+         <!-- Please use this for adding Branch and Center ID for old specification, MFI only -->
+         <xsd:element maxOccurs="1" minOccurs="0" name="RequestAccountDetails" type="ns:AccountInputType"/>
+         <!-- Please use this for adding Account Number, Branch or Center ID for new specification -->
+         <xsd:element maxOccurs="1" minOccurs="0" name="InquiryCommonAccountDetails" type="ns:InquiryCommonAccountDetailsType"/>
+         <!-- This includes PII information and some other info, see specification for details -->
+         <xsd:element maxOccurs="1" minOccurs="1" name="RequestBody" type="ns:RequestBodyType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <!--Element for Retail account number based search, can also be used for MFI branch and center ID based search -->
+   <xsd:complexType name="InquiryCommonAccountDetailsType">
+      <xsd:sequence>
+         <!-- Provision to add multiple account details -->
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="InquiryAccount" type="ns:AccountInputType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <!-- The inquiry request header -->
+   <xsd:complexType name="RequestHeaderType">
+      <xsd:sequence>
+         <!-- Company ID or Customer ID -->
+         <xsd:element name="CustomerId" type="xsd:int"/>
+         <!-- User ID, should have STS access -->
+         <xsd:element name="UserId" type="xsd:string"/>
+         <xsd:element name="Password" type="xsd:string"/>
+         <!-- Member number or Client ID and security codes -->
+         <xsd:element name="MemberNumber" type="xsd:string"/>
+         <xsd:element name="SecurityCode" type="xsd:string"/>
+         <!-- Product code, check list for details -->
+         <!-- * CIR - Basic Consumer Credit Report -->
+         <!-- * CIS - Basic Consumer Credit Score -->
+         <!-- * ECR - Enhanced Consumer Credit Report -->
+         <!-- * ECS - Enhanced Consumer Credit Score -->
+         <!-- * IDR - Consumer Demographic Report -->
+         <!-- * IDS - Consumer Demographic Score -->
+         <!-- * MCR - MFI Basic Credit Report V1.0 -->
+         <!-- * MCS - MFI Credit Report With Score V1.0 -->
+         <!-- * MCR01 - MFI Basic Credit Report V1.1 -->
+         <!-- * MCS01 - MFI Credit Report With Score V1.1 -->
+         <!-- * PCR - PreScreen Credit Report -->
+         <!-- * PCS - PreScreen Credit Score -->
+         <xsd:element name="ProductCode" type="xsd:string"/>
+         <!-- Only 1.0 is supported as Product Version -->
+         <xsd:element name="ProductVersion" type="xsd:string"/>
+         <xsd:element name="ReportFormat" type="ns:ReportFormatOptions"/>
+         <xsd:element minOccurs="0" name="CustRefField" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <!-- Specifies actual Inquiry Request data. This element is included in Response XML also -->
+   <xsd:complexType name="RequestBodyType">
+      <xsd:sequence>
+         <!-- Inquiry purpose. Check enumeration for details -->
+         <xsd:element name="InquiryPurpose" type="ns:InquiryPurposeOptions"/>
+         <!-- Should be a decimal. Currency signs are not supported -->
+         <xsd:element minOccurs="0" name="TransactionAmount" type="xsd:decimal"/>
+         <!-- Account number or Provider-Consumer ID, used for MFI only -->
+         <xsd:element minOccurs="0" name="AdditionalSearchField" type="xsd:string"/>
+         <!-- Used for MFI only, not for Retail -->
+         <xsd:element minOccurs="0" name="FullName">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="200"/>
+                  <xsd:pattern value="([a-z A-Z.,])+"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Used for Retail only, not for MFI -->
+         <xsd:element minOccurs="0" name="FirstName">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+                  <xsd:pattern value="([a-z A-Z.,])+"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Used for Retail only, not for MFI -->
+         <xsd:element minOccurs="0" name="MiddleName">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+                  <xsd:pattern value="([a-z A-Z.,])+"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Used for Retail only, not for MFI -->
+         <xsd:element minOccurs="0" name="LastName">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+                  <xsd:pattern value="([a-z A-Z.,])+"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Used for MFI only. The relationship name and type can be specified here -->
+         <xsd:element minOccurs="0" name="FamilyDetails" type="ns:FamilyInfo"/>
+         <!-- Identification, MFI only -->
+         <xsd:element minOccurs="0" name="AdditionalId1">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Identification, MFI only -->
+         <xsd:element minOccurs="0" name="AdditionalId2">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Address line : Old format -->
+         <xsd:element minOccurs="0" name="AddrLine1">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="220"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Street address : Extra element : Old format : May NOT be specified -->
+         <xsd:element minOccurs="0" name="Street">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Area details : Extra element : Old format : May NOT be specified -->
+         <xsd:element minOccurs="0" name="Locality1">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <xsd:element minOccurs="0" name="Locality2">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- City : Extra element : Old format : May NOT be specified -->
+         <xsd:element minOccurs="0" name="City">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="40"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- State Code : Check enumerations for details -->
+         <xsd:element minOccurs="0" name="State" type="ns:StateCodeOptions"/>
+         <!-- PIN Number or Postal Code -->
+         <xsd:element minOccurs="0" name="Postal">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="6"/>
+                  <xsd:pattern value="([0-9])*"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+
+         <!-- Can be used for Retail or MFI, for adding Multiple Address for search. -->
+         <xsd:element minOccurs="0" name="InquiryAddresses" type="ns:InquiryCommonInputAddressType"/>
+         <!-- Can be used for Retail or MFI, for adding Multiple Phone Numbers for search. -->
+         <xsd:element minOccurs="0" name="InquiryPhones" type="ns:InquiryCommonInputPhoneType"/>
+         <!-- Date of birth, should be specified in yyyy-MM-dd format -->
+         <xsd:element name="DOB" type="xsd:date"/>
+         <!-- Extra element, may NOT be populated -->
+         <xsd:element minOccurs="0" name="MaritalStatus" type="ns:MaritalStatusOptions"/>
+         <!-- Should be 1 for FEMALE and 2 for MALE -->
+         <xsd:element minOccurs="0" name="Gender" type="ns:GenderOptions"/>
+         <!-- Identification : National ID -->
+         <xsd:element minOccurs="0" name="NationalIdCard">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Identification : Ration Card : MFI Only -->
+         <xsd:element minOccurs="0" name="RationCard">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!-- Identification : PAN Card number -->
+         <xsd:element minOccurs="0" ref="ns:PANId"/>
+         <!-- Identification : Passport ID, only for Retail -->
+         <xsd:element minOccurs="0" ref="ns:PassportId"/>
+         <!-- Identification : Voter Card -->
+         <xsd:element minOccurs="0" ref="ns:VoterId"/>
+         <!-- Home phone number : Old specification -->
+         <xsd:element minOccurs="0" ref="ns:HomePhone"/>
+         <!-- Mobile phone number : Old specification -->
+         <xsd:element minOccurs="0" ref="ns:MobilePhone"/>
+         <!-- Identification : Driving License, only for Retail -->
+         <xsd:element minOccurs="0" name="DriverLicense">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:element>
+         <!--Mapped RequestBody.RequestAccountDetails to InquiryRequest.RequestAccountDetails-->
+         <xsd:element minOccurs="0" name="RequestAccountDetails" type="ns:AccountInputType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="InquiryCommonAccountDetails" type="ns:InquiryCommonAccountDetailsType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="InquiryCommonInputAddressType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="InquiryAddress" type="ns:InquiryAddressType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="InquiryCommonInputPhoneType">
+      <xsd:sequence>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="InquiryPhone" type="ns:InquiryPhoneType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <!-- SPECIFICATION FOR INQUIRY RESPONSE -->
+
+   <xsd:complexType name="InquiryResponseType">
+      <xsd:annotation>
+         <xsd:documentation>
+            The Inquiry service request message type definition
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+      	<!-- The header section -->
+         <xsd:element name="InquiryResponseHeader" type="ns:InquiryResponseHeaderType"/>
+         <!-- The inquiry request information -->
+         <xsd:element name="InquiryRequestInfo" type="ns:RequestBodyType"/>
+         <!-- Report data, will contain error data in case of error -->
+         <xsd:element name="ReportData" type="ns:ReportType"/>
+         
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <!-- Response header section -->
+   <xsd:complexType name="InquiryResponseHeaderType">
+      <xsd:sequence>
+      <!-- Unused component -->
+         <xsd:element minOccurs="0" name="CustomerCode" type="xsd:string"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="CustomerName" type="xsd:string"/>
+         <!-- Member Number -->
+         <xsd:element name="ClientID" type="xsd:string"/>
+         <!-- Customer reference number provided in Inquiry -->
+         <xsd:element minOccurs="0" name="CustRefField" type="xsd:string"/>
+         <!-- Report order number -->
+         <xsd:element minOccurs="0" name="ReportOrderNO" type="xsd:string"/>
+         <!-- Product Code -->
+         <xsd:element minOccurs="0" name="ProductCode" type="xsd:string"/>
+         <!-- Product Version -->
+         <xsd:element minOccurs="0" name="ProductVersion" type="xsd:string"/>
+         <!-- 0 for Failure, 1 for success -->
+         <xsd:element name="SuccessCode" type="xsd:string"/>
+         <!-- Unused component -->
+         <xsd:element minOccurs="0" name="MatchType" type="xsd:string"/>
+         <!-- Date of inquiry -->
+         <xsd:element minOccurs="0" name="Date" type="xsd:string"/>
+         <!-- Time of inquiry -->
+         <xsd:element minOccurs="0" name="Time" type="xsd:string"/>
+         <!-- Hit code : 00 for no hit, 01 for Inquiry only report, 10 and 11 for hit -->
+         <xsd:element minOccurs="0" name="HitCode" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:complexType name="ReportType">
+      <xsd:choice>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="Error" type="ns:ErrorType"/>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="VerifyIDResponse" type="ns:responseBody"/>         
+            <xsd:element minOccurs="0" name="IDAndContactInfo" type="ns:IDAndContactType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="IncomeDetails" type="ns:IncomeDetailsType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="EmploymentInfo" type="ns:EmployerDetailsType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Score" type="ns:ScoreType"/>
+            <xsd:element minOccurs="0" name="AccountSummary" type="ns:CreditReportSummaryType"/>
+            <xsd:element minOccurs="0" name="RecentActivities" type="ns:RecentActivitiesType"/>
+            <xsd:element minOccurs="0" name="OtherKeyInd" type="ns:OtherKeyIndType"/>
+            <xsd:element minOccurs="0" name="EnquirySummary" type="ns:EnquirySummaryType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Enquiries" type="ns:EnquiryType"/>
+            <xsd:element minOccurs="0" name="AccountDetails" type="ns:AccountDetailsType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="GroupCreditSummary" type="ns:GroupCreditSummaryType"/>
+            <xsd:element minOccurs="0" name="Glossary" type="ns:GlossaryInfoType"/>
+            <xsd:element minOccurs="0" name="Disclaimer" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:choice>
+   </xsd:complexType>
+   
+   <!-- Some element definitions -->
+   
+   <xsd:element name="PANId">
+      <xsd:simpleType>
+         <xsd:restriction base="xsd:string">
+            <xsd:minLength value="10"/>
+            <xsd:maxLength value="50"/>
+            <xsd:pattern value="([a-zA-Z]{3}[ABCFHJLPRabcfhjlpr]{1}[a-zA-Z]{1}[0-9]{4}[a-zA-Z])+"/>
+         </xsd:restriction>
+      </xsd:simpleType>
+   </xsd:element>
+   <xsd:element name="PassportId">
+      <xsd:simpleType>
+         <xsd:restriction base="xsd:string">
+            <xsd:minLength value="7"/>
+            <xsd:maxLength value="50"/>
+            <xsd:pattern value="([a-zA-Z])\d+"/>
+         </xsd:restriction>
+      </xsd:simpleType>
+   </xsd:element>
+   <xsd:element name="VoterId">
+      <xsd:simpleType>
+         <xsd:restriction base="xsd:string">
+            <xsd:minLength value="10"/>
+            <xsd:maxLength value="50"/>
+            <xsd:pattern value="([a-zA-Z]{2}[0-9a-zA-Z])\d+"/>
+         </xsd:restriction>
+      </xsd:simpleType>
+   </xsd:element>
+   <xsd:element name="HomePhone" type="ns:LandlineType"/>
+   <xsd:element name="MobilePhone">
+      <xsd:simpleType>
+         <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+         </xsd:restriction>
+      </xsd:simpleType>
+   </xsd:element>
+   
+   <xsd:complexType name="OtherKeyIndType">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="AgeOfOldestTrade" type="xsd:string"/>
+         <xsd:element name="NumberOfOpenTrades" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="AllLinesEVERWritten" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="AllLinesEVERWrittenIn9Months" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="AllLinesEVERWrittenIn6Months" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+</xsd:schema>

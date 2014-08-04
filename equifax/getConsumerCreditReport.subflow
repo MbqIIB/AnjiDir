@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ComIbmSOAPRequest.msgnode="ComIbmSOAPRequest.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="getConsumerCreditReport.subflow"
+    nsPrefix="getConsumerCreditReport.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserId" name="UserId" lowerBound="1" defaultValueLiteral="RBL_STS">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Password" name="Password" lowerBound="1" defaultValueLiteral="Iflex7585">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.MemberNumber" name="MemberNumber" lowerBound="1" defaultValueLiteral="999AA00223">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.SecurityCode" name="SecurityCode" lowerBound="1" defaultValueLiteral="GG8">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProductCode" name="ProductCode" lowerBound="1" defaultValueLiteral="MCR">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProductVersion" name="ProductVersion" lowerBound="1" defaultValueLiteral="1.0">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ReportFormat" name="ReportFormat" lowerBound="1" defaultValueLiteral="XML">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.InquiryPurpose" name="InquiryPurpose" lowerBound="1" defaultValueLiteral="0E">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CustomerId" name="CustomerId" lowerBound="1" defaultValueLiteral="3">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="getConsumerCreditReport" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/equifax/icons/full/obj16/getConsumerCreditReport.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/equifax/icons/full/obj30/getConsumerCreditReport.gif"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="46,75">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="405,53">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="226,183" wsdlFileName="CreditReportWSInquiry.wsdl" selectedPortType="CreditReportWSInquiryPortType" selectedBinding="CreditReportWSInquiryBinding" selectedOperation="getConsumerCreditReport" selectedPort="CreditReportWSInquiryPort" targetNamespace="http://services.equifax.com/eport/servicedefs/1.0" useHTTPTransport="true" webServiceURL="https://eportuat.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"
+          sslProtocol="TLS">
+        <translation xmi:type="utility:ConstantString" string="SOAP Request"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="88,281" mappingExpression="msl://{default}#getConsumerCreditReport_Mapping">
+        <translation xmi:type="utility:ConstantString" string="Mapping"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.UserId">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.UserId" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+        <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.Password">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.Password" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+          <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.MemberNumber">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.MemberNumber" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+            <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.SecurityCode">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.SecurityCode" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+              <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.ProductCode">
+                <propertyName xmi:type="utility:TranslatableString" key="Property.ProductCode" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+                <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.ProductVersion">
+                  <propertyName xmi:type="utility:TranslatableString" key="Property.ProductVersion" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+                  <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.ReportFormat">
+                    <propertyName xmi:type="utility:TranslatableString" key="Property.ReportFormat" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+                    <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.InquiryPurpose">
+                      <propertyName xmi:type="utility:TranslatableString" key="Property.InquiryPurpose" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+                      <propertyDescriptor groupName="Group.RequestHeader" configurable="true" userDefined="true" describedAttribute="Property.CustomerId">
+                        <propertyName xmi:type="utility:TranslatableString" key="Property.CustomerId" bundleName="getConsumerCreditReport" pluginId="equifax"/>
+                      </propertyDescriptor>
+                    </propertyDescriptor>
+                  </propertyDescriptor>
+                </propertyDescriptor>
+              </propertyDescriptor>
+            </propertyDescriptor>
+          </propertyDescriptor>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

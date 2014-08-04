@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://services.equifax.com/eport/servicedefs/1.0" xmlns:ns="http://services.equifax.com/eport/ws/schemas/1.0" xmlns:tns="http://services.equifax.com/eport/servicedefs/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://services.equifax.com/eport/ws/schemas/1.0" schemaLocation="OnlineInquiry-1.0.xsd"/>
+  <xsd:include schemaLocation="CreditReportWSInquiry_InlineSchema1.xsd"/>
+
+<!-- BEGIN Global group petaining to all wsdl:message definitions -->
+<!-- END Global group -->
+
+
+<!-- BEGIN Message Definitions for the wsdl:operations  -->
+<!-- END Message Definitions -->
+
+
+</xsd:schema>

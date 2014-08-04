@@ -3,7 +3,7 @@
    <xsd:element name="loanDisbursal">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalLoanId">
+            <xsd:element name="externalLoanAccountId">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
                      <xsd:maxLength value="256" />

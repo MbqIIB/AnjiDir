@@ -16,7 +16,9 @@
         </service:flows>
       </service:operation>
       <service:operation name="processGroupLoanApplication" type="request-response">
-        <service:flows/>
+        <service:flows>
+          <service:flow location="gen/processGroupLoanApplication_Request_Response.subflow" type="Request_Response"/>
+        </service:flows>
       </service:operation>
     </service:operations>
     <service:errors>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://services.equifax.com/eport/ws/schemas/1.0" xmlns="http://services.equifax.com/eport/ws/schemas/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:simpleType name="InquiryPurposeOptions">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="01"/>
+         <xsd:enumeration value="02"/>
+         <xsd:enumeration value="03"/>
+         <xsd:enumeration value="04"/>
+         <xsd:enumeration value="06"/>
+         <xsd:enumeration value="05"/>
+         <xsd:enumeration value="07"/>
+         <xsd:enumeration value="08"/>
+         <xsd:enumeration value="11"/>
+         <xsd:enumeration value="12"/>
+         <xsd:enumeration value="13"/>
+         <xsd:enumeration value="14"/>
+         <xsd:enumeration value="15"/>
+         <xsd:enumeration value="16"/>
+         <xsd:enumeration value="3A"/>
+         <xsd:enumeration value="10"/>
+         <xsd:enumeration value="32"/>
+         <xsd:enumeration value="33"/>
+         <xsd:enumeration value="35"/>
+         <xsd:enumeration value="34"/>
+         <xsd:enumeration value="09"/>
+         <xsd:enumeration value="00"/>
+         <xsd:enumeration value="0E"/>
+         <xsd:enumeration value="1E"/>
+         <xsd:enumeration value="2E"/>
+         <xsd:enumeration value="3E"/>
+         <xsd:enumeration value="1G"/>
+         <xsd:enumeration value="51"/>
+         <xsd:enumeration value="52"/>
+         <xsd:enumeration value="V1"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="ReportFormatOptions">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="XML"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="GenderOptions">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="1"/>
+         <xsd:enumeration value="2"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="MaritalStatusOptions">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Cohabitating"/>
+         <xsd:enumeration value="Divorced"/>
+         <xsd:enumeration value="Married"/>
+         <xsd:enumeration value="Not Asked"/>
+         <xsd:enumeration value="Not Given"/>
+         <xsd:enumeration value="Other"/>
+         <xsd:enumeration value="Separated"/>
+         <xsd:enumeration value="Single"/>
+         <xsd:enumeration value="To Be Married"/>
+         <xsd:enumeration value="Widowed"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="StateCodeOptions">
+      <xsd:annotation/>
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="2"/>
+         <xsd:enumeration value="AN"/>
+         <xsd:enumeration value="AP"/>
+         <xsd:enumeration value="AR"/>
+         <xsd:enumeration value="AS"/>
+         <xsd:enumeration value="BR"/>
+         <xsd:enumeration value="CH"/>
+         <xsd:enumeration value="CG"/>
+         <xsd:enumeration value="DN"/>
+         <xsd:enumeration value="DD"/>
+         <xsd:enumeration value="DL"/>
+         <xsd:enumeration value="GA"/>
+         <xsd:enumeration value="GJ"/>
+         <xsd:enumeration value="HR"/>
+         <xsd:enumeration value="HP"/>
+         <xsd:enumeration value="JK"/>
+         <xsd:enumeration value="JH"/>
+         <xsd:enumeration value="KA"/>
+         <xsd:enumeration value="KL"/>
+         <xsd:enumeration value="LD"/>
+         <xsd:enumeration value="MP"/>
+         <xsd:enumeration value="MH"/>
+         <xsd:enumeration value="MN"/>
+         <xsd:enumeration value="ML"/>
+         <xsd:enumeration value="MZ"/>
+         <xsd:enumeration value="NL"/>
+         <xsd:enumeration value="OR"/>
+         <xsd:enumeration value="PY"/>
+         <xsd:enumeration value="PB"/>
+         <xsd:enumeration value="RJ"/>
+         <xsd:enumeration value="SK"/>
+         <xsd:enumeration value="TN"/>
+         <xsd:enumeration value="TR"/>
+         <xsd:enumeration value="UP"/>
+         <xsd:enumeration value="UL"/>
+         <xsd:enumeration value="WB"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="AddressCodeType">
+      <xsd:annotation>
+         <xsd:documentation>
+            Address Types
+            C - Current or Present
+            P - Permanent
+            O - Office
+            X - Other or Unspecified
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="P"/>
+         <xsd:enumeration value="C"/>
+         <xsd:enumeration value="O"/>
+         <xsd:enumeration value="X"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="AdditionalNameValType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value=""/>
+         <xsd:enumeration value="F"/>
+         <xsd:enumeration value="H"/>
+         <xsd:enumeration value="M"/>
+         <xsd:enumeration value="W"/>
+         <xsd:enumeration value="S"/>
+         <xsd:enumeration value="D"/>
+         <xsd:enumeration value="B"/>
+         <xsd:enumeration value="C"/>
+         <xsd:enumeration value="O"/>
+         <xsd:enumeration value="Z"/>
+         <xsd:enumeration value="Y"/>
+         <xsd:enumeration value="V"/>
+         <xsd:enumeration value="X"/>
+         <xsd:enumeration value="U"/>
+         <xsd:enumeration value="T"/>
+         <xsd:enumeration value="K01"/>
+         <xsd:enumeration value="K02"/>
+         <xsd:enumeration value="K03"/>
+         <xsd:enumeration value="K06"/>
+         <xsd:enumeration value="K07"/>
+         <xsd:enumeration value="K14"/>
+         <xsd:enumeration value="K04"/>
+         <xsd:enumeration value="K05"/>
+         <xsd:enumeration value="K12"/>
+         <xsd:enumeration value="K10"/>
+         <xsd:enumeration value="K09"/>
+         <xsd:enumeration value="K08"/>
+         <xsd:enumeration value="K13"/>
+         <xsd:enumeration value="K11"/>
+         <xsd:enumeration value="K15"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="GenderTypeCode">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Male"/>
+         <xsd:enumeration value="Female"/>
+         <xsd:enumeration value="M"/>
+         <xsd:enumeration value="F"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="PhoneTypeCode">
+      <xsd:annotation>
+         <xsd:documentation>
+            H = Home
+            M = Mobile
+            P = Personal Home FAX
+            F = Work FAX
+            T = Work Telephone
+            E = Employer Telephone
+            X = Other or Unspecified
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="H"/>
+         <xsd:enumeration value="M"/>
+         <xsd:enumeration value="P"/>
+         <xsd:enumeration value="F"/>
+         <xsd:enumeration value="T"/>
+         <xsd:enumeration value="E"/>
+         <xsd:enumeration value="X"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

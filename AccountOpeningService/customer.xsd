@@ -1,20 +1,417 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/customer.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
+	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
+	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
+	xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" >
    	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
 	<xsd:import namespace="http://www.quantiguous.com/FI/savingAccount.xsd" schemaLocation="savingAccount.xsd"/>   
  	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
-    
+   
+   	<xsd:complexType name="individualType">
+		<xsd:sequence>
+	          <xsd:element name="title">
+	                       <xsd:annotation>
+	                          <xsd:documentation>11-Mr, 12-Mrs, 13-Smt, 14-Master, 15-Miss, 16-Dr,17-Ms, 18-Dr(Ms), 21-M/S,99-Banl</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                   <xsd:enumeration value="11"/>
+					<xsd:enumeration value="12"/>
+					<xsd:enumeration value="13"/>
+					<xsd:enumeration value="14"/>
+					<xsd:enumeration value="15"/>
+					<xsd:enumeration value="16"/>
+					<xsd:enumeration value="17"/>
+					<xsd:enumeration value="18"/>
+					<xsd:enumeration value="21"/>
+					<xsd:enumeration value="99"/>
+	                 </xsd:restriction>
+	
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="customerName">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="address" type="dt:addressType"/>
+	           <xsd:element name="dateOfBirth">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="mobileNo">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="30"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="caste">
+	                       <xsd:annotation>
+	                          <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    	<xsd:enumeration value="01"/>
+						<xsd:enumeration value="02"/>
+						<xsd:enumeration value="03"/>
+						<xsd:enumeration value="04"/>
+						<xsd:enumeration value="05"/>
+						<xsd:enumeration value="06"/>
+						<xsd:enumeration value="7"/>
+						<xsd:enumeration value="8"/>
+						<xsd:enumeration value="9"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="gender">
+	                       <xsd:annotation>
+	                          <xsd:documentation>01-Male,02-Female,03-Other</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="01"/>
+						<xsd:enumeration value="02"/>
+						<xsd:enumeration value="03"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="maritalStatus">
+	                       <xsd:annotation>
+	                          <xsd:documentation>01-Single,02-Married,03-Divorcee,04-Widow,05-Widower,06-Other</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="01"/>
+						<xsd:enumeration value="02"/>
+						<xsd:enumeration value="03"/>
+						<xsd:enumeration value="04"/>
+						<xsd:enumeration value="05"/>
+						<xsd:enumeration value="06"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="nationality">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="religion">
+	                       <xsd:annotation>
+	                          <xsd:documentation>01-GENERAL,02-Muslim,03-Buddhist,04-Neo-Buddhist,05-Christian,06-Sikh,07-Zorashtrian,08-Other Minority,09-Hindu</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="01"/>
+					<xsd:enumeration value="02"/>
+					<xsd:enumeration value="03"/>
+					<xsd:enumeration value="04"/>
+					<xsd:enumeration value="05"/>
+					<xsd:enumeration value="06"/>
+					<xsd:enumeration value="07"/>
+					<xsd:enumeration value="08"/>
+					<xsd:enumeration value="09"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="motherTongue">
+	                       <xsd:annotation>
+	                          <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="kn-IN"/>
+					<xsd:enumeration value="hi-IN"/>
+					<xsd:enumeration value="en-US"/>
+					<xsd:enumeration value="mr-IN"/>
+					<xsd:enumeration value="ml-IN"/>
+					<xsd:enumeration value="sn-IN"/>
+					<xsd:enumeration value="ta-IN"/>
+					<xsd:enumeration value="sn-IN"/>
+					<xsd:enumeration value="bn-IN"/>
+					<xsd:enumeration value="en-US"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="branchCode">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="branchName">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="operatingRegionCode">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="pensionCardNo">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="rationCardNo">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="voterId">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="panNo">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="barcodeNo">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="500"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="aadharSeedingConsent">
+	                       <xsd:annotation>
+	                          <xsd:documentation>01-Yes,02-NO</xsd:documentation>
+	                       </xsd:annotation>
+	
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+					<xsd:enumeration value="01"/>
+					<xsd:enumeration value="02"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="health">
+	                       <xsd:annotation>
+	                          <xsd:documentation>02-Partial sa,03-Physically Challenged,04-Mentally Challenged,05-gir,06-Blind,07-One</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="02"/>
+						<xsd:enumeration value="03"/>
+						<xsd:enumeration value="04"/>
+						<xsd:enumeration value="05"/>
+						<xsd:enumeration value="06"/>
+						<xsd:enumeration value="07"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="occupation">
+	                       <xsd:annotation>
+	                          <xsd:documentation>1-Medical Practitioner (Doctor),2-Engineering (Engineer),3-Legal Practice (Advocate),4-Professor,5-Teacher,6-Businessman,7-Industrialist,8-Social Worker,9-C.A./C.S./Cost Accountant,10-Consultant,11-Architect,12-Agriculturist,13-OTHERS</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:int">
+	                    <xsd:minInclusive value="1"/>
+	                    <xsd:maxInclusive value="13"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="educationalQualification">
+	                       <xsd:annotation>
+	                          <xsd:documentation>03-Post Grauduate,04-Graduate,05-Under Graduate,07-Doctorate,08-Professionally Qualified,09-Others,10-9th Pass,11-agricultural mgt,12-No Schooling,13-10th Fail,14-10th Pass,15-Diploma Holder</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="03"/>
+						<xsd:enumeration value="04"/>
+						<xsd:enumeration value="05"/>
+						<xsd:enumeration value="06"/>
+						<xsd:enumeration value="07"/>
+						<xsd:enumeration value="08"/>
+						<xsd:enumeration value="09"/>
+						<xsd:enumeration value="10"/>
+						<xsd:enumeration value="11"/>
+						<xsd:enumeration value="12"/>
+						<xsd:enumeration value="13"/>
+						<xsd:enumeration value="14"/>
+						<xsd:enumeration value="15"/>
+	                 </xsd:restriction>
+	
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="category">
+	                       <xsd:annotation>
+	                          <xsd:documentation>1-SMALL FARMER,2-BIG FARMER,3-OTHER,4-Unemployed</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:int">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="4"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="language">
+	                       <xsd:annotation>
+	                          <xsd:documentation>kn-IN - Kannada,hi-IN - Hindi,en-US - English,mr-IN - Marathi,ml-IN - Malayalam,or-IN - Oriya,sn-IN - Sanskrit,ta-IN - Tamil,sn-IN - Sanskrit,bn-IN - Bengali,en-US - OTHERS</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="kn-IN"/>
+					<xsd:enumeration value="hi-IN"/>
+					<xsd:enumeration value="en-US"/>
+					<xsd:enumeration value="mr-IN"/>
+					<xsd:enumeration value="ml-IN"/>
+					<xsd:enumeration value="sn-IN"/>
+					<xsd:enumeration value="ta-IN"/>
+					<xsd:enumeration value="sn-IN"/>
+					<xsd:enumeration value="bn-IN"/>
+					<xsd:enumeration value="en-US"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="kycType">
+	                       <xsd:annotation>
+	                          <xsd:documentation>1-GIR No,2-PAN Card No,3-FORM 60,4-FORM 61</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:int">
+	                    <xsd:minInclusive value="1"/>
+						<xsd:maxInclusive value="4"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="kycId">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="0" name="cardIssuanceFlag">
+	                       <xsd:annotation>
+	                          <xsd:documentation>0 - False, 1-True</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:int">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="1"/>    
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element minOccurs="1" name="bcBranchCode">
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+	                    <xsd:maxLength value="100"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="minorityCommunity">
+	                       <xsd:annotation>
+	                          <xsd:documentation>Religious-MC1,Linguistic-MC2, Does not belong-MC3</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="MC1"/>
+						<xsd:enumeration value="MC2"/>
+						<xsd:enumeration value="MC3"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="disabilityHandicapped">
+	                       <xsd:annotation>
+	                          <xsd:documentation>Physical Disability- DH1, Vision Impairment- DH2,  Hearing Impairment-DH3,  Sensory Disability- DH4, No Disability- DH5</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="DH1"/>
+						<xsd:enumeration value="DH2"/>
+						<xsd:enumeration value="DH3"/>
+						<xsd:enumeration value="DH4"/>
+						<xsd:enumeration value="DH5"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="weakerSection">
+	                       <xsd:annotation>
+	                          <xsd:documentation>Scheduled Caste- WS1, Scheduled Tribe-WS2, OBC- WS3</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="WS1"/>
+						<xsd:enumeration value="WS2"/>
+						<xsd:enumeration value="WS3"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+	           <xsd:element name="borrowerType">
+	                       <xsd:annotation>
+	                          <xsd:documentation>This has to be unique across all the requests made. Maximum 16 characters alphanumeric</xsd:documentation>
+	                       </xsd:annotation>
+	              <xsd:simpleType>
+	                 <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="BT1"/>
+					<xsd:enumeration value="BT2"/>
+					<xsd:enumeration value="BT3"/>
+					<xsd:enumeration value="BT4"/>
+					<xsd:enumeration value="BT5"/>
+					<xsd:enumeration value="BT6"/>
+	                 </xsd:restriction>
+	              </xsd:simpleType>
+	           </xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="newCustomer">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension  base="tns:individualType">
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" ref="savingAccount:savingAccount"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="applicant">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="externalId" type="xsd:string"/>
+				<xsd:choice>
+					<xsd:element name="existingCustomer" type="tns:individualType"/>
+					<xsd:element ref="tns:newCustomer"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+ 
    <xsd:element name="customer">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalCustomerid">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100"/>
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-
+            <xsd:element name="externalId" type="xsd:string"/>
          	<xsd:choice>
 				<xsd:element name="existingCustomer">
 					<xsd:complexType>
@@ -23,381 +420,7 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element name="newCustomer">
-					<xsd:complexType>
-						<xsd:sequence>
-				           <xsd:element name="title">
-				                        <xsd:annotation>
-				                           <xsd:documentation>11-Mr, 12-Mrs, 13-Smt, 14-Master, 15-Miss, 16-Dr,17-Ms, 18-Dr(Ms), 21-M/S,99-Banl</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                    <xsd:enumeration value="11"/>
-									<xsd:enumeration value="12"/>
-									<xsd:enumeration value="13"/>
-									<xsd:enumeration value="14"/>
-									<xsd:enumeration value="15"/>
-									<xsd:enumeration value="16"/>
-									<xsd:enumeration value="17"/>
-									<xsd:enumeration value="18"/>
-									<xsd:enumeration value="21"/>
-									<xsd:enumeration value="99"/>
-				                  </xsd:restriction>
-				
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="customerName">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="address" type="dt:addressType"/>
-				            <xsd:element name="dateOfBirth">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="mobileNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="30"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="caste">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     	<xsd:enumeration value="01"/>
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-										<xsd:enumeration value="05"/>
-										<xsd:enumeration value="06"/>
-										<xsd:enumeration value="7"/>
-										<xsd:enumeration value="8"/>
-										<xsd:enumeration value="9"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="gender">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-Male,02-Female,03-Other</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="01"/>
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="maritalStatus">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-Single,02-Married,03-Divorcee,04-Widow,05-Widower,06-Other</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="01"/>
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-										<xsd:enumeration value="05"/>
-										<xsd:enumeration value="06"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="nationality">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="religion">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-GENERAL,02-Muslim,03-Buddhist,04-Neo-Buddhist,05-Christian,06-Sikh,07-Zorashtrian,08-Other Minority,09-Hindu</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-									<xsd:enumeration value="01"/>
-									<xsd:enumeration value="02"/>
-									<xsd:enumeration value="03"/>
-									<xsd:enumeration value="04"/>
-									<xsd:enumeration value="05"/>
-									<xsd:enumeration value="06"/>
-									<xsd:enumeration value="07"/>
-									<xsd:enumeration value="08"/>
-									<xsd:enumeration value="09"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="motherTongue">
-				                        <xsd:annotation>
-				                           <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-									<xsd:enumeration value="kn-IN"/>
-									<xsd:enumeration value="hi-IN"/>
-									<xsd:enumeration value="en-US"/>
-									<xsd:enumeration value="mr-IN"/>
-									<xsd:enumeration value="ml-IN"/>
-									<xsd:enumeration value="sn-IN"/>
-									<xsd:enumeration value="ta-IN"/>
-									<xsd:enumeration value="sn-IN"/>
-									<xsd:enumeration value="bn-IN"/>
-									<xsd:enumeration value="en-US"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="branchCode">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="branchName">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="operatingRegionCode">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="pensionCardNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="rationCardNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="voterId">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="panNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="barcodeNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="500"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="aadharSeedingConsent">
-				                        <xsd:annotation>
-				                           <xsd:documentation>01-Yes,02-NO</xsd:documentation>
-				                        </xsd:annotation>
-				
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-									<xsd:enumeration value="01"/>
-									<xsd:enumeration value="02"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="health">
-				                        <xsd:annotation>
-				                           <xsd:documentation>02-Partial sa,03-Physically Challenged,04-Mentally Challenged,05-gir,06-Blind,07-One</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="02"/>
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-										<xsd:enumeration value="05"/>
-										<xsd:enumeration value="06"/>
-										<xsd:enumeration value="07"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="occupation">
-				                        <xsd:annotation>
-				                           <xsd:documentation>1-Medical Practitioner (Doctor),2-Engineering (Engineer),3-Legal Practice (Advocate),4-Professor,5-Teacher,6-Businessman,7-Industrialist,8-Social Worker,9-C.A./C.S./Cost Accountant,10-Consultant,11-Architect,12-Agriculturist,13-OTHERS</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-				                     <xsd:minInclusive value="1"/>
-				                     <xsd:maxInclusive value="13"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="educationalQualification">
-				                        <xsd:annotation>
-				                           <xsd:documentation>03-Post Grauduate,04-Graduate,05-Under Graduate,07-Doctorate,08-Professionally Qualified,09-Others,10-9th Pass,11-agricultural mgt,12-No Schooling,13-10th Fail,14-10th Pass,15-Diploma Holder</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="03"/>
-										<xsd:enumeration value="04"/>
-										<xsd:enumeration value="05"/>
-										<xsd:enumeration value="06"/>
-										<xsd:enumeration value="07"/>
-										<xsd:enumeration value="08"/>
-										<xsd:enumeration value="09"/>
-										<xsd:enumeration value="10"/>
-										<xsd:enumeration value="11"/>
-										<xsd:enumeration value="12"/>
-										<xsd:enumeration value="13"/>
-										<xsd:enumeration value="14"/>
-										<xsd:enumeration value="15"/>
-				                  </xsd:restriction>
-				
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="category">
-				                        <xsd:annotation>
-				                           <xsd:documentation>1-SMALL FARMER,2-BIG FARMER,3-OTHER,4-Unemployed</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-									<xsd:minInclusive value="1"/>
-									<xsd:maxInclusive value="4"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="language">
-				                        <xsd:annotation>
-				                           <xsd:documentation>kn-IN - Kannada,hi-IN - Hindi,en-US - English,mr-IN - Marathi,ml-IN - Malayalam,or-IN - Oriya,sn-IN - Sanskrit,ta-IN - Tamil,sn-IN - Sanskrit,bn-IN - Bengali,en-US - OTHERS</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-									<xsd:enumeration value="kn-IN"/>
-									<xsd:enumeration value="hi-IN"/>
-									<xsd:enumeration value="en-US"/>
-									<xsd:enumeration value="mr-IN"/>
-									<xsd:enumeration value="ml-IN"/>
-									<xsd:enumeration value="sn-IN"/>
-									<xsd:enumeration value="ta-IN"/>
-									<xsd:enumeration value="sn-IN"/>
-									<xsd:enumeration value="bn-IN"/>
-									<xsd:enumeration value="en-US"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="kycType">
-				                        <xsd:annotation>
-				                           <xsd:documentation>1-GIR No,2-PAN Card No,3-FORM 60,4-FORM 61</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-				                     <xsd:minInclusive value="1"/>
-										<xsd:maxInclusive value="4"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="kycId">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="0" name="cardIssuanceFlag">
-				                        <xsd:annotation>
-				                           <xsd:documentation>0 - False, 1-True</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:int">
-									<xsd:minInclusive value="0"/>
-									<xsd:maxInclusive value="1"/>    
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element minOccurs="1" name="bcBranchCode">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="100"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="minorityCommunity">
-				                        <xsd:annotation>
-				                           <xsd:documentation>Religious-MC1,Linguistic-MC2, Does not belong-MC3</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="MC1"/>
-										<xsd:enumeration value="MC2"/>
-										<xsd:enumeration value="MC3"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="disabilityHandicapped">
-				                        <xsd:annotation>
-				                           <xsd:documentation>Physical Disability- DH1, Vision Impairment- DH2,  Hearing Impairment-DH3,  Sensory Disability- DH4, No Disability- DH5</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="DH1"/>
-										<xsd:enumeration value="DH2"/>
-										<xsd:enumeration value="DH3"/>
-										<xsd:enumeration value="DH4"/>
-										<xsd:enumeration value="DH5"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="weakerSection">
-				                        <xsd:annotation>
-				                           <xsd:documentation>Scheduled Caste- WS1, Scheduled Tribe-WS2, OBC- WS3</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-										<xsd:enumeration value="WS1"/>
-										<xsd:enumeration value="WS2"/>
-										<xsd:enumeration value="WS3"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-				            <xsd:element name="borrowerType">
-				                        <xsd:annotation>
-				                           <xsd:documentation>This has to be unique across all the requests made. Maximum 16 characters alphanumeric</xsd:documentation>
-				                        </xsd:annotation>
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-									<xsd:enumeration value="BT1"/>
-									<xsd:enumeration value="BT2"/>
-									<xsd:enumeration value="BT3"/>
-									<xsd:enumeration value="BT4"/>
-									<xsd:enumeration value="BT5"/>
-									<xsd:enumeration value="BT6"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>						
-							<xsd:element maxOccurs="1" minOccurs="1" ref="savingAccount:savingAccount"/>
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+				<xsd:element ref="tns:newCustomer"/>
          	</xsd:choice>
          </xsd:sequence>
       </xsd:complexType>

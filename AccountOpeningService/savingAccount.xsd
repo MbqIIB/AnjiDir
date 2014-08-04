@@ -16,7 +16,7 @@
    <xsd:element name="savingAccount">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalNo" type="xsd:string">
+            <xsd:element name="externalId" type="xsd:string">
                 <xsd:annotation>
                   <xsd:documentation>
                      The external number for the account that'll be opened.
@@ -65,17 +65,7 @@
                   </xsd:complexContent>
                </xsd:complexType>
             </xsd:element>
-            <xsd:element minOccurs="0" name="guardian">
-               <xsd:complexType>
-                  <xsd:complexContent>
-                     <xsd:extension base="tns:relatedPartyType">
-                        <xsd:sequence>
-                           <xsd:element name="phoneNo" type="dt:phoneNoType"/>
-                        </xsd:sequence>
-                     </xsd:extension>
-                  </xsd:complexContent>
-               </xsd:complexType>
-            </xsd:element>
+ 
             <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
             
          </xsd:sequence>
