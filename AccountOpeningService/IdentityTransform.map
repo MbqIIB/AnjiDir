@@ -46,7 +46,7 @@
             <expression>
                 <input path="$center/formationDate" var="formationDate"/>
                 <output path="$dbinsert/msl:db-name('[FORMATIONDATE]')"/>
-                <code lang="xpath">fn:concat( fn:day-from-date($formationDate),'/',fn:month-from-date( $formationDate),'/',fn:year-from-date( $formationDate)) </code>
+                <code lang="xpath">fn:concat( fn:day-from-date($formationDate),'/',fn:month-from-date( $formationDate),'/',fn:year-from-date( $formationDate))</code>
             </expression>
             <move>
                 <input path="$center/branchCode"/>
@@ -114,6 +114,24 @@
                 <output path="$dbinsert/msl:db-name('[BATCHID]')"/>
                 <code lang="xpath">fn:number($VALUE2) + 1</code>
             </expression>
+            <assign value="DUMMY PRIMARY">
+                <output path="$dbinsert/msl:db-name('[PRIMARYCONTACT]')"/>
+            </assign>
+            <assign value="dummy_primary@gmail.com">
+                <output path="$dbinsert/msl:db-name('[PRIMARYCONTACTMAILID]')"/>
+            </assign>
+            <assign value="DUMMY SECONDARY">
+                <output path="$dbinsert/msl:db-name('[SECONDARYCONTACT]')"/>
+            </assign>
+            <assign value="9999999999">
+                <output path="$dbinsert/msl:db-name('[SECONDARYPHONENO]')"/>
+            </assign>
+            <assign value="dummy_secondary@gmail.com">
+                <output path="$dbinsert/msl:db-name('[SECONDARYCONTACTMAILID]')"/>
+            </assign>
+            <assign value="022123456789">
+                <output path="$dbinsert/msl:db-name('[FAXNO]')"/>
+            </assign>
         </insert>
         <assign value="1">
             <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
