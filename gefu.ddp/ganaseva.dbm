@@ -1584,5 +1584,8 @@
     <columns xmi:id="_taV-gBuQEeSzxZ3WQagvDw" name="BATCH_ID" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_2PgBUBuQEeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
     </columns>
+    <columns xmi:id="_XWF0cRuhEeSIp8X_WDemsQ" name="STATUS" nullable="false">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_XWF0chuhEeSIp8X_WDemsQ" name="CHAR"/>
+    </columns>
   </SQLTables:PersistentTable>
 </xmi:XMI>
