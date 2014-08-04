@@ -7,8 +7,14 @@
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING1"/>
     <output path="/localEnvironmentVariables.xsd" var="var2"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,RCDSSYSPARAMS)" var="RCDSSYSPARAMS1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,HO_STAGING)" var="HOSTAGING"/>
+    <imports>
+        <import kind="esql" namespace="/helper.esql"/>
+    </imports>
     <namespaces>
         <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="IdentityTransform">
@@ -20,6 +26,7 @@
         </output>
         <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
         <output path="$RCDSSYSPARAMS1/db:update(fn:false(),fn:true(),db:where(fn:concat('dbo.&quot;RCDSSYSPARAMS&quot;.&quot;MNEMONIC&quot; = ',&quot;'&quot;,'HO_02_BATCHID',&quot;'&quot;)),MNEMONIC,MODULE,VALUE)" var="dbupdate1"/>
+        <output path="$HOSTAGING/db:insert(fn:false(),ID,OPERATION,BATCH_ID,STATUS)" var="dbinsert2"/>
         <move>
             <input path="$MessageAssembly/Properties"/>
             <output path="$MessageAssembly1/Properties"/>
@@ -36,10 +43,11 @@
                 <input path="$center/centerName"/>
                 <output path="$dbinsert/msl:db-name('[CENTERNAME]')"/>
             </move>
-            <move>
-                <input path="$center/formationDate"/>
+            <expression>
+                <input path="$center/formationDate" var="formationDate"/>
                 <output path="$dbinsert/msl:db-name('[FORMATIONDATE]')"/>
-            </move>
+                <code lang="xpath">fn:concat( fn:day-from-date($formationDate),'/',fn:month-from-date( $formationDate),'/',fn:year-from-date( $formationDate)) </code>
+            </expression>
             <move>
                 <input path="$center/branchCode"/>
                 <output path="$dbinsert/msl:db-name('[BRANCHCODE]')"/>
@@ -48,10 +56,12 @@
                 <input path="$center/operationgRegionCode"/>
                 <output path="$dbinsert/msl:db-name('[OPERATINGREGIONCODE]')"/>
             </move>
-            <move>
-                <input path="$center/meetingTime"/>
+            <customFunction lang="esql" ref="helper:formatTime">
+                <input path="$center/meetingTime" var="meetingTime"/>
                 <output path="$dbinsert/msl:db-name('[MEETINGTIME]')"/>
-            </move>
+                <param name="piHour" value="fn:hours-from-time( $meetingTime)"/>
+                <param name="piMinute" value="fn:minutes-from-time($meetingTime)"/>
+            </customFunction>
             <move>
                 <input path="$center/servicingAgent"/>
                 <output path="$dbinsert/msl:db-name('[SERVICINGAGENT]')"/>
@@ -99,11 +109,11 @@
                 <input path="$center/centerLeader"/>
                 <output path="$dbinsert/msl:db-name('[CENTERLEADER]')"/>
             </move>
-            <function ref="xs:int">
+            <expression>
                 <input path="$VALUE1/." var="VALUE2"/>
                 <output path="$dbinsert/msl:db-name('[BATCHID]')"/>
-                <param name="primitive" value="$VALUE2"/>
-            </function>
+                <code lang="xpath">fn:number($VALUE2) + 1</code>
+            </expression>
         </insert>
         <assign value="1">
             <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
@@ -111,10 +121,11 @@
         <assign value="1">
             <output path="$MessageAssembly1/LocalEnvironment/Variables/operation"/>
         </assign>
-        <move>
-            <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
+        <expression>
+            <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE" var="VALUE5"/>
             <output path="$MessageAssembly1/LocalEnvironment/Variables/batchID"/>
-        </move>
+            <code lang="xpath">fn:number($VALUE5) + 1</code>
+        </expression>
         <transaction>
             <update ref="dbupdate1">
                 <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
@@ -127,6 +138,26 @@
             </update>
             <return>
                 <input path="$var4/DBUpdateReturn"/>
+            </return>
+        </transaction>
+        <transaction>
+            <insert ref="dbinsert2">
+                <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
+                <output path="$dbinsert2/."/>
+                <expression>
+                    <input path="." var="VALUE"/>
+                    <output path="BATCH_ID"/>
+                    <code lang="xpath">fn:number($VALUE) + 1</code>
+                </expression>
+                <assign value="U">
+                    <output path="STATUS"/>
+                </assign>
+                <assign value="1">
+                    <output path="OPERATION"/>
+                </assign>
+            </insert>
+            <return>
+                <input path="$var4/DBInsertReturn"/>
             </return>
         </transaction>
     </mappingDeclaration>
