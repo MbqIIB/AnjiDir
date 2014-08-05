@@ -1,14 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:tns="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema 
+	targetNamespace="http://www.quantiguous.com/FI/savingAccount.xsd" 
+	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
+	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
+	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
+	xmlns:tns="http://www.quantiguous.com/FI/savingAccount.xsd" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
 	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
+   	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
    
    <xsd:complexType name="relatedPartyType">
       <xsd:sequence>
-         <xsd:element name="title" type="xsd:string"/>
+		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
          <xsd:element name="name" type="xsd:string"/>
          <xsd:element name="relation" type="xsd:string"/>
-         <xsd:element name="dateOfBirth" type="xsd:date"/>
+		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
          <xsd:element name="gender" type="xsd:string"/>
          <xsd:element name="address" type="dt:addressType"/>
       </xsd:sequence>
@@ -16,7 +23,7 @@
    <xsd:element name="savingAccount">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalId" type="xsd:string">
+        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId">
                 <xsd:annotation>
                   <xsd:documentation>
                      The external number for the account that'll be opened.
@@ -32,20 +39,15 @@
                   </xsd:documentation>
                </xsd:annotation>
             </xsd:element>            
-            <xsd:element name="productCode">
-               <xsd:simpleType>
+            <xsd:element name="savingProductCode">
+            <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-            <xsd:element name="productName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+         <xsd:maxLength value="50" />
+      </xsd:restriction>
+      </xsd:simpleType>
+      </xsd:element>
+      
+ 			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
             <xsd:element name="accountOpeningDate" type="xsd:date"/>
             <xsd:element minOccurs="0" name="nominee">
                <xsd:complexType>

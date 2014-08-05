@@ -2,37 +2,20 @@
 <xsd:schema 
 	targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
 	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
+	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
 	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
 	xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" 
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" >
    	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
+   	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
 	<xsd:import namespace="http://www.quantiguous.com/FI/savingAccount.xsd" schemaLocation="savingAccount.xsd"/>   
  	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
    
    	<xsd:complexType name="individualType">
 		<xsd:sequence>
-	          <xsd:element name="title">
-	                       <xsd:annotation>
-	                          <xsd:documentation>11-Mr, 12-Mrs, 13-Smt, 14-Master, 15-Miss, 16-Dr,17-Ms, 18-Dr(Ms), 21-M/S,99-Banl</xsd:documentation>
-	                       </xsd:annotation>
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                   <xsd:enumeration value="11"/>
-					<xsd:enumeration value="12"/>
-					<xsd:enumeration value="13"/>
-					<xsd:enumeration value="14"/>
-					<xsd:enumeration value="15"/>
-					<xsd:enumeration value="16"/>
-					<xsd:enumeration value="17"/>
-					<xsd:enumeration value="18"/>
-					<xsd:enumeration value="21"/>
-					<xsd:enumeration value="99"/>
-	                 </xsd:restriction>
-	
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
 	           <xsd:element name="customerName">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
@@ -41,13 +24,7 @@
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element name="address" type="dt:addressType"/>
-	           <xsd:element name="dateOfBirth">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
 	           <xsd:element minOccurs="0" name="mobileNo">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
@@ -193,13 +170,7 @@
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
-	           <xsd:element name="barcodeNo">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="500"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:barcodeNo"/>
 	           <xsd:element minOccurs="0" name="aadharSeedingConsent">
 	                       <xsd:annotation>
 	                          <xsd:documentation>01-Yes,02-NO</xsd:documentation>
@@ -411,7 +382,7 @@
    <xsd:element name="customer">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalId" type="xsd:string"/>
+        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId" />
          	<xsd:choice>
 				<xsd:element name="existingCustomer">
 					<xsd:complexType>

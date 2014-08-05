@@ -2,8 +2,10 @@
 <xsd:schema 
 	targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" 
 	xmlns:tns="http://www.quantiguous.com/FI/loanAccount.xsd" 
+	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
+	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
 	
    <xsd:element name="loanAccount">
    	<xsd:complexType>
@@ -40,7 +42,7 @@
    
       <xsd:complexType name="loanApplicationType">
          <xsd:sequence>
-            <xsd:element name="externalNo" type="xsd:string">
+        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId">
                 <xsd:annotation>
                   <xsd:documentation>
                      The external number for the account that'll be opened.
@@ -49,7 +51,7 @@
                   </xsd:documentation>
                </xsd:annotation>
             </xsd:element>
-            <xsd:element name="productCode">
+            <xsd:element name="loanProductCode">
                 <xsd:annotation>
                   <xsd:documentation>
                   3030-JLG  Micro Enterprises,3131-JLG  Crop Loan,3132-JLG  Crop Loan Vegetable3133- Land Development,3134-JLG Agri Allied Loans
@@ -69,13 +71,7 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="productName">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="50"/>
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
             <xsd:element name="loanAmount">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:decimal">
@@ -131,13 +127,7 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-				            <xsd:element name="barcodeNo">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="500"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
+		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:barcodeNo"/>
             
             <xsd:element name="udfs">
             	<xsd:complexType>

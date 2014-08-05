@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
-      xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
-      xmlns:tns="http://www.quantiguous.com/FI/center.xsd" targetNamespace="http://www.quantiguous.com/FI/center.xsd">
+    xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
+	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
+    xmlns:tns="http://www.quantiguous.com/FI/center.xsd" targetNamespace="http://www.quantiguous.com/FI/center.xsd">
    <xsd:import schemaLocation="dataTypes.xsd" namespace="http://www.quantiguous.com/FI/dataTypes.xsd" />
+   <xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
    <xsd:element name="center">
       <xsd:complexType>
          <xsd:sequence>
-            <xsd:element name="externalId">
-               <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-                     <xsd:maxLength value="100" />
-                  </xsd:restriction>
-               </xsd:simpleType>
-            </xsd:element>
-
+         	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId" />
             <xsd:element name="centerName">
                <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
@@ -21,12 +16,12 @@
                   </xsd:restriction>
                </xsd:simpleType>
             </xsd:element>
-            <xsd:element name="formationDate" type="xsd:date"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:formationDate"/>
             <xsd:element name="servicingAgent" type="xsd:string"/>
             <xsd:element name="maximumIndividuals" type="xsd:int" fixed="40"/>
-            <xsd:element name="meetingTime" type="xsd:time" />
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:meetingTime"/>
             <xsd:element name="meetingAddress" type="dt:addressType" />
-            <xsd:element name="operationgRegionCode" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:operatingRegionCode"/>
             <xsd:element name="branchCode" type="xsd:string"/>
             <xsd:element name="description" type="xsd:string"/>
             <xsd:element name="phoneNo" type="xsd:string"/>
