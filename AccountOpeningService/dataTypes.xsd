@@ -29,8 +29,10 @@
   				</xsd:restriction>
   			</xsd:simpleType>
   		</xsd:element>
-  		<xsd:element name="city" type="xsd:string"/>
-  		<xsd:element name="state" type="xsd:string"/>
+  		<xsd:element name="cityCode" type="xsd:string"/>
+  		<xsd:element name="cityName" type="xsd:string"/>
+  		<xsd:element name="stateCode" type="xsd:string"/>
+  		<xsd:element name="stateName" type="xsd:string"/>
   		<xsd:element name="pin">
   			<xsd:simpleType>
   				<xsd:restriction base="xsd:string">
