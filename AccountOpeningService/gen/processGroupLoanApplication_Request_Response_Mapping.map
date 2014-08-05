@@ -10,7 +10,7 @@
             <output path="Properties"/>
         </move>
         <move>
-            <input path="processGroupLoanApplication/processGroupLoanApplicationRequest/applicantGroup/applicants/applicant[1]/externalId"/>
+            <input path="processGroupLoanApplication/processGroupLoanApplicationRequest/applicantGroup/externalId"/>
             <output path="creditReportRequest/CustRefField/externalId"/>
         </move>
         <move>
