@@ -21,7 +21,7 @@
             <xsd:element name="maximumIndividuals" type="xsd:int" fixed="40"/>
 			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:meetingTime"/>
             <xsd:element name="meetingAddress" type="dt:addressType" />
-			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:operatingRegionCode"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:operatingRegion"/>
             <xsd:element name="branchCode" type="xsd:string"/>
             <xsd:element name="description" type="xsd:string"/>
             <xsd:element name="phoneNo" type="xsd:string"/>
