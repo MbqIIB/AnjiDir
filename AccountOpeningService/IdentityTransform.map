@@ -36,10 +36,6 @@
             <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE" var="VALUE1"/>
             <output path="$dbinsert1/." var="dbinsert"/>
             <move>
-                <input path="$center/externalCenterId"/>
-                <output path="$dbinsert/msl:db-name('[EXTERNALCENTERID]')"/>
-            </move>
-            <move>
                 <input path="$center/centerName"/>
                 <output path="$dbinsert/msl:db-name('[CENTERNAME]')"/>
             </move>
@@ -132,6 +128,10 @@
             <assign value="022123456789">
                 <output path="$dbinsert/msl:db-name('[FAXNO]')"/>
             </assign>
+            <move>
+                <input path="$center/externalId"/>
+                <output path="$dbinsert/msl:db-name('[EXTERNALCENTERID]')"/>
+            </move>
         </insert>
         <assign value="1">
             <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
