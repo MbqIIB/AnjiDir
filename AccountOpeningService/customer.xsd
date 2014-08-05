@@ -15,6 +15,7 @@
    
    	<xsd:complexType name="individualType">
 		<xsd:sequence>
+			   <xsd:element ref="ge:externalId"/>		
 	           <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
 	           <xsd:element name="customerName">
 	              <xsd:simpleType>
@@ -370,7 +371,6 @@
 	<xsd:element name="applicant">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="externalId" type="xsd:string"/>
 				<xsd:choice>
 					<xsd:element name="existingCustomer">
 						<xsd:complexType>
@@ -392,7 +392,6 @@
    <xsd:element name="customer">
       <xsd:complexType>
          <xsd:sequence>
-        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId" />
          	<xsd:choice>
 				<xsd:element name="existingCustomer">
 					<xsd:complexType>
