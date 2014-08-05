@@ -372,7 +372,17 @@
 			<xsd:sequence>
 				<xsd:element name="externalId" type="xsd:string"/>
 				<xsd:choice>
-					<xsd:element name="existingCustomer" type="tns:individualType"/>
+					<xsd:element name="existingCustomer">
+						<xsd:complexType>
+							<xsd:complexContent>
+								<xsd:extension base="tns:individualType">
+								    <xsd:sequence>
+			                         	<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
+									</xsd:sequence>
+								</xsd:extension>
+							</xsd:complexContent>
+						</xsd:complexType>
+					</xsd:element>
 					<xsd:element ref="tns:newCustomer"/>
 				</xsd:choice>
 			</xsd:sequence>
