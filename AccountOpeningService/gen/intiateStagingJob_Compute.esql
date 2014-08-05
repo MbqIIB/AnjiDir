@@ -29,10 +29,8 @@ CREATE COMPUTE MODULE intiateStagingJob_Compute
 		DECLARE rs ROW;
 		DECLARE localStatus CHARACTER;
 		DECLARE localID INT;
-		DECLARE inCCSID INT;
-		DECLARE inEncoding INT;
-		DECLARE blobMsg BLOB;
-		
+		DECLARE lFilename CHARACTER;
+
 		SET OutputRoot = InputRoot;
 		SET rs.rows[] = 
 		    SELECT A.ID, A.OPERATION, A.BATCH_ID
@@ -41,7 +39,8 @@ CREATE COMPUTE MODULE intiateStagingJob_Compute
 
 		DECLARE J INTEGER CARDINALITY(rs.*[]);
 		WHILE I <= J DO
-			CALL initiateBatchProcess(rs.rows[I].BATCH_ID,22,'hello',rs.rows[I].OPERATION);
+			SET lFilename = CAST(rs.rows[I].OPERATION AS CHARACTER)||'_'|| CAST(rs.rows[I].BATCH_ID AS CHARACTER)||'.txt';
+			CALL initiateBatchProcess(rs.rows[I].BATCH_ID,0,lFilename,rs.rows[I].OPERATION);
 			UPDATE Database.HO_STAGING AS A
 			SET  STATUS = 'P'
 			WHERE A.ID = rs.rows[I].ID;
