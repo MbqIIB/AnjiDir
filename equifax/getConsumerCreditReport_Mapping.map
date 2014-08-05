@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/OnlineInquiry-1.0.xsd" var="var"/>
     <input path="/getConsumerCreditReport.xsd" var="var1"/>
+    <input path="/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd" var="var2"/>
+    <input path="/equifax.localEnvironmentVariables.xsd" var="var4"/>
     <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/SOAPDomainMsg.xsd"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="getConsumerCreditReport_Mapping">
-        <input namespace="http://www.quantiguous.com/equiax/0E.xsd" path="$var1/mb:msg(creditReportRequest,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://www.quantiguous.com/equifax.xsd" path="$var1/mb:msg(creditReportRequest,assembly,XMLNSC,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="CustomerId"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="UserId"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="Password"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="MemberNumber"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="SecurityCode"/>
+        </input>
         <output path="mb:msg(SOAP_Domain_Msg,assembly,SOAP,Properties)">
             <cast path="SOAP_Domain_Msg/Body/any" qualifier="{http://services.equifax.com/eport/ws/schemas/1.0}InquiryRequest"/>
         </output>
-        <expression>
+        <move>
+            <input path="LocalEnvironment/Variables/CustomerId[1]"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/CustomerId"/>
-            <code lang="xpath">mb:getUserDefinedProperty('CustomerId')</code>
-        </expression>
-        <expression>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/UserId[1]"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/UserId"/>
-            <code lang="xpath">mb:getUserDefinedProperty('UserId')</code>
-        </expression>
-        <expression>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/Password[1]"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/Password"/>
-            <code lang="xpath">mb:getUserDefinedProperty('Password')</code>
-        </expression>
-        <expression>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/MemberNumber[1]"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/MemberNumber"/>
-            <code lang="xpath">mb:getUserDefinedProperty('MemberNumber')</code>
-        </expression>
-        <expression>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/SecurityCode[1]"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/SecurityCode"/>
-            <code lang="xpath">mb:getUserDefinedProperty('SecurityCode')</code>
-        </expression>
-        <expression>
+        </move>
+        <assign value="MCR">
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ProductCode"/>
-            <code lang="xpath">mb:getUserDefinedProperty('ProductCode')</code>
-        </expression>
-        <expression>
+        </assign>
+        <assign value="1.0">
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ProductVersion"/>
-            <code lang="xpath">mb:getUserDefinedProperty('ProductVersion')</code>
-        </expression>
-        <expression>
+        </assign>
+        <assign value="XML">
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestHeader/ReportFormat"/>
-            <code lang="xpath">mb:getUserDefinedProperty('ReportFormat')</code>
-        </expression>
-        <expression>
+        </assign>
+        <assign value="0E">
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/InquiryPurpose"/>
-            <code lang="xpath">mb:getUserDefinedProperty('InquiryPurpose')</code>
-        </expression>
+        </assign>
         <move>
             <input path="creditReportRequest/customerName" var="customerName"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/FullName"/>
         </move>
-        <move>
+        <convert defaultValue="0.0">
             <input path="creditReportRequest/loanAmount"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/TransactionAmount"/>
-        </move>
+        </convert>
         <move>
             <input path="creditReportRequest/voterId"/>
             <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/VoterId"/>

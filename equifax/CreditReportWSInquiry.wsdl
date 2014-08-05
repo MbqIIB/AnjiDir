@@ -41,7 +41,7 @@
   </wsdl:binding>
   <wsdl:service name="v1.0">
     <wsdl:port binding="tns:CreditReportWSInquiryBinding" name="CreditReportWSInquiryPort">
-      <soap:address location="https://eportuat.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"/>
+      <soap:address location="https://eporttrain.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
