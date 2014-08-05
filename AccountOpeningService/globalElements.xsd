@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.quantiguous.com/FI/globalElements.xsd">
-   <xsd:simpleType name="meetingTimeType">
+  <xsd:element name="meetingTime">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:time" />
    </xsd:simpleType>
-   <xsd:simpleType name="formationDateType">
+</xsd:element>
+  <xsd:element name="formationDate">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:string">
          <xsd:maxLength value="100" />
       </xsd:restriction>
    </xsd:simpleType>
-   <xsd:simpleType name="externalIdType">
-      <xsd:restriction base="xsd:date" />
-   </xsd:simpleType>
-   <xsd:simpleType name="operatingRegionCodeType">
+</xsd:element>
+   <xsd:element name="externalId">
+	   <xsd:simpleType>
+	      <xsd:restriction base="xsd:date" />
+	   </xsd:simpleType>
+   </xsd:element>
+   <xsd:element name="operatingRegionCode">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:string">
          <xsd:maxLength value="100" />
       </xsd:restriction>
    </xsd:simpleType>
-   <xsd:simpleType name="productNameType">
+</xsd:element>
+<xsd:element name="productName">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:string">
          <xsd:maxLength value="50" />
       </xsd:restriction>
    </xsd:simpleType>
-   <xsd:simpleType name="titleType">
+</xsd:element>
+<xsd:element name="title">
+   <xsd:simpleType>
       <xsd:annotation>
          <xsd:documentation>11-Mr, 12-Mrs, 13-Smt, 14-Master, 15-Miss, 16-Dr,17-Ms, 18-Dr(Ms), 21-M/S,99-Banl</xsd:documentation>
       </xsd:annotation>
@@ -38,12 +49,17 @@
          <xsd:enumeration value="99" />
       </xsd:restriction>
    </xsd:simpleType>
-   <xsd:simpleType name="dateOfBirthType">
+</xsd:element>
+<xsd:element name="dateOfBirth">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:date" />
    </xsd:simpleType>
-   <xsd:simpleType name="barcodeNoType">
+</xsd:element>
+<xsd:element name="barcodeNo">
+   <xsd:simpleType>
       <xsd:restriction base="xsd:string">
          <xsd:maxLength value="500" />
       </xsd:restriction>
    </xsd:simpleType>
+</xsd:element>
 </xsd:schema>
