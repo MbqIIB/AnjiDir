@@ -75,14 +75,6 @@
                 <output path="$dbinsert/msl:db-name('[ADDRESS3]')"/>
             </move>
             <move>
-                <input path="$center/meetingAddress/city"/>
-                <output path="$dbinsert/msl:db-name('[CITY]')"/>
-            </move>
-            <move>
-                <input path="$center/meetingAddress/state"/>
-                <output path="$dbinsert/msl:db-name('[STATE]')"/>
-            </move>
-            <move>
                 <input path="$center/meetingAddress/pin"/>
                 <output path="$dbinsert/msl:db-name('[PINCODE]')"/>
             </move>
@@ -129,8 +121,16 @@
                 <output path="$dbinsert/msl:db-name('[EXTERNALCENTERID]')"/>
             </move>
             <move>
-                <input path="$center/operatingRegionCode"/>
+                <input path="$center/operatingRegion/operatingRegionCode"/>
                 <output path="$dbinsert/msl:db-name('[OPERATINGREGIONCODE]')"/>
+            </move>
+            <move>
+                <input path="$center/meetingAddress/cityCode"/>
+                <output path="$dbinsert/msl:db-name('[CITY]')"/>
+            </move>
+            <move>
+                <input path="$center/meetingAddress/stateCode"/>
+                <output path="$dbinsert/msl:db-name('[STATE]')"/>
             </move>
         </insert>
         <assign value="1">
