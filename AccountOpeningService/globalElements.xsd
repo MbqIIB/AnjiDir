@@ -17,12 +17,25 @@
 	      <xsd:restriction base="xsd:date" />
 	   </xsd:simpleType>
    </xsd:element>
-   <xsd:element name="operatingRegionCode">
-   <xsd:simpleType>
-      <xsd:restriction base="xsd:string">
-         <xsd:maxLength value="100" />
-      </xsd:restriction>
-   </xsd:simpleType>
+   <xsd:element name="operatingRegion">
+		<xsd:complexType>
+  			<xsd:sequence>
+  			<xsd:element name="operatingRegionCode">
+		   	<xsd:simpleType>
+		      <xsd:restriction base="xsd:string">
+		         <xsd:maxLength value="100" />
+		      </xsd:restriction>
+		   </xsd:simpleType>
+		   </xsd:element>
+  			<xsd:element name="operatingRegionName">
+		   	<xsd:simpleType>
+		      <xsd:restriction base="xsd:string">
+		         <xsd:maxLength value="100" />
+		      </xsd:restriction>
+		   </xsd:simpleType>
+		   </xsd:element>
+		   </xsd:sequence>
+		   </xsd:complexType>
 </xsd:element>
 <xsd:element name="productName">
    <xsd:simpleType>
