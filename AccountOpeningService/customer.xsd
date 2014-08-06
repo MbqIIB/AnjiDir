@@ -136,7 +136,8 @@
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
-	           <xsd:element name="operatingRegionCode">
+	           <xsd:element ref="ge:operatingRegion"/>
+	           <xsd:element minOccurs="0" name="aadharNo">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 	                    <xsd:maxLength value="100"/>
