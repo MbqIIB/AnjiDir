@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema 
-	targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
+<xsd:schema 	targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
 	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
 	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
 	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
@@ -136,7 +135,7 @@
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
-	           <xsd:element ref="ge:operatingRegion"/>
+	           <xsd:element minOccurs="0" maxOccurs="1" ref="ge:operatingRegion"/>
 	           <xsd:element minOccurs="0" name="aadharNo">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
