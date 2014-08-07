@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <output path="/getConsumerCreditReport.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="ToEquiFax">
+        <input namespace="http://AccountOpeningService" path="mb:msg(getConsumerCreditReport,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://www.quantiguous.com/equifax.xsd" path="mb:msg(creditReportRequest,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <local>
+            <input path="getConsumerCreditReport"/>
+            <output path="creditReportRequest"/>
+            <move>
+                <input path="getConsumerCreditReportRequest/barcodeNo"/>
+                <output path="CustRefField/barcodeNo"/>
+            </move>
+            <move>
+                <input path="getConsumerCreditReportRequest/externalId"/>
+                <output path="CustRefField/externalId"/>
+            </move>
+            <move>
+                <input path="getConsumerCreditReportRequest/loanAmount"/>
+                <output path="loanAmount"/>
+            </move>
+            <move>
+                <input path="getConsumerCreditReportRequest/customerName"/>
+                <output path="customerName"/>
+            </move>
+            <move>
+                <input path="getConsumerCreditReportRequest/dateOfBirth"/>
+                <output path="dateOfBirth"/>
+            </move>
+            <local>
+                <input path="getConsumerCreditReportRequest/address"/>
+                <output path="address"/>
+                <move automap="true">
+                    <input path="line1"/>
+                    <output path="line1"/>
+                </move>
+                <move automap="true">
+                    <input path="line2"/>
+                    <output path="line2"/>
+                </move>
+                <move automap="true">
+                    <input path="line3"/>
+                    <output path="line3"/>
+                </move>
+                <move automap="true">
+                    <input path="city"/>
+                    <output path="city"/>
+                </move>
+                <move automap="true">
+                    <input path="state"/>
+                    <output path="state"/>
+                </move>
+                <move automap="true">
+                    <input path="pin"/>
+                    <output path="pin"/>
+                </move>
+            </local>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

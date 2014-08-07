@@ -1,0 +1,22 @@
+BROKER SCHEMA creditRating
+
+CREATE COMPUTE MODULE SaveSOAPCoRelation_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNS.MessageHeader.MessageID = CAST(InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier AS CHARACTER);
+		SET OutputLocalEnvironment.Variables.SOAPReplyIdentifier = InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE RetrieveSOAPCoRelation_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = CAST(InputRoot.XMLNS.A.MessageID AS BLOB);
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = InputLocalEnvironment.Variables.SOAPReplyIdentifier;
+		RETURN TRUE;
+	END;
+END MODULE;
+

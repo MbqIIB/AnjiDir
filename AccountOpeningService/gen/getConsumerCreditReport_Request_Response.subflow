@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:getConsumerCreditReport.subflow="getConsumerCreditReport.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/getConsumerCreditReport_Request_Response.subflow"
+    nsPrefix="gen_getConsumerCreditReport_Request_Response.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="getConsumerCreditReport_Request_Response" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/getConsumerCreditReport_Request_Response"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/getConsumerCreditReport_Request_Response"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="601,32">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="getConsumerCreditReport.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="337,184">
+        <translation xmi:type="utility:ConstantString" string="getConsumerCreditReport"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="168,178" mappingExpression="msl://{default}#ToEquiFax">
+        <translation xmi:type="utility:ConstantString" string="Mapping"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
