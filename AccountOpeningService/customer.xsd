@@ -14,7 +14,7 @@
    
    	<xsd:complexType name="individualType">
 		<xsd:sequence>
-			   <xsd:element ref="ge:externalId"/>		
+               <xsd:element ref="ge:externalId"/>	
 	           <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
 	           <xsd:element name="customerName">
 	              <xsd:simpleType>
@@ -392,10 +392,12 @@
    <xsd:element name="customer">
       <xsd:complexType>
          <xsd:sequence>
+	
          	<xsd:choice>
 				<xsd:element name="existingCustomer">
 					<xsd:complexType>
 						<xsd:sequence>
+						    <xsd:element ref="ge:externalId"/>	
 							<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
 						</xsd:sequence>
 					</xsd:complexType>
