@@ -3,8 +3,9 @@
 	<name>AccountOpeningService</name>
 	<comment></comment>
 	<projects>
-		<project>gefu.ddp</project>
+		<project>AccountOpeningServiceJava</project>
 		<project>equifax</project>
+		<project>gefu.ddp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
