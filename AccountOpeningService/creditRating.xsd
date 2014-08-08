@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:customer="http://www.quantiguous.com/FI/customer.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:globals="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:tns="http://www.quantiguous.com/FI/creditRating.xsd" targetNamespace="http://www.quantiguous.com/FI/creditRating.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/savingAccount.xsd" schemaLocation="savingAccount.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/customer.xsd" schemaLocation="customer.xsd"/>
+	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
+	<xsd:complexType name="creditRatingRequestType">
+		<xsd:sequence>
+			<xsd:element ref="globals:barcodeNo"/>
+			<xsd:element ref="globals:externalId"/>
+			<xsd:element ref="loanAccount:loanAmount" />
+			<xsd:element ref="globals:customerName" />
+			<xsd:element minOccurs="0" ref="savingAccount:nominee"/>
+			<xsd:element name="address" type="dt:addressType"/>
+			<xsd:element ref="globals:operatingRegion"/>
+			<xsd:element ref="customer:rationCardNo"/>
+			<xsd:element ref="customer:voterId"/>				
+			<xsd:element ref="customer:aadharNo"/>
+			<xsd:element ref="globals:mobileNo" />
+			<xsd:element ref="globals:dateOfBirth"/>
+			<xsd:element ref="customer:gender"/>
+			<xsd:element ref="globals:branchCode" />
+			<xsd:element ref="globals:branchName"/>			
+		</xsd:sequence>	
+	</xsd:complexType>
+</xsd:schema>
