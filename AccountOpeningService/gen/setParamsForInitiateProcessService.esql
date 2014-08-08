@@ -1,13 +1,20 @@
 BROKER SCHEMA gen
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
 
 CREATE COMPUTE MODULE setParamsForInitiateProcessService
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		
+		DECLARE x CHARACTER;
 		SET OutputRoot.Properties.IdentitySourceType ='usernameAndPassword';
 		SET OutputRoot.Properties.IdentitySourceToken = 'admin';
 		SET OutputRoot.Properties.IdentitySourcePassword = 'admin';
 		
+		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
+		SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp.applicant TYPE = JSON.Array;
+		SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp = OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGroup;
+		
+		SET x = CAST(ASBITSTREAM(OutputRoot.JSON.Data) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+								
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.action = 'start';
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.bpdId = '25.3b2df775-a731-4161-9b3e-195367b9ca85';
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.parts = 'header';

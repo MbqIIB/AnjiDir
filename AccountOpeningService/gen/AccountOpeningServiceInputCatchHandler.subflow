@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountOpeningServiceInputCatchHandler.subflow" nsPrefix="gen_AccountOpeningServiceInputCatchHandler.subflow">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountOpeningServiceInputCatchHandler.subflow"
+    nsPrefix="gen_AccountOpeningServiceInputCatchHandler.subflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <translation xmi:type="utility:TranslatableString" key="AccountOpeningServiceInputCatchHandler" bundleName="gen/AccountOpeningServiceInputCatchHandler" pluginId="AccountOpeningService"/>
@@ -12,6 +14,11 @@
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="320,20">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/AccountOpeningServiceInputCatchHandler" pluginId="AccountOpeningService"/>
       </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="131,98" computeExpression="esql://routine/gen#Passthru_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>
