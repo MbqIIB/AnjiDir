@@ -16,22 +16,10 @@
 		<xsd:sequence>
                <xsd:element ref="ge:externalId"/>	
 	           <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
-	           <xsd:element name="customerName">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element maxOccurs="1" minOccurs="1" ref="ge:customerName"/>
 	           <xsd:element name="address" type="dt:addressType"/>
 		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
-	           <xsd:element minOccurs="0" name="mobileNo">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="30"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element minOccurs="0" ref="ge:mobileNo"/>
 	           <xsd:element minOccurs="0" name="caste">
 	                       <xsd:annotation>
 	                          <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
@@ -50,18 +38,7 @@
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
-	           <xsd:element name="gender">
-	                       <xsd:annotation>
-	                          <xsd:documentation>01-Male,02-Female,03-Other</xsd:documentation>
-	                       </xsd:annotation>
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-						<xsd:enumeration value="01"/>
-						<xsd:enumeration value="02"/>
-						<xsd:enumeration value="03"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element ref="tns:gender"/>
 	           <xsd:element minOccurs="0" name="maritalStatus">
 	                       <xsd:annotation>
 	                          <xsd:documentation>01-Single,02-Married,03-Divorcee,04-Widow,05-Widower,06-Other</xsd:documentation>
@@ -121,49 +98,13 @@
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
-	           <xsd:element name="branchCode">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
-	           <xsd:element name="branchName">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element ref="ge:branchCode"/>
+	           <xsd:element ref="ge:branchName"/>
 	           <xsd:element minOccurs="0" maxOccurs="1" ref="ge:operatingRegion"/>
-	           <xsd:element minOccurs="0" name="aadharNo">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
-	           <xsd:element minOccurs="0" name="pensionCardNo">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
-	           <xsd:element minOccurs="0" name="rationCardNo">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
-	           <xsd:element minOccurs="0" name="voterId">
-	              <xsd:simpleType>
-	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
-	                 </xsd:restriction>
-	              </xsd:simpleType>
-	           </xsd:element>
+	           <xsd:element minOccurs="0" ref="tns:aadharNo"/>
+	           <xsd:element minOccurs="0" ref="tns:pensionCardNo"/>
+	           <xsd:element minOccurs="0" ref="tns:rationCardNo"/>
+	           <xsd:element minOccurs="0" ref="tns:voterId"/>
 	           <xsd:element minOccurs="0" name="panNo">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
@@ -407,4 +348,50 @@
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>
+   
+   <!--  globals used in other schemas -->
+   
+ 
+     <xsd:element name="pensionCardNo">
+        <xsd:simpleType>
+           <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="100"/>
+           </xsd:restriction>
+        </xsd:simpleType>
+     </xsd:element>
+     <xsd:element name="voterId">
+        <xsd:simpleType>
+           <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="100"/>
+           </xsd:restriction>
+        </xsd:simpleType>
+     </xsd:element>
+    <xsd:element name="aadharNo">
+        <xsd:simpleType>
+           <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="100"/>
+           </xsd:restriction>
+        </xsd:simpleType>
+     </xsd:element>     
+     <xsd:element name="rationCardNo">
+        <xsd:simpleType>
+           <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="100"/>
+           </xsd:restriction>
+        </xsd:simpleType>
+     </xsd:element>
+       <xsd:element name="gender">
+                  <xsd:annotation>
+                     <xsd:documentation>01-Male,02-Female,03-Other</xsd:documentation>
+                  </xsd:annotation>
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+				<xsd:enumeration value="01"/>
+				<xsd:enumeration value="02"/>
+				<xsd:enumeration value="03"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:element>
+    
+   
 </xsd:schema>

@@ -48,16 +48,16 @@
                     <output path="line3"/>
                 </move>
                 <move automap="true">
-                    <input path="city"/>
-                    <output path="city"/>
-                </move>
-                <move automap="true">
-                    <input path="state"/>
-                    <output path="state"/>
-                </move>
-                <move automap="true">
                     <input path="pin"/>
                     <output path="pin"/>
+                </move>
+                <move>
+                    <input path="stateName"/>
+                    <output path="state"/>
+                </move>
+                <move>
+                    <input path="cityName"/>
+                    <output path="city"/>
                 </move>
             </local>
         </local>

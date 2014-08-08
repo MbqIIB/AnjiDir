@@ -49,28 +49,30 @@
       
  			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
             <xsd:element name="accountOpeningDate" type="xsd:date"/>
-            <xsd:element minOccurs="0" name="nominee">
-               <xsd:complexType>
-                  <xsd:complexContent>
-                     <xsd:extension base="tns:relatedPartyType">
-                        <xsd:sequence>
-                           <xsd:element name="pan" type="dt:panType"/>
-            				<xsd:element minOccurs="0" name="minor">
-				               <xsd:simpleType>
-				                  <xsd:restriction base="xsd:string">
-				                     <xsd:maxLength value="256"/>
-				                  </xsd:restriction>
-				               </xsd:simpleType>
-				            </xsd:element>
-                        </xsd:sequence>
-                     </xsd:extension>
-                  </xsd:complexContent>
-               </xsd:complexType>
-            </xsd:element>
+            <xsd:element minOccurs="0" ref="tns:nominee"/>
  
             <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
             
          </xsd:sequence>
       </xsd:complexType>
    </xsd:element>
+   
+ 	<xsd:element name="nominee">
+	    <xsd:complexType>
+	       <xsd:complexContent>
+	          <xsd:extension base="tns:relatedPartyType">
+	             <xsd:sequence>
+	                <xsd:element name="pan" type="dt:panType"/>
+	 				<xsd:element minOccurs="0" name="minor">
+	        <xsd:simpleType>
+	           <xsd:restriction base="xsd:string">
+	              <xsd:maxLength value="256"/>
+	           </xsd:restriction>
+	        </xsd:simpleType>
+	     </xsd:element>
+	             </xsd:sequence>
+	          </xsd:extension>
+	       </xsd:complexContent>
+	    </xsd:complexType>
+	</xsd:element>  
 </xsd:schema>
