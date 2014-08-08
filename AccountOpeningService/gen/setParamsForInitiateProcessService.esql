@@ -1,0 +1,21 @@
+BROKER SCHEMA gen
+
+CREATE COMPUTE MODULE setParamsForInitiateProcessService
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot.Properties.IdentitySourceType ='usernameAndPassword';
+		SET OutputRoot.Properties.IdentitySourceToken = 'admin';
+		SET OutputRoot.Properties.IdentitySourcePassword = 'admin';
+		
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.action = 'start';
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.bpdId = '25.3b2df775-a731-4161-9b3e-195367b9ca85';
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.parts = 'header';
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.processAppId = '2066.bb89a7b4-1412-425c-a495-d3f17a608533';		
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.params = InputRoot.JSON.r;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+	
