@@ -1,19 +1,30 @@
 BROKER SCHEMA gen
+DECLARE ns41 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
 DECLARE ns NAMESPACE 'http://AccountOpeningService';
 
 CREATE COMPUTE MODULE setParamsForInitiateProcessService
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE x CHARACTER;
+		--SET OutputRoot = InputRoot;
+		--SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
+		--DECLARE BodyRefPtr REFERENCE TO OutputRoot.JSON.Data;
+		--DECLARE BodyRefPtr REFERENCE TO OutputRoot.XMLNSC.ns:processGroupLoanApplication;
+		--CALL StripNamespaces(BodyRefPtr); 
 		SET OutputRoot.Properties.IdentitySourceType ='usernameAndPassword';
 		SET OutputRoot.Properties.IdentitySourceToken = 'admin';
 		SET OutputRoot.Properties.IdentitySourcePassword = 'admin';
 		
-		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
-		SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp.applicant TYPE = JSON.Array;
-		SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp = OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGroup;
+		--SET OutputRoot.JSON.Data = OutputRoot.XMLNSC.ns:processGroupLoanApplication;
+		--SET OutputRoot.JSON.AJAY = BodyRefPtr.XMLNSC.ns:processGroupLoanApplication;
+		--SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp.applicant TYPE = JSON.Array;
+		--SET OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGrp.applicant TYPE =  InputRoot.XMLNSC.ns:processGroupLoanApplication.processGroupLoanApplicationRequest.ns41:applicantGroup;
+		--SET OutputRoot.JSON.Data.ajay = OutputRoot.JSON.Data.processGroupLoanApplicationRequest.applicantGroup.applicant[1];
+		--SET OutputRoot.JSON.Data.rana = InputRoot.XMLNSC.ns:processGroupLoanApplication.processGroupLoanApplicationRequest.ns41:applicantGroup;
 		
-		SET x = CAST(ASBITSTREAM(OutputRoot.JSON.Data) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		--SET OutputRoot.JSON.root.(JSON.Array)a = InputRoot.XMLNSC.ns:processGroupLoanApplication.processGroupLoanApplicationRequest.ns41:applicantGroup.applicants;
+		
+		--SET x = CAST(ASBITSTREAM(InputRoot.JSON.r) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 								
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.action = 'start';
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.bpdId = '25.3b2df775-a731-4161-9b3e-195367b9ca85';
@@ -23,6 +34,29 @@ CREATE COMPUTE MODULE setParamsForInitiateProcessService
 		
 		RETURN TRUE;
 	END;
+	
+	CREATE PROCEDURE StripNamespaces(IN StartRefPtr REFERENCE) 
+	BEGIN 
+	DECLARE FieldRefPtr REFERENCE TO StartRefPtr; 
+	
+	MOVE FieldRefPtr FIRSTCHILD; 
+	IF LASTMOVE(FieldRefPtr) THEN 
+	    IF FIELDTYPE(FieldRefPtr) IN (0x01000000, 0x03000000) THEN 
+	        SET FieldRefPtr.(XML.NamespaceDecl)* = NULL; 
+	        SET FieldRefPtr NAMESPACE = ''; 
+	    END IF; 
+	END IF; 
+	
+	WHILE LASTMOVE(FieldRefPtr) DO 
+	    CALL StripNamespaces(FieldRefPtr); 
+	    IF FIELDTYPE(FieldRefPtr) IN (0x01000000, 0x03000000) THEN 
+	        SET FieldRefPtr.(XML.NamespaceDecl)* = NULL; 
+	        SET FieldRefPtr NAMESPACE = ''; 
+	    END IF; 
+	    MOVE FieldRefPtr NEXTSIBLING; 
+	END WHILE; 
+	END;	
+	
 END MODULE;
 
 	
