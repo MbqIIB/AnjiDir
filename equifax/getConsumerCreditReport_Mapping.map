@@ -103,5 +103,13 @@
             <param name="input" value="($barcodeNo,$externalId)"/>
             <property key="defaultDelimiter" value=" "/>
         </function>
+        <move>
+            <input path="creditReportRequest/address/state"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/State"/>
+        </move>
+        <move>
+            <input path="creditReportRequest/address/pin" var="pin1"/>
+            <output path="SOAP_Domain_Msg/Body/InquiryRequest/RequestBody/Postal"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>

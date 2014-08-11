@@ -93,9 +93,15 @@
    		<xsd:complexType>
    			<xsd:complexContent>
    				<xsd:extension base="tns:groupType">
-   					<xsd:sequence maxOccurs="6" minOccurs="4">
-						<xsd:element ref="customer:applicant"/>				
-   					</xsd:sequence>
+   					<xsd:sequence>
+	   					<xsd:element name="applicants">
+	   						<xsd:complexType> 						
+			   					<xsd:sequence maxOccurs="6" minOccurs="4">
+									<xsd:element ref="customer:applicant"/>				
+			   					</xsd:sequence>
+		   					</xsd:complexType>
+		   				</xsd:element>
+	   				</xsd:sequence>
    				</xsd:extension>
    			</xsd:complexContent>
    		</xsd:complexType>

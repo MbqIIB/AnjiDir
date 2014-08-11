@@ -33,13 +33,7 @@
   		<xsd:element name="cityName" type="xsd:string"/>
   		<xsd:element name="stateCode" type="xsd:string"/>
   		<xsd:element name="stateName" type="xsd:string"/>
-  		<xsd:element name="pin">
-  			<xsd:simpleType>
-  				<xsd:restriction base="xsd:string">
-  					<xsd:maxLength value="10"/>
-  				</xsd:restriction>
-  			</xsd:simpleType>
-  		</xsd:element>
+  		<xsd:element name="pin" type="xsd:int"/>
   	</xsd:sequence>
   </xsd:complexType>
   

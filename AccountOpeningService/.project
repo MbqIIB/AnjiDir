@@ -3,7 +3,6 @@
 	<name>AccountOpeningService</name>
 	<comment></comment>
 	<projects>
-		<project>AccountOpeningServiceJava</project>
 		<project>equifax</project>
 		<project>gefu.ddp</project>
 	</projects>
