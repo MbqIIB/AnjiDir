@@ -4,6 +4,7 @@
     <output path="/AccountOpeningService_InlineSchema1.xsd"/>
     <namespaces>
         <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="processGroupLoanApplication_Response">
@@ -21,12 +22,22 @@
             <output path="processGroupLoanApplicationResponse"/>
             <foreach>
                 <input path="item" var="item"/>
-                <output path="processGroupLoanApplicationReply"/>
+                <output path="processGroupLoanApplicationReply/processId"/>
                 <filter lang="xpath">$item/@key = 'processInstance'</filter>
                 <function ref="xs:integer">
                     <input path="$item/value[1]" var="value7"/>
-                    <output path="processId"/>
+                    <output path="."/>
                     <param name="primitive" value="$value7"/>
+                </function>
+            </foreach>
+            <foreach>
+                <input path="item" var="item1"/>
+                <output path="processGroupLoanApplicationReply/messageText"/>
+                <filter lang="xpath">$item1/@key = 'ResponseMessage'</filter>
+                <function ref="fn:string">
+                    <input path="$item1/value" var="value"/>
+                    <output path="."/>
+                    <param name="item" value="$value"/>
                 </function>
             </foreach>
         </local>
