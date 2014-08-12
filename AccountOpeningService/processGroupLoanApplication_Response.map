@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/BPMRest.xsd" var="var2"/>
+    <input path="/Common.xsd" var="var3"/>
+    <output path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="processGroupLoanApplication_Response">
+        <input namespace="http://rest.bpm.ibm.com/v1/data" path="$var2/mb:msg(ResponseData,assembly,XMLNSC,Properties)">
+            <cast path="ResponseData/data/type('Data')" qualifier="{http://rest.bpm.ibm.com/v1/data/service}ServiceRunModel"/>
+            <cast path="ResponseData/spath('data',2)/data/type('anyType')" qualifier="{http://rest.bpm.ibm.com/v1/data/common}Map"/>
+        </input>
+        <output namespace="http://AccountOpeningService" path="mb:msg(processGroupLoanApplicationResponse,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <local>
+            <input path="ResponseData/spath('data',2)/spath('data',2)"/>
+            <output path="processGroupLoanApplicationResponse"/>
+            <foreach>
+                <input path="item" var="item"/>
+                <output path="processGroupLoanApplicationReply"/>
+                <filter lang="xpath">$item/@key = 'processInstance'</filter>
+                <function ref="xs:integer">
+                    <input path="$item/value[1]" var="value7"/>
+                    <output path="processId"/>
+                    <param name="primitive" value="$value7"/>
+                </function>
+            </foreach>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

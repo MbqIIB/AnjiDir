@@ -7,7 +7,10 @@
 	xmlns:prs="http://rest.bpm.ibm.com/v1/data/process"
 	xmlns:qry="http://rest.bpm.ibm.com/v1/data/query"
 	xmlns:stm="http://rest.bpm.ibm.com/v1/data/system"
-	xmlns:exc="http://rest.bpm.ibm.com/v1/data/exception">
+	xmlns:exc="http://rest.bpm.ibm.com/v1/data/exception"
+	xmlns:common="http://rest.bpm.ibm.com/v1/data/common"
+	xmlns:search="http://rest.bpm.ibm.com/v1/data/search"
+	xmlns:serivce="http://rest.bpm.ibm.com/v1/data/service">
 
     <import schemaLocation="BPMRestData.xsd" 
        namespace="http://rest.bpm.ibm.com/v1/data/root" />

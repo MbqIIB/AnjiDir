@@ -3,7 +3,11 @@
 	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
 	xmlns:pref1="http://rest.bpm.ibm.com/v1/data/process"
-	xmlns:pref2="http://rest.bpm.ibm.com/v1/data/query" xmlns:pref3="http://rest.bpm.ibm.com/v1/data/system">
+	xmlns:pref2="http://rest.bpm.ibm.com/v1/data/query" xmlns:pref3="http://rest.bpm.ibm.com/v1/data/system"
+	xmlns:search="http://rest.bpm.ibm.com/v1/data/search"
+	xmlns:service="http://rest.bpm.ibm.com/v1/data/service"
+	xmlns:shareddata="http://rest.bpm.ibm.com/v1/data/shareddata"
+	xmlns:task="http://rest.bpm.ibm.com/v1/data/task">
 
     <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
     <import schemaLocation="Process.xsd"     namespace="http://rest.bpm.ibm.com/v1/data/process"/>

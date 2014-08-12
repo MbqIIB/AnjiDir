@@ -2,7 +2,8 @@
 <schema targetNamespace="http://rest.bpm.ibm.com/v1/data/bpdtaggroups"
 elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
 xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
-xmlns:tns="http://rest.bpm.ibm.com/v1/data/bpdtaggroups">
+xmlns:tns="http://rest.bpm.ibm.com/v1/data/bpdtaggroups"
+xmlns:common="http://rest.bpm.ibm.com/v1/data/common">
 
 <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
 <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
