@@ -7,8 +7,6 @@ CREATE COMPUTE MODULE preHTTPCall
 		DECLARE y CHARACTER;
 		DECLARE lm BOOLEAN;
 		
-		SET Environment.SaveState.ReplyIdentifier = InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier;
-		
 		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
 
 		-- Convert the applicants into an array
@@ -30,9 +28,22 @@ END MODULE;
 CREATE COMPUTE MODULE postHTTPCall
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		Set OutputRoot = InputRoot;
-		Set OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = Environment.SaveState.ReplyIdentifier;
+
+		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		
+		IF InputRoot.HTTPResponseHeader."X-Original-HTTP-Status-Code" <> 200 THEN
+		
+			SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Server';	
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Service call not completed';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = InputLocalEnvironment.WrittenDestination.HTTP.RequestURL;
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputRoot.HTTPResponseHeader."X-Original-HTTP-Status-Line";
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+
+		ELSE
+			Set OutputRoot = InputRoot;
+		END IF;
+				
 		RETURN TRUE;
 	END;
 END MODULE;

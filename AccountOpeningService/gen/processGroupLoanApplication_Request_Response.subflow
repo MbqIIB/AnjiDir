@@ -20,16 +20,13 @@
       <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="400,395" URLSpecifier="http://49.248.6.106:9080/rest/bpm/wle/v1/service/ACCOPEN@ProcessGroupLoanApplication" messageDomainProperty="XMLNSC" validateTiming="complete" errorMsgLocationInTree="OutputRoot.BLOB">
         <translation xmi:type="utility:ConstantString" string="HTTPRequestToBPM"/>
       </nodes>
-      <nodes xmi:type="ComIbmHTTPHeader.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="202,374" httpRequestHeader="Add" httpReplyHeader="Modify">
+      <nodes xmi:type="ComIbmHTTPHeader.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="202,374" httpResponseHeader="CarryForward" httpRequestHeader="Add" httpReplyHeader="Modify">
         <translation xmi:type="utility:ConstantString" string="HTTP Header"/>
         <nameValue4RequestHeader name="accept" value="application/xml"/>
         <nameValue4ReplyHeader name="Accept" value="application/xml"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="828,340" computeExpression="esql://routine/gen#postHTTPCall.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="postHTTP"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="334,109" computeExpression="esql://routine/gen#Passthru_Compute.Main" computeMode="destinationAndMessage">
-        <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="805,206" pattern="Response being sent back to the main flow&#xA;&#xA;${Body}">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
@@ -45,7 +42,6 @@
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
