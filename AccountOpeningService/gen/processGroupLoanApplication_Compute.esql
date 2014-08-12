@@ -1,12 +1,13 @@
 BROKER SCHEMA gen
 DECLARE ns NAMESPACE 'http://AccountOpeningService';
-DECLARE nsGroup NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
 
-CREATE COMPUTE MODULE setParamsForInitiateProcessService
+CREATE COMPUTE MODULE preHTTPCall
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE y CHARACTER;
 		DECLARE lm BOOLEAN;
+		
+		SET Environment.SaveState.ReplyIdentifier = InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier;
 		
 		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
 
@@ -23,13 +24,21 @@ CREATE COMPUTE MODULE setParamsForInitiateProcessService
 		SET OutputRoot.Properties.IdentitySourcePassword = 'admin';
 										
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.action = 'start';
-		SET OutputLocalEnvironment.Destination.HTTP.QueryString.bpdId = '25.3b2df775-a731-4161-9b3e-195367b9ca85';
-		SET OutputLocalEnvironment.Destination.HTTP.QueryString.parts = 'header';
-		SET OutputLocalEnvironment.Destination.HTTP.QueryString.processAppId = '2066.bb89a7b4-1412-425c-a495-d3f17a608533';		
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.params = y;
 		
 		RETURN TRUE;
 	END;
 END MODULE;
+
+CREATE COMPUTE MODULE postHTTPCall
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		Set OutputRoot = InputRoot;
+		Set OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = Environment.SaveState.ReplyIdentifier;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
 
 	

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/ecm"
+        elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://rest.bpm.ibm.com/v1/data/ecm"
+        xmlns:data="http://rest.bpm.ibm.com/v1/data/root"
+        xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+	
+    <!-- 
+	 This type is used to return the available subscriptions for ecm events.
+    -->
+    <complexType name="EventSubscriptions">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- A list of zero or more "EventSubscription" structures -->
+		    <element name="subscriptions" type="tns:tEventSubscription" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type contains the list of available event subscriptions.
+    -->
+    <complexType name="tEventSubscription">
+	<sequence>
+
+	    <!-- The subscription ID -->
+	    <element name="id" type="string" />
+
+		<!-- The type -->
+	    <element name="type" type="string" />
+		
+		<!-- The server -->
+	    <element name="server" type="string" />
+		
+		<!-- The event class -->
+	    <element name="eventClass" type="string" />
+		
+		<!-- The event object -->
+	    <element name="objectTypeId" type="string" />
+		
+		<!-- The event event type -->
+	    <element name="eventType" type="string" />
+		
+		<!-- The enabled property -->
+	    <element name="isEnabled" type="boolean" />
+		
+		<!-- The include_sub_type property -->
+	    <element name="includeSubType" type="boolean" />
+		
+		<!-- The name -->
+	    <element name="name" type="string" />
+		
+		<!-- The description -->
+	    <element name="description" type="string" />
+		
+	</sequence>
+    </complexType>
+
+</schema>
+

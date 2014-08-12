@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/usergroup"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/usergroup"
+	xmlns:data="http://rest.bpm.ibm.com/v1/data/root" 
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+
+    <!-- 
+	 This type represents a user that has been defined to the IBM BPM installation.
+    -->
+    <complexType name="User">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- The numeric ID of the user -->
+		    <element name="userID" type="long" />
+
+		    <!-- The alphanumeric user name associated with the user -->
+		    <element name="userName" type="string" />
+
+		    <!-- The user's full name -->
+		    <element name="fullName" type="string" minOccurs="0" />
+
+		    <!-- This field indicates whether or not this user is disabled. This field is set to false and cannot be changed. -->
+		    <element name="isDisabled" type="boolean" />
+
+		    <!-- The timestamp when the user last logged in, This field cannot be changed. -->
+		    <element name="lastLoginDate" type="dateTime" />
+
+		    <!-- not used -->
+		    <element name="primaryGroup" type="string" minOccurs="0" />
+
+		    <!-- not used -->
+		    <element name="emailAddress" type="string" minOccurs="0" />
+
+		    <!-- A list of user preferences (extended attributes) associated with this user -->
+		    <element name="userPreferences" type="cmn:Map" minOccurs="0" />
+
+			<!-- A list of Tasks (taskIds) that the user is collaborating on -->
+	    	<element name="tasksCollaboration" type="string" minOccurs="0" maxOccurs="unbounded" />
+	    	
+		    <!-- A list of groups to which this user belongs -->
+		    <element name="memberships" type="string" maxOccurs="unbounded" minOccurs="0" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type represents a user with a workload defined to the IBM BPM installation.
+    -->
+    <complexType name="TeamMember">
+	<complexContent>
+	    <extension base="tns:User">
+		<sequence>
+
+		    <!-- The numeric ID of the user -->
+		    <element name="workload" type="integer" />
+
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <!-- 
+	 This type represents a user with a workload defined to the IBM BPM installation.
+    -->
+    <complexType name="Expert">
+	<complexContent>
+	    <extension base="tns:TeamMember">
+		<sequence>
+
+		    <!-- TODO what is this -->
+		    <element name="completed" type="integer" />
+		    
+		    <!-- TODO what is this -->
+		    <element name="avgHours" type="double" />		    
+
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <!-- 
+     This type represents an array of Experts
+    -->
+    <complexType name="Experts">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="Experts" type="tns:Expert"  minOccurs="0" maxOccurs="unbounded"/>
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>	
+    
+   <!-- 
+	 This type represents a list of expert users with a workload defined to the IBM BPM installation.
+    -->
+    <complexType name="ExpertList">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!--group of users the system identifies as experts on a task  -->
+		    <element name="systemIdentifiedUsers" type="tns:Expert" maxOccurs="unbounded" minOccurs="0" />
+		    
+		    <!--group of users included in the the task expert participant group  -->
+		    <element name="expertParticipantGroupUsers" type="tns:Expert" maxOccurs="unbounded" minOccurs="0" />	
+
+		    <!--task expert participant group  -->
+		    <element name="expertParticipantGroupDetails" type="tns:Group" />
+
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>    
+    
+    <!-- 
+	 This type represents a user that has been defined to the IBM BPM installation.
+    -->
+    <complexType name="UserPreferences">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- The user's display name -->
+		    <element name="displayName" type="string" />
+
+		    <!-- The user's "Primary Role Description -->
+		    <element name="primaryRoleDescription" type="string" />
+
+		    <!-- The user's Task Email Address -->
+		    <element name="taskEmailAddress" type="string" />
+
+		    <!-- The user's Phone Number -->
+		    <element name="phoneNumber" type="string" />
+		    
+		    <!-- The user's Street Address -->
+		    <element name="streetAddress" type="string" />
+		    
+		    <!-- The user's City -->
+		    <element name="city" type="string" />
+		    
+		    <!-- The user's State -->
+		    <element name="state" type="string" />
+		    
+  		    <!-- The user's Country -->
+		    <element name="country" type="string" />
+		    
+		    <!-- The user's Postal Code-->
+		    <element name="postalCode" type="string" />
+		    
+		    <!-- The user's Image -->
+		    <element name="image" type="string" />
+
+		    <!-- The user's Toolbar Collapsed setting -->
+		    <element name="toolbarCollapsed" type="boolean" />			    		    		    
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>    
+
+    <!--
+	This type represents a group that has been defined to the IBM BPM installation.
+    -->
+    <complexType name="Group">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- The numeric ID of the group -->
+		    <element name="groupID" type="long" />
+
+		    <!-- The alphanumeric name of the group -->
+		    <element name="groupName" type="string" />
+
+		    <!-- The display name associated with the group -->
+		    <element name="displayName" type="string" />
+
+		    <!-- The description associated with the group -->
+		    <element name="description" type="string" />
+
+		    <!-- The list of users that are members of this group -->
+		    <element name="members" type="string" maxOccurs="unbounded" minOccurs="0" />
+		    
+		    <!-- The alphanumeric name of the manager group -->
+		    <element name="managerGroupName" type="string" minOccurs="0" />		    
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>    
+    
+    <!-- 
+	 This type represents a list of zero or more users that have been defined to the IBM BPM installation.
+    -->
+    <complexType name="UserList">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <element name="users" type="tns:User" maxOccurs="unbounded" minOccurs="0" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type represents a list of zero or more user groups that have been defined to the IBM BPM installation.
+    -->
+    <complexType name="GroupList">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <element name="groups" type="tns:Group" maxOccurs="unbounded" minOccurs="0" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+   	<element name="User" type="tns:User" /> 
+  	<element name="TeamMember" type="tns:TeamMember" />
+   	<element name="Expert" type="tns:Expert" />    	    
+   	<element name="Experts" type="tns:Experts" />    	    
+   	<element name="UserPreferences" type="tns:UserPreferences" />
+   	<element name="Group" type="tns:Group" />    	
+   	<element name="UserList" type="tns:UserList" />    	
+   	<element name="GroupList" type="tns:GroupList" />    	
+
+</schema>

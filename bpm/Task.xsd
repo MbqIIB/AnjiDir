@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/task"
+        elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://rest.bpm.ibm.com/v1/data/task"
+        xmlns:data="http://rest.bpm.ibm.com/v1/data/root"
+        xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+
+    <!--
+	This type represents a task template.
+    -->
+    <complexType name="TaskTemplate">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- The task template id -->
+		    <element name="tktid" type="string" />
+		    
+		    <!-- The name of the task template -->
+		    <element name="name" type="string" />
+
+		    <!-- The task template's display name -->
+		    <element name="displayName" type="string" nillable="true" />
+
+		    <!-- The task template's description -->
+		    <element name="description" type="string" nillable="true" />
+
+		    <!-- The "kind" associated with the task template; this is set to "KIND_ORIGINATING" -->
+		    <element name="kind" type="string" />
+
+		    <!-- The task template's state; this will be one of: "STARTED", "STOPPED" -->
+		    <element name="state" type="string" />
+
+		    <!-- The client types associated with this task template; this will be {"IBM_WLE_COACH"} -->
+		    <element name="clientTypes" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+		    <!-- The timestamp representing the task templates effective date -->
+		    <element name="effectiveDate" type="dateTime" />
+
+		    <!-- The snapshot ID associated with the task template -->		    
+		    <element name="snapshotID" type="string" nillable="true" />
+
+		    <!-- The snapshot name associated with the task template -->
+		    <element name="snapshotName" type="string" nillable="true" />
+
+		    <!-- 
+			 If the task template's VersionDetails represents a toolkit, then these fields will be set 
+			 to the top-level toolkit's acronym (short name) and name .
+		    -->
+		    <element name="topLevelToolkitAcronym" type="string" nillable="true" />
+		    <element name="topLevelToolkitName" type="string" nillable="true" />
+
+		    <!-- 
+			 If the task template's VersionDetails represents a process app, then these fields will be set 
+			 to the process app's acronym (short name) and name.
+		    -->
+		    <element name="processAppName" type="string" nillable="true" />
+		    <element name="processAppAcronym" type="string" nillable="true" />
+
+		    <!-- 
+			 If the task template's VersionDetails represents a toolkit, then this field will be set 
+			 to the top-level toolkit's branch name.
+		    -->
+		    <element name="trackName" type="string" nillable="true" />
+
+		    <!-- A flag which indicates whether or not this task template represents a "tip" -->
+		    <element name="isTip" type="boolean" />
+
+
+		    <!-- A flag which indicates whether or not this is a default task template -->
+		    <element name="isDefault" type="boolean" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type contains information about a task instance, and contains
+	 information from both the Federation layer and the BPM Standard (WLE) layer.
+    -->
+    <complexType name="TaskDetails">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- BPM Standard (WLE) and Advanced (WPS) common properties -->
+		    <!-- The timestamp when this task was activated -->
+		    <element name="activationTime" type="dateTime" />
+		    
+		    <!-- The at risk date associated with the task -->
+		    <element name="atRiskTime" type="dateTime" nillable="true" />
+
+		    <!-- The client types associated with this task; set to {"IBM_WLE_COACH"} -->
+		    <element name="clientTypes" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+		    <!-- The timestamp when the task was completed -->
+		    <element name="completionTime" type="dateTime" nillable="true" />
+
+		    <!-- If the task has a process attached, this will contain the process instance id -->
+		    <element name="containmentContextID" type="string" nillable="true" />
+
+		    <!-- The task's "narrative" -->
+		    <element name="description" type="string" nillable="true" />
+
+		    <!-- The task's "subject" -->
+		    <element name="displayName" type="string" nillable="true" />
+
+		    <!-- The due date associated with the task -->
+		    <element name="dueTime" type="dateTime" nillable="true" />
+
+            <!-- The flag indicating that the task is at risk -->
+            <element name="isAtRisk" type="boolean" />
+
+		    <!-- 
+			 The task's "kind".  This will be one of:
+			 - "KIND_HUMAN"
+			 - "KIND_ORIGINATING"
+			 - "KIND_PARTICIPATING"
+			 - "KIND_ADMINISTRATIVE"
+		    -->
+		    <element name="kind" type="string" />
+
+		    <!-- The timestamp when the task was last updated -->
+		    <element name="lastModificationTime" type="dateTime" />
+
+		    <!-- The task's activity name -->
+		    <element name="name" type="string" nillable="true" />
+
+		    <!-- The userName of the user that originated the task -->
+		    <element name="originator" type="string" nillable="true" />
+
+		    <!-- The userName of the task's owner -->
+		    <element name="owner" type="string" nillable="true" />
+
+		    <!-- The priority associated with the task -->
+		    <element name="priority" type="integer" nillable="true" />
+
+		    <!-- The start time of the task -->
+		    <element name="startTime" type="dateTime" nillable="true" />
+
+		    <!-- 
+			 The task state.  This will be one of:
+			 - "STATE_INACTIVE"
+			 - "STATE_FINISHED"
+			 - "STATE_TERMINATED"
+			 - "STATE_SUSPENDED_BY_PARENT"
+			 - "STATE_READY"
+			 - "STATE_CLAIMED"
+			 - "STATE_RUNNING"
+		    -->
+		    <element name="state" type="string" />
+
+		    <!-- The task instance ID -->
+		    <element name="tkiid" type="string" />
+
+
+		    <!-- BPM Standard (WLE) specific properties -->
+
+		    <!-- If the task has a process attached, this will contain the process instance id -->
+		    <element name="piid" type="string" nillable="true" />
+
+		    <!-- If the task has a process attached, this will contain the process instance name -->
+		    <element name="processInstanceName" type="string" nillable="true" />
+
+		    <!-- 
+			 The task status.   This will be one of:
+			 - "New"
+			 - "Received"
+			 - "Replied"
+			 - "Forwarded"
+			 - "Sent"
+			 - "Actioned"
+			 - "Closed"
+			 - "Special"
+			 - "Deleted"
+			 - "Alert"
+			 - "Help_Request"
+			 - "Comment"
+			 - "Answered_Help_Request"
+			 - "Ignored_Help_Request"
+		    -->
+		    <element name="status" type="string" />
+
+		    <!-- -->
+		    <element name="priorityName" type="string" />
+
+		    <!-- The name of the user or group to which this task is assigned -->
+		    <element name="assignedTo" type="string" />
+		    <element name="assignedToDisplayName" type="string" />
+
+		    <!-- 
+			 The type of the assignedTo element. This will be one of:
+			 - "user"
+			 - "group" 
+		    -->
+		    <element name="assignedToType" type="string" />
+
+		    <!-- The external task data associated with this task -->
+		    <element name="data" type="tns:ExternalTaskData" />
+
+			<!-- Process data associated with the instance containing the task -->
+		    <element name="processData" type="tns:ProcessData" />
+		    
+			<!-- The name of the phase to which this task belongs..reserved for future use -->
+		    <element name="milestone" type="string" />
+
+		    <!-- If the task is an external activity, this field contains the activity's ID -->
+		    <element name="externalActivityID" type="string" />
+
+		    <!-- If the task is a service, this field contains the service's ID -->
+		    <element name="serviceID" type="string" />
+		    <element name="flowObjectID" type="string" />
+
+		    <!-- not used -->
+		    <element name="runURL" type="string" />
+
+            <!-- Contains ID of the next task if autoflow is enabled and next task was found -->
+            <element name="nextTaskId" type="integer" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+            
+            <element name="collaboration" type="tns:Collaboration"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+	
+	<!--
+	This type contains collaboration details about the task.
+    -->
+
+     <complexType name="Collaboration">
+   		 <sequence>
+   		 	<!-- The task is under collaboration or not -->
+	    	<element name="status" type="boolean" />
+     		 
+		    <!-- If the service status is "coach", this field contains a list of available currentUsers (end point) -->
+		    <element name="currentUsers" type="string" minOccurs="0" maxOccurs="unbounded" />
+			    
+		    <!-- This will hold the url for invited user for any collaborated task -->
+	 		<element name="taskURL" type="string" />
+			    
+	    </sequence>
+     </complexType>
+	
+    <!--
+	This type contains details about the task.
+	For legacy reasons it is named ExternalTaskData even though
+	it is used for all tasks.
+    -->
+    <complexType name="ExternalTaskData">
+	<sequence>
+	    <element name="bpdToken" type="cmn:BPDToken"/>
+	    <element name="variables" type="cmn:Map"/>
+	    <element name="reference" type="cmn:Reference"/>
+	</sequence>
+    </complexType>
+
+
+	<!--
+	This type contains details about the instance containing the task.
+    -->
+    <complexType name="ProcessData">
+	<sequence>	
+	    <element name="businessData" type="cmn:Variable" maxOccurs="unbounded" />
+	</sequence>
+    </complexType>	
+	
+    <!-- 
+	 This type is used to return the available actions for a list of tasks.
+    -->
+    <complexType name="TaskActions">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- 
+			 This field specifies the primary identifier of the tasks; 
+			 this will be set to "tkiid" .
+		    -->
+		    <element name="identifier" type="string" />
+
+		    <!-- A list of zero or more "TasksWithActions" structures -->
+		    <element name="tasks" type="tns:tTasksWithActions" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type contains the list of available actions available for a particular task instance.
+    -->
+    <complexType name="tTasksWithActions">
+	<sequence>
+
+	    <!-- The task instance ID -->
+	    <element name="tkiid" type="string" />
+
+	    <!-- A list of zero or more available actions associated with the task instance -->
+	    <element name="actions" type="string" minOccurs="0" maxOccurs="unbounded" />
+	</sequence>
+    </complexType>
+
+    <!--
+	This type is used to return the URL which specifies 
+	the location of a coach associated with a particular task
+    -->
+    <complexType name="TaskClientSettings">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- The URL pointing to the coach -->
+		    <element name="url" type="string" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+
+    <!--
+	This type is used to return the URL which specifies 
+	the location of a coach associated with a particular service.
+    -->
+    <complexType name="TaskTemplateClientSettings">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- The URL pointing to the coach -->
+		    <element name="url" type="string" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!--
+	This type is used to return a task instance ID which is the result
+	of performing a task claim operation.
+    -->
+    <complexType name="TaskClaimResult">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <element name="tkiid" type="string" nillable="true"  />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!--
+	This type contains a list of task IDs to be passed to a 
+	bulk operation on tasks.
+    -->
+    <complexType name="TaskBulkOperation">
+	<complexContent>
+            <extension base="data:Data">
+                <sequence>
+                    <element name="taskIDs" type="string" minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- 
+	 This type is used to return the results from performing a bulk operation on multiple tasks.
+    -->
+    <complexType name="TaskBulkOperationResponse">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+			
+		    <!-- A list of zero or more failed operations -->
+		    <element name="failedOperations" type="tns:tFailedOperations"  minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+	    <!-- 
+	 This type is used to return the results from performing a bulk operation on multiple tasks.
+    -->
+    <complexType name="TaskDetailsBulkOperationResponse">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- A list of zero or more task details objects -->
+		    <element name="tasks" type="tns:TaskDetails"  minOccurs="0" maxOccurs="unbounded" />
+			
+		    <!-- A list of zero or more failed operations -->
+		    <element name="failedOperations" type="tns:tFailedOperations"  minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+	
+    <!--
+	This type describes a failed operation during a bulk task-related operation.
+    -->
+    <complexType name="tFailedOperations">
+	<sequence>
+
+	    <!-- The task instance ID -->
+	    <element name="tkiid" type="string" />
+
+	    <!-- The error message prefix associated with the error -->
+	    <element name="errorNumber" type="string" />
+
+	    <!-- The error message associated with the error -->
+	    <element name="errorMessage" type="string" />
+	</sequence>
+    </complexType>
+
+    <!-- 
+	 This type describes the model of an external activity.
+    -->
+    <complexType name="ExternalActivityModel">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- The ID of the external activity -->
+		    <element name="ID" type="string"/>
+
+		    <!-- The name of the external activity -->
+		    <element name="name" type="string"/>
+
+		    <!-- The external activity's description -->
+		    <element name="description" type="string"/>
+		    <element name="richDescription" type="string"/>
+		    
+		    <!-- The snapshot this external activity belongs to -->
+		    <element name="snapshotId" type="string"/>
+		    
+		    <!-- Warning -->
+	    	<element name="warning" type="string" />
+
+		    <!-- The customProperties associated with the external activity
+	         The key is the name of the property.
+	         The value containing a description of the property:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	        -->
+		    <element name="customProperties" type="cmn:Map"/>
+
+		    <!-- The input variables associated with the external activity
+	         The key is the name of the variable.
+	         The value containing a description of the parameter:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	        -->
+		    <element name="inputs" type="cmn:Map"/>
+
+		    <!-- The output variables associated with the external activity
+	         The key is the name of the variable.
+	         TThe value containing a description of the parameter:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	         -->
+		    <element name="outputs" type="cmn:Map"/>
+		    
+            <!-- Detailed information about the types referenced by the service.
+             Each type referenced above and nested types are described.
+	         The key is the name of the type.
+	         The value is an map of information about the type  Here are some of the fields:
+	            * ID, pattern, properties, isShared, options, min, max, description, fixedLength
+	        -->
+		    <element name="validations" type="cmn:Map"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	 This type is used to return response data resulting from a task start operation.
+    -->
+    <complexType name="TaskStartData">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+
+		    <!-- A list of attribute/value pairs which make up the task start.
+		         The "data" key has a value that isjson string representing the variables and values of the task.
+		         the "dataMap" key has a value that is a map containing the variables and values of the task.
+		    -->
+		    <element name="return" type="cmn:Map"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <complexType name="ID"/>
+
+</schema>
+

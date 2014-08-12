@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/tipsnapshotid"
+elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:pref="http://rest.bpm.ibm.com/v1/data/root">
+
+<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+<complexType name="TipSnapshotData">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="snapshotId" type="string" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

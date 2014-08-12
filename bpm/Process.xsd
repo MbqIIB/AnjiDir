@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/process"
+        elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://rest.bpm.ibm.com/v1/data/process"
+        xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+        xmlns:common="http://rest.bpm.ibm.com/v1/data/common"
+        xmlns:execution="http://rest.bpm.ibm.com/v1/data/execution"
+        xmlns:task="http://rest.bpm.ibm.com/v1/data/task">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="Task.xsd" namespace="http://rest.bpm.ibm.com/v1/data/task"></import>
+    <import schemaLocation="ExecutionTree.xsd" namespace="http://rest.bpm.ibm.com/v1/data/execution"></import>
+
+
+    <!--
+        This type contains details related to a process instance.
+    -->
+    <complexType name="ProcessDetails">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+
+                    <!-- The timestamp when the process instance was created -->
+                    <element name="creationTime" type="dateTime" />
+
+                    <!-- The description of the process -->
+                    <element name="description" type="string" nillable="true" />
+                    <element name="richDescription" type="string" nillable="true" />
+
+                    <!-- The current status of the process instance 
+                         Valid values are:
+                          "Active",
+                          "Completed",
+                          "Failed",
+                          "Suspended",
+                          "Terminated" -->
+                    <element name="executionState" type="string" />
+
+                    <!-- The current state of the process instance. -->
+                    <element name="state" type="string" />
+
+                    <!-- The timestamp when the process was last modified -->
+                    <element name="lastModificationTime" type="dateTime" />
+
+                    <!-- The name of the process -->
+                    <element name="name" type="string" />
+
+                    <!-- The process instance ID -->
+                    <element name="piid" type="string" />
+
+                    <!-- The process template (BPD) ID -->
+                    <element name="processTemplateID" type="string" />
+
+                    <!-- The process template (BPD) name -->
+                    <element name="processTemplateName" type="string" />
+
+                    <!-- The name of the process application -->
+                    <element name="processAppName" type="string" nillable="true" />
+
+                    <!-- The process application acronym -->
+                    <element name="processAppAcronym" type="string" nillable="true" />
+		    
+                    <!-- The ID of the process app -->
+                    <element name="processAppID" type="string" nillable="true" />
+
+                    <!-- The name of the snapshot -->
+                    <element name="snapshotName" type="string" nillable="true" />
+
+                    <!-- The snapshot ID -->
+                    <element name="snapshotID" type="string" nillable="true" />
+                    
+                    <!-- The branch (track) ID -->
+                    <element name="branchID" type="string" />
+                    
+                    <!-- The name of the branch (track) -->
+                    <element name="branchName" type="string" />
+                                                            
+                    <!-- The snapshot tip -->
+                    <element name="snapshotTip" type="boolean" />
+
+                    <!-- Error message for failed process instance -->
+                    <element name="instanceError" type="string" />
+
+                    <!-- The due date associated with the process -->
+                    <element name="dueDate" type="dateTime" />
+
+                    <!-- The predicted due date associated with the process -->
+                    <element name="predictedDueDate" type="dateTime" />
+
+                    <!-- Comments associated with the process instance -->
+                    <element name="comments" type="tns:CommentsType" maxOccurs="unbounded" minOccurs="0" />
+
+                    <!-- A list of zero or more tasks associated with the process -->
+                    <element name="tasks" type="task:TaskDetails" maxOccurs="unbounded" minOccurs="0"/>
+
+                    <!-- A list of zero or more documents associated with the process -->
+                    <element name="documents" type="tns:documentsType" maxOccurs="unbounded" minOccurs="0"/>
+
+                    <!-- The details of the action performed if applicable -->
+                    <element name="actionDetails" type="tns:ActionDetails" minOccurs="0" />
+
+                    <!--
+                         The data associated with the process instance in a json String.
+                         To understand this, you'll need the data model associated with the BPD.
+                    -->
+                    <element name="data" type="string" />
+
+                    <!--
+                     Data information stored in an actual Map like the TaskDetails information
+                    -->
+                    <element name="variables" type="common:Map" />
+
+		    <!--
+		     Business data information stored as list of variables.
+		    -->		
+		    <element name="businessData" type="common:Variable" maxOccurs="unbounded" />
+			
+		    <!-- The execution tree associated with the process -->
+		    <element name="executionTree" type="execution:ExecutionTree" />
+
+                    <!-- The diagram associated with the process instance -->
+                    <element name="diagram" type="tns:DiagramType" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!--
+        This type contains information about a Business Process Definition Model.
+    -->
+    <complexType name="BPDModel">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <element name="Header" type="tns:HeaderType"/>
+                    <element name="DataModel" type="tns:DataModelType"/>
+                    <element name="Diagram" type="tns:DiagramType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--
+         This type contains the "header" type information associated with a BPD Model.
+    -->
+    <complexType name="HeaderType">
+        <sequence>
+
+            <!-- The BPD ID -->
+            <element name="ID" type="string"/>
+
+            <!-- The BPD name -->
+            <element name="name" type="string"/>
+
+            <!-- The BPD description -->
+            <element name="description" type="string"/>
+            <element name="richDescription" type="string"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type contains information about a BPD's "data model".
+         This includes the inputs and outputs associated with a BPD.
+    -->
+    <complexType name="DataModelType">
+        <sequence>
+
+            <!-- A list of variables that are defined by the BPD model -->
+            <element name="properties" type="common:Map"/>
+
+            <!-- A list of inputs to the process -->
+            <element name="inputs" type="common:Map"/>
+
+            <!-- A list of outputs produced by the process -->
+            <element name="outputs" type="common:Map"/>
+
+            <!-- A structure explaining the BPD's data model -->
+            <element name="validation" type="common:Map"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type contains information about a diagram associated
+         with a BPD or Process instance.
+    -->
+    <complexType name="DiagramType">
+        <sequence>
+
+            <!-- The process application ID (short name) -->
+            <element name="processAppID" type="string"/>
+
+            <!--
+                 A list of zero or more phases associated with the process.
+                 A phase represents a phase of process execution.
+            -->
+            <element name="milestone" type="tns:milestoneType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <!-- A list of zero or more steps associated with the process -->
+            <element name="step" type="tns:stepType" maxOccurs="unbounded" minOccurs="0"/>
+
+            <!--
+                 A list of zero or more lanes associated with the process.
+                 A "lane" typically represents a department within a business organization.
+            -->
+            <element name="lanes" type="tns:lanesType" maxOccurs="unbounded" minOccurs="0"/>
+                <!--
+                 A list of zero or more tokens associated with the process but not to a specific step or attached element.
+            -->
+            <element name="orphaned" type="tns:orphanType" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type represents a "phase" which models a
+         phase of execution within a process.
+    -->
+    <complexType name="milestoneType">
+        <sequence>
+
+            <!-- The name of the phase -->
+            <element name="name" type="string"/>
+
+            <!-- The "width" of the phase (in pixels) -->
+            <element name="width" type="int"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type contains the detailed information associated with a "step" within a process.
+    -->
+    <complexType name="stepType">
+        <sequence>
+
+            <!-- The step ID -->
+            <element name="ID" type="string"/>
+
+            <!-- The name of the step -->
+            <element name="name" type="string"/>
+
+            <!--
+                 The step type associated with this step.
+                 Examples: event, gateway, activity, etc.
+            -->
+            <element name="type" type="string"/>
+
+            <!--
+                 If the type is "activity", this field specifies the type of activity.
+                 Examples: task, externalActivity, subBpd, etc.
+            -->
+            <element name="activityType" type="string" minOccurs="0" />
+
+            <!--
+                 If the activity type is "subBpd", the externalID is the Process id
+                 of the subBpd.
+                 If the activity type is "task", the externalID is the Service id of the task's service.
+                 If the activity type is "externalTask", the externalID is the External Activity id of
+                 the external task.
+            -->
+            <element name="externalID" type="string" minOccurs="0" />
+
+            <!-- A diagram for subprocesses -->
+            <element name="diagram" type="tns:DiagramType" minOccurs="0"/>
+
+            <!--  The name of the phase to which the step belongs. -->
+            <element name="milestone" type="string"/>
+
+            <!-- The name of the lane to which the step belongs -->
+            <element name="lane" type="string"/>
+
+            <!-- The X,Y coordinate of the centerpoint of this step within the diagram -->
+            <element name="x" type="int"/>
+            <element name="y" type="int"/>
+
+            <!-- The color associated with the step within the diagram -->
+            <element name="color" type="string"/>
+
+            <!-- A list of zero or more timers attached to this step -->
+            <element name="attachedTimer" type="tns:attachedTimerType" maxOccurs="unbounded" minOccurs="0"/>
+
+            <!-- A list of zero or more event handler attached to this step -->
+            <element name="attachedEventHandler" type="tns:attachedEventHandlerType" maxOccurs="unbounded" minOccurs="0"/>
+            <!-- A list of zero of more lines which extend out from this step in the diagram -->
+            <element name="lines" type="tns:linesType" maxOccurs="unbounded" minOccurs="0"/>
+
+            <!-- A list of token IDs associated with this step -->
+            <element name="tokenID" type="string" maxOccurs="unbounded" minOccurs="0"/>
+
+            <!-- Task ID associated with this step if there is any associated task -->
+            <element name="taskID" type="string" maxOccurs="1" minOccurs="0"/>
+
+        </sequence>
+    </complexType>
+
+    <!--
+    -->
+    <complexType name="attachedTimerType">
+        <sequence>
+            <element name="ID" type="string"/>
+            <element name="name" type="string"/>
+            <element name="description" type="string"/>
+            <element name="richDescription" type="string"/>
+            <element name="tokenID" type="string" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <!--
+    -->
+    <complexType name="attachedEventHandlerType">
+        <sequence>
+            <element name="ID" type="string"/>
+            <element name="name" type="string"/>
+            <element name="description" type="string"/>
+            <element name="richDescription" type="string"/>
+            <!-- Type of event message end message or intermediate message -->
+            <element name="eventType" type="string" minOccurs="0" />
+            <element name="tokenID" type="string" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type represents a single line which extends out from a particular step within a BPD diagram.
+    -->
+    <complexType name="linesType">
+        <sequence>
+
+            <!-- The step ID of the step to which this line extends -->
+            <element name="to" type="string"/>
+
+            <!--
+                 A string containing a comma-separated list of coordinates through which this line extends.
+                 The list of points must contain the first point (coordinate of the "fromPort")
+                 and the last point (coordinate of the "toPort").
+            -->
+            <element name="points" type="string"/>
+            <element name="tokenID" type="string" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type represents a lane which is associated with a BPD diagram.
+    -->
+    <complexType name="lanesType">
+        <sequence>
+
+            <!-- The name of the lane -->
+            <element name="name" type="string"/>
+
+            <!-- The height of the lane (in pixels) -->
+            <element name="height" type="int"/>
+
+            <!-- Indicates whether or not this lane is a "system" lane -->
+            <element name="system" type="boolean"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type represents a orphan token which is associated with a BPD diagram.
+    -->
+    <complexType name="orphanType">
+        <sequence>
+
+            <!-- A token IDs associated with this process instance -->
+            <element name="tokenID" type="string" maxOccurs="unbounded" minOccurs="0"/>
+                <element name="snapshotID" type="string" nillable="true" />
+                <element name="bpdID" type="string"/>
+                <element name="stepID" type="string"/>
+                <element name="step" type="tns:stepType" maxOccurs="1" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <!--
+         This type represents a comment associated with a process instance.
+    -->
+    <complexType name="CommentsType">
+        <sequence>
+
+            <!-- The username of the user that entered the comment -->
+            <element name="who" type="string"/>
+
+            <!-- The timestamp when the comment was entered -->
+            <element name="date" type="dateTime"/>
+
+            <!-- The message associated with the comment -->
+            <element name="message" type="string"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type represents a document that is associated with a process instance.
+    -->
+    <complexType name="documentsType">
+        <sequence>
+
+            <!-- The ID associated with the document; this is used for "update" and "delete" -->
+            <element name="ID" type="string"/>
+
+            <!-- The name of the document -->
+            <element name="name" type="string"/>
+
+            <!-- The content type of the document (file, url) -->
+            <element name="type" type="string"/>
+
+            <!-- The timestamp when the document was added -->
+            <element name="date" type="dateTime"/>
+
+            <!-- The length (in bytes) of the document contents -->
+            <element name="length" type="int"/>
+
+            <!--
+                 For a document of type "url" this specifies the URL associated with the document.
+                 Note that for a "url" type document, we store the URL and not the document
+                 contents.
+            -->
+            <element name="url" type="string"/>
+        </sequence>
+    </complexType>
+
+    <!--
+         This type is used to return the status from the "sendMessage" action.
+    -->
+    <complexType name="SendMessageStatus">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+
+                    <!-- A flag which indicates whether or not the message was successfully sent -->
+                    <element name="messageSent" type="boolean"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--
+         This type is used to return the result of evaluating a javascript expression.
+    -->
+    <complexType name="JSReturnData">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+
+                    <!-- The "result" consists of a list of attribute/value pairs -->
+                    <element name="result" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Trigger Action Hander Result -->
+    <complexType name="ActionResult">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <element name="tkiid" type="string" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Actions may have specific details -->
+    <complexType name="ActionDetails">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <element name="actionName" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+   <!-- Adhoc Action Details-->
+    <complexType name="AdhocActionDetails">
+        <complexContent>
+            <extension base="tns:ActionDetails">
+                <sequence>
+                    <element name="createdTaskIDs" type="string" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="diagramInstanceType">
+        <sequence>
+            <element name="diagram" type="tns:DiagramType"/>
+            <element name="tokenID" type="string"/>
+            <element name="taskID" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Action">
+        <sequence>
+            <element name="ID" type="string"/>
+            <element name="displayName" type="string"/>
+            <element name="description" type="string"/>
+            <element name="richDescription" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Event">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <sequence>
+                        <element name="actions" type="tns:Action" minOccurs="0" maxOccurs="unbounded" />
+                    </sequence>
+                    <sequence>
+                        <element name="standardActions" type="string" minOccurs="0" maxOccurs="unbounded" />
+                    </sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    
+    <!-- 
+	 This type contains the list of available actions available for a particular process instance.
+    -->
+    <complexType name="tProcessWithActions">
+          	<sequence>
+            	<!-- The process instance ID -->
+	    		<element name="piid" type="string" />
+	    		<!-- A list of zero or more available actions associated with the process instance -->
+                <sequence>
+                  	<element name="actions" type="string" minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+         	</sequence>
+    </complexType>
+    
+    <complexType name="ProcessActions">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                  	<!-- 
+			 			This field specifies the primary identifier of the process instance; 
+					 	this will be set to "piid" .
+		    	  	-->
+		    		<element name="identifier" type="string" />
+		    		<!-- A list of zero or more "ProcessWithActions" structures -->
+                    <element name="process" type="tns:tProcessWithActions" minOccurs="0" maxOccurs="unbounded" />
+                  </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--
+        This type describes a failed operation during a bulk process-related operation.
+    -->
+    <complexType name="FailedOperations">
+        <sequence>
+            <!-- The process instance ID -->
+            <element name="instanceId" type="string" />
+
+            <!-- The error message prefix associated with the error -->
+            <element name="errorNumber" type="string" />
+
+            <!-- The error message associated with the error -->
+            <element name="errorMessage" type="string" />
+        </sequence>
+    </complexType>
+
+    <!--
+         This type is used to return the results from performing a bulk operation on multiple process instances.
+    -->
+    <complexType name="ProcessBulkOperationResponse">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <!-- A list of zero or more failed operations -->
+                    <element name="failedOperations" type="tns:FailedOperations"  minOccurs="0" maxOccurs="unbounded" />
+
+                    <!-- A list of zero or more objects which contain the updated process details
+                         after the operation has been performed. -->
+                    <element name="processDetails" type="tns:ProcessDetails"  minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!--
+         This type is used to represent the runtime error information associated with a single process instance.
+    -->
+    <complexType name="RuntimeError">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+
+                    <element name="instanceId" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="taskId" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="errorMessage" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="javaTrace" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="jsTrace" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="twTrace" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="timestamp" type="dateTime"  minOccurs="0" maxOccurs="1" />
+                    <element name="branchId" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="snapshotId" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="rootSnapshotId" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="sourceGuid" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="errorCode" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="errorData" type="string"  minOccurs="0" maxOccurs="1" />
+                    <element name="BPMN2Style" type="boolean"  minOccurs="0" maxOccurs="1" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--
+         This type is used to return the runtime error detail for one or more instance id.
+    -->
+    <complexType name="RuntimeErrorResponse">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+                    <!-- A list of zero or more failed operations -->
+                    <element name="failedOperations" type="tns:FailedOperations"  minOccurs="0" maxOccurs="unbounded" />
+
+                    <!-- A list of zero or more objects containing runtime error information for a process instance  -->
+                    <element name="runtimeErrors" type="tns:RuntimeError"  minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--
+         This type represents a list of currently executing processes
+    -->
+    <complexType name="CurrentlyExecuting">
+        <complexContent>
+            <extension base="pref:Data">
+                <sequence>
+
+                    <!-- A list of processes IDs are currently executing -->
+                    <element name="instanceIDs" type="string" minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+</schema>

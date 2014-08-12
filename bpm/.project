@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>AccountOpeningService</name>
+	<name>bpm</name>
 	<comment></comment>
 	<projects>
-		<project>equifax</project>
-		<project>gefu.ddp</project>
-		<project>bpm</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -19,7 +16,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.ibm.etools.mft.service.ui.serviceApplicationBuilder</name>
+			<name>com.ibm.etools.mft.connector.ui.editor.connectorServiceBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -90,9 +87,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.ibm.etools.msgbroker.tooling.serviceApplicationNature</nature>
+		<nature>com.ibm.etools.msgbroker.tooling.libraryNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
-		<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
-		<nature>com.ibm.etools.mft.bar.ext.barnature</nature>
 	</natures>
 </projectDescription>

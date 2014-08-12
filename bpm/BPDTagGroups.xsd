@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/bpdtaggroups"
+elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+xmlns:tns="http://rest.bpm.ibm.com/v1/data/bpdtaggroups">
+
+<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+  
+  	<complexType name="TagGroups">
+		<sequence>
+			<element name="TagGroups" minOccurs="0" maxOccurs="unbounded"
+					type="tns:TagGroup">
+			</element>
+		</sequence>
+    </complexType>
+    
+    <complexType name="TagGroup">    
+		<sequence>
+			<element name="tags" minOccurs="0" maxOccurs="unbounded"
+					 type="tns:TagData">
+			</element>
+		</sequence>	
+			<attribute name="TagGroupName" type="string" use="required" />    
+    </complexType>
+    
+    <complexType name="TagData">
+    	<sequence>
+			<element name="BpmnObjectIds" minOccurs="0" maxOccurs="unbounded"
+					 type="string">
+			</element>
+		</sequence>	
+    	<attribute name="value" type="string" use="required" />
+		<attribute name="occurrences" type="int" use="required" />
+    </complexType>
+    
+	<complexType name="BPDTagGroupInfo">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="TagGroupInfo" type="tns:TagGroups" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

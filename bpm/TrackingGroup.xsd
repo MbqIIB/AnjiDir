@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/trackinggroup"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/trackinggroup" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+	<complexType name="VariableType">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="variableId" type="string" />
+			<element name="externalUniqueId" type="string" />
+			<element name="type" type="string"/>
+			<element name="desc" type="string" />
+			<element name="richDesc" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="TrackingGroupType">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="tgId" type="string" />
+					<element name="name" type="string" />
+					<element name="enabled" type="boolean" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="externalUniqueId" type="string" />
+					<element name="variables" type="tns:VariableType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/root" xmlns:tns="http://rest.bpm.ibm.com/v1/data/root"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" >
+	<complexType name="Data" abstract="true" />
+
+	<complexType name="NamedElement" abstract="true" >
+		<complexContent>
+		    <extension base="tns:Data">
+				<sequence>
+				    <element name="name" type="string"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="BulkCommandResponses">
+	   <complexContent>
+	    <extension base="tns:Data">
+		   <sequence>
+		      <!-- Total number of commands -->
+		      <element name="total" type="int" />
+		      
+		      <!-- Total number of successful commands -->
+		      <element name="success" type="int" />
+		      
+		      <!-- If a command fails, the remaining commands are are not attempted.
+		           This is the failing command api and method
+		       -->
+		       
+		      <element name="failingAPI" type="string" minOccurs='0'/>
+		      <element name="failingMethod" type="string" minOccurs='0'/>
+		      
+		      <!-- Responses for each of the successful commands -->
+		      <element name="response" type="tns:BulkCommandResponse" minOccurs="0" maxOccurs="unbounded" />
+	       </sequence>
+		 </extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="BulkCommandResponse">
+		 <sequence>
+		      <!-- API and method for the successful command -->
+		      <element name="api" type="string" />
+		      <element name="method" type="string" />
+		      
+		      <!-- Response data from the successful command -->
+		      <element name="data" type="tns:Data" />
+	     </sequence>
+	</complexType>
+
+</schema>

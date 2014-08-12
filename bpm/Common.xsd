@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/common"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"	
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"></import>
+
+    <!-- 
+	 This type represents a Business Process Definition (BPD) token.
+	 It consists of a BPD instance ID and a token ID.
+    -->
+    <complexType name="BPDToken">
+	<sequence>
+	    <element name="bpdInstanceID" type="tns:BPDInstanceId"></element>
+	    <element name="tokenID" type="string"></element>
+	</sequence>
+    </complexType>
+
+    <complexType name="BPDInstanceId">
+	<sequence>
+	    <element name="data" type="decimal" minOccurs="0"></element>
+	</sequence>
+    </complexType>
+
+
+    <!--
+	Our common Map type.  This Map contains a list of Items,
+	where each Item consists of a "key" and a "value".
+    -->
+    <complexType name="Map">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="item" minOccurs="0" maxOccurs="unbounded"
+					     type="tns:Item">
+				    </element>
+				</sequence>
+		    </extension>
+		</complexContent>    
+    </complexType>
+
+    <!-- 
+	 "Item" is the type used to describe a Map element.
+
+	 Note that the "key" is a string and the "value" is 0 or more anyType elements.
+         Note that in java, anyType is mapped to java.lang.Object; however,
+         only objects that are known to the JAXBContext can be placed in value.
+         If you have an object that is not known by the JAXBContext, then you
+         need to place the string form of the object into the value.  
+    -->
+    <complexType name="Item">
+	<sequence>	
+	    <element name="value" type="anyType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+	<attribute name="key" type="string" use="required" />
+	<!-- indicates if there can be multiple values-->
+	<attribute name="list" type="boolean" default="false" />
+    </complexType>
+    
+    <!--
+	This type is used to represents a list of zero or more string values.
+    -->
+    <complexType name="StringList">
+	<sequence>
+	    <element name="str" minOccurs="0" maxOccurs="unbounded" type="string"></element>
+	</sequence>
+    </complexType>
+
+    <!--
+	This type represents a reference to external task data.
+    -->
+    <complexType name="Reference">
+	<sequence>
+	    <element name="path" type="tns:DependencyPath"></element>
+	    <element name="ID" type="tns:ID"></element>
+	</sequence>
+    </complexType>
+
+    <complexType name="DependencyPath">
+	<sequence>
+	    <element name="TWUUID" type="tns:TWUUID" minOccurs="0"
+		     maxOccurs="unbounded">
+	    </element>
+	</sequence>
+    </complexType>
+
+    <complexType name="TWUUID">
+	<sequence>
+	    <element name="lsb" type="long"></element>
+	    <element name="msb" type="long"></element>
+	</sequence>
+    </complexType>
+
+    <complexType name="ID"></complexType>
+    
+    <!--
+	This type represents the user or group which owns a task.
+    -->
+    <complexType name="TaskAssignedTo">
+	<sequence>
+	    <!-- "type" indicates whether the owner is a group or a user -->
+	    <element name="type" type="string"></element>
+
+	    <!-- "who" specifies the user or group which owns a task -->
+	    <element name="who" type="string"></element>
+	</sequence>
+    </complexType>
+
+	<!--
+	This type contains details about a variable.
+    -->
+    <complexType name="Variable">
+	<sequence>
+	    <element name="name" type="string" />
+	    <element name="type" type="string" />			
+	    <element name="alias" type="string" />
+	    <element name="label" type="string" />
+	    <element name="value" type="anyType" />			
+	</sequence>
+    </complexType>	
+	
+</schema>

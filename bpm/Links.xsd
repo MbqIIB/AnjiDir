@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/link"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/link"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <complexType name="LinkType">
+        <annotation>
+        	<documentation>For a asset type</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="pref:Data">
+   				<sequence>
+			    	<element name="displayName" type="string"/>		
+			    	<element name="domain" type="string"/>		
+			    	<element name="identifier" type="string"/>		
+			    	<element name="isVisible" type="boolean"/>
+				</sequence>
+			</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="LinkTypes">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="assettypes" type="tns:LinkType" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+ 
+    <complexType name="RelationshipType">
+        <annotation>
+        	<documentation>For a link type</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="pref:Data">
+   				<sequence>
+			    	<element name="displayName" type="string"/>	
+			    	<element name="identifier" type="string"/>
+				</sequence>
+			</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="RelationshipTypes">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="linktypes" type="tns:RelationshipType" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="AssetFile">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="fileName" type="string" nillable="true"  />
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="ManagedAssetFile">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="fileId" type="string"/>
+		            <element name="fileName" type="string"/>
+		            <element name="fileURL" type="string"/>
+		            <element name="fileDependencyName" type="string"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="ManagedAssetFileList">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		           <element name="assetFileAttributes" type="tns:ManagedAssetFile" maxOccurs="unbounded"/> 
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="ManagedAssetFileURL">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="fileURL" type="string"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="CheckManagedAssetExists">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="exists" type="boolean"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="AssetServerUrl">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="serverUrl" type="string"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="ManagedAssetId">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="assetId" type="string"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+    
+    <complexType name="AttachmentAssetUrl">
+        <complexContent>
+	        <extension base="pref:Data">
+		        <sequence>
+		            <element name="managedAssetUrl" type="string"/>
+		        </sequence>
+	        </extension>
+	    </complexContent>
+    </complexType>
+</schema>

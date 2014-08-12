@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/query"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/query" xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+	<!-- This type is used to return a list of saved queries. -->
+	<complexType name="QueryList">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="identifier" type="string" />
+
+					<!-- This is a list of zero or more saved queries -->
+					<element name="items" type="tns:QueryItem" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- This type represents a single saved query. -->
+	<complexType name="QueryItem">
+		<sequence>
+
+			<!-- The name of the query -->
+			<element name="name" type="string" />
+
+			<!-- The display name associated with the query; this will contain the 
+				same value as the name -->
+			<element name="displayName" type="string" />
+
+			<!-- The query's description -->
+			<element name="description" type="string" />
+
+			<!-- The "kind" associated with the query; this will be set to "SAVED_SEARCH" -->
+			<element name="kind" type="string" />
+
+			<!-- The id number associated with a saved search -->
+			<element name="savedSearchID" type="long" nillable="true" />
+
+			<!-- The autorization type associated with the query; this will be set 
+				to "INSTANCE_BASED" -->
+			<element name="authorizationType" type="string" />
+
+			<!-- This field indicates the type of objects are returned by this query. 
+				This will be one of "PROCESS_INSTANCE", "TASK", "TASK_TEMPL". -->
+			<element name="entityTypeName" type="string" />
+
+			<!-- This field specifies the name of the attribute which serves as the 
+				key for the objects returned by this query. -->
+			<element name="keyAttribute" type="string" />
+
+			<!-- not used -->
+			<element name="locales" type="string" minOccurs="0"
+				maxOccurs="unbounded" />
+
+			<!-- The pre-selected sort attributes for the query. -->
+			<element name="sortAttributes" type="tns:SortAttribute"
+				minOccurs="0" maxOccurs="unbounded" />
+
+			<!-- The pre-predefined size of items to be retrieved. -->
+			<element name="size" type="integer" nillable="true" />
+		</sequence>
+	</complexType>
+
+	<!-- This type is used to return the set of attributes (data columns) that 
+		would be returned as the result of executing a particular saved query. -->
+	<complexType name="QueryAttributes">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="identifier" type="string" />
+
+					<!-- The name of the query associated with this set of attributes -->
+					<element name="query" type="string" />
+
+					<!-- The diplay name of the query; this is the same value as the name -->
+					<element name="displayName" type="string" />
+
+					<!-- not used -->
+					<element name="description" type="string" />
+
+					<!-- The "kind" associated with the query; this will be set to "SAVED_SEARCH" -->
+					<element name="kind" type="string" />
+
+					<!-- The autorization type associated with the query. This will be set 
+						to one of: "INSTANCE_BASED", "ROLE_BASED" -->
+					<element name="authorizationType" type="string" />
+
+					<!-- This field indicates the type of objects returned by this query. 
+						This will be one of "PROCESS_INSTANCE", "TASK", "TASK_TEMPL". -->
+					<element name="entityTypeName" type="string" />
+
+					<!-- This field specifies the name of the attribute which serves as 
+						the key for the objects returned by this query. -->
+					<element name="keyAttribute" type="string" />
+
+					<!-- not used -->
+					<element name="locales" type="string" minOccurs="0"
+						maxOccurs="unbounded" />
+
+					<!-- The pre-selected sort attributes for the query. -->
+					<element name="sortAttributes" type="tns:SortAttribute"
+						minOccurs="0" maxOccurs="unbounded" />
+
+					<!-- The pre-predefined size of items to be retrieved. -->
+					<element name="size" type="integer" nillable="true" />
+
+					<!-- A list of zero or more attributes -->
+					<element name="items" type="tns:QueryAttributeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- This type describes a single attribute that would be returned as the 
+		result of executing a particular saved query. -->
+	<complexType name="QueryAttributeItem">
+		<sequence>
+
+			<!-- The attribute name -->
+			<element name="name" type="string" />
+
+			<!-- A localized display name for the attribute -->
+			<element name="displayName" type="string" />
+
+			<!-- not used -->
+			<element name="description" type="string" />
+
+			<!-- The attribute's datatype -->
+			<element name="type" type="string" />
+
+			<!-- not used; set to false -->
+			<element name="isArray" type="boolean" />
+
+			<!-- The related query and attribute which provides this attributes' information -->
+			<element name="sourceAttribute" type="string" />
+
+			<!-- A string that identifies attributes with a well-known value range -->
+			<element name="content" type="string" />
+
+			<!-- The ID of the source attribute's table, as defined in the query table 
+				definition -->
+			<element name="sourceQueryTableIdentifier" type="string" />
+
+			<!-- Specifies whether the attribute can be used as a sort attribute -->
+			<element name="isSortable" type="boolean" minOccurs="0"
+				maxOccurs="1" default="true" />
+
+			<!-- Specifies whether the attribute can be used as a filter attribute -->
+			<element name="isFilterable" type="boolean" minOccurs="0"
+				maxOccurs="1" default="true" />
+
+		</sequence>
+	</complexType>
+
+
+	<!-- This type is used to return the results of executing a particular saved 
+		query. -->
+	<complexType name="QueryResultSet">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+
+					<!-- The key attribute associated with this set of query results. This 
+						will depend on the type of objects being returned by the query, and will 
+						be one of: "TASK.TKIID", "TASK_TEMPL.TKTID", "PROCESS_INSTANCE.PIID" -->
+					<element name="identifier" type="string" />
+
+					<!-- The name of the saved query for which these results were generated -->
+					<element name="query" type="string" />
+
+					<!-- This field indicates the type of objects are returned by this query. 
+						This will be one of "PROCESS_INSTANCE", "TASK", "TASK_TEMPL". -->
+					<element name="entityTypeName" type="string" />
+
+					<!-- The list of attributes (columns) returned by this query -->
+					<element name="attributeInfo" type="tns:AttributeInfo"
+						minOccurs="0" maxOccurs="unbounded" />
+
+					<!-- The offset value that was specified on the original request. This 
+						value represents the index (within the overall query result set) of the first 
+						item being returned. -->
+					<element name="offset" type="integer" />
+
+					<!-- The number of items being returned -->
+					<element name="size" type="integer" />
+
+					<!-- The number of items requested in the original request -->
+					<element name="requestedSize" type="integer" />
+
+					<!-- Total number of results -->
+					<element name="totalCount" type="integer" />
+					<!-- True if total number of results exceeds a search limit and is actually 
+						unknown -->
+					<element name="countLimitExceeded" type="boolean" />
+					<!-- Specifies the search limit used if any or 0 if it's not set -->
+					<element name="countLimit" type="integer" />
+
+
+					<!-- The set of results returned by this query. This is represented 
+						as a list of zero or more "items", where each item represents a row in the 
+						result set. Each item is represented by a Map, where the Map contains the 
+						various columns of data associated with that item (row). -->
+					<element name="items" type="cmn:Map" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- This type contains the information for a single attribute that is returned 
+		as the result of executing a saved query. -->
+	<complexType name="AttributeInfo">
+		<sequence>
+
+			<!-- The name of the attribute -->
+			<element name="name" type="string" />
+
+			<!-- The datatype of the attribute -->
+			<element name="type" type="string" />
+
+			<!-- A string that identifies attributes with a well-known value range -->
+			<element name="content" type="string" />
+
+			<!-- not used; set to false -->
+			<element name="isArray" type="boolean" />
+
+			<!-- The related query and attribute which provides this attributes' information -->
+			<element name="sourceAttribute" type="string" />
+
+			<!-- The ID of the source attribute's table, as defined in the query table 
+				definition -->
+			<element name="sourceQueryTableIdentifier" type="string" />
+		</sequence>
+	</complexType>
+
+	<!-- This type is used to return the number of rows (items) in the result 
+		set that would be returned by executing a particular saved query. -->
+	<complexType name="QueryResultSetCount">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+
+					<!-- The size of the result set (number of rows) -->
+					<element name="count" type="integer" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- A container used to describe a sort attribute by its name and sort 
+		order. -->
+	<complexType name="SortAttribute">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="sourceAttribute" type="string" />
+			<element name="sortOrder" type="string" /> <!-- ASC, DESC -->
+		</sequence>
+	</complexType>
+</schema>

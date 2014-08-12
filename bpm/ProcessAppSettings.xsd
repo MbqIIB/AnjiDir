@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/processappsettings"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/processappsettings"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <complexType name="ProcessAppSettings">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="projDefaults" type="tns:ProjDefaults"/>
+				    <element name="projDeps" type="tns:ProjDependency" maxOccurs="unbounded"/>
+				    <element name="envVars" type="tns:EnvVar" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="ProjDefaults">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="projectDefaultsId" type="string"/>
+				    <element name="defaultXsl" type="string"/>
+				    <element name="defaultXslRef" type="string"/>		
+				    <element name="defaultCss" type="string"/>
+				    <element name="defaultCssRef" type="string"/>		
+				    <element name="name" type="string"/>
+				    <element name="acronym" type="string"/>
+				    <element name="desc" type="string"/>		
+				    <element name="richDesc" type="string"/>		
+				    <element name="isWbmEnabled" type="boolean"/>		
+				    <element name="isIidOptimized" type="boolean"/>		
+				    <element name="namespace" type="string"/>		
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>    
+    
+    <complexType name="ProjDependency">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="projectId" type="string"/>
+				    <element name="projectName" type="string"/>
+				    <element name="snapshotId" type="string"/>
+				    <element name="snapshotName" type="string"/>		
+				    <element name="projDeps" type="tns:ProjDependency" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>        
+
+    <complexType name="EnvVar">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="name" type="string"/>
+				    <element name="default" type="string"/>
+				    <element name="varDefaults" type="tns:EnvVarDefault" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>        
+
+    <complexType name="EnvVarDefault">
+		<sequence>
+		    <element name="type" type="string"/>
+		    <element name="value" type="string"/>
+		</sequence>
+    </complexType>        
+            
+</schema>

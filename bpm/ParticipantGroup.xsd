@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/participantgroup"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/participantgroup" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+	
+	<simpleType name="ParticipantType">
+		<restriction base="string">
+			<enumeration value="StandardMembers" />
+			<enumeration value="Expression" />
+			<enumeration value="System" />
+			<enumeration value="TeamByService" />			
+		</restriction>
+	</simpleType>	
+
+	
+	<simpleType name="RuleType">
+		<restriction base="string">
+			<enumeration value="Participant" />
+			<enumeration value="UserAttribute" />
+			<enumeration value="Expression" />
+		</restriction>
+	</simpleType>	
+	
+	<simpleType name="RuleSetOperator">
+		<restriction base="string">
+			<enumeration value="all" />
+			<enumeration value="any" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustomerRuleMatchType">
+		<restriction base="string">
+			<enumeration value="match" />
+			<enumeration value="notMatch" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="ParticipantRuleMatchType">
+		<restriction base="string">
+			<enumeration value="belong" />
+			<enumeration value="notBelong" />
+		</restriction>
+	</simpleType>	
+
+	<simpleType name="Comparator">
+		<restriction base="string">
+			<enumeration value="Equal" />
+			<enumeration value="LessThan" />
+			<enumeration value="GreaterThan" />
+			<enumeration value="NotEqual" />
+			<enumeration value="GreaterThanEqual" />
+			<enumeration value="LessThanEqual" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="Member">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="type" type="string" />
+			<element name="desc" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="OrgExprRule" abstract="true" >
+		<sequence>
+			<element name="ruleType" type="tns:RuleType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="OrgExprParticipantRule">
+		<complexContent>
+			<extension base="tns:OrgExprRule">
+				<sequence>
+					<element name="matchType" type="tns:ParticipantRuleMatchType" />
+					<element name="participantName" type="string" />
+					<element name="ParticipantId" type="string" />
+					<choice>
+						<element name="snapshotId" type="string" />
+						<element name="branchId" type="string" />
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="OrgExprUserAttrRule">
+		<complexContent>
+			<extension base="tns:OrgExprRule">
+				<sequence>
+					<element name="comparator" type="tns:Comparator" />
+					<element name="userAttributeName" type="string" />
+					<element name="userAttributeValue" type="string" />
+					<element name="userAttributeId" type="string" />
+					<choice>
+						<element name="snapshotId" type="string" />
+						<element name="branchId" type="string" />
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="OrgExprCustomRule">
+		<complexContent>
+			<extension base="tns:OrgExprRule">
+				<sequence>
+					<element name="matchType" type="tns:CustomerRuleMatchType" />
+					<element name="value" type="string" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="OrgExpression">
+		<sequence>
+			<element name="ruleSetOperator" type="tns:RuleSetOperator" />
+			<element name="rules" type="tns:OrgExprRule" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="RestParticipant">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="name" type="string" />
+					<element name="type" type="tns:ParticipantType" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<choice>
+						<element name="members" type="tns:Member" maxOccurs="unbounded" />
+						<element name="orgExpression" type="tns:OrgExpression" />
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="TeamByService">
+		<sequence>
+			<element name="serviceName" type="string" />
+			<element name="serviceId" type="string" />
+			<element name="svcDescription" type="string" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="RestTeam">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>				
+					<element name="name" type="string" />
+					<element name="id" type="string" />
+					<element name="type" type="tns:ParticipantType" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="groupId" type="long" />
+					<element name="managersTeamName" type="string" />
+					<choice>
+						<element name="members" type="tns:Member" maxOccurs="unbounded" />
+						<element name="orgExpression" type="tns:OrgExpression" />
+						<element name="teamByService" type="tns:TeamByService" />
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+</schema>

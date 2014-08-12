@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/assets"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/assets"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    
+	<complexType name="Asset">
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="description" type="string" />
+					<element name="richDescription" type="string" />
+					<element name="poId" type="string" />
+					<element name="poVersionId" type="string" />
+					<element name="last_modified_by_userId" type="long" />
+					<element name="last_modified_by_userName" type="string" />
+					<element name="last_modified" type="long" />
+					<element name="tags" type="string" maxOccurs="unbounded" />
+					<element name="fullDepIds" type="string" maxOccurs="unbounded" />
+					<element name="dependencies" type="tns:tDependency" maxOccurs="unbounded" />
+					<element name="status" type="tns:tPOVersionStatus" />
+					<element name="poType" type="string" />
+					<element name="existsInTarget" type="boolean" />
+					<element name="sameVersionId" type="boolean" />
+					<element name="hasBrokenDep" type="boolean" />
+					<element name="isNewerVersion" type="boolean" >
+						<annotation>
+							<documentation>Only applies when the status is "Updated"</documentation>
+						</annotation></element>
+					<element name="shared" type="boolean" >
+                        <annotation>
+                            <documentation>Only applies when the poType is "VariableType"</documentation>
+                        </annotation></element>
+                    <element name="eventType" type="tns:tEventType" >
+                        <annotation>
+                            <documentation>Only applies when the poType is "UCA"</documentation>
+                        </annotation></element>
+						
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+	
+	<complexType name="tDependency">
+        <sequence>
+			<element name="poId" type="string" />
+			<element name="name" type="string" />
+			<element name="poType" type="string" />
+			<element name="status" type="tns:tPOVersionStatus" />
+			<element name="isNewerVersion" type="boolean" >
+				<annotation>
+					<documentation>Only applies when the status is "Updated"</documentation>
+				</annotation></element>
+			<element name="isBrokenDep" type="boolean" />
+			<element name="isExternal" type="boolean" />
+		</sequence>
+	</complexType>	
+	
+	<simpleType name="tPOVersionStatus">
+        <restriction base="string">
+			<enumeration value="NoChange"/>
+			<enumeration value="Conflict"/>
+			<enumeration value="Updated"/>
+			<enumeration value="New"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="tAssetIDList">
+        <sequence>
+			<element name="ids" type="string" maxOccurs="unbounded" minOccurs="1"/>
+		</sequence>
+	</complexType>
+	
+	<simpleType name="tEventType">
+        <restriction base="string">
+			<enumeration value="Message" />
+			<enumeration value="Content" />
+			<enumeration value="Timer" />
+		</restriction>
+	</simpleType>	
+		            
+</schema>

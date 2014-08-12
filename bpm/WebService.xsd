@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/ws"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/ws" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+	<complexType name="WSOperationType">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="operationId" type="string" />
+			<element name="seq" type="int" />
+			<element name="serviceId" type="string" />
+			<sequence>
+				<element name="inputParameters" type="tns:WSInputParameter" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<sequence>
+				<element name="outputParameters" type="tns:WSOutputParameter" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<element name="serviceName" type="string"/>
+			<element name="serviceSnapshotId" type="string"/>
+			<element name="serviceBranchId" type="string"/>
+			<element name="desc" type="string" />
+			<element name="richDesc" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="WebServiceType">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="wsId" type="string" />
+					<element name="name" type="string" />
+					<element name="protected" type="boolean" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="wsdlUrl" type="string" />
+					<element name="operations" type="tns:WSOperationType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="WSInputParameter">
+			<attribute name="name" type="string" />
+			<attribute name="javaType" type="string" />
+			<attribute name="hasDefault" type="boolean" />
+	</complexType>
+	
+	<complexType name="WSOutputParameter">
+			<attribute name="name" type="string" />
+			<attribute name="javaType" type="string" />
+	</complexType>
+
+</schema>

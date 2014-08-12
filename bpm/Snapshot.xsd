@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/snapshot"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/snapshot"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <complexType name="SnapshotType">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="snapshotId" type="string"/>
+				    <element name="seq_num" type="decimal"/>
+				    <element name="name" type="string"/>
+				    <element name="desc" type="string"/>
+				    <element name="richDesc" type="string"/>
+				    <element name="createdBy_userId" type="long"/>
+				    <element name="createdBy_userName" type="string"/>
+				    <element name="created_on" type="long"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="tBranchSnapshots">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="branchId" type="string"/>
+				    <element name="name" type="string"/>
+				    <element name="snapshots" type="tns:SnapshotType" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="tProjectSnapshots">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="branches" type="tns:tBranchSnapshots"  maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="tBranch">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="branchId" type="string"/>
+				    <element name="name" type="string"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+          
+    
+    <complexType name="tProjectBranches">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="branches" type="tns:tBranch"  maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+            
+	<complexType name="POHistory">
+        <annotation>
+        	<documentation>poName attribute will be set to the latest one in all changes. </documentation>
+        </annotation>
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="poId" type="string" />
+					<element name="poSubType" type="string" />
+					<element name="changes" type="tns:ChangeItem"
+						maxOccurs="unbounded" />
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+
+	<complexType name="ChangeItem">
+        <annotation>
+        	<documentation>branchId will be only set when compare two branches. poName will be set if it is not same as the latest one.</documentation>
+        </annotation>
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+				    <element name="modified_on" type="long"/>
+				    <element name="userName" type="string"/>
+				    <element name="actionType" type="string"/>		
+				</sequence>
+				<attribute name="branchId" type="string" use="optional" />
+				<attribute name="branchName" type="string" use="optional" />
+				<attribute name="branchAcronym" type="string" use="optional" />
+		    </extension>
+		</complexContent>		
+    </complexType>     
+    
+    <complexType name="tSnapshotDelta">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="snapshotIds" type="string" maxOccurs="2" minOccurs="1"/>
+				    <element name="baseSnapshotId" type="string"/>
+				    <element name="histories" type="cmn:Map"/>				    
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>           
+                
+</schema>

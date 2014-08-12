@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/businessobject"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/businessobject"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    
+	<complexType name="BOProperty">
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="description" type="string" />
+					<element name="richDescription" type="string" />
+					<element name="typeClass" type="string" />
+					<element name="typeClassRef" type="string" />
+					<choice>
+						<element name="typeClassSnapshotId" type="string" />
+						<element name="typeClassBranchId" type="string" />
+					</choice>
+					<element name="isArray" type="boolean" />
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+
+	<complexType name="BusinessObject">
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="isComplex" type="boolean" />
+					<element name="type" type="string" />
+					<element name="description" type="string" />
+					<element name="richDescription" type="string" />
+					<element name="isShared" type="boolean" />
+					<element name="properties" type="tns:BOProperty" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+            
+</schema>

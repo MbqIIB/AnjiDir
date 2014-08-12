@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/oslc"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/oslc"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+	    
+    <complexType name="OSLCProvider">
+        <annotation>
+        	<documentation>For an OSLC provider</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="pref:Data">
+   				<sequence>
+			    	<element name="name" type="string"/>		
+			    	<element name="url" type="string"/>		
+			    	<element name="id" type="string"/>		
+			    	<element name="createdBy" type="string"/>		
+			    	<element name="createdOn" type="dateTime"/>		
+				</sequence>
+			</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="OSLCProviders">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+				    <element name="providers" type="tns:OSLCProvider" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="PreviewDescriptor">
+    	<complexContent>
+    		<extension base="pref:Data">
+    			<sequence>
+				    <element name="url" type="string"/>
+				    <element name="heightHint" type="string"/>
+				    <element name="widthHint" type="string"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="SelectionDialogDescriptor">
+    	<complexContent>
+    		<extension base="tns:PreviewDescriptor">
+    			<sequence>
+				    <element name="title" type="string"/>
+				    <element name="isDefault" type="boolean"/>
+				    <element name="usage" type="string"/>
+				    <element name="resourceType" type="string"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="SelectionDialogDescriptors">
+		<complexContent>
+		    <extension base="pref:Data">
+				<sequence>
+					<element name="cookies" type="string" maxOccurs="unbounded"/>
+				    <element name="descriptors" type="tns:SelectionDialogDescriptor" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>
+    </complexType>
+</schema>

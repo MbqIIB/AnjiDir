@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/sla"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/sla" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+	
+	<simpleType name="OccurrenceType">
+		<restriction base="string">
+			<enumeration value="WHENEVER_VIOLATED" />
+			<enumeration value="VIOLATED_A_OF_LAST_B_TIMES" />
+			<enumeration value="VIOLATED_N_TIMES_OVER_PERIOD" />
+			<enumeration value="VIOLATED_PERCENT_OF_TIME_OVER_PERIOD" />
+			<enumeration value="VIOLATED_PERCENT_MORE_OF_TIME_OVER_PERIOD" />
+			<enumeration value="VIOLATED_PERCENT_LESS_OF_TIME_OVER_PERIOD" />
+		</restriction>
+	</simpleType>	
+		
+	<simpleType name="UnitType">
+		<restriction base="string">
+			<enumeration value="YEARS" />
+			<enumeration value="MONTHS" />
+			<enumeration value="WEEKS" />
+			<enumeration value="DAYS" />
+			<enumeration value="HOURS" />
+		</restriction>
+	</simpleType>		
+	
+	<simpleType name="KPIUnitType">
+		<restriction base="string">
+			<enumeration value="CURRENCY" />
+			<enumeration value="TIME" />
+			<enumeration value="COUNT" />
+			<enumeration value="BOOLEAN" />
+		</restriction>
+	</simpleType>		
+	
+	<complexType name="TimeUnit">
+		<sequence>
+			<element name="unitType" type="tns:UnitType" />
+			<element name="rollingTime" type="boolean" >
+					<annotation>
+						<documentation>when rollingTime is false, timeCount will be ignored. and it means following based on the unitType:
+	- This hour
+	- Today
+	- This week
+	- This month
+
+when rollingTime is true, timeCount should be used, and it means following based on the unitType (sample):
+	- Over the last 100 hours
+	- Over the last 100 days
+	- Over the last 100 weeks
+	- Over the last 100 months</documentation>
+						</annotation>
+			</element>
+			<element name="timeCount" type="int" />
+		</sequence>
+	</complexType>
+		
+	<complexType name="AbstractTrigger" abstract="true">
+		<sequence>
+			<element name="occurrenceType" type="tns:OccurrenceType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="WheneverViolatedTrigger">
+		<complexContent>
+			<extension base="tns:AbstractTrigger" >
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ViolatedAOfLastBTrigger">
+		<complexContent>
+			<extension base="tns:AbstractTrigger">
+				<sequence>
+					<element name="countA" type="double" />
+					<element name="countB" type="double" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ViolatedNTimesOverPeriodTrigger">
+		<complexContent>
+			<extension base="tns:AbstractTrigger">
+				<sequence>				
+					<element name="countN" type="double" />
+					<element name="timeUnit" type="tns:TimeUnit" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ViolatedPercentOfTimeOverPeriodTrigger">
+		<complexContent>
+			<extension base="tns:AbstractTrigger">
+				<sequence>
+					<element name="percent" type="decimal" />
+					<element name="timeUnit" type="tns:TimeUnit" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<complexType name="ViolatedPercentOfMoreTimeOverPeriodTrigger">
+		<complexContent>
+			<extension base="tns:ViolatedPercentOfTimeOverPeriodTrigger">
+			</extension>
+		</complexContent>
+	</complexType>		
+
+	<complexType name="ViolatedPercentOfLessTimeOverPeriodTrigger">
+		<complexContent>
+			<extension base="tns:ViolatedPercentOfTimeOverPeriodTrigger">
+			</extension>
+		</complexContent>
+	</complexType>			
+	
+	<simpleType name="ConditionScopeType">
+		<restriction base="string">
+			<enumeration value="SingleValue" />
+			<enumeration value="SumOfValuesOverTime" />
+			<enumeration value="AverageValueOverTime" />
+		</restriction>
+	</simpleType>		
+
+	<simpleType name="RelationType">
+		<restriction base="string">
+			<enumeration value="GreaterThan" />
+			<enumeration value="LessThan" />
+			<enumeration value="EqualTo" />
+		</restriction>
+	</simpleType>	
+		
+	<complexType name="KPIRefInfo">
+		<sequence>
+			<element name="kpiId" type="string" />
+			<element name="kpiName" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>	
+	
+	<complexType name="ActivityRefInfo">
+		<sequence>
+			<element name="activityName" type="string" />
+			<element name="activityId" type="string" />
+			<element name="bpdId" type="string" />
+			<element name="bpdName" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>		
+	
+	<complexType name="BPDRefInfo">
+		<sequence>
+			<element name="bpdId" type="string" />
+			<element name="bpdName" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>			
+	
+	<simpleType name="ConditionTargetType">
+		<restriction base="string">
+			<enumeration value="EqualsThreshold" />
+			<enumeration value="PercentAboveThreshold" />
+			<enumeration value="PercentBelowThreshold" />
+			<enumeration value="ValueAboveThreshold" />
+			<enumeration value="ValueBelowThreshold" />
+			<enumeration value="Value" />
+		</restriction>
+	</simpleType>	
+	
+	<simpleType name="ThresholdType">
+		<restriction base="string">
+			<enumeration value="MinimumThresholdValue" />
+			<enumeration value="ExpectedThresholdValue" />
+			<enumeration value="MaximumThresholdValue" />
+		</restriction>
+	</simpleType>		
+		
+	<complexType name="AbstractThresholdTarget" abstract="true">
+		<sequence>
+			<element name="type" type="tns:ConditionTargetType" />
+		</sequence>
+	</complexType>			
+		    	
+	<complexType name="ValueTarget">
+		<complexContent>
+			<extension base="tns:AbstractThresholdTarget">
+				<sequence>
+					<element name="value" type="long" />
+				</sequence>			
+			</extension>
+		</complexContent>
+	</complexType>	
+			    	
+	<complexType name="EqualsThresholdTarget">
+		<complexContent>
+			<extension base="tns:AbstractThresholdTarget">
+				<sequence>
+					<element name="thresholdType" type="tns:ThresholdType" />
+				</sequence>			
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<complexType name="PercentThresholdTarget">
+		<complexContent>
+			<extension base="tns:EqualsThresholdTarget">
+				<sequence>
+					<element name="percent" type="decimal" />
+				</sequence>			
+			</extension>
+		</complexContent>
+	</complexType>		
+
+	<complexType name="ValueThresholdTarget">
+		<complexContent>
+			<extension base="tns:EqualsThresholdTarget">
+				<sequence>
+					<element name="value" type="long" >
+						<annotation>
+							<documentation>it holds the time value above and below the threshold, and the unit is second</documentation>
+						</annotation></element>
+				</sequence>			
+			</extension>
+		</complexContent>
+	</complexType>		
+			    	
+	<complexType name="Condition">
+		<sequence>
+			<element name="scope" type="tns:ConditionScopeType" />
+			<element name="kpi" type="tns:KPIRefInfo" />
+			<element name="kpiUnit" type="tns:KPIUnitType" />
+			<element name="trueOrfalse" type="boolean" >
+				<annotation>
+					<documentation>This trueOrfalse element will only be used if kpiUnit is BOOLEAN</documentation>
+				</annotation></element>			
+			<element name="activities" type="tns:ActivityRefInfo" maxOccurs="unbounded"/>
+			<element name="startTime" type="tns:TimeUnit" >
+				<annotation>
+					<documentation>startTime is only available when scope is SumOfValuesOverTime or AverageValueOverTime</documentation>
+				</annotation></element>
+			<element name="relation" type="tns:RelationType" />
+			<element name="compareTarget" type="tns:AbstractThresholdTarget" />
+			
+		</sequence>
+	</complexType>		
+	
+	<complexType name="Consequence">
+		<sequence>
+			<element name="fireBPD" type="boolean" />
+			<element name="bpdRefInfo" type="tns:BPDRefInfo" />
+			<element name="sendEmail" type="boolean"/>
+			<element name="emailAddress" type="string" />			
+		</sequence>
+	</complexType>		
+	
+	<complexType name="ExposedTo">
+		<sequence>
+			<element name="participantGroupId" type="string" />
+			<element name="participantGroupName" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>		
+		</sequence>
+	</complexType>			
+	
+	<complexType name="ServiceLevelAgreement">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="slaId" type="string" />
+					<element name="name" type="string" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="trigger" type="tns:AbstractTrigger" />
+					<element name="conditions" type="tns:Condition" maxOccurs="unbounded"/>
+					<element name="consequence" type="tns:Consequence"/>
+					<element name="exposedTo" type="tns:ExposedTo"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

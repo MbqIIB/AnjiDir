@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/service"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/service"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <!--
+	This type represents a service model.
+    -->
+    <complexType name="ServiceModel">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- This field corresponds to the "header" part of the service model -->
+		    <element name="header" type="tns:Header"/>
+
+		    <!-- This field corresponds to the "diagram" part of the service model -->
+		    <element name="diagram" type="tns:Diagram"/>
+
+		    <!-- This field corresponds to the "dataModel" part of the service model -->
+		    <element name="dataModel" type="tns:DataModel"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <complexType name="Header">
+	<sequence>
+
+	    <!-- The unique ID of the service -->
+	    <element name="UUID" type="string" />
+
+	    <!-- The name of the service -->
+	    <element name="name" type="string" />
+
+	    <!-- The description of the service -->
+	    <element name="description" type="string" />
+	    <element name="richDescription" type="string" />
+	    
+	    <!-- The snapshot ID of the service -->
+	    <element name="snapshotId" type="string" />
+	    
+	    <!-- Warning -->
+	    <element name="warning" type="string" />
+
+	    <!-- not used -->
+	    <element name="startTaskURL" type="string" />
+
+	    <!-- not used -->
+	    <element name="startServiceURL" type="string" />
+	</sequence>
+    </complexType>
+
+
+    <complexType name="Diagram">
+	<sequence>
+
+	    <!-- The list of steps associated with the service -->
+	    <element name="step" type="tns:ServiceStep" minOccurs="0" maxOccurs="unbounded" />
+	</sequence>
+    </complexType>
+
+    <complexType name="DataModel">
+	<sequence>
+
+	    <!-- The variables (properties) associated with the service
+	         The key is the name of the property.
+	         The value containing a description of the property:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	    -->
+	    <element name="properties" type="cmn:Map" />
+
+	    <!-- The input variables associated with the service
+	         The key is the name of the variable.
+	         The value containing a description of the parameter:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	    -->
+	    <element name="inputs" type="cmn:Map" />
+
+	    <!-- The output variables associated with the service
+	         The key is the name of the variable.
+	         TThe value containing a description of the parameter:
+	            * type (name of the type)
+	            * isList
+	            * description
+	            * richDescription
+	    -->
+	    <element name="outputs" type="cmn:Map" />
+
+        <!-- Detailed information about the types referenced by the service.
+             Each type referenced above and nested types are described.
+	         The key is the name of the type.
+	         The value is an map of information about the type  Here are some of the fields:
+	            * ID, pattern, properties, isShared, options, min, max, description, fixedLength
+	    -->
+	    <!-- A structure explaining the data model of the service -->
+	    <element name="validation" type="cmn:Map" />
+	</sequence>
+    </complexType>
+
+    <!--
+	This type represents a step associated with a service.
+    -->
+    <complexType name="ServiceStep">
+	<sequence>
+
+	    <!-- The step ID -->
+	    <element name="ID" type="string" />
+
+	    <!-- The step name -->
+	    <element name="name" type="string" />
+
+	    <!-- The X, Y coordinate of the center point of the step within the diagram -->
+	    <element name="x" type="int" />
+	    <element name="y" type="int" />
+
+	    <!-- The step type -->
+	    <element name="type" type="string" />
+	    
+	    	    
+	    <!-- Web Service Integration Data -->
+	    <element name="data" type="tns:WSIntegrationData" />
+
+	    <!-- The set of lines extending out from this step within the diagram -->
+	    <element name="lines" type="tns:ServiceStepLines" />
+	</sequence>
+    </complexType>
+    
+    <!-- 
+	 This type represents webservices integration data
+    -->
+    <complexType name="WSIntegrationData">
+	<sequence>
+	    <element name="wsdlURI" type="string" />
+	    <element name="serviceName" type="string" />
+	    <element name="portName" type="string" />
+	    <element name="operationName" type="string" />
+	    <element name="isProtectedWSDL" type="boolean" />
+        <element name="isOverrideEndpointAddress" type="boolean" />
+        <element name="endpointAddressURL" type="string" />
+	</sequence>
+    </complexType>
+    
+    <!-- 
+	 This type represents a set of lines associated with a service step
+    -->
+    <complexType name="ServiceStepLines">
+	<sequence>
+	    <element name="stepLine" minOccurs="0" maxOccurs="unbounded" type="tns:ServiceStepLine" />
+	</sequence>
+    </complexType>
+
+    <!--
+	This type represents a single line associated with a service step
+    -->
+    <complexType name="ServiceStepLine">
+	<sequence>
+
+	    <!-- The ID of the step to which this line extends -->
+	    <element name="to" type="string" />
+
+	    <!-- 
+		 A string containing a comma-separated list of coordinates through which this line extends.
+		 The list of points must contain the first point (coordinate of the "fromPort") 
+		 and the last point (coordinate of the "toPort").
+	    -->
+	    <element name="points" type="string" />
+	</sequence>
+    </complexType>
+    
+    
+    <!--
+	This type contains information related to a running service
+    -->
+    <complexType name="ServiceRunModel">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- The status of the service; values: "end" "coach", "error", "debug" -->
+		    <element name="serviceStatus" type="string" />
+
+		    <!-- 
+			 The ID of the running service or task instance.
+			 This is the ID to be used when resuming the service or task.
+		    -->
+		    <element name="key" type="string" />
+
+		    <!-- The ID of the current step within the context of the running service -->
+		    <element name="step" type="string" />
+
+		    <!-- The data (symbol table) associated with the running service -->
+		    <element name="data" type="anyType" />
+
+		    <!-- If the service status is "coach", this field contains the coach XML data -->
+		    <element name="coach" type="string" />
+
+		    <!-- If the service status is "coach", this field contains a Map of evaluated coach values -->
+		    <element name="coachEvals" type="cmn:Map" />
+
+		    <!-- If the service status is "coach", this field contains a list of available actions (end point) -->
+		    <element name="actions" type="string" minOccurs="0" maxOccurs="unbounded" />
+		    
+		     <!-- If the service status is "coach", this field contains a map of actions and associated labels -->
+		    <element name="actionsMap" type="cmn:Map" />
+		    
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <complexType name="CoachEval">
+        <sequence>
+            <element name="ID" type="string" />
+	    <element name="value" type="string" />
+        </sequence>
+    </complexType>
+    
+    
+    <!--    
+	 This type represents a list of currently running services
+    -->
+    <complexType name="CurrentlyRunning">
+    	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- A list of keys of services that are currently running for the current user -->
+		    <element name="instanceIDs" type="string" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+        </complexContent>
+    </complexType>
+    
+
+    <!--
+	This type represents the result obtained from evaluating a javascript expression
+	within the context of a currently running service
+    -->
+    <complexType name="Result">
+    	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+		    <element name="result" type="string" minOccurs="0" maxOccurs="1" />
+		    <!--
+		     Data information stored in an actual Map
+		    -->
+		    <element name="resultMap" type="cmn:Map" minOccurs="0"/>
+		</sequence>
+	    </extension>
+        </complexContent>
+    </complexType>
+    
+</schema>

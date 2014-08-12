@@ -6,6 +6,8 @@ CREATE COMPUTE MODULE Passthru_Compute
 	BEGIN
 		CALL CopyMessageHeaders();
 		CALL CopyEntireMessage();
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = null;
+		SET Environment.Service.Transport.ReplyIdentifier = null;
 		RETURN TRUE;
 	END;
 

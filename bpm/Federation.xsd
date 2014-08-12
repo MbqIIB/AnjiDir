@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/federation"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:dat="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/federation"
+	xmlns:tsk="http://rest.bpm.ibm.com/v1/data/task"
+	xmlns:prs="http://rest.bpm.ibm.com/v1/data/process"
+	xmlns:qry="http://rest.bpm.ibm.com/v1/data/query"
+	xmlns:stm="http://rest.bpm.ibm.com/v1/data/system"
+	xmlns:exc="http://rest.bpm.ibm.com/v1/data/exception">
+
+    <import schemaLocation="BPMRestData.xsd" 
+       namespace="http://rest.bpm.ibm.com/v1/data/root" />
+       
+	<import schemaLocation="Common.xsd" 
+	    namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	
+	<import schemaLocation="Task.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/task" />
+
+	<import schemaLocation="Service.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/service" />
+
+	<import schemaLocation="Search.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/search" />
+
+	<import schemaLocation="BPMRestData.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/root" />
+		
+	<import schemaLocation="Process.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/process" /> 
+		
+	<import schemaLocation="Query.xsd"
+		namespace="http://rest.bpm.ibm.com/v1/data/query" />
+
+	<import schemaLocation="System.xsd" 
+	    namespace="http://rest.bpm.ibm.com/v1/data/system" />
+		
+	<import schemaLocation="Exception.xsd" 
+	    namespace="http://rest.bpm.ibm.com/v1/data/exception" />
+
+	<element name="TaskDetails" type="tsk:TaskDetails" />
+	<element name="TaskTemplate" type="tsk:TaskTemplate" />
+	<element name="TaskTemplateClientSettings" type="tsk:TaskTemplateClientSettings" />
+	<element name="TaskActions" type="tsk:TaskActions" />
+	<element name="TaskClientSettings" type="tsk:TaskClientSettings" />
+	<element name="TaskBulkOperationResponse" type="tsk:TaskBulkOperationResponse" />
+	<element name="TaskClaimResult" type="tsk:TaskClaimResult" />	
+	<element name="ProcessDetails" type="prs:ProcessDetails" />
+	<element name="Event" type="prs:Event" />
+	<element name="QueryList" type="qry:QueryList" />
+	<element name="QueryAttributes" type="qry:QueryAttributes" />
+	<element name="QueryResultSetCount" type="qry:QueryResultSetCount" />
+	<element name="QueryResultSet" type="qry:QueryResultSet" />
+	<element name="SystemMetadata" type="stm:SystemMetadata" />
+	<element name="ExceptionData" type="exc:ExceptionData" />
+	<element name="ProcessApps" type="stm:ProcessApps" />
+	<element name="BulkCommandResponses" type="dat:BulkCommandResponses" />
+	
+</schema>

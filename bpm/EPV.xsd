@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/epv"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/epv"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    
+	<complexType name="RestEpvVar">
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="extDesc" type="string" />
+					<element name="plainExtDesc" type="string" />					
+					<element name="typeClass" type="string" />
+					<element name="typeClassRef" type="string" />
+					<choice>
+						<element name="typeClassSnapshotId" type="string" />
+						<element name="typeClassBranchId" type="string" />
+					</choice>
+					<element name="varname" type="string" />
+					<element name="defaultValue" type="string" />
+					<element name="isChgActiveProc" type="boolean" />
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+
+	<complexType name="RestEpv">
+		<complexContent>
+		    <extension base="pref:NamedElement">        
+		        <sequence>
+					<element name="envId" type="string" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="extDesc" type="string" />
+					<element name="feedback" type="string" />
+					<element name="participantName" type="string" />
+					<element name="participantId" type="string" />
+					<element name="participantRefSnapshotId" type="string" />
+					<element name="participantRefBranchId" type="string" />
+					<element name="vars" type="tns:RestEpvVar" maxOccurs="unbounded"/>
+				</sequence>
+		    </extension>
+		</complexContent>		
+	</complexType>
+            
+</schema>

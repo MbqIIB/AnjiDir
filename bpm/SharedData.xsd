@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/shareddata"
+        elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://rest.bpm.ibm.com/v1/data/shareddata"
+        xmlns:def="http://rest.bpm.ibm.com/v1/data/businessobject"
+        xmlns:data="http://rest.bpm.ibm.com/v1/data/root"
+        xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="BusinessObject.xsd" namespace="http://rest.bpm.ibm.com/v1/data/businessobject"/>
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+
+   
+    <!-- 
+	 Details of a REST shareddata api invocation
+    -->
+    <complexType name="SharedDataDetails">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		    <!-- Shared Data item -->
+		    <element name="sharedData" type="tns:SharedDataItem" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!--
+	Description of a single shared data item
+    -->
+    <complexType name="SharedDataItem">
+	<sequence>
+	    <!-- The key is the unique identifier of this data -->
+	    <element name="key" type="string"/>
+	    
+	    <!-- The change version of this data -->
+	    <element name="version" type="string"/>
+	    
+	    <!-- The property values of this data -->
+	    <element name="values" type="cmn:Map"/>
+	    
+	    <!-- The definition of this data -->
+	    <element name="definition" type="def:BusinessObject" />
+	    
+	    <!-- etc. TBD -->
+	    <element name="archived" type="boolean" />
+	</sequence>
+    </complexType>
+
+</schema>

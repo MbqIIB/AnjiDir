@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/bpddata"
+elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+xmlns:tns="http://rest.bpm.ibm.com/v1/data/bpddata">
+
+<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <complexType name="DataList">
+		<sequence>
+			<element name="item" minOccurs="0" maxOccurs="unbounded"
+					 type="tns:Item">
+			</element>
+		</sequence>    
+    </complexType>
+    
+    <complexType name="Item">    
+		<attribute name="value" type="string" use="required" />
+		<attribute name="occurrences" type="int" use="required" />		    
+    </complexType>
+  
+  	<complexType name="ActivityList">
+		<sequence>
+			<element name="activity" minOccurs="0" maxOccurs="unbounded"
+					type="tns:Activity">
+			</element>
+		</sequence>
+    </complexType>
+    
+    <complexType name="Activity">    
+		<sequence>
+			<element name="variables" minOccurs="0" maxOccurs="unbounded"
+					 type="tns:VariableData">
+			</element>
+		</sequence>	
+			<attribute name="BpmnObjectId" type="string" use="required" />    
+    </complexType>
+    
+    <complexType name="VariableData">
+    	<attribute name="value" type="string" use="required" />
+		<attribute name="usedAs" type="string" use="required" />
+    </complexType>
+    
+	<complexType name="BPDModelData">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="inputs" type="tns:DataList" />
+					<element name="outputs" type="tns:DataList" />
+					<element name="privateVariables" type="tns:DataList" />
+					<element name="Activities" type="tns:ActivityList" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

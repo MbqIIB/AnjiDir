@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/search"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/search"
+	xmlns:common="http://rest.bpm.ibm.com/v1/data/common" 
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root">
+    
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <!--
+	This type is used to return metadata related to searches.
+    -->
+    <complexType name="SearchMetaResult">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- 
+			 A list of strings that represent the requested metadata.
+			 This could be a list of all possible task status values,
+			 a list of all possible priority values, etc.
+			 The data returned in this structure will depend on the
+			 type of metadata requested.
+		    -->
+		    <element name="result" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		  
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <!--
+	This type is used to return metadata related to a search,
+	when the requested type of metadata is specified as "savedSearch".
+    -->
+    <complexType name="SearchMetaTypedResult">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- 
+			 This field represents a list of zero or more saved searches.
+		    -->
+		    <element name="result" type="tns:TypedString" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!--
+	This type models an element of type string which also contains
+	a string attribute named "type".
+	This type is used to represent a saved search, where the 
+	element value contains the name of the saved search,
+	and the "type" attribute indicates whether the saved search
+	is for tasks or processes.
+    -->
+    <complexType name="TypedString">
+	<simpleContent>
+	    <extension base="string">
+		<attribute name="type" type="string" />
+	    </extension>
+	</simpleContent>
+    </complexType>
+
+    <!-- 
+	This type contains the results of performing a search. 
+    --> 
+    <complexType name="SearchDetails">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- 
+			 This field contains a list of zero or more Map objects.
+			 Each Map object represents a single row in the search result data,
+			 and contains a key/value pair for each column of data within the row.
+		    -->
+		    <element name="data" type="common:Map" minOccurs="0" maxOccurs="unbounded"/>
+
+		    <!-- The name of the primary sort column -->
+		    <element name="firstColumnSort" type="string"/>
+
+		    <!-- The name of the secondary sort column -->
+		    <element name="secondColumnSort" type="string"/>
+
+		    <!-- 
+			 A string which indicates how the search results are organized.
+			 This will be set to "byTask" or "byInstance".
+		    -->
+		    <element name="organization" type="string"/>
+
+		    <!-- A list of columns that were added automatically to the query -->
+		    <element name="autoColumns" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    
+    <!-- 
+	This type represents the result from executing a performance query
+    --> 
+    <complexType name="PerformanceSearchDetails">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- 
+			 This field contains a list of zero or more Map objects.
+			 Each Map object represents a single row in the search result data,
+			 and contains a key/value pair for each column of data within the row.
+		    -->
+		    <element name="data" type="common:Map" minOccurs="0" maxOccurs="unbounded"/>
+
+		    <!-- The summarized (rolled up) result -->
+		    <element name="rollupResult" type="string" minOccurs="0"/>
+
+		    <!-- The primary sort column -->
+		    <element name="firstColumnSort" type="string"/>
+
+		    <!-- The secondary sort column -->
+		    <element name="secondColumnSort" type="string"/>
+
+		    <!-- The names of columns that were automatically added to the query results -->
+		    <element name="autoColumns" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!-- 
+	This type represents the result from performing a performance instance query.
+    -->
+    <complexType name="PerformanceInstanceDetails">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- A list of tracked business data values that have changed -->
+		    <element name="data" type="tns:TrackedBusinessData" minOccurs="0" maxOccurs="unbounded"/>
+
+		    <!-- A list of tracked progress data -->
+		    <element name="progress" type="tns:TrackedProgress" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+
+    <!-- 
+	 This type represents a tracked business data element that has changed.
+    -->
+    <complexType name="TrackedBusinessData">
+	<sequence>
+
+	    <!-- The timestamp when the field's value changed -->
+	    <element name="when" type="dateTime"/>
+
+	    <!-- The ID of the step in which the field's value changed -->
+	    <element name="stepID" type="string"/>
+
+	    <!-- The name of the step in which the field's value changed -->
+	    <element name="stepName" type="string"/>
+
+	    <!-- The name of the tracked field whose value changed -->
+	    <element name="field" type="string"/>
+
+	    <!-- The new value of the field -->
+	    <element name="value" type="anyType"/>
+	</sequence>
+    </complexType>
+    
+    <!-- 
+	This type represents tracked progress information for a step within a process instance
+    -->
+    <complexType name="TrackedProgress">
+	<sequence>
+
+	    <!-- The ID of the step -->
+	    <element name="stepID" type="string"/>
+
+	    <!-- The name of the step -->
+	    <element name="stepName" type="string"/>
+
+	    <!-- The timestamp when the step was reached -->
+	    <element name="arrived" type="dateTime"/>
+
+	    <!-- The timestamp when the step was started (if it was a task) -->
+	    <element name="started" type="dateTime" minOccurs="0"/>
+
+	    <!-- The user name of the user that started the task (if it was a task) -->
+	    <element name="startedWho" type="string" minOccurs="0"/>
+
+	    <!-- The timestamp when the step was finished (if it was finished) -->
+	    <element name="finished" type="dateTime" minOccurs="0"/>
+	</sequence>
+    </complexType>
+
+</schema>

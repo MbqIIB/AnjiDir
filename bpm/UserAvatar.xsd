@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/useravatar"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/useravatar"
+	xmlns:data="http://rest.bpm.ibm.com/v1/data/root" 
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+
+    <!-- 
+	 This type represents a user Avatar.
+    -->
+    <complexType name="UserAvatarData">
+	<complexContent>
+	    <extension base="data:Data">
+		<sequence>
+		  <element name="userID" type="long" />
+
+		    <!-- The alphanumeric user name associated with the user -->
+		    <element name="userName" type="string" />
+		
+		    <!-- The Avatar or profile picture of the user -->
+		    <element name="userAvatarImage" type="string" />
+		    
+		    <element name="imageFormat" type="string" />
+		    
+		    <element name="isDefault" type="string" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+
+</schema>

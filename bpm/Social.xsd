@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/social"
+        elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://rest.bpm.ibm.com/v1/data/social"
+        xmlns:data="http://rest.bpm.ibm.com/v1/data/root"
+        xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+
+ 
+    
+    <!--  Start of Social  -->
+    
+   <simpleType name="StreamObjectType">
+      <restriction base="string">
+         <enumeration value="activity"/>
+         <enumeration value="article"/>
+         <enumeration value="badge"/>
+         <enumeration value="bookmark"/>
+         <enumeration value="collection"/>
+         <enumeration value="comment"/>
+         <enumeration value="event"/>
+         <enumeration value="file"/>
+         <enumeration value="group"/>
+         <enumeration value="image"/>         
+         <enumeration value="note"/>
+         <enumeration value="person"/>
+         <enumeration value="place"/>
+         <enumeration value="product"/>
+         <enumeration value="question"/>
+         <enumeration value="review"/>
+         <enumeration value="service"/>
+         <enumeration value="video"/>
+      </restriction>
+   </simpleType>
+   
+   
+   <simpleType name="StreamVerb">
+      <restriction base="string">
+         <enumeration value="post"/>
+         <enumeration value="add"/>
+         <enumeration value="cancel"/>
+         <enumeration value="checkin"/>
+         <enumeration value="delete"/>
+         <enumeration value="favorite"/>
+         <enumeration value="follow"/>
+         <enumeration value="give"/>
+         <enumeration value="ignore"/>
+         <enumeration value="invite"/>         
+         <enumeration value="join"/>
+         <enumeration value="leave"/>
+         <enumeration value="like"/>
+         <enumeration value="make-friend"/>
+         <enumeration value="play"/>
+         <enumeration value="receive"/>
+         <enumeration value="remove"/>
+         <enumeration value="remove-friend"/> 
+         <enumeration value="request-friend"/>  
+         <enumeration value="rsvp-maybe"/>  
+         <enumeration value="rsvp-no"/>  
+         <enumeration value="rsvp-yes"/>  
+         <enumeration value="save"/>  
+         <enumeration value="share"/>  
+         <enumeration value="stop-following"/>  
+         <enumeration value="tag"/>  
+         <enumeration value="unfavorite"/>  
+         <enumeration value="unlike"/>  
+         <enumeration value="unsave"/>  
+         <enumeration value="update"/>                                                                                                                                              
+      </restriction>
+   </simpleType> 
+   
+    <complexType name="PostedContent">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="message" type="string"/>
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <complexType name="PostedResult">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="posted" type="boolean"/>
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>    
+
+    <complexType name="FollowedResult">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="followed" type="boolean"/>
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>   
+
+    <complexType name="HelpRequest">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="instanceId" type="integer"/>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="sendTo" type="string"/>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="description" type="string"/>
+		    </sequence>		    		    
+	    </extension>
+	</complexContent>
+    </complexType> 
+    
+    <complexType name="HelpResult">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="valid" type="boolean"/>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="method" type="string"/>
+		    </sequence>		    		    
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <complexType name="ToolbarCollapsed">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="collapsed" type="boolean"/>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="method" type="string"/>
+		    </sequence>		    		    
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <complexType name="RequestValid">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="valid" type="boolean"/>
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="method" type="string"/>
+		    </sequence>		    		    
+	    </extension>
+	</complexContent>
+    </complexType>                
+   
+    <complexType name="StreamMediaLink">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="duration" type="integer"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="height" type="integer"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="width" type="integer"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="url" type="string"/>
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+
+    <complexType name="StreamObject">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="attachments" type="tns:StreamObject"  minOccurs="1" maxOccurs="unbounded"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="author" type="tns:StreamObject"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="content" type="string"/>
+		    	<!-- MAY/SHOULD CONTAIN  -->
+		    	<element name="displayName" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="fileName" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="downstreamDuplicates" type="string"  minOccurs="1" maxOccurs="unbounded"/>
+		    	<!-- SHOULD CONTAIN  -->
+		    	<element name="id" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="parent" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="image" type="tns:StreamMediaLink"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="objectType" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="published" type="date"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="summary" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="updated" type="date"/>		    			    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="upstreamDuplicates" type="string"  minOccurs="1" maxOccurs="unbounded"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="url" type="string"/>		    	   			    			    			    			    			    			    			    			    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="processName" type="string"/>		    	   			    			    			    			    			    			    			    			    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="processId" type="string"/>	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="taskName" type="string"/>	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="taskId" type="string"/>	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="taskText" type="string"/>	
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType> 
+    
+    
+    <complexType name="StreamActivity">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MUST CONTAIN  -->
+		    	<element name="actor" type="tns:StreamObject"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="content" type="string"/>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="generator" type="tns:StreamObject"/>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="icon" type="tns:StreamMediaLink"/>	
+		    	<!-- SHOULD CONTAIN  -->
+		    	<element name="id" type="string"/>		    	
+	    		<!-- SHOULD CONTAIN  -->
+		    	<element name="object" type="tns:StreamObject"/>		    	
+		    	<!-- MUST CONTAIN  -->
+		    	<element name="published" type="date"/>		    	
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="provider" type="tns:StreamObject"/>			    	
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="target" type="tns:StreamObject"/>		    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="title" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="updated" type="date"/>		    			    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="url" type="string"/>
+		    	<!-- SHOULD CONTAIN  -->
+		    	<element name="verb" type="string"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="replies" type="tns:StreamObjectCollection"/>		    	
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="ibmbpmext" type="tns:StreamObject"/>		    			    	
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <complexType name="StreamObjectCollection">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="items" type="tns:StreamObject"  minOccurs="0" maxOccurs="unbounded"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="totalItems" type="integer"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="url" type="string"/>		    			    			    			    			    			    			    			    	
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <complexType name="StreamActivityCollection">
+	<complexContent>
+	    <extension base="data:Data">
+	    	<sequence>
+	    		<!-- MAY CONTAIN  -->
+		    	<element name="items" type="tns:StreamActivity"  minOccurs="0" maxOccurs="unbounded"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="totalItems" type="integer"/>
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="url" type="string"/>		    			    			    			    			    			    			    			    	
+		    	<!-- MAY CONTAIN  -->
+		    	<element name="more" type="boolean"/>		    			    			    			    			    			    			    			    	
+		    </sequence>
+	    </extension>
+	</complexContent>
+    </complexType>	
+    
+    
+   	<element name="PostedContent" type="tns:PostedContent" />
+   	<element name="HelpRequest" type="tns:HelpRequest" />    	
+   	<element name="PostedResult" type="tns:PostedResult" />
+   	<element name="FollowedResult" type="tns:FollowedResult" />
+   	<element name="HelpResult" type="tns:HelpResult" />
+   	<element name="ToolbarCollapsed" type="tns:ToolbarCollapsed" />
+   	<element name="RequestValid" type="tns:RequestValid" />
+   	<element name="StreamMediaLink" type="tns:StreamMediaLink" />    	    	    	    	
+   	<element name="StreamObject" type="tns:StreamObject" />
+   	<element name="StreamActivity" type="tns:StreamActivity" />
+   	<element name="StreamObjectCollection" type="tns:StreamObjectCollection" />
+	<element name="StreamActivityCollection" type="tns:StreamActivityCollection" />
+    	    	    	    	    	
+
+</schema>

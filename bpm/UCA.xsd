@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/uca"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/uca" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+	
+	<simpleType name="ScheduleType">
+		<restriction base="string">
+			<enumeration value="OnEvent" />
+			<enumeration value="TimeElapsed" />
+		</restriction>
+	</simpleType>	
+
+	<simpleType name="EventType">
+		<restriction base="string">
+			<enumeration value="Message" />
+			<enumeration value="Content" />
+			<enumeration value="Timer" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TimeScheduleFreqType">
+		<restriction base="string">
+			<enumeration value="Every" />
+			<enumeration value="First" />
+			<enumeration value="Last" />
+		</restriction>
+	</simpleType>	
+
+	<complexType name="TimeSchedule">
+		<sequence>
+			<element name="month" type="int" maxOccurs="unbounded"/>
+			<element name="freqType" type="tns:TimeScheduleFreqType" />
+			<element name="weekDay" type="string" maxOccurs="unbounded"/>
+			<element name="hours" type="int" maxOccurs="unbounded"/>
+			<element name="minutes" type="int" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="UCAType">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="ucaId" type="string" />
+					<element name="name" type="string" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="schedType" type="tns:ScheduleType" />
+					<element name="eventType" type="tns:EventType" />
+					<element name="queue" type="string" />
+					<element name="enabled" type="boolean" />
+					<element name="serviceId" type="string"/>
+					<element name="serviceName" type="string"/>
+					<choice>
+						<element name="serviceSnapshotId" type="string"/>
+						<element name="serviceBranchId" type="string"/>
+					</choice>					
+					<choice>
+						<element name="eventMessage" type="string"/>
+						<element name="timeSchedule" type="tns:TimeSchedule" />
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

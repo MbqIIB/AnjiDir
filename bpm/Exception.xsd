@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/exception"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/exception"
+	xmlns:dat="http://rest.bpm.ibm.com/v1/data/root">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+    
+    <!--
+	This type represents an error response.
+    -->    
+    <element name="RestRuntimeException">
+	<complexType>
+	    <sequence>
+		<element name="status" type="string"/>
+		<element name="Data" type="tns:ExceptionData">
+    		</element>
+	    </sequence>
+	</complexType>
+    </element>
+
+    <!-- 
+	 This type contains detailed error information associated with an exception.
+    -->
+    <complexType name="ExceptionData">
+	<sequence>
+	    <element name="status" type="string"/>
+
+	    <!-- This specifies the java class name of the exception -->
+	    <element name="exceptionType" type="string"/>
+
+	    <!-- The message ID of the error message -->
+	    <element name="errorNumber" type="string" minOccurs="0"/>
+
+	    <!-- The complete error message -->
+	    <element name="errorMessage" type="string"/>
+
+	    <!-- The list of strings inserted into the error message -->
+	    <element name="errorMessageParameters" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+	    <!-- 
+		 The stacktrace associated with the exception.
+		 Note that this will be omitted unless the "server-stacktrace-enabled" property
+		 is enabled in the server's 100Custom.xml file.
+	    -->     
+	    <element name="programmersDetails" type="string"></element>
+	    
+	    <!-- Prior responses.  Set if a bulk command was used -->
+	    <element name="responses" type="dat:BulkCommandResponses" minOccurs="0"></element>
+	</sequence>
+    </complexType>
+</schema>

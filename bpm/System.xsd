@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/system"
+	elementFormDefault="unqualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/system" 
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root" 
+	xmlns:common="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+
+    <!-- 
+	 This type is used to return information about one or more IBM BPM installations
+	 (single server or a cluster).
+    -->
+    <complexType name="SystemMetadata">
+	<complexContent>
+	    <extension base="pref:Data">
+		<sequence>
+
+		    <!-- A list of IBM BPM installations -->
+		    <element name="systems" type="tns:Systems" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+
+    <!--
+	This type contains information about a single IBM BPM installation.
+    -->
+    <complexType name="Systems">
+	<sequence>
+
+	    <!-- A unique ID associated with the IBM BPM installation -->
+	    <element name="systemID" type="string" />
+
+	    <!-- A string representing the type of system (e.g. "SYSTEM_TYPE_WLE") -->
+	    <element name="systemType" type="string" />
+
+	    <!-- A string representing the BPM installation's version -->
+	    <element name="version" type="string" />
+
+	    <!-- A string representing the particular build of the IBM BPM product -->
+	    <element name="buildLevel" type="string" />
+
+	    <!-- Indicates whether group work items can be used -->
+	    <element name="groupWorkItemsEnabled" type="boolean" />
+
+	    <!-- Indicates whether substitution is enabled -->
+	    <element name="substitutionEnabled" type="boolean" />
+
+	    <!-- Indicates whether or not substitution management is restricted to administrators -->
+	    <element name="substitutionManagementRestrictedToAdministrators" type="boolean" />
+
+	    <!-- Indicates whether task history is enabled -->
+	    <element name="taskHistoryEnabled" type="boolean" />
+
+	    <!-- Indicates whether work baskets are enabled -->
+	    <element name="workBasketsEnabled" type="boolean" />
+
+	    <!-- Indicates whether business categories are enabled -->
+	    <element name="businessCategoriesEnabled" type="boolean" />
+
+	    <!-- Indicates whether task search is enabled -->
+	    <element name="taskSearchEnabled" type="boolean" />
+
+	    <!-- A string indicating the most recent version number of the BPM REST API -->
+	    <element name="apiVersion" type="string"/>
+
+	    <!-- A list of strings which represent features supported by the BPM REST API -->
+	    <element name="supports" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+	    <!-- A list of strings which represent resources supported by the BPM REST API -->
+	    <element name="resources" type="string" minOccurs="0" maxOccurs="unbounded"/>
+
+	    <!-- The fully-qualified hostname of the server -->
+	    <element name="hostname" type="string"/>
+	    
+	    <!--  A list of other environment variables that define the system -->
+	    <element name="environment" type="tns:EnvironmentVariable" minOccurs="1" maxOccurs="unbounded"/>
+	</sequence>
+    </complexType>
+
+
+    <!--
+	This type is used to represent a list of Process Applications.
+    -->
+    <complexType name="ProcessApps">
+	<complexContent>
+	    <extension base="pref:Data"> 
+		<sequence>
+
+		    <!-- A list of zero or more Process Apps -->
+		    <element name="processAppsList" type="tns:ProcessAppsData" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <!--
+	This type contains the information associated with a Process App.
+    -->
+    <complexType name="ProcessAppsData">
+	<sequence>
+
+	    <!-- The Process App identifier -->
+	    <element name="ID" type="string"/>
+
+	    <!-- The short name associated with the Process App -->
+	    <element name="shortName" type="string"/>
+
+	    <!-- The name associated with the Process App -->
+	    <element name="name" type="string"/>
+
+	    <!-- The Process App's description -->
+	    <element name="description" type="string"/>
+	    <element name="richDescription" type="string"/>
+
+	    <element name="lastModifiedBy" type="string"/>
+	    <element name="lastModified_on" type="dateTime"/>
+
+	    <!-- 
+		 For the Process Center, this is the name of the default workspace.
+		 For the Process Server, this is the name of the default snapshot.
+	    -->
+	    <element name="defaultVersion" type="string"/>
+
+	    <!-- The list of installed snapshots associated with this Process App -->
+	    <element name="installedSnapshots" type="tns:InstalledSnapshotsData" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+    </complexType>
+    
+    <!-- 
+	 This type contains information about an install snapshot.
+    -->
+    <complexType name="InstalledSnapshotsData">
+	<sequence>
+
+	    <!-- The name of the snapshot -->
+	    <element name="name" type="string"/>
+
+	    <!-- The snapshot ID -->
+	    <element name="ID" type="string"/>
+	    
+	    <!-- The snapshot Acronym -->
+	    <element name="acronym" type="string"/>
+
+	    <!-- Indicates whether this snapshot is active or not -->
+	    <element name="active" type="boolean"/>
+
+	    <!-- A timestamp when the snapshot was activated -->
+	    <element name="activeSince" type="dateTime"/>
+	    
+	    <!-- A timestamp when the snapshot was created -->
+	    <element name="createdOn" type="dateTime"/>
+	    	    
+	     <!-- The snapshot tip -->
+	    <element name="snapshotTip" type="boolean"/>
+	    
+	    <!-- The branch (track) ID -->
+	    <element name="branchID" type="string"/> 
+	    
+	    <!-- The name of the branch (track) -->
+	    <element name="branchName" type="string"/>
+	</sequence>
+    </complexType>
+
+
+    <!--
+	This type is used to return the list of items that are exposed to the end user.
+    -->
+    <complexType name="ExposedItems">
+	<complexContent>
+	    <extension base="pref:Data"> 
+		<sequence>
+
+		    <!-- A list of zero or more exposed items -->
+		    <element name="exposedItemsList" type="tns:ExposedItemData" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+    
+    <!-- 
+	 This type contains information about an exposed item.
+	 An exposed item could be a process, service, report, or scoreboard.
+    -->
+    <complexType name="ExposedItemData">
+	<sequence>
+
+	    <!-- The exposed ID of the item -->
+	    <element name="ID" type="string"/>
+
+	    <!-- 
+		 The type associated with the exposed item.
+		 The type will be one of: "process", "service", "scoreboard", or "report".
+	    -->
+	    <element name="type" type="string"/>
+
+	    <!-- 
+		 The sub-type associated with the exposed item.
+		 For type "service", it will be one of: "not_exposed", "administration_service",
+		 "startable_service", "dashboard" or "url".
+	    -->
+	    <element name="subtype" type="string"/>
+
+	    <!-- The exposed URL of the item; use this to view or run the item -->
+	    <element name="runURL" type="string"/>
+
+	    <!-- The item's ID; this will be based on the type of the item -->
+	    <element name="itemID" type="string"/>
+
+	    <!-- The item's reference; this will be based on the type of the item -->
+	    <element name="itemReference" type="string"/>
+
+	    <!-- The ID of the Process App associated with this item -->
+	    <element name="processAppID" type="string"/>
+	    
+	   	<!-- The name of the Process App associated with this item -->
+	    <element name="processAppName" type="string"/>
+	    
+	   	<!-- The acronym of the Process App associated with this item -->
+	    <element name="processAppAcronym" type="string"/>
+
+	    <!-- The ID of the snapshot associated with this item -->
+	    <element name="snapshotID" type="string"/>
+
+	    <!-- The name of the snapshot associated with this item -->
+	    <element name="snapshotName" type="string"/>
+	    	    
+	    <!-- A timestamp when the snapshot was created -->
+	    <element name="snapshotCreatedOn" type="dateTime"/>
+
+	    <!-- The display name of the item; this will be the name of the Process, Service, or Scoreboard -->
+	    <element name="display" type="string"/>
+	    
+	    <!-- The item's title if it exists. Such as a scoreboard title. -->
+	    <element name="title" type="string" />
+	    
+	    <!-- Indicates if a tip-->
+	    <element name="tip" type="boolean"/>
+	    	    
+	    <!-- The branch (track)  ID -->
+	    <element name="branchID" type="string"/> 
+	    
+	    <!-- The name of the branch (track) -->
+	    <element name="branchName" type="string"/>
+	    
+	    <!-- If this exposed item cannot be started via a REST api, then this field is null
+	         Otherwise this field contains a relative URL that can be used to start the process.
+	         In such cases the caller may need to supply additional query parameters (parts, params)
+	    -->
+	    <element name="startURL" type="string"/>
+	    
+	    <!-- The acronym for the top level toolkit. Needed for task templates. -->
+	    <element name="topLevelToolkitAcronym" type="string"/>
+	    
+	    <!-- The name for the top level toolkit. Needed for task templates. -->
+	    <element name="topLevelToolkitName" type="string"/>
+	    
+	    <!-- Indication of the default snapshot. -->
+	    <element name="isDefault" type="boolean"/>
+	    
+	</sequence>
+    </complexType>
+	
+    <!-- 
+	 This type contains information about an Environment Variable item.
+	 Name value pair.
+    -->
+    <complexType name="EnvironmentVariable">
+    	<complexContent>
+    	<extension base="pref:Data"> 
+	        <sequence>
+                 <!-- BPD shortname -->
+	             <element name="bpdShortname" type="string"/>	        
+                 <!-- variable name -->
+	             <element name="name" type="string"/>
+	             <!-- variable value -->
+	             <element name="value" type="string"/>
+	             <!-- updated or added -->
+	             <element name="success" type="string"/>	             
+	        </sequence>
+	    </extension>
+	   	</complexContent> 
+    </complexType>
+    
+   	<element name="EnvironmentVariable" type="tns:EnvironmentVariable" />
+    
+    
+    <!--
+    	This type contains a list of Resource Environment Providers Available 
+    -->
+    <complexType name="REPList">
+    <complexContent>
+    	<extension base="pref:Data">
+    	<sequence>
+    		<!-- REPs -->
+    		<element name="providerList" type="common:StringList"/>
+    	</sequence>
+    	</extension>
+    </complexContent>
+    </complexType>
+    
+    <element name="REPList" type="tns:REPList" />
+    
+    <!-- 
+    	This type contains a list of properties contained in a Resource Environment Provider
+    -->
+    <complexType name="REPPropertiesListExhaustive">
+    <complexContent>
+    	<extension base="pref:Data">
+    	<sequence>
+    		<!-- REP Properties -->
+    		<element name="propertyList" type="common:StringList"/>
+    	</sequence>
+    	</extension>
+    </complexContent>
+    </complexType>
+    
+    <element name="REPPropertiesListExhaustive" type="tns:REPPropertiesListExhaustive" />
+   	<!-- 
+   		Details of a REST ResourceEnvironmentProviderProperties api invocation
+    -->
+	<complexType name="REPPropertiesList">
+	<complexContent>
+		<extension base="pref:Data">
+		<sequence>
+			<!-- REP Property -->
+			<element name="propertyList" type="common:Map"/>
+		</sequence>
+		</extension>
+	</complexContent>
+	</complexType>
+	
+	<element name="REPPropertiesList" type="tns:REPPropertiesList" />
+	<!--   
+    	This type contains a list of EnvironmentVariables used for Collaboration System Integration
+    -->
+    <complexType name="CollabSystemsData">
+	<complexContent>
+	    <extension base="pref:Data"> 
+		<sequence>
+		    <!-- A list of zero or more environment variables -->
+		    <element name="collabSystemsList" type="tns:EnvironmentVariable" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	    </extension>
+	</complexContent>
+    </complexType>
+</schema>

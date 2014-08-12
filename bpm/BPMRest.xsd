@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:pref1="http://rest.bpm.ibm.com/v1/data/process"
+	xmlns:pref2="http://rest.bpm.ibm.com/v1/data/query" xmlns:pref3="http://rest.bpm.ibm.com/v1/data/system">
+
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="Process.xsd"     namespace="http://rest.bpm.ibm.com/v1/data/process"/>
+    <import schemaLocation="Query.xsd"       namespace="http://rest.bpm.ibm.com/v1/data/query"/>
+    <import schemaLocation="Search.xsd"      namespace="http://rest.bpm.ibm.com/v1/data/search"/>
+    <import schemaLocation="Service.xsd"     namespace="http://rest.bpm.ibm.com/v1/data/service"/>
+    <import schemaLocation="System.xsd"      namespace="http://rest.bpm.ibm.com/v1/data/system"/>
+    <import schemaLocation="Task.xsd"        namespace="http://rest.bpm.ibm.com/v1/data/task"/>
+    <import schemaLocation="SharedData.xsd"  namespace="http://rest.bpm.ibm.com/v1/data/shareddata"/>
+
+    <element name="ResponseData">
+	<complexType>
+	    <sequence>
+		<element name="status" type="string"/>
+		<element name="data" type="pref:Data"/>
+	    </sequence>
+	</complexType>
+    </element>
+</schema>

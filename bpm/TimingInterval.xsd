@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/timinginterval"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/timinginterval" xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common" />
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+
+	<simpleType name="BoundType">
+		<restriction base="string">
+			<enumeration value="start" />
+			<enumeration value="end" />
+		</restriction>
+	</simpleType>	
+
+	<complexType name="BPDRefInfo">
+		<sequence>
+			<element name="bpdName" type="string" />
+			<element name="bpdId" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>
+
+	<complexType name="ServiceRefInfo">
+		<sequence>
+			<element name="serviceName" type="string" />
+			<element name="serviceId" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>
+	
+	<complexType name="TrackingGroupRefInfo">
+		<sequence>
+			<element name="trackingGroupName" type="string" />
+			<element name="trackingGroupId" type="string" />
+			<choice>
+				<element name="snapshotId" type="string" />
+				<element name="branchId" type="string"/>
+			</choice>				
+		</sequence>
+	</complexType>	
+
+	<complexType name="TimingIntervalBoundType">
+		<sequence>
+			<element name="boundId" type="string" />
+			<element name="TrackingPointEuid" type="string" />
+			<element name="type" type="tns:BoundType"/>
+			<choice>
+				<element name="bpdRef" type="tns:BPDRefInfo" />
+				<element name="serviceRef" type="tns:ServiceRefInfo"/>
+			</choice>				
+			<element name="trackingGroupRef" type="tns:TrackingGroupRefInfo"/>
+			<element name="trackingPointName" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TimingIntervalType">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="timingIntervalId" type="string" />
+					<element name="name" type="string" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="externalUniqueId" type="string" />
+					<element name="intervalStart" type="string" />
+					<element name="intervalEnd" type="string" />
+					<element name="timeIntervalBounds" type="tns:TimingIntervalBoundType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

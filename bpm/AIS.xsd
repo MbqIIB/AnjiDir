@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/service"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/service"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common"
+	xmlns:model="http://rest.bpm.ibm.com/v1/data/bpd/visual">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="ILOGVisualModel.xsd" namespace="http://rest.bpm.ibm.com/v1/data/bpd/visual"/>
+	    
+    <complexType name="SCAConnectorItem">
+        <annotation>
+        	<documentation>For Service</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="pref:Data">
+   				<sequence>
+			    	<element name="exportName" type="string"/>		
+			    	<element name="moduleName" type="string"/>		
+			    	<element name="operationName" type="string"/>		
+			    	<element name="isAsyncInvocation" type="boolean"/>		
+			    	<element name="moduleVersion" type="string"/>		
+			    	<element name="guid" type="string"/>		
+			    	<element name="versionId" type="string"/>		
+				</sequence>
+			</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="AISType">
+    	<complexContent>
+    		<extension base="pref:Data">
+    			<sequence>
+				    <element name="name" type="string"/>
+				    <element name="desc" type="string"/>
+				    <element name="richDesc" type="string"/>
+				    <element name="poId" type="string"/>
+				    <element name="poVersionId" type="string"/>				    
+				    <element name="id" type="string"/>
+    				<element name="item" type="tns:SCAConnectorItem"/>
+					<element name="variables" type="model:Variable" minOccurs="0" maxOccurs="unbounded"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+</schema>

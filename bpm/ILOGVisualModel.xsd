@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/bpd/visual"
+	elementFormDefault="unqualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/bpd/visual"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:task="http://rest.bpm.ibm.com/v1/data/task"
+	xmlns:cmn="http://rest.bpm.ibm.com/v1/data/common">
+
+    <import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+    <import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root"/>
+    <import schemaLocation="Task.xsd" namespace="http://rest.bpm.ibm.com/v1/data/task"/>
+
+    <complexType name="Reference">
+		<sequence>
+		    <element name="_reference" type="string"/>
+		</sequence>
+    </complexType>
+
+    <complexType name="AttachedEvent">
+		<sequence>
+		    <element name="_reference" type="string"/>
+			<element name="eventPosition" type="tns:PortType" />
+		</sequence>
+    </complexType>
+
+	<simpleType name="LoopType">
+        <restriction base="string">
+			<enumeration value="none"/>
+			<enumeration value="simpleLoop"/>
+			<enumeration value="MultiInstanceLoop"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MILoopOrdering">
+        <restriction base="string">
+			<enumeration value="sequential"/>
+			<enumeration value="parallel"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EventSubProcType">
+        <restriction base="string">
+			<enumeration value="message"/>
+			<enumeration value="content"/>
+			<enumeration value="timer"/>
+			<enumeration value="error"/>
+		</restriction>
+	</simpleType>
+		
+	<simpleType name="NodeCategoryType">
+        <restriction base="string">
+			<enumeration value="Activity"/>
+			<enumeration value="StartEvent"/>
+			<enumeration value="EndEvent"/>
+			<enumeration value="IntermediateEvent"/>
+			<enumeration value="BoundaryIntermediateEvent"/>
+			<enumeration value="Gateway"/>
+		</restriction>
+	</simpleType>	
+
+	<simpleType name="NodeType">
+        <annotation>
+        	<documentation>For BPD</documentation>
+        </annotation>
+        <restriction base="string">
+			<enumeration value="milestone"/>
+			<enumeration value="activity"/>
+			<enumeration value="gateway"/>
+			<enumeration value="gatewayAnd"/>
+			<enumeration value="gatewayOr"/>
+			<enumeration value="gatewayEvent"/>
+			
+
+			<!-- 
+				1. how to configure adhoc start event?
+				2. how to specify interrupting for the start event?
+				3. How to create an error start event? 
+			-->
+
+			<enumeration value="start"/>
+			<enumeration value="adhocStartEvent"/>
+			<!-- startMessage -->
+			<enumeration value="msgStartEventInterrupting"/>
+			<enumeration value="msgStartEventNonInterrupting"/>
+			<enumeration value="contentStartEventInterrupting"/>
+			<enumeration value="contentStartEventNonInterrupting"/>
+			<enumeration value="timerStartEventInterrupting"/>
+			<enumeration value="timerStartEventNonInterrupting"/>
+			<enumeration value="errorStartEvent"/>
+
+
+			<!-- 
+				1. How to create an error end event and terminate? 
+			-->
+			<enumeration value="end"/>			
+			<enumeration value="terminate"/>
+			<!-- endException -->
+			<enumeration value="errorEndEvent"/>
+			<enumeration value="messageEndEvent"/>
+			
+			<enumeration value="intermediateThrowMsgEvent"/>
+			
+			<enumeration value="intermedCatchMsgEventNonBoundary"/>
+			<enumeration value="intermedCatchContentEventNonBoundary"/>
+			<enumeration value="intermedCatchTimerEventNonBoundary"/>
+			<enumeration value="intermedCatchTrackingEventNonBoundary"/>
+
+			<enumeration value="intermedCatchErrorEventBoundary"/>
+			<enumeration value="intermedCatchMsgEventBoundaryInterrupting"/>
+			<enumeration value="intermedCatchMsgEventBoundaryNonInterrupting"/>
+			<enumeration value="intermedCatchContentEventBoundaryInterrupting"/>
+			<enumeration value="intermedCatchContentEventBoundaryNonInterrupting"/>
+			<enumeration value="intermedCatchTimerEventBoundaryInterrupting"/>
+			<enumeration value="intermedCatchTimerEventBoundaryNonInterrupting"/>
+
+			<enumeration value="swimlane"/>
+			<enumeration value="note"/>
+			<enumeration value="group"/>
+		</restriction>
+	</simpleType>
+	    
+	<simpleType name="ServiceNodeType">
+        <annotation>
+        	<documentation>For Service</documentation>
+        </annotation>
+        <restriction base="string">
+			<enumeration value="StartPoint"/>
+			<enumeration value="ExitPoint"/>
+			<enumeration value="SubProcess"/>
+			<enumeration value="Coach"/>
+			<enumeration value="CoachNG"/>
+			<enumeration value="Step"/>
+			<enumeration value="TaskAction"/>
+			<enumeration value="PostponeAction"/>
+			<enumeration value="TaskSender"/>
+			<enumeration value="Script"/>
+			<enumeration value="Switch"/>
+			<enumeration value="Exception"/>
+			<enumeration value="InvokeUca"/>
+			<enumeration value="TrackingPoint"/>
+			<enumeration value="JavaConnector"/>
+			<enumeration value="WSConnector"/>
+			<enumeration value="ILOGConnector"/>
+			<enumeration value="ILOGDecision"/>
+			<enumeration value="SCAConnector"/>
+			<enumeration value="ECMConnector"/>
+			<enumeration value="note"/>
+			<enumeration value="Scriptlet"/>
+			<enumeration value="CatchException"/>
+			<enumeration value="AttachedErrorEvent"/>
+			<enumeration value="StayOnPage"/>
+		</restriction>
+	</simpleType>
+
+    <complexType name="BaseItem">
+		<sequence>
+		    <element name="id" type="string"/>
+		    <element name="label" type="string"/>
+		    <element name="x" type="int"/>
+		    <element name="y" type="int"/>
+		</sequence>
+    </complexType>
+    <complexType name="TextLinePosition">
+		<sequence>
+		    <element name="x" type="int"/>
+		    <element name="y" type="int"/>
+		    <element name="width" type="int"/>
+		    <element name="height" type="int"/>
+		</sequence>
+    </complexType>
+    <complexType name="Item">
+        <annotation>
+        	<documentation>For BPD</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="tns:BaseItem">
+    			<sequence>
+				    <element name="type" type="tns:NodeType"/>		
+				    <element name="category" type="tns:NodeCategoryType" /> 
+				</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="ServiceItem">
+        <annotation>
+        	<documentation>For Service</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="tns:BaseItem">
+    			<sequence>
+				    <element name="type" type="tns:ServiceNodeType"/>		    
+				</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>    
+
+	<simpleType name="BPMN2ActivityType">
+        <restriction base="string">
+			<enumeration value="None"/>
+			<enumeration value="UserTask"/>
+			<enumeration value="DecisionTask"/>
+			<enumeration value="ServiceTask"/>
+			<enumeration value="ScriptTask"/>
+			<enumeration value="CalledProcess"/>
+			<enumeration value="SubProcess"/>
+			<enumeration value="Event_SubProcess"/>
+		</restriction>
+	</simpleType>
+
+    <!-- complexType name="Implementation">
+		<sequence>
+			<element name="bpmn2TaskType" type="tns:BPMN2ActivityType"/>
+			<element name="poType" type="string"/>
+			<element name="poId" type="string"/>
+			<choice>
+				<element name="snapshotId" type="string"/>
+				<element name="branchId" type="string"/>
+			</choice>	
+		</sequence>
+    </complexType-->
+    
+    <complexType name="Node">
+        <annotation>
+        	<documentation>For BPD</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="tns:Item">
+    			<sequence>
+				    <element name="colorIcon" type="string"/>
+				    <element name="lane" type="string"/>
+					<element name="bpmn2TaskType" type="tns:BPMN2ActivityType"/>
+					<element name="poType" type="string"/>
+					<element name="serviceType" type="string">
+						<annotation>
+							<documentation>only used when poType is Service, we need this extra information to tell UI how to drilldown service. Here are the supported values:
+	1. Rule Service
+	3. Human Service
+	4. Integration Service
+	6. General System Service
+	7. SCA Service
+</documentation>
+						</annotation></element>
+					<element name="poId" type="string"/>
+					<choice>
+						<element name="snapshotId" type="string"/>
+						<element name="branchId" type="string"/>
+					</choice>
+    				<element name="successors" type="tns:Reference" minOccurs="0" maxOccurs="unbounded"/>
+    				<element name="attachedEvents" type="tns:AttachedEvent" minOccurs="0" maxOccurs="unbounded"/>
+				    <element name="loopType" type="tns:LoopType"/>
+				    <element name="MIOrdering" type="tns:MILoopOrdering"/>
+				    <element name="preAssignment" type="boolean"/>
+				    <element name="postAssignment" type="boolean"/>
+				    <element name="conditional" type="boolean"/>
+				    <element name="eventActionType" type="int"/>
+				    <element name="eventSubProcType" type="tns:EventSubProcType"/>
+				    <element name="interrupting" type="boolean"/>
+
+					<!-- counter and active are used in portal -->
+				    <!-- the number of the instances that has token in this node, such as #2, #3, etc-->
+				    <element name="counter" type="string"/>
+				    <!-- an indicator to tell whether this node is active -->
+				    <element name="active" type="boolean"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="Note">
+        <complexContent>
+    		<extension base="tns:Node">
+    			<sequence>
+    				<element name="width" type="int" />
+    				<element name="height" type="int" />
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>    
+
+    <complexType name="ServiceNode">
+        <annotation>
+        	<documentation>For Service</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="tns:ServiceItem">
+    			<sequence>
+					<element name="poType" type="string"/>
+					<element name="poId" type="string"/>
+					<choice>
+						<element name="snapshotId" type="string"/>
+						<element name="branchId" type="string"/>
+					</choice>
+					<element name="serviceType" type="string">
+						<annotation>
+							<documentation>need this extra information to tell UI how to drilldown service. Here are the supported values:
+	1. Rule Service
+	3. Human Service
+	4. Integration Service
+	6. General System Service
+	7. SCA Service
+</documentation>
+						</annotation></element>					
+    				<element name="successors" type="tns:Reference" minOccurs="0" maxOccurs="unbounded"/>
+    				<element name="attachedEvents" type="tns:AttachedEvent" minOccurs="0" maxOccurs="unbounded"/>
+				    <element name="preAssignment" type="boolean"/>
+				    <element name="postAssignment" type="boolean"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+	<simpleType name="ColorType">
+        <restriction base="string">
+			<enumeration value="Default"/>
+			<enumeration value="Red"/>
+			<enumeration value="Orange"/>
+			<enumeration value="Yellow"/>
+			<enumeration value="Green"/>
+			<enumeration value="Blue"/>
+			<enumeration value="Purple"/>
+			<enumeration value="Gray"/>
+		</restriction>
+	</simpleType>
+	    
+    <complexType name="Swimlane">
+    	<complexContent>
+    		<extension base="tns:Item">
+    			<sequence>
+    				<element name="isSystem" type="boolean" />
+    				<element name="color" type="tns:ColorType" />
+    				<element name="width" type="int" />
+    				<element name="height" type="int" />
+    				<element name="children" type="tns:Reference" minOccurs="0" maxOccurs="unbounded"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="Group">
+    	<complexContent>
+    		<extension base="tns:Item">
+    			<sequence>
+				    <element name="lane" type="string"/>
+    				<element name="width" type="int" />
+    				<element name="height" type="int" />
+    				<element name="successors" type="tns:Reference" minOccurs="0" maxOccurs="unbounded"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>    
+
+    <complexType name="Milestone">
+    	<complexContent>
+    		<extension base="tns:Item">
+    			<sequence>
+    				<element name="width" type="int" />
+    				<element name="height" type="int" />
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="Link">
+		<sequence>
+			<element name="id" type="string" />
+			<element name="name" type="string" />
+			<element name="start" type="string" />
+			<element name="startPosition" type="tns:PortType" />
+			<element name="end" type="string" />
+			<element name="endPosition" type="tns:PortType" />
+			<element name="showName" type="boolean" />
+			<element name="showEndState" type="boolean" />
+			<element name="endState" type="string" />			
+			<element name="endStateType" type="string" />			
+			<element name="linkLabelPosition" type="double" />
+			<element name="gfx" type="string"/>
+			<!-- inCriticalPath is used in portal only -->
+			<element name="inCriticalPath" type="boolean" />			
+		</sequence>
+    </complexType>
+
+	<simpleType name="LinkSourceType">
+		<restriction base="string">
+			<enumeration value="Activity"/>
+			<enumeration value="Gateway"/>
+			<enumeration value="Event"/>
+		</restriction>
+	</simpleType>
+	    
+    <complexType name="BPDLink">
+    	<complexContent>
+    		<extension base="tns:Link">
+    			<sequence>
+					<element name="needDefaultMarker" type="boolean" />
+					<element name="needDiamondMarker" type="boolean" />
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>    
+
+	<simpleType name="PortType">
+		<restriction base="string">
+			<enumeration value="topLeft"/>
+			<enumeration value="topCenter"/>
+			<enumeration value="topRight"/>
+			<enumeration value="leftTop"/>
+			<enumeration value="leftCenter"/>
+			<enumeration value="leftBottom"/>
+			<enumeration value="bottomLeft"/>
+			<enumeration value="bottomCenter"/>
+			<enumeration value="bottomRight"/>
+			<enumeration value="rightTop"/>
+			<enumeration value="rightCenter"/>
+			<enumeration value="rightBottom"/>
+		</restriction>
+	</simpleType>
+	
+    <complexType name="BendPoints">
+		<sequence>
+			<element name="intermediatePoints" type="tns:BendPoint" maxOccurs="unbounded"/>
+		</sequence>
+    </complexType>
+    	
+    <complexType name="BendPoint">
+		<sequence>
+			<element name="x" type="int" />
+			<element name="y" type="int" />
+		</sequence>
+    </complexType>
+        
+	<simpleType name="VariableType">
+		<restriction base="string">
+			<enumeration value="input"/>
+			<enumeration value="output"/>
+			<enumeration value="fault"/>
+			<enumeration value="input_output"/>
+			<enumeration value="private"/>
+		</restriction>
+	</simpleType>
+	    
+    <complexType name="Variable">
+    	<complexContent>
+    		<extension base="pref:NamedElement">
+				<sequence>
+					<element name="poId" type="string" />
+					<element name="poName" type="string" />
+					<choice>
+						<element name="snapshotId" type="string" />
+						<element name="branchId" type="string" />
+					</choice>
+					<element name="isList" type="boolean" />
+					<element name="type" type="tns:VariableType" />
+				</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="ProcessKPI">
+    	<complexContent>
+    		<extension base="pref:NamedElement">
+				<sequence>
+					<element name="poId" type="string" />
+					<choice>
+						<element name="snapshotId" type="string" />
+						<element name="branchId" type="string" />
+					</choice>
+					<element name="SettingsType" type="string" />
+				</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>    
+
+    <complexType name="tBPDToken">
+		<sequence>
+			<element name="instanceId" type="string" />
+			<element name="createTime" type="dateTime" />
+			<element name="createTimeLong" type="long" />
+			<element name="active" type="boolean" />
+			<element name="tokenId" type="string" />
+		</sequence>
+    </complexType>    
+
+    <complexType name="WorkSchedule">
+		<sequence>
+			<element name="timeScheduleType" type="int" />
+			<element name="timeScheduleName" type="string" />
+			<element name="timeScheduleExpression" type="string" />
+			<element name="timezoneType" type="int" />
+			<element name="timezone" type="string" />
+			<element name="timezoneExpression" type="string" />
+			<element name="holidayScheduleType" type="int" />
+			<element name="holidayScheduleName" type="string" />
+			<element name="holidayScheduleExpression" type="string" />
+		</sequence>
+    </complexType>
+
+    <complexType name="BPDProperties">
+		<sequence>
+			<element name="variables" type="tns:Variable" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="workSchedule" type="tns:WorkSchedule" />
+			<element name="KPIs" type="tns:ProcessKPI" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+    </complexType>
+
+	<complexType name="ILOGVisualModel">
+		<complexContent>
+			<extension base="pref:Data">
+				<sequence>
+					<element name="name" type="string" />
+					<element name="desc" type="string" />
+					<element name="richDesc" type="string" />
+					<element name="poId" type="string" />
+					<element name="poVersionId" type="string" />
+					<element name="identifier" type="string" />
+					<element name="id" type="string" />
+					<element name="width" type="int" />
+					<element name="height" type="int" />
+					<element name="label" type="string" />
+					<element name="items" type="tns:BaseItem" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="links" type="tns:Link" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="properties" type="tns:BPDProperties" />
+					<element name="tasks" type="cmn:Map">
+						<annotation>
+							<documentation>Key is the flow object id, value is an array of task details
+							</documentation>
+						</annotation>
+					</element>
+					<element name="activeTasks" type="cmn:Map">
+						<annotation>
+							<documentation>Key is the flow object id, value is an array of task details
+							</documentation>
+						</annotation>
+					</element>
+					<element name="tokens" type="cmn:Map">
+						<annotation>
+							<documentation>key is the flow object id, and value is an array of tokens in the current BPD
+							</documentation>
+						</annotation>
+					</element>
+					<element name="textPositions" type="cmn:Map" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+    
+    <complexType name="ILOGServiceVisualModel">
+    	<complexContent>
+    		<extension base="tns:ILOGVisualModel">
+    			<sequence>
+				    <element name="serviceType" type="string"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>     
+
+</schema>

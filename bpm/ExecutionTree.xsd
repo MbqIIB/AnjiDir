@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://rest.bpm.ibm.com/v1/data/execution"
+	elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://rest.bpm.ibm.com/v1/data/execution"
+	xmlns:pref="http://rest.bpm.ibm.com/v1/data/root"
+	xmlns:common="http://rest.bpm.ibm.com/v1/data/common">
+
+	<import schemaLocation="BPMRestData.xsd" namespace="http://rest.bpm.ibm.com/v1/data/root" />
+	<import schemaLocation="Common.xsd" namespace="http://rest.bpm.ibm.com/v1/data/common"/>
+	
+	<!--
+	This type contains details related to a process instance.
+    -->
+    <complexType name="ExecutionTree">
+    <complexContent>
+    	<extension base="pref:Data">
+    	<sequence>
+    		<element name="executionStatus" type="string" />
+    		<element name="root" type="tns:ExecutionTreeNode" />
+    	</sequence>
+    	</extension>   
+	</complexContent>
+	</complexType>
+	
+	<complexType name="ExecutionTreeNode">
+		<sequence>
+			<!-- The name of the process -->
+		    <element name="name" type="string" />
+
+		    <!-- The process instance ID -->
+		    <element name="nodeId" type="string" />
+		    
+		    <!--  Child Nodes -->
+		    <element name="children" type="tns:ExecutionTreeNode" minOccurs="0" maxOccurs="unbounded" />
+		    
+		    <!-- Flow Object Id -->
+		    <element name="flowObjectId" type="string" />
+		    
+			<!-- Token ID -->
+			<element name="tokenId" type="string" />
+			
+			<!-- Created Task IDs -->
+			<element name="createdTaskIDs" type="string" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>
