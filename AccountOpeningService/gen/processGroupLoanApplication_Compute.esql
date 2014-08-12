@@ -18,11 +18,8 @@ CREATE COMPUTE MODULE preHTTPCall
 
 		-- serialize
 		SET y = CAST(ASBITSTREAM(OutputRoot.JSON.Data) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
-		
-		SET OutputRoot.Properties.IdentitySourceType ='usernameAndPassword';
-		SET OutputRoot.Properties.IdentitySourceToken = 'admin';
-		SET OutputRoot.Properties.IdentitySourcePassword = 'admin';
-										
+
+		-- set the parameters		
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.action = 'start';
 		SET OutputLocalEnvironment.Destination.HTTP.QueryString.params = y;
 		
