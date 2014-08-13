@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema 
-	targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" 
-	xmlns:tns="http://www.quantiguous.com/FI/loanAccount.xsd" 
-	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:tns="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
 	

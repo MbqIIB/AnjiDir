@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema 
-	targetNamespace="http://www.quantiguous.com/FI/savingAccount.xsd" 
-	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
-	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
-	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
-	xmlns:tns="http://www.quantiguous.com/FI/savingAccount.xsd" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:tns="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
 	<xsd:import namespace="http://www.quantiguous.com/FI/loanAccount.xsd" schemaLocation="loanAccount.xsd"/>
@@ -42,7 +36,7 @@
             <xsd:element name="savingProductCode">
             <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-         <xsd:maxLength value="50" />
+         <xsd:maxLength value="50"/>
       </xsd:restriction>
       </xsd:simpleType>
       </xsd:element>
