@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema 	targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
-	xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
-	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
-	xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
-	xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" >
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/customer.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
    	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
@@ -100,7 +93,7 @@
 	           </xsd:element>
 	           <xsd:element ref="ge:branchCode"/>
 	           <xsd:element ref="ge:branchName"/>
-	           <xsd:element minOccurs="0" maxOccurs="1" ref="ge:operatingRegion"/>
+	           <xsd:element maxOccurs="1" minOccurs="0" ref="ge:operatingRegion"/>
 	           <xsd:element minOccurs="0" ref="tns:aadharNo"/>
 	           <xsd:element minOccurs="0" ref="tns:pensionCardNo"/>
 	           <xsd:element minOccurs="0" ref="tns:rationCardNo"/>
@@ -300,7 +293,7 @@
 	<xsd:element name="newCustomer">
 		<xsd:complexType>
 			<xsd:complexContent>
-				<xsd:extension  base="tns:individualType">
+				<xsd:extension base="tns:individualType">
 					<xsd:sequence>
 						<xsd:element maxOccurs="1" minOccurs="1" ref="savingAccount:savingAccount"/>
 					</xsd:sequence>

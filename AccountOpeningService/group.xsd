@@ -1,16 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.quantiguous.com/FI/group.xsd" 
-	xmlns:customer="http://www.quantiguous.com/FI/customer.xsd" 
-	xmlns:tns="http://www.quantiguous.com/FI/group.xsd" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" >
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/group.xsd" xmlns:customer="http://www.quantiguous.com/FI/customer.xsd" xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:tns="http://www.quantiguous.com/FI/group.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
 	<xsd:import namespace="http://www.quantiguous.com/FI/customer.xsd" schemaLocation="customer.xsd"/>
    	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
    	
      <xsd:complexType name="groupType">
         <xsd:sequence>
-        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId" />
+        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId"/>
            <xsd:element name="externalCenterId">
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
@@ -33,15 +28,15 @@
                  </xsd:restriction>
               </xsd:simpleType>
            </xsd:element>
-           <xsd:element name="groupType" type="xsd:integer" fixed="2">
+           <xsd:element fixed="2" name="groupType" type="xsd:integer">
            	<xsd:annotation>
            		<xsd:documentation>
            			1 - SHG, 2 - JLG 
            		</xsd:documentation>
            	</xsd:annotation>
           </xsd:element>
-           <xsd:element name="minNumber" type="xsd:int" fixed="4"/>
-           <xsd:element name="maxNumber" type="xsd:int" fixed="6"/>
+           <xsd:element fixed="4" name="minNumber" type="xsd:int"/>
+           <xsd:element fixed="6" name="maxNumber" type="xsd:int"/>
 		   <xsd:element maxOccurs="1" minOccurs="1" ref="ge:formationDate"/>
            <xsd:element name="dayOfPeriod">
               <xsd:simpleType>
