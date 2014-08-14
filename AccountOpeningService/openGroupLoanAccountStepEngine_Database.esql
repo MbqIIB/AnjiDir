@@ -1,0 +1,40 @@
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
+
+CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
+BEGIN
+	DECLARE lBatchID CHARACTER;
+	
+	UPDATE Database.RCDSSYSPARAMS SET "VALUE" = RCDSSYSPARAMS.VALUE + 1 WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic;
+		
+	SET lBatchID = THE(SELECT ITEM RCDSSYSPARAMS.VALUE FROM Database.RCDSSYSPARAMS WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic);
+	
+	RETURN CAST(lBatchID AS INTEGER);
+END;
+
+CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
+	CREATE PROCEDURE group(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER) LANGUAGE DATABASE EXTERNAL NAME "dbo.HOPROCESS04";
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE lBatchID INTEGER;
+		DECLARE customerGroup REFERENCE TO Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.*:customerGroup;
+		
+		SET lBatchID = getBatchID('HO_04_BATCHID');
+	
+		--- insert the record	
+		INSERT INTO Database."[HO-GROUP-STAGING]"
+		( 
+			"[EXTERNALCENTERID]",
+			"[CENTERNAME]" 
+		)
+		VALUES
+		( 
+			customerGroup.externalCenterId,
+			customerGroup.centerName
+		 ); 
+
+
+		-- call the procedure to process the record
+		CALL group(lBatchID, 0, 'fileName');
+	END;
+END MODULE;
