@@ -9,12 +9,27 @@ CREATE COMPUTE MODULE preHTTPCall
 		
 		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.ns:processGroupLoanApplication;
 
-		-- Convert the applicants into an array
-		DECLARE applicants REFERENCE TO OutputRoot.JSON.Data.processGroupLoanApplicationRequest.*:applicantGroup.*:applicants;
-		SET lm = LASTMOVE(applicants);
-		SET applicants TYPE = JSON.Array;
+		-- We need just one element
+		DECLARE applicationRequest REFERENCE TO OutputRoot.JSON.Data.*:processGroupLoanApplicationRequest;
+		DECLARE applicants REFERENCE TO applicationRequest.*:applicantGroup.*:applicants;
 
-		-- serialize
+		-- Convert the applicants into an array
+		SET applicants TYPE = JSON.Array;
+		
+		-- move the required element to be the first child
+		DETACH applicationRequest;		
+		ATTACH applicationRequest TO OutputRoot.JSON.Data AS FIRSTCHILD;
+
+		-- remove all other siblings
+		DECLARE ref REFERENCE TO applicationRequest;
+		MOVE ref NEXTSIBLING;
+		WHILE LASTMOVE(ref) DO
+			DELETE FIELD ref;
+			MOVE ref TO applicationRequest;
+			MOVE ref NEXTSIBLING;
+		END WHILE;
+		
+				-- serialize
 		SET y = CAST(ASBITSTREAM(OutputRoot.JSON.Data) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 
 		-- set the parameters		
