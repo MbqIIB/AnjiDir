@@ -12,7 +12,7 @@ BEGIN
 END;
 
 CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
-	CREATE PROCEDURE group(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER) LANGUAGE DATABASE EXTERNAL NAME "dbo.HOPROCESS04";
+	CREATE PROCEDURE group(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
 	
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
@@ -24,17 +24,51 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		--- insert the record	
 		INSERT INTO Database."[HO-GROUP-STAGING]"
 		( 
-			"[EXTERNALCENTERID]",
-			"[CENTERNAME]" 
+			"[BATCHID]",
+			"[EXTERNALGROUPNO]",
+			"[GROUPNAME]",
+			"[GROUPTYPE]",
+			"[MINNUMBER]",
+			"[MAXNUMBERS]",
+			"[FORMATIONDATE]",
+			"[DAYOFPERIOD]",
+			"[MEETINGTIME]",
+			"[MEETINGFREQUENCY]",
+            "[EXTERNALCENTERID]",
+            "[CENTERNAME]",
+            "[MAXCENTERLIMIT]",
+            "[DISTANCEFROMBRANCH]",
+            "[BRANCHCODE]",
+            "[OPERATINGREGIONCODE]",
+            "[DESCRIPTION]",
+            "[COMMENTS]",
+			"[STATUS]"	
 		)
 		VALUES
 		( 
-			customerGroup.externalCenterId,
-			customerGroup.centerName
+			lBatchID,
+			customerGroup.externalId,
+			customerGroup.groupName,
+			customerGroup.groupType,
+			customerGroup.minNumber,
+			customerGroup.maxNumber,
+			customerGroup.formationDate,
+			customerGroup.dayOfPeriod,
+			customerGroup.meetingTime,
+			customerGroup.meetingFrequency,
+			customerGroup.customerGroup.externalCenterId,
+			customerGroup.centerName,
+			customerGroup.maximumCenterLimit,
+			customerGroup.distanceFromBranch,
+			customerGroup.branchCode,
+			customerGroup.operatingRegionCode,
+			'New Group',
+			'Good',
+			'1'
 		 ); 
 
 
 		-- call the procedure to process the record
-		CALL group(lBatchID, 0, 'fileName');
+		CALL group(lBatchID, 0, 'fileName',2);
 	END;
 END MODULE;
