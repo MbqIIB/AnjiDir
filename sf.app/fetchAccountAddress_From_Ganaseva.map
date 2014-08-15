@@ -13,39 +13,39 @@
         </move>
         <select ref="dbselect">
             <input path="$dbselect/ResultSet"/>
-            <output path="LocalEnvironment" var="LocalEnvironment"/>
-            <output path="customer-addresses" var="customer-addresses"/>
+            <output path="customer-addresses" var="customer-addresses3"/>
+            <output path="LocalEnvironment" var="LocalEnvironment2"/>
             <condition>
                 <if>
-                    <input path="." var="ResultSet"/>
-                    <output path="$customer-addresses/."/>
-                    <test lang="xpath">fn:exists($ResultSet)</test>
+                    <input path="." var="ResultSet2"/>
+                    <output path="$customer-addresses3/customer-address"/>
+                    <test lang="xpath">fn:exists($ResultSet2)</test>
                     <foreach>
-                        <input path="$ResultSet/." var="ResultSet1"/>
-                        <output path="customer-address"/>
-                        <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/ADDRESS" var="ADDRESS"/>
+                        <input path="$ResultSet2/." var="ResultSet3"/>
+                        <output path="."/>
+                        <move automap="true">
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/CIF_ID"/>
+                            <output path="cif-id"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/ADDRESS"/>
                             <output path="address"/>
                         </move>
-                        <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/CITY" var="CITY"/>
+                        <move automap="true">
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/CITY"/>
                             <output path="city"/>
                         </move>
-                        <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/COUNTRY" var="COUNTRY"/>
+                        <move automap="true">
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/STATE"/>
+                            <output path="state"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/COUNTRY"/>
                             <output path="country"/>
                         </move>
                         <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/STATE" var="STATE"/>
-                            <output path="state"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/PIN" var="PIN"/>
+                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/PIN" var="PIN1"/>
                             <output path="zip"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/CIF_ID" var="CIFID"/>
-                            <output path="cif-id"/>
                         </move>
                         <assign value="Mailing">
                             <output path="addresscategory"/>
@@ -53,8 +53,8 @@
                     </foreach>
                 </if>
                 <else>
-                    <output path="$LocalEnvironment/."/>
-                    <assign value="404">
+                    <output path="$LocalEnvironment2/."/>
+                    <assign value="Mailing">
                         <output path="Destination/HTTP/ReplyStatusCode"/>
                     </assign>
                 </else>
