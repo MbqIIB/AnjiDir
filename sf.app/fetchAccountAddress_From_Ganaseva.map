@@ -47,6 +47,9 @@
                             <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/CIF_ID" var="CIFID"/>
                             <output path="cif-id"/>
                         </move>
+                        <assign value="Mailing">
+                            <output path="addresscategory"/>
+                        </assign>
                     </foreach>
                 </if>
                 <else>
