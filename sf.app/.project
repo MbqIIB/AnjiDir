@@ -3,7 +3,7 @@
 	<name>sf.app</name>
 	<comment></comment>
 	<projects>
-		<project>gefu.ddp</project>
+		<project>sf.ddp</project>
 		<project>sf.appJava</project>
 	</projects>
 	<buildSpec>
