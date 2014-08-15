@@ -88,7 +88,7 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 			'1'
 		 ); 
 		-- call the procedure to process the record
-		CALL group(lBatchID, 0, 'fileName',2);
+		CALL group(lBatchID, 0, 'file_'||Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId,2);
 		-- check if the record is processed
 		CALL verifyRecord(customerGroup.externalId);
 		
