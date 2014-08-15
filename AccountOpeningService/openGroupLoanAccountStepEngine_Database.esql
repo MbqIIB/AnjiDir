@@ -13,7 +13,21 @@ END;
 
 CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 	CREATE PROCEDURE group(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
+
+	CREATE PROCEDURE verifyRecord(IN piExternalId INTEGER)
+	BEGIN 
+		DECLARE lCount INTEGER;
+		
+		SET lCount = THE(SELECT COUNT(1) FROM Database."[HO-GROUP-STAGING]" , Database.RCDSGROUPS  WHERE  RCDSGROUPS.EXTERNALGROUPNO = "[HO-GROUP-STAGING]"."[EXTERNALGROUPNO]" AND "[HO-GROUP-STAGING]"."[EXTERNALGROUPNO]" = piExternalId AND "[HO-GROUP-STAGING]"."[IS-ERROR]" = 'false');
+	    
+	    DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+		
+		IF lCount = 0 THEN
+			PROPAGATE TO TERMINAL 'out1';
+		END IF;
 	
+	END;
+
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE lBatchID INTEGER;
@@ -66,9 +80,9 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 			'Good',
 			'1'
 		 ); 
-
-
 		-- call the procedure to process the record
 		CALL group(lBatchID, 0, 'fileName',2);
+		-- check if the record is processed
+		CALL verifyRecord(customerGroup.externalId);
 	END;
 END MODULE;

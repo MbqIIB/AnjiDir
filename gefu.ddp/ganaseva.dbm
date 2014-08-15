@@ -10,7 +10,7 @@
       <details xmi:id="_0rzasiN3EeS_s_JvSXF_Cw" key="SQL_Statement_KEY" value="insert into dbo.rcdssysparams values ('HO_01_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_02_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_03_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_04_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_06_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_A0_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_CU_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_SA_BATCHID','*','200’);"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
+  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw _U2nMECR6EeS0nvjzbsCNRw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
   <SQLTables:PersistentTable xmi:id="_7_XhIBCuEeS6BqAOuK3k2g" name="[HO-CENTER-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_7_XhIRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_XhIhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
@@ -1540,6 +1540,14 @@
     </columns>
     <columns xmi:id="_XWF0cRuhEeSIp8X_WDemsQ" name="STATUS" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_XWF0chuhEeSIp8X_WDemsQ" name="CHAR"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_U2nMECR6EeS0nvjzbsCNRw" name="RCDSGROUPS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_YWP7sCR6EeS0nvjzbsCNRw" name="GROUPID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_bU9IgCR6EeS0nvjzbsCNRw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_cGEcYCR6EeS0nvjzbsCNRw" name="EXTERNALGROUPNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_gJDwsCR6EeS0nvjzbsCNRw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
     </columns>
   </SQLTables:PersistentTable>
 </xmi:XMI>
