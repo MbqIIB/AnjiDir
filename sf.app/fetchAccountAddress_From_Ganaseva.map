@@ -54,7 +54,7 @@
                 </if>
                 <else>
                     <output path="$LocalEnvironment2/."/>
-                    <assign value="Mailing">
+                    <assign value="404">
                         <output path="Destination/HTTP/ReplyStatusCode"/>
                     </assign>
                 </else>
