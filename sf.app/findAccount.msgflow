@@ -10,7 +10,7 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/sf.app/icons/full/obj30/findAccount.gif"/>
     <composition>
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="42,90" URLSpecifier="/find_account/*/*.xml" setDestinationList="true" parseQueryString="true">
-        <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
+        <translation xmi:type="utility:ConstantString" string="HTTPInput"/>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="767,340">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>

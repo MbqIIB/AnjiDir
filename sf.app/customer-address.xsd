@@ -50,10 +50,10 @@
    	
    <xsd:complexType name="cutomer-addresses-type">
    	<xsd:sequence minOccurs="0" maxOccurs="unbounded">
-		<xsd:element ref="customer-address"></xsd:element>
+		<xsd:element name="customer-address" type="customer-address-type"></xsd:element>
    	</xsd:sequence>
    </xsd:complexType>
 
    <xsd:element name="customer-addresses" type="cutomer-addresses-type"></xsd:element>
-   <xsd:element name="customer-address" type="customer-address-type"></xsd:element>
+   
 </xsd:schema>
