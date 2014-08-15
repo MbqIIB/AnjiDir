@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customer-key.xsd" var="var"/>
+    <input path="db:database(/finesb.dbm,FINESB,db:schema-tables(dbo,CUSTOMER_ACCOUNTS))" var="FINESB"/>
+    <output path="/customer-address.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="fetchAccountAddress_From_Ganaseva">
+        <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$FINESB/db:select(fn:false(),ResultSet(dbo/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER,dbo/CUSTOMER_ACCOUNTS/NAME,dbo/CUSTOMER_ACCOUNTS/CIF_ID,dbo/CUSTOMER_ACCOUNTS/EMAIL_ID,dbo/CUSTOMER_ACCOUNTS/MOBILE_NO,dbo/CUSTOMER_ACCOUNTS/SEGMENT,dbo/CUSTOMER_ACCOUNTS/RM_ID,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,dbo/CUSTOMER_ACCOUNTS/ADDRESS,dbo/CUSTOMER_ACCOUNTS/CITY,dbo/CUSTOMER_ACCOUNTS/STATE,dbo/CUSTOMER_ACCOUNTS/COUNTRY,dbo/CUSTOMER_ACCOUNTS/PIN,dbo/CUSTOMER_ACCOUNTS/SCHM_CODE,dbo/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION),db:where('dbo.CUSTOMER_ACCOUNTS.CIF_ID =  ?','?'=$MessageAssembly/customer-key/cif-id))" var="dbselect"/>
+        <output path="mb:msg(customer-addresses,assembly,XMLNSC,Properties,LocalEnvironment)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet"/>
+            <output path="LocalEnvironment" var="LocalEnvironment"/>
+            <output path="customer-addresses" var="customer-addresses"/>
+            <condition>
+                <if>
+                    <input path="." var="ResultSet"/>
+                    <output path="$customer-addresses/."/>
+                    <test lang="xpath">fn:exists($ResultSet)</test>
+                    <foreach>
+                        <input path="$ResultSet/." var="ResultSet1"/>
+                        <output path="customer-address"/>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/ADDRESS" var="ADDRESS"/>
+                            <output path="address"/>
+                        </move>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/CITY" var="CITY"/>
+                            <output path="city"/>
+                        </move>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/COUNTRY" var="COUNTRY"/>
+                            <output path="country"/>
+                        </move>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/STATE" var="STATE"/>
+                            <output path="state"/>
+                        </move>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/PIN" var="PIN"/>
+                            <output path="zip"/>
+                        </move>
+                        <move>
+                            <input path="$ResultSet1/dbo/CUSTOMER_ACCOUNTS/CIF_ID" var="CIFID"/>
+                            <output path="cif-id"/>
+                        </move>
+                        <assign value="Mailing">
+                            <output path="addresscategory"/>
+                        </assign>
+                    </foreach>
+                </if>
+                <else>
+                    <output path="$LocalEnvironment/."/>
+                    <assign value="404">
+                        <output path="Destination/HTTP/ReplyStatusCode"/>
+                    </assign>
+                </else>
+            </condition>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
