@@ -7,7 +7,8 @@ CREATE COMPUTE MODULE recordFailed
 		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:externalId;
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.errorMessage = 'Group Creation Failed';
-		RETURN TRUE;
+		PROPAGATE TO TERMINAL 'out1';
+		RETURN FALSE;
 	END;
 END MODULE;
 
@@ -17,6 +18,7 @@ CREATE COMPUTE MODULE recordProcessed
 		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.success.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:externalId;
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.success.successMessage = 'Group Created Successfully';
-		RETURN TRUE;
+		PROPAGATE TO TERMINAL 'out1';
+		RETURN FALSE;
 	END;
 END MODULE;

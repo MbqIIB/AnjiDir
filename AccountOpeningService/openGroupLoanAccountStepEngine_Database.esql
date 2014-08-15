@@ -1,3 +1,5 @@
+DECLARE ns61 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ns62 NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
 DECLARE ns NAMESPACE 'http://AccountOpeningService';
 
 CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
@@ -24,6 +26,8 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		
 		IF lCount = 0 THEN
 			PROPAGATE TO TERMINAL 'out1';
+		ELSE
+			PROPAGATE TO TERMINAL 'out2';
 		END IF;
 	
 	END;
@@ -31,9 +35,12 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE lBatchID INTEGER;
+		DECLARE lTime CHARACTER;
 		DECLARE customerGroup REFERENCE TO Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.*:customerGroup;
 		
 		SET lBatchID = getBatchID('HO_04_BATCHID');
+		SET lTime = Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:meetingTime;
+		SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
 	
 		--- insert the record	
 		INSERT INTO Database."[HO-GROUP-STAGING]"
@@ -61,21 +68,21 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		VALUES
 		( 
 			lBatchID,
-			customerGroup.externalId,
+			Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId,
 			customerGroup.groupName,
 			customerGroup.groupType,
 			customerGroup.minNumber,
 			customerGroup.maxNumber,
-			customerGroup.formationDate,
+			Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:formationDate,
 			customerGroup.dayOfPeriod,
-			customerGroup.meetingTime,
+			lTime,
 			customerGroup.meetingFrequency,
-			customerGroup.customerGroup.externalCenterId,
+			customerGroup.externalCenterId,
 			customerGroup.centerName,
 			customerGroup.maximumCenterLimit,
 			customerGroup.distanceFromBranch,
-			customerGroup.branchCode,
-			customerGroup.operatingRegionCode,
+			Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:branchCode,
+			Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:operatingRegion.operatingRegionCode,
 			'New Group',
 			'Good',
 			'1'
@@ -84,5 +91,7 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		CALL group(lBatchID, 0, 'fileName',2);
 		-- check if the record is processed
 		CALL verifyRecord(customerGroup.externalId);
+		
+		RETURN FALSE;
 	END;
 END MODULE;

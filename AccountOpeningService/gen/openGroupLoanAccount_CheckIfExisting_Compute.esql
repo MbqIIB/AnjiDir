@@ -8,7 +8,7 @@ CREATE COMPUTE MODULE openGroupLoanAccount_CheckIfExisting_Compute
 	BEGIN
 		CALL CopyMessageHeaders();
 		CALL CopyEntireMessage();
-		RETURN TRUE;
+		RETURN FALSE;
 	END;
 
 	CREATE PROCEDURE CopyMessageHeaders() BEGIN
@@ -22,16 +22,20 @@ CREATE COMPUTE MODULE openGroupLoanAccount_CheckIfExisting_Compute
 	END;
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		DECLARE lExternalId CHARACTER;
 		DECLARE lCount INTEGER;
+		SET OutputRoot = InputRoot;
 		SET lExternalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:externalId;
 		SET lCount = THE(SELECT COUNT(1) FROM Database.RCDSGROUPS WHERE RCDSGROUPS.EXTERNALGROUPNO = lExternalId);
 		IF lCount > 0 THEN
+			DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+			SET OutputRoot.XMLNSC = null;
 			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.externalId= lExternalId;
 			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.errorMessage = 'External Group ID already present in the system';
 			PROPAGATE TO TERMINAL 'out1';
+		ELSE
+			PROPAGATE TO TERMINAL 'out2';
 		END IF;
-		SET OutputRoot = InputRoot;
+
 	END;
 END MODULE;
