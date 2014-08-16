@@ -16,11 +16,11 @@ END;
 CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 	CREATE PROCEDURE group(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
 
-	CREATE PROCEDURE verifyRecord(IN piExternalId INTEGER)
+	CREATE PROCEDURE verifyRecord(IN piExternalId CHARACTER)
 	BEGIN 
 		DECLARE lCount INTEGER;
 		
-		SET lCount = THE(SELECT COUNT(1) FROM Database."[HO-GROUP-STAGING]" , Database.RCDSGROUPS  WHERE  RCDSGROUPS.EXTERNALGROUPNO = "[HO-GROUP-STAGING]"."[EXTERNALGROUPNO]" AND "[HO-GROUP-STAGING]"."[EXTERNALGROUPNO]" = piExternalId AND "[HO-GROUP-STAGING]"."[IS-ERROR]" = 'false');
+		SET lCount = THE(SELECT COUNT(1) FROM Database.RCDSGROUPS WHERE  RCDSGROUPS.EXTERNALGROUPNO = piExternalId);
 	    
 	    DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		
@@ -36,12 +36,13 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 	BEGIN
 		DECLARE lBatchID INTEGER;
 		DECLARE lTime CHARACTER;
+		DECLARE lDate CHARACTER;
 		DECLARE customerGroup REFERENCE TO Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.*:customerGroup;
 		
 		SET lBatchID = getBatchID('HO_04_BATCHID');
 		SET lTime = Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:meetingTime;
 		SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
-	
+		SET lDate = CAST(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
 		--- insert the record	
 		INSERT INTO Database."[HO-GROUP-STAGING]"
 		( 
@@ -73,7 +74,7 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 			customerGroup.groupType,
 			customerGroup.minNumber,
 			customerGroup.maxNumber,
-			Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:formationDate,
+			lDate,
 			customerGroup.dayOfPeriod,
 			lTime,
 			customerGroup.meetingFrequency,
@@ -90,7 +91,7 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		-- call the procedure to process the record
 		CALL group(lBatchID, 0, 'file_'||Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId,2);
 		-- check if the record is processed
-		CALL verifyRecord(customerGroup.externalId);
+		CALL verifyRecord(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId);
 		
 		RETURN FALSE;
 	END;
