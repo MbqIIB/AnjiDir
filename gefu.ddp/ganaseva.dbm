@@ -10,7 +10,7 @@
       <details xmi:id="_0rzasiN3EeS_s_JvSXF_Cw" key="SQL_Statement_KEY" value="insert into dbo.rcdssysparams values ('HO_01_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_02_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_03_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_04_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_06_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_A0_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_CU_BATCHID','*','200');&#xA;insert into dbo.rcdssysparams values ('HO_SA_BATCHID','*','200’);"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw _U2nMECR6EeS0nvjzbsCNRw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
+  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw _U2nMECR6EeS0nvjzbsCNRw _zevCISUNEeSksZFn7idYYw _8oL58CUNEeSksZFn7idYYw _Aiuc4CUOEeSksZFn7idYYw _CWpRkCUOEeSksZFn7idYYw _0MwwUCUOEeSksZFn7idYYw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_zWxtkBoYEeSuhbqUdtWxWg _NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
   <SQLTables:PersistentTable xmi:id="_7_XhIBCuEeS6BqAOuK3k2g" name="[HO-CENTER-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_7_XhIRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_XhIhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
@@ -1548,6 +1548,61 @@
     </columns>
     <columns xmi:id="_cGEcYCR6EeS0nvjzbsCNRw" name="EXTERNALGROUPNO">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_gJDwsCR6EeS0nvjzbsCNRw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_zevCISUNEeSksZFn7idYYw" name="RCDSCENTERDETAILS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_LCbV8CUOEeSksZFn7idYYw" name="CENTERID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_PJwXsCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_LEKbUCUOEeSksZFn7idYYw" name="EXTERNALCENTERID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_PrKboCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_8oL58CUNEeSksZFn7idYYw" name="RCDSCUSTOMERS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_RdQEUCUOEeSksZFn7idYYw" name="CUSTOMERID">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WKNisCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_Re97kCUOEeSksZFn7idYYw" name="EXTERNALCUSTNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_WuCBcCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_Aiuc4CUOEeSksZFn7idYYw" name="RCDSLOANS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_aZxTYCUOEeSksZFn7idYYw" name="LOANREFNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_cZ9CcCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_ab8doCUOEeSksZFn7idYYw" name="EXTERNALLOANNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_f4eXwCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_CWpRkCUOEeSksZFn7idYYw" name="RCDSSAVINGS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_mpSkQCUOEeSksZFn7idYYw" name="SAVINGACCNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_qx5_cCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xmi:id="_mrKMgCUOEeSksZFn7idYYw" name="EXTERNALACCNO">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_rWEccCUOEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+  </SQLTables:PersistentTable>
+  <SQLTables:PersistentTable xmi:id="_0MwwUCUOEeSksZFn7idYYw" name="ERRORHANDLER" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+    <columns xmi:id="_n7rjwCUPEeSksZFn7idYYw" name="ERROR_ID">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_pevR8CUPEeSksZFn7idYYw" name="INT" primitiveType="INTEGER"/>
+    </columns>
+    <columns xmi:id="_n9KxgCUPEeSksZFn7idYYw" name="ERROR_MSG">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_n9KxgSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_oAGwwCUPEeSksZFn7idYYw" name="ERROR_NUM">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oAGwwSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_oBcNgCUPEeSksZFn7idYYw" name="ERROR_LIN">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oBcNgSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_oCyRUCUPEeSksZFn7idYYw" name="ERROR_PROC">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oCyRUSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_oFQ9kCUPEeSksZFn7idYYw" name="[BATCH-ID]">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oFQ9kSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+    </columns>
+    <columns xmi:id="_oGvkQCUPEeSksZFn7idYYw" name="[SYSTEM-DATE]">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oGvkQSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
     </columns>
   </SQLTables:PersistentTable>
 </xmi:XMI>
