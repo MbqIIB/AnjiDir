@@ -24,7 +24,8 @@ CREATE COMPUTE MODULE validateRequest
 		-- check for duplicate customer
 		IF isDuplicateGroup(inRequest.ns1:customerGroup.ns2:externalId, lInternalID) THEN
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Another Group already exists, ExternalId : ' || inRequest.ns1:customerGroup.ns2:externalId ||  ' InternalId : ' || lInternalID;
-			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;		
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+			SET i = i + 1;
 		END IF;
 		
 		IF OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500 THEN
