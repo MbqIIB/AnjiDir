@@ -1,0 +1,52 @@
+BROKER SCHEMA openGroupLoanAccount
+
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+DECLARE ns1 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ns2 NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
+
+CREATE COMPUTE MODULE validateRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE i INTEGER 1;
+		DECLARE lInternalID CHARACTER;
+		DECLARE inRequest REFERENCE TO InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest;				
+
+		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
+		
+		-- check for duplicate groups
+		IF isDuplicateGroup(inRequest.ns1:customerGroup.ns2:externalId, lInternalID) THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Group already exists, ExternalId : ' || inRequest.ns1:customerGroup.ns2:externalId ||  ' InternalId : ' || lInternalID;
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+			SET i = i + 1;
+		END IF;
+		
+		-- check for duplicate customer
+		IF isDuplicateGroup(inRequest.ns1:customerGroup.ns2:externalId, lInternalID) THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Another Group already exists, ExternalId : ' || inRequest.ns1:customerGroup.ns2:externalId ||  ' InternalId : ' || lInternalID;
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;		
+		END IF;
+		
+		IF OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500 THEN
+			-- duplicates are errors by the client, hence the faultcode
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		ELSE
+			-- no errors, we copy the input message and proceed
+			SET OutputRoot = InputRoot;
+		END IF;
+	END;
+	
+	
+	-- check group
+	CREATE FUNCTION isDuplicateGroup(IN piExternalID CHARACTER, OUT poInternalID CHARACTER) RETURNS BOOLEAN
+	BEGIN
+		SET poInternalID = NULL;
+		SET poInternalID = THE(SELECT ITEM RCDSGROUPS.GROUPID FROM Database.RCDSGROUPS WHERE RCDSGROUPS.EXTERNALGROUPNO = piExternalID);
+		IF poInternalID IS NOT NULL THEN
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+	
+
+END MODULE;
