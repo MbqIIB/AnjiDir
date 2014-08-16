@@ -1,0 +1,110 @@
+BROKER SCHEMA gen
+
+DECLARE ns61 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ns62 NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+
+CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
+BEGIN
+	DECLARE lBatchID CHARACTER;
+	
+	UPDATE Database.RCDSSYSPARAMS SET "VALUE" = RCDSSYSPARAMS.VALUE + 1 WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic;
+		
+	SET lBatchID = THE(SELECT ITEM RCDSSYSPARAMS.VALUE FROM Database.RCDSSYSPARAMS WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic);
+	
+	RETURN CAST(lBatchID AS INTEGER);
+END;
+
+CREATE DATABASE MODULE addCenter_Request_Response_Database
+	CREATE PROCEDURE center(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
+
+	CREATE PROCEDURE verifyRecord(IN piExternalId CHARACTER)
+	BEGIN 
+		DECLARE lCount INTEGER;
+		
+		SET lCount = THE(SELECT COUNT(1) FROM Database.RCDSCENTERDETAILS WHERE  RCDSCENTERDETAILS.EXTERNALCENTERID = piExternalId);
+	    
+		IF lCount = 0 THEN
+			PROPAGATE TO TERMINAL 'out1';
+		ELSE
+			PROPAGATE TO TERMINAL 'out2';
+		END IF;
+	
+	END;
+
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE lBatchID INTEGER;
+		DECLARE lTime CHARACTER;
+		DECLARE lDate CHARACTER;
+		DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:*.center;
+		
+		SET lBatchID = getBatchID('HO_02_BATCHID');
+		SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:meetingTime;
+		SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
+		SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
+		--- insert the record
+		INSERT INTO Database."[HO-CENTER-STAGING]"
+		( 
+			"[BATCHID]",
+			"[EXTERNALCENTERID]",
+			"[CENTERNAME]",
+			"[DESCRIPTION]",
+			"[BRANCHCODE]",
+			"[OPERATINGREGIONCODE]",
+			"[MAXNOOFIND]",
+			"[SERVICINGAGENT]",
+			"[FORMATIONDATE]",
+			"[MEETINGTIME]",
+			"[CENTERLEADER]",
+			"[ADDRESS1]",
+			"[ADDRESS2]",
+			"[ADDRESS3]",
+			"[STATE]",
+			"[CITY]",
+			"[PINCODE]",
+			"[PRIMARYCONTACT]",
+			"[PRIMARYPHONENO]",
+			"[PRIMARYCONTACTMAILID]",
+			"[SECONDARYCONTACT]",
+			"[SECONDARYPHONENO]",
+			"[SECONDARYCONTACTMAILID]",
+			"[FAXNO]",
+			"[EXTERNALAGENTID]" 
+		)
+		VALUES
+		(
+			lBatchID,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:externalId,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.centerName,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.description,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.branchCode,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:operatingRegion.operatingRegionCode,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.maximumIndividuals,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.servicingAgent,
+			lDate,
+			lTime,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.centerLeader,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line1,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line2,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line3,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.stateCode,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.cityCode,
+			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.pin,
+			'DUMMYPRIMARY',
+			'9999999999',
+			'dummyprimary@xyz.com',
+			'DUMMYSECONDARY',
+			'8888888888',
+			'dummysecondary@xyz.com',
+			'022918723128',
+			'DEFAULT'
+		);
+
+		-- call the procedure to process the record
+		CALL center(lBatchID, 0, 'file_'||Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId,1);
+		-- check if the record is processed
+		CALL verifyRecord(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId);
+		
+		RETURN FALSE;
+	END;
+END MODULE;
