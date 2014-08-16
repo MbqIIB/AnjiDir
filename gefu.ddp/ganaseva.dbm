@@ -1472,7 +1472,7 @@
     <parameters xmi:id="_7_NGgBoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_L-WDwBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUBshoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_bqHZEBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-04] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSGROUPS (GROUPID, EXTERNALGROUPNO)&#xA;       SELECT EXTERNALGROUPNO, EXTERNALGROUPNO&#xA;       FROM dbo.[HO-GROUP-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
+    <source xmi:id="_bqHZEBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-04] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;DECLARE @externalID NVARCHAR(50)&#xA;SELECT EXTERNALGROUPNO INTO #Temp  FROM [HO-GROUP-STAGING] WHERE BATCHID = @batchid;&#xA;WHILE  EXISTS( SELECT * FROM #Temp)&#xA;  BEGIN&#xA;    SELECT TOP 1 @externalID =  EXTERNALGROUPNO FROM  #Temp&#xA;    IF @externalID = '12345678'&#xA;      BEGIN&#xA;      UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 1, ERROR_DESCRIPTION = 'ERROR IN HO TABLE' WHERE EXTERNALGROUPNO = @externalID&#xA;      END&#xA;    ELSE IF @externalID = '87654321'&#xA;      BEGIN&#xA;      UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 1 WHERE EXTERNALGROUPNO = @externalID&#xA;      INSERT INTO dbo.ERRORHANDLER (ERROR_ID,ERROR_MSG,ERROR_NUM,ERROR_LIN,[BATCH-ID],[SYSTEM-DATE])&#xA;          VALUES (@batchid,'ERROR MESSGAE FROM ERROR HANDLER', @batchid,@batchid,@batchid,current_timestamp)&#xA;      END&#xA;    ELSE&#xA;      BEGIN&#xA;      UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 0 WHERE EXTERNALGROUPNO = @externalID&#xA;      INSERT INTO dbo.RCDSGROUPS VALUES (@externalID,@externalID)&#xA;      END&#xA;    DELETE FROM #Temp WHERE EXTERNALGROUPNO = @externalID&#xA;  END"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_objgsBoZEeSuhbqUdtWxWg" name="[HO-PROCESS-01]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_8kzt8BoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1587,22 +1587,22 @@
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_pevR8CUPEeSksZFn7idYYw" name="INT" primitiveType="INTEGER"/>
     </columns>
     <columns xmi:id="_n9KxgCUPEeSksZFn7idYYw" name="ERROR_MSG">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_n9KxgSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zFJKgCUaEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="200"/>
     </columns>
     <columns xmi:id="_oAGwwCUPEeSksZFn7idYYw" name="ERROR_NUM">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oAGwwSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_s4T00CUaEeSksZFn7idYYw" name="INT" primitiveType="INTEGER"/>
     </columns>
     <columns xmi:id="_oBcNgCUPEeSksZFn7idYYw" name="ERROR_LIN">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oBcNgSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_uBOksCUaEeSksZFn7idYYw" name="INT" primitiveType="INTEGER"/>
     </columns>
     <columns xmi:id="_oCyRUCUPEeSksZFn7idYYw" name="ERROR_PROC">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oCyRUSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zmqjMCUaEeSksZFn7idYYw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="200"/>
     </columns>
     <columns xmi:id="_oFQ9kCUPEeSksZFn7idYYw" name="[BATCH-ID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oFQ9kSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_uXwOUCUaEeSksZFn7idYYw" name="INT" primitiveType="INTEGER"/>
     </columns>
     <columns xmi:id="_oGvkQCUPEeSksZFn7idYYw" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_oGvkQSUPEeSksZFn7idYYw" name="CHAR" length="5"/>
+      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_0oiP4CUaEeSksZFn7idYYw" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
 </xmi:XMI>
