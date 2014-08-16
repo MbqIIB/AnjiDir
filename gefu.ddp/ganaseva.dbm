@@ -1447,7 +1447,7 @@
     <parameters xmi:id="_UpjV0BoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_LOvy0BoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUBsBoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_NKPEkBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-CU] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-CUSTOMERHANDOFF-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_NKPEkBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-CU] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-CUSTOMERHANDOFF-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSCUSTOMERS (CUSTOMERID, EXTERNALCUSTNO)&#xA;       SELECT [EXTERNAL-CUSTOMER-ID], [EXTERNAL-CUSTOMER-ID]&#xA;       FROM dbo.[HO-CUSTOMERHANDOFF-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <zSeries:ZSeriesCharacterSet xmi:id="_kEFKIBoZEeSuhbqUdtWxWg" CharacterStringDataType="_j2ahkBoZEeSuhbqUdtWxWg"/>
   <SQLRoutines:Procedure xmi:id="_md3E8BoZEeSuhbqUdtWxWg" name="[HO-PROCESS-02]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
@@ -1460,7 +1460,7 @@
     <parameters xmi:id="_7WkZMBoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Ll68sBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUBsRoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_XvMboBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-02] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-CENTER-STAGING]  SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_XvMboBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-02] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-CENTER-STAGING]  SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSCENTERDETAILS (EXTERNALCENTERID, CENTERID)&#xA;       SELECT EXTERNALCENTERID, EXTERNALCENTERID&#xA;       FROM dbo.[HO-CENTER-STAGING] &#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_nhiIcBoZEeSuhbqUdtWxWg" name="[HO-PROCESS-04]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_758zEBoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1472,7 +1472,7 @@
     <parameters xmi:id="_7_NGgBoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_L-WDwBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUBshoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_bqHZEBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-04] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_bqHZEBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-04] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-GROUP-STAGING]  SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSGROUPS (GROUPID, EXTERNALGROUPNO)&#xA;       SELECT EXTERNALGROUPNO, EXTERNALGROUPNO&#xA;       FROM dbo.[HO-GROUP-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_objgsBoZEeSuhbqUdtWxWg" name="[HO-PROCESS-01]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_8kzt8BoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1484,7 +1484,7 @@
     <parameters xmi:id="_8oLLABoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_MhhpUBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUowBoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_dHWzIBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-01] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-LOAN-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_dHWzIBoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-01] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-LOAN-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSLOANS (LOANREFNO, EXTERNALLOANNO)&#xA;       SELECT EXTERNALLOANNO, EXTERNALLOANNO&#xA;       FROM dbo.[HO-LOAN-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_pf888BoZEeSuhbqUdtWxWg" name="[HO-PROCESS-06]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_9b5G8BoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1496,7 +1496,7 @@
     <parameters xmi:id="_9fGL8BoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_M9RKIBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUowRoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_eW028BoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-06] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-DISBURSAL-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_eW028BoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-06] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-DISBURSAL-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSGROUPS (GROUPID, EXTERNALGROUPNO)&#xA;       SELECT EXTERNALGROUPNO, EXTERNALGROUPNO&#xA;       FROM dbo.[HO-GROUP-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <SQLRoutines:Procedure xmi:id="_4R_08BoZEeSuhbqUdtWxWg" name="[HO-PROCESS-A0]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_-F8JgBoZEeSuhbqUdtWxWg" name="@batchid">
@@ -1508,7 +1508,7 @@
     <parameters xmi:id="_-JSYcBoZEeSuhbqUdtWxWg" name="@filename">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_NdUjMBoaEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_NeUowhoaEeSuhbqUdtWxWg"/>
     </parameters>
-    <source xmi:id="_f5QTABoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-A0] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-SAVING-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid"/>
+    <source xmi:id="_f5QTABoaEeSuhbqUdtWxWg" body="CREATE PROCEDURE [HO-PROCESS-A0] @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;UPDATE dbo.[HO-SAVING-STAGING] SET [IS-ERROR] = 0 WHERE [BATCHID] = @batchid;&#xA;&#xA;INSERT INTO dbo.RCDSSAVINGS (SAVINGACCNO, EXTERNALACCNO)&#xA;       SELECT EXTERNALACCOUNNO, EXTERNALACCOUNNO&#xA;       FROM dbo.[HO-SAVING-STAGING]&#xA;       WHERE BATCHID = @batchid;"/>
   </SQLRoutines:Procedure>
   <zSeries:ZSeriesCharacterSet xmi:id="_NeUBsBoaEeSuhbqUdtWxWg" CharacterStringDataType="_LOvy0BoaEeSuhbqUdtWxWg"/>
   <zSeries:ZSeriesCharacterSet xmi:id="_NeUBsRoaEeSuhbqUdtWxWg" CharacterStringDataType="_Ll68sBoaEeSuhbqUdtWxWg"/>
