@@ -29,7 +29,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="525,140" computeExpression="esql://routine/gen#recordFailed.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="recordFailed"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="86,20">
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="86,50">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="openGroupLoanAccount/openGroup" pluginId="AccountOpeningService"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
