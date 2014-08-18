@@ -211,7 +211,7 @@
     </columns>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_7_YvQBCuEeS6BqAOuK3k2g" name="[HO-CUSTOMERHANDOFF-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_YvQRCuEeS6BqAOuK3k2g" name="[ID" nullable="false">
+    <columns xmi:id="_7_YvQRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_YvQhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
       <identitySpecifier xmi:id="_7_YvQxCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
     </columns>
@@ -260,7 +260,7 @@
     <columns xmi:id="_7_YvYBCuEeS6BqAOuK3k2g" name="[GENDER]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvYRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
     </columns>
-    <columns xmi:id="_7_YvYhCuEeS6BqAOuK3k2g" name="[MARITALSTATUS">
+    <columns xmi:id="_7_YvYhCuEeS6BqAOuK3k2g" name="[MARITALSTATUS]">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_YvYxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
     </columns>
     <columns xmi:id="_7_YvZBCuEeS6BqAOuK3k2g" name="[NATIONALITY]">
