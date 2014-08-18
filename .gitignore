@@ -19,6 +19,7 @@ BARfiles/
 TestClientBarFiles/
 trace.out
 trace.xml
+*.ddp/*.sql
 
 ##### eclipse specific  -- https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
 
