@@ -14,8 +14,32 @@
          <xsd:element name="address" type="dt:addressType"/>
       </xsd:sequence>
    </xsd:complexType>
-   <xsd:element name="savingAccount">
-      <xsd:complexType>
+   
+      <xsd:complexType name="savingAccountType">
+   		<xsd:complexContent>
+   			<xsd:extension base="tns:savingType">
+   				<xsd:sequence>
+   				    <xsd:element maxOccurs="1" minOccurs="0" ref="ge:batchID"/>
+		            <xsd:element maxOccurs="1" minOccurs="1" name="loanAccount" type="loanAccount:loanAccountType"/>
+   				</xsd:sequence>
+   			</xsd:extension>
+   		</xsd:complexContent>
+   	</xsd:complexType>
+   	
+   	<xsd:element name="savingAccount" type="tns:savingApplicantType"/>
+   	
+   	<xsd:complexType name="savingApplicantType">
+   	   		<xsd:complexContent>
+   			<xsd:extension base="tns:savingType">
+   				<xsd:sequence>
+            		<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
+   				</xsd:sequence>
+   			</xsd:extension>
+   		</xsd:complexContent>   	
+   	</xsd:complexType>
+   
+   
+      <xsd:complexType name="savingType">
          <xsd:sequence>
         	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId">
                 <xsd:annotation>
@@ -44,13 +68,10 @@
  			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
             <xsd:element name="accountOpeningDate" type="xsd:date"/>
             <xsd:element minOccurs="0" ref="tns:nominee"/>
- 
-            <xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
-            
+
          </xsd:sequence>
       </xsd:complexType>
-   </xsd:element>
-   
+         
  	<xsd:element name="nominee">
 	    <xsd:complexType>
 	       <xsd:complexContent>

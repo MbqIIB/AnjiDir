@@ -55,6 +55,7 @@
           </xsd:restriction>
        </xsd:simpleType>
     </xsd:element>	
+    <xsd:element name="batchID" type="xsd:int"/>
 	<xsd:element name="dateOfBirth" type="xsd:date"/>
 	<xsd:element name="barcodeNo">
 	   <xsd:simpleType>

@@ -72,6 +72,7 @@
    			<xsd:complexContent>
    				<xsd:extension base="tns:groupType">
    					<xsd:sequence>
+   					    <xsd:element minOccurs="0" maxOccurs="1" ref="ge:batchID"/>
    						<xsd:element name="customers">
 				           	<xsd:complexType>
 				           		<xsd:sequence maxOccurs="6" minOccurs="4">
