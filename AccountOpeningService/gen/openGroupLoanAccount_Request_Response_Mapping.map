@@ -1,109 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="gen">
-    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
-    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
-    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING"/>
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var1"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var2"/>
+    <output path="/customer.xsd" var="var6"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CUSTOMERHANDOFF-STAGING]'))" var="HOCUSTOMERHANDOFFSTAGING"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-LOAN-STAGING]'))" var="HOLOANSTAGING"/>
-    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-LOAN-STAGING]'))" var="HOLOANSTAGING2"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING3"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="openGroupLoanAccount_Request_Response_Mapping">
-        <input namespace="http://AccountOpeningService" path="$var/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)"/>
-        <output path="$HOGROUPSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
-        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID,[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS,[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert1"/>
-        <output path="$HOLOANSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert2"/>
+        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://www.quantiguous.com/FI/customer.xsd" path="$var6/mb:msg(aadharNo,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID],[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS],[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
+        <output path="$HOGROUPSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert2"/>
+        <output path="$HOLOANSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert4"/>
+        <output path="$HOLOANSTAGING2/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert10"/>
+        <output path="$HOSAVINGSTAGING3/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert12"/>
+        <move>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/externalId" var="externalId1"/>
+            <output path="$MessageAssembly/aadharNo"/>
+        </move>
         <transaction>
-            <insert ref="dbinsert">
-                <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup"/>
-                <output path="$dbinsert/."/>
+            <insert ref="dbinsert2">
+                <input path="openGroupLoanAccount/openGroupLoanAccountRequest"/>
+                <output path="$dbinsert2/."/>
                 <move>
-                    <input path="externalId"/>
+                    <input path="customerGroup/externalId"/>
                     <output path="msl:db-name('[EXTERNALGROUPNO]')"/>
+                </move>
+                <move>
+                    <input path="customerGroup/groupName"/>
+                    <output path="msl:db-name('[GROUPNAME]')"/>
                 </move>
             </insert>
             <return>
-                <input path="$var1/DBInsertReturn"/>
+                <input path="$var2/DBInsertReturn"/>
             </return>
         </transaction>
-        <transaction>
-            <insert ref="dbinsert1">
-                <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers"/>
-                <output path="$dbinsert1/."/>
-                <foreach>
-                    <input path="customer"/>
-                    <output path="." var="dbinsert4"/>
-                    <transaction>
-                        <insert>
-                            <input path="newCustomer"/>
-                            <output path="$dbinsert4/." var="dbinsert7"/>
-                            <output path="$HOSAVINGSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert6"/>
-                            <move>
-                                <input path="externalId"/>
-                                <output path="$dbinsert7/msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
-                            </move>
-                            <transaction>
-                                <insert ref="dbinsert6">
-                                    <input path="savingAccount"/>
-                                    <output path="$dbinsert6/." var="dbinsert9"/>
-                                    <output path="$HOLOANSTAGING2/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert8"/>
-                                    <move>
-                                        <input path="externalId"/>
-                                        <output path="$dbinsert9/msl:db-name('[EXTERNALACCOUNTNO]')"/>
-                                    </move>
-                                    <transaction>
-                                        <insert ref="dbinsert8">
-                                            <input path="loanAccount"/>
-                                            <output path="$dbinsert8/."/>
-                                            <move>
-                                                <input path="externalId"/>
-                                                <output path="msl:db-name('[EXTERNALLOANNO]')"/>
-                                            </move>
-                                        </insert>
-                                        <return>
-                                            <input path="$var1/DBInsertReturn"/>
-                                        </return>
-                                    </transaction>
-                                </insert>
-                                <return>
-                                    <input path="$var1/DBInsertReturn"/>
-                                </return>
-                            </transaction>
-                        </insert>
-                        <return>
-                            <input path="$var1/DBInsertReturn"/>
-                        </return>
-                    </transaction>
-                </foreach>
-            </insert>
-            <return>
-                <input path="$var1/DBInsertReturn"/>
-            </return>
-        </transaction>
-        <transaction>
-            <insert ref="dbinsert2">
-                <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers"/>
-                <output path="$dbinsert2/."/>
-                <foreach>
-                    <input path="customer"/>
+        <foreach>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer1"/>
+            <output path="$dbinsert4/."/>
+            <transaction>
+                <insert ref="dbinsert4">
+                    <input path="$customer1/existingCustomer"/>
                     <output path="."/>
-                    <transaction>
-                        <insert>
-                            <input path="existingCustomer"/>
-                            <output path="."/>
-                            <move>
-                                <input path="loanAccount/externalId"/>
-                                <output path="msl:db-name('[EXTERNALLOANNO]')"/>
-                            </move>
-                        </insert>
-                        <return>
-                            <input path="$var1/DBInsertReturn"/>
-                        </return>
-                    </transaction>
-                </foreach>
-            </insert>
-            <return>
-                <input path="$var1/DBInsertReturn"/>
-            </return>
-        </transaction>
+                    <move>
+                        <input path="loanAccount/externalId"/>
+                        <output path="msl:db-name('[EXTERNALLOANNO]')"/>
+                    </move>
+                    <assign value="222">
+                        <output path="msl:db-name('[BATCHID]')"/>
+                    </assign>
+                </insert>
+                <return>
+                    <input path="$var2/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+        <foreach>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
+            <output path="$dbinsert/."/>
+            <transaction>
+                <insert ref="dbinsert">
+                    <input path="newCustomer"/>
+                    <output path="." var="dbinsert6"/>
+                    <move>
+                        <input path="externalId"/>
+                        <output path="$dbinsert6/msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
+                    </move>
+                    <move>
+                        <input path="customerName"/>
+                        <output path="$dbinsert6/msl:db-name('[CUSTOMERNAME]')"/>
+                    </move>
+                    <assign value="2222">
+                        <output path="$dbinsert6/msl:db-name('[BATCHID]')"/>
+                    </assign>
+                </insert>
+                <return>
+                    <input path="$var2/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+        <foreach>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
+            <output path="$dbinsert10/."/>
+            <transaction>
+                <insert ref="dbinsert10">
+                    <input path="newCustomer"/>
+                    <output path="."/>
+                    <move>
+                        <input path="savingAccount/loanAccount/externalId"/>
+                        <output path="msl:db-name('[EXTERNALLOANNO]')"/>
+                    </move>
+                    <assign value="786">
+                        <output path="msl:db-name('[BATCHID]')"/>
+                    </assign>
+                </insert>
+                <return>
+                    <input path="$var2/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+        <foreach>
+            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
+            <output path="$dbinsert12/."/>
+            <transaction>
+                <insert>
+                    <input path="newCustomer"/>
+                    <output path="."/>
+                    <move>
+                        <input path="savingAccount/externalId"/>
+                        <output path="msl:db-name('[EXTERNALACCOUNTNO]')"/>
+                    </move>
+                    <move>
+                        <input path="savingAccount/accountType"/>
+                        <output path="msl:db-name('[ACCOUNTTYPE]')"/>
+                    </move>
+                </insert>
+                <return>
+                    <input path="$var2/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
     </mappingDeclaration>
 </mappingRoot>
