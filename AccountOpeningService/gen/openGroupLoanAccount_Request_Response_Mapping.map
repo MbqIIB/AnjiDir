@@ -226,7 +226,7 @@
                         <input path="$existingCustomer/loanAccount/loanAmount"/>
                         <output path="msl:db-name('[RECOMMENDED LOAN]')"/>
                     </move>
-                    <assign value="APPROVED">
+                    <assign value="SIMS">
                         <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
                     <assign value="0">
@@ -354,6 +354,9 @@
                     </function>
                     <assign value="0">
                         <output path="msl:db-name('[AGENTID]')"/>
+                    </assign>
+                    <assign value="SIMS">
+                        <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
                 </insert>
                 <return>
@@ -654,11 +657,16 @@
                         <input path="$newCustomer2/savingAccount/nominee/relation"/>
                         <output path="msl:db-name('[RELATION]')"/>
                     </move>
-                    <expression>
+                    <if>
                         <input path="$newCustomer2/savingAccount/nominee/dateOfBirth" var="dateOfBirth"/>
                         <output path="msl:db-name('[NOMINEEDOB]')"/>
-                        <code lang="xpath">fn:concat( fn:day-from-date($dateOfBirth),'/',fn:month-from-date($dateOfBirth),'/',fn:year-from-date($dateOfBirth))</code>
-                    </expression>
+                        <test lang="xpath">fn:exists($dateOfBirth)</test>
+                        <expression>
+                            <input path="$dateOfBirth/." var="dateOfBirth"/>
+                            <output path="."/>
+                            <code lang="xpath">fn:concat( fn:day-from-date($dateOfBirth),'/',fn:month-from-date($dateOfBirth),'/',fn:year-from-date($dateOfBirth))</code>
+                        </expression>
+                    </if>
                     <move>
                         <input path="$newCustomer2/savingAccount/nominee/gender"/>
                         <output path="msl:db-name('[NOMINEEGENDER]')"/>
