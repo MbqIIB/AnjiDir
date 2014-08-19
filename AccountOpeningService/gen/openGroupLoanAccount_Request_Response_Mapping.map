@@ -229,6 +229,9 @@
                     <assign value="APPROVED">
                         <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
+                    <assign value="0">
+                        <output path="msl:db-name('[AGENTID]')"/>
+                    </assign>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
@@ -349,6 +352,9 @@
                         <output path="msl:db-name('[LOAN CYCLE]')"/>
                         <param name="item" value="$loanCycle1"/>
                     </function>
+                    <assign value="0">
+                        <output path="msl:db-name('[AGENTID]')"/>
+                    </assign>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
@@ -552,6 +558,10 @@
                         <param name="picurrentDate" value="current-date()"/>
                         <param name="piDOB" value="$dateOfBirth2"/>
                     </customFunction>
+                    <move>
+                        <input path="$newCustomer1/aadharNo"/>
+                        <output path="$dbinsert9/msl:db-name('[HOUSEHOLD CARDNO]')"/>
+                    </move>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
