@@ -1,0 +1,106 @@
+BROKER SCHEMA gen
+
+CREATE COMPUTE MODULE checkDuplicate
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE i INTEGER 1;
+		DECLARE lInternalID CHARACTER;
+		DECLARE K INTEGER 1;
+		DECLARE J INTEGER;
+		DECLARE inRequest REFERENCE TO InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest;
+
+		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
+		
+		-- check for duplicate groups
+		IF isDuplicateGroup(inRequest.ns17:customerGroup.ns18:externalId, lInternalID) THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Group already exists, ExternalId : ' || inRequest.ns17:customerGroup.ns18:externalId ||  ' InternalId : ' || lInternalID;
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+			SET i = i + 1;
+		END IF;
+		
+		SET J = CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[]);
+		WHILE K <= J DO
+			IF CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.[]) > 0 THEN
+				IF isDuplicateLoan(inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.loanAccount.ns18:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.loanAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+					SET i = i + 1;
+				END IF;
+			ELSEIF CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.[]) > 0 THEN
+
+				IF isDuplicateCustomer(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.ns18:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Customer already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.ns18:externalId ||  ' InternalId : ' || lInternalID;
+					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+					SET i = i + 1;
+				END IF;
+	
+				IF isDuplicateSaving(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.savingAccount.ns18:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Saving account already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+					SET i = i + 1;
+				END IF;
+	
+				IF isDuplicateLoan(inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.loanAccount.ns18:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.loanAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+					SET i = i + 1;
+				END IF;
+			END IF;
+			SET K = K + 1;
+		END WHILE;
+	
+		IF OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500 THEN
+			-- duplicates are errors by the client, hence the faultcode
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		ELSE
+			-- no errors, we copy the input message and proceed
+			SET OutputRoot = InputRoot;
+		END IF;
+		RETURN TRUE;
+	END;
+	
+    -- check group
+	CREATE FUNCTION isDuplicateGroup(IN piExternalID CHARACTER, OUT poInternalID CHARACTER) RETURNS BOOLEAN
+	BEGIN
+		SET poInternalID = NULL;
+		SET poInternalID = THE(SELECT ITEM RCDSGROUPS.GROUPID FROM Database.RCDSGROUPS WHERE RCDSGROUPS.EXTERNALGROUPNO = piExternalID);
+		IF poInternalID IS NOT NULL THEN
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+	
+    -- check customer
+	CREATE FUNCTION isDuplicateCustomer(IN piExternalID CHARACTER, OUT poInternalID CHARACTER) RETURNS BOOLEAN
+	BEGIN
+		SET poInternalID = NULL;
+		SET poInternalID = THE(SELECT ITEM RCDSCUSTOMERS.CUSTOMERID FROM Database.RCDSCUSTOMERS WHERE RCDSCUSTOMERS.EXTERNALCUSTNO = piExternalID);
+		IF poInternalID IS NOT NULL THEN
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+	
+    -- check loan
+	CREATE FUNCTION isDuplicateLoan(IN piExternalID CHARACTER, OUT poInternalID CHARACTER) RETURNS BOOLEAN
+	BEGIN
+		SET poInternalID = NULL;
+		SET poInternalID = THE(SELECT ITEM RCDSLOANS.LOANREFNO FROM Database.RCDSLOANS WHERE RCDSLOANS.EXTERNALLOANNO = piExternalID);
+		IF poInternalID IS NOT NULL THEN
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+	
+    -- check saving
+	CREATE FUNCTION isDuplicateSaving(IN piExternalID CHARACTER, OUT poInternalID CHARACTER) RETURNS BOOLEAN
+	BEGIN
+		SET poInternalID = NULL;
+		SET poInternalID = THE(SELECT ITEM RCDSSAVINGS.SAVINGACCNO FROM Database.RCDSSAVINGS WHERE RCDSSAVINGS.EXTERNALACCNO = piExternalID);
+		IF poInternalID IS NOT NULL THEN
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+
+END MODULE;
