@@ -277,6 +277,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 						<xsd:enumeration value="WS1"/>
 						<xsd:enumeration value="WS2"/>
 						<xsd:enumeration value="WS3"/>
+						<xsd:enumeration value="WS4"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
