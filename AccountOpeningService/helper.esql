@@ -24,7 +24,7 @@ END;
 
 CREATE FUNCTION getAge(IN picurrentDate DATE, IN piDOB DATE) RETURNS INTEGER
 BEGIN
-	DECLARE lAge DECIMAL;
+	DECLARE lAge INTEGER;
 	DECLARE inyear INTERVAL;
 	SET inyear = (picurrentDate-piDOB) YEAR; 
 	SET lAge= CAST(inyear AS INTEGER);

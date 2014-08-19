@@ -669,6 +669,12 @@
                         <input path="$newCustomer2/savingAccount/nominee/minor"/>
                         <output path="msl:db-name('[MINOR]')"/>
                     </move>
+                    <customFunction lang="esql" ref="helper:getAge">
+                        <input path="$newCustomer2/savingAccount/nominee/dateOfBirth" var="dateOfBirth3"/>
+                        <output path="msl:db-name('[NOMINEEAGE]')"/>
+                        <param name="picurrentDate" value="current-date()"/>
+                        <param name="piDOB" value="$dateOfBirth3"/>
+                    </customFunction>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
