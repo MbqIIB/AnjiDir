@@ -562,6 +562,22 @@
                         <input path="$newCustomer1/aadharNo"/>
                         <output path="$dbinsert9/msl:db-name('[HOUSEHOLD CARDNO]')"/>
                     </move>
+                    <condition>
+                        <if>
+                            <input path="$newCustomer1/cardIssuanceFlag" var="cardIssuanceFlag1"/>
+                            <output path="$dbinsert9/msl:db-name('[UDF1]')"/>
+                            <test lang="xpath">$cardIssuanceFlag1 =1</test>
+                            <assign value="TRUE">
+                                <output path="."/>
+                            </assign>
+                        </if>
+                        <else>
+                            <output path="$dbinsert9/msl:db-name('[UDF1]')"/>
+                            <assign value="FALSE">
+                                <output path="."/>
+                            </assign>
+                        </else>
+                    </condition>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
