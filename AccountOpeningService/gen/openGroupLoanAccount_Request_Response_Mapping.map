@@ -546,6 +546,12 @@
                             <output path="."/>
                         </move>
                     </if>
+                    <customFunction lang="esql" ref="helper:getAge">
+                        <input path="$newCustomer1/dateOfBirth" var="dateOfBirth2"/>
+                        <output path="$dbinsert9/msl:db-name('[CUSTAGE]')"/>
+                        <param name="picurrentDate" value="current-date()"/>
+                        <param name="piDOB" value="$dateOfBirth2"/>
+                    </customFunction>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>

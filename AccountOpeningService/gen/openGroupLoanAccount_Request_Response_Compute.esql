@@ -25,6 +25,8 @@ CREATE COMPUTE MODULE openGroupLoanAccount_Request_Response_Compute
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:batchID = getlBatchID('HO_04_BATCHID');
 		DECLARE I INTEGER 1;
 		DECLARE J INTEGER;
+		
+		
 		SET J = CARDINALITY(OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.customers.ns13:customer[]);
 		WHILE I <= J DO
 			IF CARDINALITY(OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.customers.ns13:customer[I].existingCustomer.[]) > 0 THEN
