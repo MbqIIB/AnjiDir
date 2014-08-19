@@ -6,7 +6,7 @@ CREATE COMPUTE MODULE centerRecordFailed
 	BEGIN
 		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
-		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Centercreation failed for ExternalCenterID: '||InputRoot.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns18:externalId;
+		--SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Centercreation failed for ExternalCenterID: '||InputRoot.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns18:externalId;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 

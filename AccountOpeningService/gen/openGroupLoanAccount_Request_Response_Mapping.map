@@ -2,58 +2,232 @@
     <input path="/AccountOpeningService_InlineSchema1.xsd" var="var1"/>
     <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var2"/>
     <output path="/customer.xsd" var="var6"/>
-    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CUSTOMERHANDOFF-STAGING]'))" var="HOCUSTOMERHANDOFFSTAGING"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-GROUP-STAGING]'))" var="HOGROUPSTAGING1"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-LOAN-STAGING]'))" var="HOLOANSTAGING"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-LOAN-STAGING]'))" var="HOLOANSTAGING2"/>
-    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING3"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CUSTOMERHANDOFF-STAGING]'))" var="HOCUSTOMERHANDOFFSTAGING1"/>
+    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-SAVING-STAGING]'))" var="HOSAVINGSTAGING4"/>
+    <imports>
+        <import kind="esql" namespace="/helper.esql"/>
+    </imports>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
         <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="openGroupLoanAccount_Request_Response_Mapping">
-        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://AccountOpeningService" path="$var1/mb:msg(openGroupLoanAccount,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
         <output namespace="http://www.quantiguous.com/FI/customer.xsd" path="$var6/mb:msg(aadharNo,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <output path="$HOCUSTOMERHANDOFFSTAGING/db:insert(fn:false(),[ID],[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS],[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert"/>
         <output path="$HOGROUPSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],[STATUS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert2"/>
         <output path="$HOLOANSTAGING/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert4"/>
         <output path="$HOLOANSTAGING2/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],[SAVINGSACCOUNTNO],[HIGHMARKRATING],[PATNER RECOMMENDATION],[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE],[TARGET_EMI])" var="dbinsert10"/>
-        <output path="$HOSAVINGSTAGING3/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert12"/>
+        <output path="$HOCUSTOMERHANDOFFSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[TITLE],[CUSTOMERNAME],[PARTNER-ENROLLMENT-NO],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2],[ADDRESS3],[CUSTDOB],[CUSTAGE],[MOBILE NO],[PHONE NO],[EMAILID],[CASTE],[GENDER],[MARITALSTATUS],[NATIONALITY],[RELIGION],[FATHERNAME],[SPOUSE NAME],[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[BANKNAME],[BANK-A/C-NO],[BANK-BRANCH-NAME],[HOUSEHOLD CARDNO],[PENSION CARDNO],[RATION CARD NO],[VOTER ID],[PAN NO],[FAX NO],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[FAMILY TYPE],[BLOOD GROUP],[EDU-QUALIFICATION],[CATEGORY],[LANGUAGE],[VILLAGE/TC],[KYC TYPE],[KYCID],[URBAN-RURAL],[LAND-HOLDING-IN-ACRES],[ANNUAL-HOUSEHOLDING],[EXTERNAL-AGENTID],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert5"/>
+        <output path="$HOSAVINGSTAGING4/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE],[NOMINEETITLE],[NOMINEENAME],[NOMINEEADDRESS1],[NOMINEEADDRESS2],[NOMINEEADDRESS3],[RELATION],[NOMINEEDOB],[NOMINEEAGE],[NOMINEEGENDER],[NOMINEESTATE],[NOMINEECITY],[NOMINEEPINCODE],[NOMINEEPANNO],[MINOR],[GUARDIANTITLE],[GUARDIANNAME],[GUARDIANDOB],[GUARDIANGENDER],[GUARDIANADDR1],[GUARDIANADDR2],[GUARDIANADDR3],[GUARDIANSTATE],[GUARDIANCITY],[GUARDIANRELATION],[GUARDIANPHNO],[GUARDIANPINCODE],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[APPLICATION-DATE],[SYSTEM-DATE])" var="dbinsert13"/>
         <move>
-            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/externalId" var="externalId1"/>
+            <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/externalId" var="externalId1"/>
             <output path="$MessageAssembly/aadharNo"/>
         </move>
         <transaction>
             <insert ref="dbinsert2">
-                <input path="openGroupLoanAccount/openGroupLoanAccountRequest"/>
+                <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest" var="openGroupLoanAccountRequest"/>
                 <output path="$dbinsert2/."/>
                 <move>
-                    <input path="customerGroup/externalId"/>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/externalId"/>
                     <output path="msl:db-name('[EXTERNALGROUPNO]')"/>
                 </move>
                 <move>
-                    <input path="customerGroup/groupName"/>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/groupName"/>
                     <output path="msl:db-name('[GROUPNAME]')"/>
                 </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/batchID"/>
+                    <output path="msl:db-name('[BATCHID]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/externalCenterId"/>
+                    <output path="msl:db-name('[EXTERNALCENTERID]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/centerName"/>
+                    <output path="msl:db-name('[CENTERNAME]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/maximumCenterLimit"/>
+                    <output path="msl:db-name('[MAXCENTERLIMIT]')"/>
+                </move>
+                <function ref="fn:string">
+                    <input path="$openGroupLoanAccountRequest/customerGroup/groupType" var="groupType"/>
+                    <output path="msl:db-name('[GROUPTYPE]')"/>
+                    <param name="item" value="$groupType"/>
+                </function>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/minNumber"/>
+                    <output path="msl:db-name('[MINNUMBER]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/maxNumber"/>
+                    <output path="msl:db-name('[MAXNUMBERS]')"/>
+                </move>
+                <expression>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/formationDate" var="formationDate"/>
+                    <output path="msl:db-name('[FORMATIONDATE]')"/>
+                    <code lang="xpath">fn:concat( fn:day-from-date($formationDate),'/',fn:month-from-date( $formationDate),'/',fn:year-from-date( $formationDate))</code>
+                </expression>
+                <function ref="fn:string">
+                    <input path="$openGroupLoanAccountRequest/customerGroup/dayOfPeriod" var="dayOfPeriod"/>
+                    <output path="msl:db-name('[DAYOFPERIOD]')"/>
+                    <param name="item" value="$dayOfPeriod"/>
+                </function>
+                <customFunction lang="esql" ref="helper:formatTime">
+                    <input path="$openGroupLoanAccountRequest/customerGroup/meetingTime" var="meetingTime"/>
+                    <output path="msl:db-name('[MEETINGTIME]')"/>
+                    <param name="piHour" value="fn:hours-from-time($meetingTime)"/>
+                    <param name="piMinute" value="fn:minutes-from-time($meetingTime)"/>
+                </customFunction>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/meetingFrequency"/>
+                    <output path="msl:db-name('[MEETINGFREQUENCY]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/distanceFromBranch"/>
+                    <output path="msl:db-name('[DISTANCEFROMBRANCH]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/branchCode"/>
+                    <output path="msl:db-name('[BRANCHCODE]')"/>
+                </move>
+                <move>
+                    <input path="$openGroupLoanAccountRequest/customerGroup/operatingRegion/operatingRegionCode"/>
+                    <output path="msl:db-name('[OPERATINGREGIONCODE]')"/>
+                </move>
+                <assign value="1">
+                    <output path="msl:db-name('[STATUS]')"/>
+                </assign>
+                <assign value="SIMS">
+                    <output path="msl:db-name('[DESCRIPTION]')"/>
+                </assign>
             </insert>
             <return>
                 <input path="$var2/DBInsertReturn"/>
             </return>
         </transaction>
         <foreach>
-            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer1"/>
+            <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer1"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/originator" var="originator"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/approver" var="approver"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/externalId" var="externalId"/>
             <output path="$dbinsert4/."/>
+            <test lang="xpath">fn:exists($customer1/existingCustomer)</test>
             <transaction>
                 <insert ref="dbinsert4">
-                    <input path="$customer1/existingCustomer"/>
+                    <input path="$customer1/existingCustomer" var="existingCustomer"/>
+                    <input path="$originator/." var="originator1"/>
+                    <input path="$approver/." var="approver1"/>
+                    <input path="$externalId/." var="externalId2"/>
                     <output path="."/>
                     <move>
-                        <input path="loanAccount/externalId"/>
+                        <input path="$existingCustomer/loanAccount/externalId"/>
                         <output path="msl:db-name('[EXTERNALLOANNO]')"/>
                     </move>
-                    <assign value="222">
+                    <move>
+                        <input path="$existingCustomer/loanAccount/batchID"/>
                         <output path="msl:db-name('[BATCHID]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$existingCustomer/loanAccount/loanProductCode" var="loanProductCode"/>
+                        <output path="msl:db-name('[PRODUCT CODE]')"/>
+                        <param name="item" value="$loanProductCode"/>
+                    </function>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/loanAmount"/>
+                        <output path="msl:db-name('[LOANAMOUNT]')"/>
+                    </move>
+                    <function ref="xs:int">
+                        <input path="$existingCustomer/loanAccount/disbursementMode" var="disbursementMode"/>
+                        <output path="msl:db-name('[PAYMENTMODE]')"/>
+                        <param name="primitive" value="$disbursementMode"/>
+                    </function>
+                    <function ref="xs:int">
+                        <input path="$existingCustomer/loanAccount/noOfInstallments" var="noOfInstallments1"/>
+                        <output path="msl:db-name('[NOOFINSTALLMENTS]')"/>
+                        <param name="primitive" value="$noOfInstallments1"/>
+                    </function>
+                    <move>
+                        <input path="$existingCustomer/externalId"/>
+                        <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
+                    </move>
+                    <expression>
+                        <input path="$existingCustomer/loanAccount/loanStartDate" var="loanStartDate"/>
+                        <output path="msl:db-name('[EXPECTEDDISBURSALDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($loanStartDate),'/',fn:month-from-date( $loanStartDate),'/',fn:year-from-date($loanStartDate))</code>
+                    </expression>
+                    <expression>
+                        <input path="$existingCustomer/loanAccount/loanStartDate" var="loanStartDate1"/>
+                        <output path="msl:db-name('[LOANSTARTDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($loanStartDate1),'/',fn:month-from-date( $loanStartDate1),'/',fn:year-from-date($loanStartDate1))</code>
+                    </expression>
+                    <move>
+                        <input path="$originator1/."/>
+                        <output path="msl:db-name('[ORIGINATOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$approver1/."/>
+                        <output path="msl:db-name('[APPROVER]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator1/."/>
+                        <output path="msl:db-name('[COLLECTOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$externalId2/."/>
+                        <output path="msl:db-name('[EXTERNAL GROUPID]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/governmentSchemeAdvances"/>
+                        <output path="msl:db-name('[UDF1]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/purposeOfLoan"/>
+                        <output path="msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/advanceType"/>
+                        <output path="msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/industryClassification"/>
+                        <output path="msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/bsrOraganisationCode"/>
+                        <output path="msl:db-name('[UDF5]')"/>
+                    </move>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/udfs/insuranceFlag"/>
+                        <output path="msl:db-name('[UDF6]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$existingCustomer/loanAccount/repaymentFrequency" var="repaymentFrequency"/>
+                        <output path="msl:db-name('[FREQUENCY]')"/>
+                        <param name="item" value="$repaymentFrequency"/>
+                    </function>
+                    <function ref="fn:string">
+                        <input path="$existingCustomer/loanAccount/loanCycle" var="loanCycle"/>
+                        <output path="msl:db-name('[LOAN CYCLE]')"/>
+                        <param name="item" value="$loanCycle"/>
+                    </function>
+                    <expression>
+                        <input path="$existingCustomer/loanAccount/repaymentStartDate" var="repaymentStartDate"/>
+                        <output path="msl:db-name('[FIRSTEMIDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($repaymentStartDate),'/',fn:month-from-date($repaymentStartDate),'/',fn:year-from-date($repaymentStartDate))</code>
+                    </expression>
+                    <move>
+                        <input path="$existingCustomer/loanAccount/loanAmount"/>
+                        <output path="msl:db-name('[RECOMMENDED LOAN]')"/>
+                    </move>
+                    <assign value="APPROVED">
+                        <output path="msl:db-name('[JUSTIFICATION COMMENTS]')"/>
                     </assign>
                 </insert>
                 <return>
@@ -62,43 +236,119 @@
             </transaction>
         </foreach>
         <foreach>
-            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
-            <output path="$dbinsert/."/>
-            <transaction>
-                <insert ref="dbinsert">
-                    <input path="newCustomer"/>
-                    <output path="." var="dbinsert6"/>
-                    <move>
-                        <input path="externalId"/>
-                        <output path="$dbinsert6/msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
-                    </move>
-                    <move>
-                        <input path="customerName"/>
-                        <output path="$dbinsert6/msl:db-name('[CUSTOMERNAME]')"/>
-                    </move>
-                    <assign value="2222">
-                        <output path="$dbinsert6/msl:db-name('[BATCHID]')"/>
-                    </assign>
-                </insert>
-                <return>
-                    <input path="$var2/DBInsertReturn"/>
-                </return>
-            </transaction>
-        </foreach>
-        <foreach>
-            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
-            <output path="$dbinsert10/."/>
+            <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer3"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/originator" var="originator2"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/approver" var="approver2"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/externalId" var="externalId3"/>
+            <output path="$dbinsert10/." var="dbinsert1"/>
+            <test lang="xpath">fn:exists($customer3/newCustomer)</test>
             <transaction>
                 <insert ref="dbinsert10">
-                    <input path="newCustomer"/>
-                    <output path="."/>
+                    <input path="$customer3/newCustomer" var="newCustomer"/>
+                    <input path="$originator2/." var="originator3"/>
+                    <input path="$approver2/." var="approver3"/>
+                    <input path="$externalId3/." var="externalId4"/>
+                    <output path="$dbinsert1/."/>
                     <move>
-                        <input path="savingAccount/loanAccount/externalId"/>
+                        <input path="$newCustomer/savingAccount/loanAccount/externalId"/>
                         <output path="msl:db-name('[EXTERNALLOANNO]')"/>
                     </move>
-                    <assign value="786">
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/batchID"/>
                         <output path="msl:db-name('[BATCHID]')"/>
-                    </assign>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/governmentSchemeAdvances"/>
+                        <output path="msl:db-name('[UDF1]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/purposeOfLoan"/>
+                        <output path="msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/advanceType"/>
+                        <output path="msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/industryClassification"/>
+                        <output path="msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/bsrOraganisationCode"/>
+                        <output path="msl:db-name('[UDF5]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/udfs/insuranceFlag"/>
+                        <output path="msl:db-name('[UDF6]')"/>
+                    </move>
+                    <expression>
+                        <input path="$newCustomer/savingAccount/loanAccount/loanStartDate" var="loanStartDate2"/>
+                        <output path="msl:db-name('[EXPECTEDDISBURSALDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($loanStartDate2),'/',fn:month-from-date( $loanStartDate2),'/',fn:year-from-date($loanStartDate2))</code>
+                    </expression>
+                    <expression>
+                        <input path="$newCustomer/savingAccount/loanAccount/loanStartDate" var="loanStartDate3"/>
+                        <output path="msl:db-name('[LOANSTARTDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($loanStartDate3),'/',fn:month-from-date($loanStartDate3),'/',fn:year-from-date($loanStartDate3))</code>
+                    </expression>
+                    <expression>
+                        <input path="$newCustomer/savingAccount/loanAccount/repaymentStartDate" var="repaymentStartDate1"/>
+                        <output path="msl:db-name('[FIRSTEMIDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($repaymentStartDate1),'/',fn:month-from-date($repaymentStartDate1),'/',fn:year-from-date($repaymentStartDate1))</code>
+                    </expression>
+                    <move>
+                        <input path="$newCustomer/externalId"/>
+                        <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
+                    </move>
+                    <move>
+                        <input path="$externalId4/."/>
+                        <output path="msl:db-name('[EXTERNAL GROUPID]')"/>
+                    </move>
+                    <move>
+                        <input path="$approver3/."/>
+                        <output path="msl:db-name('[APPROVER]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator3/."/>
+                        <output path="msl:db-name('[ORIGINATOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator3/."/>
+                        <output path="msl:db-name('[COLLECTOR]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$newCustomer/savingAccount/loanAccount/loanProductCode" var="loanProductCode1"/>
+                        <output path="msl:db-name('[PRODUCT CODE]')"/>
+                        <param name="item" value="$loanProductCode1"/>
+                    </function>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/loanAmount"/>
+                        <output path="msl:db-name('[RECOMMENDED LOAN]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer/savingAccount/loanAccount/loanAmount"/>
+                        <output path="msl:db-name('[LOANAMOUNT]')"/>
+                    </move>
+                    <function ref="xs:int">
+                        <input path="$newCustomer/savingAccount/loanAccount/disbursementMode" var="disbursementMode1"/>
+                        <output path="msl:db-name('[PAYMENTMODE]')"/>
+                        <param name="primitive" value="$disbursementMode1"/>
+                    </function>
+                    <function ref="xs:int">
+                        <input path="$newCustomer/savingAccount/loanAccount/noOfInstallments" var="noOfInstallments"/>
+                        <output path="msl:db-name('[NOOFINSTALLMENTS]')"/>
+                        <param name="primitive" value="$noOfInstallments"/>
+                    </function>
+                    <function ref="fn:string">
+                        <input path="$newCustomer/savingAccount/loanAccount/repaymentFrequency" var="repaymentFrequency1"/>
+                        <output path="msl:db-name('[FREQUENCY]')"/>
+                        <param name="item" value="$repaymentFrequency1"/>
+                    </function>
+                    <function ref="fn:string">
+                        <input path="$newCustomer/savingAccount/loanAccount/loanCycle" var="loanCycle1"/>
+                        <output path="msl:db-name('[LOAN CYCLE]')"/>
+                        <param name="item" value="$loanCycle1"/>
+                    </function>
                 </insert>
                 <return>
                     <input path="$var2/DBInsertReturn"/>
@@ -106,19 +356,312 @@
             </transaction>
         </foreach>
         <foreach>
-            <input path="openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer"/>
-            <output path="$dbinsert12/."/>
+            <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/originator" var="originator6"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/approver" var="approver6"/>
+            <output path="$dbinsert5/."/>
+            <test lang="xpath">fn:exists($customer/newCustomer)</test>
             <transaction>
                 <insert>
-                    <input path="newCustomer"/>
+                    <input path="$customer/newCustomer" var="newCustomer1"/>
+                    <input path="$originator6/." var="originator7"/>
+                    <input path="$approver6/." var="approver7"/>
+                    <output path="." var="dbinsert9"/>
+                    <move>
+                        <input path="$newCustomer1/externalId"/>
+                        <output path="$dbinsert9/msl:db-name('[EXTERNAL-CUSTOMER-ID]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/title"/>
+                        <output path="$dbinsert9/msl:db-name('[TITLE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/customerName"/>
+                        <output path="$dbinsert9/msl:db-name('[CUSTOMERNAME]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/batchID"/>
+                        <output path="$dbinsert9/msl:db-name('[BATCHID]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator7/."/>
+                        <output path="$dbinsert9/msl:db-name('[ORIGINATOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$approver7/."/>
+                        <output path="$dbinsert9/msl:db-name('[APPROVER]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator7/."/>
+                        <output path="$dbinsert9/msl:db-name('[COLLECTOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/address/line1"/>
+                        <output path="$dbinsert9/msl:db-name('[ADDRESS1]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/address/line2"/>
+                        <output path="$dbinsert9/msl:db-name('[ADDRESS2]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/address/line3"/>
+                        <output path="$dbinsert9/msl:db-name('[ADDRESS3]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/address/cityCode"/>
+                        <output path="$dbinsert9/msl:db-name('[CITY]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/address/stateCode"/>
+                        <output path="$dbinsert9/msl:db-name('[STATE]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$newCustomer1/address/pin" var="pin"/>
+                        <output path="$dbinsert9/msl:db-name('[PINCODE]')"/>
+                        <param name="item" value="$pin"/>
+                    </function>
+                    <expression>
+                        <input path="$newCustomer1/dateOfBirth" var="dateOfBirth1"/>
+                        <output path="$dbinsert9/msl:db-name('[CUSTDOB]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($dateOfBirth1),'/',fn:month-from-date($dateOfBirth1),'/',fn:year-from-date($dateOfBirth1))</code>
+                    </expression>
+                    <move>
+                        <input path="$newCustomer1/mobileNo"/>
+                        <output path="$dbinsert9/msl:db-name('[MOBILE NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/caste"/>
+                        <output path="$dbinsert9/msl:db-name('[CASTE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/gender"/>
+                        <output path="$dbinsert9/msl:db-name('[GENDER]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/maritalStatus"/>
+                        <output path="$dbinsert9/msl:db-name('[MARITALSTATUS]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/nationality"/>
+                        <output path="$dbinsert9/msl:db-name('[NATIONALITY]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/religion"/>
+                        <output path="$dbinsert9/msl:db-name('[RELIGION]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/motherTongue"/>
+                        <output path="$dbinsert9/msl:db-name('[MOTHER TONGUE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/branchCode"/>
+                        <output path="$dbinsert9/msl:db-name('[BRANCH-CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/operatingRegion/operatingRegionCode"/>
+                        <output path="$dbinsert9/msl:db-name('[OPERATING-REGION-CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/pensionCardNo"/>
+                        <output path="$dbinsert9/msl:db-name('[PENSION CARDNO]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/rationCardNo"/>
+                        <output path="$dbinsert9/msl:db-name('[RATION CARD NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/voterId"/>
+                        <output path="$dbinsert9/msl:db-name('[VOTER ID]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/panNo"/>
+                        <output path="$dbinsert9/msl:db-name('[PAN NO]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/barcodeNo"/>
+                        <output path="$dbinsert9/msl:db-name('[COMMENTS]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/health"/>
+                        <output path="$dbinsert9/msl:db-name('[HEALTH]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/occupation"/>
+                        <output path="$dbinsert9/msl:db-name('[OCCUPATION]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/educationalQualification"/>
+                        <output path="$dbinsert9/msl:db-name('[EDU-QUALIFICATION]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$newCustomer1/category" var="category"/>
+                        <output path="$dbinsert9/msl:db-name('[CATEGORY]')"/>
+                        <param name="item" value="$category"/>
+                    </function>
+                    <move>
+                        <input path="$newCustomer1/language"/>
+                        <output path="$dbinsert9/msl:db-name('[LANGUAGE]')"/>
+                    </move>
+                    <function ref="xs:int">
+                        <input path="$newCustomer1/kycType" var="kycType"/>
+                        <output path="$dbinsert9/msl:db-name('[KYC TYPE]')"/>
+                        <param name="primitive" value="$kycType"/>
+                    </function>
+                    <move>
+                        <input path="$newCustomer1/kycId"/>
+                        <output path="$dbinsert9/msl:db-name('[KYCID]')"/>
+                    </move>
+                    <function ref="fn:string">
+                        <input path="$newCustomer1/cardIssuanceFlag" var="cardIssuanceFlag"/>
+                        <output path="$dbinsert9/msl:db-name('[CARDISSUANCEFLAG]')"/>
+                        <param name="item" value="$cardIssuanceFlag"/>
+                    </function>
+                    <move>
+                        <input path="$newCustomer1/bcBranchCode"/>
+                        <output path="$dbinsert9/msl:db-name('[BC-BRANCH-CODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/minorityCommunity"/>
+                        <output path="$dbinsert9/msl:db-name('[UDF2]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/disabilityHandicapped"/>
+                        <output path="$dbinsert9/msl:db-name('[UDF3]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/weakerSection"/>
+                        <output path="$dbinsert9/msl:db-name('[UDF4]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer1/borrowerType"/>
+                        <output path="$dbinsert9/msl:db-name('[UDF5]')"/>
+                    </move>
+                    <if>
+                        <input path="$newCustomer1/aadharSeedingConsent" var="aadharSeedingConsent"/>
+                        <input path="$newCustomer1/aadharNo" var="aadharNo"/>
+                        <output path="$dbinsert9/msl:db-name('[NRI]')"/>
+                        <test lang="xpath">fn:exists($aadharNo)</test>
+                        <move>
+                            <input path="$aadharSeedingConsent/."/>
+                            <output path="."/>
+                        </move>
+                    </if>
+                </insert>
+                <return>
+                    <input path="$var2/DBInsertReturn"/>
+                </return>
+            </transaction>
+        </foreach>
+        <foreach>
+            <input path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/customerGroup/customers/customer" var="customer7"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/originator" var="originator4"/>
+            <input auxiliary="true" path="$MessageAssembly1/openGroupLoanAccount/openGroupLoanAccountRequest/approver" var="approver4"/>
+            <output path="$dbinsert13/."/>
+            <test lang="xpath">not(fn:exists($customer7/existingCustomer) )</test>
+            <transaction>
+                <insert>
+                    <input path="$customer7/newCustomer" var="newCustomer2"/>
+                    <input path="$originator4/." var="originator5"/>
+                    <input path="$approver4/." var="approver5"/>
                     <output path="."/>
                     <move>
-                        <input path="savingAccount/externalId"/>
+                        <input path="$newCustomer2/savingAccount/externalId"/>
                         <output path="msl:db-name('[EXTERNALACCOUNTNO]')"/>
                     </move>
                     <move>
-                        <input path="savingAccount/accountType"/>
+                        <input path="$newCustomer2/savingAccount/accountType"/>
                         <output path="msl:db-name('[ACCOUNTTYPE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/batchID"/>
+                        <output path="msl:db-name('[BATCHID]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/externalId"/>
+                        <output path="msl:db-name('[EXTERNALCUSTOMERID]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/savingProductCode"/>
+                        <output path="msl:db-name('[PRODUCTCODE]')"/>
+                    </move>
+                    <assign value="0">
+                        <output path="msl:db-name('[INITIALDEPOSIT]')"/>
+                    </assign>
+                    <assign value="1">
+                        <output path="msl:db-name('[PAYMENTMODE]')"/>
+                    </assign>
+                    <assign value="GOOD">
+                        <output path="msl:db-name('[COMMENTS]')"/>
+                    </assign>
+                    <move>
+                        <input path="$originator5/."/>
+                        <output path="msl:db-name('[ORIGINATOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$originator5/."/>
+                        <output path="msl:db-name('[COLLECTOR]')"/>
+                    </move>
+                    <move>
+                        <input path="$approver5/."/>
+                        <output path="msl:db-name('[APPROVER]')"/>
+                    </move>
+                    <expression>
+                        <input path="$newCustomer2/savingAccount/accountOpeningDate" var="accountOpeningDate"/>
+                        <output path="msl:db-name('[ACCOUNTOPENINGDATE]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($accountOpeningDate),'/',fn:month-from-date($accountOpeningDate),'/',fn:year-from-date($accountOpeningDate))</code>
+                    </expression>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/title"/>
+                        <output path="msl:db-name('[NOMINEETITLE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/name"/>
+                        <output path="msl:db-name('[NOMINEENAME]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/relation"/>
+                        <output path="msl:db-name('[RELATION]')"/>
+                    </move>
+                    <expression>
+                        <input path="$newCustomer2/savingAccount/nominee/dateOfBirth" var="dateOfBirth"/>
+                        <output path="msl:db-name('[NOMINEEDOB]')"/>
+                        <code lang="xpath">fn:concat( fn:day-from-date($dateOfBirth),'/',fn:month-from-date($dateOfBirth),'/',fn:year-from-date($dateOfBirth))</code>
+                    </expression>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/gender"/>
+                        <output path="msl:db-name('[NOMINEEGENDER]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/pan"/>
+                        <output path="msl:db-name('[NOMINEEPANNO]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/line1"/>
+                        <output path="msl:db-name('[NOMINEEADDRESS1]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/line2"/>
+                        <output path="msl:db-name('[NOMINEEADDRESS2]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/line3"/>
+                        <output path="msl:db-name('[NOMINEEADDRESS3]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/cityCode"/>
+                        <output path="msl:db-name('[NOMINEECITY]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/stateCode"/>
+                        <output path="msl:db-name('[NOMINEESTATE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/address/pin"/>
+                        <output path="msl:db-name('[NOMINEEPINCODE]')"/>
+                    </move>
+                    <move>
+                        <input path="$newCustomer2/savingAccount/nominee/minor"/>
+                        <output path="msl:db-name('[MINOR]')"/>
                     </move>
                 </insert>
                 <return>

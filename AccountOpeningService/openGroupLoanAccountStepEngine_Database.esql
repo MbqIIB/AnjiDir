@@ -41,7 +41,7 @@ CREATE DATABASE MODULE openGroupLoanAccountStepEngine_openGroup
 		
 		SET lBatchID = getBatchID('HO_04_BATCHID');
 		SET lTime = Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:meetingTime;
-		SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
+		SET lTime = '12:12AM';--formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
 		SET lDate = CAST(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
 		--- insert the record	
 		INSERT INTO Database."[HO-GROUP-STAGING]"
