@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	xmlns:tns="http://www.quantiguous.com/xmlnsc/retailLoanRepayment.xsd"
-	targetNamespace="http://www.quantiguous.com/xmlnsc/retailLoanRepayment.xsd">
+	xmlns:tns="http://www.quantiguous.com/FI/retailLoanRepayment.xsd"
+	targetNamespace="http://www.quantiguous.com/FI/retailLoanRepayment.xsd">
 
-<xsd:complexType name="retailLoanRepayment">
+<xsd:complexType name="retailLoanRepaymentType">
    <xsd:sequence>
       <xsd:element name="repaymentRecord" minOccurs="1" maxOccurs="unbounded">
          <xsd:annotation>

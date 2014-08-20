@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	xmlns:tns="http://www.quantiguous.com/xmlnsc/retailLoan.xsd"
-	targetNamespace="http://www.quantiguous.com/xmlnsc/retailLoan.xsd">
+	xmlns:tns="http://www.quantiguous.com/FI/retailLoan.xsd"
+	targetNamespace="http://www.quantiguous.com/FI/retailLoan.xsd">
 
                         <xsd:complexType name="retailLoanType">
                            <xsd:sequence>
