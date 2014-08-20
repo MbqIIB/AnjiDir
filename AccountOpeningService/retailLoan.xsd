@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://www.quantiguous.com/xmlnsc/retailLoan.xsd"
+	targetNamespace="http://www.quantiguous.com/xmlnsc/retailLoan.xsd">
+
+                        <xsd:complexType name="retailLoanType">
+                           <xsd:sequence>
+                              <xsd:element name="solId">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Branch ID for the loan account</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="8" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="schemeCode">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Mandatory it is required</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="accountManagerUserId">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Operation user Id</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="15" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="0" name="employeeId">
+                                 <xsd:annotation />
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="10" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="0" name="employeeName">
+                                 <xsd:annotation />
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="40" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="sanctionLimit">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Loan amount approved</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:decimal">
+                                       <xsd:totalDigits value="16" />
+                                       <xsd:fractionDigits value="2" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="limitSanctionDate" type="xsd:date">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Loan amount approved date</xsd:documentation>
+                                 </xsd:annotation>
+                              </xsd:element>
+                              <xsd:element name="sanctionLevelCode">
+                                 <xsd:annotation>
+                                    <xsd:documentation>This field tells the sanction done by a person with a given position in the bank</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                       <xsd:enumeration value="AGM" />
+                                       <xsd:enumeration value="AZM" />
+                                       <xsd:enumeration value="BCC" />
+                                       <xsd:enumeration value="BRMGR" />
+                                       <xsd:enumeration value="BUSHD" />
+                                       <xsd:enumeration value="CGM" />
+                                       <xsd:enumeration value="CHAIR" />
+                                       <xsd:enumeration value="CMAVP" />
+                                       <xsd:enumeration value="CRO" />
+                                       <xsd:enumeration value="DGM" />
+                                       <xsd:enumeration value="DZM" />
+                                       <xsd:enumeration value="ED" />
+                                       <xsd:enumeration value="GM" />
+                                       <xsd:enumeration value="HDCRD" />
+                                       <xsd:enumeration value="JGM" />
+                                       <xsd:enumeration value="MCC" />
+                                       <xsd:enumeration value="MDCEO" />
+                                       <xsd:enumeration value="RBS" />
+                                       <xsd:enumeration value="REGHD" />
+                                       <xsd:enumeration value="RMSRM" />
+                                       <xsd:enumeration value="SRMGR" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="sanctionReferenceNo">
+                                 <xsd:annotation>
+                                    <xsd:documentation>This will be application reference number for the loan</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="25" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="loanAmount">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:decimal">
+                                       <xsd:totalDigits value="16" />
+                                       <xsd:fractionDigits value="2" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="loanPeriodMonths">
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:int">
+                                       <xsd:minInclusive value="0" />
+                                       <xsd:maxInclusive value="9999" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="occupationCode">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Input field</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="0" name="purposeofAdvance">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Purpose of loan field in RP</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                       <xsd:enumeration value="1" />
+                                       <xsd:enumeration value="10" />
+                                       <xsd:enumeration value="10001" />
+                                       <xsd:enumeration value="1101" />
+                                       <xsd:enumeration value="1102" />
+                                       <xsd:enumeration value="1103" />
+                                       <xsd:enumeration value="1104" />
+                                       <xsd:enumeration value="1105" />
+                                       <xsd:enumeration value="1106" />
+                                       <xsd:enumeration value="1107" />
+                                       <xsd:enumeration value="1108" />
+                                       <xsd:enumeration value="1109" />
+                                       <xsd:enumeration value="11101" />
+                                       <xsd:enumeration value="1111" />
+                                       <xsd:enumeration value="1119" />
+                                       <xsd:enumeration value="11201" />
+                                       <xsd:enumeration value="1121" />
+                                       <xsd:enumeration value="1123" />
+                                       <xsd:enumeration value="1124" />
+                                       <xsd:enumeration value="1125" />
+                                       <xsd:enumeration value="1126" />
+                                       <xsd:enumeration value="1127" />
+                                       <xsd:enumeration value="1129" />
+                                       <xsd:enumeration value="1151" />
+                                       <xsd:enumeration value="1152" />
+                                       <xsd:enumeration value="1153" />
+                                       <xsd:enumeration value="1154" />
+                                       <xsd:enumeration value="1157" />
+                                       <xsd:enumeration value="1159" />
+                                       <xsd:enumeration value="1181" />
+                                       <xsd:enumeration value="1182" />
+                                       <xsd:enumeration value="12001" />
+                                       <xsd:enumeration value="1201" />
+                                       <xsd:enumeration value="1202" />
+                                       <xsd:enumeration value="1203" />
+                                       <xsd:enumeration value="1204" />
+                                       <xsd:enumeration value="1209" />
+                                       <xsd:enumeration value="13101" />
+                                       <xsd:enumeration value="13201" />
+                                       <xsd:enumeration value="1401" />
+                                       <xsd:enumeration value="1402" />
+                                       <xsd:enumeration value="1409" />
+                                       <xsd:enumeration value="14101" />
+                                       <xsd:enumeration value="15101" />
+                                       <xsd:enumeration value="15102" />
+                                       <xsd:enumeration value="15103" />
+                                       <xsd:enumeration value="15104" />
+                                       <xsd:enumeration value="15201" />
+                                       <xsd:enumeration value="15301" />
+                                       <xsd:enumeration value="15302" />
+                                       <xsd:enumeration value="15303" />
+                                       <xsd:enumeration value="15401" />
+                                       <xsd:enumeration value="15402" />
+                                       <xsd:enumeration value="15403" />
+                                       <xsd:enumeration value="15404" />
+                                       <xsd:enumeration value="15405" />
+                                       <xsd:enumeration value="15406" />
+                                       <xsd:enumeration value="15407" />
+                                       <xsd:enumeration value="15408" />
+                                       <xsd:enumeration value="15409" />
+                                       <xsd:enumeration value="15501" />
+                                       <xsd:enumeration value="15502" />
+                                       <xsd:enumeration value="16001" />
+                                       <xsd:enumeration value="16003" />
+                                       <xsd:enumeration value="17101" />
+                                       <xsd:enumeration value="17102" />
+                                       <xsd:enumeration value="17103" />
+                                       <xsd:enumeration value="17104" />
+                                       <xsd:enumeration value="17105" />
+                                       <xsd:enumeration value="17201" />
+                                       <xsd:enumeration value="17202" />
+                                       <xsd:enumeration value="17203" />
+                                       <xsd:enumeration value="17204" />
+                                       <xsd:enumeration value="17209" />
+                                       <xsd:enumeration value="18101" />
+                                       <xsd:enumeration value="18102" />
+                                       <xsd:enumeration value="18201" />
+                                       <xsd:enumeration value="19101" />
+                                       <xsd:enumeration value="19102" />
+                                       <xsd:enumeration value="19201" />
+                                       <xsd:enumeration value="19202" />
+                                       <xsd:enumeration value="2" />
+                                       <xsd:enumeration value="20" />
+                                       <xsd:enumeration value="2001" />
+                                       <xsd:enumeration value="20101" />
+                                       <xsd:enumeration value="21001" />
+                                       <xsd:enumeration value="21002" />
+                                       <xsd:enumeration value="21003" />
+                                       <xsd:enumeration value="22101" />
+                                       <xsd:enumeration value="23101" />
+                                       <xsd:enumeration value="23201" />
+                                       <xsd:enumeration value="23301" />
+                                       <xsd:enumeration value="236" />
+                                       <xsd:enumeration value="24101" />
+                                       <xsd:enumeration value="24102" />
+                                       <xsd:enumeration value="24103" />
+                                       <xsd:enumeration value="24104" />
+                                       <xsd:enumeration value="24201" />
+                                       <xsd:enumeration value="24202" />
+                                       <xsd:enumeration value="24203" />
+                                       <xsd:enumeration value="24204" />
+                                       <xsd:enumeration value="24211" />
+                                       <xsd:enumeration value="24212" />
+                                       <xsd:enumeration value="24213" />
+                                       <xsd:enumeration value="24214" />
+                                       <xsd:enumeration value="24219" />
+                                       <xsd:enumeration value="24301" />
+                                       <xsd:enumeration value="25101" />
+                                       <xsd:enumeration value="25102" />
+                                       <xsd:enumeration value="25201" />
+                                       <xsd:enumeration value="25202" />
+                                       <xsd:enumeration value="26101" />
+                                       <xsd:enumeration value="26901" />
+                                       <xsd:enumeration value="26902" />
+                                       <xsd:enumeration value="26903" />
+                                       <xsd:enumeration value="26904" />
+                                       <xsd:enumeration value="26905" />
+                                       <xsd:enumeration value="27101" />
+                                       <xsd:enumeration value="27201" />
+                                       <xsd:enumeration value="27301" />
+                                       <xsd:enumeration value="27302" />
+                                       <xsd:enumeration value="28101" />
+                                       <xsd:enumeration value="282" />
+                                       <xsd:enumeration value="28901" />
+                                       <xsd:enumeration value="29101" />
+                                       <xsd:enumeration value="29109" />
+                                       <xsd:enumeration value="29201" />
+                                       <xsd:enumeration value="29202" />
+                                       <xsd:enumeration value="29203" />
+                                       <xsd:enumeration value="29204" />
+                                       <xsd:enumeration value="29205" />
+                                       <xsd:enumeration value="29206" />
+                                       <xsd:enumeration value="29207" />
+                                       <xsd:enumeration value="29208" />
+                                       <xsd:enumeration value="29209" />
+                                       <xsd:enumeration value="29301" />
+                                       <xsd:enumeration value="3" />
+                                       <xsd:enumeration value="30" />
+                                       <xsd:enumeration value="30001" />
+                                       <xsd:enumeration value="30002" />
+                                       <xsd:enumeration value="31" />
+                                       <xsd:enumeration value="31101" />
+                                       <xsd:enumeration value="31201" />
+                                       <xsd:enumeration value="31301" />
+                                       <xsd:enumeration value="31401" />
+                                       <xsd:enumeration value="31501" />
+                                       <xsd:enumeration value="31901" />
+                                       <xsd:enumeration value="32" />
+                                       <xsd:enumeration value="32101" />
+                                       <xsd:enumeration value="33" />
+                                       <xsd:enumeration value="33101" />
+                                       <xsd:enumeration value="33201" />
+                                       <xsd:enumeration value="33301" />
+                                       <xsd:enumeration value="34" />
+                                       <xsd:enumeration value="34101" />
+                                       <xsd:enumeration value="34201" />
+                                       <xsd:enumeration value="34301" />
+                                       <xsd:enumeration value="35" />
+                                       <xsd:enumeration value="35101" />
+                                       <xsd:enumeration value="35201" />
+                                       <xsd:enumeration value="35301" />
+                                       <xsd:enumeration value="35901" />
+                                       <xsd:enumeration value="35909" />
+                                       <xsd:enumeration value="36101" />
+                                       <xsd:enumeration value="36901" />
+                                       <xsd:enumeration value="36902" />
+                                       <xsd:enumeration value="36903" />
+                                       <xsd:enumeration value="36904" />
+                                       <xsd:enumeration value="36905" />
+                                       <xsd:enumeration value="36906" />
+                                       <xsd:enumeration value="36907" />
+                                       <xsd:enumeration value="36909" />
+                                       <xsd:enumeration value="37001" />
+                                       <xsd:enumeration value="4" />
+                                       <xsd:enumeration value="40101" />
+                                       <xsd:enumeration value="40102" />
+                                       <xsd:enumeration value="40103" />
+                                       <xsd:enumeration value="40104" />
+                                       <xsd:enumeration value="40105" />
+                                       <xsd:enumeration value="40201" />
+                                       <xsd:enumeration value="40301" />
+                                       <xsd:enumeration value="41" />
+                                       <xsd:enumeration value="41001" />
+                                       <xsd:enumeration value="42" />
+                                       <xsd:enumeration value="45001" />
+                                       <xsd:enumeration value="45002" />
+                                       <xsd:enumeration value="45003" />
+                                       <xsd:enumeration value="45004" />
+                                       <xsd:enumeration value="45005" />
+                                       <xsd:enumeration value="45011" />
+                                       <xsd:enumeration value="45012" />
+                                       <xsd:enumeration value="45013" />
+                                       <xsd:enumeration value="45019" />
+                                       <xsd:enumeration value="5" />
+                                       <xsd:enumeration value="50" />
+                                       <xsd:enumeration value="50001" />
+                                       <xsd:enumeration value="50002" />
+                                       <xsd:enumeration value="50003" />
+                                       <xsd:enumeration value="50005" />
+                                       <xsd:enumeration value="5001" />
+                                       <xsd:enumeration value="51101" />
+                                       <xsd:enumeration value="51201" />
+                                       <xsd:enumeration value="51202" />
+                                       <xsd:enumeration value="51203" />
+                                       <xsd:enumeration value="51204" />
+                                       <xsd:enumeration value="51205" />
+                                       <xsd:enumeration value="51301" />
+                                       <xsd:enumeration value="51302" />
+                                       <xsd:enumeration value="51303" />
+                                       <xsd:enumeration value="51401" />
+                                       <xsd:enumeration value="51402" />
+                                       <xsd:enumeration value="51403" />
+                                       <xsd:enumeration value="51404" />
+                                       <xsd:enumeration value="51405" />
+                                       <xsd:enumeration value="51406" />
+                                       <xsd:enumeration value="51409" />
+                                       <xsd:enumeration value="51501" />
+                                       <xsd:enumeration value="51502" />
+                                       <xsd:enumeration value="51901" />
+                                       <xsd:enumeration value="51902" />
+                                       <xsd:enumeration value="51909" />
+                                       <xsd:enumeration value="52101" />
+                                       <xsd:enumeration value="52102" />
+                                       <xsd:enumeration value="52201" />
+                                       <xsd:enumeration value="52301" />
+                                       <xsd:enumeration value="52302" />
+                                       <xsd:enumeration value="52303" />
+                                       <xsd:enumeration value="52311" />
+                                       <xsd:enumeration value="52312" />
+                                       <xsd:enumeration value="52313" />
+                                       <xsd:enumeration value="52319" />
+                                       <xsd:enumeration value="52401" />
+                                       <xsd:enumeration value="52501" />
+                                       <xsd:enumeration value="55101" />
+                                       <xsd:enumeration value="55201" />
+                                       <xsd:enumeration value="55301" />
+                                       <xsd:enumeration value="60101" />
+                                       <xsd:enumeration value="60201" />
+                                       <xsd:enumeration value="60202" />
+                                       <xsd:enumeration value="60203" />
+                                       <xsd:enumeration value="60204" />
+                                       <xsd:enumeration value="60301" />
+                                       <xsd:enumeration value="61" />
+                                       <xsd:enumeration value="61101" />
+                                       <xsd:enumeration value="61201" />
+                                       <xsd:enumeration value="61202" />
+                                       <xsd:enumeration value="62" />
+                                       <xsd:enumeration value="62001" />
+                                       <xsd:enumeration value="62101" />
+                                       <xsd:enumeration value="63" />
+                                       <xsd:enumeration value="63001" />
+                                       <xsd:enumeration value="63011" />
+                                       <xsd:enumeration value="63012" />
+                                       <xsd:enumeration value="63013" />
+                                       <xsd:enumeration value="63019" />
+                                       <xsd:enumeration value="64" />
+                                       <xsd:enumeration value="64101" />
+                                       <xsd:enumeration value="64201" />
+                                       <xsd:enumeration value="64202" />
+                                       <xsd:enumeration value="65101" />
+                                       <xsd:enumeration value="65102" />
+                                       <xsd:enumeration value="65103" />
+                                       <xsd:enumeration value="65104" />
+                                       <xsd:enumeration value="65109" />
+                                       <xsd:enumeration value="65901" />
+                                       <xsd:enumeration value="65902" />
+                                       <xsd:enumeration value="65903" />
+                                       <xsd:enumeration value="65904" />
+                                       <xsd:enumeration value="65905" />
+                                       <xsd:enumeration value="65906" />
+                                       <xsd:enumeration value="65907" />
+                                       <xsd:enumeration value="65908" />
+                                       <xsd:enumeration value="65909" />
+                                       <xsd:enumeration value="65910" />
+                                       <xsd:enumeration value="65911" />
+                                       <xsd:enumeration value="65921" />
+                                       <xsd:enumeration value="65922" />
+                                       <xsd:enumeration value="65923" />
+                                       <xsd:enumeration value="65924" />
+                                       <xsd:enumeration value="65929" />
+                                       <xsd:enumeration value="65931" />
+                                       <xsd:enumeration value="65932" />
+                                       <xsd:enumeration value="65933" />
+                                       <xsd:enumeration value="65934" />
+                                       <xsd:enumeration value="65935" />
+                                       <xsd:enumeration value="65939" />
+                                       <xsd:enumeration value="66001" />
+                                       <xsd:enumeration value="66002" />
+                                       <xsd:enumeration value="66003" />
+                                       <xsd:enumeration value="67101" />
+                                       <xsd:enumeration value="67102" />
+                                       <xsd:enumeration value="67103" />
+                                       <xsd:enumeration value="67104" />
+                                       <xsd:enumeration value="67105" />
+                                       <xsd:enumeration value="67201" />
+                                       <xsd:enumeration value="67301" />
+                                       <xsd:enumeration value="70001" />
+                                       <xsd:enumeration value="71" />
+                                       <xsd:enumeration value="71101" />
+                                       <xsd:enumeration value="71201" />
+                                       <xsd:enumeration value="71301" />
+                                       <xsd:enumeration value="72" />
+                                       <xsd:enumeration value="72101" />
+                                       <xsd:enumeration value="72201" />
+                                       <xsd:enumeration value="72209" />
+                                       <xsd:enumeration value="72301" />
+                                       <xsd:enumeration value="72901" />
+                                       <xsd:enumeration value="72909" />
+                                       <xsd:enumeration value="73001" />
+                                       <xsd:enumeration value="74101" />
+                                       <xsd:enumeration value="74201" />
+                                       <xsd:enumeration value="74301" />
+                                       <xsd:enumeration value="74401" />
+                                       <xsd:enumeration value="74901" />
+                                       <xsd:enumeration value="75001" />
+                                       <xsd:enumeration value="80" />
+                                       <xsd:enumeration value="80001" />
+                                       <xsd:enumeration value="80002" />
+                                       <xsd:enumeration value="80003" />
+                                       <xsd:enumeration value="85101" />
+                                       <xsd:enumeration value="85102" />
+                                       <xsd:enumeration value="85201" />
+                                       <xsd:enumeration value="85301" />
+                                       <xsd:enumeration value="90" />
+                                       <xsd:enumeration value="90001" />
+                                       <xsd:enumeration value="91101" />
+                                       <xsd:enumeration value="91901" />
+                                       <xsd:enumeration value="92101" />
+                                       <xsd:enumeration value="92109" />
+                                       <xsd:enumeration value="92201" />
+                                       <xsd:enumeration value="92301" />
+                                       <xsd:enumeration value="92401" />
+                                       <xsd:enumeration value="93001" />
+                                       <xsd:enumeration value="93002" />
+                                       <xsd:enumeration value="93003" />
+                                       <xsd:enumeration value="93101" />
+                                       <xsd:enumeration value="93102" />
+                                       <xsd:enumeration value="93103" />
+                                       <xsd:enumeration value="93104" />
+                                       <xsd:enumeration value="93105" />
+                                       <xsd:enumeration value="93106" />
+                                       <xsd:enumeration value="93109" />
+                                       <xsd:enumeration value="95001" />
+                                       <xsd:enumeration value="95002" />
+                                       <xsd:enumeration value="95003" />
+                                       <xsd:enumeration value="95004" />
+                                       <xsd:enumeration value="95008" />
+                                       <xsd:enumeration value="95009" />
+                                       <xsd:enumeration value="95011" />
+                                       <xsd:enumeration value="95012" />
+                                       <xsd:enumeration value="95013" />
+                                       <xsd:enumeration value="95014" />
+                                       <xsd:enumeration value="95015" />
+                                       <xsd:enumeration value="95018" />
+                                       <xsd:enumeration value="95019" />
+                                       <xsd:enumeration value="99999" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="0" name="modeOfAdvance">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Check with Huzefa</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="0" name="advanceType">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Field to be check in RP</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                       <xsd:enumeration value="10" />
+                                       <xsd:enumeration value="20" />
+                                       <xsd:enumeration value="30" />
+                                       <xsd:enumeration value="31" />
+                                       <xsd:enumeration value="32" />
+                                       <xsd:enumeration value="33" />
+                                       <xsd:enumeration value="34" />
+                                       <xsd:enumeration value="35" />
+                                       <xsd:enumeration value="41" />
+                                       <xsd:enumeration value="42" />
+                                       <xsd:enumeration value="50" />
+                                       <xsd:enumeration value="61" />
+                                       <xsd:enumeration value="62" />
+                                       <xsd:enumeration value="63" />
+                                       <xsd:enumeration value="64" />
+                                       <xsd:enumeration value="71" />
+                                       <xsd:enumeration value="72" />
+                                       <xsd:enumeration value="80" />
+                                       <xsd:enumeration value="90" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element minOccurs="1" name="freeCode8">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Need to be linked to risk categorisation field</xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                       <xsd:maxLength value="5" />
+                                       <xsd:enumeration value="1" />
+                                       <xsd:enumeration value="2" />
+                                       <xsd:enumeration value="3" />
+                                    </xsd:restriction>
+                                 </xsd:simpleType>
+                              </xsd:element>
+                           </xsd:sequence>
+                        </xsd:complexType>
+</xsd:schema>
