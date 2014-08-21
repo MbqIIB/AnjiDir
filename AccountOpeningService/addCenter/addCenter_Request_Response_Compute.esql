@@ -1,6 +1,10 @@
-BROKER SCHEMA gen
-DECLARE ns77 NAMESPACE 'http://www.quantiguous.com/FI/center.xsd';
-
+BROKER SCHEMA addCenter
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+DECLARE cg NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ge NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+DECLARE cus NAMESPACE 'http://www.quantiguous.com/FI/customer.xsd';
+DECLARE ctr NAMESPACE 'http://www.quantiguous.com/FI/center.xsd';
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
 
 CREATE COMPUTE MODULE addCenter_Request_Response_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -24,7 +28,7 @@ CREATE COMPUTE MODULE addCenter_Request_Response_Compute
 		DECLARE lExternalId CHARACTER;
 		DECLARE lCount INTEGER;
 		SET OutputRoot = InputRoot;
-		SET lExternalId = InputRoot.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns18:externalId;
+		SET lExternalId = InputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:externalId;
 		SET lCount = THE(SELECT COUNT(1) FROM Database.RCDSCENTERDETAILS WHERE RCDSCENTERDETAILS.EXTERNALCENTERID = lExternalId);
 		IF lCount > 0 THEN
 			DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';

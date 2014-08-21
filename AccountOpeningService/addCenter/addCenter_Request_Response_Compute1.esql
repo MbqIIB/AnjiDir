@@ -1,5 +1,5 @@
-BROKER SCHEMA gen
-DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+BROKER SCHEMA addCenter
+
 
 CREATE COMPUTE MODULE centerRecordFailed
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -11,7 +11,7 @@ CREATE COMPUTE MODULE centerRecordFailed
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 
 
-		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:externalId;
+		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.ge:externalId;
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.error.errorMessage = 'Group Creation Failed';
 		PROPAGATE TO TERMINAL 'out1';
 		RETURN FALSE;
@@ -22,7 +22,7 @@ CREATE COMPUTE MODULE centerRecordProcessed
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
-		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.success.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns17:customerGroup.ns18:externalId;
+		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.success.externalId = InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.ge:externalId;
 		SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.success.successMessage = 'Group Created Successfully';
 		PROPAGATE TO TERMINAL 'out1';
 		RETURN FALSE;
