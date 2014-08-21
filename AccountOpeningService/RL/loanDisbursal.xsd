@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.quantiguous.com/RL/loanDisbural.xsd"
+	targetNamespace="http://www.quantiguous.com/RL/loanDisbursal.xsd">
+<xsd:complexType name="retailLoanDisbursementType">
+   <xsd:sequence>
+      <xsd:element name="disbursementAmount">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+               <xsd:totalDigits value="16" />
+               <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="creditAccountNumber">
+         <xsd:annotation>
+            <xsd:documentation>Casa account number where the money needs to be credited during disbursement</xsd:documentation>
+         </xsd:annotation>
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="16" />
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="charges">
+         <xsd:annotation>
+            <xsd:documentation>This is an optional repeating sequence of below two elements in the xsd schema</xsd:documentation>
+         </xsd:annotation>
+         <xsd:complexType>
+            <xsd:sequence>
+               <xsd:element name="chargeEventTpe">
+            <xsd:annotation>
+               <xsd:documentation>While disbursement some charges/fees etc. are applied on the loan account. This element tells the type of charge that needs to be applied for eg. MISC1, MISC2. For Rupee Power only three events MIS14(Insurabce Fee), MISC1(Processing Fee) and LNKED(Service Tax) are applicable </xsd:documentation>
+            </xsd:annotation>
+                  <xsd:simpleType>
+                     <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="5" />
+                     </xsd:restriction>
+                  </xsd:simpleType>
+               </xsd:element>
+               <xsd:element name="chargeAmount">
+            <xsd:annotation>
+               <xsd:documentation>This is nothing but the amount for the charge type. This need to be calculated at RP, there will be no revalidation of the figure at Finacle side.</xsd:documentation>
+            </xsd:annotation>
+                  <xsd:simpleType>
+                     <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="16" />
+                        <xsd:fractionDigits value="2" />
+                     </xsd:restriction>
+                  </xsd:simpleType>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:element>
+   </xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
