@@ -1,0 +1,16 @@
+BROKER SCHEMA openGroupLoanAccount
+
+CREATE DATABASE MODULE openGroupLoanAccount_dbExecute_Database
+	CREATE PROCEDURE INITIATE_BATCH_PROCESS(IN processName CHARACTER, IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
+
+
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE lBatchID INTEGER LocalEnvironment.Variables.batchID;
+		DECLARE lPartnerID INTEGER 0;
+		DECLARE lFileName CHARACTER LocalEnvironment.Variables.fileName;
+		DECLARE lProcessName CHARACTER LocalEnvironment.Variables.processName;
+		
+		CALL INITIATE_BATCH_PROCESS(lProcessName, lBatchID, lPartnerID, lFileName);	
+	END;
+END MODULE;
