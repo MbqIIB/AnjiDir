@@ -5,6 +5,10 @@
     <eAnnotations xmi:id="_GZE6YCa9EeSw04JoTilubA" source="ConnectionURI">
       <details xmi:id="_GZFhcCa9EeSw04JoTilubA" key="ConnectionKey" value="ganaseva_uat"/>
     </eAnnotations>
+    <eAnnotations xmi:id="_H_klACbnEeSw04JoTilubA" source="SQL_Statement_URI">
+      <details xmi:id="_H_klASbnEeSw04JoTilubA" key="SQL_Statement_NAME" value="SYNONYMS"/>
+      <details xmi:id="_H_klAibnEeSw04JoTilubA" key="SQL_Statement_KEY" value="create synonym [HO-PROCESS-01] for ganaseva_uat.dbo.[HO-PROCESS-01];&#xA;create synonym [HO-PROCESS-02] for ganaseva_uat.dbo.[HO-PROCESS-02];&#xA;create synonym [HO-PROCESS-04] for ganaseva_uat.dbo.[HO-PROCESS-04];&#xA;create synonym [HO-PROCESS-06] for ganaseva_uat.dbo.[HO-PROCESS-06];&#xA;create synonym [HO-PROCESS-A0] for ganaseva_uat.dbo.[HO-PROCESS-A0];&#xA;create synonym [HO-PROCESS-CU] for ganaseva_uat.dbo.[HO-PROCESS-CU];"/>
+    </eAnnotations>
   </SQLSchema:Database>
   <SQLSchema:Schema xmi:id="_ByDr8Ca9EeSw04JoTilubA" name="dbo" database="_BvbOsCa9EeSw04JoTilubA" routines="_zWxtkBoYEeSuhbqUdtWxWg">
     <eAnnotations xmi:id="_ByctgCa9EeSw04JoTilubA" source="diagram">
@@ -20,19 +24,20 @@
     </eAnnotations>
   </SQLSchema:Schema>
   <SQLRoutines:Procedure xmi:id="_zWxtkBoYEeSuhbqUdtWxWg" name="[INITIATE_BATCH_PROCESS]" language="SQL" schema="_ByDr8Ca9EeSw04JoTilubA">
-    <parameters xmi:id="_3an9gBoYEeSuhbqUdtWxWg" name="@batchid">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iAY0EBoZEeSuhbqUdtWxWg" name="INT" primitiveType="INTEGER"/>
+    <parameters xmi:id="_3an9gBoYEeSuhbqUdtWxWg" name="@processName">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_zBVK8SkfEeS6HsxlhnHvyw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_44P7ACkfEeS6HsxlhnHvyw"/>
     </parameters>
-    <parameters xmi:id="_3okS4BoYEeSuhbqUdtWxWg" name="@partnerid">
+    <parameters xmi:id="_3okS4BoYEeSuhbqUdtWxWg" name="@batchid">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iemaEBoZEeSuhbqUdtWxWg" name="INT" primitiveType="INTEGER"/>
     </parameters>
-    <parameters xmi:id="_3wMk4BoYEeSuhbqUdtWxWg" name="@filename">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_j2ahkBoZEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_kEFKIBoZEeSuhbqUdtWxWg"/>
+    <parameters xmi:id="_3wMk4BoYEeSuhbqUdtWxWg" name="@partnerid">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_4AjeACkfEeS6HsxlhnHvyw" name="INT" primitiveType="INTEGER"/>
     </parameters>
-    <parameters xmi:id="_39VpABoYEeSuhbqUdtWxWg" name="@processid">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_i5x6MBoZEeSuhbqUdtWxWg" name="INT" primitiveType="INTEGER"/>
+    <parameters xmi:id="_39VpABoYEeSuhbqUdtWxWg" name="@filename">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_4nHuwCkfEeS6HsxlhnHvyw" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100" characterSet="_44P7ASkfEeS6HsxlhnHvyw"/>
     </parameters>
-    <source xmi:id="_DxVbgBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE INITIATE_BATCH_PROCESS @batchid INT, @partnerid INT, @filename VARCHAR(100), @processid INT&#xA;AS&#xA;--BEGIN TRANSACTION&#xA;IF @processid = 1 -- center creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-02] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @processid = 2 -- group creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-04] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @processid = 3 -- customer creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-CU] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @processid = 4 -- saving account creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-A0] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @processid = 5 -- loan creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-01] @batchid, @partnerid, @filename&#xA;END"/>
+    <source xmi:id="_DxVbgBoZEeSuhbqUdtWxWg" body="CREATE PROCEDURE INITIATE_BATCH_PROCESS @procedureName VARCHAR(100), @batchid INT, @partnerid INT, @filename VARCHAR(100)&#xA;AS&#xA;--This is an if-else block instead of a dynamic call to avoid sql-injection challenges&#xA;--Since the procedure names include unsupported characters, &#xA;IF @procedureName = 'HO-PROCESS-02' -- center creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-02] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @procedureName = 'HO-PROCESS-04' -- group creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-04] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @procedureName = 'HO-PROCESS-CU' -- customer creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-CU] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @procedureName = 'HO-PROCESS-A0' -- saving account creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-A0] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE IF @procedureName = 'HO-PROCESS-01' -- loan creation&#xA;BEGIN&#xA;EXEC [HO-PROCESS-01] @batchid, @partnerid, @filename&#xA;END&#xA;ELSE&#xA;RAISERROR ('An invalid procedure name was passed: The procedure was %s, with parameters %d, %d, %s',15,1,@procedureName,@batchid,@partnerid,@filename)&#xA;"/>
   </SQLRoutines:Procedure>
-  <zSeries:ZSeriesCharacterSet xmi:id="_kEFKIBoZEeSuhbqUdtWxWg" CharacterStringDataType="_j2ahkBoZEeSuhbqUdtWxWg"/>
+  <zSeries:ZSeriesCharacterSet xmi:id="_44P7ACkfEeS6HsxlhnHvyw" CharacterStringDataType="_zBVK8SkfEeS6HsxlhnHvyw"/>
+  <zSeries:ZSeriesCharacterSet xmi:id="_44P7ASkfEeS6HsxlhnHvyw" CharacterStringDataType="_4nHuwCkfEeS6HsxlhnHvyw"/>
 </xmi:XMI>
