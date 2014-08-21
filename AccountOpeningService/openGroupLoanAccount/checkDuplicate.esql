@@ -1,4 +1,9 @@
-BROKER SCHEMA gen
+BROKER SCHEMA openGroupLoanAccount
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+DECLARE cg NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ge NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+DECLARE cus NAMESPACE 'http://www.quantiguous.com/FI/customer.xsd';
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
 
 CREATE COMPUTE MODULE checkDuplicate
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -12,36 +17,36 @@ CREATE COMPUTE MODULE checkDuplicate
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		
 		-- check for duplicate groups
-		IF isDuplicateGroup(inRequest.ns17:customerGroup.ns18:externalId, lInternalID) THEN
-			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Group already exists, ExternalId : ' || inRequest.ns17:customerGroup.ns18:externalId ||  ' InternalId : ' || lInternalID;
+		IF isDuplicateGroup(inRequest.cg:customerGroup.ge:externalId, lInternalID) THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Group already exists, ExternalId : ' || inRequest.cg:customerGroup.ge:externalId ||  ' InternalId : ' || lInternalID;
 			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 			SET i = i + 1;
 		END IF;
 		
-		SET J = CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[]);
+		SET J = CARDINALITY(inRequest.cg:customerGroup.customers.cus:customer[]);
 		WHILE K <= J DO
-			IF CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.[]) > 0 THEN
-				IF isDuplicateLoan(inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.loanAccount.ns18:externalId, lInternalID) THEN
-					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer[K].existingCustomer.loanAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+			IF CARDINALITY(inRequest.cg:customerGroup.customers.cus:customer[K].existingCustomer.[]) > 0 THEN
+				IF isDuplicateLoan(inRequest.cg:customerGroup.customers.cus:customer[K].existingCustomer.loanAccount.ge:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.cg:customerGroup.customers.cus:customer[K].existingCustomer.loanAccount.ge:externalId ||  ' InternalId : ' || lInternalID;
 					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 					SET i = i + 1;
 				END IF;
-			ELSEIF CARDINALITY(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.[]) > 0 THEN
+			ELSEIF CARDINALITY(inRequest.cg:customerGroup.customers.cus:customer[K].newCustomer.[]) > 0 THEN
 
-				IF isDuplicateCustomer(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.ns18:externalId, lInternalID) THEN
-					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Customer already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.ns18:externalId ||  ' InternalId : ' || lInternalID;
+				IF isDuplicateCustomer(inRequest.cg:customerGroup.customers.cus:customer[K].newCustomer.ge:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Customer already exists, ExternalId : ' || inRequest.cg:customerGroup.customers.cus:customer[K].newCustomer.ge:externalId ||  ' InternalId : ' || lInternalID;
 					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 					SET i = i + 1;
 				END IF;
 	
-				IF isDuplicateSaving(inRequest.ns17:customerGroup.customers.ns13:customer[K].newCustomer.savingAccount.ns18:externalId, lInternalID) THEN
-					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Saving account already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+				IF isDuplicateSaving(inRequest.cg:customerGroup.customers.cus:customer[K].newCustomer.savingAccount.ge:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Saving account already exists, ExternalId : ' || inRequest.cg:customerGroup.customers.cus:customer.newCustomer.savingAccount.ge:externalId ||  ' InternalId : ' || lInternalID;
 					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 					SET i = i + 1;
 				END IF;
 	
-				IF isDuplicateLoan(inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.loanAccount.ns18:externalId, lInternalID) THEN
-					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.ns17:customerGroup.customers.ns13:customer.newCustomer.savingAccount.loanAccount.ns18:externalId ||  ' InternalId : ' || lInternalID;
+				IF isDuplicateLoan(inRequest.cg:customerGroup.customers.cus:customer.newCustomer.savingAccount.loanAccount.ge:externalId, lInternalID) THEN
+					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.cg:customerGroup.customers.cus:customer.newCustomer.savingAccount.loanAccount.ge:externalId ||  ' InternalId : ' || lInternalID;
 					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 					SET i = i + 1;
 				END IF;

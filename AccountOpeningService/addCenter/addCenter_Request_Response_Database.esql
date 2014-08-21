@@ -1,7 +1,4 @@
-BROKER SCHEMA gen
-
-DECLARE ns61 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
-DECLARE ns62 NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+BROKER SCHEMA addCenter
 
 CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
 BEGIN
@@ -36,12 +33,12 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 		DECLARE lBatchID INTEGER;
 		DECLARE lTime CHARACTER;
 		DECLARE lDate CHARACTER;
-		DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:*.center;
+		DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:*.center;
 		
 		SET lBatchID = getBatchID('HO_02_BATCHID');
-		SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:meetingTime;
+		SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:meetingTime;
 		SET lTime = '12:12AM';--formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
-		SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
+		SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
 		--- insert the record
 		INSERT INTO Database."[HO-CENTER-STAGING]"
 		( 
@@ -74,22 +71,22 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 		VALUES
 		(
 			lBatchID,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:externalId,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.centerName,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.description,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.branchCode,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.ns62:operatingRegion.operatingRegionCode,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.maximumIndividuals,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.servicingAgent,
+			center.ge:externalId,
+			center.centerName,
+			center.description,
+			center.branchCode,
+			center.ge:operatingRegion.operatingRegionCode,
+			center.maximumIndividuals,
+			center.servicingAgent,
 			lDate,
 			lTime,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.centerLeader,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line1,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line2,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.line3,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.stateCode,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.cityCode,
-			Root.XMLNSC.ns:addCenter.addCenterRequest.ns77:center.meetingAddress.pin,
+			center.centerLeader,
+			center.meetingAddress.line1,
+			center.meetingAddress.line2,
+			center.meetingAddress.line3,
+			center.meetingAddress.stateCode,
+			center.meetingAddress.cityCode,
+			center.meetingAddress.pin,
 			'DUMMYPRIMARY',
 			'9999999999',
 			'dummyprimary@xyz.com',
@@ -101,9 +98,9 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 		);
 
 		-- call the procedure to process the record
-		CALL center(lBatchID, 0, 'file_'||Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId,1);
+		CALL center(lBatchID, 0, 'file_'||center.ge:externalId,1);
 		-- check if the record is processed
-		CALL verifyRecord(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.ns61:customerGroup.ns62:externalId);
+		CALL verifyRecord(center.ge:externalId);
 		
 		RETURN FALSE;
 	END;
