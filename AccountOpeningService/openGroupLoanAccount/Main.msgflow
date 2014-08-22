@@ -8,7 +8,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/Main.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/Main.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="100,197" queueName="ACCOPENSVC.MAIN" messageDomainProperty="XMLNSC" transactionMode="no" validateMaster="contentAndValue">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="100,197" queueName="ACCOPENSVC.MAIN" messageDomainProperty="XMLNSC" validateTiming="complete" transactionMode="no" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="328,197" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForGroupSubflow_Compute.Main" computeMode="destinationAndMessage">

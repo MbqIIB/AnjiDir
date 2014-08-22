@@ -2,4 +2,5 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<xsd:element name="operation" type="xsd:int"/>
 	<xsd:element name="batchID" type="xsd:int"/>
+	<xsd:element name="internalID" type="xsd:string"/>
 </xsd:schema>

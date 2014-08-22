@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLRoutines="http:///org/eclipse/datatools/modelbase/sql/routines.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore" xmlns:SQLTables="http:///org/eclipse/datatools/modelbase/sql/tables.ecore" xmlns:zSeries="http:///com/ibm/db/models/db2/zSeries.ecore">
+<xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.3.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLRoutines="http:///org/eclipse/datatools/modelbase/sql/routines.ecore" xmlns:SQLSchema="http:///org/eclipse/datatools/modelbase/sql/schema.ecore" xmlns:SQLTables="http:///org/eclipse/datatools/modelbase/sql/tables.ecore" xmlns:zSeries="http:///com/ibm/db/models/db2/zSeries.ecore">
   <SQLSchema:Database xmi:id="_79USsBCuEeS6BqAOuK3k2g" name="GANASEVA" vendor="SQL Server" version="2008" schemas="_7_W6EBCuEeS6BqAOuK3k2g">
     <eAnnotations xmi:id="_79USsRCuEeS6BqAOuK3k2g" source="ConnectionURI">
       <details xmi:id="_79USshCuEeS6BqAOuK3k2g" key="ConnectionKey" value="ganaseva_uat"/>
@@ -14,7 +14,7 @@
       <details xmi:id="_iJheIyafEeSkqdJSGAUCzw" key="SQL_Statement_KEY" value="INSERT INTO [HO-LOAN-STAGING] (&#xA;[BATCHID],[EXTERNALLOANNO],[EXTERNALCUSTOMERID],[EXTERNAL GROUPID],[PRODUCT CODE],[AGENTID],[LOANAMOUNT],[EXPECTEDDISBURSALDATE],[LOANSTARTDATE],[ORIGINATOR],&#xA;[APPROVER],[COLLECTOR],[LOANPURPOSE],[PAYMENTMODE],[NOOFINSTALLMENTS],[FREQUENCY],[FIRSTEMIDATE],[DAYOFPERIOD],[NETINCOME],&#xA;[LOAN CYCLE],[RECOMMENDED LOAN],[JUSTIFICATION COMMENTS],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6])&#xA;VALUES ('66','00257082109011','0025708200000000','SW257073','3140','0','16000.0000','24/07/2014','15/09/2014','FS003250089-DEEPAK PAWAR',&#xA;'FS003250089A-DEEPAK PAWAR','FS003250089A-DEEPAK PAWAR','34','1','24','4','15/09/2014','1','0.0000',&#xA;'1','16000.0000','SIMS','0','GSA4','POL3','AT5','IC4','BSR4','IF1');&#xA;&#xA;INSERT INTO [HO-SAVING-STAGING] (&#xA;[BATCHID],[EXTERNALACCOUNTNO],[EXTERNALCUSTOMERID],[ACCOUNTTYPE],[PRODUCTCODE],[INITIALDEPOSIT],[PAYMENTMODE],[COMMENTS],&#xA;[ORIGINATOR],[APPROVER],[COLLECTOR],[ACCOUNTOPENINGDATE])&#xA;VALUES ('66','00257082109011','0025708200000000','1','3030','0','1','SIMS',&#xA;'FS003250089A-DEEPAK PAWAR','FS003250089A-DEEPAK PAWAR','FS003250089A-DEEPAK PAWAR','15/09/2014');&#xA;&#xA;INSERT INTO [HO-GROUP-STAGING] (&#xA;[BATCHID],[EXTERNALGROUPNO],[GROUPNAME],[GROUPTYPE],[MINNUMBER],[MAXNUMBERS],[FORMATIONDATE],[DAYOFPERIOD],[MEETINGTIME],[MEETINGFREQUENCY],&#xA;[EXTERNALCENTERID],[CENTERNAME],[MAXCENTERLIMIT],[DISTANCEFROMBRANCH],[BRANCHCODE],[VILLAGECENSUSCODE],[OPERATINGREGIONCODE],[DESCRIPTION],[COMMENTS],&#xA;[STATUS],[IS-ERROR])&#xA;values (&#xA;'200','SW288838','OE00229964BR610003703','2','1','25','14/08/2014','2','11:30 AM','Monthly',&#xA;'SW45788','CenterName00037','25','0','0176','176001','176001','SIMS','Good',&#xA;'1',0);&#xA;&#xA;INSERT INTO [HO-CENTER-STAGING] (&#xA;[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],&#xA;[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],&#xA;[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID] )&#xA;VALUES(&#xA;'71','SW71RANA','RANACENTERTES11','1234','000108','108026','40','NA00176000108-SAGAR PATIL','2014-08-14',&#xA;'11:30AM','12341234','SONMARG','SONMARG','SONMARG','910007','001723','394220','DUMMYPRIMARY','9967722423','xyz@gmail.com',&#xA;'DUMMYSECONDARY','9967722223','xyz@dmail.com','022918723128','DEFAULT');&#xA;&#xA;INSERT INTO [HO-CUSTOMERHANDOFF-STAGING] (&#xA;[BATCHID],[TITLE],[CUSTOMERNAME],[EXTERNAL-CUSTOMER-ID],[ADDRESS1],[ADDRESS2] ,[ADDRESS3] ,[CUSTDOB],&#xA;[CUSTAGE],[MOBILE NO],[CASTE],[GENDER],[MARITALSTATUS],[NATIONALITY],[RELIGION], [FATHERNAME],[SPOUSE NAME],&#xA;[SPOUSE DOB],[SPOUSE AGE],[MOTHER TONGUE],[STATE],[CITY],[BRANCH-CODE],[OPERATING-REGION-CODE],[PINCODE],[HOUSEHOLD CARDNO],&#xA;[COMMENTS],[ORIGINATOR],[APPROVER],[COLLECTOR],[NRI],[SHG CARD NO],[CUSTOMER TYPE],[HEALTH],[OCCUPATION],[EDU-QUALIFICATION],[CATEGORY],&#xA;[LANGUAGE],[VILLAGE/TC],[URBAN-RURAL],[CARDISSUANCEFLAG],[CUSTOMER-CREATION-DATE],[BC-BRANCH-CODE],[BC-PARTNER-ID],&#xA;[UDF1],[UDF2],[UDF3],[UDF4],[UDF5]&#xA; )&#xA;VALUES(&#xA;'28','12','RANA CUSTOMER','0025772999000000','SONMARG','SONMARG2','SONMARG3','27/08/1985',&#xA;'28','9876543210','05','02','02','IN','09','NOT APPLICABLE','RIYAZ RASHID SHAI',&#xA;'01/06/1977','37','hi-IN','910002','911008','0031','031001','411011','773781923655',&#xA;'1','NA000050031-AMOL HEGADE','NA000050031A-AMOL HEGADE','NA000050031-AMOL HEGADE','02','457691','01','01','6','06','3',&#xA;'hi-IN','031001','1','0','27/07/1985','5022','0',&#xA;'FALSE','MC3','DH5','WS4','BT6');"/>
     </eAnnotations>
   </SQLSchema:Database>
-  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_Z9YBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_bykBCuEeS6BqAOuK3k2g _7_bymhCuEeS6BqAOuK3k2g _7_cZoBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_dnwBCuEeS6BqAOuK3k2g _7_eO0BCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _7_gEABCuEeS6BqAOuK3k2g _7_grEBCuEeS6BqAOuK3k2g _7_hSIBCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _l-6HsRuQEeSzxZ3WQagvDw _U2nMECR6EeS0nvjzbsCNRw _zevCISUNEeSksZFn7idYYw _8oL58CUNEeSksZFn7idYYw _Aiuc4CUOEeSksZFn7idYYw _CWpRkCUOEeSksZFn7idYYw _0MwwUCUOEeSksZFn7idYYw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
+  <SQLSchema:Schema xmi:id="_7_W6EBCuEeS6BqAOuK3k2g" name="dbo" tables="_7_XhIBCuEeS6BqAOuK3k2g _7_YvQBCuEeS6BqAOuK3k2g _7_akcBCuEeS6BqAOuK3k2g _7_dAsBCuEeS6BqAOuK3k2g _7_eO6hCuEeS6BqAOuK3k2g _bBmVoBocEeSuhbqUdtWxWg _U2nMECR6EeS0nvjzbsCNRw _zevCISUNEeSksZFn7idYYw _8oL58CUNEeSksZFn7idYYw _Aiuc4CUOEeSksZFn7idYYw _CWpRkCUOEeSksZFn7idYYw _0MwwUCUOEeSksZFn7idYYw" database="_79USsBCuEeS6BqAOuK3k2g" routines="_NIzhMBoZEeSuhbqUdtWxWg _md3E8BoZEeSuhbqUdtWxWg _nhiIcBoZEeSuhbqUdtWxWg _objgsBoZEeSuhbqUdtWxWg _pf888BoZEeSuhbqUdtWxWg _4R_08BoZEeSuhbqUdtWxWg"/>
   <SQLTables:PersistentTable xmi:id="_7_XhIBCuEeS6BqAOuK3k2g" name="[HO-CENTER-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_7_XhIRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_XhIhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
@@ -507,57 +507,6 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_YwBRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_Z9YBCuEeS6BqAOuK3k2g" name="[HO-DISBURSAL-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_Z9YRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_Z9YhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-      <identitySpecifier xmi:id="_7_Z9YxCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
-    </columns>
-    <columns xmi:id="_7_Z9ZBCuEeS6BqAOuK3k2g" name="[BATCHID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_Z9ZRCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_Z9ZhCuEeS6BqAOuK3k2g" name="[EXTERNAL LOANID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9ZxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="256"/>
-    </columns>
-    <columns xmi:id="_7_Z9aBCuEeS6BqAOuK3k2g" name="[EXTERNAL DISBURSAL ID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9aRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="256"/>
-    </columns>
-    <columns xmi:id="_7_Z9ahCuEeS6BqAOuK3k2g" name="[AMOUNT DISBURSED]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_Z9axCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-    <columns xmi:id="_7_Z9bBCuEeS6BqAOuK3k2g" name="[DISBURSAL DATE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9bRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_Z9bhCuEeS6BqAOuK3k2g" name="[INSTALLMENT START DATE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9bxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_Z9cBCuEeS6BqAOuK3k2g" name="[EXTERNALSAVINGACCNO]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9cRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_Z9chCuEeS6BqAOuK3k2g" name="[PAYMENTMODE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9cxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_Z9dBCuEeS6BqAOuK3k2g" name="[BCPARTNERID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9dRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="25"/>
-    </columns>
-    <columns xmi:id="_7_Z9dhCuEeS6BqAOuK3k2g" name="[ERROR_DESCRIPTION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9dxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="1000"/>
-    </columns>
-    <columns xmi:id="_7_Z9eBCuEeS6BqAOuK3k2g" name="[ERROR_STAGE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_Z9eRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_Z9ehCuEeS6BqAOuK3k2g" name="[IS-ERROR]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_Z9exCuEeS6BqAOuK3k2g" name="BIT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_Z9fBCuEeS6BqAOuK3k2g" name="[APPLICATION-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_Z9fRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_Z9fhCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_Z9fxCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_Z9gBCuEeS6BqAOuK3k2g" name="[TARGET_EMI]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_Z9gRCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-  </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_7_akcBCuEeS6BqAOuK3k2g" name="[HO-GROUP-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_7_akcRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_akchCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
@@ -730,154 +679,6 @@
     </columns>
     <columns xmi:id="_7_ak4hCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_ak4xCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_bykBCuEeS6BqAOuK3k2g" name="[HO-HISTORY]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_bykRCuEeS6BqAOuK3k2g" name="[BATCHID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_bykhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_bykxCuEeS6BqAOuK3k2g" name="[FILE-NAME]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bylBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_bylRCuEeS6BqAOuK3k2g" name="[OCCURANCE]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_bylhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_bylxCuEeS6BqAOuK3k2g" name="[DATE-TIME]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_bymBCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_7_bymRCuEeS6BqAOuK3k2g" name="PK_HO_HISTORY" members="_7_bykxCuEeS6BqAOuK3k2g"/>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_bymhCuEeS6BqAOuK3k2g" name="[HO-ISO-FIN-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_bymxCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_bynBCuEeS6BqAOuK3k2g" name="BIGINT" primitiveType="BIGINT"/>
-      <identitySpecifier xmi:id="_7_bynRCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
-    </columns>
-    <columns xmi:id="_7_bynhCuEeS6BqAOuK3k2g" name="[MTI]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bynxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
-    </columns>
-    <columns xmi:id="_7_byoBCuEeS6BqAOuK3k2g" name="[STAN]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byoRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_byohCuEeS6BqAOuK3k2g" name="[BC-TERMINAL-ID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byoxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_bypBCuEeS6BqAOuK3k2g" name="[BC-IDENTIFICATION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bypRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_byphCuEeS6BqAOuK3k2g" name="[PROCESSING-CODE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bypxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
-    </columns>
-    <columns xmi:id="_7_byqBCuEeS6BqAOuK3k2g" name="[PAN]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byqRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
-    </columns>
-    <columns xmi:id="_7_byqhCuEeS6BqAOuK3k2g" name="[LOCAL-TXN-DATETIME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byqxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
-    </columns>
-    <columns xmi:id="_7_byrBCuEeS6BqAOuK3k2g" name="[ACCOUNT-IDENTIFICATION-102]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byrRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_byrhCuEeS6BqAOuK3k2g" name="[ACCOUNT-IDENTIFICATION-103]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byrxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_bysBCuEeS6BqAOuK3k2g" name="[TRANSACTION-AMOUNT]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_bysRCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-    <columns xmi:id="_7_byshCuEeS6BqAOuK3k2g" name="[ISO-MSG-REQUEST]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bysxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_bytBCuEeS6BqAOuK3k2g" name="[ISO-MSG-RESPONSE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bytRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_bythCuEeS6BqAOuK3k2g" name="[ISO-MSG-RESPONSE-CODE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_bytxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="5"/>
-    </columns>
-    <columns xmi:id="_7_byuBCuEeS6BqAOuK3k2g" name="[ISO-MSG-CONTRA-RESPONSE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byuRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_byuhCuEeS6BqAOuK3k2g" name="[ISO-MSG-CONTRA-RESPONSE-CODE]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_byuxCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_byvBCuEeS6BqAOuK3k2g" name="[MSG-STATUS]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byvRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
-    </columns>
-    <columns xmi:id="_7_byvhCuEeS6BqAOuK3k2g" name="[IP-ADDRESS]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byvxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_bywBCuEeS6BqAOuK3k2g" name="[APPLICATION-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_bywRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_bywhCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_bywxCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_byxBCuEeS6BqAOuK3k2g" name="[BANKNAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byxRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_byxhCuEeS6BqAOuK3k2g" name="[LOCATION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byxxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_byyBCuEeS6BqAOuK3k2g" name="[NETWORKIN]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byyRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_byyhCuEeS6BqAOuK3k2g" name="[RETRIEVAL-REFERENCE-NUMBER]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_byyxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_byzBCuEeS6BqAOuK3k2g" name="[FLAG_TXN_HANDOFF]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_byzRCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_7_byzhCuEeS6BqAOuK3k2g" name="PK_HO_ISO_FIN_STAGING" members="_7_bymxCuEeS6BqAOuK3k2g"/>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_cZoBCuEeS6BqAOuK3k2g" name="[HO-LOAN-REPAYMENT-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_cZoRCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_cZohCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-      <identitySpecifier xmi:id="_7_cZoxCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
-    </columns>
-    <columns xmi:id="_7_cZpBCuEeS6BqAOuK3k2g" name="[BATCHID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_cZpRCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_cZphCuEeS6BqAOuK3k2g" name="[EXTERNAL TXNID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZpxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="40"/>
-    </columns>
-    <columns xmi:id="_7_cZqBCuEeS6BqAOuK3k2g" name="[EXTERNALLOANACCOUNTID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZqRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="40"/>
-    </columns>
-    <columns xmi:id="_7_cZqhCuEeS6BqAOuK3k2g" name="[AMOUNT COLLECTED]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_cZqxCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-    <columns xmi:id="_7_cZrBCuEeS6BqAOuK3k2g" name="[PRINCIPAL AMOUNT PAID]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_cZrRCuEeS6BqAOuK3k2g" name="DECIMAL" primitiveType="DECIMAL" precision="8" scale="2"/>
-    </columns>
-    <columns xmi:id="_7_cZrhCuEeS6BqAOuK3k2g" name="[INT. AMOUNT PAID]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_cZrxCuEeS6BqAOuK3k2g" name="DECIMAL" primitiveType="DECIMAL" precision="8" scale="2"/>
-    </columns>
-    <columns xmi:id="_7_cZsBCuEeS6BqAOuK3k2g" name="[PAYMENTDATE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZsRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_cZshCuEeS6BqAOuK3k2g" name="[LATEFEECHARGES]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_cZsxCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-    <columns xmi:id="_7_cZtBCuEeS6BqAOuK3k2g" name="[OTHER CHARGES]">
-      <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_cZtRCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-    <columns xmi:id="_7_cZthCuEeS6BqAOuK3k2g" name="[PAYMENTMODE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZtxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_cZuBCuEeS6BqAOuK3k2g" name="[AGENTID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZuRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_cZuhCuEeS6BqAOuK3k2g" name="[ERROR_DESCRIPTION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZuxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="1000"/>
-    </columns>
-    <columns xmi:id="_7_cZvBCuEeS6BqAOuK3k2g" name="[ERROR_STAGE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_cZvRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_cZvhCuEeS6BqAOuK3k2g" name="[IS-ERROR]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_cZvxCuEeS6BqAOuK3k2g" name="BIT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_cZwBCuEeS6BqAOuK3k2g" name="[APPLICATION-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_cZwRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_cZwhCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_cZwxCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_7_dAsBCuEeS6BqAOuK3k2g" name="[HO-LOAN-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
@@ -1070,56 +871,6 @@
     </columns>
     <columns xmi:id="_7_dBLhCuEeS6BqAOuK3k2g" name="[TARGET_EMI]">
       <containedType xsi:type="SQLDataTypes:FixedPrecisionDataType" xmi:id="_7_dBLxCuEeS6BqAOuK3k2g" name="MONEY" primitiveType="NUMERIC"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_dnwBCuEeS6BqAOuK3k2g" name="[HO-MASTER]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_dnwRCuEeS6BqAOuK3k2g" name="[PARTNERCODE]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_dnwhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_dnwxCuEeS6BqAOuK3k2g" name="[FOLDERNAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_dnxBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_dnxRCuEeS6BqAOuK3k2g" name="[FOLDERPATH]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_dnxhCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="500"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_eO0BCuEeS6BqAOuK3k2g" name="[HO-REPAYMENT-SCHEDULE-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_eO0RCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_eO0hCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-      <identitySpecifier xmi:id="_7_eO0xCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
-    </columns>
-    <columns xmi:id="_7_eO1BCuEeS6BqAOuK3k2g" name="[BATCHID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_eO1RCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_eO1hCuEeS6BqAOuK3k2g" name="[EXTERNALLOANID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO1xCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_eO2BCuEeS6BqAOuK3k2g" name="[SCHEDULEDATE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO2RCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_eO2hCuEeS6BqAOuK3k2g" name="[SCHEDULEID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO2xCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
-    </columns>
-    <columns xmi:id="_7_eO3BCuEeS6BqAOuK3k2g" name="[PRINCIPALAMOUNT]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO3RCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_eO3hCuEeS6BqAOuK3k2g" name="[INTERESTAMOUNT]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO3xCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_eO4BCuEeS6BqAOuK3k2g" name="[ERROR_DESCRIPTION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO4RCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="1000"/>
-    </columns>
-    <columns xmi:id="_7_eO4hCuEeS6BqAOuK3k2g" name="[ERROR_STAGE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_eO4xCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_eO5BCuEeS6BqAOuK3k2g" name="[IS-ERROR]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_eO5RCuEeS6BqAOuK3k2g" name="BIT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_eO5hCuEeS6BqAOuK3k2g" name="[APPLICATION-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_eO5xCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_eO6BCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_eO6RCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_7_eO6hCuEeS6BqAOuK3k2g" name="[HO-SAVING-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
@@ -1350,82 +1101,6 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_e2XRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_gEABCuEeS6BqAOuK3k2g" name="[HO-STAGE-I-ERRORS]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_gEARCuEeS6BqAOuK3k2g" name="[FILE-NAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEAhCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_gEAxCuEeS6BqAOuK3k2g" name="[PACKAGEID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEBBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_gEBRCuEeS6BqAOuK3k2g" name="[PACKAGENAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEBhCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_gEBxCuEeS6BqAOuK3k2g" name="[DATAFLOWID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gECBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-    <columns xmi:id="_7_gECRCuEeS6BqAOuK3k2g" name="[DATAFLOWNAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEChCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="500"/>
-    </columns>
-    <columns xmi:id="_7_gECxCuEeS6BqAOuK3k2g" name="[ERRORIDENTIFIER]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEDBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_gEDRCuEeS6BqAOuK3k2g" name="[ERRORCODE]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_gEDhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_gEDxCuEeS6BqAOuK3k2g" name="[ERRORCOLUMNID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_gEEBCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_gEERCuEeS6BqAOuK3k2g" name="[ERRORCOLUMNNAME]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEEhCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="500"/>
-    </columns>
-    <columns xmi:id="_7_gEExCuEeS6BqAOuK3k2g" name="[ERRORDESCRIPTION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_gEFBCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="-1"/>
-    </columns>
-    <columns xmi:id="_7_gEFRCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_gEFhCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_grEBCuEeS6BqAOuK3k2g" name="[HO-UCIC-UPLOAD-STAGING]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_grERCuEeS6BqAOuK3k2g" name="[ID]" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_grEhCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-      <identitySpecifier xmi:id="_7_grExCuEeS6BqAOuK3k2g" startValue="1" increment="1"/>
-    </columns>
-    <columns xmi:id="_7_grFBCuEeS6BqAOuK3k2g" name="[BATCHID]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_grFRCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_grFhCuEeS6BqAOuK3k2g" name="[GSCUSTOMERID]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_grFxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="10"/>
-    </columns>
-    <columns xmi:id="_7_grGBCuEeS6BqAOuK3k2g" name="[SOURCE_SYSTEM]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_grGRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="256"/>
-    </columns>
-    <columns xmi:id="_7_grGhCuEeS6BqAOuK3k2g" name="[UCIC]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_grGxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="256"/>
-    </columns>
-    <columns xmi:id="_7_grHBCuEeS6BqAOuK3k2g" name="[ERROR_DESCRIPTION]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_grHRCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="1000"/>
-    </columns>
-    <columns xmi:id="_7_grHhCuEeS6BqAOuK3k2g" name="[ERROR_STAGE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_grHxCuEeS6BqAOuK3k2g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="50"/>
-    </columns>
-    <columns xmi:id="_7_grIBCuEeS6BqAOuK3k2g" name="[IS-ERROR]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_grIRCuEeS6BqAOuK3k2g" name="BIT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_7_grIhCuEeS6BqAOuK3k2g" name="[APPLICATION-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_grIxCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-    <columns xmi:id="_7_grJBCuEeS6BqAOuK3k2g" name="[SYSTEM-DATE]">
-      <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_7_grJRCuEeS6BqAOuK3k2g" name="DATETIME" primitiveType="DATE"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_7_hSIBCuEeS6BqAOuK3k2g" name="[HO-SORT-ORDER]" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_7_hSIRCuEeS6BqAOuK3k2g" name="[HANDOFF_TYPE]">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_7_hSIhCuEeS6BqAOuK3k2g" name="CHAR" length="2"/>
-    </columns>
-    <columns xmi:id="_7_hSIxCuEeS6BqAOuK3k2g" name="[EXEC_ORDER]">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_7_hSJBCuEeS6BqAOuK3k2g" name="INT" primitiveType="INTEGER"/>
-    </columns>
-  </SQLTables:PersistentTable>
   <SQLRoutines:Procedure xmi:id="_NIzhMBoZEeSuhbqUdtWxWg" name="[HO-PROCESS-CU]" language="SQL" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <parameters xmi:id="_UlTH8BoZEeSuhbqUdtWxWg" name="@batchid">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_aN5IIBoZEeSuhbqUdtWxWg" name="INT" primitiveType="INTEGER"/>
@@ -1513,21 +1188,6 @@
     </columns>
     <columns xmi:id="_WSfFsBodEeSuhbqUdtWxWg" name="VALUE" nullable="false">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_YcVHEBodEeSuhbqUdtWxWg" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
-    </columns>
-  </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_l-6HsRuQEeSzxZ3WQagvDw" name="HO_STAGING" schema="_7_W6EBCuEeS6BqAOuK3k2g">
-    <columns xmi:id="_tQb0kBuQEeSzxZ3WQagvDw" name="ID" nullable="false" defaultValue="">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_LNp2QBuREeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
-      <identitySpecifier xmi:id="_Qgfo4BuREeSzxZ3WQagvDw" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
-    </columns>
-    <columns xmi:id="_tTOp4BuQEeSzxZ3WQagvDw" name="OPERATION" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_1LzIoBuQEeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_taV-gBuQEeSzxZ3WQagvDw" name="BATCH_ID" nullable="false">
-      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_2PgBUBuQEeSzxZ3WQagvDw" name="INT" primitiveType="INTEGER"/>
-    </columns>
-    <columns xmi:id="_XWF0cRuhEeSIp8X_WDemsQ" name="STATUS" nullable="false">
-      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_XWF0chuhEeSIp8X_WDemsQ" name="CHAR"/>
     </columns>
   </SQLTables:PersistentTable>
   <SQLTables:PersistentTable xmi:id="_U2nMECR6EeS0nvjzbsCNRw" name="RCDSGROUPS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
