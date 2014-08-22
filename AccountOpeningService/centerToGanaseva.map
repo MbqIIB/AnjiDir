@@ -7,7 +7,6 @@
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,msl:db-name('[HO-CENTER-STAGING]'))" var="HOCENTERSTAGING1"/>
     <output path="/localEnvironmentVariables.xsd" var="var2"/>
     <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,RCDSSYSPARAMS)" var="RCDSSYSPARAMS1"/>
-    <output path="db:table(/ganaseva.dbm,GANASEVA,dbo,HO_STAGING)" var="HOSTAGING"/>
     <imports>
         <import kind="esql" namespace="/helper.esql"/>
     </imports>
@@ -26,7 +25,6 @@
         </output>
         <output path="$HOCENTERSTAGING1/db:insert(fn:false(),[ID],[BATCHID],[EXTERNALCENTERID],[CENTERNAME],[DESCRIPTION],[COMMENTS],[BRANCHCODE],[OPERATINGREGIONCODE],[MAXNOOFIND],[SERVICINGAGENT],[FORMATIONDATE],[MEETINGTIME],[CENTERLEADER],[ADDRESS1],[ADDRESS2],[ADDRESS3],[STATE],[CITY],[PINCODE],[PRIMARYCONTACT],[PRIMARYPHONENO],[PRIMARYCONTACTMAILID],[SECONDARYCONTACT],[SECONDARYPHONENO],[SECONDARYCONTACTMAILID],[FAXNO],[EXTERNALAGENTID],[BCPARTNERID],[UDF1],[UDF2],[UDF3],[UDF4],[UDF5],[UDF6],[UDF7],[UDF8],[UDF9],[UDF10],[UDF11],[UDF12],[UDF13],[UDF14],[UDF15],[UDF16],[UDF17],[UDF18],[UDF19],[UDF20],[UDF21],[UDF22],[UDF23],[UDF24],[UDF25],[UDF26],[UDF27],[UDF28],[UDF29],[UDF30],[APPLICATION-DATE],[SYSTEM-DATE],[ERROR_DESCRIPTION],[ERROR_STAGE],[IS-ERROR],[DATE-TIME])" var="dbinsert1"/>
         <output path="$RCDSSYSPARAMS1/db:update(fn:false(),fn:true(),db:where(fn:concat('dbo.&quot;RCDSSYSPARAMS&quot;.&quot;MNEMONIC&quot; = ',&quot;'&quot;,'HO_02_BATCHID',&quot;'&quot;)),MNEMONIC,MODULE,VALUE)" var="dbupdate1"/>
-        <output path="$HOSTAGING/db:insert(fn:false(),ID,OPERATION,BATCH_ID,STATUS)" var="dbinsert2"/>
         <move>
             <input path="$MessageAssembly/Properties"/>
             <output path="$MessageAssembly1/Properties"/>
@@ -156,26 +154,6 @@
             </update>
             <return>
                 <input path="$var4/DBUpdateReturn"/>
-            </return>
-        </transaction>
-        <transaction>
-            <insert ref="dbinsert2">
-                <input path="$dbselect1/ResultSet[1]/dbo/RCDSSYSPARAMS/VALUE"/>
-                <output path="$dbinsert2/."/>
-                <expression>
-                    <input path="." var="VALUE"/>
-                    <output path="BATCH_ID"/>
-                    <code lang="xpath">fn:number($VALUE) + 1</code>
-                </expression>
-                <assign value="U">
-                    <output path="STATUS"/>
-                </assign>
-                <assign value="1">
-                    <output path="OPERATION"/>
-                </assign>
-            </insert>
-            <return>
-                <input path="$var4/DBInsertReturn"/>
             </return>
         </transaction>
     </mappingDeclaration>

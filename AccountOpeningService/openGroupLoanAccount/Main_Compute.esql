@@ -3,40 +3,93 @@ BROKER SCHEMA openGroupLoanAccount
 DECLARE svc NAMESPACE 'http://AccountOpeningService';
 
 
-CREATE COMPUTE MODULE prepareForGroupSubflow_Compute
+
+
+CREATE COMPUTE MODULE processRequest_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE el REFERENCE TO InputRoot.XMLNSC.svc:openGroupLoanAccountResponse.openGroupLoanAccountReply;
-		DECLARE fld REFERENCE TO el.groupJobKey;
+		DECLARE i INTEGER 1;
+		DECLARE count INTEGER;
 
-		SET OutputRoot = InputRoot;
+		-- first open groups
+		SET i = 1;
+		SET count = CARDINALITY(el.groupJobKey[]);		
+		WHILE i <= count DO
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.batchID = el.groupJobKey[i].batchID;
+			SET OutputLocalEnvironment.Variables.externalID = el.groupJobKey[i].externalID;
+			PROPAGATE TO LABEL 'openGroup';
+			SET i = i + 1;
+		END WHILE;
 		
-		SET OutputLocalEnvironment.Variables.fileName = InputRoot.XMLNSC.svc:openGroupLoanAccountResponse.openGroupLoanAccountReply.jobKey;		
+		-- then open customers		
+		SET i = 1;
+		SET count = CARDINALITY(el.customerJobKey[]);		
+		WHILE i <= count DO
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.batchID = el.savingAccountJobKey[i].batchID;
+			SET OutputLocalEnvironment.Variables.externalID = el.savingAccountJobKey[i].externalID;
+			PROPAGATE TO LABEL 'openCustomer';
+			SET i = i + 1;
+		END WHILE;
+		
+		-- then open savings
+		SET i = 1;
+		SET count = CARDINALITY(el.savingAccountJobKey[]);		
+		WHILE i <= count DO
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.batchID = el.savingAccountJobKey[i].batchID;
+			SET OutputLocalEnvironment.Variables.externalID = el.savingAccountJobKey[i].externalID;
+			PROPAGATE TO LABEL 'openSaving';
+			SET i = i + 1;
+		END WHILE;
 
+		-- then open loans
+		SET i = 1;
+		SET count = CARDINALITY(el.loanAccountJobKey[]);		
+		WHILE i <= count DO
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.batchID = el.loanAccountJobKey[i].batchID;
+			SET OutputLocalEnvironment.Variables.externalID = el.loanAccountJobKey[i].externalID;
+			PROPAGATE TO LABEL 'openLoan';
+			SET i = i + 1;
+		END WHILE;				
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE prepareForGroupSubflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputLocalEnvironment.Variables = InputLocalEnvironment.Variables;
 		SET OutputLocalEnvironment.Variables.processName = 'HO-PROCESS-04';
-
-		SET OutputLocalEnvironment.Variables.batchID = fld.batchID;
-		SET OutputLocalEnvironment.Variables.externalID = fld.externalID;
-		
 		RETURN TRUE;
 	END;
 END MODULE;
 
-
 CREATE COMPUTE MODULE prepareForCustomerSubflow_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		DECLARE el REFERENCE TO InputRoot.XMLNSC.svc:openGroupLoanAccountResponse.openGroupLoanAccountReply;
-		DECLARE fld REFERENCE TO el.customerJobKey;
-
-		SET OutputRoot = InputRoot;
-
-		SET OutputLocalEnvironment.Variables.fileName = el;		
-
+		SET OutputLocalEnvironment.Variables = InputLocalEnvironment.Variables;
 		SET OutputLocalEnvironment.Variables.processName = 'HO-PROCESS-CU';
+		RETURN TRUE;
+	END;
+END MODULE;
 
-		SET OutputLocalEnvironment.Variables.batchID = fld.batchID;
-		SET OutputLocalEnvironment.Variables.externalID = fld.externalID;
+CREATE COMPUTE MODULE prepareForSavingSubflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputLocalEnvironment.Variables = InputLocalEnvironment.Variables;		
+		SET OutputLocalEnvironment.Variables.processName = 'HO-PROCESS-A0';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE prepareForLoanSubflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputLocalEnvironment.Variables = InputLocalEnvironment.Variables;		
+		SET OutputLocalEnvironment.Variables.processName = 'HO-PROCESS-01';
 		RETURN TRUE;
 	END;
 END MODULE;

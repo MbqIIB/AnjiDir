@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:openGroupLoanAccount_openCustomer.subflow="openGroupLoanAccount/openCustomer.subflow" xmlns:openGroupLoanAccount_openGroup.subflow="openGroupLoanAccount/openGroup.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="openGroupLoanAccount/Main.msgflow"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:openGroupLoanAccount_openCustomer.subflow="openGroupLoanAccount/openCustomer.subflow" xmlns:openGroupLoanAccount_openGroup.subflow="openGroupLoanAccount/openGroup.subflow"
+    xmlns:openGroupLoanAccount_openLoanAccount.subflow="openGroupLoanAccount/openLoanAccount.subflow" xmlns:openGroupLoanAccount_openSavingAccount.subflow="openGroupLoanAccount/openSavingAccount.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="openGroupLoanAccount/Main.msgflow"
     nsPrefix="openGroupLoanAccount_Main.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
@@ -8,29 +9,61 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/Main.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/Main.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="100,197" queueName="ACCOPENSVC.MAIN" messageDomainProperty="XMLNSC" validateTiming="complete" transactionMode="no" validateMaster="contentAndValue">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="29,220" queueName="ACCOPENSVC.MAIN" messageDomainProperty="XMLNSC" validateTiming="complete" transactionMode="no" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="328,197" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForGroupSubflow_Compute.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="267,140" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForGroupSubflow_Compute.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="perpareForGroup"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="215,197" pattern="Start Main Flow:&#xA;&#xA;${Root}&#xA;${LocalEnvironment}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="148,220" pattern="Start Main Flow:&#xA;&#xA;${Root}&#xA;${LocalEnvironment}">
         <translation xmi:type="utility:ConstantString" string="TraceIn"/>
       </nodes>
-      <nodes xmi:type="openGroupLoanAccount_openGroup.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="485,198">
+      <nodes xmi:type="openGroupLoanAccount_openGroup.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="407,141">
         <translation xmi:type="utility:ConstantString" string="openGroup"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="607,194" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForCustomerSubflow_Compute.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="342,368" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForCustomerSubflow_Compute.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="prepareForCustomer"/>
       </nodes>
-      <nodes xmi:type="openGroupLoanAccount_openCustomer.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="800,195">
+      <nodes xmi:type="openGroupLoanAccount_openCustomer.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="525,369">
         <translation xmi:type="utility:ConstantString" string="openCustomer"/>
       </nodes>
+      <nodes xmi:type="openGroupLoanAccount_openSavingAccount.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="850,459">
+        <translation xmi:type="utility:ConstantString" string="openSavingAccount"/>
+      </nodes>
+      <nodes xmi:type="openGroupLoanAccount_openLoanAccount.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="800,114">
+        <translation xmi:type="utility:ConstantString" string="openLoanAccount"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="724,458" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForSavingSubflow_Compute.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="prepareForSaving"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="677,113" dataSource="finesb" transaction="commit" computeExpression="esql://routine/openGroupLoanAccount#prepareForLoanSubflow_Compute.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="prepareForLoan"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="252,220" computeExpression="esql://routine/openGroupLoanAccount#processRequest_Compute.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="processRequest"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="181,140" labelName="openGroup">
+        <translation xmi:type="utility:ConstantString" string="labelGroup"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="572,113" labelName="openLoan">
+        <translation xmi:type="utility:ConstantString" string="labelLoan"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="233,368" labelName="openCustomer">
+        <translation xmi:type="utility:ConstantString" string="labelCustomer"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="584,458" labelName="openSaving">
+        <translation xmi:type="utility:ConstantString" string="labelSaving"/>
+      </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_20" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_22" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_23" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_24" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
