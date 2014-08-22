@@ -1,0 +1,12 @@
+BROKER SCHEMA openGroupLoanAccount
+
+CREATE FILTER MODULE subflow_Filter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF CARDINALITY(Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.[]) > 0 THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+END MODULE;
