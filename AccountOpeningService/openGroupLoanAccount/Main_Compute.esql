@@ -2,9 +2,6 @@ BROKER SCHEMA openGroupLoanAccount
 
 DECLARE svc NAMESPACE 'http://AccountOpeningService';
 
-
-
-
 CREATE COMPUTE MODULE processRequest_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
@@ -28,8 +25,8 @@ CREATE COMPUTE MODULE processRequest_Compute
 		SET count = CARDINALITY(el.customerJobKey[]);		
 		WHILE i <= count DO
 			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
-			SET OutputLocalEnvironment.Variables.batchID = el.savingAccountJobKey[i].batchID;
-			SET OutputLocalEnvironment.Variables.externalID = el.savingAccountJobKey[i].externalID;
+			SET OutputLocalEnvironment.Variables.batchID = el.customerJobKey[i].batchID;
+			SET OutputLocalEnvironment.Variables.externalID = el.customerJobKey[i].externalID;
 			PROPAGATE TO LABEL 'openCustomer';
 			SET i = i + 1;
 		END WHILE;
