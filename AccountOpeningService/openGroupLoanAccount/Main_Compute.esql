@@ -13,7 +13,7 @@ CREATE COMPUTE MODULE processRequest_Compute
 		SET i = 1;
 		SET count = CARDINALITY(el.groupJobKey[]);		
 		WHILE i <= count DO
-			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey ||'_'||el.groupJobKey[i].batchID||'_HO-PROCESS-04';
 			SET OutputLocalEnvironment.Variables.batchID = el.groupJobKey[i].batchID;
 			SET OutputLocalEnvironment.Variables.externalID = el.groupJobKey[i].externalID;
 			PROPAGATE TO LABEL 'openGroup';
@@ -24,7 +24,7 @@ CREATE COMPUTE MODULE processRequest_Compute
 		SET i = 1;
 		SET count = CARDINALITY(el.customerJobKey[]);		
 		WHILE i <= count DO
-			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey ||'_'||el.customerJobKey[i].batchID||'_HO-PROCESS-CU';
 			SET OutputLocalEnvironment.Variables.batchID = el.customerJobKey[i].batchID;
 			SET OutputLocalEnvironment.Variables.externalID = el.customerJobKey[i].externalID;
 			PROPAGATE TO LABEL 'openCustomer';
@@ -35,7 +35,7 @@ CREATE COMPUTE MODULE processRequest_Compute
 		SET i = 1;
 		SET count = CARDINALITY(el.savingAccountJobKey[]);		
 		WHILE i <= count DO
-			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey ||'_'||el.savingAccountJobKey[i].batchID||'_HO-PROCESS-A0';
 			SET OutputLocalEnvironment.Variables.batchID = el.savingAccountJobKey[i].batchID;
 			SET OutputLocalEnvironment.Variables.externalID = el.savingAccountJobKey[i].externalID;
 			PROPAGATE TO LABEL 'openSaving';
@@ -46,7 +46,7 @@ CREATE COMPUTE MODULE processRequest_Compute
 		SET i = 1;
 		SET count = CARDINALITY(el.loanAccountJobKey[]);		
 		WHILE i <= count DO
-			SET OutputLocalEnvironment.Variables.fileName = el.jobKey;
+			SET OutputLocalEnvironment.Variables.fileName = el.jobKey ||'_'||el.loanAccountJobKey[i].batchID||'_HO-PROCESS-01';
 			SET OutputLocalEnvironment.Variables.batchID = el.loanAccountJobKey[i].batchID;
 			SET OutputLocalEnvironment.Variables.externalID = el.loanAccountJobKey[i].externalID;
 			PROPAGATE TO LABEL 'openLoan';
