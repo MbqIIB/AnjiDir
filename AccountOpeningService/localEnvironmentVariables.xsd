@@ -3,4 +3,5 @@
 	<xsd:element name="operation" type="xsd:int"/>
 	<xsd:element name="batchID" type="xsd:int"/>
 	<xsd:element name="internalID" type="xsd:string"/>
+	<xsd:element name="fileName" type="xsd:string"/>
 </xsd:schema>

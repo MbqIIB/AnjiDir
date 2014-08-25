@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmDatabaseRetrieve.msgnode="ComIbmDatabaseRetrieve.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="getJobStatus/getGroupLoanStatusByCustomerKey.subflow"
+    nsPrefix="getJobStatus_getGroupLoanStatusByCustomerKey.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="getGroupLoanStatusByCustomerKey" bundleName="getJobStatus/getGroupLoanStatusByCustomerKey" pluginId="AccountOpeningService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/getGroupLoanStatusByCustomerKey.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/getGroupLoanStatusByCustomerKey.gif"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="getJobStatus/getGroupLoanStatusByCustomerKey" pluginId="AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="669,14">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="getJobStatus/getGroupLoanStatusByCustomerKey" pluginId="AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="290,185" dataSourceName="GANASEVA" sqlQuery="SELECT [HO-CUSTOMERHANDOFF-STAGING].&quot;IS-ERROR&quot;, [HO-CUSTOMERHANDOFF-STAGING].ERROR_DESCRIPTION&#xA;FROM [HO-CUSTOMERHANDOFF-STAGING] H, [HO-CUSTOMERHANDOFF-STAGING]&#xA;WHERE  H.[EXTERNAL-CUSTOMER-ID] = ?&#xA;AND  H.BATCHID = ?&#xA;ORDER BY [HO-CUSTOMERHANDOFF-STAGING].&quot;IS-ERROR&quot; ASC, [HO-CUSTOMERHANDOFF-STAGING].ERROR_DESCRIPTION ASC"
+          tableNameComboValues="2,2,0,0,0,0,0,0~[HO-CUSTOMERHANDOFF-STAGING],[HO-CUSTOMERHANDOFF-STAGING] ,[HO-CUSTOMERHANDOFF-STAGING] H" columnNameComboValues="1,2,0,3,0,0,0,0~&quot;IS-ERROR&quot;,[EXTERNAL-CUSTOMER-ID],BATCHID,ERROR_DESCRIPTION" operatorComboValues="2,2,0,0,0,0,0,0~ASC" valueTypeComboValues="2,2,0,0,0,0,0,0~None" columnValueComboValues="1,0~[HO-CUSTOMERHANDOFF-STAGING].ERROR_DESCRIPTION">
+        <translation xmi:type="utility:ConstantString" string="getCustomerResult"/>
+        <queryElements tableName="[HO-CUSTOMERHANDOFF-STAGING] H" columnName="[EXTERNAL-CUSTOMER-ID]" operator="=" valueType="Element" value="$InputBody/XMLNSC/tns:getJobStatus/getJobStatusRequest/customerJobKey/externalID"/>
+        <queryElements tableName="[HO-CUSTOMERHANDOFF-STAGING] H" columnName="BATCHID" operator="=" valueType="Element" value="$InputBody/XMLNSC/tns:getJobStatus/getJobStatusRequest/customerJobKey/batchID"/>
+        <queryElements tableName="[HO-CUSTOMERHANDOFF-STAGING]" columnName="&quot;IS-ERROR&quot;" operator="ASC" valueType="None" value="None"/>
+        <queryElements tableName="[HO-CUSTOMERHANDOFF-STAGING]" columnName="ERROR_DESCRIPTION" operator="ASC" valueType="None" value="None"/>
+        <dataElements columnName="[HO-CUSTOMERHANDOFF-STAGING].ERROR_DESCRIPTION" messageElement="$OutputRoot/XMLNSC/tns:getJobStatusResponse/getJobStatusReply/customerJob/fault/message[1]"/>
+        <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="93,184" dataSourceName="GANASEVA" sqlQuery="SELECT RCDSCUSTOMERS.CUSTOMERID&#xA;FROM RCDSCUSTOMERS&#xA;WHERE RCDSCUSTOMERS.EXTERNALCUSTNO = ?&#xA;ORDER BY RCDSCUSTOMERS.CUSTOMERID ASC" tableNameComboValues="0,0~RCDSCUSTOMERS" columnNameComboValues="0,1~CUSTOMERID,EXTERNALCUSTNO" operatorComboValues="0,2~ASC" valueTypeComboValues="0,2~None" columnValueComboValues="0~RCDSCUSTOMERS.CUSTOMERID">
+        <translation xmi:type="utility:ConstantString" string="getInternalCustomerID"/>
+        <queryElements tableName="RCDSCUSTOMERS" columnName="CUSTOMERID" operator="ASC" valueType="None" value="None"/>
+        <queryElements tableName="RCDSCUSTOMERS" columnName="EXTERNALCUSTNO" operator="=" valueType="Element" value="$InputBody/XMLNSC/tns:getJobStatus/getJobStatusRequest/customerJobKey/externalID"/>
+        <dataElements columnName="RCDSCUSTOMERS.CUSTOMERID" messageElement="$OutputRoot/XMLNSC/tns:getJobStatusResponse/getJobStatusReply/customerJob/internalID"/>
+        <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="175,69" dataSourceName="GANASEVA" sqlQuery="SELECT [HO-HISTORY].[FILE-NAME]&#xA;FROM [HO-HISTORY]&#xA;WHERE [HO-HISTORY].BATCHID = ?&#xA;ORDER BY [HO-HISTORY].[FILE-NAME] ASC" tableNameComboValues="0,0~[HO-HISTORY]" columnNameComboValues="1,0~[FILE-NAME],BATCHID" operatorComboValues="2,0~ASC" valueTypeComboValues="2,2~Element" columnValueComboValues="0~[HO-HISTORY].[FILE-NAME]">
+        <translation xmi:type="utility:ConstantString" string="getFileName"/>
+        <queryElements tableName="[HO-HISTORY]" columnName="BATCHID" operator="=" valueType="Element" value="$InputRoot/XMLNSC/tns:getJobStatus/getJobStatusRequest/customerJobKey/batchID"/>
+        <queryElements tableName="[HO-HISTORY]" columnName="[FILE-NAME]" operator="ASC" valueType="Element" value="None"/>
+        <dataElements columnName="[HO-HISTORY].[FILE-NAME]" messageElement="$OutputLocalEnvironment/Variables/fileName"/>
+        <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
