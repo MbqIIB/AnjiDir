@@ -15,29 +15,13 @@
                                     </xsd:restriction>
                                  </xsd:simpleType>
                               </xsd:element>
-                              <xsd:element name="accountManagerUserId">
+                              <xsd:element name="accountManagerUserID">
                                  <xsd:annotation>
                                     <xsd:documentation>Operation user Id</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
                                        <xsd:maxLength value="15" />
-                                    </xsd:restriction>
-                                 </xsd:simpleType>
-                              </xsd:element>
-                              <xsd:element minOccurs="0" name="employeeId">
-                                 <xsd:annotation />
-                                 <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                       <xsd:maxLength value="10" />
-                                    </xsd:restriction>
-                                 </xsd:simpleType>
-                              </xsd:element>
-                              <xsd:element minOccurs="0" name="employeeName">
-                                 <xsd:annotation />
-                                 <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                       <xsd:maxLength value="40" />
                                     </xsd:restriction>
                                  </xsd:simpleType>
                               </xsd:element>
@@ -106,7 +90,7 @@
                                     </xsd:restriction>
                                  </xsd:simpleType>
                               </xsd:element>
-                              <xsd:element name="loanPeriodMonths">
+                              <xsd:element name="loanPeriodInMonths">
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:int">
                                        <xsd:minInclusive value="0" />
@@ -124,7 +108,7 @@
                                     </xsd:restriction>
                                  </xsd:simpleType>
                               </xsd:element>
-                              <xsd:element minOccurs="0" name="purposeofAdvance">
+                              <xsd:element minOccurs="0" name="purposeOfLoan">
                                  <xsd:annotation>
                                     <xsd:documentation>Purpose of loan field in RP</xsd:documentation>
                                  </xsd:annotation>
@@ -487,16 +471,6 @@
                                        <xsd:enumeration value="95018" />
                                        <xsd:enumeration value="95019" />
                                        <xsd:enumeration value="99999" />
-                                    </xsd:restriction>
-                                 </xsd:simpleType>
-                              </xsd:element>
-                              <xsd:element minOccurs="0" name="modeOfAdvance">
-                                 <xsd:annotation>
-                                    <xsd:documentation>Check with Huzefa</xsd:documentation>
-                                 </xsd:annotation>
-                                 <xsd:simpleType>
-                                    <xsd:restriction base="xsd:string">
-                                       <xsd:maxLength value="5" />
                                     </xsd:restriction>
                                  </xsd:simpleType>
                               </xsd:element>

@@ -64,14 +64,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="shortName">
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="80" />
-                <xsd:minLength value="1" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element name="fullName">
+         <xsd:annotation>
+             <xsd:documentation>This will be preferred name</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="80" />
@@ -81,7 +76,7 @@
        </xsd:element>
        <xsd:element name="channelRequestName">
           <xsd:annotation>
-             <xsd:documentation>Check with Farida</xsd:documentation>
+             <xsd:documentation>Thsi is the name which will be printed on card and cheque books</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -192,7 +187,7 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element minOccurs="1" name="primaryRMId">
+       <xsd:element minOccurs="1" name="primaryRMID">
           <xsd:annotation>
              <xsd:documentation>Check with OPS</xsd:documentation>
           </xsd:annotation>
@@ -244,22 +239,6 @@ type="xsd:string" /> -->
                 <xsd:enumeration value="GRADUATE" />
                 <xsd:enumeration value="POST GRADUATE" />
                 <xsd:enumeration value="PROFESSIONAL" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element name="employmentStatus">
-          <xsd:annotation />
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:minLength value="1" />
-                <xsd:maxLength value="13" />
-                <xsd:enumeration value="HOUSEWIFE" />
-                <xsd:enumeration value="POLITICIAN" />
-                <xsd:enumeration value="RETIRED" />
-                <xsd:enumeration value="SALARIED" />
-                <xsd:enumeration value="SELF-EMPLOYED" />
-                <xsd:enumeration value="STUDENT" />
-                <xsd:enumeration value="UNEMPLOYED" />
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -342,39 +321,6 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element minOccurs="0" name="ifSalariedTypeOfCompany">
-          <xsd:annotation />
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:minLength value="1" />
-                <xsd:maxLength value="4" />
-                <xsd:enumeration value="F001" />
-                <xsd:enumeration value="F002" />
-                <xsd:enumeration value="F003" />
-                <xsd:enumeration value="F004" />
-                <xsd:enumeration value="F005" />
-                <xsd:enumeration value="F006" />
-                <xsd:enumeration value="F007" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element minOccurs="0" name="employeeDesignation">
-          <xsd:annotation />
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="30" />
-                <xsd:enumeration value="MANAGER" />
-                <xsd:enumeration value="PRESIDENT" />
-                <xsd:enumeration value="CEO" />
-                <xsd:enumeration value="CFO" />
-                <xsd:enumeration value="CTO" />
-                <xsd:enumeration value="OFFICER" />
-                <xsd:enumeration value="EXECUTIVE" />
-                <xsd:enumeration value="SUPERVISOR" />
-                <xsd:enumeration value="SELF FINANCED" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
        <xsd:element minOccurs="0" name="industryType" maxOccurs="1">
           <xsd:annotation />
           <xsd:simpleType>
@@ -444,31 +390,6 @@ type="xsd:string" /> -->
                 <xsd:enumeration value="109" />
                 <xsd:enumeration value="110" />
                 <xsd:enumeration value="113" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element minOccurs="0" name="employerPhoneNumber">
-          <xsd:annotation>
-             <xsd:documentation>Office address</xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="15" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element minOccurs="0" name="employmentType">
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="20" />
-                <xsd:enumeration value="OTH" />
-                <xsd:enumeration value="HOUSEWIFE" />
-                <xsd:enumeration value="POLITICIAN" />
-                <xsd:enumeration value="RETIRED" />
-                <xsd:enumeration value="SALARIED" />
-                <xsd:enumeration value="SELF-EMPLOYED" />
-                <xsd:enumeration value="STUDENT" />
-                <xsd:enumeration value="UNEMPLOYED" />
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -631,7 +552,7 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element name="panNumber">
+       <xsd:element name="pan">
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1" />
@@ -653,7 +574,7 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element name="sourcingId">
+       <xsd:element name="sourcingID">
           <xsd:annotation>
              <xsd:documentation>inout field</xsd:documentation>
           </xsd:annotation>
@@ -676,22 +597,94 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element minOccurs="0" name="employerId">
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="50" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
-       <xsd:element minOccurs="0" name="employeeId">
-          <xsd:simpleType>
-             <xsd:restriction base="xsd:string">
-                <xsd:maxLength value="10" />
-             </xsd:restriction>
-          </xsd:simpleType>
-       </xsd:element>
+			       <xsd:element name="employmentDetails">
+				       <xsd:complexType>
+					       <xsd:sequence>
+						       <xsd:element minOccurs="0" name="ifSalariedTypeOfCompany">
+						          <xsd:annotation />
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:minLength value="1" />
+						                <xsd:maxLength value="4" />
+						                <xsd:enumeration value="F001" />
+						                <xsd:enumeration value="F002" />
+						                <xsd:enumeration value="F003" />
+						                <xsd:enumeration value="F004" />
+						                <xsd:enumeration value="F005" />
+						                <xsd:enumeration value="F006" />
+						                <xsd:enumeration value="F007" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+						       <xsd:element name="employmentStatus">
+						          <xsd:annotation />
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:minLength value="1" />
+						                <xsd:maxLength value="13" />
+						                <xsd:enumeration value="HOUSEWIFE" />
+						                <xsd:enumeration value="POLITICIAN" />
+						                <xsd:enumeration value="RETIRED" />
+						                <xsd:enumeration value="SALARIED" />
+						                <xsd:enumeration value="SELF-EMPLOYED" />
+						                <xsd:enumeration value="STUDENT" />
+						                <xsd:enumeration value="UNEMPLOYED" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+						       <xsd:element minOccurs="0" name="employmentType">
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:maxLength value="20" />
+						                <xsd:enumeration value="OTH" />
+						                <xsd:enumeration value="HOUSEWIFE" />
+						                <xsd:enumeration value="POLITICIAN" />
+						                <xsd:enumeration value="RETIRED" />
+						                <xsd:enumeration value="SALARIED" />
+						                <xsd:enumeration value="SELF-EMPLOYED" />
+						                <xsd:enumeration value="STUDENT" />
+						                <xsd:enumeration value="UNEMPLOYED" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+						       <xsd:element minOccurs="0" name="employerID">
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:maxLength value="50" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+						       <xsd:element minOccurs="0" name="employeeID">
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:maxLength value="10" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+						       <xsd:element minOccurs="0" name="designation">
+						          <xsd:annotation />
+						          <xsd:simpleType>
+						             <xsd:restriction base="xsd:string">
+						                <xsd:maxLength value="30" />
+						                <xsd:enumeration value="MANAGER" />
+						                <xsd:enumeration value="PRESIDENT" />
+						                <xsd:enumeration value="CEO" />
+						                <xsd:enumeration value="CFO" />
+						                <xsd:enumeration value="CTO" />
+						                <xsd:enumeration value="OFFICER" />
+						                <xsd:enumeration value="EXECUTIVE" />
+						                <xsd:enumeration value="SUPERVISOR" />
+						                <xsd:enumeration value="SELF FINANCED" />
+						             </xsd:restriction>
+						          </xsd:simpleType>
+						       </xsd:element>
+			       			   <xsd:element minOccurs="0" name="employerAddress" type="tns:addressType"/>
+       							<xsd:element minOccurs="0" name="employerPhoneNumber" type="tns:phoneType"/>
+					       </xsd:sequence>
+				       </xsd:complexType>
+			       </xsd:element>
        <xsd:element minOccurs="1" maxOccurs="3" name="document" type="tns:documentType"/>
-       <xsd:element minOccurs="1" maxOccurs="3" name="address" type="tns:addressType"/>
+       <xsd:element minOccurs="1" maxOccurs="2" name="address" type="tns:addressType"/>
        <xsd:element minOccurs="0" maxOccurs="3" name="phone" type="tns:phoneType"/>
        <xsd:element minOccurs="0" maxOccurs="2" name="email" type="tns:emailType"/>
     </xsd:sequence>
@@ -709,7 +702,7 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="emailId">
+      <xsd:element name="emailID">
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50" />
@@ -893,7 +886,7 @@ type="xsd:string" /> -->
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element minOccurs="1" name="documentId">
+       <xsd:element minOccurs="1" name="documentID">
           <xsd:annotation>
              <xsd:documentation>input field</xsd:documentation>
           </xsd:annotation>

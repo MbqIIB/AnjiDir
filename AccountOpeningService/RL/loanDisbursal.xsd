@@ -4,7 +4,7 @@
 	targetNamespace="http://www.quantiguous.com/RL/loanDisbursal.xsd">
 <xsd:complexType name="retailLoanDisbursementType">
    <xsd:sequence>
-      <xsd:element name="disbursementAmount">
+      <xsd:element name="netDisbursementAmount">
          <xsd:simpleType>
             <xsd:restriction base="xsd:decimal">
                <xsd:totalDigits value="16" />
@@ -12,6 +12,16 @@
             </xsd:restriction>
          </xsd:simpleType>
       </xsd:element>
+     <xsd:element minOccurs="0" name="disbursalMode">
+        <xsd:annotation>
+           <xsd:documentation>Check with Huzefa</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+           <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="5" />
+           </xsd:restriction>
+        </xsd:simpleType>
+     </xsd:element>
       <xsd:element name="creditAccountNumber">
          <xsd:annotation>
             <xsd:documentation>Casa account number where the money needs to be credited during disbursement</xsd:documentation>
