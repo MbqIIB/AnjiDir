@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_addCenter_Request_Response.subflow="gen/addCenter_Request_Response.subflow" xmlns:gen_getConsumerCreditReport_Request_Response.subflow="gen/getConsumerCreditReport_Request_Response.subflow" xmlns:gen_openGroupLoanAccount_Request_Response.subflow="gen/openGroupLoanAccount_Request_Response.subflow" xmlns:gen_processGroupLoanApplication_Request_Response.subflow="gen/processGroupLoanApplication_Request_Response.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountOpeningService.msgflow" nsPrefix="gen_AccountOpeningService.msgflow">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_addCenter_Request_Response.subflow="gen/addCenter_Request_Response.subflow" xmlns:gen_getConsumerCreditReport_Request_Response.subflow="gen/getConsumerCreditReport_Request_Response.subflow"
+    xmlns:gen_openGroupLoanAccount_Request_Response.subflow="gen/openGroupLoanAccount_Request_Response.subflow" xmlns:gen_processGroupLoanApplication_Request_Response.subflow="gen/processGroupLoanApplication_Request_Response.subflow" xmlns:getJobStatus_getGroupLoanStatusByCustomerKey.subflow="getJobStatus/getGroupLoanStatusByCustomerKey.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountOpeningService.msgflow"
+    nsPrefix="gen_AccountOpeningService.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <translation xmi:type="utility:TranslatableString" key="AccountOpeningService" bundleName="gen/AccountOpeningService" pluginId="AccountOpeningService"/>
@@ -30,7 +33,7 @@
       <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="220,390" labelName="processGroupLoanApplication">
         <translation xmi:type="utility:ConstantString" string="processGroupLoanApplication"/>
       </nodes>
-      <nodes xmi:type="gen_processGroupLoanApplication_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="370,390">
+      <nodes xmi:type="gen_processGroupLoanApplication_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="339,390">
         <translation xmi:type="utility:ConstantString" string="processGroupLoanApplication_Request_Response"/>
       </nodes>
       <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="220,470" labelName="getConsumerCreditReport">
@@ -38,6 +41,12 @@
       </nodes>
       <nodes xmi:type="gen_getConsumerCreditReport_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_15" location="370,470">
         <translation xmi:type="utility:ConstantString" string="getConsumerCreditReport_Request_Response"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="282,542" labelName="getJobStatus">
+        <translation xmi:type="utility:ConstantString" string="getJobStatus"/>
+      </nodes>
+      <nodes xmi:type="getJobStatus_getGroupLoanStatusByCustomerKey.subflow:FCMComposite_1" xmi:id="FCMComposite_1_11" location="411,539">
+        <translation xmi:type="utility:ConstantString" string="getGroupLoanStatusByCustomerKey"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
@@ -48,6 +57,8 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

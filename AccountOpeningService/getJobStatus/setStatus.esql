@@ -1,0 +1,42 @@
+BROKER SCHEMA getJobStatus
+
+
+CREATE COMPUTE MODULE setSuccess
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.internalID[]) > 0) THEN
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'completed';
+		END IF;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.internalID[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';	
+		END IF;	
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.internalID[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
+		END IF;	
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.internalID[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'completed';			
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setFailure
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.fault.message[]) > 0) THEN
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'failed';
+		END IF;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.fault.message[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'failed';			
+		END IF;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.fault.message[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'failed';		
+		END IF;
+		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.fault.message[]) > 0) THEN	
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'failed';			
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;
