@@ -1,0 +1,23 @@
+BROKER SCHEMA getJobStatus
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
+
+CREATE COMPUTE MODULE setResponseXMLNSC
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = '';
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = '';
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = '';
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = ''; 
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE deleteRequestNode
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;	
+		DELETE FIELD OutputRoot.XMLNSC.ns:getJobStatus;
+		RETURN TRUE;
+	END;
+END MODULE;
