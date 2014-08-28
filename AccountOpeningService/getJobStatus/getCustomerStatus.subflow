@@ -50,7 +50,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="409,247" computeExpression="esql://routine/getJobStatus#setFailure.Main">
         <translation xmi:type="utility:ConstantString" string="setFailure"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="335,20" computeExpression="esql://routine/getJobStatus#setSuccess.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="335,20" computeExpression="esql://routine/getJobStatus#setCustomerStatusComplete.Main">
         <translation xmi:type="utility:ConstantString" string="setSuccess"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="443,364" computeExpression="esql://routine/getJobStatus#setFaultCustomer.Main">

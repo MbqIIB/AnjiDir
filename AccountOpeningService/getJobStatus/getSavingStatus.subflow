@@ -38,16 +38,16 @@
         <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
       </nodes>
       <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="318,327" dataSourceName="GANASEVA" copyMessage="true" sqlQuery="SELECT ERRORHANDLER.ERROR_MSG&#xA;FROM ERRORHANDLER&#xA;WHERE ERRORHANDLER.[BATCH-ID] = ?&#xA;AND ERRORHANDLER.ERROR_PROC = 'HO-PROCESS-A0'&#xA;ORDER BY ERRORHANDLER.ERROR_MSG ASC" tableNameComboValues="0,0,0,0~ERRORHANDLER" columnNameComboValues="0,2,1,0~[BATCH-ID],ERROR_MSG,ERROR_PROC" operatorComboValues="2,2,0,0~=" valueTypeComboValues="2,3,0,0~String"
-          columnValueComboValues="0,0~ERRORHANDLER.[BATCH-ID]">
+          columnValueComboValues="1,0,0~ERRORHANDLER.ERROR_MSG">
         <translation xmi:type="utility:ConstantString" string="getTechnicalError"/>
         <queryElements tableName="ERRORHANDLER" columnName="[BATCH-ID]" operator="=" valueType="Element" value="$InputLocalEnvironment/batchID"/>
         <queryElements tableName="ERRORHANDLER" columnName="ERROR_PROC" operator="=" valueType="String" value="HO-PROCESS-A0"/>
         <queryElements tableName="ERRORHANDLER" columnName="ERROR_MSG" operator="ASC" valueType="None" value="None"/>
-        <dataElements columnName="ERRORHANDLER.[BATCH-ID]" messageElement="$OutputRoot/XMLNSC/tns:getJobStatusResponse/getJobStatusReply/savingAccountJob/fault/message[1]"/>
+        <dataElements columnName="ERRORHANDLER.ERROR_MSG" messageElement="$OutputRoot/XMLNSC/tns:getJobStatusResponse/getJobStatusReply/savingAccountJob/fault/message[1]"/>
         <nsMappingTable nsPrefix="ext" namespace="http://www.quantiguous.com/FI/globalElements.xsd"/>
         <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="346,20" computeExpression="esql://routine/getJobStatus#setSuccess.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="346,20" computeExpression="esql://routine/getJobStatus#setSavingStatusComplete.Main">
         <translation xmi:type="utility:ConstantString" string="setSuccess"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="395,251" computeExpression="esql://routine/getJobStatus#setFailure.Main">

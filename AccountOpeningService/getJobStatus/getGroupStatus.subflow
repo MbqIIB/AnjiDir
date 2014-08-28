@@ -47,7 +47,7 @@
         <nsMappingTable nsPrefix="ext" namespace="http://www.quantiguous.com/FI/globalElements.xsd"/>
         <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="311,20" computeExpression="esql://routine/getJobStatus#setSuccess.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="311,20" computeExpression="esql://routine/getJobStatus#setGroupStatusComplete.Main">
         <translation xmi:type="utility:ConstantString" string="setSuccess"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="316,83" computeExpression="esql://routine/getJobStatus#setFailure.Main">

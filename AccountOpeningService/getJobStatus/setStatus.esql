@@ -1,25 +1,42 @@
 BROKER SCHEMA getJobStatus
 DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 
-CREATE COMPUTE MODULE setSuccess
+CREATE COMPUTE MODULE setCustomerStatusComplete
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		SET OutputRoot = InputRoot;
-		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.internalID[]) > 0) THEN
-			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'completed';
-		END IF;
-		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.internalID[]) > 0) THEN	
-			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';	
-		END IF;	
-		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.internalID[]) > 0) THEN	
-			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
-		END IF;	
-		IF (CARDINALITY(OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.internalID[]) > 0) THEN	
-			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'completed';			
-		END IF;
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'completed';
 		RETURN TRUE;
 	END;
 END MODULE;
+
+CREATE COMPUTE MODULE setLoanStatusComplete
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setGroupStatusComplete
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;	
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';	
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setSavingStatusComplete
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'completed';			
+		RETURN TRUE;
+	END;
+END MODULE;
+
 
 CREATE COMPUTE MODULE setFailure
 	CREATE FUNCTION Main() RETURNS BOOLEAN
