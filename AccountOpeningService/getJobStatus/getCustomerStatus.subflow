@@ -53,8 +53,8 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="335,20" computeExpression="esql://routine/getJobStatus#setCustomerStatusComplete.Main">
         <translation xmi:type="utility:ConstantString" string="setSuccess"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="443,364" computeExpression="esql://routine/getJobStatus#setFaultCustomer.Main">
-        <translation xmi:type="utility:ConstantString" string="setFaultCustomer"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="443,364" computeExpression="esql://routine/getJobStatus#customerNotFound.Main">
+        <translation xmi:type="utility:ConstantString" string="customerNotFound"/>
       </nodes>
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Failure" location="581,365">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Failure" bundleName="getJobStatus/getCustomerStatus" pluginId="AccountOpeningService"/>
