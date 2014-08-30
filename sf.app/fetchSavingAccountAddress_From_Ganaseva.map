@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/customer-key.xsd" var="var"/>
-    <input path="db:database(/finesb.dbm,FINESB,db:schema-tables(dbo,CUSTOMER_ACCOUNTS))" var="FINESB"/>
+    <input path="db:database(/finesb.dbm,FINESB,db:schema-tables(dbo,SAVING_ACCOUNTS))" var="FINESB"/>
     <output path="/customer-address.xsd"/>
     <generation engine="xquery"/>
-    <mappingDeclaration name="fetchAccountAddress_From_Ganaseva">
+    <mappingDeclaration name="fetchSavingAccountAddress_From_Ganaseva">
         <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
-        <input path="$FINESB/db:select(fn:false(),ResultSet(dbo/CUSTOMER_ACCOUNTS/ACCOUNT_NUMBER,dbo/CUSTOMER_ACCOUNTS/NAME,dbo/CUSTOMER_ACCOUNTS/CIF_ID,dbo/CUSTOMER_ACCOUNTS/EMAIL_ID,dbo/CUSTOMER_ACCOUNTS/MOBILE_NO,dbo/CUSTOMER_ACCOUNTS/SEGMENT,dbo/CUSTOMER_ACCOUNTS/RM_ID,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_BASE_SOL,dbo/CUSTOMER_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,dbo/CUSTOMER_ACCOUNTS/ADDRESS,dbo/CUSTOMER_ACCOUNTS/CITY,dbo/CUSTOMER_ACCOUNTS/STATE,dbo/CUSTOMER_ACCOUNTS/COUNTRY,dbo/CUSTOMER_ACCOUNTS/PIN,dbo/CUSTOMER_ACCOUNTS/SCHM_CODE,dbo/CUSTOMER_ACCOUNTS/SCHEME_DESCRIPTION),db:where('dbo.CUSTOMER_ACCOUNTS.CIF_ID =  ?','?'=$MessageAssembly/customer-key/cif-id))" var="dbselect"/>
+        <input path="$FINESB/db:select(fn:false(),ResultSet(dbo/SAVING_ACCOUNTS/ACCOUNT_NUMBER,dbo/SAVING_ACCOUNTS/NAME,dbo/SAVING_ACCOUNTS/CIF_ID,dbo/SAVING_ACCOUNTS/EMAIL_ID,dbo/SAVING_ACCOUNTS/MOBILE_NO,dbo/SAVING_ACCOUNTS/SEGMENT,dbo/SAVING_ACCOUNTS/RM_ID,dbo/SAVING_ACCOUNTS/ACCOUNT_BASE_SOL,dbo/SAVING_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,dbo/SAVING_ACCOUNTS/ADDRESS,dbo/SAVING_ACCOUNTS/CITY,dbo/SAVING_ACCOUNTS/STATE,dbo/SAVING_ACCOUNTS/COUNTRY,dbo/SAVING_ACCOUNTS/PIN,dbo/SAVING_ACCOUNTS/SCHM_CODE,dbo/SAVING_ACCOUNTS/SCHEME_DESCRIPTION),db:where('dbo.SAVING_ACCOUNTS.CIF_ID =  ?','?'=$MessageAssembly/customer-key/cif-id))" var="dbselect"/>
         <output path="mb:msg(customer-addresses,assembly,XMLNSC,Properties,LocalEnvironment)"/>
         <move>
             <input path="$MessageAssembly/Properties"/>
@@ -18,38 +18,38 @@
             <condition>
                 <if>
                     <input path="." var="ResultSet2"/>
-                    <output path="$customer-addresses3/customer-address"/>
+                    <output path="$customer-addresses3/."/>
                     <test lang="xpath">fn:exists($ResultSet2)</test>
                     <foreach>
                         <input path="$ResultSet2/." var="ResultSet3"/>
-                        <output path="."/>
+                        <output path="customer-address"/>
                         <move automap="true">
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/CIF_ID"/>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/CIF_ID"/>
                             <output path="cif-id"/>
                         </move>
                         <move automap="true">
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/ADDRESS"/>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/ADDRESS"/>
                             <output path="address"/>
                         </move>
                         <move automap="true">
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/CITY"/>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/CITY"/>
                             <output path="city"/>
                         </move>
                         <move automap="true">
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/STATE"/>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/STATE"/>
                             <output path="state"/>
                         </move>
                         <move automap="true">
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/COUNTRY"/>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/COUNTRY"/>
                             <output path="country"/>
-                        </move>
-                        <move>
-                            <input path="$ResultSet3/dbo/CUSTOMER_ACCOUNTS/PIN" var="PIN1"/>
-                            <output path="zip"/>
                         </move>
                         <assign value="Mailing">
                             <output path="addresscategory"/>
                         </assign>
+                        <move>
+                            <input path="$ResultSet3/dbo/SAVING_ACCOUNTS/PIN"/>
+                            <output path="zip"/>
+                        </move>
                     </foreach>
                 </if>
                 <else>

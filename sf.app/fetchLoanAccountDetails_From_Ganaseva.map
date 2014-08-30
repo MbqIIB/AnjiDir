@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/customer-key.xsd" var="var"/>
+    <input path="db:database(/finesb.dbm,FINESB,db:schema-tables(dbo,LOAN_ACCOUNTS))" var="finesb"/>
+    <output path="/customer-account.xsd" var="var1"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="fetchLoanAccountDetails_From_Ganaseva">
+        <input path="$var/mb:msg(customer-key,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$finesb/db:select(fn:false(),ResultSet(dbo/LOAN_ACCOUNTS/ACCOUNT_NUMBER,dbo/LOAN_ACCOUNTS/NAME,dbo/LOAN_ACCOUNTS/CIF_ID,dbo/LOAN_ACCOUNTS/EMAIL_ID,dbo/LOAN_ACCOUNTS/MOBILE_NO,dbo/LOAN_ACCOUNTS/SEGMENT,dbo/LOAN_ACCOUNTS/RM_ID,dbo/LOAN_ACCOUNTS/ACCOUNT_BASE_SOL,dbo/LOAN_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION,dbo/LOAN_ACCOUNTS/ADDRESS,dbo/LOAN_ACCOUNTS/CITY,dbo/LOAN_ACCOUNTS/STATE,dbo/LOAN_ACCOUNTS/COUNTRY,dbo/LOAN_ACCOUNTS/PIN,dbo/LOAN_ACCOUNTS/SCHM_CODE,dbo/LOAN_ACCOUNTS/SCHEME_DESCRIPTION),db:where('dbo.LOAN_ACCOUNTS.ACCOUNT_NUMBER = ?','?'=$MessageAssembly/customer-key/account-number))" var="dbselect"/>
+        <output path="$var1/mb:msg(customer-account,assembly,XMLNSC,Properties,LocalEnvironment)" var="MessageAssembly1"/>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet"/>
+            <output path="$MessageAssembly1/customer-account" var="customer-account1"/>
+            <output path="$MessageAssembly1/LocalEnvironment" var="LocalEnvironment2"/>
+            <condition>
+                <if>
+                    <input path="." var="ResultSet"/>
+                    <output path="$customer-account1/."/>
+                    <test lang="xpath">fn:exists( $ResultSet)</test>
+                    <foreach>
+                        <input path="$ResultSet/." var="ResultSet1"/>
+                        <output path="."/>
+                        <move>
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/ACCOUNT_BASE_SOL" var="ACCOUNTBASESOL3"/>
+                            <output path="account-base-sol"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/ACCOUNT_NUMBER" var="ACCOUNTNUMBER3"/>
+                            <output path="account-number"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/NAME"/>
+                            <output path="name"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/CIF_ID"/>
+                            <output path="cif-id"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/EMAIL_ID"/>
+                            <output path="email-id"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/MOBILE_NO"/>
+                            <output path="mobile-no"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/SEGMENT"/>
+                            <output path="segment"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/RM_ID"/>
+                            <output path="rm-id"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/ACCOUNT_SOL_DESCRIPTION"/>
+                            <output path="account-sol-description"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/ADDRESS"/>
+                            <output path="address"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/CITY"/>
+                            <output path="city"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/STATE"/>
+                            <output path="state"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/COUNTRY"/>
+                            <output path="country"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/PIN"/>
+                            <output path="pin"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/SCHM_CODE"/>
+                            <output path="schm-code"/>
+                        </move>
+                        <move automap="true">
+                            <input path="$ResultSet1/dbo/LOAN_ACCOUNTS/SCHEME_DESCRIPTION"/>
+                            <output path="scheme-description"/>
+                        </move>
+                    </foreach>
+                </if>
+                <else>
+                    <output path="$LocalEnvironment2/."/>
+                    <assign value="404">
+                        <output path="Destination/HTTP/ReplyStatusCode"/>
+                        <test lang="xpath">404</test>
+                    </assign>
+                </else>
+            </condition>
+        </select>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>
