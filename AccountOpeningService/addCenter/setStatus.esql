@@ -1,0 +1,42 @@
+BROKER SCHEMA addCenter
+DECLARE cntr NAMESPACE 'http://www.quantiguous.com/FI/center.xsd';
+
+CREATE COMPUTE MODULE setSuccess
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.status = 'completed';
+		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.internalID = InputLocalEnvironment.internalId;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setExisting
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Center already exists, ExternalId : ' || InputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:externalId ||  ' InternalId : ' || InputLocalEnvironment.internalId;
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setFailure
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message;
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE setSoapFault
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with center creation. Please contact support.';
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		RETURN TRUE;
+	END;
+END MODULE;

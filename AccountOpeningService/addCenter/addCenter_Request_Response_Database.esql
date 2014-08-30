@@ -14,20 +14,6 @@ END;
 CREATE DATABASE MODULE addCenter_Request_Response_Database
 	CREATE PROCEDURE center(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
 
-	CREATE PROCEDURE verifyRecord(IN piExternalId CHARACTER)
-	BEGIN 
-		DECLARE lCount INTEGER;
-		
-		SET lCount = THE(SELECT COUNT(1) FROM Database.RCDSCENTERDETAILS WHERE  RCDSCENTERDETAILS.EXTERNALCENTERID = piExternalId);
-	    
-		IF lCount = 0 THEN
-			PROPAGATE TO TERMINAL 'out1';
-		ELSE
-			PROPAGATE TO TERMINAL 'out2';
-		END IF;
-	
-	END;
-
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		DECLARE lBatchID INTEGER;
@@ -99,9 +85,7 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 
 		-- call the procedure to process the record
 		CALL center(lBatchID, 0, 'file_'||center.ge:externalId,1);
-		-- check if the record is processed
-		CALL verifyRecord(center.ge:externalId);
 		
-		RETURN FALSE;
+		RETURN true;
 	END;
 END MODULE;
