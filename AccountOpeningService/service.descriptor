@@ -8,7 +8,9 @@
         </service:flows>
       </service:operation>
       <service:operation name="getJobStatus" type="request-response">
-        <service:flows/>
+        <service:flows>
+          <service:flow location="gen/getJobStatus_Request_Response.subflow" type="Request_Response"/>
+        </service:flows>
       </service:operation>
       <service:operation name="addCenter" type="request-response">
         <service:flows>
