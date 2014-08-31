@@ -63,6 +63,7 @@ CREATE COMPUTE MODULE setFaultCustomer
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the external cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -73,6 +74,7 @@ CREATE COMPUTE MODULE setFaultSaving
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the saving account linked to external cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -83,6 +85,7 @@ CREATE COMPUTE MODULE setFaultLoan
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the loan account linked to external cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -93,6 +96,7 @@ CREATE COMPUTE MODULE setFaultGroup
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the group linked to external cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -102,7 +106,8 @@ CREATE COMPUTE MODULE groupNotFound
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
-		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'No group associated with the customer id passed cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Group not found for the cutomer ID passed. Please contact support.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -113,6 +118,7 @@ CREATE COMPUTE MODULE customerNotFound
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Customer ID passed is not present in the system.';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -123,6 +129,7 @@ CREATE COMPUTE MODULE loanNotFound
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Loan account not present for the external customer ID passed.';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -132,7 +139,8 @@ CREATE COMPUTE MODULE savingNotFound
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
-		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Saving account not present for the external customer ID passed.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Saving account not found for the customer ID passed.' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;

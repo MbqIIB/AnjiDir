@@ -9,13 +9,13 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/getGroupLoanStatusByCustomerKey.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/getGroupLoanStatusByCustomerKey.gif"/>
     <composition>
-      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="9,20">
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="-125,57">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="getJobStatus/getGroupLoanStatusByCustomerKey" pluginId="AccountOpeningService"/>
       </nodes>
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="608,-86">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="getJobStatus/getGroupLoanStatusByCustomerKey" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="getJobStatus_getCustomerStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="62,59">
+      <nodes xmi:type="getJobStatus_getCustomerStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="-72,53">
         <translation xmi:type="utility:ConstantString" string="getCustomerStatus"/>
       </nodes>
       <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="123,189" dataSourceName="GANASEVA" copyMessage="true" sqlQuery="SELECT [HO-LOAN-STAGING].EXTERNALLOANNO, [HO-LOAN-STAGING].ID, [HO-LOAN-STAGING].[EXTERNAL GROUPID], [HO-LOAN-STAGING].BATCHID&#xA;FROM [HO-LOAN-STAGING]&#xA;WHERE [HO-LOAN-STAGING].EXTERNALCUSTOMERID = ?&#xA;ORDER BY [HO-LOAN-STAGING].EXTERNALLOANNO ASC, [HO-LOAN-STAGING].ID DESC, [HO-LOAN-STAGING].[EXTERNAL GROUPID] ASC, [HO-LOAN-STAGING].BATCHID ASC"
@@ -32,10 +32,10 @@
         <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
         <nsMappingTable nsPrefix="ext" namespace="http://www.quantiguous.com/FI/globalElements.xsd"/>
       </nodes>
-      <nodes xmi:type="getJobStatus_getLoanStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="180,21">
+      <nodes xmi:type="getJobStatus_getLoanStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="182,47">
         <translation xmi:type="utility:ConstantString" string="getLoanStatus"/>
       </nodes>
-      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="221,149" dataSourceName="GANASEVA" copyMessage="true" sqlQuery="SELECT [HO-GROUP-STAGING].BATCHID, [HO-GROUP-STAGING].ID, [HO-GROUP-STAGING].EXTERNALGROUPNO&#xA;FROM [HO-GROUP-STAGING]&#xA;WHERE [HO-GROUP-STAGING].EXTERNALGROUPNO = ?&#xA;ORDER BY [HO-GROUP-STAGING].BATCHID ASC, [HO-GROUP-STAGING].ID ASC, [HO-GROUP-STAGING].EXTERNALGROUPNO ASC" tableNameComboValues="0,0,0,0,0,0,0,0,0,0~[HO-GROUP-STAGING],[HO-LOAN-STAGING]"
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="223,151" dataSourceName="GANASEVA" copyMessage="true" sqlQuery="SELECT [HO-GROUP-STAGING].BATCHID, [HO-GROUP-STAGING].ID, [HO-GROUP-STAGING].EXTERNALGROUPNO&#xA;FROM [HO-GROUP-STAGING]&#xA;WHERE [HO-GROUP-STAGING].EXTERNALGROUPNO = ?&#xA;ORDER BY [HO-GROUP-STAGING].BATCHID ASC, [HO-GROUP-STAGING].ID ASC, [HO-GROUP-STAGING].EXTERNALGROUPNO ASC" tableNameComboValues="0,0,0,0,0,0,0,0,0,0~[HO-GROUP-STAGING],[HO-LOAN-STAGING]"
           columnNameComboValues="1,5,3,3,0,0,0,0,0,0~[EXTERNAL GROUPID],BATCHID,EXTERNALCUSTOMERID,EXTERNALGROUPNO,EXTERNALLOANNO,ID" operatorComboValues="0,0,0,2,0,0,0,0,0,0~=" valueTypeComboValues="0,0,0,2,0,0,0,0,0,0~Element" columnValueComboValues="1,2,0,0~[HO-GROUP-STAGING].EXTERNALGROUPNO">
         <translation xmi:type="utility:ConstantString" string="prepareForGroup"/>
         <queryElements tableName="[HO-GROUP-STAGING]" columnName="BATCHID" operator="ASC" valueType="None" value="None"/>
@@ -47,34 +47,19 @@
         <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
         <nsMappingTable nsPrefix="ext" namespace="http://www.quantiguous.com/FI/globalElements.xsd"/>
       </nodes>
-      <nodes xmi:type="getJobStatus_getGroupStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="278,55">
+      <nodes xmi:type="getJobStatus_getGroupStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="280,44">
         <translation xmi:type="utility:ConstantString" string="getGroupStatus"/>
       </nodes>
-      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="322,196" dataSourceName="GANASEVA" copyMessage="true" sqlQuery="SELECT [HO-SAVING-STAGING].BATCHID, [HO-SAVING-STAGING].ID, [HO-SAVING-STAGING].EXTERNALACCOUNTNO&#xA;FROM [HO-SAVING-STAGING]&#xA;WHERE [HO-SAVING-STAGING].EXTERNALCUSTOMERID = ?&#xA;ORDER BY [HO-SAVING-STAGING].BATCHID ASC, [HO-SAVING-STAGING].ID ASC, [HO-SAVING-STAGING].EXTERNALACCOUNTNO ASC" tableNameComboValues="0,0,0,0,0~[HO-SAVING-STAGING]"
-          columnNameComboValues="0,3,1,2,0~BATCHID,EXTERNALACCOUNTNO,EXTERNALCUSTOMERID,ID" operatorComboValues="0,0,0,2,0~=" valueTypeComboValues="0,0,0,2,0~Element" columnValueComboValues="1,0~[HO-SAVING-STAGING].BATCHID">
-        <translation xmi:type="utility:ConstantString" string="prepareForSaving"/>
-        <queryElements tableName="[HO-SAVING-STAGING]" columnName="BATCHID" operator="ASC" valueType="None" value="None"/>
-        <queryElements tableName="[HO-SAVING-STAGING]" columnName="ID" operator="ASC" valueType="None" value="None"/>
-        <queryElements tableName="[HO-SAVING-STAGING]" columnName="EXTERNALACCOUNTNO" operator="ASC" valueType="None" value="None"/>
-        <queryElements tableName="[HO-SAVING-STAGING]" columnName="EXTERNALCUSTOMERID" operator="=" valueType="Element" value="$InputRoot/XMLNSC/tns:getJobStatus/getJobStatusRequest/customerJobKey/externalID"/>
-        <dataElements columnName="[HO-SAVING-STAGING].EXTERNALACCOUNTNO" messageElement="$OutputLocalEnvironment/ext:externalId"/>
-        <dataElements columnName="[HO-SAVING-STAGING].BATCHID" messageElement="$OutputLocalEnvironment/batchID"/>
-        <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
-        <nsMappingTable nsPrefix="ext" namespace="http://www.quantiguous.com/FI/globalElements.xsd"/>
-      </nodes>
-      <nodes xmi:type="getJobStatus_getSavingStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="379,23">
+      <nodes xmi:type="getJobStatus_getSavingStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="73,49">
         <translation xmi:type="utility:ConstantString" string="getSavingStatus"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="468,52" computeExpression="esql://routine/getJobStatus#deleteRequestNode.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="393,40" computeExpression="esql://routine/getJobStatus#deleteRequestNode.Main">
         <translation xmi:type="utility:ConstantString" string="deleteRequestNode"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="457,150" pattern="${Root}">
-        <translation xmi:type="utility:ConstantString" string="Trace"/>
-      </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="559,200" pattern="${Root}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="559,41" pattern="${Root}">
         <translation xmi:type="utility:ConstantString" string="Trace1"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="4,153" computeExpression="esql://routine/getJobStatus#setResponseXMLNSC.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="-130,128" computeExpression="esql://routine/getJobStatus#setResponseXMLNSC.Main">
         <translation xmi:type="utility:ConstantString" string="setResponseXMLNSC"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="181,315" computeExpression="esql://routine/getJobStatus#loanNotFound.Main">
@@ -83,17 +68,9 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="277,340" computeExpression="esql://routine/getJobStatus#groupNotFound.Main">
         <translation xmi:type="utility:ConstantString" string="groupNotFound"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="379,357" computeExpression="esql://routine/getJobStatus#savingNotFound.Main">
-        <translation xmi:type="utility:ConstantString" string="savingNotFound"/>
-      </nodes>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_11" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -107,13 +84,16 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in">
         <bendPoints>81,-92,-220,49</bendPoints>
       </connections>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_16" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_20" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_22" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_27" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_30" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in">
+        <bendPoints>72,-126,-433,9</bendPoints>
+      </connections>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
