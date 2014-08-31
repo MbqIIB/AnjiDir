@@ -84,7 +84,5 @@ CREATE COMPUTE MODULE callCenterCreationProc
 		CALL centercreation('HO-PROCESS-02',lBatchID, 0, lExternalID);
 		RETURN TRUE;
 	END;
-	
-	
-	
+
 END MODULE;
