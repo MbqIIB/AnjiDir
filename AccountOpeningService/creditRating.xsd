@@ -13,10 +13,10 @@
 			<xsd:element minOccurs="0" ref="savingAccount:nominee"/>
 			<xsd:element name="address" type="dt:addressType"/>
 			<xsd:element ref="globals:operatingRegion"/>
-			<xsd:element ref="customer:rationCardNo"/>
-			<xsd:element ref="customer:voterId"/>				
-			<xsd:element ref="customer:aadharNo"/>
-			<xsd:element ref="globals:mobileNo"/>
+			<xsd:element minOccurs="0" ref="customer:rationCardNo"/>
+			<xsd:element minOccurs="0" ref="customer:voterId"/>				
+			<xsd:element minOccurs="0" ref="customer:aadharNo"/>
+			<xsd:element minOccurs="0" ref="globals:mobileNo"/>
 			<xsd:element ref="globals:dateOfBirth"/>
 			<xsd:element ref="customer:gender"/>
 			<xsd:element ref="globals:branchCode"/>

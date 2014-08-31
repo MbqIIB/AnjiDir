@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="getConsumerCreditReport" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="getConsumerCreditReport">
+    <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
+    <input path="/equifax.localEnvironmentVariables.xsd" var="var1"/>
+    <output path="/OnlineInquiry-1.0.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getConsumerCreditReport_Mapping">
+        <input namespace="http://AccountOpeningService" path="$var/mb:msg(getConsumerCreditReport,assembly,XMLNSC,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="CustomerId"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="UserId"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="Password"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="MemberNumber"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="SecurityCode"/>
+        </input>
+        <output namespace="http://services.equifax.com/eport/ws/schemas/1.0" path="mb:msg(InquiryRequest,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <convert defaultValue="0.0">
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/loanAmount" var="loanAmount"/>
+            <output path="InquiryRequest/RequestBody/TransactionAmount"/>
+        </convert>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/customerName"/>
+            <output path="InquiryRequest/RequestBody/FullName"/>
+        </move>
+        <function ref="concat">
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/barcodeNo" var="barcodeNo"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/externalId" var="externalId"/>
+            <output path="InquiryRequest/RequestHeader/CustRefField"/>
+            <param name="input" value="($barcodeNo,$externalId)"/>
+            <property key="defaultDelimiter" value=" "/>
+        </function>
+        <move>
+            <input path="LocalEnvironment/Variables/CustomerId[1]" var="CustomerId"/>
+            <output path="InquiryRequest/RequestHeader/CustomerId"/>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/UserId[1]"/>
+            <output path="InquiryRequest/RequestHeader/UserId"/>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/Password[1]"/>
+            <output path="InquiryRequest/RequestHeader/Password"/>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/MemberNumber[1]"/>
+            <output path="InquiryRequest/RequestHeader/MemberNumber"/>
+        </move>
+        <move>
+            <input path="LocalEnvironment/Variables/SecurityCode[1]"/>
+            <output path="InquiryRequest/RequestHeader/SecurityCode"/>
+        </move>
+        <assign value="MCR">
+            <output path="InquiryRequest/RequestHeader/ProductCode"/>
+        </assign>
+        <assign value="1.0">
+            <output path="InquiryRequest/RequestHeader/ProductVersion"/>
+        </assign>
+        <assign value="XML">
+            <output path="InquiryRequest/RequestHeader/ReportFormat"/>
+        </assign>
+        <function ref="concat">
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/branchCode" var="branchCode"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/branchName" var="branchName"/>
+            <output path="InquiryRequest/RequestAccountDetails/BranchIDMFI"/>
+            <param name="input" value="($branchCode,$branchName)"/>
+            <property key="defaultDelimiter" value=" "/>
+        </function>
+        <assign value="0E">
+            <output path="InquiryRequest/RequestBody/InquiryPurpose"/>
+        </assign>
+        <local>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/nominee"/>
+            <output path="InquiryRequest/RequestBody/FamilyDetails/AdditionalNameInfo[1]"/>
+            <move>
+                <input path="name"/>
+                <output path="AdditionalName"/>
+            </move>
+            <assign value="H">
+                <output path="AdditionalNameType"/>
+            </assign>
+        </local>
+        <join>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address" var="address"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/operatingRegion/operatingRegionCode" var="operatingRegionCode"/>
+            <output path="InquiryRequest/RequestBody/AddrLine1"/>
+            <function ref="concat">
+                <input path="$address/line1" var="line1"/>
+                <input path="$address/line2" var="line2"/>
+                <input path="$address/line3" var="line3"/>
+                <input path="$address/cityName" var="cityName"/>
+                <input path="$address/stateName" var="stateName"/>
+                <input path="$address/pin" var="pin"/>
+                <input path="$operatingRegionCode/." var="operatingRegionCode1"/>
+                <output path="."/>
+                <param name="input" value="($line1,$line2,$line3,$cityName,$stateName,$pin,$operatingRegionCode1)"/>
+                <property key="defaultDelimiter" value=" "/>
+            </function>
+        </join>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateName"/>
+            <output path="InquiryRequest/RequestBody/State"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/pin"/>
+            <output path="InquiryRequest/RequestBody/Postal"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/dateOfBirth"/>
+            <output path="InquiryRequest/RequestBody/DOB"/>
+        </move>
+        <condition>
+            <if>
+                <input path="getConsumerCreditReport/getConsumerCreditReportRequest/gender" var="gender"/>
+                <output path="InquiryRequest/RequestBody/Gender"/>
+                <test lang="xpath">$gender = '01'</test>
+                <assign value="1">
+                    <output path="."/>
+                </assign>
+            </if>
+            <else>
+                <output path="InquiryRequest/RequestBody/Gender"/>
+                <assign value="2">
+                    <output path="."/>
+                </assign>
+            </else>
+        </condition>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/aadharNo"/>
+            <output path="InquiryRequest/RequestBody/NationalIdCard"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/mobileNo"/>
+            <output path="InquiryRequest/RequestBody/MobilePhone"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/rationCardNo" var="rationCardNo"/>
+            <output path="InquiryRequest/RequestBody/RationCard"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/voterId" var="voterId1"/>
+            <output path="InquiryRequest/RequestBody/VoterId"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

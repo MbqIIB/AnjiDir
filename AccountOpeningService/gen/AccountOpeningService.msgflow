@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_addCenter_Request_Response.subflow="gen/addCenter_Request_Response.subflow" xmlns:gen_getConsumerCreditReport_Request_Response.subflow="gen/getConsumerCreditReport_Request_Response.subflow"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:addCenter_addCenter_Request_Response.subflow="addCenter/addCenter_Request_Response.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_getConsumerCreditReport_Request_Response.subflow="gen/getConsumerCreditReport_Request_Response.subflow"
     xmlns:gen_openGroupLoanAccount_Request_Response.subflow="gen/openGroupLoanAccount_Request_Response.subflow" xmlns:gen_processGroupLoanApplication_Request_Response.subflow="gen/processGroupLoanApplication_Request_Response.subflow" xmlns:getJobStatus_getGroupLoanStatusByCustomerKey.subflow="getJobStatus/getGroupLoanStatusByCustomerKey.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/AccountOpeningService.msgflow"
     nsPrefix="gen_AccountOpeningService.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
@@ -27,7 +27,7 @@
       <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="220,310" labelName="addCenter">
         <translation xmi:type="utility:ConstantString" string="addCenter"/>
       </nodes>
-      <nodes xmi:type="gen_addCenter_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="370,310">
+      <nodes xmi:type="addCenter_addCenter_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="370,310">
         <translation xmi:type="utility:ConstantString" string="addCenter_Request_Response"/>
       </nodes>
       <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="75,388" labelName="processGroupLoanApplication">

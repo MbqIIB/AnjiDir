@@ -1,0 +1,38 @@
+BROKER SCHEMA getConsumerCreditReport
+DECLARE ns28 NAMESPACE 'http://services.equifax.com/eport/ws/schemas/1.0';
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
+
+
+CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse = '';
+		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport = InputRoot.SOAP.Body.ns28:InquiryResponse;
+	
+		IF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.[]) > 0 THEN
+			IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.ns28:ErrorCode = '00') THEN
+		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'notFound';
+			ELSE
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'failed';
+			END IF;
+		ELSE
+			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'pass';
+		END IF;
+	END;
+END MODULE;

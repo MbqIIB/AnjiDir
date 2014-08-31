@@ -63,5 +63,4 @@
 			<xsd:element name="branchName" type="xsd:string"/>
 		</xsd:sequence>
 	</xsd:complexType>
-		
 </xsd:schema>

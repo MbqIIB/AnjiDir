@@ -20,7 +20,7 @@ CREATE COMPUTE MODULE openGroupLoanAccount_Request_Response_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
-		SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.ge:batchID = getlBatchID('HO_04_BATCHID');
+		SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.ge:batchID = getBatchID('HO_04_BATCHID');
 		DECLARE I INTEGER 1;
 		DECLARE J INTEGER;
 		
@@ -28,17 +28,17 @@ CREATE COMPUTE MODULE openGroupLoanAccount_Request_Response_Compute
 		SET J = CARDINALITY(OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[]);
 		WHILE I <= J DO
 			IF CARDINALITY(OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].existingCustomer.[]) > 0 THEN
-				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].existingCustomer.loanAccount.ge:batchID = getlBatchID('HO_01_BATCHID');
+				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].existingCustomer.loanAccount.ge:batchID = getBatchID('HO_01_BATCHID');
 			ELSEIF CARDINALITY(OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.[]) > 0 THEN
-				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.ge:batchID = getlBatchID('HO_CU_BATCHID');
-				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.savingAccount.ge:batchID = getlBatchID('HO_A0_BATCHID');
-				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.savingAccount.loanAccount.ge:batchID = getlBatchID('HO_01_BATCHID');		
+				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.ge:batchID = getBatchID('HO_CU_BATCHID');
+				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.savingAccount.ge:batchID = getBatchID('HO_A0_BATCHID');
+				SET OutputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.customers.cus:customer[I].newCustomer.savingAccount.loanAccount.ge:batchID = getBatchID('HO_01_BATCHID');		
 			END IF;
 			SET I = I + 1;
 		END WHILE;
 	END;
 	
-	CREATE FUNCTION getlBatchID(piMnemonic CHARACTER) RETURNS INTEGER
+	CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
 	BEGIN
 		DECLARE lBatchID CHARACTER;
 		

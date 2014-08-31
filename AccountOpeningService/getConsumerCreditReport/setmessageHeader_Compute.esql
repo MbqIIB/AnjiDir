@@ -1,0 +1,21 @@
+BROKER SCHEMA getConsumerCreditReport
+
+DECLARE CustomerId EXTERNAL INTEGER 3;
+DECLARE UserId EXTERNAL CHARACTER 'RBL_STS';
+DECLARE Password EXTERNAL CHARACTER 'Getrpt247';
+DECLARE MemberNumber EXTERNAL CHARACTER '999AA00223';
+DECLARE SecurityCode EXTERNAL CHARACTER 'GG8';
+
+CREATE COMPUTE MODULE setMessageHeader
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputLocalEnvironment.Variables.CustomerId = CustomerId;
+		SET OutputLocalEnvironment.Variables.UserId = UserId;
+		SET OutputLocalEnvironment.Variables.Password = Password;
+		SET OutputLocalEnvironment.Variables.MemberNumber = MemberNumber;
+		SET OutputLocalEnvironment.Variables.SecurityCode = SecurityCode;
+
+		RETURN TRUE;
+	END;
+END MODULE;
