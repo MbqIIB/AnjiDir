@@ -1,91 +1,74 @@
 BROKER SCHEMA addCenter
 
-CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
-BEGIN
-	DECLARE lBatchID CHARACTER;
-	
-	UPDATE Database.RCDSSYSPARAMS SET "VALUE" = RCDSSYSPARAMS.VALUE + 1 WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic;
-		
-	SET lBatchID = THE(SELECT ITEM RCDSSYSPARAMS.VALUE FROM Database.RCDSSYSPARAMS WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic);
-	
-	RETURN CAST(lBatchID AS INTEGER);
-END;
-
 CREATE DATABASE MODULE addCenter_Request_Response_Database
-	CREATE PROCEDURE center(IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER, IN processID INTEGER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
-
+	
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		DECLARE lBatchID INTEGER;
-		DECLARE lTime CHARACTER;
-		DECLARE lDate CHARACTER;
-		DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:*.center;
-		
-		SET lBatchID = getBatchID('HO_02_BATCHID');
-		SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:meetingTime;
-		SET lTime = '12:12AM';--formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
-		SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
-		--- insert the record
-		INSERT INTO Database."[HO-CENTER-STAGING]"
-		( 
-			"[BATCHID]",
-			"[EXTERNALCENTERID]",
-			"[CENTERNAME]",
-			"[DESCRIPTION]",
-			"[BRANCHCODE]",
-			"[OPERATINGREGIONCODE]",
-			"[MAXNOOFIND]",
-			"[SERVICINGAGENT]",
-			"[FORMATIONDATE]",
-			"[MEETINGTIME]",
-			"[CENTERLEADER]",
-			"[ADDRESS1]",
-			"[ADDRESS2]",
-			"[ADDRESS3]",
-			"[STATE]",
-			"[CITY]",
-			"[PINCODE]",
-			"[PRIMARYCONTACT]",
-			"[PRIMARYPHONENO]",
-			"[PRIMARYCONTACTMAILID]",
-			"[SECONDARYCONTACT]",
-			"[SECONDARYPHONENO]",
-			"[SECONDARYCONTACTMAILID]",
-			"[FAXNO]",
-			"[EXTERNALAGENTID]" 
-		)
-		VALUES
-		(
-			lBatchID,
-			center.ge:externalId,
-			center.centerName,
-			center.description,
-			center.branchCode,
-			center.ge:operatingRegion.operatingRegionCode,
-			center.maximumIndividuals,
-			center.servicingAgent,
-			lDate,
-			lTime,
-			center.centerLeader,
-			center.meetingAddress.line1,
-			center.meetingAddress.line2,
-			center.meetingAddress.line3,
-			center.meetingAddress.stateCode,
-			center.meetingAddress.cityCode,
-			center.meetingAddress.pin,
-			'DUMMYPRIMARY',
-			'9999999999',
-			'dummyprimary@xyz.com',
-			'DUMMYSECONDARY',
-			'8888888888',
-			'dummysecondary@xyz.com',
-			'022918723128',
-			'DEFAULT'
-		);
-
-		-- call the procedure to process the record
-		CALL center(lBatchID, 0, 'file_'||center.ge:externalId,1);
-		
-		RETURN true;
+	DECLARE lBatchID INTEGER;
+    DECLARE lTime CHARACTER;
+   	DECLARE lDate CHARACTER;
+    DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center;
+    SET lBatchID = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:batchID;
+    SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:meetingTime;
+    SET lTime = '12:12AM';--formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
+    SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
+    --- insert the record
+    INSERT INTO Database."[HO-CENTER-STAGING]"
+    ( 
+      "[BATCHID]",
+      "[EXTERNALCENTERID]",
+      "[CENTERNAME]",
+      "[DESCRIPTION]",
+      "[BRANCHCODE]",
+      "[OPERATINGREGIONCODE]",
+      "[MAXNOOFIND]",
+      "[SERVICINGAGENT]",
+      "[FORMATIONDATE]",
+      "[MEETINGTIME]",
+      "[CENTERLEADER]",
+      "[ADDRESS1]",
+      "[ADDRESS2]",
+      "[ADDRESS3]",
+      "[STATE]",
+      "[CITY]",
+      "[PINCODE]",
+      "[PRIMARYCONTACT]",
+      "[PRIMARYPHONENO]",
+      "[PRIMARYCONTACTMAILID]",
+      "[SECONDARYCONTACT]",
+      "[SECONDARYPHONENO]",
+      "[SECONDARYCONTACTMAILID]",
+      "[FAXNO]",
+      "[EXTERNALAGENTID]" 
+    )
+    VALUES
+    (
+      lBatchID,
+      center.ge:externalId,
+      center.centerName,
+      center.description,
+      center.branchCode,
+      center.ge:operatingRegion.operatingRegionCode,
+      center.maximumIndividuals,
+      center.servicingAgent,
+      lDate,
+      lTime,
+      center.centerLeader,
+      center.meetingAddress.line1,
+      center.meetingAddress.line2,
+      center.meetingAddress.line3,
+      center.meetingAddress.stateCode,
+      center.meetingAddress.cityCode,
+      center.meetingAddress.pin,
+      'DUMMYPRIMARY',
+      '9999999999',
+      'dummyprimary@xyz.com',
+      'DUMMYSECONDARY',
+      '8888888888',
+      'dummysecondary@xyz.com',
+      '022918723128',
+      'DEFAULT'
+    );	
+		RETURN TRUE;
 	END;
 END MODULE;

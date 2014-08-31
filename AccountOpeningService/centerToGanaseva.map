@@ -132,9 +132,6 @@
             </move>
         </insert>
         <assign value="1">
-            <output path="$MessageAssembly1/addCenterResponse/addCenterReply/numberOfJobsSubmitted"/>
-        </assign>
-        <assign value="1">
             <output path="$MessageAssembly1/LocalEnvironment/Variables/operation"/>
         </assign>
         <expression>

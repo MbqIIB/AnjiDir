@@ -18,7 +18,7 @@
       <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="830,140">
         <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="220,230" labelName="openGroupLoanAccount">
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="178,230" labelName="openGroupLoanAccount">
         <translation xmi:type="utility:ConstantString" string="openGroupLoanAccount"/>
       </nodes>
       <nodes xmi:type="gen_openGroupLoanAccount_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="370,230">
@@ -30,19 +30,19 @@
       <nodes xmi:type="gen_addCenter_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="370,310">
         <translation xmi:type="utility:ConstantString" string="addCenter_Request_Response"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="220,390" labelName="processGroupLoanApplication">
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="75,388" labelName="processGroupLoanApplication">
         <translation xmi:type="utility:ConstantString" string="processGroupLoanApplication"/>
       </nodes>
       <nodes xmi:type="gen_processGroupLoanApplication_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="339,390">
         <translation xmi:type="utility:ConstantString" string="processGroupLoanApplication_Request_Response"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="220,470" labelName="getConsumerCreditReport">
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="72,470" labelName="getConsumerCreditReport">
         <translation xmi:type="utility:ConstantString" string="getConsumerCreditReport"/>
       </nodes>
       <nodes xmi:type="gen_getConsumerCreditReport_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_15" location="370,470">
-        <translation xmi:type="utility:ConstantString" string="getConsumerCreditReport_Request_Response"/>
+        <translation xmi:type="utility:ConstantString" string="getConsumerCreditReport1"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="282,542" labelName="getJobStatus">
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="181,540" labelName="getJobStatus">
         <translation xmi:type="utility:ConstantString" string="getJobStatus"/>
       </nodes>
       <nodes xmi:type="getJobStatus_getGroupLoanStatusByCustomerKey.subflow:FCMComposite_1" xmi:id="FCMComposite_1_11" location="411,539">
@@ -52,13 +52,13 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

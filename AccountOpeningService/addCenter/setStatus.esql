@@ -1,12 +1,20 @@
 BROKER SCHEMA addCenter
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+DECLARE cg NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+DECLARE ge NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+DECLARE cus NAMESPACE 'http://www.quantiguous.com/FI/customer.xsd';
+DECLARE ctr NAMESPACE 'http://www.quantiguous.com/FI/center.xsd';
+DECLARE ns NAMESPACE 'http://AccountOpeningService';
+
+
 DECLARE cntr NAMESPACE 'http://www.quantiguous.com/FI/center.xsd';
 
 CREATE COMPUTE MODULE setSuccess
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot = InputRoot;
+		--SET OutputRoot = InputRoot;
 		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.status = 'completed';
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.internalID = InputLocalEnvironment.internalId;
+		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.internalID = InputLocalEnvironment.internalID;
 		RETURN TRUE;
 	END;
 END MODULE;
@@ -14,9 +22,9 @@ END MODULE;
 CREATE COMPUTE MODULE setExisting
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Center already exists, ExternalId : ' || InputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:externalId ||  ' InternalId : ' || InputLocalEnvironment.internalId;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Center already exists, ExternalId : ' || InputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:externalId ||  ' InternalId : ' || InputLocalEnvironment.internalID;
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
-		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		RETURN TRUE;
 	END;
 END MODULE;
@@ -26,7 +34,7 @@ CREATE COMPUTE MODULE setFailure
 	BEGIN
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message;
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
-		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		RETURN TRUE;
 	END;
 END MODULE;
@@ -36,7 +44,47 @@ CREATE COMPUTE MODULE setSoapFault
 	BEGIN
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with center creation. Please contact support.';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
-		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
 		RETURN TRUE;
 	END;
+END MODULE;
+
+CREATE COMPUTE MODULE updateBatchID
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:batchID = getBatchID('HO_02_BATCHID');
+		RETURN TRUE;
+	END;
+	
+	CREATE FUNCTION getBatchID(piMnemonic CHARACTER) RETURNS INTEGER
+	BEGIN
+		DECLARE lBatchID CHARACTER;
+		
+		UPDATE Database.RCDSSYSPARAMS SET "VALUE" = RCDSSYSPARAMS.VALUE + 1 WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic;
+			
+		SET lBatchID = THE(SELECT ITEM RCDSSYSPARAMS.VALUE FROM Database.RCDSSYSPARAMS WHERE RCDSSYSPARAMS.MNEMONIC = piMnemonic);
+		
+		RETURN CAST(lBatchID AS INTEGER);
+	END;
+	
+END MODULE;
+
+CREATE COMPUTE MODULE callCenterCreationProc
+	CREATE PROCEDURE centercreation(IN process CHARACTER, IN batchID INTEGER, IN partnerID INTEGER, IN fileName CHARACTER) LANGUAGE DATABASE EXTERNAL NAME "dbo.INITIATE_BATCH_PROCESS";
+
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		DECLARE center REFERENCE TO InputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:*.center;
+		DECLARE lBatchID INTEGER;
+		DECLARE lExternalID CHARACTER;
+		SET lBatchID = OutputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:batchID;
+		SET lExternalID = OutputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:externalId;
+		CALL centercreation('HO-PROCESS-02',lBatchID, 0, lExternalID);
+		RETURN TRUE;
+	END;
+	
+	
+	
 END MODULE;
