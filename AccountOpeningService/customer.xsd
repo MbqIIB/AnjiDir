@@ -21,9 +21,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
 	           <xsd:element minOccurs="0" ref="ge:mobileNo"/>
 	           <xsd:element minOccurs="0" name="caste">
-	                       <xsd:annotation>
-	                          <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>01-GENERAL - MEN,02-S.C - MEN,03-S.T - MEN,04-OBC\NT - MEN,05-GENERAL - WOMEN,06-S.C - WOMEN,7-S.T - WOMEN,8-OBC\NT - WOMEN,9-NON-PERSONAL A/C</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 	                    	<xsd:enumeration value="01"/>
@@ -40,9 +40,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	           </xsd:element>
 	           <xsd:element ref="tns:gender"/>
 	           <xsd:element minOccurs="0" name="maritalStatus">
-	                       <xsd:annotation>
-	                          <xsd:documentation>01-Single,02-Married,03-Divorcee,04-Widow,05-Widower,06-Other</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>01-Single,02-Married,03-Divorcee,04-Widow,05-Widower,06-Other</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="01"/>
@@ -55,16 +55,21 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="nationality">
+                  <xsd:annotation>
+                     <xsd:documentation>IN-INDIAN,02-NON INDIAN</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 	                    <xsd:maxLength value="100"/>
+						<xsd:enumeration value="IN"/>
+						<xsd:enumeration value="02"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="religion">
-	                       <xsd:annotation>
-	                          <xsd:documentation>01-GENERAL,02-Muslim,03-Buddhist,04-Neo-Buddhist,05-Christian,06-Sikh,07-Zorashtrian,08-Other Minority,09-Hindu</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>01-GENERAL,02-Muslim,03-Buddhist,04-Neo-Buddhist,05-Christian,06-Sikh,07-Zorashtrian,08-Other Minority,09-Hindu</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 					<xsd:enumeration value="01"/>
@@ -80,9 +85,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="motherTongue">
-	                       <xsd:annotation>
-	                          <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 					<xsd:enumeration value="kn-IN"/>
@@ -92,7 +97,6 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 					<xsd:enumeration value="ml-IN"/>
 					<xsd:enumeration value="sn-IN"/>
 					<xsd:enumeration value="ta-IN"/>
-					<xsd:enumeration value="sn-IN"/>
 					<xsd:enumeration value="bn-IN"/>
 					<xsd:enumeration value="en-US"/>
 	                 </xsd:restriction>
@@ -114,10 +118,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	           </xsd:element>
 		       <xsd:element maxOccurs="1" minOccurs="1" ref="ge:barcodeNo"/>
 	           <xsd:element minOccurs="0" name="aadharSeedingConsent">
-	                       <xsd:annotation>
-	                          <xsd:documentation>01-Yes,02-NO</xsd:documentation>
-	                       </xsd:annotation>
-	
+                 <xsd:annotation>
+                    <xsd:documentation>01-Yes,02-NO</xsd:documentation>
+                 </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 	                    <xsd:maxLength value="100"/>
@@ -127,9 +130,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="health">
-	                       <xsd:annotation>
-	                          <xsd:documentation>02-Partial sa,03-Physically Challenged,04-Mentally Challenged,05-gir,06-Blind,07-One</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>02-Partial sa,03-Physically Challenged,04-Mentally Challenged,05-gir,06-Blind,07-One</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="01"/>
@@ -143,9 +146,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="occupation">
-	                       <xsd:annotation>
-	                          <xsd:documentation>1-Medical Practitioner (Doctor),2-Engineering (Engineer),3-Legal Practice (Advocate),4-Professor,5-Teacher,6-Businessman,7-Industrialist,8-Social Worker,9-C.A./C.S./Cost Accountant,10-Consultant,11-Architect,12-Agriculturist,13-OTHERS</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>1-Medical Practitioner (Doctor),2-Engineering (Engineer),3-Legal Practice (Advocate),4-Professor,5-Teacher,6-Businessman,7-Industrialist,8-Social Worker,9-C.A./C.S./Cost Accountant,10-Consultant,11-Architect,12-Agriculturist,13-OTHERS</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:int">
 	                    <xsd:minInclusive value="1"/>
@@ -154,9 +157,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="educationalQualification">
-	                       <xsd:annotation>
-	                          <xsd:documentation>03-Post Grauduate,04-Graduate,05-Under Graduate,07-Doctorate,08-Professionally Qualified,09-Others,10-9th Pass,11-agricultural mgt,12-No Schooling,13-10th Fail,14-10th Pass,15-Diploma Holder</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>03-Post Grauduate,04-Graduate,05-Under Graduate,07-Doctorate,08-Professionally Qualified,09-Others,10-9th Pass,11-agricultural mgt,12-No Schooling,13-10th Fail,14-10th Pass,15-Diploma Holder</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="03"/>
@@ -177,9 +180,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="category">
-	                       <xsd:annotation>
-	                          <xsd:documentation>1-SMALL FARMER,2-BIG FARMER,3-OTHER,4-Unemployed</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>1-SMALL FARMER,2-BIG FARMER,3-OTHER,4-Unemployed</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:int">
 					<xsd:minInclusive value="1"/>
@@ -188,9 +191,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="language">
-	                       <xsd:annotation>
-	                          <xsd:documentation>kn-IN - Kannada,hi-IN - Hindi,en-US - English,mr-IN - Marathi,ml-IN - Malayalam,or-IN - Oriya,sn-IN - Sanskrit,ta-IN - Tamil,sn-IN - Sanskrit,bn-IN - Bengali,en-US - OTHERS</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>kn-IN - Kannada,hi-IN - Hindi,en-US - English,mr-IN - Marathi,ml-IN - Malayalam,or-IN - Oriya,sn-IN - Sanskrit,ta-IN - Tamil,sn-IN - Sanskrit,bn-IN - Bengali,en-US - OTHERS</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 					<xsd:enumeration value="kn-IN"/>
@@ -207,9 +210,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="kycType">
-	                       <xsd:annotation>
-	                          <xsd:documentation>1-GIR No,2-PAN Card No,3-FORM 60,4-FORM 61</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>1-GIR No,2-PAN Card No,3-FORM 60,4-FORM 61</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:int">
 	                    <xsd:minInclusive value="1"/>
@@ -225,9 +228,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="cardIssuanceFlag">
-	                       <xsd:annotation>
-	                          <xsd:documentation>0 - False, 1-True</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>0 - False, 1-True</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:int">
 					<xsd:minInclusive value="0"/>
@@ -243,21 +246,22 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element name="minorityCommunity">
-	                       <xsd:annotation>
-	                          <xsd:documentation>Religious-MC1,Linguistic-MC2, Does not belong-MC3</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>Religious-MC1,Linguistic-MC2, Does not belong-MC3,NA-MC4</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="MC1"/>
 						<xsd:enumeration value="MC2"/>
 						<xsd:enumeration value="MC3"/>
+						<xsd:enumeration value="MC4"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element name="disabilityHandicapped">
-	                       <xsd:annotation>
-	                          <xsd:documentation>Physical Disability- DH1, Vision Impairment- DH2,  Hearing Impairment-DH3,  Sensory Disability- DH4, No Disability- DH5</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>Physical Disability- DH1, Vision Impairment- DH2,  Hearing Impairment-DH3,  Sensory Disability- DH4, No Disability- DH5, NA-DH6</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="DH1"/>
@@ -265,13 +269,14 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 						<xsd:enumeration value="DH3"/>
 						<xsd:enumeration value="DH4"/>
 						<xsd:enumeration value="DH5"/>
+						<xsd:enumeration value="DH6"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element name="weakerSection">
-	                       <xsd:annotation>
-	                          <xsd:documentation>Scheduled Caste- WS1, Scheduled Tribe-WS2, OBC- WS3</xsd:documentation>
-	                       </xsd:annotation>
+               <xsd:annotation>
+                  <xsd:documentation>Scheduled Caste- WS1, Scheduled Tribe-WS2, OBC- WS3, NA-WS4</xsd:documentation>
+               </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 						<xsd:enumeration value="WS1"/>
@@ -282,9 +287,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	              </xsd:simpleType>
 	           </xsd:element>
 	           <xsd:element name="borrowerType">
-	                       <xsd:annotation>
-	                          <xsd:documentation>This has to be unique across all the requests made. Maximum 16 characters alphanumeric</xsd:documentation>
-	                       </xsd:annotation>
+                  <xsd:annotation>
+                     <xsd:documentation>This has to be unique across all the requests made. Maximum 16 characters alphanumeric</xsd:documentation>
+                  </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
 					<xsd:enumeration value="BT1"/>

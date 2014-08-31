@@ -8,9 +8,48 @@
       <xsd:sequence>
 		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
          <xsd:element name="name" type="xsd:string"/>
-         <xsd:element name="relation" type="xsd:string"/>
+         <xsd:element name="relation">
+            <xsd:annotation>
+               <xsd:documentation>
+                  01-Father,02-Mother,03-Brother,04-Sister,05-Husband,06-Wife,07-Son,08-Daughter,09-Son-in-law,10-Daughter-in-law,11-Mother-in-law,12-Father-in-law,13-Legal Guardian,14-Niece,15-Nephew,16-Other
+               </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="01"/>
+					<xsd:enumeration value="02"/>
+					<xsd:enumeration value="03"/>
+					<xsd:enumeration value="04"/>
+					<xsd:enumeration value="05"/>
+					<xsd:enumeration value="06"/>
+					<xsd:enumeration value="07"/>
+					<xsd:enumeration value="08"/>
+					<xsd:enumeration value="09"/>
+					<xsd:enumeration value="10"/>
+					<xsd:enumeration value="11"/>
+					<xsd:enumeration value="12"/>
+					<xsd:enumeration value="13"/>
+					<xsd:enumeration value="14"/>
+					<xsd:enumeration value="15"/>
+					<xsd:enumeration value="16"/>
+      			</xsd:restriction>
+      		</xsd:simpleType>
+         </xsd:element>
 		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
-         <xsd:element name="gender" type="xsd:string"/>
+         <xsd:element name="gender">
+            <xsd:annotation>
+               <xsd:documentation>
+                  01-MAle,02-FEMALE,03-OTHER
+               </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+					<xsd:enumeration value="01"/>
+					<xsd:enumeration value="02"/>
+					<xsd:enumeration value="03"/>
+      			</xsd:restriction>
+      		</xsd:simpleType>
+         </xsd:element>
          <xsd:element name="address" type="dt:addressType"/>
       </xsd:sequence>
    </xsd:complexType>
@@ -58,12 +97,19 @@
                </xsd:annotation>
             </xsd:element>            
             <xsd:element name="savingProductCode">
-            <xsd:simpleType>
-                  <xsd:restriction base="xsd:string">
-         <xsd:maxLength value="50"/>
-      </xsd:restriction>
-      </xsd:simpleType>
-      </xsd:element>
+	            <xsd:annotation>
+	               <xsd:documentation>
+	                  Product Type(1005-Ratna  No frills Account,1007-Savings  No Frills Accoun,1009-FI  BC Savings  No Frill)
+	               </xsd:documentation>
+	            </xsd:annotation>
+	            <xsd:simpleType>
+	                <xsd:restriction base="xsd:string">
+						<xsd:enumeration value="1005"/>
+						<xsd:enumeration value="1007"/>
+						<xsd:enumeration value="1009"/>
+	      			</xsd:restriction>
+	      		</xsd:simpleType>
+      		</xsd:element>
       
  			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
             <xsd:element name="accountOpeningDate" type="xsd:date"/>
