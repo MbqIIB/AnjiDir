@@ -1,5 +1,5 @@
 
-DECLARE ns NAMESPACE 'http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd';
+DECLARE gefu NAMESPACE 'http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd';
 
 
 CREATE COMPUTE MODULE processPendingRecord_Compute
@@ -208,14 +208,14 @@ CREATE COMPUTE MODULE processPendingRecord_Compute
 		DECLARE serializedRecord CHARACTER;
 		
 		IF piModule = 'LOAN' THEN
-			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_loan:loanAccount.cifId = piResult;
-			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_loan:loanAccount) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+			SET OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_loan:loanAccount.cifId = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_loan:loanAccount) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		ELSEIF piModule = 'REPSH' THEN
-			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment.loan.loanIURNumber = piResult;
-			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_repay:loanRepayment) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+			SET OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_repay:loanRepayment.loan.loanIURNumber = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_repay:loanRepayment) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		ELSEIF piModule = 'DISBT' THEN
-			SET OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement.disbursement.loanAccountNumber = piResult;
-			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.ns:gefuRecordFormat.record.ns_disb:loanDisbursement) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+			SET OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_disb:loanDisbursement.disbursement.loanAccountNumber = piResult;
+			SET serializedRecord = CAST(ASBITSTREAM(OutputRoot.DFDL.gefu:gefuRecordFormat.record.ns_disb:loanDisbursement) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
 		ELSE
 			-- no module
 		END IF;
