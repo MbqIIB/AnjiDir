@@ -23,14 +23,21 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		DECLARE lMfiInst BOOLEAN;
-		DECLARE lOutstandingBlance BOOLEAN;
-		DECLARE lWrittenOffAmount BOOLEAN;
-		DECLARE lPastDueAmount BOOLEAN;
+		DECLARE isOutstandingBlance BOOLEAN;
+		DECLARE isWrittenOffAmount BOOLEAN;
+		DECLARE isPastDueAmount BOOLEAN;
+		DECLARE lInstitutionCount INTEGER;
+		DECLARE lOutstandingAmount DECIMAL;
+		DECLARE lWrittenOffAmount DECIMAL;		
+		DECLARE lPastDueAmount DECIMAL;
 		DECLARE lcreditDecisionReason CHARACTER;
+		DECLARE lInstitutions CHARACTER;
 		DECLARE lCount INTEGER;
+		DECLARE K INTEGER 1;
+		DECLARE J INTEGER;
 		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse = '';
 		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport = InputRoot.SOAP.Body.ns28:InquiryResponse;
-	
+		-- check if errors are present
 		IF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.[]) > 0 THEN
 			IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.ns28:ErrorCode='00') THEN
 		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
@@ -38,13 +45,39 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 			ELSE
 		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
 				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Error occured during processing please look for details in response';
-			END IF;			
-		ELSEIF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.[]) > 0 THEN
+			END IF;		
+		-- in case of no error check eligibility	
+		ELSEIF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.[]) > 0 THEN
+			SET J = CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.[]);
+			SET lInstitutionCount = 0;
+			SET lOutstandingAmount = 0;
+			SET lWrittenOffAmount = 0;		
+			SET lPastDueAmount = 0;
+			WHILE K <= J DO
+				IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:AccountStatus NOT IN ('jahgd')) THEN
+					SET lPastDueAmount = lPastDueAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account.ns28:PastDueAmount AS DECIMAL);
+					IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution <> 'The Ratnakar Bank Limited') THEN
+						-- check if institution already there
+						IF NOT CONTAINS(lInstitutions,('*'||OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution||'*')) THEN
+						SET lInstitutionCount = lInstitutionCount + 1;
+						SET lInstitutions = lInstitutions ||'*'||OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution||'*';
+						END IF;
+						SET lOutstandingAmount = lOutstandingAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:CurrentBalance AS DECIMAL);
+					END IF;
+				END IF;
+					
+				SET lWrittenOffAmount = lWrittenOffAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account.ns28:WriteOffAmount AS DECIMAL);
+				SET K = K + 1;
+			END WHILE;
+			
+			-- call methods to get result for various criteria
 			SET lMfiInst = checkNoMfiInst(0);
-			SET lOutstandingBlance = outstandingBalancePresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalBalanceAmount AS DECIMAL));
-			SET lWrittenOffAmount = writtenOffAmountPresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalWrittenOffAmount AS DECIMAL));
-			SET lPastDueAmount = pastDueAmountPresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalPastDue AS DECIMAL));
-			IF NOT(lMfiInst AND lOutstandingBlance AND lWrittenOffAmount AND lPastDueAmount) THEN
+			SET isOutstandingBlance = outstandingBalancePresent(lOutstandingAmount);
+			SET isWrittenOffAmount = writtenOffAmountPresent(lWrittenOffAmount);
+			SET isPastDueAmount = pastDueAmountPresent(lPastDueAmount);
+			
+			-- check all criteria
+			IF NOT(lMfiInst AND isOutstandingBlance AND isWrittenOffAmount AND isPastDueAmount) THEN
 				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
 				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'All criteria passed for approval.';
 			ELSE
@@ -54,15 +87,15 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 					SET lCount = lCount + 1;
 					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Number of micro finance institutions greater than the limit set for approval.';
 				END IF;
-				IF lOutstandingBlance THEN
+				IF isOutstandingBlance THEN
 					SET lCount = lCount + 1;
 					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Otstanding balance greater than the limit set for approval.';	
 				END IF;
-				IF lWrittenOffAmount THEN
+				IF isWrittenOffAmount THEN
 					SET lCount = lCount + 1;
 					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Written off amount greater than 0.';
 				END IF;
-				IF lPastDueAmount THEN
+				IF isPastDueAmount THEN
 					SET lCount = lCount + 1;
 					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Past due amount greater than 0.';
 				END IF;
