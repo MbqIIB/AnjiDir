@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service:services xmlns:service="http://com.ibm.etools.mft.service">
+  <service:service implementation="gen/AccountOpeningByPartnerService.msgflow" name="AccountOpeningByPartnerService" portType="AccountOpeningByPartnerService" wsdlFileName="AccountOpeningByPartnerService.wsdl">
+    <service:operations>
+      <service:operation name="openRetailLoanAccount" type="request-response">
+        <service:flows/>
+      </service:operation>
+    </service:operations>
+    <service:errors>
+      <service:flows>
+        <service:flow location="gen/AccountOpeningByPartnerServiceInputHTTPTimeoutHandler.subflow" type="Timeout"/>
+        <service:flow location="gen/AccountOpeningByPartnerServiceInputFailureHandler.subflow" type="Failure"/>
+        <service:flow location="gen/AccountOpeningByPartnerServiceInputCatchHandler.subflow" type="Catch"/>
+      </service:flows>
+    </service:errors>
+  </service:service>
+</service:services>
