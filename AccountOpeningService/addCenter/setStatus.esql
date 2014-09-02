@@ -13,8 +13,7 @@ CREATE COMPUTE MODULE setSuccess
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		--SET OutputRoot = InputRoot;
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.status = 'completed';
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.internalID = InputLocalEnvironment.internalID;
+		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.internalID = InputLocalEnvironment.internalID;
 		RETURN TRUE;
 	END;
 END MODULE;
@@ -22,8 +21,9 @@ END MODULE;
 CREATE COMPUTE MODULE setExisting
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.status = 'existing';
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message = 'Center already exists, ExternalId : ' || InputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:externalId ||  ' InternalId : ' || InputLocalEnvironment.internalID;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Center already exists, ExternalId : ' || InputRoot.XMLNSC.ns:addCenter.addCenterRequest.cntr:center.ge:externalId ||  ' InternalId : ' || InputLocalEnvironment.internalID;
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		RETURN TRUE;
 	END;
 END MODULE;
@@ -31,9 +31,9 @@ END MODULE;
 CREATE COMPUTE MODULE setFailure
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.status = 'failed';
-		SET OutputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message = InputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message;
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		RETURN TRUE;
 	END;
 END MODULE;
