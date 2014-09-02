@@ -5,5 +5,5 @@
 	<xsd:element name="internalID" type="xsd:string"/>
 	<xsd:element name="fileName" type="xsd:string"/>
 	<xsd:element name="externalGroupNo" type="xsd:string"/>
-
+	<xsd:element name="faultMessage" type="xsd:string"/>
 </xsd:schema>
