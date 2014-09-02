@@ -75,8 +75,8 @@
    					    <xsd:element minOccurs="0" maxOccurs="1" ref="ge:batchID"/>
    						<xsd:element name="customers">
 				           	<xsd:complexType>
-				           		<xsd:sequence maxOccurs="6" minOccurs="4">
-										<xsd:element ref="customer:customer"/>
+				           		<xsd:sequence>
+										<xsd:element maxOccurs="6" minOccurs="4" ref="customer:customer"/>
 				        			</xsd:sequence>
 				        		</xsd:complexType>
 				        	</xsd:element>   						
