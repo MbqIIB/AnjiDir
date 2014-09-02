@@ -31,7 +31,7 @@ END MODULE;
 CREATE COMPUTE MODULE setFailure
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputRoot.XMLNSC.ns:addCenterResponse.addCenterReply.jobStatus.fault.message;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = InputLocalEnvironment.faultMessage;
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		RETURN TRUE;
