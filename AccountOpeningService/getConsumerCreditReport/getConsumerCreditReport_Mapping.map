@@ -2,8 +2,12 @@
     <input path="/AccountOpeningService_InlineSchema1.xsd" var="var"/>
     <input path="/equifax.localEnvironmentVariables.xsd" var="var1"/>
     <output path="/OnlineInquiry-1.0.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/getConsumerCreditReport/ganasevaToEquifax.esql"/>
+    </imports>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="ganasevaToEquifax" uri="/getConsumerCreditReport/ganasevaToEquifax.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="getConsumerCreditReport_Mapping">
@@ -80,24 +84,28 @@
                 <input path="name"/>
                 <output path="AdditionalName"/>
             </move>
-            <assign value="H">
+            <customFunction lang="esql" ref="ganasevaToEquifax:getEquifaxRelationCode">
+                <input path="relation" var="relation"/>
                 <output path="AdditionalNameType"/>
-            </assign>
+                <param name="piGanasevaRelation" value="$relation"/>
+            </customFunction>
         </local>
         <join>
             <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address" var="address"/>
             <input path="getConsumerCreditReport/getConsumerCreditReportRequest/operatingRegion/operatingRegionCode" var="operatingRegionCode"/>
+            <input auxiliary="true" path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateCode" var="stateCode2"/>
             <output path="InquiryRequest/RequestBody/AddrLine1"/>
             <function ref="concat">
                 <input path="$address/line1" var="line1"/>
                 <input path="$address/line2" var="line2"/>
                 <input path="$address/line3" var="line3"/>
                 <input path="$address/cityName" var="cityName"/>
-                <input path="$address/stateName" var="stateName"/>
+                <input path="$address/stateCode" var="stateCode"/>
                 <input path="$address/pin" var="pin"/>
                 <input path="$operatingRegionCode/." var="operatingRegionCode1"/>
+                <input path="$stateCode2/." var="stateCode3"/>
                 <output path="."/>
-                <param name="input" value="($line1,$line2,$line3,$cityName,$stateName,$pin,$operatingRegionCode1)"/>
+                <param name="input" value="($line1,$line2,$line3,$cityName,$stateName,$pin,$operatingRegionCode1,$stateCode3)"/>
                 <property key="defaultDelimiter" value=" "/>
             </function>
         </join>
@@ -144,6 +152,10 @@
         <move>
             <input path="getConsumerCreditReport/getConsumerCreditReportRequest/voterId" var="voterId1"/>
             <output path="InquiryRequest/RequestBody/VoterId"/>
+        </move>
+        <move>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/pan"/>
+            <output path="InquiryRequest/RequestBody/PANId"/>
         </move>
     </mappingDeclaration>
 </mappingRoot>

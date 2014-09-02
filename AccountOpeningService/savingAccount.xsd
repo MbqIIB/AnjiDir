@@ -6,7 +6,7 @@
    
    <xsd:complexType name="relatedPartyType">
       <xsd:sequence>
-		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:title"/>
+		 <xsd:element maxOccurs="1" minOccurs="0" ref="ge:title"/>
          <xsd:element name="name" type="xsd:string"/>
          <xsd:element name="relation">
             <xsd:annotation>
@@ -36,7 +36,7 @@
       		</xsd:simpleType>
          </xsd:element>
 		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
-         <xsd:element name="gender">
+         <xsd:element maxOccurs="1" minOccurs="0" name="gender">
             <xsd:annotation>
                <xsd:documentation>
                   01-MAle,02-FEMALE,03-OTHER
@@ -50,7 +50,7 @@
       			</xsd:restriction>
       		</xsd:simpleType>
          </xsd:element>
-         <xsd:element name="address" type="dt:addressType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="address" type="dt:addressType"/>
       </xsd:sequence>
    </xsd:complexType>
    
@@ -123,7 +123,7 @@
 	       <xsd:complexContent>
 	          <xsd:extension base="tns:relatedPartyType">
 	             <xsd:sequence>
-	                <xsd:element name="pan" type="dt:panType"/>
+	                <xsd:element maxOccurs="1" minOccurs="0" name="pan" type="dt:panType"/>
 	 				<xsd:element minOccurs="0" name="minor">
 	        <xsd:simpleType>
 	           <xsd:restriction base="xsd:string">

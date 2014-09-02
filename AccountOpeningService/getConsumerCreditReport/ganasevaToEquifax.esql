@@ -1,0 +1,56 @@
+BROKER SCHEMA getConsumerCreditReport
+
+CREATE FUNCTION getEquifaxStateCode(IN piGanasevaState CHARACTER) RETURNS CHARACTER
+BEGIN
+	IF piGanasevaState = '910001' THEN
+		RETURN 'KA';
+	ELSEIF piGanasevaState = '910002' THEN
+		RETURN 'MH';
+	ELSEIF piGanasevaState = '910003' THEN
+		RETURN 'AP';
+	ELSEIF piGanasevaState = '910004' THEN
+		RETURN 'KL';
+	ELSEIF piGanasevaState = '910005' THEN
+		RETURN 'GA';
+	ELSEIF piGanasevaState = '910006' THEN
+		RETURN 'DL';
+	ELSEIF piGanasevaState = '348' THEN
+		RETURN 'MP';
+	ELSEIF piGanasevaState = '910007' THEN
+		RETURN 'GJ';
+	END IF;
+END;
+
+CREATE FUNCTION getEquifaxRelationCode(IN piGanasevaRelation CHARACTER) RETURNS CHARACTER
+BEGIN
+
+	IF piGanasevaRelation = '01' THEN -- Father
+     	RETURN 'F';
+	ELSEIF piGanasevaRelation = '05' THEN -- Husband
+		RETURN 'H';
+	ELSEIF piGanasevaRelation = '03' THEN -- Brother
+		RETURN 'B';
+	ELSEIF piGanasevaRelation = '07' THEN -- Son
+		RETURN 'S';
+	ELSEIF piGanasevaRelation = '09' THEN -- Son-in-law
+		RETURN 'U';
+	ELSEIF piGanasevaRelation = '12' THEN -- Father-in-law
+		RETURN 'Y';
+	ELSEIF piGanasevaRelation = '019999' THEN -- Bother-in-Lax
+		RETURN 'T';
+	ELSEIF piGanasevaRelation = '16' THEN -- Other
+		RETURN 'O';
+	ELSEIF piGanasevaRelation = '02' THEN -- Mother
+		RETURN 'M';
+	ELSEIF piGanasevaRelation = '06' THEN -- Wife
+		RETURN 'W';
+	ELSEIF piGanasevaRelation = '04' THEN -- Sister
+		RETURN 'C';
+	ELSEIF piGanasevaRelation = '08' THEN -- Daughter
+		RETURN 'D';
+	ELSEIF piGanasevaRelation = '10' THEN -- Daughter-in-law
+		RETURN 'V';
+	ELSEIF piGanasevaRelation = '11' THEN -- Mother-in-law
+		RETURN 'Z';
+	END IF;
+END;	

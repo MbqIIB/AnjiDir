@@ -22,17 +22,94 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 	END;
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		DECLARE lMfiInst BOOLEAN;
+		DECLARE lOutstandingBlance BOOLEAN;
+		DECLARE lWrittenOffAmount BOOLEAN;
+		DECLARE lPastDueAmount BOOLEAN;
+		DECLARE lcreditDecisionReason CHARACTER;
+		DECLARE lCount INTEGER;
 		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse = '';
 		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport = InputRoot.SOAP.Body.ns28:InquiryResponse;
 	
 		IF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.[]) > 0 THEN
-			IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.ns28:ErrorCode = '00') THEN
-		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'notFound';
+			IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.ns28:ErrorCode='00') THEN
+		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Consumer not found.';
 			ELSE
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'failed';
+		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Error occured during processing please look for details in response';
+			END IF;			
+		ELSEIF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.[]) > 0 THEN
+			SET lMfiInst = checkNoMfiInst(0);
+			SET lOutstandingBlance = outstandingBalancePresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalBalanceAmount AS DECIMAL));
+			SET lWrittenOffAmount = writtenOffAmountPresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalWrittenOffAmount AS DECIMAL));
+			SET lPastDueAmount = pastDueAmountPresent(CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountSummary.ns28:TotalPastDue AS DECIMAL));
+			IF NOT(lMfiInst AND lOutstandingBlance AND lWrittenOffAmount AND lPastDueAmount) THEN
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'All criteria passed for approval.';
+			ELSE
+				SET lCount = 0;
+				SET lcreditDecisionReason = '';
+				IF lMfiInst THEN
+					SET lCount = lCount + 1;
+					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Number of micro finance institutions greater than the limit set for approval.';
+				END IF;
+				IF lOutstandingBlance THEN
+					SET lCount = lCount + 1;
+					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Otstanding balance greater than the limit set for approval.';	
+				END IF;
+				IF lWrittenOffAmount THEN
+					SET lCount = lCount + 1;
+					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Written off amount greater than 0.';
+				END IF;
+				IF lPastDueAmount THEN
+					SET lCount = lCount + 1;
+					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Past due amount greater than 0.';
+				END IF;
+				
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = lcreditDecisionReason;
 			END IF;
 		ELSE
-			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.status = 'pass';
+			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please check the response or contact support.';
 		END IF;
 	END;
+
+	CREATE FUNCTION checkNoMfiInst (IN piMfiInst INTEGER) RETURNS BOOLEAN
+	BEGIN
+		IF (piMfiInst >= 3) THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+	
+	CREATE FUNCTION outstandingBalancePresent (IN pibalance DECIMAL) RETURNS BOOLEAN
+	BEGIN
+		IF (50000 - pibalance < 8000) THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+	
+	CREATE FUNCTION writtenOffAmountPresent (IN pibalance DECIMAL) RETURNS BOOLEAN
+	BEGIN
+		IF (pibalance > 0) THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+	
+	CREATE FUNCTION pastDueAmountPresent (IN pibalance DECIMAL) RETURNS BOOLEAN
+	BEGIN
+		IF (pibalance > 0) THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+	
 END MODULE;
