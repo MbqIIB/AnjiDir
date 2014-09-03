@@ -21,6 +21,35 @@ BEGIN
 	END IF;
 END;
 
+CREATE FUNCTION getConcatAddress(IN piLine1 CHARACTER,
+								 IN piLine2 CHARACTER,
+								 IN piLine3 CHARACTER,
+								 IN piCityName CHARACTER,
+								 IN piStateCode CHARACTER,
+								 IN piPin CHARACTER) RETURNS CHARACTER
+BEGIN
+	DECLARE lAddressString CHARACTER;
+	IF piLine1 IS NOT NULL THEN
+		SET lAddressString = piLine1;
+	END IF;
+	IF piLine2 IS NOT NULL THEN
+		SET lAddressString = lAddressString ||' '||piLine2;
+	END IF;
+	IF piLine3 IS NOT NULL THEN
+		SET lAddressString = lAddressString ||' '||piLine3;
+	END IF;
+	IF piCityName IS NOT NULL THEN
+		SET lAddressString = lAddressString ||' '||piCityName;
+	END IF;
+	IF piStateCode IS NOT NULL THEN
+		SET lAddressString = lAddressString ||' '||getEquifaxStateCode(piStateCode);
+	END IF;
+	IF piPin IS NOT NULL THEN
+		SET lAddressString = lAddressString ||' '||piPin;
+	END IF;
+	RETURN lAddressString;
+END;
+
 CREATE FUNCTION getEquifaxRelationCode(IN piGanasevaRelation CHARACTER) RETURNS CHARACTER
 BEGIN
 

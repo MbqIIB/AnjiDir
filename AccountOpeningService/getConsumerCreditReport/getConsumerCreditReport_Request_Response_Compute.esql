@@ -1,6 +1,6 @@
 BROKER SCHEMA getConsumerCreditReport
-DECLARE ns28 NAMESPACE 'http://services.equifax.com/eport/ws/schemas/1.0';
-DECLARE ns NAMESPACE 'http://AccountOpeningService';
+DECLARE equifax NAMESPACE 'http://services.equifax.com/eport/ws/schemas/1.0';
+DECLARE aos NAMESPACE 'http://AccountOpeningService';
 
 
 CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
@@ -35,51 +35,57 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 		DECLARE lCount INTEGER;
 		DECLARE K INTEGER 1;
 		DECLARE J INTEGER;
-		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse = '';
-		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport = InputRoot.SOAP.Body.ns28:InquiryResponse;
+		--SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse = '';
+		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditReport = InputRoot.SOAP.Body.equifax:InquiryResponse;
 		-- check if errors are present
-		IF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.[]) > 0 THEN
-			IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:Error.ns28:ErrorCode='00') THEN
-		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Consumer not found.';
+		IF CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:Error.[]) > 0 THEN
+			IF (InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:Error.equifax:ErrorCode='00') THEN
+		  		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Consumer not found.';
 			ELSE
-		  		SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Error occured during processing please look for details in response';
+		  		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Error occured during processing please look for details in response';
 			END IF;		
 		-- in case of no error check eligibility	
-		ELSEIF CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.[]) > 0 THEN
-			SET J = CARDINALITY(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.[]);
+		ELSEIF CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.[]) > 0 THEN
+			SET J = CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.[]);
 			SET lInstitutionCount = 0;
 			SET lOutstandingAmount = 0;
 			SET lWrittenOffAmount = 0;		
 			SET lPastDueAmount = 0;
+			SET lInstitutions = '*';
 			WHILE K <= J DO
-				IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:AccountStatus NOT IN ('jahgd')) THEN
-					SET lPastDueAmount = lPastDueAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account.ns28:PastDueAmount AS DECIMAL);
-					IF (OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution <> 'The Ratnakar Bank Limited') THEN
+				IF (InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:AccountStatus NOT IN ('Paid or closed account/zero balance', 'Charge Off/Written Off', 'Loan Submitted', 'Loan Approved, Not Yet Disbursed' , 'Loan Declined')) THEN
+					IF InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:PastDueAmount IS NOT NULL THEN
+						SET lPastDueAmount = lPastDueAmount + CAST(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:PastDueAmount AS DECIMAL);
+					END IF;
+					IF NOT (InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account.equifax:Institution = 'The Ratnakar Bank Limited') THEN
 						-- check if institution already there
-						IF NOT CONTAINS(lInstitutions,('*'||OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution||'*')) THEN
+						IF NOT CONTAINS(lInstitutions,('*'||InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:Institution||'*')) THEN
 						SET lInstitutionCount = lInstitutionCount + 1;
-						SET lInstitutions = lInstitutions ||'*'||OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:Institution||'*';
+						SET lInstitutions = lInstitutions ||'*'||InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:Institution||'*';
 						END IF;
-						SET lOutstandingAmount = lOutstandingAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account[K].ns28:CurrentBalance AS DECIMAL);
+						IF InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:CurrentBalance IS NOT NULL THEN
+							SET lOutstandingAmount = lOutstandingAmount + CAST(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:CurrentBalance AS DECIMAL);
+						END IF;
 					END IF;
 				END IF;
-					
-				SET lWrittenOffAmount = lWrittenOffAmount + CAST(OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditRport.ns28:ReportData.ns28:AccountDetails.ns28:Account.ns28:WriteOffAmount AS DECIMAL);
+				IF InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account.equifax:WriteOffAmount IS NOT NULL THEN
+					SET lWrittenOffAmount = lWrittenOffAmount + CAST(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account.equifax:WriteOffAmount AS DECIMAL);
+				END IF;
 				SET K = K + 1;
 			END WHILE;
 			
 			-- call methods to get result for various criteria
-			SET lMfiInst = checkNoMfiInst(0);
+			SET lMfiInst = checkNoMfiInst(lInstitutionCount);
 			SET isOutstandingBlance = outstandingBalancePresent(lOutstandingAmount);
 			SET isWrittenOffAmount = writtenOffAmountPresent(lWrittenOffAmount);
 			SET isPastDueAmount = pastDueAmountPresent(lPastDueAmount);
 			
 			-- check all criteria
 			IF NOT(lMfiInst AND isOutstandingBlance AND isWrittenOffAmount AND isPastDueAmount) THEN
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'All criteria passed for approval.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'All criteria passed for approval.';
 			ELSE
 				SET lCount = 0;
 				SET lcreditDecisionReason = '';
@@ -100,12 +106,12 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Past due amount greater than 0.';
 				END IF;
 				
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-				SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = lcreditDecisionReason;
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = lcreditDecisionReason;
 			END IF;
 		ELSE
-			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-			SET OutputRoot.XMLNSC.ns:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please check the response or contact support.';
+			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please check the response or contact support.';
 		END IF;
 	END;
 

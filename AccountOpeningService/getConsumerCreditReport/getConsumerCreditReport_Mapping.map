@@ -90,29 +90,6 @@
                 <param name="piGanasevaRelation" value="$relation"/>
             </customFunction>
         </local>
-        <join>
-            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address" var="address"/>
-            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/operatingRegion/operatingRegionCode" var="operatingRegionCode"/>
-            <input auxiliary="true" path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateCode" var="stateCode2"/>
-            <output path="InquiryRequest/RequestBody/AddrLine1"/>
-            <function ref="concat">
-                <input path="$address/line1" var="line1"/>
-                <input path="$address/line2" var="line2"/>
-                <input path="$address/line3" var="line3"/>
-                <input path="$address/cityName" var="cityName"/>
-                <input path="$address/stateCode" var="stateCode"/>
-                <input path="$address/pin" var="pin"/>
-                <input path="$operatingRegionCode/." var="operatingRegionCode1"/>
-                <input path="$stateCode2/." var="stateCode3"/>
-                <output path="."/>
-                <param name="input" value="($line1,$line2,$line3,$cityName,$stateName,$pin,$operatingRegionCode1,$stateCode3)"/>
-                <property key="defaultDelimiter" value=" "/>
-            </function>
-        </join>
-        <move>
-            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateName"/>
-            <output path="InquiryRequest/RequestBody/State"/>
-        </move>
         <move>
             <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/pin"/>
             <output path="InquiryRequest/RequestBody/Postal"/>
@@ -157,5 +134,25 @@
             <input path="getConsumerCreditReport/getConsumerCreditReportRequest/pan"/>
             <output path="InquiryRequest/RequestBody/PANId"/>
         </move>
+        <customFunction lang="esql" ref="ganasevaToEquifax:getEquifaxStateCode">
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateCode" var="stateCode1"/>
+            <output path="InquiryRequest/RequestBody/State"/>
+            <param name="piGanasevaState" value="$stateCode1"/>
+        </customFunction>
+        <customFunction lang="esql" ref="ganasevaToEquifax:getConcatAddress">
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/line1" var="line11"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/line2" var="line21"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/line3" var="line31"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/cityName" var="cityName1"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/stateCode" var="stateCode4"/>
+            <input path="getConsumerCreditReport/getConsumerCreditReportRequest/address/pin" var="pin1"/>
+            <output path="InquiryRequest/RequestBody/AddrLine1"/>
+            <param name="piLine1" value="fn:string($line11)"/>
+            <param name="piLine2" value="fn:string($line21)"/>
+            <param name="piLine3" value="fn:string($line31)"/>
+            <param name="piCityName" value="fn:string($cityName1)"/>
+            <param name="piStateCode" value="fn:string($stateCode4)"/>
+            <param name="piPin" value="fn:string($pin1)"/>
+        </customFunction>
     </mappingDeclaration>
 </mappingRoot>

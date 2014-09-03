@@ -14,36 +14,28 @@
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="601,32">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="287,169" mappingExpression="msl://{getConsumerCreditReport}#getConsumerCreditReport_Mapping" validateMaster="contentAndValue">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="223,169" mappingExpression="msl://{getConsumerCreditReport}#getConsumerCreditReport_Mapping" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="createRequest"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="84,168" computeExpression="esql://routine/getConsumerCreditReport#setMessageHeader.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="setMessageHeader"/>
       </nodes>
-      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="442,173" wsdlFileName="CreditReportWSInquiry.wsdl" selectedPortType="CreditReportWSInquiryPortType" selectedBinding="CreditReportWSInquiryBinding" selectedOperation="getConsumerCreditReport" selectedPort="CreditReportWSInquiryPort" targetNamespace="http://services.equifax.com/eport/servicedefs/1.0" useHTTPTransport="true" webServiceURL="https://eporttrain.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="330,173" wsdlFileName="CreditReportWSInquiry.wsdl" selectedPortType="CreditReportWSInquiryPortType" selectedBinding="CreditReportWSInquiryBinding" selectedOperation="getConsumerCreditReport" selectedPort="CreditReportWSInquiryPort" targetNamespace="http://services.equifax.com/eport/servicedefs/1.0" useHTTPTransport="true" webServiceURL="https://eporttrain.equifax.co.in/creditreportws/CreditReportWSInquiry/v1.0/"
           sslProtocol="TLS" parserXmlnscBuildTreeUsingXMLSchema="false" validateMaster="none">
         <translation xmi:type="utility:ConstantString" string="SOAP Request"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="211,41" pattern="${Root}&#xA;${LocalEnvironment}">
-        <translation xmi:type="utility:ConstantString" string="Trace"/>
-      </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="382,39" pattern="${Root}&#xA;${LocalEnvironment}">
-        <translation xmi:type="utility:ConstantString" string="Trace1"/>
-      </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="564,173" pattern="${Root}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="450,173" pattern="${Root}">
         <translation xmi:type="utility:ConstantString" string="Trace2"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="669,173" computeExpression="esql://routine/getConsumerCreditReport#getConsumerCreditReport_Request_Response_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="529,173" computeExpression="esql://routine/getConsumerCreditReport#getConsumerCreditReport_Request_Response_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
