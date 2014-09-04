@@ -45,7 +45,7 @@ CREATE COMPUTE MODULE checkDuplicate
 					SET i = i + 1;
 				END IF;
 	
-				IF isDuplicateLoan(inRequest.cg:customerGroup.customers.cus:customer.newCustomer.savingAccount.loanAccount.ge:externalId, lInternalID) THEN
+				IF isDuplicateLoan(inRequest.cg:customerGroup.customers.cus:customer[K].newCustomer.savingAccount.loanAccount.ge:externalId, lInternalID) THEN
 					SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[i] = 'Loan already exists, ExternalId : ' || inRequest.cg:customerGroup.customers.cus:customer.newCustomer.savingAccount.loanAccount.ge:externalId ||  ' InternalId : ' || lInternalID;
 					SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 					SET i = i + 1;
