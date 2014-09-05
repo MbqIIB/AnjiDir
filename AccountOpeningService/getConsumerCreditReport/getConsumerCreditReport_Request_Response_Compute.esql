@@ -2,7 +2,6 @@ BROKER SCHEMA getConsumerCreditReport
 DECLARE equifax NAMESPACE 'http://services.equifax.com/eport/ws/schemas/1.0';
 DECLARE aos NAMESPACE 'http://AccountOpeningService';
 
-
 CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
@@ -26,34 +25,29 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 		DECLARE isOutstandingBlance BOOLEAN;
 		DECLARE isWrittenOffAmount BOOLEAN;
 		DECLARE isPastDueAmount BOOLEAN;
-		DECLARE lInstitutionCount INTEGER;
-		DECLARE lOutstandingAmount DECIMAL;
-		DECLARE lWrittenOffAmount DECIMAL;		
-		DECLARE lPastDueAmount DECIMAL;
+		DECLARE lInstitutionCount INTEGER 0;
+		DECLARE lOutstandingAmount DECIMAL 0;
+		DECLARE lWrittenOffAmount DECIMAL 0;		
+		DECLARE lPastDueAmount DECIMAL 0;
 		DECLARE lcreditDecisionReason CHARACTER;
-		DECLARE lInstitutions CHARACTER;
+		DECLARE lInstitutions CHARACTER '*';
 		DECLARE lCount INTEGER;
 		DECLARE K INTEGER 1;
 		DECLARE J INTEGER;
-		--SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse = '';
-		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditReport = InputRoot.SOAP.Body.equifax:InquiryResponse;
+		--SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditReport = InputRoot.SOAP.Body.equifax:InquiryResponse;
 		-- check if errors are present
 		IF CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:Error.[]) > 0 THEN
 			IF (InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:Error.equifax:ErrorCode='00') THEN
 		  		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
-				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Consumer not found.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'Consumer not found.';
 			ELSE
 		  		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Error occured during processing please look for details in response';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'Error occured during processing please look for details in response';
 			END IF;		
 		-- in case of no error check eligibility	
 		ELSEIF CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.[]) > 0 THEN
 			SET J = CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.[]);
-			SET lInstitutionCount = 0;
-			SET lOutstandingAmount = 0;
-			SET lWrittenOffAmount = 0;		
-			SET lPastDueAmount = 0;
-			SET lInstitutions = '*';
+
 			WHILE K <= J DO
 				IF (InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:AccountStatus NOT IN ('Paid or closed account/zero balance', 'Charge Off/Written Off', 'Loan Submitted', 'Loan Approved, Not Yet Disbursed' , 'Loan Declined')) THEN
 					IF InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.equifax:Account[K].equifax:PastDueAmount IS NOT NULL THEN
@@ -85,33 +79,34 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 			-- check all criteria
 			IF NOT(lMfiInst AND isOutstandingBlance AND isWrittenOffAmount AND isPastDueAmount) THEN
 				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = TRUE;
-				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'All criteria passed for approval.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'No of institutions less than 3.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[2] = 'Outstanding balance less than the specified limit.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[3] = 'Zero written off amount.';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[4] = 'Zero past due amount.';
 			ELSE
 				SET lCount = 0;
 				SET lcreditDecisionReason = '';
 				IF lMfiInst THEN
 					SET lCount = lCount + 1;
-					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Number of micro finance institutions greater than the limit set for approval.';
+					SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[lCount] = 'Number of micro finance institutions greater than the limit set for approval.';
 				END IF;
 				IF isOutstandingBlance THEN
 					SET lCount = lCount + 1;
-					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Otstanding balance greater than the limit set for approval.';	
+					SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[lCount] = 'Outstanding balance greater than the limit specified.';	
 				END IF;
 				IF isWrittenOffAmount THEN
 					SET lCount = lCount + 1;
-					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Written off amount greater than 0.';
+					SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[lCount] = 'Written off amount greater than 0.';
 				END IF;
 				IF isPastDueAmount THEN
 					SET lCount = lCount + 1;
-					SET lcreditDecisionReason = lcreditDecisionReason ||' '||CAST(lCount AS CHARACTER)||'. '||'Past due amount greater than 0.';
+					SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[lCount] = 'Past due amount greater than 0.';
 				END IF;
-				
 				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = lcreditDecisionReason;
 			END IF;
 		ELSE
 			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please check the response or contact support.';
+			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please contact support.';
 		END IF;
 	END;
 
@@ -127,6 +122,7 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 	CREATE FUNCTION outstandingBalancePresent (IN pibalance DECIMAL) RETURNS BOOLEAN
 	BEGIN
 		IF (50000 - pibalance < 8000) THEN
+			
 			RETURN TRUE;
 		ELSE
 			RETURN FALSE;
