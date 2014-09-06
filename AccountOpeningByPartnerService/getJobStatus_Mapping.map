@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd" var="var"/>
+    <input path="db:database(/iib.dbm,IIB,db:schema-tables(RR,GEFU_INFILE))" var="IIB"/>
+    <output path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getJobStatus_Mapping">
+        <input namespace="http://AccountOpeningByPartnerService" path="$var/mb:msg(getJobStatus,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$IIB/db:select(fn:false(),ResultSet(RR/GEFU_INFILE/AT_STEP,RR/GEFU_INFILE/STEP1_IUR_NUMBER,RR/GEFU_INFILE/STEP1_COMPLETED_AT,RR/GEFU_INFILE/STEP1_RESULT,RR/GEFU_INFILE/STEP2_IUR_NUMBER,RR/GEFU_INFILE/STEP2_COMPLETED_AT,RR/GEFU_INFILE/STEP2_RESULT,RR/GEFU_INFILE/STEP3_IUR_NUMBER,RR/GEFU_INFILE/STEP3_COMPLETED_AT,RR/GEFU_INFILE/STEP3_RESULT),db:where('RR.GEFU_INFILE.ID = ? ','?'=$MessageAssembly/{http://AccountOpeningByPartnerService}:getJobStatus/getjobStatusParameters/{http://AccountOpeningByPartnerService}:referenceNumber))" var="dbselect"/>
+        <output namespace="http://AccountOpeningByPartnerService" path="mb:msg(getJobStatusResponse,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <select ref="dbselect">
+            <input path="$dbselect/ResultSet" var="ResultSet"/>
+            <input path="$MessageAssembly/getJobStatus/getjobStatusParameters" var="getjobStatusParameters"/>
+            <output path="getJobStatusResponse/getJobStatusResult"/>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP1_COMPLETED_AT"/>
+                <output path="cifComletedAt"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP2_COMPLETED_AT"/>
+                <output path="loanAccountCompletdAt"/>
+            </move>
+            <move>
+                <input path="$ResultSet/RR/GEFU_INFILE/STEP3_COMPLETED_AT"/>
+                <output path="disbursementCompletdAt"/>
+            </move>
+        </select>
+    </mappingDeclaration>
+</mappingRoot>
