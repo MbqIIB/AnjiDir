@@ -33,7 +33,7 @@
       <nodes xmi:type="openRetailLoanAccount.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="391,246">
         <translation xmi:type="utility:ConstantString" string="openRetailLoanAccountSubflow"/>
       </nodes>
-      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="233,363" labelName="getJobStatus">
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="230,386" labelName="getJobStatus">
         <translation xmi:type="utility:ConstantString" string="getJobStatus"/>
       </nodes>
       <nodes xmi:type="getJobStatus.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="428,364">
