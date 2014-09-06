@@ -14,7 +14,7 @@
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="320,20">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="getApplicationStatus/getApplicationStatus" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="178,145" mappingExpression="msl://{getApplicationStatus}#getApplicationStatus_Mapping">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="164,85" mappingExpression="msl://{getApplicationStatus}#getApplicationStatus_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
