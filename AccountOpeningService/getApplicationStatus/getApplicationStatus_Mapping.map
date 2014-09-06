@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="getApplicationStatus" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="getApplicationStatus">
+    <input path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <output path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getApplicationStatus_Mapping">
+        <input namespace="http://AccountOpeningService" path="mb:msg(getApplicationStatus,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://AccountOpeningService" path="mb:msg(getApplicationStatusResponse,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>
