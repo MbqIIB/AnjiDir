@@ -160,3 +160,48 @@ CREATE COMPUTE MODULE setExisting
 		RETURN TRUE;
 	END;
 END MODULE;
+CREATE COMPUTE MODULE setDummy
+	CREATE FUNCTION Main() RETURNs BOOLEAN
+	BEGIN
+		IF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID = 1000 THEN
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.internalID = '123456789';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.internalID = '123456788';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.internalID = '123456787';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.internalID = '123456766';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'completed';
+		ELSEIF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID IN (12002,22002,32002,42002)THEN
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.internalID = '123456789';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.internalID = '123456788';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.internalID = '123456787';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.internalID = '123456766';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'completed';
+		ELSEIF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID = 2000 THEN
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.internalID = '123456789';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.customerJob.status = 'existing';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.internalID = '123456788';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.groupJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.internalID = '123456787';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.loanAccountJob.status = 'completed';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.internalID = '123456766';
+			SET OutputRoot.XMLNSC.ns:getJobStatusResponse.getJobStatusReply.savingAccountJob.status = 'existing';
+		ELSEIF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID = 3000 THEN
+			SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Loan account not found for the external customer ID passed.';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		ELSEIF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID = 4000 THEN
+			SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong. Please contact support.';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		END IF;	
+			
+		RETURN TRUE;
+	END;
+END MODULE;	

@@ -9,7 +9,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/AccountOpeningService.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/AccountOpeningService.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="20,20" wsdlFileName="AccountOpeningService.wsdl" selectedPortType="AccountOpeningService" selectedBinding="AccountOpeningServiceHttpBinding" selectedPort="AccountOpeningServiceHttpPort" targetNamespace="http://AccountOpeningService" useHTTPTransport="true" urlSelector="/AccountOpeningService/AccountOpeningService" allowQueryWSDL="true" extractSOAPBody="true">
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="20,20" wsdlFileName="AccountOpeningService.wsdl" selectedPortType="AccountOpeningService" selectedBinding="AccountOpeningServiceHttpBinding" selectedPort="AccountOpeningServiceHttpPort" targetNamespace="http://AccountOpeningService" useHTTPTransport="true" urlSelector="/AccountOpeningService/AccountOpeningService" allowQueryWSDL="true" extractSOAPBody="true" parserXmlnscBuildTreeUsingXMLSchema="false">
         <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
       </nodes>
       <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="220,150">
