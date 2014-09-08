@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="getApplicationStatus" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="getApplicationStatus">
-    <input path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <input path="/BPMRest.xsd" var="var"/>
+    <input path="/Common.xsd" var="var1"/>
     <output path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="getApplicationStatus_Mapping">
-        <input namespace="http://AccountOpeningService" path="mb:msg(getApplicationStatus,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://rest.bpm.ibm.com/v1/data" path="$var/mb:msg(ResponseData,assembly,XMLNSC,Properties)">
+            <cast path="ResponseData/data/type('Data')" qualifier="{http://rest.bpm.ibm.com/v1/data/service}ServiceRunModel"/>
+            <cast path="ResponseData/spath('data',2)/data/type('anyType')" qualifier="{http://rest.bpm.ibm.com/v1/data/common}Map"/>
+        </input>
         <output namespace="http://AccountOpeningService" path="mb:msg(getApplicationStatusResponse,assembly,XMLNSC,Properties)"/>
         <move>
             <input path="Properties"/>
             <output path="Properties"/>
         </move>
+        <local>
+            <input path="ResponseData/spath('data',2)/spath('data',2)"/>
+            <output path="getApplicationStatusResponse"/>
+            <foreach>
+                <input path="item" var="item"/>
+                <output path="getApplicationStatusResponse/reponseMessage"/>
+                <filter lang="xpath">$item/@key = 'ResponseMessage'</filter>
+                <function ref="fn:string">
+                    <input path="$item/value[1]" var="value"/>
+                    <output path="."/>
+                    <param name="item" value="$value"/>
+                </function>
+            </foreach>
+            <foreach>
+                <input path="item" var="item1"/>
+                <output path="getApplicationStatusResponse/currentStatus"/>
+                <filter lang="xpath">$item1/@key = 'CurrentStatus'</filter>
+                <function ref="fn:string">
+                    <input path="$item1/value[1]" var="value1"/>
+                    <output path="."/>
+                    <param name="item" value="$value1"/>
+                </function>
+            </foreach>
+        </local>
     </mappingDeclaration>
 </mappingRoot>
