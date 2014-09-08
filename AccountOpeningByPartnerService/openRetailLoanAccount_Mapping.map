@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
-    <output path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
+    <output path="/gefuRecordFomat.xsd"/>
     <generation engine="xquery"/>
     <mappingDeclaration name="openRetailLoanAccount_Mapping">
         <input namespace="http://AccountOpeningByPartnerService" path="mb:msg(openRetailLoanAccount,assembly,XMLNSC,Properties)"/>
-        <output namespace="http://AccountOpeningByPartnerService" path="mb:msg(openRetailLoanAccountResponse,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,Properties)"/>
         <move>
             <input path="Properties"/>
             <output path="Properties"/>
-        </move>
-        <move>
-            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/referenceNumber"/>
-            <output path="openRetailLoanAccountResponse/openRetailLoanAccountResult/referenceNumber"/>
+            <override>
+                <assign value="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFormat">
+                    <output path="Properties/MessageType"/>
+                </assign>
+            </override>
         </move>
     </mappingDeclaration>
 </mappingRoot>
