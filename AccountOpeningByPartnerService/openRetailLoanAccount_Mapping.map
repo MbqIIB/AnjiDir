@@ -189,6 +189,153 @@
                 <input path="employmentDetails/designation"/>
                 <output path="employeeDesignation"/>
             </move>
+            <assign value="false">
+                <output path="minorIndicator"/>
+            </assign>
+            <assign value="false">
+                <output path="nonResidentIndicator"/>
+            </assign>
+            <assign value="T001">
+                <output path="customerType"/>
+            </assign>
+            <assign value="ACTVE">
+                <output path="customerStatus"/>
+            </assign>
+            <assign value="false">
+                <output path="availedTradeService"/>
+            </assign>
+            <assign value="S">
+                <output path="assetClassificationControl"/>
+            </assign>
+            <assign value="false">
+                <output path="customerLevelProvisioning"/>
+            </assign>
+            <assign value="00">
+                <output path="preferredCalendar"/>
+            </assign>
+            <assign value="INR">
+                <output path="baseCcy"/>
+            </assign>
+            <assign value="N">
+                <output path="purgeAllowed"/>
+            </assign>
+            <assign value="N">
+                <output path="delinquentCustomer"/>
+            </assign>
+            <assign value="en_US">
+                <output path="preferredLocale"/>
+            </assign>
+            <assign value="false">
+                <output path="enableEBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="smsBanking"/>
+            </assign>
+            <assign value="INFENG">
+                <output path="nativeLanguageCode"/>
+            </assign>
+            <assign value="USA (English)">
+                <output path="preferredNativeLanguage"/>
+            </assign>
+            <assign value="false">
+                <output path="filedTaxReturnRegularly"/>
+            </assign>
+            <assign value="1307">
+                <output path="businessSigment"/>
+            </assign>
+            <assign value="false">
+                <output path="atmCard"/>
+            </assign>
+            <assign value="false">
+                <output path="doNotCall"/>
+            </assign>
+            <assign value="false">
+                <output path="doorstepBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="internetBanking"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="kycRemediationDate"/>
+            </assign>
+            <assign value="false">
+                <output path="mobileBanking"/>
+            </assign>
+            <assign value="U">
+                <output path="panValidationField"/>
+            </assign>
+            <assign value="false">
+                <output path="phoneBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="tabletBanking"/>
+            </assign>
+            <assign value="WEAK_SEC 16">
+                <output path="weakerSections"/>
+            </assign>
+            <assign value="C001">
+                <output path="capacityOfEntry"/>
+            </assign>
+            <assign value="01">
+                <output path="healthCode"/>
+            </assign>
+            <assign value="false">
+                <output path="wapBanking"/>
+            </assign>
+            <assign value="INR">
+                <output path="ccy"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="preferentialExpiryDate"/>
+            </assign>
+            <assign value="DOCUMENT1">
+                <output path="document1"/>
+            </assign>
+            <assign value="INDIVIDUAL KYC DOCUMENTS">
+                <output path="documentType1"/>
+            </assign>
+            <assign value="INDIVIDUAL KYC DOCUMENTS">
+                <output path="documentTypeDesc1"/>
+            </assign>
+            <assign value="false">
+                <output path="isDocumentVerified1"/>
+            </assign>
+            <assign value="false">
+                <output path="prefferredFlag1"/>
+            </assign>
+            <assign value="DOCUMENT2">
+                <output path="document2"/>
+            </assign>
+            <assign value="DOCUMENT3">
+                <output path="document3"/>
+            </assign>
+            <assign value="ADDRESS1">
+                <output path="address1"/>
+            </assign>
+            <assign value="FREE_TEXT_FORMAT">
+                <output path="addressFormat1"/>
+            </assign>
+            <assign value="Mailing">
+                <output path="addressType1"/>
+            </assign>
+            <assign value="IN">
+                <output path="city1"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="addressValidTill1"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="lastUpdatedDate1"/>
+            </assign>
+            <assign value="false">
+                <output path="holdMailIndicator1"/>
+            </assign>
+            <assign value="false">
+                <output path="preferredFlagAddress1"/>
+            </assign>
+            <assign value="ADDRESS2">
+                <output path="address2"/>
+            </assign>
         </local>
         <local>
             <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount" var="loanAccount"/>
