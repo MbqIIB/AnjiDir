@@ -5,10 +5,12 @@
     <output path="/gefuRecordFomat.xsd"/>
     <imports>
         <import kind="esql" namespace="/gefuHelper.esql"/>
+        <import kind="esql" namespace="/helper.esql"/>
     </imports>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
         <namespace kind="extension" prefix="gefuHelper" uri="/gefuHelper.esql"/>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="loanApplicationDetails_Mapping">
@@ -998,27 +1000,27 @@
                 <output path="recordNumber"/>
                 <code lang="xpath">fn:concat('rec_',fn:string($repaymentRecord-index))</code>
             </expression>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="flowStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="nextDemandDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="nextInterestDemandDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+            <customFunction lang="esql" ref="helper:getDayOfDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="eiFrequencyStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+            <customFunction lang="esql" ref="helper:getDayOfDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="interestFrequencyStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
@@ -1051,24 +1053,24 @@
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanDisbursement/disbursement/valueDate"/>
         </move>
-        <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
+        <customFunction lang="esql" ref="helper:getLastInstallmentDate">
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/expiryDate"/>
             <param name="piDate" value="$DCCLSDATE"/>
             <param name="piMonths" value="$loanPeriodMonths1"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE1"/>
             <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
             <param name="piDate" value="$DCCLSDATE1"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE2"/>
             <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
             <param name="piDate" value="$DCCLSDATE2"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE3"/>
             <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
             <param name="piDate" value="$DCCLSDATE3"/>
