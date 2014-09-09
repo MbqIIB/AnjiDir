@@ -14,5 +14,249 @@
                 </assign>
             </override>
         </move>
+        <local>
+            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/customer"/>
+            <output path="gefuRecordFormat/record/retailCustomer"/>
+            <move>
+                <input path="gender"/>
+                <output path="gender"/>
+            </move>
+            <move>
+                <input path="title"/>
+                <output path="title"/>
+            </move>
+            <move>
+                <input path="firstName"/>
+                <output path="firstName"/>
+            </move>
+            <move>
+                <input path="middleName"/>
+                <output path="middleName"/>
+            </move>
+            <move>
+                <input path="lastName"/>
+                <output path="lastName"/>
+            </move>
+            <move>
+                <input path="shortName"/>
+                <output path="shortName"/>
+            </move>
+            <move>
+                <input path="channelRequestName"/>
+                <output path="channelRequestName"/>
+            </move>
+            <move>
+                <input path="dateOfBirth"/>
+                <output path="dateOfBirth"/>
+            </move>
+            <move>
+                <input path="staffIndicator"/>
+                <output path="staffIndicator"/>
+            </move>
+            <move>
+                <input path="staffId"/>
+                <output path="staffId"/>
+            </move>
+            <move>
+                <input path="motherMaidenName"/>
+                <output path="motherMaidenName"/>
+            </move>
+            <move>
+                <input path="segment"/>
+                <output path="segment"/>
+            </move>
+            <move>
+                <input path="subSegment"/>
+                <output path="subSegment"/>
+            </move>
+            <move>
+                <input path="community"/>
+                <output path="community"/>
+            </move>
+            <move>
+                <input path="creditBureauScore"/>
+                <output path="creditBureauScore"/>
+            </move>
+            <move>
+                <input path="constitutionCode"/>
+                <output path="constitutionCode"/>
+            </move>
+            <move>
+                <input path="primaryRMID"/>
+                <output path="primaryRmID"/>
+            </move>
+            <move>
+                <input path="relationshipStartDate"/>
+                <output path="relationshipStartDate"/>
+            </move>
+            <move>
+                <input path="nationality"/>
+                <output path="nationality"/>
+            </move>
+            <move>
+                <input path="maritalStatus"/>
+                <output path="maritalStatus"/>
+            </move>
+            <move>
+                <input path="qualification"/>
+                <output path="qualification"/>
+            </move>
+            <move>
+                <input path="sourceOfIncome"/>
+                <output path="sourceOfIncome"/>
+            </move>
+            <move>
+                <input path="occupation"/>
+                <output path="occupation"/>
+            </move>
+            <move>
+                <input path="industryType"/>
+                <output path="industryType"/>
+            </move>
+            <move>
+                <input path="grossIncome"/>
+                <output path="grossIncome"/>
+            </move>
+            <move>
+                <input path="totalHouseholdIncome"/>
+                <output path="totalHouseHoldIncome"/>
+            </move>
+            <move>
+                <input path="monthlyDisposableIncome"/>
+                <output path="monthlyDisposableIncome"/>
+            </move>
+            <move>
+                <input path="bsrTypeOfOrganisation"/>
+                <output path="barTypeOfOrganisation"/>
+            </move>
+            <move>
+                <input path="dsaId"/>
+                <output path="dsaID"/>
+            </move>
+            <move>
+                <input path="minorityCommunity"/>
+                <output path="minorityCommunity"/>
+            </move>
+            <move>
+                <input path="pan"/>
+                <output path="panNumber"/>
+            </move>
+            <move>
+                <input path="scSt"/>
+                <output path="scSt"/>
+            </move>
+            <move>
+                <input path="sourcingID"/>
+                <output path="sourcingID"/>
+            </move>
+            <move>
+                <input path="specialCategory"/>
+                <output path="specialCategory"/>
+            </move>
+            <move>
+                <input path="employmentDetails/ifSalariedTypeOfCompany"/>
+                <output path="ifSalariedTypeOfCompany"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employmentStatus"/>
+                <output path="employmentStatus"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employmentType"/>
+                <output path="employmentType"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employerName"/>
+                <output path="employerName"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employerID"/>
+                <output path="employerID"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employeeID"/>
+                <output path="employeeID"/>
+            </move>
+            <move>
+                <input path="employmentDetails/designation"/>
+                <output path="employeeDesignation"/>
+            </move>
+        </local>
+        <local>
+            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount"/>
+            <output path="gefuRecordFormat/record/loanAccount"/>
+            <move>
+                <input path="schemeCode"/>
+                <output path="schemeCode"/>
+            </move>
+            <move>
+                <input path="accountManagerUserID"/>
+                <output path="accountManagerUserId"/>
+            </move>
+            <move>
+                <input path="sanctionLimit"/>
+                <output path="sanctionLimit"/>
+            </move>
+            <move>
+                <input path="limitSanctionDate"/>
+                <output path="limitSanctionDate"/>
+            </move>
+            <move>
+                <input path="sanctionLevelCode"/>
+                <output path="sanctionLevelCode"/>
+            </move>
+            <move>
+                <input path="sanctionReferenceNo"/>
+                <output path="sanctionReferenceNo"/>
+            </move>
+            <move>
+                <input path="loanAmount"/>
+                <output path="loanAmount"/>
+            </move>
+            <move>
+                <input path="loanPeriodInMonths"/>
+                <output path="loanPeriodMonths"/>
+            </move>
+            <move>
+                <input path="occupationCode"/>
+                <output path="occupationCode"/>
+            </move>
+            <move>
+                <input path="advanceType"/>
+                <output path="advanceType"/>
+            </move>
+        </local>
+        <local>
+            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/loanRepayment"/>
+            <output path="gefuRecordFormat/record/loanRepayment"/>
+            <foreach>
+                <input path="repaymentRecord[1]"/>
+                <output path="repayments/repayment"/>
+                <move>
+                    <input path="flowID"/>
+                    <output path="flowId"/>
+                </move>
+            </foreach>
+        </local>
+        <local>
+            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/loanDisbursal"/>
+            <output path="gefuRecordFormat/record/loanDisbursement"/>
+            <foreach>
+                <input path="charges"/>
+                <output path="charges"/>
+                <move>
+                    <input path="chargeEventTpe"/>
+                    <output path="chargeEventType"/>
+                </move>
+                <move>
+                    <input path="chargeAmount"/>
+                    <output path="chargeAmount"/>
+                </move>
+            </foreach>
+            <move>
+                <input path="creditAccountNumber"/>
+                <output path="disbursement/creditAccountNumber"/>
+            </move>
+        </local>
     </mappingDeclaration>
 </mappingRoot>
