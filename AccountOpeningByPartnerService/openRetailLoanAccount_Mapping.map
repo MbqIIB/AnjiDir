@@ -18,170 +18,167 @@
             <output path="Properties"/>
         </move>
         <local>
-            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer"/>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer" var="customer"/>
+            <input auxiliary="true" path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE4"/>
             <output path="gefuRecordFormat/record/retailCustomer"/>
             <move>
-                <input path="gender"/>
+                <input path="$customer/gender"/>
                 <output path="gender"/>
             </move>
             <move>
-                <input path="title"/>
+                <input path="$customer/title"/>
                 <output path="title"/>
             </move>
             <move>
-                <input path="firstName"/>
+                <input path="$customer/firstName"/>
                 <output path="firstName"/>
             </move>
             <move>
-                <input path="middleName"/>
+                <input path="$customer/middleName"/>
                 <output path="middleName"/>
             </move>
             <move>
-                <input path="lastName"/>
+                <input path="$customer/lastName"/>
                 <output path="lastName"/>
             </move>
             <move>
-                <input path="shortName"/>
+                <input path="$customer/shortName"/>
                 <output path="shortName"/>
             </move>
             <move>
-                <input path="channelRequestName"/>
+                <input path="$customer/channelRequestName"/>
                 <output path="channelRequestName"/>
             </move>
             <move>
-                <input path="dateOfBirth"/>
+                <input path="$customer/dateOfBirth"/>
                 <output path="dateOfBirth"/>
             </move>
             <move>
-                <input path="staffIndicator"/>
+                <input path="$customer/staffIndicator"/>
                 <output path="staffIndicator"/>
             </move>
             <move>
-                <input path="staffId"/>
+                <input path="$customer/staffId"/>
                 <output path="staffId"/>
             </move>
             <move>
-                <input path="motherMaidenName"/>
+                <input path="$customer/motherMaidenName"/>
                 <output path="motherMaidenName"/>
             </move>
             <move>
-                <input path="segment"/>
+                <input path="$customer/segment"/>
                 <output path="segment"/>
             </move>
             <move>
-                <input path="subSegment"/>
+                <input path="$customer/subSegment"/>
                 <output path="subSegment"/>
             </move>
             <move>
-                <input path="community"/>
+                <input path="$customer/community"/>
                 <output path="community"/>
             </move>
             <move>
-                <input path="creditBureauScore"/>
+                <input path="$customer/creditBureauScore"/>
                 <output path="creditBureauScore"/>
             </move>
             <move>
-                <input path="constitutionCode"/>
+                <input path="$customer/constitutionCode"/>
                 <output path="constitutionCode"/>
             </move>
             <move>
-                <input path="primaryRMID"/>
+                <input path="$customer/primaryRMID"/>
                 <output path="primaryRmID"/>
             </move>
             <move>
-                <input path="relationshipStartDate"/>
+                <input path="$customer/relationshipStartDate"/>
                 <output path="relationshipStartDate"/>
             </move>
             <move>
-                <input path="nationality"/>
+                <input path="$customer/nationality"/>
                 <output path="nationality"/>
             </move>
             <move>
-                <input path="maritalStatus"/>
+                <input path="$customer/maritalStatus"/>
                 <output path="maritalStatus"/>
             </move>
             <move>
-                <input path="qualification"/>
+                <input path="$customer/qualification"/>
                 <output path="qualification"/>
             </move>
             <move>
-                <input path="sourceOfIncome"/>
+                <input path="$customer/sourceOfIncome"/>
                 <output path="sourceOfIncome"/>
             </move>
             <move>
-                <input path="occupation"/>
+                <input path="$customer/occupation"/>
                 <output path="occupation"/>
             </move>
             <move>
-                <input path="industryType"/>
+                <input path="$customer/industryType"/>
                 <output path="industryType"/>
             </move>
             <move>
-                <input path="grossIncome"/>
+                <input path="$customer/grossIncome"/>
                 <output path="grossIncome"/>
             </move>
             <move>
-                <input path="totalHouseholdIncome"/>
+                <input path="$customer/totalHouseholdIncome"/>
                 <output path="totalHouseHoldIncome"/>
             </move>
             <move>
-                <input path="monthlyDisposableIncome"/>
+                <input path="$customer/monthlyDisposableIncome"/>
                 <output path="monthlyDisposableIncome"/>
             </move>
             <move>
-                <input path="bsrTypeOfOrganisation"/>
-                <output path="barTypeOfOrganisation"/>
-            </move>
-            <move>
-                <input path="dsaId"/>
+                <input path="$customer/dsaId"/>
                 <output path="dsaID"/>
             </move>
             <move>
-                <input path="minorityCommunity"/>
+                <input path="$customer/minorityCommunity"/>
                 <output path="minorityCommunity"/>
             </move>
             <move>
-                <input path="pan"/>
+                <input path="$customer/pan"/>
                 <output path="panNumber"/>
             </move>
             <move>
-                <input path="scSt"/>
+                <input path="$customer/scSt"/>
                 <output path="scSt"/>
             </move>
             <move>
-                <input path="sourcingID"/>
+                <input path="$customer/sourcingID"/>
                 <output path="sourcingID"/>
             </move>
             <move>
-                <input path="specialCategory"/>
+                <input path="$customer/specialCategory"/>
                 <output path="specialCategory"/>
             </move>
             <move>
-                <input path="employmentDetails/ifSalariedTypeOfCompany"/>
+                <input path="$customer/employmentDetails/ifSalariedTypeOfCompany"/>
                 <output path="ifSalariedTypeOfCompany"/>
             </move>
             <move>
-                <input path="employmentDetails/employmentStatus"/>
+                <input path="$customer/employmentDetails/employmentStatus"/>
                 <output path="employmentStatus"/>
             </move>
             <move>
-                <input path="employmentDetails/employmentType"/>
+                <input path="$customer/employmentDetails/employmentType"/>
                 <output path="employmentType"/>
             </move>
             <move>
-                <input path="employmentDetails/employerName"/>
+                <input path="$customer/employmentDetails/employerName"/>
                 <output path="employerName"/>
             </move>
             <move>
-                <input path="employmentDetails/employerID"/>
+                <input path="$customer/employmentDetails/employerID"/>
                 <output path="employerID"/>
             </move>
             <move>
-                <input path="employmentDetails/employeeID"/>
+                <input path="$customer/employmentDetails/employeeID"/>
                 <output path="employeeID"/>
             </move>
             <move>
-                <input path="employmentDetails/designation"/>
+                <input path="$customer/employmentDetails/designation"/>
                 <output path="employeeDesignation"/>
             </move>
             <assign value="false">
@@ -328,21 +325,158 @@
             <assign value="ADDRESS2">
                 <output path="address2"/>
             </assign>
-            <function ref="concat">
-                <input path="firstName" var="firstName2"/>
-                <input path="middleName" var="middleName2"/>
-                <input path="lastName" var="lastName2"/>
+            <customFunction lang="esql" ref="helper:getFullName">
+                <input path="$customer/firstName" var="firstName2"/>
+                <input path="$customer/middleName" var="middleName2"/>
+                <input path="$customer/lastName" var="lastName2"/>
                 <output path="fullName"/>
-                <param name="input" value="($firstName2,$middleName2,$lastName2)"/>
-                <property key="defaultDelimiter" value=" "/>
-            </function>
+                <param name="piFirstName" value="$firstName2"/>
+                <param name="piMiddleName" value="$middleName2"/>
+                <param name="piLastName" value="$lastName2"/>
+            </customFunction>
             <move>
-                <input path="branchID"/>
+                <input path="$customer/branchID"/>
                 <output path="primarySolID"/>
             </move>
             <move>
-                <input path="employmentDetails/employerPhoneNumber/phoneNo"/>
+                <input path="$customer/employmentDetails/employerPhoneNumber/phoneNo"/>
                 <output path="employerPhoneNumber"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/line1"/>
+                <output path="employerAddressLine1"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/line2"/>
+                <output path="employerAddressLine2"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/pin"/>
+                <output path="employerPostalCode"/>
+            </move>
+            <move>
+                <input path="$customer/bsrTypeOfOrganisation"/>
+                <output path="bsrTypeOfOrganisation"/>
+            </move>
+            <move>
+                <input path="$DCCLSDATE4/."/>
+                <output path="busSegEffDate"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentCode"/>
+                <output path="documentCode1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentDescription"/>
+                <output path="documentCodedesc1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentID"/>
+                <output path="uniqueID1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/placeOfIssue"/>
+                <output path="PlaceOfIssue1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/countryOfIssue"/>
+                <output path="countryOfIssue1I"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/issueDate"/>
+                <output path="issueDate1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/expiryDate"/>
+                <output path="expiryDate1"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/documentCode"/>
+                <output path="documentCode2"/>
+            </move>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID"/>
+                <output path="documentType2"/>
+                <test lang="">fn:exists($documentID)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID1"/>
+                <output path="documentTypeDesc2"/>
+                <test lang="">fn:exists($documentID1</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID2"/>
+                <output path="documentType3"/>
+                <test lang="">fn:exists($documentID2)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID3"/>
+                <output path="documentTypeDesc3"/>
+                <test lang="">fn:exists($documentID3)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/document[2]/documentID" var="documentID4"/>
+                <output path="uniqueID2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentID"/>
+                <output path="uniqueID3"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentCode"/>
+                <output path="documentCode3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/documentDescription"/>
+                <output path="documentCodeDesc2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentDescription"/>
+                <output path="documentCodeDesc3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/placeOfIssue"/>
+                <output path="placeOfIssue2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/placeOfIssue"/>
+                <output path="placeOfIssue3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/countryOfIssue"/>
+                <output path="countryOfIssue2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/countryOfIssue"/>
+                <output path="countryOfIssue3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/issueDate"/>
+                <output path="issueDate2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/issueDate"/>
+                <output path="issueDate3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/expiryDate"/>
+                <output path="expiryDate2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/expiryDate"/>
+                <output path="expiryDate3"/>
             </move>
         </local>
         <local>

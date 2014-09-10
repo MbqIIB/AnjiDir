@@ -257,7 +257,7 @@
         </move>
         <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/bsrTypeOfOrganisation"/>
-            <output path="gefuRecordFormat/record/retailCustomer/barTypeOfOrganisation"/>
+            <output path="gefuRecordFormat/record/retailCustomer/bsrTypeOfOrganisation"/>
         </move>
         <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/dsaId"/>
@@ -1076,7 +1076,7 @@
             <param name="piDate" value="$DCCLSDATE3"/>
         </customFunction>
         <move>
-            <input path="$MessageAssembly/loanApplicationDetails/record/applicantDetails/firstName"/>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/firstName"/>
             <output path="gefuRecordFormat/record/retailCustomer/firstName"/>
         </move>
         <assign value="ADDRESS2">

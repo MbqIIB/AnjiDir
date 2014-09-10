@@ -972,7 +972,7 @@
                 </xsd:simpleType>
               </xsd:element>
 
-							<xsd:element default="42_415" name="barTypeOfOrganisation">
+							<xsd:element default="42_415" name="bsrTypeOfOrganisation">
                                 								<xsd:annotation>
                   
                 </xsd:annotation>

@@ -74,3 +74,18 @@ BEGIN
 	
 	RETURN changedDate;
 END;
+
+CREATE FUNCTION getFullName(IN piFirstName CHARACTER, IN piMiddleName CHARACTER, IN piLastName CHARACTER) RETURNS CHARACTER
+BEGIN
+	DECLARE lFullName CHARACTER;
+	IF LENGTH(piFirstName) > 0 THEN
+		SET lFullName = piFirstName;
+	END IF;
+	IF LENGTH(piMiddleName) > 0 THEN
+		SET lFullName = lFullName ||' '||piMiddleName;
+	END IF;
+	IF LENGTH(piLastName) > 0 THEN
+		SET lFullName = lFullName ||' '||piLastName;
+	END IF;
+	RETURN lFullName;
+END;
