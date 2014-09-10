@@ -625,7 +625,7 @@
         <assign value="USA (English)">
             <output path="gefuRecordFormat/record/retailCustomer/preferredNativeLanguage"/>
         </assign>
-        <assign value="false">
+        <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/filedTaxReturnRegularly"/>
         </assign>
         <assign value="1307">
@@ -689,10 +689,10 @@
         <assign value="INDIVIDUAL KYC DOCUMENTS">
             <output path="gefuRecordFormat/record/retailCustomer/documentTypeDesc1"/>
         </assign>
-        <assign value="false">
+        <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/isDocumentVerified1"/>
         </assign>
-        <assign value="false">
+        <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/prefferredFlag1"/>
         </assign>
         <assign value="DOCUMENT2">
@@ -745,7 +745,7 @@
         <assign value="IN">
             <output path="gefuRecordFormat/record/retailCustomer/country1"/>
         </assign>
-        <assign value="2002-01-01">
+        <assign value="2099-01-01">
             <output path="gefuRecordFormat/record/retailCustomer/addressValidTill1"/>
         </assign>
         <assign value="2002-01-01">
@@ -1026,7 +1026,7 @@
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
         </foreach>
-        <assign value="false">
+        <assign value="true">
             <output path="gefuRecordFormat/record/retailCustomer/preferredFlagAddress1"/>
         </assign>
         <move>

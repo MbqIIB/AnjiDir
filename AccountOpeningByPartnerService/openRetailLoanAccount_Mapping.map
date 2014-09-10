@@ -16,11 +16,6 @@
         <move>
             <input path="$MessageAssembly/Properties"/>
             <output path="Properties"/>
-            <override>
-                <assign value="{http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd}:gefuRecordFormat">
-                    <output path="Properties/MessageType"/>
-                </assign>
-            </override>
         </move>
         <local>
             <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer"/>
@@ -237,7 +232,7 @@
             <assign value="USA (English)">
                 <output path="preferredNativeLanguage"/>
             </assign>
-            <assign value="false">
+            <assign value="true">
                 <output path="filedTaxReturnRegularly"/>
             </assign>
             <assign value="1307">
@@ -297,10 +292,10 @@
             <assign value="INDIVIDUAL KYC DOCUMENTS">
                 <output path="documentTypeDesc1"/>
             </assign>
-            <assign value="false">
+            <assign value="true">
                 <output path="isDocumentVerified1"/>
             </assign>
-            <assign value="false">
+            <assign value="true">
                 <output path="prefferredFlag1"/>
             </assign>
             <assign value="DOCUMENT2">
@@ -315,13 +310,10 @@
             <assign value="FREE_TEXT_FORMAT">
                 <output path="addressFormat1"/>
             </assign>
-            <assign value="Mailing">
-                <output path="addressType1"/>
-            </assign>
             <assign value="IN">
-                <output path="city1"/>
+                <output path="country1"/>
             </assign>
-            <assign value="2002-01-01">
+            <assign value="2099-01-01">
                 <output path="addressValidTill1"/>
             </assign>
             <assign value="2002-01-01">
@@ -330,12 +322,28 @@
             <assign value="false">
                 <output path="holdMailIndicator1"/>
             </assign>
-            <assign value="false">
+            <assign value="true">
                 <output path="preferredFlagAddress1"/>
             </assign>
             <assign value="ADDRESS2">
                 <output path="address2"/>
             </assign>
+            <function ref="concat">
+                <input path="firstName" var="firstName2"/>
+                <input path="middleName" var="middleName2"/>
+                <input path="lastName" var="lastName2"/>
+                <output path="fullName"/>
+                <param name="input" value="($firstName2,$middleName2,$lastName2)"/>
+                <property key="defaultDelimiter" value=" "/>
+            </function>
+            <move>
+                <input path="branchID"/>
+                <output path="primarySolID"/>
+            </move>
+            <move>
+                <input path="employmentDetails/employerPhoneNumber/phoneNo"/>
+                <output path="employerPhoneNumber"/>
+            </move>
         </local>
         <local>
             <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount" var="loanAccount"/>
@@ -583,7 +591,7 @@
                 </assign>
                 <expression>
                     <output path="serialNumber"/>
-                    <code lang="xpath">$charges-index&lt;Type an XPath expression here. Content assist available (Ctrl+space)&gt;</code>
+                    <code lang="xpath">$charges-index</code>
                 </expression>
                 <expression>
                     <output path="recordInitiator"/>
