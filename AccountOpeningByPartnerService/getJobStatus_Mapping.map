@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd" var="var"/>
+    <input path="/gefuInquiryResponse.xsd"/>
     <output path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="getJobStatus_Mapping">
-        <input namespace="http://AccountOpeningByPartnerService" path="$var/mb:msg(getJobStatus,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="mb:msg(gefuInquiryResponse,assembly,XMLNSC,Properties)"/>
         <output namespace="http://AccountOpeningByPartnerService" path="mb:msg(getJobStatusResponse,assembly,XMLNSC,Properties)"/>
         <move>
-            <input path="$MessageAssembly/Properties"/>
-            <output path="Properties"/>
+            <input path="gefuInquiryResponse/cifId"/>
+            <output path="getJobStatusResponse/getJobStatusResult/cifId"/>
         </move>
         <move>
-            <input path="$MessageAssembly/getJobStatus/getjobStatusParameters/referenceNumber"/>
+            <input path="gefuInquiryResponse/gefuReferenceNumber"/>
             <output path="getJobStatusResponse/getJobStatusResult/gefuReferenceNumber"/>
         </move>
-        <assign value="123123123123">
-            <output path="getJobStatusResponse/getJobStatusResult/cifId"/>
-        </assign>
-        <function ref="fn:current-dateTime">
+        <move>
+            <input path="gefuInquiryResponse/cifError"/>
+            <output path="getJobStatusResponse/getJobStatusResult/cifError"/>
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/cifComletedAt"/>
             <output path="getJobStatusResponse/getJobStatusResult/cifComletedAt"/>
-        </function>
-        <assign value="321321321">
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/loanAccount"/>
             <output path="getJobStatusResponse/getJobStatusResult/loanAccount"/>
-        </assign>
-        <function ref="fn:current-dateTime">
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/loanAccountError"/>
+            <output path="getJobStatusResponse/getJobStatusResult/loanAccountError"/>
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/loanAccountCompletdAt"/>
             <output path="getJobStatusResponse/getJobStatusResult/loanAccountCompletdAt"/>
-        </function>
-        <assign value="completed">
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/disbursementStatus"/>
             <output path="getJobStatusResponse/getJobStatusResult/disbursementStatus"/>
-        </assign>
-        <function ref="fn:current-dateTime">
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/disbursementError"/>
+            <output path="getJobStatusResponse/getJobStatusResult/disbursementError"/>
+        </move>
+        <move>
+            <input path="gefuInquiryResponse/disbursementCompletdAt"/>
             <output path="getJobStatusResponse/getJobStatusResult/disbursementCompletdAt"/>
-        </function>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
