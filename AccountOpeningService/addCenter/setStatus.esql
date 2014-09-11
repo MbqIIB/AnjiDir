@@ -80,7 +80,7 @@ CREATE COMPUTE MODULE callCenterCreationProc
 		DECLARE lExternalID CHARACTER;
 		SET lBatchID = OutputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:batchID;
 		SET lExternalID = OutputRoot.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:externalId;
-		CALL centercreation('HO-PROCESS-02',lBatchID, 0, lExternalID ||'_'||lBatchID);
+		CALL centercreation('HO-PROCESS-02',lBatchID, 0, lExternalID ||'_'||CAST(lBatchID AS CHARACTER));
 		RETURN TRUE;
 	END;
 

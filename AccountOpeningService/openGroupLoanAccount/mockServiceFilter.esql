@@ -1,0 +1,14 @@
+BROKER SCHEMA openGroupLoanAccount
+
+
+CREATE FILTER MODULE mockServiceFilter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Root.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.groupName IN ('DUMMY1','DUMMY2','DUMMY3') THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+
+END MODULE;

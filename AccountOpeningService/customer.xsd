@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.quantiguous.com/FI/customer.xsd" 
-xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" 
-xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" 
-xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" 
-xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" 
-xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" 
-xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/customer.xsd" xmlns:dt="http://www.quantiguous.com/FI/dataTypes.xsd" xmlns:ge="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:loanAccount="http://www.quantiguous.com/FI/loanAccount.xsd" xmlns:savingAccount="http://www.quantiguous.com/FI/savingAccount.xsd" xmlns:tns="http://www.quantiguous.com/FI/customer.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    	
    	<xsd:import namespace="http://www.quantiguous.com/FI/dataTypes.xsd" schemaLocation="dataTypes.xsd"/>
    	<xsd:import namespace="http://www.quantiguous.com/FI/globalElements.xsd" schemaLocation="globalElements.xsd"/>
@@ -337,7 +330,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 							<xsd:complexContent>
 								<xsd:extension base="tns:individualType">
 								    <xsd:sequence>
-			                         	<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount" />
+			                         	<xsd:element maxOccurs="1" minOccurs="1" ref="loanAccount:loanAccount"/>
 									</xsd:sequence>
 								</xsd:extension>
 							</xsd:complexContent>
@@ -351,8 +344,6 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
  
    <xsd:element name="customer">
       <xsd:complexType>
-         <xsd:sequence>
-	
          	<xsd:choice>
 				<xsd:element name="existingCustomer">
 					<xsd:complexType>
@@ -364,7 +355,6 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 				</xsd:element>
 				<xsd:element name="newCustomer" type="tns:newCustomerType"/>
          	</xsd:choice>
-         </xsd:sequence>
       </xsd:complexType>
    </xsd:element>
    

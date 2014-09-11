@@ -56,7 +56,7 @@ CREATE COMPUTE MODULE checkDuplicate
 	
 		IF OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500 THEN
 			-- duplicates are errors by the client, hence the faultcode
-			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'soapenv:Client';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
 		ELSE
 			-- no errors, we copy the input message and proceed
 			SET OutputRoot = InputRoot;
@@ -108,4 +108,52 @@ CREATE COMPUTE MODULE checkDuplicate
 		RETURN FALSE;
 	END;
 
+END MODULE;
+
+
+CREATE COMPUTE MODULE setDummy 
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.groupName = 'DUMMY1' THEN		
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.jobKey = 12345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.groupJobKey.batchID = 2001;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.groupJobKey.externalID = 12345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[1].batchID = 12002;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[1].externalID = 12345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[1].batchID = 12003;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[1].externalID = 1345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[1].batchID = 12004;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[1].externalID = 145678;
+			
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[2].batchID = 22002;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[2].externalID = 22345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[2].batchID = 22003;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[2].externalID = 2345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[2].batchID = 22004;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[2].externalID = 245678;
+			
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[3].batchID = 32002;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[3].externalID = 32345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[3].batchID = 32003;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[3].externalID = 3345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[3].batchID = 32004;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[3].externalID = 345678;
+			
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[4].batchID = 42002;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.customerJobKey[4].externalID = 42345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[4].batchID = 42003;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.loanAccountJobKey[4].externalID = 4345678;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[4].batchID = 42004;
+			SET OutputRoot.XMLNSC.ns:openGroupLoanAccountResponse.openGroupLoanAccountReply.savingAccountJobKey[4].externalID = 445678;
+		ELSEIF InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.groupName = 'DUMMY2'  THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[1] = 'Saving account already exists, ExternalId : 12345678 InternalId : 12345678';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[2] = 'Loan account already exists, ExternalId : 881723641 InternalId : 12341324';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[3] = 'Group already exists, ExternalId : 45346356345 InternalId : 345776723452';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		ELSEIF InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.groupName = 'DUMMY3'  THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the open group loan creation. Please contact support.' ;
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+		END IF;
+	RETURN TRUE;
+	END;
 END MODULE;

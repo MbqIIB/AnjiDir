@@ -1,0 +1,17 @@
+BROKER SCHEMA gen
+DECLARE ns17 NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+
+
+CREATE FILTER MODULE getConsumerCreditReport_Request_Response_Filter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Root.XMLNSC.ns:getConsumerCreditReport.getConsumerCreditReportRequest.ns17:customerName = 'DUMMY1' THEN
+			RETURN TRUE;
+		ELSEIF Root.XMLNSC.ns:getConsumerCreditReport.getConsumerCreditReportRequest.ns17:customerName = 'DUMMY2' THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+
+END MODULE;

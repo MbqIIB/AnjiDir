@@ -5,10 +5,12 @@
     <output path="/gefuRecordFomat.xsd"/>
     <imports>
         <import kind="esql" namespace="/gefuHelper.esql"/>
+        <import kind="esql" namespace="/helper.esql"/>
     </imports>
     <namespaces>
         <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
         <namespace kind="extension" prefix="gefuHelper" uri="/gefuHelper.esql"/>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
     </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="loanApplicationDetails_Mapping">
@@ -105,341 +107,337 @@
             <input path="$MessageAssembly/Properties/IdentityMappedIssuedBy"/>
             <output path="Properties/IdentityMappedIssuedBy"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/gender"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/GENDER"/>
+            <output path="gefuRecordFormat/record/retailCustomer/gender"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/title"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TITLE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/title"/>
         </move>
-        <move automap="true">
-            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/firstName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/FIRSTNAME"/>
-        </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/middleName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/MIDDLENAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/middleName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/lastName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/LASTNAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/lastName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/shortName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SHORTNAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/shortName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/fullName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/FULLNAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/fullName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/channelRequestName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/CHANNEL_REQUEST_NAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/channelRequestName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/dateOfBirth"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DATE_OF_BIRTH"/>
+            <output path="gefuRecordFormat/record/retailCustomer/dateOfBirth"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/staffIndicator"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STAFF_INDICATOR"/>
+            <output path="gefuRecordFormat/record/retailCustomer/staffIndicator"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/staffId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STAFF_ID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/staffId"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/motherMaidenName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/MOTHER_MAIDEN_NAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/motherMaidenName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/primarySolId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PRIMARY_SOL_ID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/primarySolID"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/segment"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SEGMENT"/>
+            <output path="gefuRecordFormat/record/retailCustomer/segment"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/subSegment"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SUBSEGMENT"/>
+            <output path="gefuRecordFormat/record/retailCustomer/subSegment"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/community"/>
-            <output path="gefuRecordFormat/record/retailCustomer/COMMUNITY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/community"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/creditBureauScore"/>
-            <output path="gefuRecordFormat/record/retailCustomer/CREDIT_BUREAU_SCORE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/creditBureauScore"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/constitutionCode"/>
-            <output path="gefuRecordFormat/record/retailCustomer/CONSTITUTION_CODE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/constitutionCode"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/primaryRMId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PRIMARYRMID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/primaryRmID"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/relationshipStartDate"/>
-            <output path="gefuRecordFormat/record/retailCustomer/RELATIONSHIP_START_DATE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/relationshipStartDate"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/nationality"/>
-            <output path="gefuRecordFormat/record/retailCustomer/NATIONALITY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/nationality"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/maritalStatus"/>
-            <output path="gefuRecordFormat/record/retailCustomer/MARITAL_STATUS"/>
+            <output path="gefuRecordFormat/record/retailCustomer/maritalStatus"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/qualification"/>
-            <output path="gefuRecordFormat/record/retailCustomer/QUALIFICATION"/>
+            <output path="gefuRecordFormat/record/retailCustomer/qualification"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employmentStatus"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_STATUS"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employmentStatus"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/sourceOfIncome"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SOURCE_OF_INCOME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/sourceOfIncome"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/occupation"/>
-            <output path="gefuRecordFormat/record/retailCustomer/OCCUPATION"/>
+            <output path="gefuRecordFormat/record/retailCustomer/occupation"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerName"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_NAME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerName"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/ifSalariedTypeOfCompany"/>
-            <output path="gefuRecordFormat/record/retailCustomer/IF_SALARIED_TYPE_OF_COMPANY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ifSalariedTypeOfCompany"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employeeDesignation"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYEE_DESIGNATION"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employeeDesignation"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/industryType"/>
-            <output path="gefuRecordFormat/record/retailCustomer/INDUSTRY_TYPE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/industryType"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerAddressLine1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerAddressLine1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerAddressLine2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ADDRESS_LINE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerAddressLine2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerPostalCode"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_POSTAL_CODE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerPostalCode"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerPhoneNumber"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_PHONE_NUMBER"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerPhoneNumber"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employmentType"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYMENT_TYPE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employmentType"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/grossIncome"/>
-            <output path="gefuRecordFormat/record/retailCustomer/GROSSINCOME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/grossIncome"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/totalHouseholdIncome"/>
-            <output path="gefuRecordFormat/record/retailCustomer/TOTAL_HOUSEHOLD_INCOME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/totalHouseHoldIncome"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/monthlyDisposableIncome"/>
-            <output path="gefuRecordFormat/record/retailCustomer/MONTHLY_DISPOSABLE_INCOME"/>
+            <output path="gefuRecordFormat/record/retailCustomer/monthlyDisposableIncome"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/bsrTypeOfOrganisation"/>
-            <output path="gefuRecordFormat/record/retailCustomer/BSR_TYPE_OF_ORGANISATION"/>
+            <output path="gefuRecordFormat/record/retailCustomer/bsrTypeOfOrganisation"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/dsaId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DSAID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/dsaID"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/minorityCommunity"/>
-            <output path="gefuRecordFormat/record/retailCustomer/MINORITY_COMMUNITY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/minorityCommunity"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/panNumber"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PAN_NUMBER"/>
+            <output path="gefuRecordFormat/record/retailCustomer/panNumber"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/scSt"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SC_ST"/>
+            <output path="gefuRecordFormat/record/retailCustomer/scSt"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/sourcingId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SOURCING_ID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/sourcingID"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/specialCategory"/>
-            <output path="gefuRecordFormat/record/retailCustomer/SPECIAL_CATEGORY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/specialCategory"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employerId"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMPLOYER_ID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employerID"/>
         </move>
         <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/employeeId" var="employeeId2"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/employeeId"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCode1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCode1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCodeDesc1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCodedesc1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/uniqueId1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/uniqueID1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentType2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentTypeDesc2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentTypeDesc2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCode2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCode2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCodeDesc2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCodeDesc2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/uniqueId2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/uniqueID2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentType3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentTypeDesc3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentTypeDesc3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCode3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODE3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCode3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentCodeDesc3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTCODEDESC3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentCodeDesc3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/uniqueId3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/UNIQUEID3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/uniqueID3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSLINE11"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine1_1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine2_1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine2_1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine3_1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine3_1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/city1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/CITY_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/city1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/state1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STATE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/state1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/postalCode1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/postalCode1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressType2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLabel2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE1_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine1_2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine2_2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE2_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine2_2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine3_2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_LINE3_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressLine3_2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/city2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/CITY_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/city2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/state2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STATE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/state2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/postalCode2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/POSTAL_CODE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/postalCode2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/stdCode1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/stdCode1"/>
         </move>
-        <move automap="true">
-            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_1"/>
+        <move>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1" var="phoneNo14"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneNo1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/extensionNo1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/extensionNo1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/stdCode2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STD_CODE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/stdCode2"/>
         </move>
-        <move automap="true">
-            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_2"/>
+        <move>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2" var="phoneNo24"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneNo2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/extensionNo2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/extensionNo2"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/stdCode3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/STDCODE_3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/stdCode3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE_NO_3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneNo3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/extensionNo3"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EXTENSION_NO_3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/extensionNo3"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId1"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMAILID_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/emailID1" var="emailID1"/>
         </move>
-        <move automap="true">
+        <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId2"/>
-            <output path="gefuRecordFormat/record/retailCustomer/EMAIL_ID_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/emailID2"/>
         </move>
         <move automap="true">
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/solId"/>
@@ -525,7 +523,7 @@
             </expression>
         </foreach>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/MINOR_INDICATOR"/>
+            <output path="gefuRecordFormat/record/retailCustomer/minorIndicator"/>
         </assign>
         <assign value="{LOANAC}">
             <output path="gefuRecordFormat/record/loanDisbursement/disbursement/loanAccountNumber"/>
@@ -583,251 +581,248 @@
             <output path="gefuRecordFormat/record/loanAccount/eiSchemeFlag"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/NON_RESIDENTINDICATOR"/>
+            <output path="gefuRecordFormat/record/retailCustomer/nonResidentIndicator"/>
         </assign>
         <assign value="T001">
-            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_TYPE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/customerType"/>
         </assign>
         <assign value="ACTVE">
-            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_STATUS"/>
+            <output path="gefuRecordFormat/record/retailCustomer/customerStatus"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/AVAILED_TRADE_SERVICES"/>
+            <output path="gefuRecordFormat/record/retailCustomer/availedTradeService"/>
         </assign>
         <assign value="S">
-            <output path="gefuRecordFormat/record/retailCustomer/ASSET_CLASSIFICATION_CONTROL"/>
+            <output path="gefuRecordFormat/record/retailCustomer/assetClassificationControl"/>
         </assign>
-        <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/CUSTOMER_LEVEL_PROVISIONING"/>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/customerLevelProvisioning"/>
         </assign>
         <assign value="00">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_CALENDAR"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredCalendar"/>
         </assign>
         <assign value="INR">
-            <output path="gefuRecordFormat/record/retailCustomer/BASE_CCY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/baseCcy"/>
         </assign>
         <assign value="N">
-            <output path="gefuRecordFormat/record/retailCustomer/PURGE_ALLOWED"/>
+            <output path="gefuRecordFormat/record/retailCustomer/purgeAllowed"/>
         </assign>
         <assign value="N">
-            <output path="gefuRecordFormat/record/retailCustomer/DELINQUENT_CUSTOMER"/>
+            <output path="gefuRecordFormat/record/retailCustomer/delinquentCustomer"/>
         </assign>
         <assign value="en_US">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDLOCALE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredLocale"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/ENABLE_E_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/enableEBanking"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/SMS_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/smsBanking"/>
         </assign>
         <assign value="INFENG">
-            <output path="gefuRecordFormat/record/retailCustomer/NATIVE_LANGUAGE_CODE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/nativeLanguageCode"/>
         </assign>
         <assign value="USA (English)">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_NATIVE_LANGUAGE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredNativeLanguage"/>
         </assign>
         <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/FILED_TAX_RETURNS_REGULARLY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/filedTaxReturnRegularly"/>
         </assign>
         <assign value="1307">
-            <output path="gefuRecordFormat/record/retailCustomer/BUSINESS_SEGMENT"/>
+            <output path="gefuRecordFormat/record/retailCustomer/businessSigment"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/ATM_CARD"/>
-        </assign>
-        <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/DO_NOT_CALL"/>
+            <output path="gefuRecordFormat/record/retailCustomer/atmCard"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/DOORSTEP_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/doNotCall"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/INTERNET_BANKING"/>
-        </assign>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/KYC_REMEDIATION_DATE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/doorstepBanking"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/MOBILE_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/internetBanking"/>
+        </assign>
+        <assign value="2002-01-01">
+            <output path="gefuRecordFormat/record/retailCustomer/kycRemediationDate"/>
+        </assign>
+        <assign value="false">
+            <output path="gefuRecordFormat/record/retailCustomer/mobileBanking"/>
         </assign>
         <assign value="U">
-            <output path="gefuRecordFormat/record/retailCustomer/PAN_VALIDATION_FIELD"/>
+            <output path="gefuRecordFormat/record/retailCustomer/panValidationField"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/PHONE_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneBanking"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/TABLET_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/tabletBanking"/>
         </assign>
         <assign value="WEAK_SEC 16">
-            <output path="gefuRecordFormat/record/retailCustomer/WEAKERSECTIONS"/>
+            <output path="gefuRecordFormat/record/retailCustomer/weakerSections"/>
         </assign>
         <assign value="C001">
-            <output path="gefuRecordFormat/record/retailCustomer/CAPACITY_OF_ENTITY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/capacityOfEntry"/>
         </assign>
         <assign value="01">
-            <output path="gefuRecordFormat/record/retailCustomer/HEALTH_CODE"/>
+            <output path="gefuRecordFormat/record/retailCustomer/healthCode"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/WAP_BANKING"/>
+            <output path="gefuRecordFormat/record/retailCustomer/wapBanking"/>
         </assign>
         <move>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/employeeId"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/EMPLOYEE_ID"/>
+            <output path="gefuRecordFormat/record/retailCustomer/employeeID"/>
         </move>
         <assign value="INR">
-            <output path="gefuRecordFormat/record/retailCustomer/CCY"/>
+            <output path="gefuRecordFormat/record/retailCustomer/ccy"/>
         </assign>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERENTIALEXPIRYDATE"/>
+        <assign value="2002-01-01">
+            <output path="gefuRecordFormat/record/retailCustomer/preferentialExpiryDate"/>
         </assign>
         <assign value="DOCUMENT1">
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/document1"/>
         </assign>
         <assign value="INDIVIDUAL KYC DOCUMENTS">
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentType1"/>
         </assign>
         <assign value="INDIVIDUAL KYC DOCUMENTS">
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENTTYPEDESC1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/documentTypeDesc1"/>
         </assign>
         <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/ISDOCUMENTVERIFIED1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/isDocumentVerified1"/>
         </assign>
         <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERREDFLAG1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/prefferredFlag1"/>
         </assign>
         <assign value="DOCUMENT2">
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/document2"/>
         </assign>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType2" var="documentType2"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/isDocumentVerified2" var="isDocumentVerified2"/>
             <test lang="xpath">fn:exists($documentType2)</test>
             <assign value="Y">
-                <output path="."/>
+                <output path="$isDocumentVerified2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType2" var="documentType21"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlag2"/>
             <test lang="">fn:exists($documentType21)</test>
             <assign value="false">
                 <output path="."/>
             </assign>
         </if>
         <assign value="DOCUMENT3">
-            <output path="gefuRecordFormat/record/retailCustomer/DOCUMENT3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/document3"/>
         </assign>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType3" var="documentType3"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ISDOCUMENTVERIFIED3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/isDocumentVerified3" var="isDocumentVerified3"/>
             <test lang="">fn:exists($documentType3)</test>
             <assign value="false">
-                <output path="."/>
+                <output path="$isDocumentVerified3/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/documentType3" var="documentType31"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERREDFLAG3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlag3"/>
             <test lang="xpath">fn:exists($documentType31)</test>
             <assign value="false">
                 <output path="."/>
             </assign>
         </if>
         <assign value="ADDRESS1">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/address1"/>
         </assign>
         <assign value="FREE_TEXT_FORMAT">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSFORMAT1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressFormat1"/>
         </assign>
         <assign value="Mailing">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESSTYPE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressType1"/>
         </assign>
         <assign value="IN">
-            <output path="gefuRecordFormat/record/retailCustomer/COUNTRY_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/country1"/>
         </assign>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS_VALID_TILL_1"/>
+        <assign value="2099-01-01">
+            <output path="gefuRecordFormat/record/retailCustomer/addressValidTill1"/>
         </assign>
-        <assign value="2099-12-31">
-            <output path="gefuRecordFormat/record/retailCustomer/LAST_UPDATED_DATE_1"/>
+        <assign value="2002-01-01">
+            <output path="gefuRecordFormat/record/retailCustomer/lastUpdatedDate1"/>
         </assign>
         <assign value="false">
-            <output path="gefuRecordFormat/record/retailCustomer/HOLD_MAIL_INDICATOR_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/holdMailIndicator1"/>
         </assign>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_24"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_ADDRESS2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagAddress2"/>
             <test lang="xpath">fn:exists($addressLine1_24)</test>
             <assign value="false">
                 <output path="."/>
             </assign>
         </if>
-        <assign value="ADDRESS2">
-            <output path="gefuRecordFormat/record/retailCustomer/ADDRESS2"/>
-        </assign>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_25"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_FORMAT_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressFormat2" var="addressFormat2"/>
             <test lang="xpath">fn:exists($addressLine1_25)</test>
             <assign value="FREE_TEXT_FORMAT">
-                <output path="."/>
+                <output path="$addressFormat2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_26"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/country2" var="country2"/>
             <test lang="xpath">fn:exists($addressLine1_26)</test>
             <assign value="IN">
-                <output path="."/>
+                <output path="$country2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_2"/>
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DTCLSDATE"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressValidFrom2" var="addressValidFrom2"/>
             <test lang="">fn:exists($addressLine1_2)</test>
             <move>
                 <input path="$DTCLSDATE/."/>
-                <output path="."/>
+                <output path="$addressValidFrom2/."/>
             </move>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_21"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_TILL_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressValidTill2" var="addressValidTill2"/>
             <test lang="">fn:exists($addressLine1_21)</test>
             <assign value="2099-12-31">
-                <output path="."/>
+                <output path="$addressValidTill2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_22"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/LAST_UPDATED_DATE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/lastUpdatedDate2" var="lastUpdatedDate2"/>
             <test lang="">fn:exists($addressLine1_22)</test>
             <assign value="2099-12-31">
-                <output path="."/>
+                <output path="$lastUpdatedDate2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/addressLine1_2" var="addressLine1_23"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/HOLD_MAIL_INDICATOR_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/holdMailIndicator2" var="holdMailIndicator2"/>
             <test lang="">fn:exists($addressLine1_23)</test>
             <assign value="false">
-                <output path="."/>
+                <output path="$holdMailIndicator2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1" var="phoneNo1"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phone1" var="phone1"/>
             <test lang="xpath">fn:exists($phoneNo1)</test>
             <assign value="PHONE1">
-                <output path="."/>
+                <output path="$phone1/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1" var="phoneNo11"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneType1"/>
             <test lang="xpath">fn:exists($phoneNo11)</test>
             <assign value="CELLPH">
                 <output path="."/>
@@ -835,15 +830,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1" var="phoneNo12"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/countryCode1" var="countryCode1"/>
             <test lang="xpath">fn:exists($phoneNo12)</test>
             <assign value="91">
-                <output path="."/>
+                <output path="$countryCode1/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo1" var="phoneNo13"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagPhone1"/>
             <test lang="xpath">fn:exists($phoneNo13)</test>
             <assign value="true">
                 <output path="."/>
@@ -851,10 +846,10 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2" var="phoneNo2"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phone2" var="phone2"/>
             <test lang="xpath">fn:exists($phoneNo2)</test>
             <assign value="PHONE2">
-                <output path="."/>
+                <output path="$phone2/."/>
             </assign>
         </if>
         <move>
@@ -867,7 +862,7 @@
         </move>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId2" var="emailId2"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagEmail2"/>
             <test lang="xpath">fn:exists($emailId2)</test>
             <assign value="false">
                 <output path="."/>
@@ -875,7 +870,7 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId1" var="emailId12"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_EMAIL1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagEmail1"/>
             <test lang="xpath">fn:exists($emailId12)</test>
             <assign value="true">
                 <output path="."/>
@@ -883,7 +878,7 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId2" var="emailId21"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/type2"/>
             <test lang="xpath">fn:exists($emailId21)</test>
             <assign value="WORKEML">
                 <output path="."/>
@@ -891,15 +886,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId2" var="emailId22"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/email2" var="email2"/>
             <test lang="xpath">fn:exists($emailId22)</test>
             <assign value="EMAIL2">
-                <output path="."/>
+                <output path="$email2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId1" var="emailId11"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/type1"/>
             <test lang="xpath">fn:exists($emailId11)</test>
             <assign value="HOMEEML">
                 <output path="."/>
@@ -907,15 +902,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/emailId1" var="emailId1"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/EMAIL_1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/email1" var="email1"/>
             <test lang="xpath">fn:exists($emailId1)</test>
             <assign value="EMAIL1">
-                <output path="."/>
+                <output path="$email1/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo3" var="phoneNo33"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagPhone3"/>
             <test lang="xpath">fn:exists($phoneNo33)</test>
             <assign value="false">
                 <output path="."/>
@@ -923,15 +918,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo3" var="phoneNo32"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/countryCode3" var="countryCode3"/>
             <test lang="xpath">fn:exists($phoneNo32)</test>
             <assign value="91">
-                <output path="."/>
+                <output path="$countryCode3/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo3" var="phoneNo31"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneType3"/>
             <test lang="xpath">fn:exists($phoneNo31)</test>
             <assign value="WORKPH1">
                 <output path="."/>
@@ -939,15 +934,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo3" var="phoneNo3"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PHONE3"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phone3"/>
             <test lang="xpath">fn:exists($phoneNo3)</test>
             <assign value="PHONE3">
-                <output path="."/>
+                <output path="." var="phone3"/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2" var="phoneNo21"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/PREFERRED_FLAG_PHONE2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagPhone2"/>
             <test lang="xpath">fn:exists($phoneNo21)</test>
             <assign value="false">
                 <output path="."/>
@@ -955,15 +950,15 @@
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2" var="phoneNo22"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/COUNTRY_CODE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/countryCode2" var="countryCode2"/>
             <test lang="xpath">fn:exists($phoneNo22)</test>
             <assign value="91">
-                <output path="."/>
+                <output path="$countryCode2/."/>
             </assign>
         </if>
         <if>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/phoneNo2" var="phoneNo23"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/TYPE_2"/>
+            <output path="gefuRecordFormat/record/retailCustomer/phoneType2"/>
             <test lang="xpath">fn:exists($phoneNo23)</test>
             <assign value="HOMEPH1">
                 <output path="."/>
@@ -1005,42 +1000,42 @@
                 <output path="recordNumber"/>
                 <code lang="xpath">fn:concat('rec_',fn:string($repaymentRecord-index))</code>
             </expression>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="flowStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="nextDemandDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="nextInterestDemandDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+            <customFunction lang="esql" ref="helper:getDayOfDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="eiFrequencyStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
-            <customFunction lang="esql" ref="gefuHelper:getDayOfDate">
+            <customFunction lang="esql" ref="helper:getDayOfDate">
                 <input path="$DTCLSDATE2/." var="DTCLSDATE2"/>
                 <output path="interestFrequencyStartDate"/>
                 <param name="piDate" value="$DTCLSDATE2"/>
             </customFunction>
         </foreach>
         <assign value="true">
-            <output path="gefuRecordFormat/record/retailCustomer/PREFERRED_FLAG_ADDRESS1"/>
+            <output path="gefuRecordFormat/record/retailCustomer/preferredFlagAddress1"/>
         </assign>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/BUSSEGEFFDATE"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE4"/>
+            <output path="gefuRecordFormat/record/retailCustomer/busSegEffDate" var="busSegEffDate"/>
         </move>
         <move>
-            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
-            <output path="gefuRecordFormat/record[1]/retailCustomer/ADDRESS_VALID_FROM_1"/>
+            <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE5"/>
+            <output path="gefuRecordFormat/record/retailCustomer/addressValidFrom1" var="addressValidFrom1"/>
         </move>
         <move>
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
@@ -1058,27 +1053,34 @@
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE"/>
             <output path="gefuRecordFormat/record[1]/loanDisbursement/disbursement/valueDate"/>
         </move>
-        <customFunction lang="esql" ref="gefuHelper:getLastInstallmentDate">
+        <customFunction lang="esql" ref="helper:getLastInstallmentDate">
             <input path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
             <input path="$MessageAssembly/loanApplicationDetails/record[1]/loanAccountDetails/loanPeriodMonths" var="loanPeriodMonths1"/>
             <output path="gefuRecordFormat/record[1]/loanAccount/expiryDate"/>
             <param name="piDate" value="$DCCLSDATE"/>
             <param name="piMonths" value="$loanPeriodMonths1"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE1"/>
             <output path="gefuRecordFormat/record/loanAccount/flowStartDate"/>
             <param name="piDate" value="$DCCLSDATE1"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE2"/>
             <output path="gefuRecordFormat/record/loanAccount/nextDemandDate"/>
             <param name="piDate" value="$DCCLSDATE2"/>
         </customFunction>
-        <customFunction lang="esql" ref="gefuHelper:getFlowStartDate">
+        <customFunction lang="esql" ref="helper:getFlowStartDate">
             <input path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE3"/>
             <output path="gefuRecordFormat/record/loanAccount/nextInterestRunDate"/>
             <param name="piDate" value="$DCCLSDATE3"/>
         </customFunction>
+        <move>
+            <input path="$MessageAssembly/loanApplicationDetails/record[1]/applicantDetails/firstName"/>
+            <output path="gefuRecordFormat/record/retailCustomer/firstName"/>
+        </move>
+        <assign value="ADDRESS2">
+            <output path="gefuRecordFormat/record/retailCustomer/address2"/>
+        </assign>
     </mappingDeclaration>
 </mappingRoot>

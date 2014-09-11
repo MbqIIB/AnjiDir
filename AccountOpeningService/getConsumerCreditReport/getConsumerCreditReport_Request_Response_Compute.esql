@@ -1,6 +1,8 @@
 BROKER SCHEMA getConsumerCreditReport
 DECLARE equifax NAMESPACE 'http://services.equifax.com/eport/ws/schemas/1.0';
 DECLARE aos NAMESPACE 'http://AccountOpeningService';
+DECLARE ns NAMESPACE 'http://www.quantiguous.com/FI/globalElements.xsd';
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 
 CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -105,8 +107,9 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
 			END IF;
 		ELSE
-			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReason = 'Something went wrong, please contact support.';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the equifax request. Please contact support.' ;
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		END IF;
 	END;
 
@@ -148,3 +151,20 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 	END;
 	
 END MODULE;
+
+-- temporary code for mockupservices should be removed once moved into UAT
+CREATE COMPUTE MODULE setDummy 
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF InputRoot.XMLNSC.aos:getConsumerCreditReport.getConsumerCreditReportRequest.ns:customerName = 'DUMMY1' THEN		
+			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
+			SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason = 'Written off amount greater than 0.';
+		ELSEIF InputRoot.XMLNSC.aos:getConsumerCreditReport.getConsumerCreditReportRequest.ns:customerName = 'DUMMY2' THEN
+			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the equifax request. Please contact support.' ;
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
+		END IF;
+	RETURN TRUE;
+	END;
+END MODULE;
+

@@ -3,6 +3,7 @@
 	<name>AccountOpeningByPartnerService</name>
 	<comment></comment>
 	<projects>
+		<project>gefu.ddp</project>
 		<project>iap</project>
 	</projects>
 	<buildSpec>

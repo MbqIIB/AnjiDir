@@ -11,10 +11,10 @@
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="openRetailLoanAccount" pluginId="AccountOpeningByPartnerService"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="320,20">
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="497,24">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="openRetailLoanAccount" pluginId="AccountOpeningByPartnerService"/>
       </nodes>
-      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="155,46" mappingExpression="msl://{default}#openRetailLoanAccount_Mapping" validateMaster="contentAndValue">
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="209,20" mappingExpression="msl://{default}#openRetailLoanAccount_Mapping" validateMaster="contentAndValue">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

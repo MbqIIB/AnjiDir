@@ -1,0 +1,14 @@
+BROKER SCHEMA getJobStatus
+
+
+CREATE FILTER MODULE getGroupLoanStatusByCustomerKey_Filter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Root.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID IN (1000,2000,3000,4000,12002,22002,32002,42002) THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+
+END MODULE;

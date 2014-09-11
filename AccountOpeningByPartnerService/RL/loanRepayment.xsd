@@ -1,48 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	xmlns:tns="http://www.quantiguous.com/RL/loanRepayment.xsd"
-	targetNamespace="http://www.quantiguous.com/RL/loanRepayment.xsd">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/RL/loanRepayment.xsd" xmlns:tns="http://www.quantiguous.com/RL/loanRepayment.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 <xsd:complexType name="retailLoanRepaymentType">
    <xsd:sequence>
-      <xsd:element name="repaymentRecord" minOccurs="1" maxOccurs="unbounded">
+      <xsd:element maxOccurs="unbounded" minOccurs="1" name="repaymentRecord">
          <xsd:annotation>
             <xsd:documentation>Making the repayment records unbounded to accomodate other products with multiple records</xsd:documentation>
          </xsd:annotation>
          <xsd:complexType>
             <xsd:sequence>
-               <xsd:element name="flowID" fixed="EIDEM">
+               <xsd:element fixed="EIDEM" name="flowID">
             <xsd:annotation>
                <xsd:documentation>This will be a fixed value pending confirmation from Kiran</xsd:documentation>
             </xsd:annotation>
                   <xsd:simpleType>
-                     <xsd:restriction base="xsd:string" >
-                        <xsd:maxLength value="5" />
+                     <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="5"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>
-               <xsd:element name="repaymentFrequency" fixed="M">
+               <xsd:element fixed="M" name="repaymentFrequency">
             <xsd:annotation>
                <xsd:documentation>This will be a fixed value M - MONTHLY </xsd:documentation>
             </xsd:annotation>
                   <xsd:simpleType>
-                     <xsd:restriction base="xsd:string" >
-                        <xsd:maxLength value="1" />
+                     <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="1"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>
                <xsd:element name="noOfInstallments">
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:int">
-                        <xsd:minInclusive value="0" />
+                        <xsd:minInclusive value="0"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>
                <xsd:element name="installmentAmount">
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:decimal">
-                        <xsd:totalDigits value="16" />
-                        <xsd:fractionDigits value="2" />
+                        <xsd:totalDigits value="16"/>
+                        <xsd:fractionDigits value="2"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>

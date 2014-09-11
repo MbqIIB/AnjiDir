@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd" var="var"/>
+    <output path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getJobStatus_Mapping">
+        <input namespace="http://AccountOpeningByPartnerService" path="$var/mb:msg(getJobStatus,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://AccountOpeningByPartnerService" path="mb:msg(getJobStatusResponse,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/getJobStatus/getjobStatusParameters/referenceNumber"/>
+            <output path="getJobStatusResponse/getJobStatusResult/gefuReferenceNumber"/>
+        </move>
+        <assign value="123123123123">
+            <output path="getJobStatusResponse/getJobStatusResult/cifId"/>
+        </assign>
+        <function ref="fn:current-dateTime">
+            <output path="getJobStatusResponse/getJobStatusResult/cifComletedAt"/>
+        </function>
+        <assign value="321321321">
+            <output path="getJobStatusResponse/getJobStatusResult/loanAccount"/>
+        </assign>
+        <function ref="fn:current-dateTime">
+            <output path="getJobStatusResponse/getJobStatusResult/loanAccountCompletdAt"/>
+        </function>
+        <assign value="completed">
+            <output path="getJobStatusResponse/getJobStatusResult/disbursementStatus"/>
+        </assign>
+        <function ref="fn:current-dateTime">
+            <output path="getJobStatusResponse/getJobStatusResult/disbursementCompletdAt"/>
+        </function>
+    </mappingDeclaration>
+</mappingRoot>

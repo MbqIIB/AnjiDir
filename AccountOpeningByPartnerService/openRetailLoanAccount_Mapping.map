@@ -1,17 +1,752 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
-    <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
-    <output path="/AccountOpeningByPartnerService_InlineSchema1.xsd"/>
+    <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd" var="var"/>
+    <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,GCT))" var="FINACLE"/>
+    <output path="/gefuRecordFomat.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/helper.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
+    </namespaces>
     <generation engine="xquery"/>
     <mappingDeclaration name="openRetailLoanAccount_Mapping">
-        <input namespace="http://AccountOpeningByPartnerService" path="mb:msg(openRetailLoanAccount,assembly,XMLNSC,Properties)"/>
-        <output namespace="http://AccountOpeningByPartnerService" path="mb:msg(openRetailLoanAccountResponse,assembly,XMLNSC,Properties)"/>
+        <input namespace="http://AccountOpeningByPartnerService" path="$var/mb:msg(openRetailLoanAccount,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/GCT/DC_CLS_DATE),db:where('1=1'))" var="dbselect"/>
+        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,Properties)"/>
         <move>
-            <input path="Properties"/>
+            <input path="$MessageAssembly/Properties"/>
             <output path="Properties"/>
         </move>
-        <move>
-            <input path="openRetailLoanAccount/openRetailLoanAccountParameters/referenceNumber"/>
-            <output path="openRetailLoanAccountResponse/openRetailLoanAccountResult/referenceNumber"/>
-        </move>
+        <local>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer" var="customer"/>
+            <input auxiliary="true" path="$dbselect/ResultSet/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE4"/>
+            <output path="gefuRecordFormat/record/retailCustomer"/>
+            <move>
+                <input path="$customer/gender"/>
+                <output path="gender"/>
+            </move>
+            <move>
+                <input path="$customer/title"/>
+                <output path="title"/>
+            </move>
+            <move>
+                <input path="$customer/firstName"/>
+                <output path="firstName"/>
+            </move>
+            <move>
+                <input path="$customer/middleName"/>
+                <output path="middleName"/>
+            </move>
+            <move>
+                <input path="$customer/lastName"/>
+                <output path="lastName"/>
+            </move>
+            <move>
+                <input path="$customer/shortName"/>
+                <output path="shortName"/>
+            </move>
+            <move>
+                <input path="$customer/channelRequestName"/>
+                <output path="channelRequestName"/>
+            </move>
+            <move>
+                <input path="$customer/dateOfBirth"/>
+                <output path="dateOfBirth"/>
+            </move>
+            <move>
+                <input path="$customer/staffIndicator"/>
+                <output path="staffIndicator"/>
+            </move>
+            <move>
+                <input path="$customer/staffId"/>
+                <output path="staffId"/>
+            </move>
+            <move>
+                <input path="$customer/motherMaidenName"/>
+                <output path="motherMaidenName"/>
+            </move>
+            <move>
+                <input path="$customer/segment"/>
+                <output path="segment"/>
+            </move>
+            <move>
+                <input path="$customer/subSegment"/>
+                <output path="subSegment"/>
+            </move>
+            <move>
+                <input path="$customer/community"/>
+                <output path="community"/>
+            </move>
+            <move>
+                <input path="$customer/creditBureauScore"/>
+                <output path="creditBureauScore"/>
+            </move>
+            <move>
+                <input path="$customer/constitutionCode"/>
+                <output path="constitutionCode"/>
+            </move>
+            <move>
+                <input path="$customer/primaryRMID"/>
+                <output path="primaryRmID"/>
+            </move>
+            <move>
+                <input path="$customer/relationshipStartDate"/>
+                <output path="relationshipStartDate"/>
+            </move>
+            <move>
+                <input path="$customer/nationality"/>
+                <output path="nationality"/>
+            </move>
+            <move>
+                <input path="$customer/maritalStatus"/>
+                <output path="maritalStatus"/>
+            </move>
+            <move>
+                <input path="$customer/qualification"/>
+                <output path="qualification"/>
+            </move>
+            <move>
+                <input path="$customer/sourceOfIncome"/>
+                <output path="sourceOfIncome"/>
+            </move>
+            <move>
+                <input path="$customer/occupation"/>
+                <output path="occupation"/>
+            </move>
+            <move>
+                <input path="$customer/industryType"/>
+                <output path="industryType"/>
+            </move>
+            <move>
+                <input path="$customer/grossIncome"/>
+                <output path="grossIncome"/>
+            </move>
+            <move>
+                <input path="$customer/totalHouseholdIncome"/>
+                <output path="totalHouseHoldIncome"/>
+            </move>
+            <move>
+                <input path="$customer/monthlyDisposableIncome"/>
+                <output path="monthlyDisposableIncome"/>
+            </move>
+            <move>
+                <input path="$customer/dsaId"/>
+                <output path="dsaID"/>
+            </move>
+            <move>
+                <input path="$customer/minorityCommunity"/>
+                <output path="minorityCommunity"/>
+            </move>
+            <move>
+                <input path="$customer/pan"/>
+                <output path="panNumber"/>
+            </move>
+            <move>
+                <input path="$customer/scSt"/>
+                <output path="scSt"/>
+            </move>
+            <move>
+                <input path="$customer/sourcingID"/>
+                <output path="sourcingID"/>
+            </move>
+            <move>
+                <input path="$customer/specialCategory"/>
+                <output path="specialCategory"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/ifSalariedTypeOfCompany"/>
+                <output path="ifSalariedTypeOfCompany"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employmentStatus"/>
+                <output path="employmentStatus"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employmentType"/>
+                <output path="employmentType"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerName"/>
+                <output path="employerName"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerID"/>
+                <output path="employerID"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employeeID"/>
+                <output path="employeeID"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/designation"/>
+                <output path="employeeDesignation"/>
+            </move>
+            <assign value="false">
+                <output path="minorIndicator"/>
+            </assign>
+            <assign value="false">
+                <output path="nonResidentIndicator"/>
+            </assign>
+            <assign value="T001">
+                <output path="customerType"/>
+            </assign>
+            <assign value="ACTVE">
+                <output path="customerStatus"/>
+            </assign>
+            <assign value="false">
+                <output path="availedTradeService"/>
+            </assign>
+            <assign value="S">
+                <output path="assetClassificationControl"/>
+            </assign>
+            <assign value="false">
+                <output path="customerLevelProvisioning"/>
+            </assign>
+            <assign value="00">
+                <output path="preferredCalendar"/>
+            </assign>
+            <assign value="INR">
+                <output path="baseCcy"/>
+            </assign>
+            <assign value="N">
+                <output path="purgeAllowed"/>
+            </assign>
+            <assign value="N">
+                <output path="delinquentCustomer"/>
+            </assign>
+            <assign value="en_US">
+                <output path="preferredLocale"/>
+            </assign>
+            <assign value="false">
+                <output path="enableEBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="smsBanking"/>
+            </assign>
+            <assign value="INFENG">
+                <output path="nativeLanguageCode"/>
+            </assign>
+            <assign value="USA (English)">
+                <output path="preferredNativeLanguage"/>
+            </assign>
+            <assign value="true">
+                <output path="filedTaxReturnRegularly"/>
+            </assign>
+            <assign value="1307">
+                <output path="businessSigment"/>
+            </assign>
+            <assign value="false">
+                <output path="atmCard"/>
+            </assign>
+            <assign value="false">
+                <output path="doNotCall"/>
+            </assign>
+            <assign value="false">
+                <output path="doorstepBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="internetBanking"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="kycRemediationDate"/>
+            </assign>
+            <assign value="false">
+                <output path="mobileBanking"/>
+            </assign>
+            <assign value="U">
+                <output path="panValidationField"/>
+            </assign>
+            <assign value="false">
+                <output path="phoneBanking"/>
+            </assign>
+            <assign value="false">
+                <output path="tabletBanking"/>
+            </assign>
+            <assign value="WEAK_SEC 16">
+                <output path="weakerSections"/>
+            </assign>
+            <assign value="C001">
+                <output path="capacityOfEntry"/>
+            </assign>
+            <assign value="01">
+                <output path="healthCode"/>
+            </assign>
+            <assign value="false">
+                <output path="wapBanking"/>
+            </assign>
+            <assign value="INR">
+                <output path="ccy"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="preferentialExpiryDate"/>
+            </assign>
+            <assign value="DOCUMENT1">
+                <output path="document1"/>
+            </assign>
+            <assign value="INDIVIDUAL KYC DOCUMENTS">
+                <output path="documentType1"/>
+            </assign>
+            <assign value="INDIVIDUAL KYC DOCUMENTS">
+                <output path="documentTypeDesc1"/>
+            </assign>
+            <assign value="true">
+                <output path="isDocumentVerified1"/>
+            </assign>
+            <assign value="true">
+                <output path="prefferredFlag1"/>
+            </assign>
+            <assign value="DOCUMENT2">
+                <output path="document2"/>
+            </assign>
+            <assign value="DOCUMENT3">
+                <output path="document3"/>
+            </assign>
+            <assign value="ADDRESS1">
+                <output path="address1"/>
+            </assign>
+            <assign value="FREE_TEXT_FORMAT">
+                <output path="addressFormat1"/>
+            </assign>
+            <assign value="IN">
+                <output path="country1"/>
+            </assign>
+            <assign value="2099-01-01">
+                <output path="addressValidTill1"/>
+            </assign>
+            <assign value="2002-01-01">
+                <output path="lastUpdatedDate1"/>
+            </assign>
+            <assign value="false">
+                <output path="holdMailIndicator1"/>
+            </assign>
+            <assign value="true">
+                <output path="preferredFlagAddress1"/>
+            </assign>
+            <assign value="ADDRESS2">
+                <output path="address2"/>
+            </assign>
+            <customFunction lang="esql" ref="helper:getFullName">
+                <input path="$customer/firstName" var="firstName2"/>
+                <input path="$customer/middleName" var="middleName2"/>
+                <input path="$customer/lastName" var="lastName2"/>
+                <output path="fullName"/>
+                <param name="piFirstName" value="$firstName2"/>
+                <param name="piMiddleName" value="$middleName2"/>
+                <param name="piLastName" value="$lastName2"/>
+            </customFunction>
+            <move>
+                <input path="$customer/branchID"/>
+                <output path="primarySolID"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerPhoneNumber/phoneNo"/>
+                <output path="employerPhoneNumber"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/line1"/>
+                <output path="employerAddressLine1"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/line2"/>
+                <output path="employerAddressLine2"/>
+            </move>
+            <move>
+                <input path="$customer/employmentDetails/employerAddress/pin"/>
+                <output path="employerPostalCode"/>
+            </move>
+            <move>
+                <input path="$customer/bsrTypeOfOrganisation"/>
+                <output path="bsrTypeOfOrganisation"/>
+            </move>
+            <move>
+                <input path="$DCCLSDATE4/."/>
+                <output path="busSegEffDate"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentCode"/>
+                <output path="documentCode1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentDescription"/>
+                <output path="documentCodedesc1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/documentID"/>
+                <output path="uniqueID1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/placeOfIssue"/>
+                <output path="PlaceOfIssue1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/countryOfIssue"/>
+                <output path="countryOfIssue1I"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/issueDate"/>
+                <output path="issueDate1"/>
+            </move>
+            <move>
+                <input path="$customer/document[1]/expiryDate"/>
+                <output path="expiryDate1"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/documentCode"/>
+                <output path="documentCode2"/>
+            </move>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID"/>
+                <output path="documentType2"/>
+                <test lang="">fn:exists($documentID)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID1"/>
+                <output path="documentTypeDesc2"/>
+                <test lang="">fn:exists($documentID1</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID2"/>
+                <output path="documentType3"/>
+                <test lang="">fn:exists($documentID2)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID3"/>
+                <output path="documentTypeDesc3"/>
+                <test lang="">fn:exists($documentID3)</test>
+                <assign value="INDIVIDUAL KYC DOCUMENTS">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/document[2]/documentID" var="documentID4"/>
+                <output path="uniqueID2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentID"/>
+                <output path="uniqueID3"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentCode"/>
+                <output path="documentCode3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/documentDescription"/>
+                <output path="documentCodeDesc2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/documentDescription"/>
+                <output path="documentCodeDesc3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/placeOfIssue"/>
+                <output path="placeOfIssue2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/placeOfIssue"/>
+                <output path="placeOfIssue3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/countryOfIssue"/>
+                <output path="countryOfIssue2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/countryOfIssue"/>
+                <output path="countryOfIssue3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/issueDate"/>
+                <output path="issueDate2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/issueDate"/>
+                <output path="issueDate3"/>
+            </move>
+            <move>
+                <input path="$customer/document[2]/expiryDate"/>
+                <output path="expiryDate2"/>
+            </move>
+            <move>
+                <input path="$customer/document[3]/expiryDate"/>
+                <output path="expiryDate3"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount" var="loanAccount"/>
+            <input auxiliary="true" path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE3"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer/branchID" var="branchID"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer/employmentDetails" var="employmentDetails"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer/firstName" var="firstName1"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer/middleName" var="middleName1"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/customer/lastName" var="lastName1"/>
+            <input auxiliary="true" path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanDisbursal/disbursalMode" var="disbursalMode"/>
+            <output path="gefuRecordFormat/record/loanAccount"/>
+            <move>
+                <input path="$loanAccount/schemeCode"/>
+                <output path="schemeCode"/>
+            </move>
+            <move>
+                <input path="$loanAccount/accountManagerUserID"/>
+                <output path="accountManagerUserId"/>
+            </move>
+            <move>
+                <input path="$loanAccount/sanctionLimit"/>
+                <output path="sanctionLimit"/>
+            </move>
+            <move>
+                <input path="$loanAccount/limitSanctionDate"/>
+                <output path="limitSanctionDate"/>
+            </move>
+            <move>
+                <input path="$loanAccount/sanctionLevelCode"/>
+                <output path="sanctionLevelCode"/>
+            </move>
+            <move>
+                <input path="$loanAccount/sanctionReferenceNo"/>
+                <output path="sanctionReferenceNo"/>
+            </move>
+            <move>
+                <input path="$loanAccount/loanAmount"/>
+                <output path="loanAmount"/>
+            </move>
+            <move>
+                <input path="$loanAccount/loanPeriodInMonths"/>
+                <output path="loanPeriodMonths"/>
+            </move>
+            <move>
+                <input path="$loanAccount/occupationCode"/>
+                <output path="occupationCode"/>
+            </move>
+            <move>
+                <input path="$loanAccount/advanceType"/>
+                <output path="advanceType"/>
+            </move>
+            <move>
+                <input path="$loanAccount/purposeOfLoan"/>
+                <output path="purposeofAdvance"/>
+            </move>
+            <move>
+                <input path="$loanAccount/riskCategory"/>
+                <output path="freeCode8"/>
+            </move>
+            <move>
+                <input path="$branchID/." var="branchID"/>
+                <output path="solId"/>
+            </move>
+            <assign value="F">
+                <output path="reprisingPlan"/>
+            </assign>
+            <assign value="N">
+                <output path="repayMethod"/>
+            </assign>
+            <move>
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="accountOpenDate"/>
+            </move>
+            <assign value="{CIFID}">
+                <output path="cifId"/>
+            </assign>
+            <assign value="1">
+                <output path="modeOfOperation"/>
+            </assign>
+            <move>
+                <input path="$employmentDetails/employeeID"/>
+                <output path="employeeId"/>
+            </move>
+            <function ref="concat">
+                <input path="$firstName1/." var="firstName"/>
+                <input path="$middleName1/." var="middleName"/>
+                <input path="$lastName1/." var="lastName"/>
+                <output path="employeeName"/>
+                <param name="input" value="($firstName,$middleName,$lastName)"/>
+                <property key="defaultDelimiter" value=" "/>
+            </function>
+            <assign value="N">
+                <output path="accountStatement"/>
+            </assign>
+            <move>
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="applicableDate"/>
+            </move>
+            <customFunction lang="esql" ref="helper:getLastInstallmentDate">
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <input path="$loanAccount/loanPeriodInMonths" var="loanPeriodInMonths"/>
+                <output path="expiryDate"/>
+                <param name="piDate" value="$DCCLSDATE3"/>
+                <param name="piMonths" value="$loanPeriodInMonths"/>
+            </customFunction>
+            <assign value="E">
+                <output path="drawingPowerIndicator"/>
+            </assign>
+            <assign value="0.0">
+                <output path="drawingPowerPercentage"/>
+            </assign>
+            <move>
+                <input path="$loanAccount/sanctionLevelCode"/>
+                <output path="sanctionAuthorisationCode"/>
+            </move>
+            <move>
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="documentDate"/>
+            </move>
+            <assign value="01">
+                <output path="customerHealthCode"/>
+            </assign>
+            <assign value="1">
+                <output path="loanPeriodDays"/>
+            </assign>
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="flowStartDate"/>
+                <param name="piDate" value="$DCCLSDATE3"/>
+            </customFunction>
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="nextDemandDate"/>
+                <param name="piDate" value="$DCCLSDATE3"/>
+            </customFunction>
+            <customFunction lang="esql" ref="helper:getFlowStartDate">
+                <input path="$DCCLSDATE3/." var="DCCLSDATE3"/>
+                <output path="nextInterestRunDate"/>
+                <param name="piDate" value="$DCCLSDATE3"/>
+            </customFunction>
+            <move>
+                <input path="$disbursalMode/."/>
+                <output path="modeOfAdvance"/>
+            </move>
+            <assign value="1307">
+                <output path="freeText10"/>
+            </assign>
+            <assign value="true">
+                <output path="eiSchemeFlag"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanRepayment" var="loanRepayment"/>
+            <input auxiliary="true" path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE"/>
+            <output path="gefuRecordFormat/record/loanRepayment"/>
+            <foreach>
+                <input path="$loanRepayment/repaymentRecord" var="repaymentRecord"/>
+                <input auxiliary="true" path="$DCCLSDATE/." var="DCCLSDATE2"/>
+                <output path="repayments/repayment"/>
+                <move>
+                    <input path="$repaymentRecord/flowID"/>
+                    <output path="flowId"/>
+                </move>
+                <move>
+                    <input path="$repaymentRecord/repaymentFrequency"/>
+                    <output path="eiFrequencyType"/>
+                </move>
+                <move>
+                    <input path="$repaymentRecord/repaymentFrequency"/>
+                    <output path="interestFrequencyType"/>
+                </move>
+                <move>
+                    <input path="$repaymentRecord/installmentAmount"/>
+                    <output path="flowAmount"/>
+                </move>
+                <move>
+                    <input path="$repaymentRecord/noOfInstallments"/>
+                    <output path="noOfDemands"/>
+                </move>
+                <assign value="N">
+                    <output path="eiFrequencyHolidayState"/>
+                </assign>
+                <assign value="N">
+                    <output path="interestFrequencyHolidayState"/>
+                </assign>
+                <customFunction lang="esql" ref="helper:getFlowStartDate">
+                    <input path="$DCCLSDATE2/." var="DCCLSDATE2"/>
+                    <output path="flowStartDate"/>
+                    <param name="piDate" value="$DCCLSDATE2"/>
+                </customFunction>
+                <customFunction lang="esql" ref="helper:getFlowStartDate">
+                    <input path="$DCCLSDATE2/." var="DCCLSDATE2"/>
+                    <output path="nextDemandDate"/>
+                    <param name="piDate" value="$DCCLSDATE2"/>
+                </customFunction>
+                <customFunction lang="esql" ref="helper:getFlowStartDate">
+                    <input path="$DCCLSDATE2/." var="DCCLSDATE2"/>
+                    <output path="nextInterestDemandDate"/>
+                    <param name="piDate" value="$DCCLSDATE2"/>
+                </customFunction>
+                <customFunction lang="esql" ref="helper:getDayOfDate">
+                    <input path="$DCCLSDATE2/." var="DCCLSDATE2"/>
+                    <output path="eiFrequencyStartDate"/>
+                    <param name="piDate" value="$DCCLSDATE2"/>
+                </customFunction>
+                <customFunction lang="esql" ref="helper:getDayOfDate">
+                    <input path="$DCCLSDATE2/." var="DCCLSDATE2"/>
+                    <output path="interestFrequencyStartDate"/>
+                    <param name="piDate" value="$DCCLSDATE2"/>
+                </customFunction>
+            </foreach>
+            <assign value="{LOANIURNO}">
+                <output path="loan/loanIURNumber"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanDisbursal" var="loanDisbursal"/>
+            <input auxiliary="true" path="$dbselect/ResultSet[1]/CUSTOM/GCT/DC_CLS_DATE" var="DCCLSDATE1"/>
+            <output path="gefuRecordFormat/record/loanDisbursement"/>
+            <move>
+                <input path="$DCCLSDATE1/."/>
+                <output path="disbursement/valueDate"/>
+            </move>
+            <move>
+                <input path="$loanDisbursal/netDisbursementAmount"/>
+                <output path="disbursement/disbursementAmount"/>
+            </move>
+            <move>
+                <input path="$loanDisbursal/creditAccountNumber"/>
+                <output path="disbursement/creditAccountNumber"/>
+            </move>
+            <foreach>
+                <input path="$loanDisbursal/charges" var="charges"/>
+                <output path="charges"/>
+                <move>
+                    <input path="$charges/chargeEventTpe"/>
+                    <output path="chargeEventType"/>
+                </move>
+                <move>
+                    <input path="$charges/chargeAmount"/>
+                    <output path="chargeAmount"/>
+                </move>
+                <assign value="true">
+                    <output path="selectFlag"/>
+                </assign>
+                <expression>
+                    <output path="serialNumber"/>
+                    <code lang="xpath">$charges-index</code>
+                </expression>
+                <expression>
+                    <output path="recordInitiator"/>
+                    <code lang="xpath">fn:concat('rec',fn:string($charges-index))</code>
+                </expression>
+            </foreach>
+            <assign value="{LOANAC}">
+                <output path="disbursement/loanAccountNumber"/>
+            </assign>
+            <assign value="T">
+                <output path="disbursement/transactionType"/>
+            </assign>
+            <assign value="N">
+                <output path="disbursement/disbursementType"/>
+            </assign>
+            <assign value="false">
+                <output path="disbursement/deductOverdueDemand"/>
+            </assign>
+            <assign value="true">
+                <output path="disbursement/finalDisbursement"/>
+            </assign>
+        </local>
     </mappingDeclaration>
 </mappingRoot>

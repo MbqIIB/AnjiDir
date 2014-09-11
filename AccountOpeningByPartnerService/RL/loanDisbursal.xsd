@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://www.quantiguous.com/RL/loanDisbural.xsd"
-	targetNamespace="http://www.quantiguous.com/RL/loanDisbursal.xsd">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/RL/loanDisbursal.xsd" xmlns:tns="http://www.quantiguous.com/RL/loanDisbural.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <xsd:complexType name="retailLoanDisbursementType">
    <xsd:sequence>
       <xsd:element name="netDisbursementAmount">
          <xsd:simpleType>
             <xsd:restriction base="xsd:decimal">
-               <xsd:totalDigits value="16" />
-               <xsd:fractionDigits value="2" />
+               <xsd:totalDigits value="16"/>
+               <xsd:fractionDigits value="2"/>
             </xsd:restriction>
          </xsd:simpleType>
       </xsd:element>
@@ -18,7 +15,7 @@
         </xsd:annotation>
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="5" />
+              <xsd:maxLength value="5"/>
            </xsd:restriction>
         </xsd:simpleType>
      </xsd:element>
@@ -28,7 +25,7 @@
          </xsd:annotation>
          <xsd:simpleType>
             <xsd:restriction base="xsd:string">
-               <xsd:maxLength value="16" />
+               <xsd:maxLength value="16"/>
             </xsd:restriction>
          </xsd:simpleType>
       </xsd:element>
@@ -44,7 +41,7 @@
             </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:string">
-                        <xsd:maxLength value="5" />
+                        <xsd:maxLength value="5"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>
@@ -54,8 +51,8 @@
             </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:decimal">
-                        <xsd:totalDigits value="16" />
-                        <xsd:fractionDigits value="2" />
+                        <xsd:totalDigits value="16"/>
+                        <xsd:fractionDigits value="2"/>
                      </xsd:restriction>
                   </xsd:simpleType>
                </xsd:element>
