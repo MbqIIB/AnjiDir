@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE Main_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		SET OutputRoot.HTTPRequestHeader."Proxy-Authorization" = 'Basic '||BASE64ENCODE('iib:Iflex7585');
+		SET OutputRoot.HTTPRequestHeader."Proxy-Connection" = 'Keep-Alive';
+		RETURN TRUE;
+	END;
+END MODULE;
