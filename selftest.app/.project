@@ -3,6 +3,7 @@
 	<name>selftest.app</name>
 	<comment></comment>
 	<projects>
+		<project>selftest.appJava</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
