@@ -1,10 +1,12 @@
 BROKER SCHEMA getConsumerCreditReport
 
-DECLARE CustomerId EXTERNAL INTEGER 3;
+DECLARE CustomerId EXTERNAL INTEGER 21;
 DECLARE UserId EXTERNAL CHARACTER 'RBL_STS';
-DECLARE Password EXTERNAL CHARACTER 'Getrpt247';
-DECLARE MemberNumber EXTERNAL CHARACTER '999AA00223';
-DECLARE SecurityCode EXTERNAL CHARACTER 'GG8';
+DECLARE Password EXTERNAL CHARACTER 'Password1';
+DECLARE MemberNumber EXTERNAL CHARACTER '027FZ00421';
+DECLARE SecurityCode EXTERNAL CHARACTER 'RB3';
+DECLARE proxyuser EXTERNAL CHARACTER 'G0321';
+DECLARE proxypassword EXTERNAL CHARACTER 'Office@1234';
 
 CREATE COMPUTE MODULE setMessageHeader
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -15,7 +17,8 @@ CREATE COMPUTE MODULE setMessageHeader
 		SET OutputLocalEnvironment.Variables.Password = Password;
 		SET OutputLocalEnvironment.Variables.MemberNumber = MemberNumber;
 		SET OutputLocalEnvironment.Variables.SecurityCode = SecurityCode;
-
+		SET OutputRoot.HTTPRequestHeader."Proxy-Authorization" = 'Basic '||BASE64ENCODE('G0321:Office@1234');
+		SET OutputRoot.HTTPRequestHeader."Proxy-Connection" = 'Keep-Alive';
 		RETURN TRUE;
 	END;
 END MODULE;

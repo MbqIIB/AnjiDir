@@ -18,7 +18,7 @@
             <cast path="LocalEnvironment/Variables/any" qualifier="MemberNumber"/>
             <cast path="LocalEnvironment/Variables/any" qualifier="SecurityCode"/>
         </input>
-        <output namespace="http://services.equifax.com/eport/ws/schemas/1.0" path="mb:msg(InquiryRequest,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://services.equifax.com/eport/ws/schemas/1.0" path="mb:msg(InquiryRequest,assembly,XMLNSC,LocalEnvironment,Properties)"/>
         <move>
             <input path="Properties"/>
             <output path="Properties"/>
@@ -154,5 +154,9 @@
             <param name="piStateCode" value="fn:string($stateCode4)"/>
             <param name="piPin" value="fn:string($pin1)"/>
         </customFunction>
+        <move>
+            <input path="LocalEnvironment"/>
+            <output path="LocalEnvironment"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
