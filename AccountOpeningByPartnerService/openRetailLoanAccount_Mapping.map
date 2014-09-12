@@ -289,7 +289,7 @@
             <assign value="INDIVIDUAL KYC DOCUMENTS">
                 <output path="documentTypeDesc1"/>
             </assign>
-            <assign value="true">
+            <assign value="false">
                 <output path="isDocumentVerified1"/>
             </assign>
             <assign value="true">
@@ -431,7 +431,7 @@
                 <output path="uniqueID2"/>
             </move>
             <move>
-                <input path="$customer/document[3]/documentID"/>
+                <input path="$customer/document[3]/documentID" var="documentID11"/>
                 <output path="uniqueID3"/>
             </move>
             <move>
@@ -478,6 +478,310 @@
                 <input path="$customer/document[3]/expiryDate"/>
                 <output path="expiryDate3"/>
             </move>
+            <move>
+                <input path="$customer/address[1]/type"/>
+                <output path="addressType1"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/line1" var="line11"/>
+                <output path="addressLine1_1"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/line2"/>
+                <output path="addressLine2_1"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/line3"/>
+                <output path="addressLine3_1"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/city"/>
+                <output path="city1"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/state"/>
+                <output path="state1"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/line1" var="line1"/>
+                <output path="addressLine1_2"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/line2"/>
+                <output path="addressLine2_2"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/line3"/>
+                <output path="addressLine3_2"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/city"/>
+                <output path="city2"/>
+            </move>
+            <move>
+                <input path="$customer/address[1]/pin"/>
+                <output path="postalCode1"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/state"/>
+                <output path="state2"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/pin"/>
+                <output path="postalCode2"/>
+            </move>
+            <move>
+                <input path="$customer/address[2]/type"/>
+                <output path="addressType2"/>
+            </move>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID5"/>
+                <output path="isDocumentVerified2"/>
+                <test lang="xpath">fn:exists($documentID5)</test>
+                <assign value="true">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID8"/>
+                <output path="preferredFlag3"/>
+                <test lang="xpath">fn:exists($documentID8)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[2]/documentID" var="documentID10"/>
+                <output path="preferredFlag2"/>
+                <test lang="xpath">fn:exists($documentID10)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/document[3]/documentID" var="documentID9"/>
+                <output path="isDocumentVerified3"/>
+                <test lang="xpath">fn:exists($documentID9)</test>
+                <assign value="true">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line13"/>
+                <output path="addressFormat2"/>
+                <test lang="xpath">fn:exists($line13)</test>
+                <assign value="FREE_TEXT_FORMAT">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line12"/>
+                <output path="country2"/>
+                <test lang="xpath">fn:exists($line12)</test>
+                <assign value="IN">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line14"/>
+                <output path="addressValidTill2"/>
+                <test lang="xpath">fn:exists($line14)</test>
+                <assign value="2099-01-01">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line15"/>
+                <output path="lastUpdatedDate2"/>
+                <test lang="xpath">fn:exists($line15)</test>
+                <assign value="2002-01-01">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line16"/>
+                <output path="holdMailIndicator2"/>
+                <test lang="xpath">fn:exists($line16)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/address[2]/line1" var="line17"/>
+                <output path="preferredFlagAddress2"/>
+                <test lang="xpath">fn:exists($line17)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/phone[1]/type"/>
+                <output path="phoneType1"/>
+            </move>
+            <move>
+                <input path="$customer/phone[1]/stdCode"/>
+                <output path="stdCode1"/>
+            </move>
+            <move>
+                <input path="$customer/phone[1]/phoneNo"/>
+                <output path="phoneNo1"/>
+            </move>
+            <move>
+                <input path="$customer/phone[1]/extensionNo"/>
+                <output path="extensionNo1"/>
+            </move>
+            <if>
+                <input path="$customer/phone[1]/phoneNo" var="phoneNo2"/>
+                <output path="preferredFlagPhone1"/>
+                <test lang="xpath">fn:exists($phoneNo2)</test>
+                <assign value="true">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[1]/phoneNo" var="phoneNo"/>
+                <output path="phone1"/>
+                <test lang="xpath">fn:exists($phoneNo)</test>
+                <assign value="PHONE1">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/phone[2]/type"/>
+                <output path="phoneType2"/>
+            </move>
+            <move>
+                <input path="$customer/phone[2]/stdCode"/>
+                <output path="stdCode2"/>
+            </move>
+            <move>
+                <input path="$customer/phone[2]/phoneNo"/>
+                <output path="phoneNo2"/>
+            </move>
+            <move>
+                <input path="$customer/phone[2]/extensionNo"/>
+                <output path="extensionNo2"/>
+            </move>
+            <if>
+                <input path="$customer/phone[2]/phoneNo" var="phoneNo4"/>
+                <output path="countryCode2"/>
+                <test lang="xpath">fn:exists($phoneNo4)</test>
+                <assign value="91">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[2]/phoneNo" var="phoneNo5"/>
+                <output path="preferredFlagPhone2"/>
+                <test lang="xpath">fn:exists($phoneNo5)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/phone[3]/type"/>
+                <output path="phoneType3"/>
+            </move>
+            <move>
+                <input path="$customer/phone[3]/stdCode"/>
+                <output path="stdCode3"/>
+            </move>
+            <move>
+                <input path="$customer/phone[3]/phoneNo"/>
+                <output path="phoneNo3"/>
+            </move>
+            <move>
+                <input path="$customer/phone[3]/extensionNo"/>
+                <output path="extensionNo3"/>
+            </move>
+            <if>
+                <input path="$customer/phone[3]/phoneNo" var="phoneNo6"/>
+                <output path="phone3"/>
+                <test lang="xpath">fn:exists($phoneNo6)</test>
+                <assign value="PHONE3">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[3]/phoneNo" var="phoneNo7"/>
+                <output path="countryCode3"/>
+                <test lang="xpath">fn:exists($phoneNo7)</test>
+                <assign value="91">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[3]/phoneNo" var="phoneNo8"/>
+                <output path="preferredFlagPhone3"/>
+                <test lang="xpath">fn:exists($phoneNo8)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[1]/phoneNo" var="phoneNo1"/>
+                <output path="countryCode1"/>
+                <test lang="xpath">fn:exists($phoneNo1)</test>
+                <assign value="91">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/phone[2]/phoneNo" var="phoneNo3"/>
+                <output path="phone2"/>
+                <test lang="xpath">fn:exists($phoneNo3)</test>
+                <assign value="PHONE2">
+                    <output path="."/>
+                </assign>
+            </if>
+            <move>
+                <input path="$customer/email[1]/type" var="type"/>
+                <output path="type1"/>
+            </move>
+            <move>
+                <input path="$customer/email[1]/emailID"/>
+                <output path="emailID1"/>
+            </move>
+            <move>
+                <input path="$customer/email[2]/type"/>
+                <output path="type2"/>
+            </move>
+            <move>
+                <input path="$customer/email[2]/emailID"/>
+                <output path="emailID2"/>
+            </move>
+            <if>
+                <input path="$customer/email[1]/emailID" var="emailID"/>
+                <output path="email1"/>
+                <test lang="xpath">fn:exists($emailID)</test>
+                <assign value="EMAIL1">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/email[1]/emailID" var="emailID1"/>
+                <output path="preferredFlagEmail1"/>
+                <test lang="xpath">fn:exists($emailID1)</test>
+                <assign value="true">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/email[2]/emailID" var="emailID2"/>
+                <output path="email2"/>
+                <test lang="xpath">fn:exists($emailID2)</test>
+                <assign value="EMAIL2">
+                    <output path="."/>
+                </assign>
+            </if>
+            <if>
+                <input path="$customer/email[2]/emailID" var="emailID3"/>
+                <output path="preferredFlagEmail2"/>
+                <test lang="xpath">fn:exists($emailID3)</test>
+                <assign value="false">
+                    <output path="."/>
+                </assign>
+            </if>
         </local>
         <local>
             <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount" var="loanAccount"/>
