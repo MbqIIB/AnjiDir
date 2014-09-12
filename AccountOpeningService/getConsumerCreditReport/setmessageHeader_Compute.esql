@@ -17,8 +17,10 @@ CREATE COMPUTE MODULE setMessageHeader
 		SET OutputLocalEnvironment.Variables.Password = Password;
 		SET OutputLocalEnvironment.Variables.MemberNumber = MemberNumber;
 		SET OutputLocalEnvironment.Variables.SecurityCode = SecurityCode;
-		SET OutputRoot.HTTPRequestHeader."Proxy-Authorization" = 'Basic '||BASE64ENCODE('G0321:Office@1234');
-		SET OutputRoot.HTTPRequestHeader."Proxy-Connection" = 'Keep-Alive';
-		RETURN TRUE;
+
+		DECLARE CRLF CHAR CAST(X'0D0A' AS CHAR CCSID 1208);  
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.ProxyConnectHeaders =
+		'Proxy-Authorization: Basic '||BASE64ENCODE('G0321:Office#123') || CRLF ||
+		'Proxy-Connection: Keep-Alive' || CRLF;
 	END;
 END MODULE;
