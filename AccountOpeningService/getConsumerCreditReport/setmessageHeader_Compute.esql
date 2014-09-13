@@ -1,16 +1,18 @@
 BROKER SCHEMA getConsumerCreditReport
 
-DECLARE CustomerId EXTERNAL INTEGER 21;
-DECLARE UserId EXTERNAL CHARACTER 'RBL_STS';
-DECLARE Password EXTERNAL CHARACTER 'Password1';
-DECLARE MemberNumber EXTERNAL CHARACTER '027FZ00421';
-DECLARE SecurityCode EXTERNAL CHARACTER 'RB3';
-DECLARE proxyuser EXTERNAL CHARACTER 'G0321';
-DECLARE proxypassword EXTERNAL CHARACTER 'Office@1234';
+DECLARE CustomerId EXTERNAL INTEGER 1;
+DECLARE UserId EXTERNAL CHARACTER '1';
+DECLARE Password EXTERNAL CHARACTER '1';
+DECLARE MemberNumber EXTERNAL CHARACTER '1';
+DECLARE SecurityCode EXTERNAL CHARACTER '1';
+DECLARE proxyuser EXTERNAL CHARACTER '1';
+DECLARE proxypassword EXTERNAL CHARACTER '1';
 
 CREATE COMPUTE MODULE setMessageHeader
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
+		DECLARE lProxyString CHARACTER;
+		SET lProxyString = proxyuser||':'||proxypassword;
 		SET OutputRoot = InputRoot;
 		SET OutputLocalEnvironment.Variables.CustomerId = CustomerId;
 		SET OutputLocalEnvironment.Variables.UserId = UserId;
@@ -20,7 +22,7 @@ CREATE COMPUTE MODULE setMessageHeader
 
 		DECLARE CRLF CHAR CAST(X'0D0A' AS CHAR CCSID 1208);  
 		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.ProxyConnectHeaders =
-		'Proxy-Authorization: Basic '||BASE64ENCODE('G0321:Office#123') || CRLF ||
+		'Proxy-Authorization: Basic '||BASE64ENCODE(lProxyString) || CRLF ||
 		'Proxy-Connection: Keep-Alive' || CRLF;
 	END;
 END MODULE;

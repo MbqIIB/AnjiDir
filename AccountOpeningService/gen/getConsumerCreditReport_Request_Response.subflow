@@ -4,6 +4,27 @@
     nsPrefix="gen_getConsumerCreditReport_Request_Response.subflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CustomerId" name="CustomerId" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserId" name="UserId" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Password" name="Password" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.MemberNumber" name="MemberNumber" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.SecurityCode" name="SecurityCode" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.proxyuser" name="proxyuser" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.proxypassword" name="proxypassword" lowerBound="1" defaultValueLiteral="2">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="getConsumerCreditReport_Request_Response" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj16/getConsumerCreditReport_Request_Response.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AccountOpeningService/icons/full/obj30/getConsumerCreditReport_Request_Response.gif"/>
@@ -54,7 +75,29 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_2" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
-    <propertyOrganizer/>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.CustomerId">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.CustomerId" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UserId">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.UserId" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.Password">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.Password" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.MemberNumber">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.MemberNumber" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+              <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.SecurityCode">
+                <propertyName xmi:type="utility:TranslatableString" key="Property.SecurityCode" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+                <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.proxyuser">
+                  <propertyName xmi:type="utility:TranslatableString" key="Property.proxyuser" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+                  <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.proxypassword">
+                    <propertyName xmi:type="utility:TranslatableString" key="Property.proxypassword" bundleName="gen/getConsumerCreditReport_Request_Response" pluginId="AccountOpeningService"/>
+                  </propertyDescriptor>
+                </propertyDescriptor>
+              </propertyDescriptor>
+            </propertyDescriptor>
+          </propertyDescriptor>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
     <stickyBoard/>
   </eClassifiers>
 </ecore:EPackage>
