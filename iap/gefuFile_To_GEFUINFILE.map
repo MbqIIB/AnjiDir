@@ -175,10 +175,11 @@
                             <input path="$referenceNumber9/." var="referenceNumber10"/>
                             <output path="FILE_NAME"/>
                             <test lang="xpath">fn:exists($referenceNumber10)</test>
-                            <move>
-                                <input path="$referenceNumber10/."/>
+                            <expression>
+                                <input path="$referenceNumber10/." var="referenceNumber8"/>
                                 <output path="."/>
-                            </move>
+                                <code lang="xpath">fn:concat( $referenceNumber8, '_CIF')</code>
+                            </expression>
                         </if>
                         <else>
                             <input path="$File1/Name"/>

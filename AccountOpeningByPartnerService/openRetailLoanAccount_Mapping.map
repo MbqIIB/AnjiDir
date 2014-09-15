@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/AccountOpeningByPartnerService_InlineSchema1.xsd" var="var"/>
     <input path="db:database(/finacle.dbm,FINACLE,db:schema-tables(CUSTOM,GCT))" var="FINACLE"/>
+    <input path="/localEnvironmentVariables.xsd" var="var1"/>
     <output path="/gefuRecordFomat.xsd"/>
     <imports>
         <import kind="esql" namespace="/helper.esql"/>
@@ -12,7 +13,9 @@
     <mappingDeclaration name="openRetailLoanAccount_Mapping">
         <input namespace="http://AccountOpeningByPartnerService" path="$var/mb:msg(openRetailLoanAccount,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
         <input path="$FINACLE/db:select(fn:false(),ResultSet(CUSTOM/GCT/DC_CLS_DATE),db:where('1=1'))" var="dbselect"/>
-        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,Properties)"/>
+        <output namespace="http://www.quantiguous.com/dfdl/gefuRecordFormat.xsd" path="mb:msg(gefuRecordFormat,assembly,DFDL,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="referenceNumber"/>
+        </output>
         <move>
             <input path="$MessageAssembly/Properties"/>
             <output path="Properties"/>
@@ -405,7 +408,7 @@
             <if>
                 <input path="$customer/document[2]/documentID" var="documentID1"/>
                 <output path="documentTypeDesc2"/>
-                <test lang="">fn:exists($documentID1</test>
+                <test lang="">fn:exists($documentID1)</test>
                 <assign value="INDIVIDUAL KYC DOCUMENTS">
                     <output path="."/>
                 </assign>
@@ -782,6 +785,10 @@
                     <output path="."/>
                 </assign>
             </if>
+            <move>
+                <input path="$DCCLSDATE4/." var="DCCLSDATE4"/>
+                <output path="addressValidFrom1"/>
+            </move>
         </local>
         <local>
             <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/loanAccount" var="loanAccount"/>
@@ -942,10 +949,6 @@
                 <input auxiliary="true" path="$DCCLSDATE/." var="DCCLSDATE2"/>
                 <output path="repayments/repayment"/>
                 <move>
-                    <input path="$repaymentRecord/flowID"/>
-                    <output path="flowId"/>
-                </move>
-                <move>
                     <input path="$repaymentRecord/repaymentFrequency"/>
                     <output path="eiFrequencyType"/>
                 </move>
@@ -992,6 +995,13 @@
                     <output path="interestFrequencyStartDate"/>
                     <param name="piDate" value="$DCCLSDATE2"/>
                 </customFunction>
+                <expression>
+                    <output path="recordNumber"/>
+                    <code lang="xpath">$repaymentRecord-index</code>
+                </expression>
+                <assign value="EIDEM">
+                    <output path="flowId"/>
+                </assign>
             </foreach>
             <assign value="{LOANIURNO}">
                 <output path="loan/loanIURNumber"/>
@@ -1052,5 +1062,9 @@
                 <output path="disbursement/finalDisbursement"/>
             </assign>
         </local>
+        <move>
+            <input path="$MessageAssembly/openRetailLoanAccount/openRetailLoanAccountParameters/referenceNumber"/>
+            <output path="LocalEnvironment/Variables/referenceNumber"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>
