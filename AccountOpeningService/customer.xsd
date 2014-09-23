@@ -19,7 +19,7 @@
                   </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
-	                    	<xsd:enumeration value="01"/>
+	                    <xsd:enumeration value="01"/>
 						<xsd:enumeration value="02"/>
 						<xsd:enumeration value="03"/>
 						<xsd:enumeration value="04"/>
@@ -79,7 +79,7 @@
 	           </xsd:element>
 	           <xsd:element minOccurs="0" name="motherTongue">
                   <xsd:annotation>
-                     <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi,en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
+                     <xsd:documentation>kn-IN = Kannada,hi-IN = Hindi, or-IN = Oriya, en-US  = English,mr-IN = Marathi,ml-IN= =Malayalam,sn-IN = Sanskrit,ta-IN = Tamil,sn-IN = Sanskrit,bn-IN = Bengali,en-US = OTHERS</xsd:documentation>
                   </xsd:annotation>
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
@@ -92,6 +92,7 @@
 					<xsd:enumeration value="ta-IN"/>
 					<xsd:enumeration value="bn-IN"/>
 					<xsd:enumeration value="en-US"/>
+					<xsd:enumeration value="or-IN"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
@@ -199,6 +200,7 @@
 					<xsd:enumeration value="sn-IN"/>
 					<xsd:enumeration value="bn-IN"/>
 					<xsd:enumeration value="en-US"/>
+					<xsd:enumeration value="or-IN"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
