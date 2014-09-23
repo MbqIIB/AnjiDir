@@ -44,7 +44,7 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'Consumer not found.';
 			ELSE
 		  		SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditApproved = FALSE;
-				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'Error occured during processing please look for details in response';
+				SET OutputRoot.XMLNSC.aos:getConsumerCreditReportResponse.getConsumerCreditReportReply.creditDecisionReasons.reason[1] = 'Error occured during processing please check input parameters';
 			END IF;		
 		-- in case of no error check eligibility	
 		ELSEIF CARDINALITY(InputRoot.SOAP.Body.equifax:InquiryResponse.equifax:ReportData.equifax:AccountDetails.[]) > 0 THEN
@@ -109,6 +109,8 @@ CREATE COMPUTE MODULE getConsumerCreditReport_Request_Response_Compute
 		ELSE
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the equifax request. Please contact support.' ;
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Unable to to process the request';
 			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		END IF;
 	END;
@@ -162,6 +164,8 @@ CREATE COMPUTE MODULE setDummy
 		ELSEIF InputRoot.XMLNSC.aos:getConsumerCreditReport.getConsumerCreditReportRequest.ns:customerName = 'DUMMY2' THEN
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the equifax request. Please contact support.' ;
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Unable to to process the request';
 			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		END IF;
 	RETURN TRUE;
