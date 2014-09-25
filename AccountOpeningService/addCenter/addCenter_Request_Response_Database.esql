@@ -6,6 +6,8 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 	BEGIN
 		DECLARE lTime CHARACTER;
 		DECLARE lHour INTEGER;
+		DECLARE lHourString CHARACTER;
+		DECLARE lMinuteString CHARACTER;
 		DECLARE lAMPM CHARACTER;
 		DECLARE datePart INTEGER;
 		DECLARE lDate DATE;
@@ -21,7 +23,19 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 			SET lAMPM = 'AM';
 		END IF;
 		
-		SET lTime = CAST(lHour AS CHARACTER)||':'||CAST(piMinute AS CHARACTER)||lAMPM;
+		IF (lHour < 10 ) THEN
+			SET lHourString = '0'||CAST(lHour AS CHARACTER);
+		ELSE
+			SET lHourString = CAST(lHour AS CHARACTER);
+		END IF;
+		
+		IF (piMinute < 10 ) THEN
+			SET lMinuteString = '0'||CAST(piMinute AS CHARACTER);
+		ELSE
+			SET lMinuteString = CAST(piMinute AS CHARACTER);
+		END IF;
+		
+		SET lTime = lHourString||':'||lMinuteString||lAMPM;
 		
 		RETURN lTime;
 	END;
@@ -34,7 +48,7 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
     DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center;
     SET lBatchID = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:batchID;
     SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:meetingTime;
-    SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 7 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 10 FOR 2) AS INTEGER));
+    SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 1 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 4 FOR 2) AS INTEGER));
     SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
     --- insert the record
     INSERT INTO Database."[HO-CENTER-STAGING]"
