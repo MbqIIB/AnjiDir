@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
+    <input path="/merchantCardLoan/vendorUploadFormat.xsd" var="var"/>
+    <output path="/merchantCardLoan/createCardLoanRequest.xsd" var="var1"/>
+    <imports>
+        <import kind="esql" namespace="/helper.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="extension" prefix="helper" uri="/helper.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="vendorUploadFormat_Mapping">
+        <input path="$var/mb:msg(vendorUploadFormat,assembly,DFDL,Properties)" var="MessageAssembly"/>
+        <output path="$var1/mb:msg(service_first,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <foreach>
+            <input path="$MessageAssembly/vendorUploadFormat/record[1]" var="record"/>
+            <output path="$MessageAssembly1/service_first"/>
+            <move>
+                <input path="$record/cardPan"/>
+                <output path="card_loan/creditcard_no"/>
+            </move>
+            <move>
+                <input path="$record/authCode"/>
+                <output path="card_loan/authorisation_code"/>
+            </move>
+            <move>
+                <input path="$record/txAmount"/>
+                <output path="amount"/>
+            </move>
+            <move>
+                <input path="$record/emiPlanID"/>
+                <output path="card_loan/emi_plan_id"/>
+            </move>
+            <customFunction lang="esql" ref="helper:dateToString">
+                <input path="$record/txTime" var="txTime"/>
+                <output path="transaction_date"/>
+                <param name="piDate" value="$txTime"/>
+            </customFunction>
+            <assign value="02410">
+                <output path="user"/>
+            </assign>
+            <assign value="Pinelabs">
+                <output path="card_loan/channel"/>
+            </assign>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

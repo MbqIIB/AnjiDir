@@ -1,0 +1,81 @@
+CREATE FUNCTION dateToString(IN piDate DATE)RETURNS CHARACTER
+BEGIN
+	DECLARE datePart CHARACTER;
+	DECLARE monthPart CHARACTER;
+	DECLARE yearPart CHARACTER;
+	DECLARE DPart CHARACTER;
+	
+	SET datePart = getDatePart(piDate);
+	SET monthPart = getMonthPart(piDate);
+	SET yearPart = getYearPart(piDate);
+	SET DPart = datePart||' '||monthPart||' '||yearPart;
+	RETURN DPart;
+END;
+
+CREATE FUNCTION getDatePart(IN piDate DATE) RETURNS CHARACTER
+BEGIN
+	DECLARE lString CHARACTER;
+	
+	SET lString = CAST(piDate AS CHARACTER FORMAT 'dd-MM-YYYY');
+	SET lString = SUBSTRING(lString BEFORE '-');
+	RETURN lString;
+END;
+
+CREATE FUNCTION getMonthPart(IN piDate DATE) RETURNS CHARACTER
+BEGIN
+	DECLARE lString CHARACTER;
+	DECLARE monthPart INTEGER;
+	DECLARE mon CHARACTER;
+	
+	SET lString = CAST(piDate AS CHARACTER FORMAT 'dd-MM-YYYY');
+	SET lString = SUBSTRING(lString AFTER '-');
+	SET lString = SUBSTRING(lString BEFORE '-');
+	SET monthPart = CAST(lString AS INTEGER);
+		
+		IF monthPart = 1 THEN
+			SET mon = 'January';
+		ELSEIF monthPart = 2 THEN
+			SET mon = 'February';
+		ELSEIF monthPart = 3 THEN
+			SET mon = 'March';
+		ELSEIF monthPart = 4 THEN
+			SET mon = 'April';
+		ELSEIF monthPart = 5 THEN
+			SET mon = 'May';
+		ELSEIF monthPart = 6 THEN
+			SET mon = 'June';
+		ELSEIF monthPart = 7 THEN
+			SET mon = 'July';
+		ELSEIF monthPart = 8 THEN
+			SET mon = 'August';
+		ELSEIF monthPart = 9 THEN
+			SET mon = 'September';
+		ELSEIF monthPart = 10 THEN
+			SET mon = 'October';
+		ELSEIF monthPart = 11 THEN
+			SET mon = 'November';
+		ELSEIF monthPart = 12 THEN
+			SET mon = 'December';
+		END IF;
+	RETURN mon;
+END;
+
+CREATE FUNCTION getYearPart(IN piDate DATE) RETURNS CHARACTER
+BEGIN
+	DECLARE lString CHARACTER;
+	
+	SET lString = CAST(piDate AS CHARACTER FORMAT 'dd-MM-YYYY');
+	SET lString = SUBSTRING(lString AFTER '-');
+	SET lString = SUBSTRING(lString AFTER '-');
+	RETURN lString;
+END;
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="no" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element dfdl:terminator="" ibmSchExtn:docRoot="true" name="vendorUploadFormat">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="" dfdl:terminator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty" dfdl:terminator="">
+							<xsd:element ibmDfdlExtn:sampleValue="value1" name="emiID" type="xsd:string"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value2" name="cardPan" type="xsd:string"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="issuer" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value4" name="acquirer" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value5" minOccurs="0" name="aggregatorMerchantName" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value6" name="manufacturer" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value7" name="rrn" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value8" name="authCode" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="txAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element ibmDfdlExtn:sampleValue="value10" name="emiOffer" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value11" name="emiPlanID" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value12" name="customerName" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value13" name="mobile" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value14" minOccurs="0" name="address" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value15" minOccurs="0" name="eMail" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value16" name="storeName" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value17" minOccurs="0" name="address1" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value18" name="storeCity" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value19" name="storeState" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value20" minOccurs="0" name="mID" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value21" name="tID" type="xsd:string"/>
+                            <xsd:element dfdl:calendarPattern="dd/MM/yy" dfdl:calendarPatternKind="explicit" ibmDfdlExtn:sampleValue="2011-12-31" name="txTime" type="xsd:date"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value23" name="subventionPayableToIssuer" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="subventionAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                                                        <xsd:element dfdl:textNumberPattern="#0.###" name="interestRate" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="customerProcessingFee" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="customerProcessingAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element ibmDfdlExtn:sampleValue="value25" name="txStatus" type="xsd:string"/>
+                                                    <xsd:element name="status" type="xsd:string"/>
+                            <xsd:element name="description" type="xsd:string"/>
+                            <xsd:element name="productCategory" type="xsd:string"/>
+                            <xsd:element name="productSubCategory1" type="xsd:string"/>
+                            <xsd:element name="productSubCategory2" type="xsd:string"/>
+                            <xsd:element name="modelName" type="xsd:string"/>
+                            <xsd:element name="merchantName" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="emiAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="loanAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element name="discountOrCashbackPercentage" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="discountOrCashbackAmount">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element dfdl:textNumberPattern="#0.###" minOccurs="0" name="additionalCashback">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                    <xsd:totalDigits value="16"/>
+                    <xsd:fractionDigits value="2"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element minOccurs="0" name="bonusRewardPoints" type="xsd:string"/>
+                            <xsd:element name="emiModel" type="xsd:string"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>
