@@ -57,6 +57,8 @@ CREATE COMPUTE MODULE checkDuplicate
 		IF OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500 THEN
 			-- duplicates are errors by the client, hence the faultcode
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Duplicate entity exists';
 		ELSE
 			-- no errors, we copy the input message and proceed
 			SET OutputRoot = InputRoot;
@@ -150,9 +152,13 @@ CREATE COMPUTE MODULE setDummy
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[2] = 'Loan account already exists, ExternalId : 881723641 InternalId : 12341324';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message[3] = 'Group already exists, ExternalId : 45346356345 InternalId : 345776723452';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Duplicate entity exists';
 		ELSEIF InputRoot.XMLNSC.ns:openGroupLoanAccount.openGroupLoanAccountRequest.cg:customerGroup.groupName = 'DUMMY3'  THEN
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong with the open group loan creation. Please contact support.' ;
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Error occured while processing the request';
 		END IF;
 	RETURN TRUE;
 	END;

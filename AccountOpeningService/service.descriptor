@@ -33,6 +33,11 @@
       <service:operation name="getApplicationStatus" type="request-response">
         <service:flows/>
       </service:operation>
+      <service:operation name="uploadCustomerDocument" type="request-response">
+        <service:flows>
+          <service:flow location="gen/uploadCustomerDocument_Request_Response.subflow" type="Request_Response"/>
+        </service:flows>
+      </service:operation>
     </service:operations>
     <service:errors>
       <service:flows>

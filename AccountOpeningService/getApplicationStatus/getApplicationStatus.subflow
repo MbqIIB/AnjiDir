@@ -21,7 +21,7 @@
         <translation xmi:type="utility:ConstantString" string="HTTP Header"/>
         <nameValue4RequestHeader name="accept" value="application/xml"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="352,118" URLSpecifier="http://49.248.6.106:9080/rest/bpm/wle/v1/service/ACCOPEN@GetCurrentMilestone" messageDomainProperty="XMLNSC">
+      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="352,118" URLSpecifier="http://49.248.6.106:9080/rest/bpm/wle/v1/service/GLAPRVL@GetCurrentMilestone" messageDomainProperty="XMLNSC">
         <translation xmi:type="utility:ConstantString" string="HTTPRequestToBPM"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="598,302" computeExpression="esql://routine/getApplicationStatus#postHTTPCall.Main" computeMode="destinationAndMessage">

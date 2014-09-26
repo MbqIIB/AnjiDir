@@ -7,8 +7,6 @@
           <xsd:annotation/>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
-                <xsd:minLength value="1"/>
-                <xsd:maxLength value="1"/>
                 <xsd:enumeration value="M"/>
                 <xsd:enumeration value="F"/>
                 <xsd:enumeration value="O"/>
@@ -41,6 +39,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
                 <xsd:maxLength value="80"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -49,6 +48,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
                 <xsd:maxLength value="80"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -57,6 +57,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="80"/>
                 <xsd:minLength value="1"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -68,6 +69,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="80"/>
                 <xsd:minLength value="1"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -79,6 +81,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="24"/>
                 <xsd:minLength value="1"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -97,6 +100,7 @@
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
                 <xsd:minLength value="1"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -207,6 +211,7 @@ type="xsd:string" /> -->
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
                 <xsd:maxLength value="15"/>
+                <xsd:pattern value="([A-Z]*\s*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -543,6 +548,7 @@ type="xsd:string" /> -->
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
                 <xsd:maxLength value="10"/>
+                <xsd:pattern value="[A-Z]{5,5}\d{4,4}[A-Z]"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -731,6 +737,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
+                <xsd:pattern value="(d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -738,6 +745,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="20"/>
+                <xsd:pattern value="(d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -745,6 +753,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
+                <xsd:pattern value="(d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -774,6 +783,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
+                <xsd:pattern value="([A-Z]*\d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -781,6 +791,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="40"/>
+                <xsd:pattern value="([A-Z]*\d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -788,6 +799,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="40"/>
+                <xsd:pattern value="([A-Z]*\d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -815,6 +827,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="30"/>
+                <xsd:pattern value="([A-Z]*\d*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -897,6 +910,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
+                <xsd:pattern value="([A-Z]*\d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
@@ -904,6 +918,7 @@ type="xsd:string" /> -->
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
+                <xsd:pattern value="([A-Z]*\d*\s*(-)*)*"/>
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>

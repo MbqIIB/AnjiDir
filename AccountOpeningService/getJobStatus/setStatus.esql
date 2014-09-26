@@ -64,6 +64,8 @@ CREATE COMPUTE MODULE setFaultCustomer
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the external cutomer ID passed. Please contact support.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -75,6 +77,8 @@ CREATE COMPUTE MODULE setFaultSaving
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the saving account linked to external cutomer ID passed. Please contact support.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -86,6 +90,8 @@ CREATE COMPUTE MODULE setFaultLoan
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the loan account linked to external cutomer ID passed. Please contact support.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -97,6 +103,8 @@ CREATE COMPUTE MODULE setFaultGroup
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something wrong with the group linked to external cutomer ID passed. Please contact support.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -108,6 +116,8 @@ CREATE COMPUTE MODULE groupNotFound
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Group not found for the cutomer ID passed. Please contact support.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -119,6 +129,8 @@ CREATE COMPUTE MODULE customerNotFound
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Customer ID passed is not present in the system.';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -130,6 +142,8 @@ CREATE COMPUTE MODULE loanNotFound
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Loan account not present for the external customer ID passed.';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -141,6 +155,8 @@ CREATE COMPUTE MODULE savingNotFound
 		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Saving account not found for the customer ID passed.' ;
 		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Input parameters';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Linked entity not found';
 		SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		RETURN TRUE;
 	END;
@@ -194,11 +210,15 @@ CREATE COMPUTE MODULE setDummy
 			SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Loan account not found for the external customer ID passed.';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Client';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Entity does not exist';
 			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		ELSEIF InputRoot.XMLNSC.ns:getJobStatus.getJobStatusRequest.customerJobKey.batchID = 4000 THEN
 			SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = 'http://schemas.xmlsoap.org/soap/envelope/';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Something went wrong. Please contact support.';
 			SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Server';
+			SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Error occured while processing the request';
 			SET OutputLocalEnvironment.Destination.SOAP.Reply.Transport.HTTP.ReplyStatusCode = 500;
 		END IF;	
 			

@@ -55,31 +55,35 @@ BEGIN
 
 	IF piGanasevaRelation = '01' THEN -- Father
      	RETURN 'F';
-	ELSEIF piGanasevaRelation = '05' THEN -- Husband
-		RETURN 'H';
-	ELSEIF piGanasevaRelation = '03' THEN -- Brother
-		RETURN 'B';
-	ELSEIF piGanasevaRelation = '07' THEN -- Son
-		RETURN 'S';
-	ELSEIF piGanasevaRelation = '09' THEN -- Son-in-law
-		RETURN 'U';
-	ELSEIF piGanasevaRelation = '12' THEN -- Father-in-law
-		RETURN 'Y';
-	ELSEIF piGanasevaRelation = '019999' THEN -- Bother-in-Lax
-		RETURN 'T';
-	ELSEIF piGanasevaRelation = '16' THEN -- Other
-		RETURN 'O';
 	ELSEIF piGanasevaRelation = '02' THEN -- Mother
 		RETURN 'M';
-	ELSEIF piGanasevaRelation = '06' THEN -- Wife
-		RETURN 'W';
+	ELSEIF piGanasevaRelation = '03' THEN -- Brother
+		RETURN 'B';
 	ELSEIF piGanasevaRelation = '04' THEN -- Sister
 		RETURN 'C';
+	ELSEIF piGanasevaRelation = '05' THEN -- Husband
+		RETURN 'H';
+	ELSEIF piGanasevaRelation = '06' THEN -- Wife
+		RETURN 'W';
+	ELSEIF piGanasevaRelation = '07' THEN -- Son
+		RETURN 'S';
 	ELSEIF piGanasevaRelation = '08' THEN -- Daughter
 		RETURN 'D';
+	ELSEIF piGanasevaRelation = '09' THEN -- Son-in-law
+		RETURN 'U';
 	ELSEIF piGanasevaRelation = '10' THEN -- Daughter-in-law
 		RETURN 'V';
 	ELSEIF piGanasevaRelation = '11' THEN -- Mother-in-law
 		RETURN 'Z';
+	ELSEIF piGanasevaRelation = '12' THEN -- Father-in-law
+		RETURN 'Y';
+	ELSEIF piGanasevaRelation = '13' THEN -- Legal Guardian
+		RETURN 'O';
+	ELSEIF piGanasevaRelation = '14' THEN -- Niece
+		RETURN 'O';
+	ELSEIF piGanasevaRelation = '15' THEN -- Nephew
+		RETURN 'O';
+	ELSEIF piGanasevaRelation = '16' THEN -- Other
+		RETURN 'O';
 	END IF;
 END;	
