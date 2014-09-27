@@ -21,13 +21,13 @@ CREATE COMPUTE MODULE setImageUrl
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
-		--SET OutputLocalEnvironment.Destination.HTTP.RequestURL = InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.imageUrl;
-		SET OutputLocalEnvironment.Destination.HTTP.QueryString.customerid = InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.customerId;
-		IF InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.documentType = 'Photo' THEN
-			SET OutputLocalEnvironment.Destination.HTTP.QueryString.imagefilename = 'CUSTOMER_IMAGE.jpg';
-		ELSE
-			SET OutputLocalEnvironment.Destination.HTTP.QueryString.imagefilename = 'CUSTOMER_IMAGE.jpg';		
-		END IF;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET OutputLocalEnvironment.Destination.HTTP.RequestURL = InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.imageUrl;
+		--IF InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.documentType = 'Photo' THEN
+			--SET OutputLocalEnvironment.Destination.HTTP.QueryString.imagefilename = 'CUSTOMER_IMAGE.jpg';
+		--ELSE
+			--SET OutputLocalEnvironment.Destination.HTTP.QueryString.imagefilename = 'CUSTOMER_IMAGE.jpg';		
+		--END IF;
 	END;
 END MODULE;
 
