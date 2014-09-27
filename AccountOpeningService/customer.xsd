@@ -103,10 +103,14 @@
 	           <xsd:element minOccurs="0" ref="tns:pensionCardNo"/>
 	           <xsd:element minOccurs="0" ref="tns:rationCardNo"/>
 	           <xsd:element minOccurs="0" ref="tns:voterId"/>
+	           <xsd:element minOccurs="0" ref="tns:signCardID"/>
+	           <xsd:element minOccurs="0" ref="tns:documentID"/>
+	           <xsd:element minOccurs="0" ref="tns:grtFormID"/>
 	           <xsd:element minOccurs="0" name="panNo">
 	              <xsd:simpleType>
 	                 <xsd:restriction base="xsd:string">
-	                    <xsd:maxLength value="100"/>
+	                    <xsd:minLength value="10"/>
+	                    <xsd:maxLength value="10"/>
 	                 </xsd:restriction>
 	              </xsd:simpleType>
 	           </xsd:element>
@@ -366,31 +370,53 @@
      <xsd:element name="pensionCardNo">
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
+              <xsd:maxLength value="50"/>
            </xsd:restriction>
         </xsd:simpleType>
      </xsd:element>
      <xsd:element name="voterId">
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
+              <xsd:maxLength value="50"/>
            </xsd:restriction>
         </xsd:simpleType>
      </xsd:element>
     <xsd:element name="aadharNo">
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
+              <xsd:maxLength value="50"/>
            </xsd:restriction>
         </xsd:simpleType>
      </xsd:element>     
      <xsd:element name="rationCardNo">
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="100"/>
+              <xsd:maxLength value="50"/>
            </xsd:restriction>
         </xsd:simpleType>
      </xsd:element>
+		<xsd:element name="signCardID">
+		   <xsd:simpleType>
+		      <xsd:restriction  base="xsd:string">
+		         <xsd:maxLength value="50"/>
+		      </xsd:restriction>
+		   </xsd:simpleType>
+		</xsd:element>
+		<xsd:element name="documentID">
+		   <xsd:simpleType>
+		      <xsd:restriction base="xsd:string">
+		         <xsd:maxLength value="50"/>
+		      </xsd:restriction>
+		   </xsd:simpleType>
+		</xsd:element>
+		<xsd:element name="grtFormID">
+		   <xsd:simpleType>
+		      <xsd:restriction base="xsd:string">
+		         <xsd:maxLength value="50"/>
+		      </xsd:restriction>
+		   </xsd:simpleType>
+		</xsd:element>
+
        <xsd:element name="gender">
                   <xsd:annotation>
                      <xsd:documentation>01-Male,02-Female,03-Other</xsd:documentation>

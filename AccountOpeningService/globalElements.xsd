@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.quantiguous.com/FI/globalElements.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<xsd:element name="meetingTime" type="xsd:time"/>
 	<xsd:element name="formationDate" type="xsd:date"/>
-	<xsd:element name="externalId" type="xsd:string"/>
+	<xsd:element name="externalId">
+   		<xsd:simpleType>
+      		<xsd:restriction base="xsd:string">
+         		<xsd:maxLength value="20"/>
+      		</xsd:restriction>
+   		</xsd:simpleType>
+	</xsd:element>
 	<xsd:element name="operatingRegion">
 		<xsd:complexType>
   			<xsd:sequence>
