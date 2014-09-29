@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="gen">
+    <input path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <output path="/AccountOpeningService_InlineSchema1.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="processGroupLoanApplication_Request_Response_Mapping1">
+        <input namespace="http://AccountOpeningService" path="mb:msg(processGroupLoanApplication,assembly,XMLNSC,Properties)"/>
+        <output namespace="http://AccountOpeningService" path="mb:msg(processGroupLoanApplicationResponse,assembly,XMLNSC,Properties)"/>
+        <assign value="1312312">
+            <output path="processGroupLoanApplicationResponse/processGroupLoanApplicationReply/processId"/>
+        </assign>
+        <assign value="Instance created successfully">
+            <output path="processGroupLoanApplicationResponse/processGroupLoanApplicationReply/messageText"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

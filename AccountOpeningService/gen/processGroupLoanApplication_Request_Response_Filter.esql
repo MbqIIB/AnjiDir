@@ -1,0 +1,15 @@
+BROKER SCHEMA gen
+DECLARE ns16 NAMESPACE 'http://www.quantiguous.com/FI/group.xsd';
+
+
+CREATE FILTER MODULE processGroupLoanApplication_Request_Response_Filter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Root.XMLNSC.ns:processGroupLoanApplication.processGroupLoanApplicationRequest.ns16:applicantGroup.groupName = 'DUMMY1' THEN
+			RETURN TRUE;
+		ELSE
+			RETURN FALSE;
+		END IF;
+	END;
+
+END MODULE;
