@@ -33,6 +33,13 @@
 
 <xsd:element name="card-loan" type="card-loanType"/>
 
+<xsd:element name="errors" type="errorType"/>
+<xsd:complexType name="errorType">
+	<xsd:sequence>
+		<xsd:element minOccurs="1" maxOccurs="unbounded" name="error" type="xsd:string"/>
+	</xsd:sequence>
+</xsd:complexType>
+
 </xsd:schema>
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default">
     <input path="/merchantCardLoan/vendorUploadFormat.xsd" var="var"/>
-    <output path="/merchantCardLoan/createCardLoanRequest.xsd" var="var1"/>
+    <input path="/localEnvironmentVariables.xsd" var="var1"/>
+    <output path="/merchantCardLoan/createCardLoanRequest.xsd"/>
     <imports>
         <import kind="esql" namespace="/helper.esql"/>
     </imports>
@@ -10,10 +11,19 @@
     <generation engine="xquery"/>
     <mappingDeclaration name="vendorUploadFormat_Mapping">
         <input path="$var/mb:msg(vendorUploadFormat,assembly,DFDL,Properties)" var="MessageAssembly"/>
-        <output path="$var1/mb:msg(service_first,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <output path="mb:msg(service_first,assembly,XMLNSC,LocalEnvironment,Properties)">
+            <cast path="LocalEnvironment/Variables/any" qualifier="authcode"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="cardNumber"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="transactionDate"/>
+            <cast path="LocalEnvironment/Variables/any" qualifier="loanAmount"/>
+        </output>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="Properties"/>
+        </move>
         <foreach>
             <input path="$MessageAssembly/vendorUploadFormat/record[1]" var="record"/>
-            <output path="$MessageAssembly1/service_first"/>
+            <output path="service_first"/>
             <move>
                 <input path="$record/cardPan"/>
                 <output path="card_loan/creditcard_no"/>
@@ -21,14 +31,6 @@
             <move>
                 <input path="$record/authCode"/>
                 <output path="card_loan/authorisation_code"/>
-            </move>
-            <move>
-                <input path="$record/txAmount"/>
-                <output path="amount"/>
-            </move>
-            <move>
-                <input path="$record/emiPlanID"/>
-                <output path="card_loan/emi_plan_id"/>
             </move>
             <customFunction lang="esql" ref="helper:dateToString">
                 <input path="$record/txTime" var="txTime"/>
@@ -38,9 +40,33 @@
             <assign value="02410">
                 <output path="user"/>
             </assign>
+            <move>
+                <input path="$record/emiPlanID"/>
+                <output path="card_loan/emi_plan_id"/>
+            </move>
             <assign value="Pinelabs">
                 <output path="card_loan/channel"/>
             </assign>
+            <move>
+                <input path="$record/loanAmount"/>
+                <output path="amount"/>
+            </move>
         </foreach>
+        <move>
+            <input path="$MessageAssembly/vendorUploadFormat/record[1]/authCode"/>
+            <output path="LocalEnvironment/Variables/authcode[1]"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/vendorUploadFormat/record[1]/loanAmount"/>
+            <output path="LocalEnvironment/Variables/loanAmount[1]"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/vendorUploadFormat/record[1]/txTime"/>
+            <output path="LocalEnvironment/Variables/transactionDate[1]"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/vendorUploadFormat/record[1]/cardPan"/>
+            <output path="LocalEnvironment/Variables/cardNumber[1]"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>

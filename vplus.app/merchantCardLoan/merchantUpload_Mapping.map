@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="merchantCardLoan" version="8.0.4.0" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="merchantCardLoan">
+    <input path="/merchantCardLoan/vendorUploadFormat.xsd"/>
+    <output path="/merchantCardLoan/vendorUploadFormat.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="merchantUpload_Mapping">
+        <input path="mb:msg(vendorUploadFormat,assembly,DFDL,Properties)"/>
+        <output path="mb:msg(vendorUploadFormat,assembly,DFDL,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <foreach>
+            <input path="vendorUploadFormat/record"/>
+            <output path="vendorUploadFormat/record"/>
+            <move automap="true">
+                <input path="emiID"/>
+                <output path="emiID"/>
+            </move>
+            <move automap="true">
+                <input path="cardPan"/>
+                <output path="cardPan"/>
+            </move>
+            <move automap="true">
+                <input path="issuer"/>
+                <output path="issuer"/>
+            </move>
+            <move automap="true">
+                <input path="acquirer"/>
+                <output path="acquirer"/>
+            </move>
+            <move automap="true">
+                <input path="aggregatorMerchantName"/>
+                <output path="aggregatorMerchantName"/>
+            </move>
+            <move automap="true">
+                <input path="manufacturer"/>
+                <output path="manufacturer"/>
+            </move>
+            <move automap="true">
+                <input path="rrn"/>
+                <output path="rrn"/>
+            </move>
+            <move automap="true">
+                <input path="authCode"/>
+                <output path="authCode"/>
+            </move>
+            <move automap="true">
+                <input path="txAmount"/>
+                <output path="txAmount"/>
+            </move>
+            <move automap="true">
+                <input path="emiOffer"/>
+                <output path="emiOffer"/>
+            </move>
+            <move automap="true">
+                <input path="emiPlanID"/>
+                <output path="emiPlanID"/>
+            </move>
+            <move automap="true">
+                <input path="customerName"/>
+                <output path="customerName"/>
+            </move>
+            <move automap="true">
+                <input path="mobile"/>
+                <output path="mobile"/>
+            </move>
+            <move automap="true">
+                <input path="address"/>
+                <output path="address"/>
+            </move>
+            <move automap="true">
+                <input path="eMail"/>
+                <output path="eMail"/>
+            </move>
+            <move automap="true">
+                <input path="storeName"/>
+                <output path="storeName"/>
+            </move>
+            <move automap="true">
+                <input path="address1"/>
+                <output path="address1"/>
+            </move>
+            <move automap="true">
+                <input path="storeCity"/>
+                <output path="storeCity"/>
+            </move>
+            <move automap="true">
+                <input path="storeState"/>
+                <output path="storeState"/>
+            </move>
+            <move automap="true">
+                <input path="mID"/>
+                <output path="mID"/>
+            </move>
+            <move automap="true">
+                <input path="tID"/>
+                <output path="tID"/>
+            </move>
+            <move automap="true">
+                <input path="txTime"/>
+                <output path="txTime"/>
+            </move>
+            <move automap="true">
+                <input path="subventionPayableToIssuer"/>
+                <output path="subventionPayableToIssuer"/>
+            </move>
+            <move automap="true">
+                <input path="subventionAmount"/>
+                <output path="subventionAmount"/>
+            </move>
+            <move automap="true">
+                <input path="interestRate"/>
+                <output path="interestRate"/>
+            </move>
+            <move automap="true">
+                <input path="customerProcessingFee"/>
+                <output path="customerProcessingFee"/>
+            </move>
+            <move automap="true">
+                <input path="customerProcessingAmount"/>
+                <output path="customerProcessingAmount"/>
+            </move>
+            <move automap="true">
+                <input path="txStatus"/>
+                <output path="txStatus"/>
+            </move>
+            <move automap="true">
+                <input path="status"/>
+                <output path="status"/>
+            </move>
+            <move automap="true">
+                <input path="description"/>
+                <output path="description"/>
+            </move>
+            <move automap="true">
+                <input path="productCategory"/>
+                <output path="productCategory"/>
+            </move>
+            <move automap="true">
+                <input path="productSubCategory1"/>
+                <output path="productSubCategory1"/>
+            </move>
+            <move automap="true">
+                <input path="productSubCategory2"/>
+                <output path="productSubCategory2"/>
+            </move>
+            <move automap="true">
+                <input path="modelName"/>
+                <output path="modelName"/>
+            </move>
+            <move automap="true">
+                <input path="merchantName"/>
+                <output path="merchantName"/>
+            </move>
+            <move automap="true">
+                <input path="emiAmount"/>
+                <output path="emiAmount"/>
+            </move>
+            <move automap="true">
+                <input path="loanAmount"/>
+                <output path="loanAmount"/>
+            </move>
+            <move automap="true">
+                <input path="discountOrCashbackPercentage"/>
+                <output path="discountOrCashbackPercentage"/>
+            </move>
+            <move automap="true">
+                <input path="discountOrCashbackAmount"/>
+                <output path="discountOrCashbackAmount"/>
+            </move>
+            <move automap="true">
+                <input path="additionalCashback"/>
+                <output path="additionalCashback"/>
+            </move>
+            <move automap="true">
+                <input path="bonusRewardPoints"/>
+                <output path="bonusRewardPoints"/>
+            </move>
+            <move automap="true">
+                <input path="emiModel"/>
+                <output path="emiModel"/>
+            </move>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

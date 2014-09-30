@@ -1,0 +1,37 @@
+BROKER SCHEMA merchantCardLoan
+
+
+CREATE COMPUTE MODULE merchantUpload_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE i INTEGER 1;
+		DECLARE count INTEGER;
+		DECLARE lMessage CHARACTER '';
+		DECLARE lFlagProcessed BOOLEAN FALSE;
+		
+		IF CARDINALITY(InputRoot.XMLNSC."card-loan"[]) > 0 THEN
+			SET lMessage = InputRoot.XMLNSC."card-loan"."access-token";
+			SET lFlagProcessed = TRUE;
+		ELSEIF CARDINALITY(InputRoot.XMLNSC.errors.error[]) > 0 THEN
+			SET i = 1;
+			SET count = CARDINALITY(InputRoot.XMLNSC.errors.error[]);
+			WHILE i <= count DO
+				IF lMessage = '' THEN
+					SET lMessage = CAST(i AS CHARACTER)||') '||InputRoot.XMLNSC.errors.error[i];
+				ELSE
+					SET lMessage = lMessage ||CAST(i AS CHARACTER)||') '||InputRoot.XMLNSC.errors.error[i];
+				END IF;
+				SET i = i + 1;
+			END WHILE;
+			SET lFlagProcessed = FALSE;
+		END IF;
+		UPDATE Database.MERCHANT_RECORDS AS A 
+		SET REMARKS = lMessage, 
+		FLAG_PROCESSED = lFlagProcessed
+		WHERE A.TX_TIME = InputLocalEnvironment.Variables.transactionDate
+		AND A.LOAN_AMOUNT = InputLocalEnvironment.Variables.loanAmount
+		AND A.CARDPAN = InputLocalEnvironment.Variables.cardNumber
+		AND A.AUTH_CODE = InputLocalEnvironment.Variables.authcode;
+		RETURN TRUE;
+	END;
+END MODULE;

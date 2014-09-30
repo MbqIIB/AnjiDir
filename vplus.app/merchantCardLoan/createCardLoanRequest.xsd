@@ -12,7 +12,7 @@
 	</xsd:sequence>
 </xsd:complexType>
 
-<xsd:complexType name="service_firstType">
+<xsd:complexType name="serviceFirstType">
 	<xsd:sequence>
 		<xsd:element name="user" type="xsd:string"/>
 		<xsd:element name="card_loan" type="card_loanType"/>
@@ -20,6 +20,11 @@
 		<xsd:element name="transaction_date" type="xsd:string"/>
 	</xsd:sequence>
 </xsd:complexType>
-<xsd:element name="service_first" type="service_firstType"/>
-
+<xsd:element name="service_first" type="serviceFirstType"/>
+<xsd:element name="createCardLoanRequest" type="createCardLoanRequestType"/>
+<xsd:complexType name="createCardLoanRequestType">
+	<xsd:sequence>
+		<xsd:element minOccurs="0" maxOccurs="unbounded" name="service_first" type="serviceFirstType"/>
+	</xsd:sequence>
+</xsd:complexType>
 </xsd:schema>

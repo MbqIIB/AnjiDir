@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
+        <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
     <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="../IBMdefined/CommaSeparatedFormat.xsd"/>
     <xsd:annotation>
 		<xsd:appinfo source="http://www.ogf.org/dfdl/">
-			<dfdl:format documentFinalTerminatorCanBeMissing="no" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat" separatorSuppressionPolicy="never"/>
 		</xsd:appinfo>
 	</xsd:annotation>
 
 
-	<xsd:element dfdl:terminator="" ibmSchExtn:docRoot="true" name="vendorUploadFormat">
+	<xsd:element dfdl:byteOrder="{$dfdl:byteOrder}" ibmSchExtn:docRoot="true" name="vendorUploadFormat">
 		<xsd:complexType>
 			<xsd:sequence dfdl:separator="" dfdl:terminator="">
-				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
+                				<xsd:annotation>
+          <xsd:appinfo source="http://www.ogf.org/dfdl/">
+            <dfdl:sequence/>
+          </xsd:appinfo>
+        </xsd:annotation>
+         <xsd:element dfdl:emptyValueDelimiterPolicy="none" dfdl:terminator="%NL;" maxOccurs="unbounded" name="record">
 					<xsd:complexType>
-						<xsd:sequence dfdl:separator="|" dfdl:separatorSuppressionPolicy="trailingEmpty" dfdl:terminator="">
+						<xsd:sequence dfdl:separator="|" dfdl:terminator="">
 							<xsd:element ibmDfdlExtn:sampleValue="value1" name="emiID" type="xsd:string"/>
 							<xsd:element ibmDfdlExtn:sampleValue="value2" name="cardPan" type="xsd:string"/>
 							<xsd:element ibmDfdlExtn:sampleValue="value3" name="issuer" type="xsd:string"/>
@@ -104,9 +111,10 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element>
-                            <xsd:element minOccurs="0" name="bonusRewardPoints" type="xsd:string"/>
-                            <xsd:element name="emiModel" type="xsd:string"/>
-                        </xsd:sequence>
+              <xsd:element minOccurs="0" name="bonusRewardPoints" type="xsd:string"/>
+              <xsd:element name="emiModel" type="xsd:string"/>
+
+            </xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>				
 			</xsd:sequence>
