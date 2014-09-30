@@ -2065,7 +2065,11 @@
     </columns>
     <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_eUYLgN60EeOEo7k3-bWjCA" name="TRANSACTION_CODE_DETAILS_PK" members="_JYrNoN60EeOEo7k3-bWjCA"/>
   </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_loL7UT1yEeSxmuxRs19-0g" name="MERCHANT_RECORDS" schema="_jnCS8NoJEeOw85thECwX_w">
+  <SQLTables:PersistentTable xmi:id="_loL7UT1yEeSxmuxRs19-0g" name="MERCHANT_LOANS" schema="_jnCS8NoJEeOw85thECwX_w">
+    <columns xmi:id="_fysIQUiOEeSNPZI-c7iSCQ" name="ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_iBPDcEiOEeSNPZI-c7iSCQ" name="INT" primitiveType="INTEGER"/>
+      <identitySpecifier xmi:id="_iBydEEiOEeSNPZI-c7iSCQ" startValue="1" increment="1" minimum="1" maximum="2147483647"/>
+    </columns>
     <columns xmi:id="_1iHBYD1yEeSxmuxRs19-0g" name="EMIID">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_-Tk3AD1yEeSxmuxRs19-0g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
@@ -2075,7 +2079,7 @@
     <columns xmi:id="_OQrM4D1zEeSxmuxRs19-0g" name="ISSUER">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_Rpp64D1zEeSxmuxRs19-0g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
-    <columns xmi:id="_YrzvAD1zEeSxmuxRs19-0g" name="ACQUIRER">
+    <columns xmi:id="_YrzvAD1zEeSxmuxRs19-0g" name="ACQUIRER" defaultValue="">
       <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_bS0NgD1zEeSxmuxRs19-0g" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="100"/>
     </columns>
     <columns xmi:id="_cZaCID1zEeSxmuxRs19-0g" name="AGGREGATOR_MERCHANT_NAME">

@@ -9,7 +9,7 @@ CREATE DATABASE MODULE vendorUploadFormat_Database
     	SET J = CARDINALITY(Root.DFDL.vendorUploadFormat.[]);
 	
 		WHILE K <= J DO	
-			INSERT INTO Database.MERCHANT_RECORDS
+			INSERT INTO Database.MERCHANT_LOANS
 			(
 				EMIID,
 				CARDPAN,

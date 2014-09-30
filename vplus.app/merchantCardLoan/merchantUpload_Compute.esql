@@ -25,9 +25,9 @@ CREATE COMPUTE MODULE merchantUpload_Compute
 			END WHILE;
 			SET lFlagProcessed = FALSE;
 		END IF;
-		UPDATE Database.MERCHANT_RECORDS AS A 
+		UPDATE Database.MERCHANT_LOANS AS A 
 		SET REMARKS = lMessage, 
-		FLAG_PROCESSED = lFlagProcessed
+		FLAG_PROCESSED = lFlagProcessed 
 		WHERE A.TX_TIME = InputLocalEnvironment.Variables.transactionDate
 		AND A.LOAN_AMOUNT = InputLocalEnvironment.Variables.loanAmount
 		AND A.CARDPAN = InputLocalEnvironment.Variables.cardNumber
