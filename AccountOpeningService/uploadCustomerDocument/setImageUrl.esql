@@ -1,5 +1,6 @@
 BROKER SCHEMA uploadCustomerDocument
 DECLARE ns NAMESPACE 'http://AccountOpeningService';
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
 
 CREATE COMPUTE MODULE setImageUrl
 	CREATE FUNCTION Main() RETURNS BOOLEAN
@@ -23,6 +24,8 @@ CREATE COMPUTE MODULE setImageUrl
 		SET OutputRoot = InputRoot;
 		SET OutputLocalEnvironment = InputLocalEnvironment;
 		SET OutputLocalEnvironment.Destination.HTTP.RequestURL = InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.imageUrl;
+		SET OutputLocalEnvironment.Variable.internalID = '91287391872397129837';
+		--SET OutputLocalEnvironment.Variables.
 		--IF InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.documentType = 'Photo' THEN
 			--SET OutputLocalEnvironment.Destination.HTTP.QueryString.imagefilename = 'CUSTOMER_IMAGE.jpg';
 		--ELSE
@@ -34,24 +37,20 @@ END MODULE;
 CREATE COMPUTE MODULE changeImageToBlob
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		CALL CopyMessageHeaders();
-		CALL CopyEntireMessage();
-		RETURN TRUE;
-	END;
-
-	CREATE PROCEDURE CopyMessageHeaders() BEGIN
-		DECLARE I INTEGER 1;
-		DECLARE J INTEGER;
-		SET J = CARDINALITY(InputRoot.*[]);
-		WHILE I < J DO
-			SET OutputRoot.*[I] = InputRoot.*[I];
-			SET I = I + 1;
-		END WHILE;
-	END;
-
-	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		INSERT INTO Database.RCDSCUSTOMERDOCUMENT (CUSTOMERID,DOCNAME,PAGENAME,PIC,CRBY,ISDELETED) VALUES ('12345','DOC1','PAGE',InputRoot.BLOB.BLOB,14,'X');
+		INSERT INTO Database.RCDSCUSTOMERDOCUMENTS (CUSTOMERID,DOCNAME,PAGENAME,PIC,CRBY,ISDELETED) VALUES (InputLocalEnvironment.internalID,InputRoot.XMLNSC.ns:uploadCustomerDocument.uploadCustomerDocumentRequest.documentType,'PAGE',InputRoot.BLOB.BLOB,14,'X');
 		SET OutputRoot.XMLNSC.ns:uploadCustomerDocumentResponse.uploadCustomerDocumentResponse.status = 'completed';
 		SET OutputRoot.XMLNSC.ns:uploadCustomerDocumentResponse.uploadCustomerDocumentResponse.message = 'Image uploaded successfully';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE custmerNotFound
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Message = 'Customer ID does not exist in the system' ;
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'Client';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'Input customer Id';
+		RETURN TRUE;
 	END;
 END MODULE;

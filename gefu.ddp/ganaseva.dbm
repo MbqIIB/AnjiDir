@@ -1260,7 +1260,7 @@
       <containedType xsi:type="SQLDataTypes:DateDataType" xmi:id="_0oiP4CUaEeSksZFn7idYYw" name="DATETIME" primitiveType="DATE"/>
     </columns>
   </SQLTables:PersistentTable>
-  <SQLTables:PersistentTable xmi:id="_dWeIIUIlEeSkJu80SHDetQ" name="RCDSCUSTOMERDOCUMENT" schema="_7_W6EBCuEeS6BqAOuK3k2g">
+  <SQLTables:PersistentTable xmi:id="_dWeIIUIlEeSkJu80SHDetQ" name="RCDSCUSTOMERDOCUMENTS" schema="_7_W6EBCuEeS6BqAOuK3k2g">
     <columns xmi:id="_jUPHEEIlEeSkJu80SHDetQ" name="ID" nullable="false" defaultValue="">
       <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_oxlm8EItEeSkJu80SHDetQ" name="INT" primitiveType="INTEGER"/>
       <identitySpecifier xmi:id="_z2RcYEItEeSkJu80SHDetQ" startValue="1" increment="1" minimum="1" maximum="2147483647"/>

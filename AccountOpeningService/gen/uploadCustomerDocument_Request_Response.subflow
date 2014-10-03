@@ -11,34 +11,37 @@
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/uploadCustomerDocument_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="422,22">
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="411,22">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/uploadCustomerDocument_Request_Response" pluginId="AccountOpeningService"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="98,334" computeExpression="esql://routine/uploadCustomerDocument#setImageUrl.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="94,339" computeExpression="esql://routine/uploadCustomerDocument#setImageUrl.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="setImageUrl"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="333,187" dataSource="ganaseva_uat" computeExpression="esql://routine/uploadCustomerDocument#changeImageToBlob.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="322,185" dataSource="ganaseva_uat" computeExpression="esql://routine/uploadCustomerDocument#changeImageToBlob.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="changeImageToBlob"/>
       </nodes>
-      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="27,162" dataSourceName="GANASEVA" sqlQuery="SELECT RCDSCUSTOMERS.CUSTOMERID&#xA;FROM RCDSCUSTOMERS&#xA;&#xA;ORDER BY RCDSCUSTOMERS.CUSTOMERID ASC" tableNameComboValues="0,0~RCDSCUSTOMERS" columnNameComboValues="0~CUSTOMERID" operatorComboValues="0~ASC" valueTypeComboValues="0~None" columnValueComboValues="0~RCDSCUSTOMERS.CUSTOMERID">
-        <translation xmi:type="utility:ConstantString" string="Database Retrieve"/>
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="40,162" dataSourceName="GANASEVA" sqlQuery="SELECT RCDSCUSTOMERS.CUSTOMERID&#xA;FROM RCDSCUSTOMERS&#xA;&#xA;ORDER BY RCDSCUSTOMERS.CUSTOMERID ASC" tableNameComboValues="0,0~RCDSCUSTOMERS" columnNameComboValues="0~CUSTOMERID" operatorComboValues="0~ASC" valueTypeComboValues="0~None" columnValueComboValues="0~RCDSCUSTOMERS.CUSTOMERID">
+        <translation xmi:type="utility:ConstantString" string="checkIfExists"/>
         <queryElements tableName="RCDSCUSTOMERS" columnName="CUSTOMERID" operator="ASC" valueType="None" value="None"/>
         <dataElements columnName="RCDSCUSTOMERS.CUSTOMERID" messageElement="$OutputLocalEnvironment/internalID"/>
       </nodes>
-      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="196,335" URLSpecifier="http://upload.wikimedia.org/wikipedia/commons/9/9a/TajMinaret1.jpg" httpMethod="GET" messageDomainProperty="BLOB" validateTiming="complete" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="192,345" URLSpecifier="http://upload.wikimedia.org/wikipedia/commons/9/9a/TajMinaret1.jpg" httpMethod="GET" messageDomainProperty="BLOB" validateTiming="complete" replaceInputMsgWithWSResponse="false" responseMsgLocationInTree="OutputRoot.BLOB" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="HTTPRequest"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="163,186" pattern="${Root}&#xA;${LocalEnvironment}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="159,240" pattern="${Root}&#xA;${LocalEnvironment}">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="315,337" pattern="${Root}&#xA;${LocalEnvironment}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="311,345" pattern="${Root}&#xA;${LocalEnvironment}">
         <translation xmi:type="utility:ConstantString" string="Trace1"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="273,90" pattern="${Root}&#xA;${LocalEnvironment}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="260,178" pattern="${Root}&#xA;${LocalEnvironment}">
         <translation xmi:type="utility:ConstantString" string="FAILURE"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="217,29" pattern="${Root}&#xA;${LocalEnvironment}">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="216,116" pattern="${Root}&#xA;${LocalEnvironment}">
         <translation xmi:type="utility:ConstantString" string="ERROR"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="73,21" computeExpression="esql://routine/uploadCustomerDocument#custmerNotFound.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="cutomerNotFound"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -51,6 +54,8 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_14" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>
