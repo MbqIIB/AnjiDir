@@ -10,7 +10,6 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 		DECLARE lMinuteString CHARACTER;
 		DECLARE lAMPM CHARACTER;
 		DECLARE datePart INTEGER;
-		DECLARE lDate DATE;
 	
 		IF (piHour > 12) THEN
 			SET lHour = piHour -12;
@@ -45,11 +44,13 @@ CREATE DATABASE MODULE addCenter_Request_Response_Database
 	DECLARE lBatchID INTEGER;
     DECLARE lTime CHARACTER;
    	DECLARE lDate CHARACTER;
+   	DECLARE lFormationDate DATE;
+   	SET lFormationDate = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate;
     DECLARE center REFERENCE TO Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center;
     SET lBatchID = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:batchID;
     SET lTime = Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:meetingTime;
     SET lTime = formatTime(CAST(SUBSTRING(lTime FROM 1 FOR 2) AS INTEGER), CAST(SUBSTRING(lTime FROM 4 FOR 2) AS INTEGER));
-    SET lDate = CAST(Root.XMLNSC.ns:addCenter.addCenterRequest.ctr:center.ge:formationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
+    SET lDate = CAST(lFormationDate AS CHARACTER FORMAT 'dd/MM/yyyy');
     --- insert the record
     INSERT INTO Database."[HO-CENTER-STAGING]"
     ( 

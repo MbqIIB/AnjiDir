@@ -20,10 +20,12 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="322,185" dataSource="ganaseva_uat" computeExpression="esql://routine/uploadCustomerDocument#changeImageToBlob.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="changeImageToBlob"/>
       </nodes>
-      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="40,162" dataSourceName="GANASEVA" sqlQuery="SELECT RCDSCUSTOMERS.CUSTOMERID&#xA;FROM RCDSCUSTOMERS&#xA;&#xA;ORDER BY RCDSCUSTOMERS.CUSTOMERID ASC" tableNameComboValues="0,0~RCDSCUSTOMERS" columnNameComboValues="0~CUSTOMERID" operatorComboValues="0~ASC" valueTypeComboValues="0~None" columnValueComboValues="0~RCDSCUSTOMERS.CUSTOMERID">
+      <nodes xmi:type="ComIbmDatabaseRetrieve.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="40,162" dataSourceName="GANASEVA" sqlQuery="SELECT RCDSCUSTOMERS.CUSTOMERID&#xA;FROM RCDSCUSTOMERS&#xA;WHERE RCDSCUSTOMERS.EXTERNALCUSTNO = ?&#xA;ORDER BY RCDSCUSTOMERS.CUSTOMERID ASC" tableNameComboValues="0,0,0~RCDSCUSTOMERS" columnNameComboValues="0,1~CUSTOMERID,EXTERNALCUSTNO" operatorComboValues="0,2~=" valueTypeComboValues="0,2~Element" columnValueComboValues="0~RCDSCUSTOMERS.CUSTOMERID">
         <translation xmi:type="utility:ConstantString" string="checkIfExists"/>
         <queryElements tableName="RCDSCUSTOMERS" columnName="CUSTOMERID" operator="ASC" valueType="None" value="None"/>
+        <queryElements tableName="RCDSCUSTOMERS" columnName="EXTERNALCUSTNO" operator="=" valueType="Element" value="$InputRoot/XMLNSC/tns:uploadCustomerDocument/uploadCustomerDocumentRequest/customerId"/>
         <dataElements columnName="RCDSCUSTOMERS.CUSTOMERID" messageElement="$OutputLocalEnvironment/internalID"/>
+        <nsMappingTable nsPrefix="tns" namespace="http://AccountOpeningService"/>
       </nodes>
       <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="192,345" URLSpecifier="http://upload.wikimedia.org/wikipedia/commons/9/9a/TajMinaret1.jpg" httpMethod="GET" messageDomainProperty="BLOB" validateTiming="complete" replaceInputMsgWithWSResponse="false" responseMsgLocationInTree="OutputRoot.BLOB" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="HTTPRequest"/>
