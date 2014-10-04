@@ -6,8 +6,16 @@
    
    <xsd:complexType name="relatedPartyType">
       <xsd:sequence>
-		 <xsd:element maxOccurs="1" minOccurs="0" ref="ge:title"/>
-         <xsd:element name="name" type="xsd:string"/>
+		 <xsd:element maxOccurs="1" minOccurs="0" ref="ge:title">
+         	<xsd:annotation>
+                 <xsd:documentation>Title for the related person.</xsd:documentation>
+          	</xsd:annotation>
+         </xsd:element>
+         <xsd:element name="name" type="xsd:string">
+         	<xsd:annotation>
+                 <xsd:documentation>Name of the related person.</xsd:documentation>
+          	</xsd:annotation>
+         </xsd:element>
          <xsd:element name="relation">
             <xsd:annotation>
                <xsd:documentation>
@@ -35,11 +43,15 @@
       			</xsd:restriction>
       		</xsd:simpleType>
          </xsd:element>
-		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth"/>
+		 <xsd:element maxOccurs="1" minOccurs="1" ref="ge:dateOfBirth">
+         	<xsd:annotation>
+                 <xsd:documentation>Date of birth of the related person.</xsd:documentation>
+          	</xsd:annotation>
+         </xsd:element>
          <xsd:element maxOccurs="1" minOccurs="0" name="gender">
             <xsd:annotation>
                <xsd:documentation>
-                  01-MAle,02-FEMALE,03-OTHER
+                  Gender fo the related person. Options: 01-MAle,02-FEMALE,03-OTHER
                </xsd:documentation>
             </xsd:annotation>
             <xsd:simpleType>
@@ -50,7 +62,11 @@
       			</xsd:restriction>
       		</xsd:simpleType>
          </xsd:element>
-         <xsd:element maxOccurs="1" minOccurs="0" name="address" type="dt:addressType"/>
+         <xsd:element maxOccurs="1" minOccurs="0" name="address" type="dt:addressType">
+         	<xsd:annotation>
+                 <xsd:documentation>Address of the related person.</xsd:documentation>
+          	</xsd:annotation>
+         </xsd:element>
       </xsd:sequence>
    </xsd:complexType>
    
@@ -58,7 +74,11 @@
    		<xsd:complexContent>
    			<xsd:extension base="tns:savingType">
    				<xsd:sequence>
-   				    <xsd:element maxOccurs="1" minOccurs="0" ref="ge:batchID"/>
+   				    <xsd:element maxOccurs="1" minOccurs="0" ref="ge:batchID">
+					   <xsd:annotation>
+		                 <xsd:documentation>This is an optional field and is required while processing the center request.</xsd:documentation>
+		               </xsd:annotation>
+		            </xsd:element>
 		            <xsd:element maxOccurs="1" minOccurs="1" name="loanAccount" type="loanAccount:loanAccountType"/>
    				</xsd:sequence>
    			</xsd:extension>
@@ -111,8 +131,16 @@
 	      		</xsd:simpleType>
       		</xsd:element>
       
- 			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName"/>
-            <xsd:element name="accountOpeningDate" type="xsd:date"/>
+ 			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:productName">
+	         	<xsd:annotation>
+	                 <xsd:documentation>Name of the product for the savings account.</xsd:documentation>
+	          	</xsd:annotation>
+         	</xsd:element>
+            <xsd:element name="accountOpeningDate" type="xsd:date">
+	         	<xsd:annotation>
+	                 <xsd:documentation>Date of opening the saving account. Date format YYYY-MM-DD.</xsd:documentation>
+	          	</xsd:annotation>
+         	</xsd:element>
             <xsd:element minOccurs="0" ref="tns:nominee"/>
 
          </xsd:sequence>
@@ -123,8 +151,15 @@
 	       <xsd:complexContent>
 	          <xsd:extension base="tns:relatedPartyType">
 	             <xsd:sequence>
-	                <xsd:element maxOccurs="1" minOccurs="0" name="pan" type="dt:panType"/>
+	                <xsd:element maxOccurs="1" minOccurs="0" name="pan" type="dt:panType">
+			         	<xsd:annotation>
+			                 <xsd:documentation>PAN no of the nominee.</xsd:documentation>
+			          	</xsd:annotation>
+			         </xsd:element>
 	 				<xsd:element minOccurs="0" name="minor">
+	 				<xsd:annotation>
+			              <xsd:documentation>Flag to tell whether nominee is minor or not.</xsd:documentation>
+			         </xsd:annotation>
 	        <xsd:simpleType>
 	           <xsd:restriction base="xsd:string">
 	              <xsd:maxLength value="256"/>
