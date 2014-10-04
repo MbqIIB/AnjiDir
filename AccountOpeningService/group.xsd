@@ -5,8 +5,15 @@
    	
      <xsd:complexType name="groupType">
         <xsd:sequence>
-        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId"/>
+        	<xsd:element maxOccurs="1" minOccurs="1" ref="ge:externalId">
+			   <xsd:annotation>
+                 <xsd:documentation>External ID to be assigned to the center. This needs to be unique.</xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
            <xsd:element name="externalCenterId">
+           		<xsd:annotation>
+                 <xsd:documentation>External Center ID under which the group is getting created.</xsd:documentation>
+               </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="40"/>
@@ -14,14 +21,24 @@
               </xsd:simpleType>
            </xsd:element>
            <xsd:element name="centerName">
+			   <xsd:annotation>
+                 <xsd:documentation>Name of the center.</xsd:documentation>
+               </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="50"/>
                  </xsd:restriction>
               </xsd:simpleType>
            </xsd:element>
-           <xsd:element name="maximumCenterLimit" type="xsd:int"/>         
+           <xsd:element name="maximumCenterLimit" type="xsd:int">    
+			   <xsd:annotation>
+                 <xsd:documentation>Maximum center limit.</xsd:documentation>
+               </xsd:annotation>
+           </xsd:element>
            <xsd:element name="groupName">
+			   <xsd:annotation>
+                 <xsd:documentation>Name of the group.</xsd:documentation>
+               </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="128"/>
@@ -35,10 +52,25 @@
            		</xsd:documentation>
            	</xsd:annotation>
           </xsd:element>
-           <xsd:element fixed="4" name="minNumber" type="xsd:int"/>
-           <xsd:element fixed="6" name="maxNumber" type="xsd:int"/>
-		   <xsd:element maxOccurs="1" minOccurs="1" ref="ge:formationDate"/>
+           <xsd:element fixed="4" name="minNumber" type="xsd:int">
+			   <xsd:annotation>
+                 <xsd:documentation>Minimum number of members for the group.</xsd:documentation>
+               </xsd:annotation>
+           </xsd:element>
+           <xsd:element fixed="6" name="maxNumber" type="xsd:int">
+			   <xsd:annotation>
+                 <xsd:documentation>Maximum number of members for the group.</xsd:documentation>
+               </xsd:annotation>
+           </xsd:element>
+		   <xsd:element maxOccurs="1" minOccurs="1" ref="ge:formationDate">
+			   <xsd:annotation>
+                 <xsd:documentation>Group formation date.</xsd:documentation>
+               </xsd:annotation>
+           </xsd:element>
            <xsd:element name="dayOfPeriod">
+           		<xsd:annotation>
+                 <xsd:documentation>Day of the week on which the installment amount should be collected.</xsd:documentation>
+               </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:integer">
                     <xsd:minInclusive value="1"/>
@@ -46,8 +78,15 @@
                  </xsd:restriction>
               </xsd:simpleType>
            </xsd:element>
-		<xsd:element maxOccurs="1" minOccurs="1" ref="ge:meetingTime"/>
+		<xsd:element maxOccurs="1" minOccurs="1" ref="ge:meetingTime">
+        	<xsd:annotation>
+              <xsd:documentation>Time at which meeting will take place. The acceptable format is HH:MM:SS</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
            <xsd:element name="meetingFrequency">
+	        	<xsd:annotation>
+	              <xsd:documentation>Frequency at which meeting should take place. Options: weekly and Monthly.</xsd:documentation>
+	            </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
                     <xsd:enumeration value="weekly"/>
@@ -56,6 +95,9 @@
               </xsd:simpleType>
            </xsd:element>
            <xsd:element name="distanceFromBranch">
+	        	<xsd:annotation>
+	              <xsd:documentation>Distance from the branch mentioned in the branch code.</xsd:documentation>
+	            </xsd:annotation>
               <xsd:simpleType>
                  <xsd:restriction base="xsd:string">
                     <xsd:maxLength value="10"/>
@@ -63,8 +105,16 @@
                  </xsd:restriction>
               </xsd:simpleType>
            </xsd:element>
-           <xsd:element ref="ge:branchCode"/>
-			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:operatingRegion"/>
+           <xsd:element ref="ge:branchCode">
+           	    <xsd:annotation>
+	              <xsd:documentation>Branch to which the group has to be mapped.</xsd:documentation>
+	            </xsd:annotation>
+	       </xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="ge:operatingRegion">
+           	    <xsd:annotation>
+	              <xsd:documentation>Operating region of the Group. Operating region should be a child a the branch code mentioned above.</xsd:documentation>
+	            </xsd:annotation>
+	       </xsd:element>
         </xsd:sequence>
      </xsd:complexType>
      
