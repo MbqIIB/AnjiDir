@@ -4,7 +4,9 @@
     <xsd:sequence>
        <xsd:annotation/>
        <xsd:element name="gender">
-          <xsd:annotation/>
+         <xsd:annotation>
+             <xsd:documentation>Gender of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:enumeration value="M"/>
@@ -14,7 +16,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="title">
-          <xsd:annotation/>
+         <xsd:annotation>
+             <xsd:documentation>Title to be appended in front of the name of customer. This will be used in all communication with the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -35,6 +39,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="firstName">
+         <xsd:annotation>
+             <xsd:documentation>First name of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -44,6 +51,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="middleName">
+         <xsd:annotation>
+             <xsd:documentation>Middle name of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -53,6 +63,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="lastName">
+         <xsd:annotation>
+             <xsd:documentation>Lst name of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="80"/>
@@ -63,7 +76,7 @@
        </xsd:element>
        <xsd:element name="shortName">
          <xsd:annotation>
-             <xsd:documentation>This will be preferred name</xsd:documentation>
+             <xsd:documentation>This will be preferred name of the customer.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -75,7 +88,7 @@
        </xsd:element>
        <xsd:element name="channelRequestName">
           <xsd:annotation>
-             <xsd:documentation>Thsi is the name which will be printed on card and cheque books</xsd:documentation>
+             <xsd:documentation>This will be printed on card/cheque books.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -85,9 +98,20 @@
              </xsd:restriction>
           </xsd:simpleType>
        </xsd:element>
-       <xsd:element minOccurs="1" name="dateOfBirth" type="xsd:date"/>
-       <xsd:element name="staffIndicator" type="xsd:boolean"/>
+       <xsd:element minOccurs="1" name="dateOfBirth" type="xsd:date">
+          <xsd:annotation>
+             <xsd:documentation>Customers date of birth. Accepted format(XSD-date) yyyy-mm-dd</xsd:documentation>
+          </xsd:annotation>
+       </xsd:element>
+       <xsd:element name="staffIndicator" type="xsd:boolean">
+          <xsd:annotation>
+             <xsd:documentation>Indicates whether the customer is staff of the bank or not.</xsd:documentation>
+          </xsd:annotation>
+       </xsd:element>
        <xsd:element minOccurs="0" name="staffId">
+          <xsd:annotation>
+             <xsd:documentation>Staff ID of the customer in case he is staff of the bank.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="5"/>
@@ -96,6 +120,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="motherMaidenName">
+          <xsd:annotation>
+             <xsd:documentation>Maiden name of customers mother.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
@@ -105,6 +132,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="1" name="branchID">
+          <xsd:annotation>
+             <xsd:documentation>Branch id to which the customer will be mapped.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="8"/>
@@ -113,7 +143,7 @@
        </xsd:element>
        <xsd:element name="segment">
           <xsd:annotation>
-             <xsd:documentation>To be checked with OPS</xsd:documentation>
+             <xsd:documentation>Customer segment.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -127,7 +157,7 @@
        </xsd:element>
        <xsd:element name="subSegment">
           <xsd:annotation>
-             <xsd:documentation>To be checked with OPS</xsd:documentation>
+             <xsd:documentation>Sub segment of the customer.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -144,7 +174,9 @@
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="community">
-          <xsd:annotation/>
+            <xsd:annotation>
+             <xsd:documentation>Community/Religion of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:enumeration value="BUDHI"/>
@@ -164,7 +196,7 @@
 type="xsd:string" /> -->
        <xsd:element minOccurs="0" name="creditBureauScore">
           <xsd:annotation>
-             <xsd:documentation>inout field</xsd:documentation>
+             <xsd:documentation>The score provided by the credit bureau department.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -174,7 +206,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element name="constitutionCode">
           <xsd:annotation>
-             <xsd:documentation>Kiran will confirm</xsd:documentation>
+             <xsd:documentation>Constitution code fo the customer.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -190,7 +222,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element minOccurs="1" name="primaryRMID">
           <xsd:annotation>
-             <xsd:documentation>Check with OPS</xsd:documentation>
+             <xsd:documentation>Id fo the relationship manager who will handle the customer.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -200,12 +232,12 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element minOccurs="1" name="relationshipStartDate" type="xsd:date">
           <xsd:annotation>
-             <xsd:documentation>Format : dd-MM-yyyy</xsd:documentation>
+             <xsd:documentation>Relationship start date is when the customer is getting created in the system. Format : yyyy-mm-dd</xsd:documentation>
           </xsd:annotation>
        </xsd:element>
        <xsd:element name="nationality">
           <xsd:annotation>
-             <xsd:documentation>Need Query</xsd:documentation>
+             <xsd:documentation>Nationality of the customer. To be verified with the master data in Finacle.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -216,7 +248,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="maritalStatus">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Marital status of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -233,7 +267,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="qualification">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Educational qualification of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -245,7 +281,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="sourceOfIncome">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Primary source of income of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -259,7 +297,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="occupation">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Occupation of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="2"/>
@@ -313,7 +353,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element maxOccurs="1" minOccurs="0" name="industryType">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Industry type basis the occupation of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
@@ -385,7 +427,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="grossIncome">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Gross income bracket of the customer.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -518,7 +562,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element name="dsaId">
           <xsd:annotation>
-             <xsd:documentation>input field</xsd:documentation>
+             <xsd:documentation>DSA(Dealer Sourcing Authority) ID if applicable.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -528,7 +572,9 @@ type="xsd:string" /> -->
        </xsd:element>
        <!-- 100 end -->
        <xsd:element name="minorityCommunity">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Minority community of the customer if applicable.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -544,6 +590,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="pan">
+          <xsd:annotation>
+             <xsd:documentation>Valid PAN no of the customer. To be validated against the pattern of PAN no.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -553,7 +602,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element name="scSt">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Schedule Caste and Schedule Tribe if applicable.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -568,7 +619,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element name="sourcingID">
           <xsd:annotation>
-             <xsd:documentation>inout field</xsd:documentation>
+             <xsd:documentation>Sourcing ID of the customer. This is getting used for storing the reference no generated by RP.</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -577,7 +628,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="specialCategory">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>To be selected if customer belongs to some special category.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="5"/>
@@ -593,7 +646,9 @@ type="xsd:string" /> -->
 				       <xsd:complexType>
 					       <xsd:sequence>
 						       <xsd:element minOccurs="0" name="ifSalariedTypeOfCompany">
-						          <xsd:annotation/>
+						          <xsd:annotation>
+						             <xsd:documentation>Type of the compaany where custome ris employed</xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:minLength value="1"/>
@@ -609,7 +664,9 @@ type="xsd:string" /> -->
 						          </xsd:simpleType>
 						       </xsd:element>
 						       <xsd:element name="employmentStatus">
-						          <xsd:annotation/>
+						          <xsd:annotation>
+						             <xsd:documentation>Employment status of the customer.</xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:minLength value="1"/>
@@ -625,6 +682,9 @@ type="xsd:string" /> -->
 						          </xsd:simpleType>
 						       </xsd:element>
 						       <xsd:element minOccurs="0" name="employmentType">
+						          <xsd:annotation>
+						             <xsd:documentation>Employment type of the customer.</xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:maxLength value="20"/>
@@ -651,6 +711,9 @@ type="xsd:string" /> -->
 						          </xsd:simpleType>
 						       </xsd:element>
 						       <xsd:element minOccurs="0" name="employerID">
+						          <xsd:annotation>
+						             <xsd:documentation>This is the employer ID maintained at Finacle side. </xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:maxLength value="50"/>
@@ -658,6 +721,9 @@ type="xsd:string" /> -->
 						          </xsd:simpleType>
 						       </xsd:element>
 						       <xsd:element minOccurs="0" name="employeeID">
+						          <xsd:annotation>
+						             <xsd:documentation>Employee ID of the customer.</xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:maxLength value="10"/>
@@ -665,7 +731,9 @@ type="xsd:string" /> -->
 						          </xsd:simpleType>
 						       </xsd:element>
 						       <xsd:element minOccurs="0" name="designation">
-						          <xsd:annotation/>
+						          <xsd:annotation>
+						             <xsd:documentation>Designation of the customer.</xsd:documentation>
+						          </xsd:annotation>
 						          <xsd:simpleType>
 						             <xsd:restriction base="xsd:string">
 						                <xsd:maxLength value="30"/>
@@ -681,15 +749,39 @@ type="xsd:string" /> -->
 						             </xsd:restriction>
 						          </xsd:simpleType>
 						       </xsd:element>
-			       			   <xsd:element minOccurs="0" name="employerAddress" type="tns:addressType"/>
-       							<xsd:element minOccurs="0" name="employerPhoneNumber" type="tns:phoneType"/>
+			       			   <xsd:element minOccurs="0" name="employerAddress" type="tns:addressType">
+			       				<xsd:annotation>
+						             <xsd:documentation>Address of the employer.</xsd:documentation>
+						          </xsd:annotation>
+						        </xsd:element>
+       							<xsd:element minOccurs="0" name="employerPhoneNumber" type="tns:phoneType">
+			       				<xsd:annotation>
+						             <xsd:documentation>Phone no of the employer.</xsd:documentation>
+						          </xsd:annotation>
+						        </xsd:element>
 					       </xsd:sequence>
 				       </xsd:complexType>
 			       </xsd:element>
-       <xsd:element maxOccurs="3" minOccurs="1" name="document" type="tns:documentType"/>
-       <xsd:element maxOccurs="2" minOccurs="1" name="address" type="tns:addressType"/>
-       <xsd:element maxOccurs="3" minOccurs="0" name="phone" type="tns:phoneType"/>
-       <xsd:element maxOccurs="2" minOccurs="0" name="email" type="tns:emailType"/>
+       <xsd:element maxOccurs="3" minOccurs="1" name="document" type="tns:documentType">
+   		<xsd:annotation>
+            <xsd:documentation>Documents given by the customer.</xsd:documentation>
+         </xsd:annotation>
+       </xsd:element>
+       <xsd:element maxOccurs="2" minOccurs="1" name="address" type="tns:addressType">
+   		<xsd:annotation>
+            <xsd:documentation>Addrss of the customer.</xsd:documentation>
+         </xsd:annotation>
+       </xsd:element>
+       <xsd:element maxOccurs="3" minOccurs="0" name="phone" type="tns:phoneType">
+  		<xsd:annotation>
+           <xsd:documentation>Phone no of the customer.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+       <xsd:element maxOccurs="2" minOccurs="0" name="email" type="tns:emailType">
+	 	<xsd:annotation>
+	          <xsd:documentation>Email ID of the customer.</xsd:documentation>
+	       </xsd:annotation>
+	     </xsd:element>
     </xsd:sequence>
  </xsd:complexType>
  
@@ -780,6 +872,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="1" name="line1">
+          <xsd:annotation>
+             <xsd:documentation>Address Line1-Only Character in Caps, Digits, Space and special character "-" are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
@@ -788,6 +883,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="1" name="line2">
+          <xsd:annotation>
+             <xsd:documentation>Address Line2-Only Character in Caps, Digits, Space and special character "-" are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="40"/>
@@ -796,6 +894,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="line3">
+          <xsd:annotation>
+             <xsd:documentation>Address Line3-Only Character in Caps, Digits, Space and special character "-" are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="40"/>
@@ -805,7 +906,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element minOccurs="1" name="city">
           <xsd:annotation>
-             <xsd:documentation>Validation throug select query</xsd:documentation>
+             <xsd:documentation>City code maintained at FInacle(to be validated through query).</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -815,7 +916,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element minOccurs="1" name="state">
           <xsd:annotation>
-             <xsd:documentation>Validation throug select query</xsd:documentation>
+             <xsd:documentation>State code maintained at FInacle(to be validated through query).</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -824,6 +925,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="1" name="pin">
+          <xsd:annotation>
+             <xsd:documentation>Pin code only digits and characters in caps are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="30"/>
@@ -837,7 +941,9 @@ type="xsd:string" /> -->
  <xsd:complexType name="documentType">
  <xsd:sequence>
       <xsd:element minOccurs="1" name="documentCode">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Document code from the enumerations.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:minLength value="1"/>
@@ -889,7 +995,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
       <xsd:element minOccurs="1" name="documentDescription">
-          <xsd:annotation/>
+          <xsd:annotation>
+             <xsd:documentation>Description of the document code.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="2000"/>
@@ -898,7 +1006,7 @@ type="xsd:string" /> -->
        </xsd:element>
        <xsd:element minOccurs="1" name="documentID">
           <xsd:annotation>
-             <xsd:documentation>input field</xsd:documentation>
+             <xsd:documentation>Document ID</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
@@ -907,6 +1015,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="placeOfIssue">
+          <xsd:annotation>
+             <xsd:documentation>Place where the document was issued.Only Character in Caps, Digits, Space and special character "-" are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>
@@ -915,6 +1026,9 @@ type="xsd:string" /> -->
           </xsd:simpleType>
        </xsd:element>
        <xsd:element minOccurs="0" name="countryOfIssue">
+          <xsd:annotation>
+             <xsd:documentation>Country where the document was issued.Only Character in Caps, Digits, Space and special character "-" are allowed.</xsd:documentation>
+          </xsd:annotation>
           <xsd:simpleType>
              <xsd:restriction base="xsd:string">
                 <xsd:maxLength value="50"/>

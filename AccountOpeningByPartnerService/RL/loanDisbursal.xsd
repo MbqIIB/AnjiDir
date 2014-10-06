@@ -2,6 +2,9 @@
 <xsd:complexType name="retailLoanDisbursementType">
    <xsd:sequence>
       <xsd:element name="netDisbursementAmount">
+        <xsd:annotation>
+           <xsd:documentation>Net disbursement amount after all the deductions.</xsd:documentation>
+        </xsd:annotation>
          <xsd:simpleType>
             <xsd:restriction base="xsd:decimal">
                <xsd:totalDigits value="16"/>
@@ -11,7 +14,7 @@
       </xsd:element>
      <xsd:element minOccurs="0" name="disbursalMode">
         <xsd:annotation>
-           <xsd:documentation>Check with Huzefa</xsd:documentation>
+           <xsd:documentation>Disbursement mode.</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
            <xsd:restriction base="xsd:string">

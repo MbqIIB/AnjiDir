@@ -4,13 +4,13 @@
    <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="1" name="repaymentRecord">
          <xsd:annotation>
-            <xsd:documentation>Making the repayment records unbounded to accomodate other products with multiple records</xsd:documentation>
+            <xsd:documentation>This is a repeating elemnt for each installment in case there are multiple.</xsd:documentation>
          </xsd:annotation>
          <xsd:complexType>
             <xsd:sequence>
                <xsd:element fixed="EIDEM" name="flowID">
             <xsd:annotation>
-               <xsd:documentation>This will be a fixed value pending confirmation from Kiran</xsd:documentation>
+               <xsd:documentation>Representation of how the installment should be treated.</xsd:documentation>
             </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:string">
@@ -20,7 +20,7 @@
                </xsd:element>
                <xsd:element fixed="M" name="repaymentFrequency">
             <xsd:annotation>
-               <xsd:documentation>This will be a fixed value M - MONTHLY </xsd:documentation>
+               <xsd:documentation>Repayment frequency of the loan. This is fixed to value M - MONTHLY for RP.</xsd:documentation>
             </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:string">
@@ -29,6 +29,9 @@
                   </xsd:simpleType>
                </xsd:element>
                <xsd:element name="noOfInstallments">
+		            <xsd:annotation>
+		               <xsd:documentation>Total no of installments for the loan.</xsd:documentation>
+		            </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:int">
                         <xsd:minInclusive value="0"/>
@@ -36,6 +39,9 @@
                   </xsd:simpleType>
                </xsd:element>
                <xsd:element name="installmentAmount">
+		            <xsd:annotation>
+		               <xsd:documentation>Total amount(principal + interest) for the installment.</xsd:documentation>
+		            </xsd:annotation>
                   <xsd:simpleType>
                      <xsd:restriction base="xsd:decimal">
                         <xsd:totalDigits value="16"/>

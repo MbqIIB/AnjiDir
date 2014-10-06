@@ -4,7 +4,7 @@
                            <xsd:sequence>
                               <xsd:element name="schemeCode">
                                  <xsd:annotation>
-                                    <xsd:documentation>Mandatory it is required</xsd:documentation>
+                                    <xsd:documentation>Scheme/Product under which the loan account is getting created</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -14,7 +14,7 @@
                               </xsd:element>
                               <xsd:element name="accountManagerUserID">
                                  <xsd:annotation>
-                                    <xsd:documentation>Operation user Id</xsd:documentation>
+                                    <xsd:documentation>User ID of the person from Operations</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -24,7 +24,7 @@
                               </xsd:element>
                               <xsd:element name="sanctionLimit">
                                  <xsd:annotation>
-                                    <xsd:documentation>Loan amount approved</xsd:documentation>
+                                    <xsd:documentation>Loan amount approved for dibursal.</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:decimal">
@@ -40,7 +40,7 @@
                               </xsd:element>
                               <xsd:element name="sanctionLevelCode">
                                  <xsd:annotation>
-                                    <xsd:documentation>This field tells the sanction done by a person with a given position in the bank</xsd:documentation>
+                                    <xsd:documentation>Loan Sanctioned by a person with a given position in the bank</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -71,7 +71,7 @@
                               </xsd:element>
                               <xsd:element name="sanctionReferenceNo">
                                  <xsd:annotation>
-                                    <xsd:documentation>This will be application reference number for the loan</xsd:documentation>
+                                    <xsd:documentation>This will be application reference number for the loan.</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -80,6 +80,9 @@
                                  </xsd:simpleType>
                               </xsd:element>
                               <xsd:element name="loanAmount">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Loan amount applied.</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:decimal">
                                        <xsd:totalDigits value="16"/>
@@ -88,6 +91,9 @@
                                  </xsd:simpleType>
                               </xsd:element>
                               <xsd:element name="loanPeriodInMonths">
+                                 <xsd:annotation>
+                                    <xsd:documentation>Tenure of loan in months.</xsd:documentation>
+                                 </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:int">
                                        <xsd:minInclusive value="0"/>
@@ -97,7 +103,7 @@
                               </xsd:element>
                               <xsd:element name="occupationCode">
                                  <xsd:annotation>
-                                    <xsd:documentation>Input field</xsd:documentation>
+                                    <xsd:documentation>Occupation code of teh customer.</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -473,7 +479,7 @@
                               </xsd:element>
                               <xsd:element minOccurs="0" name="advanceType">
                                  <xsd:annotation>
-                                    <xsd:documentation>Field to be check in RP</xsd:documentation>
+                                    <xsd:documentation>Type of advance.</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
@@ -502,7 +508,7 @@
                               </xsd:element>
                               <xsd:element minOccurs="1" name="riskCategory">
                                  <xsd:annotation>
-                                    <xsd:documentation>Need to be linked to freecode8 field</xsd:documentation>
+                                    <xsd:documentation>Need to be linked to freecode8 field. Maps the risk involved with the loan</xsd:documentation>
                                  </xsd:annotation>
                                  <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
