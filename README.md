@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 iib
 ===
 
@@ -14,3 +15,7 @@ mqsisetdbparms brokerName -n securityIdName -u username -p password
 mqsicreateconfigurableservice broker name -c SecurityProfiles -o securityProfileName -n "propagation,idToPropagateToTransport,transportPropagationConfig" -v "TRUE,STATIC ID,securityIdName"
 
 3. Assign the newly created security profile to the flow (this is part of the dev.env file)
+=======
+AnjiDir
+=======
+>>>>>>> 89b83cc290f13f4631fcf4048ff4afc96472a4a6
